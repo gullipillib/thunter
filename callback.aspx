@@ -45,9 +45,9 @@
             var theItem = new FacebookBuyItem()
             {
                 item_id = 0,
-                description = "Description of your item",
+                description = "A Treasur Spot Payment Has Veen Made",
                 price = credscost,
-                title = "Item Name",
+                title = "TSpot Purchase",
                 product_url = "https://treasurehunter.apphb.com/coin.html",
                 image_url = "https://treasurehunter.apphb.com/images/coin.png"
             };
@@ -63,7 +63,7 @@
             Response.ContentType = "application/json";
             Response.Write(ob);
             Response.End();
-
+            
         }
 
         // 4. Secondary confirmation dialog reply - handle all internal work and then return a canceled or settled status
@@ -117,7 +117,7 @@
                     Response.ContentType = "application/json";
                     Response.Write(ob);
                     Response.End();
-
+                    
                 } // End 'status = placed' block
 
             } // End 'method = payments_status_updates' block 
