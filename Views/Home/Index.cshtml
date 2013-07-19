@@ -70,11 +70,10 @@
 <button onclick="invitefriends()" style="position:absolute;left:600px;top:600px;width:70px" >Invite Friends</button>
 <script>
 function invitefriends() {
-FB.init({
-    appId: 123405257731200,
-    frictionlessRequests: true,
-    cookie: true,
-});
+    FB.ui({
+        method: 'apprequests',
+        message: 'You are Invited to Play Treasure Hunter Game with me'
+    }, requestCallback);
 }
 </script>
 
