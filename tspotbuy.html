@@ -1,59 +1,64 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
-	<title>Treasure Spot Buy </title>
+    <title>Treasure Spot Buy</title>
   </head>
   <body>
-  
+    <h2>Buy Treasure Spot</h2>
+    <button onclick="buy()">Buy</button>
+    <div id="Div2"></div>
+    <div id="Div3"></div>
 
-<script>
-  window.fbAsyncInit = function() {
-    // init the FB JS SDK
-    FB.init({
-      appId      : '123405257731200',                        // App ID from the app dashboard
-      //channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file for x-domain comms
-      status     : true,                                 // Check Facebook Login status
-      xfbml      : true                                  // Look for social plugins on the page
-    });
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script>
+        FB.init({ appId: "123405257731200", status: true, cookie: true });
 
-    // Additional initialization code such as adding Event Listeners goes here
-  };
+        // The dialog only opens if you've implemented the
+        // Credits Callback payments_get_items.
+        function buy() {
+            var obj = {
+                method: 'pay',
+                action: 'buy_item',
+                // You can pass any string, but your payments_get_items must
+                // be able to process and respond to this data.
+                order_info: { 'item_id': '1a' },
+                dev_purchase_params: { 'oscif': true }
+            };
 
-  // Load the SDK asynchronously
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+            FB.ui(obj, js_callback);
+        }
 
-FB.ui({
-      method: 'pay',
-      action: 'purchaseitem',
-      product: 'https://treasurehunter.apphb.com/coin.html',
-      //quantity: 1,                 // optional, defaults to 1
-      //request_id: 'YOUR_REQUEST_ID'  optional, must be unique for each payment
-    },
-    callback
-);
+        // This JavaScript callback handles FB.ui's return data and differs
+        // from the Credits Callbacks.
+        var js_callback = function (data) {
+            if (data['order_id']) {
+                // Facebook only returns an order_id if you've implemented
+                // the Credits Callback payments_status_update and settled
+                // the user's placed order.
 
-var callback = function(data) {
-    if (data['order_id']) {
-      writeback("SUCCESS - " + data);
-      return true;
-    } else {
-      //handle errors here
-      writeback("Callback FAILED - " + data['error_code']);
-      return false;
-    }
-  };
+                // Notify the user that the purchased item has been delivered
+                // without a complete reload of the game.
+                write_callback_data(
+                          "<br><b>Transaction Completed!</b> </br></br>"
+                          + "Data returned from Facebook: </br>"
+                          + "Order ID: " + data['order_id'] + "</br>"
+                          + "Status: " + data['status']);
+            } else if (data['error_code']) {
+                // Appropriately alert the user.
+                write_callback_data(
+                          "<br><b>Transaction Failed!</b> </br></br>"
+                          + "Error message returned from Facebook:</br>"
+                          + data['error_code'] + " - "
+                          + data['error_message']);
+            } else {
+                // Appropriately alert the user.
+                write_callback_data("<br><b>Transaction failed!</b>");
+            }
+        };
 
-//  function writeback(str) {
-//      document.getElementById('output').innerHTML=str;
-//  } 
-
-</script>  
-
-<div id="fb-root"></div>
+        function write_callback_data(str) {
+            document.getElementById('fb-ui-return-data').innerHTML = str;
+        }
+    </script>
   </body>
 </html>
