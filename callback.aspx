@@ -44,10 +44,10 @@
             //------------------------------------------
             var theItem = new FacebookBuyItem()
             {
-                item_id = ts1,
-                description = "A Treasur Spot Payment Has Veen Made",
+                item_id = 1,
+                description = "Buy a Treasure Spot to be owned by you!",
                 price = credscost,
-                title = "TSpot Purchase",
+                title = "Treasure Spot Buy!",
                 product_url = "https://treasurehunter.apphb.com/coin.html",
                 image_url = "https://treasurehunter.apphb.com/images/coin.png"
             };
