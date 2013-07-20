@@ -44,7 +44,7 @@
             //------------------------------------------
             var theItem = new FacebookBuyItem()
             {
-                item_id = 0,
+                item_id = ts1,
                 description = "A Treasur Spot Payment Has Veen Made",
                 price = credscost,
                 title = "TSpot Purchase",
