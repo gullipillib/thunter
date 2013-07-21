@@ -1,14 +1,14 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"    %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" EnableEventValidation="true"  %>
 
 <!DOCTYPE html>
 <script runat="server">
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        
         if (Page.IsPostBack == false)
         {
-            Label1.Text = Request.QueryString["orderid"];
-
+            Label1.Text = (string)Session["orderid"];
         }
     }
 

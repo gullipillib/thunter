@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" EnableSessionState="True" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -37,7 +37,7 @@
             // Look up the item named 'order_info' and act accordingly
             //------------------------------------------------------------
             order_info = order_info.Substring(1, (order_info.Length - 2)); // remove the quotes
-            
+            Session["orderid"] = order_info;
             // Code to handle your order here
             ulong credscost =  30; // Price of purchase in facebook credits
 
@@ -117,8 +117,9 @@
                     ob = ob.Replace("#$", @"\/");
                     Response.ContentType = "application/json";
                     Response.Write(ob);
-                    //Response.End();
-                    Response.Redirect("creator.aspx" + "?orderid=" + order_info); 
+                    
+                    Response.End();
+                     
                 } // End 'status = placed' block
 
             } // End 'method = payments_status_updates' block 
