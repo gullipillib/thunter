@@ -37,7 +37,7 @@
             // Look up the item named 'order_info' and act accordingly
             //------------------------------------------------------------
             order_info = order_info.Substring(1, (order_info.Length - 2)); // remove the quotes
-            
+            mypositionl.Text = mypositionl.Text + "  " + order_info;
             // Code to handle your order here
             ulong credscost =  30; // Price of purchase in facebook credits
 
@@ -130,9 +130,10 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
 </head>
-<body>
+<body style="height: 170px">
     <div>
-    
+        <asp:TextBox ID="mypositionl" runat="server" AutoPostBack="false"  Text="" style="z-index: 1; left: 8px; top: 6px; position: absolute; height: 148px; width: 459px;"   ></asp:TextBox>
+               
     </div>
 </body>
 </html>
