@@ -37,6 +37,7 @@
             // Look up the item named 'order_info' and act accordingly
             //------------------------------------------------------------
             order_info = order_info.Substring(1, (order_info.Length - 2)); // remove the quotes
+            
             // Code to handle your order here
             ulong credscost =  30; // Price of purchase in facebook credits
 

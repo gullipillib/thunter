@@ -2,13 +2,24 @@
       xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
     <title>Treasure Spot Buy</title>
+      <style type="text/css">
+          #Button1 {
+              z-index: 1;
+              left: 730px;
+              top: 19px;
+              position: absolute;
+              height: 30px;
+          }
+      </style>
   </head>
-  <body>
+  <body style="height: 359px">
     <h2>Buy Treasure Spot</h2>
-    <button onclick="buy()">Buy Treasure Spot Now</button>
-    <div id="Div2"></div>
-    <div id="Div3"></div>
-
+    <button onclick="buy()" style="z-index: 1; left: 43px; top: 140px; position: absolute">Buy Treasure Spot Now</button>
+      &nbsp;<label style="z-index: 1; left: 12px; top: 52px; position: absolute; height: 77px; width: 307px;" >You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
+      Price : $3</label>
+      <label style="z-index: 1; left: 12px; top: 282px; position: absolute; height: 21px; width: 354px;" > &nbsp;Copy above Code for your accounting information<br />
+      </label>
+      <a href="play.aspx" target="_self" style="position:absolute;left:739px; top:37px; width:109px; height: 18px;" > Back to Game </a> 
 
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <script>
@@ -44,6 +55,7 @@
                           + "Data returned from Facebook: </br>"
                           + "Order ID: " + data['order_id'] + "</br>"
                           + "Status: " + data['status']);
+		
             } else if (data['error_code']) {
                 // Appropriately alert the user.
                 write_callback_data(
@@ -61,5 +73,8 @@
             document.getElementById('fb-ui-return-data').innerHTML = str;
         }
     </script>
+<iframe src="https:treasurehunter.apphb.com/callback.aspx" style="width: 345px; z-index: 1; left: 8px; top: 188px; position: absolute; height: 88px">
+
+</iframe>
   </body>
 </html>
