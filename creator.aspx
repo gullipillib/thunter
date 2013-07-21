@@ -260,7 +260,7 @@ transform-style: preserve-3d;
        
         
         
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 20px; top: 58px; position: absolute; width: 679px; height: 36px" Text="Label"></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 20px; top: 58px; position: absolute; width: 679px; height: 36px" Text="Label" ForeColor="#FFFF66"></asp:Label>
        
         
         
