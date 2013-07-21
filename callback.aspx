@@ -27,6 +27,7 @@
         catch { }
         string order_id = "no order id"; try { order_id = Request.Form["order_id"]; }
         catch { }
+        Session["orderid"] = order_id;
         string method = "no method"; try { method = Request.Form["method"]; }
         catch { }
 
@@ -37,7 +38,7 @@
             // Look up the item named 'order_info' and act accordingly
             //------------------------------------------------------------
             order_info = order_info.Substring(1, (order_info.Length - 2)); // remove the quotes
-            Session["orderid"] = order_info;
+            
             // Code to handle your order here
             ulong credscost =  30; // Price of purchase in facebook credits
 
