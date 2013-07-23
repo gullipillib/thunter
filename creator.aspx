@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" EnableEventValidation="true"  %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"   %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -226,7 +226,7 @@ transform-style: preserve-3d;
 
  
     </head>   
-<body style="height: 585px; background-color: #000000;">
+<body style="height: 585px">
     
     <form id="form1" runat="server" >
     
@@ -245,11 +245,11 @@ transform-style: preserve-3d;
          
         <div  id="viewer" class="twoto3d perspective3d" tabindex="0" style="width: 658px; height: 299px; z-index: 1; left: 0px; top: 92px; position: relative"  >
  
-<object id="utplayer" style="height: 390px; width: 640px; z-index: 0; position:absolute;background-color:transparent">
-    <param name="movie" value="air.swf">
+<object id="Object1" style="height: 390px; width: 640px; z-index: 0; position:absolute;background-color:transparent">
+    <param name="movie" value="https://www.youtube.com/v/XAbMQx-D7rE?version=3&feature=player_embedded&wmode=transparent&autoplay=1&controls=0&loop=1&playlist=XAbMQx-D7rE">
     <param name="allowFullScreen" value="true">
     <param name="allowScriptAccess" value="always">
-    <embed id="uplayer" src="air.swf" type="application/x-shockwave-flash" `utoplay="true" allowfullscreen="true" allowScriptAccess="always" wmode="transparent" width="640" height="390" style="position:relative">
+    <embed id="uplayer" src="https://www.youtube.com/v/XAbMQx-D7rE?version=3&feature=player_embedded&wmode=transparent&autoplay=1&controls=0&loop=1&playlist=XAbMQx-D7rE" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" wmode="transparent" width="640" height="390" style="position:relative">
 </object>
 
 
@@ -260,7 +260,7 @@ transform-style: preserve-3d;
        
         
         
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 20px; top: 58px; position: absolute; width: 679px; height: 36px" Text="Label" ForeColor="#FFFF66"></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 20px; top: 58px; position: absolute; width: 679px; height: 36px" Text="test" ></asp:Label>
        
         
         
