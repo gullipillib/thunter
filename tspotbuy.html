@@ -13,13 +13,18 @@
       </style>
   </head>
   <body style="height: 359px" onload="js_callback(data)">
-    <h2>Buy Treasure Spot</h2>
-    <button onclick="buy()" style="z-index: 1; left: 43px; top: 140px; position: absolute">Buy Treasure Spot Now</button>
+    
+    <div style="position: absolute; border: medium solid #000000; top: 60px; left: 10px; width: 360px; height: 310px;"> 
+      <h2 style="width: 207px; position: absolute; top: 13px; left: 77px;">Buy Treasure Spot</h2>
+        <button onclick="buy()" style="z-index: 1; left: 43px; top: 140px; position: absolute">Buy a New Treasure Spot Now</button>
       <label style="z-index: 1; left: 12px; top: 52px; position: absolute; height: 77px; width: 307px;" >You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
       Price : $3</label>
+        <img alt="" src="Images/coin.png" style="z-index: 1; left: 11px; top: 5px; position: absolute" /></div>
+
       <a href="play.aspx" target="_self" style="position:absolute;left:739px; top:37px; width:109px; height: 18px;" > Back to Game </a> 
-      <a href="creator.aspx" target="_self" style="position:absolute;left:739px; top:87px; width:109px; height: 18px;" > Go to My TSpot </a> 
+      <a href="creator.aspx" target="_self" style="position:absolute;left:739px; top:87px; width:109px; height: 18px; visibility: hidden;" id="creator" > Go to My TSpot </a> 
       <label id="fb-ui-return-data" style="z-index: 1; left: 12px; top: 192px; position: absolute; height: 77px; width: 307px;" ></label>
+       <label id="fb-item-id" style="z-index: 1; left: 401px; top: 25px; position: absolute; height: 16px; width: 132px;" ></label>
 
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <script>
