@@ -25,8 +25,8 @@
       Price : $3</label>
         <img alt="" src="Images/coin.png" style="z-index: 1; left: 11px; top: 5px; position: absolute" /></div>
 
-      <a href="index.cshtml" target="_self" style="position:absolute;left:739px; top:37px; width:109px; height: 18px;" > Back to Game </a> 
-      <a href="creator.aspx" target="_self" style="position:absolute;left:739px; top:87px; width:109px; height: 18px; visibility: hidden;" id="creator" > Go to My TSpot </a> 
+      <a href="play.aspx" target="_self" style="position:absolute;left:739px; top:37px; width:109px; height: 18px;" > Back to Game </a> 
+      <a href="creator.aspx" target="_self" style="position:absolute;left:739px; top:87px; width:109px; height: 18px" id="creator" > Go to My TSpot </a> 
       <label id="fb-ui-return-data" style="z-index: 1; left: 32px; top: 282px; position: absolute; height: 77px; width: 307px;" ></label>
 
     <script src="http://connect.facebook.net/en_US/all.js"></script>
@@ -95,6 +95,7 @@
             document.getElementById('fb-ui-return-data').innerHTML = str;
             document.getElementById('creator').style.visibility = "visible";
             document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
+            
                 
            
         }
