@@ -21,14 +21,14 @@
       Price : $3</label>
         <img alt="" src="Images/coin.png" style="z-index: 1; left: 11px; top: 5px; position: absolute" /></div>
       <button onclick="buybid()" style="z-index: 1; left: 527px; top: 203px; position: absolute; width: 62px;"> Buy Now </button>
-      <div style="position: absolute; border: medium solid #000000; top: 59px; left: 388px; width: 360px; height: 310px;"> 
+      <div style="position: absolute; border: medium solid #000000; top: 59px; left: 381px; width: 360px; height: 310px;"> 
         <h2 style="width: 207px; position: absolute; top: 11px; left: 77px;">Buy Bid/Sale Treasure Spot</h2>
       <img alt="" src="Images/bid.png" style="z-index: 1; left: 14px; top: 12px; position: absolute; right: 298px;" />
       <label style="z-index: 1; left: 20px; top: 75px; position: absolute; height: 18px; width: 289px; bottom: 208px;" >Your Bid or Sale has been approved buy now</label> 
       <label id="fb-ui-return-data2" style="z-index: 1; left: 20px; top: 188px; position: absolute; height: 77px; width: 307px;" ></label>
       </div>
-      <a href="play.aspx" target="_self" style="position:absolute;left:739px; top:37px; width:109px; height: 18px;" > Back to Game </a> 
-      <a href="creator.aspx" target="_self" style="position:absolute;left:739px; top:87px; width:109px; height: 18px; visibility: hidden;" id="creator" > Go to My TSpot </a> 
+      <a href="index.cshtml" target="_self" style="position:absolute;left:45px; top:26px; width:109px; height: 18px;" > Back to Game </a> 
+      <a href="creator.aspx" target="_self" style="position:absolute;left:178px; top:28px; width:170px; height: 18px; visibility: hidden;" id="creator" > Go to My TSpot </a> 
       <label id="fb-ui-return-data" style="z-index: 1; left: 23px; top: 255px; position: absolute; height: 77px; width: 307px;" ></label>
        <label id="fb-item-id" style="z-index: 1; left: 401px; top: 25px; position: absolute; height: 16px; width: 132px;" ></label>
 
@@ -47,7 +47,7 @@
                 order_info: { 'item_id': 'ts1' },
                 dev_purchase_params: { 'oscif': true }
             };
-
+            document.getElementById('fb_item_id').innerText = 'ts1';
             FB.ui(obj, js_callback);
         }
 
@@ -99,7 +99,10 @@
 
         function write_callback_data(str) {
             document.getElementById('fb-ui-return-data').innerHTML = str;
-            if (document.getElementById('fb-ui-return-data').innerText != "Transaction failed!") 
+            if (document.getElementById('fb-ui-return-data').innerHTML.search("Transaction failed!")) 
+            {
+            }
+            else
             {
                 document.getElementById('creator').style.visibility = "visible";
                 document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
