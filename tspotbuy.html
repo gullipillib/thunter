@@ -20,10 +20,16 @@
       <label style="z-index: 1; left: 12px; top: 52px; position: absolute; height: 77px; width: 307px;" >You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
       Price : $3</label>
         <img alt="" src="Images/coin.png" style="z-index: 1; left: 11px; top: 5px; position: absolute" /></div>
-
+      <button onclick="buybid()" style="z-index: 1; left: 527px; top: 203px; position: absolute; width: 62px;"> Buy Now </button>
+      <div style="position: absolute; border: medium solid #000000; top: 59px; left: 388px; width: 360px; height: 310px;"> 
+        <h2 style="width: 207px; position: absolute; top: 11px; left: 77px;">Buy Bid/Sale Treasure Spot</h2>
+      <img alt="" src="Images/bid.png" style="z-index: 1; left: 14px; top: 12px; position: absolute; right: 298px;" />
+      <label style="z-index: 1; left: 20px; top: 75px; position: absolute; height: 18px; width: 289px; bottom: 208px;" >Your Bid or Sale has been approved buy now</label> 
+      <label id="fb-ui-return-data2" style="z-index: 1; left: 20px; top: 188px; position: absolute; height: 77px; width: 307px;" ></label>
+      </div>
       <a href="play.aspx" target="_self" style="position:absolute;left:739px; top:37px; width:109px; height: 18px;" > Back to Game </a> 
       <a href="creator.aspx" target="_self" style="position:absolute;left:739px; top:87px; width:109px; height: 18px; visibility: hidden;" id="creator" > Go to My TSpot </a> 
-      <label id="fb-ui-return-data" style="z-index: 1; left: 12px; top: 192px; position: absolute; height: 77px; width: 307px;" ></label>
+      <label id="fb-ui-return-data" style="z-index: 1; left: 23px; top: 255px; position: absolute; height: 77px; width: 307px;" ></label>
        <label id="fb-item-id" style="z-index: 1; left: 401px; top: 25px; position: absolute; height: 16px; width: 132px;" ></label>
 
     <script src="http://connect.facebook.net/en_US/all.js"></script>
@@ -45,6 +51,23 @@
             FB.ui(obj, js_callback);
         }
 
+        document.getElementById('fb_item_id').innerText = 'ts1';
+        FB.ui(obj, js_callback);
+        }
+
+        function buybid() {
+            var obj = {
+                method: 'pay',
+                action: 'buy_item',
+                // You can pass any string, but your payments_get_items must
+                // be able to process and respond to this data.
+                order_info: { 'item_id': 'ts2' },
+                dev_purchase_params: { 'oscif': true }
+            };
+            document.getElementById('fb_item_id').innerText = 'ts2';
+            FB.ui(obj, js_callback);
+        }
+        
         // This JavaScript callback handles FB.ui's return data and differs
         // from the Credits Callbacks.
         var js_callback = function (data) {
@@ -60,7 +83,10 @@
                           + "Data returned from Facebook: </br>"
                           + "Order ID: " + data['order_id'] + "</br>"
                           + "Status: " + data['status']);
-		
+                if (document.getElementById('fb-ui-return-data').innerText != "Transaction failed!") {
+                    document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
+                    document.getElementById('creator').style.visibility = "visible";
+                }
             } else if (data['error_code']) {
                 // Appropriately alert the user.
                 write_callback_data(
