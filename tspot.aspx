@@ -76,10 +76,7 @@
                           + "Data returned from Facebook: </br>"
                           + "Order ID: " + data['order_id'] + "</br>"
                           + "Status: " + data['status']);
-                if (document.getElementById('fb-ui-return-data').innerText != "Transaction failed!") {
-                    document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
-                    document.getElementById('creator').style.visibility = "visible";
-                }
+                
 
             } else if (data['error_code']) {
                 // Appropriately alert the user.
@@ -96,6 +93,10 @@
 
         function write_callback_data(str) {
             document.getElementById('fb-ui-return-data').innerHTML = str;
+            if (document.getElementById('fb-ui-return-data').innerText != "Transaction failed!") {
+                document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
+                document.getElementById('creator').style.visibility = "visible";
+            }
         }
     </script>
           <asp:Label ID="fb_item_id" runat="server" ClientIDMode="Static" style="z-index: 1; left: 419px; top: 24px; position: absolute; width: 164px" Text="Label"></asp:Label>

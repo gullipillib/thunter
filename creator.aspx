@@ -229,7 +229,7 @@ transform-style: preserve-3d;
 <body style="height: 585px">
     
     <form id="form1" runat="server" >
-    
+    <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 659px; top: 29px; position: absolute; width: 102px; height: 24px" Text="test" ></asp:Label>
      <label style="position: absolute; top: 20px; left: 15px; right: 773px; height: 19px; color: #FFCC00;" >Achievements   </label> 
         <label id="ehits" style="position: absolute; top: 20px; width: 39px; left: 110px; height: 19px; color: #FFFFFF;" > </label>
         <label style="position: absolute; top: 20px; left: 169px; height: 19px; right: 671px; color: #FFCC00;" >Lives   </label>    
@@ -260,7 +260,7 @@ transform-style: preserve-3d;
        
         
         
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 20px; top: 58px; position: absolute; width: 679px; height: 36px" Text="test" ></asp:Label>
+        
        
         
         

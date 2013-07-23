@@ -101,8 +101,9 @@
             document.getElementById('fb-ui-return-data').innerHTML = str;
             if (document.getElementById('fb-ui-return-data').innerText != "Transaction failed!") 
             {
-                document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
                 document.getElementById('creator').style.visibility = "visible";
+                document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
+                
             }
         }
     </script>
