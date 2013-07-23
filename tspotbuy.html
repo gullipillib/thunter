@@ -83,10 +83,7 @@
                           + "Data returned from Facebook: </br>"
                           + "Order ID: " + data['order_id'] + "</br>"
                           + "Status: " + data['status']);
-                if (document.getElementById('fb-ui-return-data').innerText != "Transaction failed!") {
-                    document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
-                    document.getElementById('creator').style.visibility = "visible";
-                }
+                
             } else if (data['error_code']) {
                 // Appropriately alert the user.
                 write_callback_data(
@@ -102,6 +99,11 @@
 
         function write_callback_data(str) {
             document.getElementById('fb-ui-return-data').innerHTML = str;
+            if (document.getElementById('fb-ui-return-data').innerText != "Transaction failed!") 
+            {
+                document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
+                document.getElementById('creator').style.visibility = "visible";
+            }
         }
     </script>
   </body>
