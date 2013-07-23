@@ -44,7 +44,7 @@
                 order_info: { 'item_id': 'ts1' },
                 dev_purchase_params: { 'oscif': true }
             };
-            document.getElementById('fb_item_id').innerText = 'ts1';
+            
             FB.ui(obj, js_callback);
         }
 
@@ -57,7 +57,7 @@
                 order_info: { 'item_id': 'ts2' },
                 dev_purchase_params: { 'oscif': true }
             };
-            document.getElementById('fb_item_id').innerText = 'ts2';
+            
             FB.ui(obj, js_callback);
         }
 
@@ -93,10 +93,10 @@
 
         function write_callback_data(str) {
             document.getElementById('fb-ui-return-data').innerHTML = str;
-            if (document.getElementById('fb-ui-return-data').innerText != "Transaction failed!") {
-                document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
-                document.getElementById('creator').style.visibility = "visible";
-            }
+            document.getElementById('creator').style.visibility = "visible";
+            document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
+                
+           
         }
     </script>
           <asp:Label ID="fb_item_id" runat="server" ClientIDMode="Static" style="z-index: 1; left: 419px; top: 24px; position: absolute; width: 164px" Text="Label"></asp:Label>
