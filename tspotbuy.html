@@ -101,8 +101,8 @@
             document.getElementById('fb - item - id').innerText = item_id;
             
             
-                document.getElementById('creator').href.concat("?orderid=").concat(str);
-                alert(document.getElementById('creator').href.toString);
+               
+                window.localStorage.setItem("orderid", str);
             
         }
     </script>
