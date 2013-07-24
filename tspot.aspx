@@ -1,5 +1,14 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
 
+<script runat="server">
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Server.Transfer("creator.aspx");
+    }
+</script>
+
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
@@ -7,8 +16,8 @@
       <style type="text/css">
           #Button1 {
               z-index: 1;
-              left: 730px;
-              top: 19px;
+              left: 216px;
+              top: 21px;
               position: absolute;
               height: 30px;
           }
@@ -26,7 +35,6 @@
         <img alt="" src="Images/coin.png" style="z-index: 1; left: 11px; top: 5px; position: absolute" /></div>
 
       <a href="play.aspx" target="_self" style="position:absolute;left:739px; top:37px; width:109px; height: 18px;" > Back to Game </a> 
-      <a href="creator.aspx" target="_self" style="position:absolute;left:739px; top:87px; width:109px; height: 18px" id="creator" > Go to My TSpot </a> 
       <label id="fb-ui-return-data" style="z-index: 1; left: 32px; top: 282px; position: absolute; height: 77px; width: 307px;" ></label>
 
     <script src="http://connect.facebook.net/en_US/all.js"></script>
@@ -93,8 +101,8 @@
 
         function write_callback_data(str) {
             document.getElementById('fb-ui-return-data').innerHTML = str;
-            document.getElementById('creator').style.visibility = "visible";
-            document.getElementById('creator').href.concat("?orderid=").concat(data['order_id']);
+            
+            
             
                 
            
@@ -108,6 +116,7 @@
                   Buy Now Treasure Spot
               </button>
           </asp:Panel>
+          <asp:Button ID="Button1" runat="server" Text="Go to My TSpot" OnClick="Button1_Click" ClientIDMode="Static" />
       </form>
   </body>
 </html>
