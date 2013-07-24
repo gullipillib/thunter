@@ -57,7 +57,7 @@
 
     $(document).ready(function () {
 
-        $('#idstatus').text = window.sessionStorage.getItem('orderid');
+        
 
         $(window).keydown(function (event) {
 
@@ -260,15 +260,9 @@ transform-style: preserve-3d;
        
         
         
-        <label style="position: absolute; top: 24px; left: 663px; height: 100px; color: #FFCC00; width: 179px;" id="idstatus" >Test   </label> 
-       
-        
-        
-        
-       
-        
-        
-    </form>
+        <label style="position: absolute; top: 24px; left: 663px; height: 100px; color: #FFCC00; width: 179px;" id="idstatus" >There are six steps
+        <br />
+        to be completed, use your order_id for communication</label></form>
    
     
         
