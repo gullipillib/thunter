@@ -57,7 +57,7 @@
 
     $(document).ready(function () {
 
-        $('#idstatus').text = window.localStorage.getItem("orderid");
+        $('#idstatus').text = window.sessionStorage.getItem('orderid');
 
         $(window).keydown(function (event) {
 
