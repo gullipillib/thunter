@@ -5,7 +5,10 @@
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (Page.IsPostBack == false)
+        {
+            Label1.Text = Request.QueryString["app_data"];
+        }
         
     }
 
@@ -262,7 +265,8 @@ transform-style: preserve-3d;
         
         <label style="position: absolute; top: 24px; left: 663px; height: 100px; color: #FFCC00; width: 179px;" id="idstatus" >There are six steps
         <br />
-        to be completed, use your order_id for communication</label></form>
+        to be completed, use your order_id for communication</label><asp:Label ID="Label1" runat="server" style="z-index: 1; left: 677px; top: 145px; position: absolute; width: 163px; height: 292px" Text="Label"></asp:Label>
+    </form>
    
     
         

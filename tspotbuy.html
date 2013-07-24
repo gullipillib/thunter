@@ -5,8 +5,8 @@
       <style type="text/css">
           #Button1 {
               z-index: 1;
-              left: 730px;
-              top: 19px;
+              left: 233px;
+              top: 415px;
               position: absolute;
               height: 30px;
           }
@@ -28,7 +28,7 @@
       <label id="fb-ui-return-data2" style="z-index: 1; left: 20px; top: 188px; position: absolute; height: 77px; width: 307px;" ></label>
       </div>
       <a href="play.aspx" target="_self" style="position:absolute;left:45px; top:26px; width:109px; height: 18px;" > Back to Game </a> 
-      <a href="creator.aspx" target="_self" style="position:absolute;left:178px; top:28px; width:170px; height: 18px; visibility: hidden;" id="creator" > Go to My TSpot </a> 
+      <a href="creator.aspx" target="_self" style="position:absolute;left:178px; top:28px; width:170px; height: 18px; " id="creator" > Go to My TSpot </a> 
       <label id="fb-ui-return-data" style="z-index: 1; left: 23px; top: 255px; position: absolute; height: 77px; width: 307px;" ></label>
        <label id="fb-item-id" style="z-index: 1; left: 401px; top: 25px; position: absolute; height: 16px; width: 132px;" ></label>
 
@@ -94,7 +94,7 @@
                 // Appropriately alert the user.
                 write_callback_data("<br><b>Transaction failed!</b>");
             }
-        };
+        }
 
         function write_callback_data(str) {
             document.getElementById('fb-ui-return-data').innerHTML = str;
@@ -104,8 +104,11 @@
             if (temp.search("Transaction failed!") != -1) { /*found*/ }
             else { document.getElementById('creator').style.visibility = "visible"; }
             
-            
+            function changeurl() {
+                window.location.href = "creator.aspx".concat("?app_data=").concat(data['order_id']);
+            }
         }
     </script>
+      <input id="Button1" type="button" value="Go to Tspot"  onclick="changeurl() "/>
   </body>
 </html>
