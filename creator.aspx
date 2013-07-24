@@ -7,7 +7,7 @@
     {
         if (Page.IsPostBack == false)
         {
-            Label1.Text = Request.QueryString["app_data"];
+            Label1.Text = Facebook.PageData["app_data"];
         }
         
     }
