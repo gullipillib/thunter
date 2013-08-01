@@ -32,13 +32,14 @@
         catch { }
 	
 	// Return the response
+        System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();
+                    
                     var content = new Dictionary<string, object>();
                     content["order_id"] = order_id;
                     content["status"] = status;
                     content["quantity"] = quantity;
-		    content["signed_request"] = signedrequest;
+		            content["signed_request"] = signedrequest;
                     var res = new Dictionary<string, object>();
-                    res["method"] = method;
                     res["content"] = content;
                     var ob = jss.Serialize(res);
                     ob = ob.Replace("#$", @"\/");
