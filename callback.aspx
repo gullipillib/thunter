@@ -1,17 +1,13 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"  %>
+<%@ Import Namespace="System.Data" %>  
+<%@ Import Namespace="System.Data.SqlClient" %>  
+<%@ Import Namespace="System.Configuration" %>  
+
+
 
 <!DOCTYPE html>
 <script runat="server">
-    public class FacebookBuyItem
-    {
-        public int item_id { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public string image_url { get; set; }
-        public string product_url { get; set; }
-        public ulong price { get; set; }
-        public string data { get; set; }
-    } 
+    
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -71,6 +67,13 @@
                     string fb_id = order_details["buyer"].ToString();
                     string credsspent = order_details["amount"].ToString();
 
+                    //Get User Information
+                    var user_details_array = Request.Form["actions"];
+                    Dictionary<string, object> user_details = jss.Deserialize<Dictionary<string, object>>(user_details_array);
+                    string current_id = user_details["id"].ToString();
+                    string currentname = user_details["name"].ToString();
+                    
+                    
                     // Parse Item information
                     ArrayList arrlist = (ArrayList)order_details["items"];
                     Dictionary<string, object> item_details = (Dictionary<string, object>)arrlist[0];
@@ -86,7 +89,7 @@
                     //else { updateLogEntry(fb_id, orderid, "Error, Item not awarded properly!"); } // Else Create ERROR log entry	
 
                     // mark new status as settled
-                    string newstatus = "settled";
+                    string newstatus = "completed";
 
                     // Return the response
                     var content = new Dictionary<string, object>();
@@ -99,6 +102,10 @@
                     ob = ob.Replace("#$", @"\/");
                     Response.ContentType = "application/json";
                     Response.Write(ob);
+                    
+                    //update database
+                    SqlDataSource1.InsertCommand = "INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '" + currentname + "', 'no', 'no', 'none','', 'no', 'no', '', '" + order_id + "', '" + newstatus +  "')";
+                    SqlDataSource1.Insert();
                     
                     Response.End();
                      
@@ -115,7 +122,8 @@
 </head>
 <body style="height: 170px">
     <div>
-        
+ <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT tspots.* FROM tspots" InsertCommand="INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '', 'no', 'no', 'none','', 'no', 'no', '', '', '')" UpdateCommand="UPDATE tspots SET tsitems = 'none'"></asp:SqlDataSource>
+               
                
     </div>
 </body>
