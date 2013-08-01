@@ -1,16 +1,19 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"  %>
-<%@ Import Namespace="System.Data" %>  
-<%@ Import Namespace="System.Data.SqlClient" %>  
-<%@ Import Namespace="System.Configuration" %>  
+
 
 
 
 <!DOCTYPE html>
 <script runat="server">
     
+    
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        
+
+        
 
         // 1. Make sure facebook is authenticated
         //-------------------------------------------
@@ -90,14 +93,13 @@
 
                     // mark new status as settled
                     string newstatus = "completed";
-                    //update database
-                    SqlDataSource1.InsertCommand = "INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '" + currentname + "', 'no', 'no', 'none','', 'no', 'no', '', '" + order_id + "', '" + newstatus + "')";
-                    SqlDataSource1.Insert();
+                    
                     
                     // Return the response
                     var content = new Dictionary<string, object>();
                     content["order_id"] = order_id;
                     content["status"] = newstatus;
+                    content["name"] = currentname;
                     var res = new Dictionary<string, object>();
                     res["method"] = method;
                     res["content"] = content;
@@ -123,9 +125,7 @@
 </head>
 <body style="height: 170px">
     <div>
- <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT tspots.* FROM tspots" InsertCommand="INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '', 'no', 'no', 'none','', 'no', 'no', '', '', '')" UpdateCommand="UPDATE tspots SET tsitems = 'none'"></asp:SqlDataSource>
-               
-               
+                  
     </div>
 </body>
 </html>
