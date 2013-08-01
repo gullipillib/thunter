@@ -90,7 +90,10 @@
 
                     // mark new status as settled
                     string newstatus = "completed";
-
+                    //update database
+                    SqlDataSource1.InsertCommand = "INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '" + currentname + "', 'no', 'no', 'none','', 'no', 'no', '', '" + order_id + "', '" + newstatus + "')";
+                    SqlDataSource1.Insert();
+                    
                     // Return the response
                     var content = new Dictionary<string, object>();
                     content["order_id"] = order_id;
@@ -103,9 +106,7 @@
                     Response.ContentType = "application/json";
                     Response.Write(ob);
                     
-                    //update database
-                    SqlDataSource1.InsertCommand = "INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '" + currentname + "', 'no', 'no', 'none','', 'no', 'no', '', '" + order_id + "', '" + newstatus +  "')";
-                    SqlDataSource1.Insert();
+                    
                     
                     Response.End();
                      
