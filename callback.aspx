@@ -7,6 +7,7 @@
 <script runat="server">
     
     
+    int test = 0;    
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -27,9 +28,14 @@
         string order_id = "no order id"; try { order_id = Request.Form["payment_id"]; }
         catch { }
         //Session["orderid"] = order_id;
-        string method = "no method"; try { method = Request.Form["method"]; }
+        string method = "no method"; try { method = Request.Form["status"]; }
         catch { }
 
+        if (test == 0)
+        {
+            //Response.Redirect("https://graph.facebook.com/oauth/access_token?client_id=123405257731200&client_secret=8037ae43536685123303ddc326c3ac63&grant_type=client_credentials");
+        }
+        
         // 3. Initial Buy request - return item info
         // ------------------------------------------------------
         if (method == "payments_get_items")
@@ -44,7 +50,7 @@
             // Construct the return item
             //------------------------------------------
             
-         Response.Redirect("https://graph.facebook.com/payment_id?access_token=APP_ACCESS_TOKEN");       
+         //Response.Redirect("https://graph.facebook.com/payment_id?access_token=APP_ACCESS_TOKEN");       
             
         }
 
@@ -64,23 +70,23 @@
                 {
 
                     // Get Order information
-                    var order_details_array = Request.Form["actions"];
+                    //var order_details_array = Request.Form["actions"];
                     System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();
-                    Dictionary<string, object> order_details = jss.Deserialize<Dictionary<string, object>>(order_details_array);
-                    string fb_id = order_details["buyer"].ToString();
-                    string credsspent = order_details["amount"].ToString();
+                    //Dictionary<string, object> order_details = jss.Deserialize<Dictionary<string, object>>(order_details_array);
+                    //string fb_id = order_details["buyer"].ToString();
+                    //string credsspent = order_details["amount"].ToString();
 
                     //Get User Information
-                    var user_details_array = Request.Form["actions"];
-                    Dictionary<string, object> user_details = jss.Deserialize<Dictionary<string, object>>(user_details_array);
-                    string current_id = user_details["id"].ToString();
-                    string currentname = user_details["name"].ToString();
+                    //var user_details_array = Request.Form["actions"];
+                    //Dictionary<string, object> user_details = jss.Deserialize<Dictionary<string, object>>(user_details_array);
+                    //string current_id = user_details["id"].ToString();
+                    //string currentname = user_details["name"].ToString();
                     
                     
                     // Parse Item information
-                    ArrayList arrlist = (ArrayList)order_details["items"];
-                    Dictionary<string, object> item_details = (Dictionary<string, object>)arrlist[0];
-                    string itemid = item_details["item_id"].ToString();
+                    //ArrayList arrlist = (ArrayList)order_details["items"];
+                    //Dictionary<string, object> item_details = (Dictionary<string, object>)arrlist[0];
+                    //string itemid = item_details["item_id"].ToString();
 
                     // Create PENDING entry in your logs
                     //createLogEntry(fb_id, orderid, itemid, status); }
@@ -99,7 +105,7 @@
                     var content = new Dictionary<string, object>();
                     content["order_id"] = order_id;
                     content["status"] = newstatus;
-                    content["name"] = currentname;
+                    //content["name"] = currentname;
                     var res = new Dictionary<string, object>();
                     res["method"] = method;
                     res["content"] = content;
