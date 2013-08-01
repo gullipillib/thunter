@@ -45,10 +45,10 @@
                     ob = ob.Replace("#$", @"\/");
                     Response.ContentType = "application/json";
                     Response.Write(ob);
+                    Response.Flush();
                     
                     
-                    
-                    Response.End()
+                    'Response.End()
         
         
        
