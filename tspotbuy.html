@@ -1,107 +1,49 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:fb="https://www.facebook.com/2008/fbml">
+<!DOCTYPE HTML>
+<html>
   <head>
-    <title>Treasure Spot Buy</title>
-      <style type="text/css">
-          #Button1 {
-              z-index: 1;
-              left: 233px;
-              top: 415px;
-              position: absolute;
-              height: 30px;
-          }
-      </style>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>My Sample Payment App</title>
   </head>
-  <body style="height: 359px" >
-    
-    <div style="position: absolute; border: medium solid #000000; top: 60px; left: 10px; width: 360px; height: 310px;"> 
-      <h2 style="width: 207px; position: absolute; top: 13px; left: 77px;">Buy Treasure Spot</h2>
-        <button onclick="buy()" style="z-index: 1; left: 43px; top: 140px; position: absolute">Buy a New Treasure Spot Now</button>
-      <label style="z-index: 1; left: 12px; top: 52px; position: absolute; height: 77px; width: 307px;" >You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
-      Price : $3</label>
-        <img alt="" src="Images/coin.png" style="z-index: 1; left: 11px; top: 5px; position: absolute" /></div>
-      <button onclick="buybid()" style="z-index: 1; left: 527px; top: 203px; position: absolute; width: 62px;"> Buy Now </button>
-      <div style="position: absolute; border: medium solid #000000; top: 59px; left: 381px; width: 360px; height: 310px;"> 
-        <h2 style="width: 207px; position: absolute; top: 11px; left: 77px;">Buy Bid/Sale Treasure Spot</h2>
-      <img alt="" src="Images/bid.png" style="z-index: 1; left: 14px; top: 12px; position: absolute; right: 298px;" />
-      <label style="z-index: 1; left: 20px; top: 75px; position: absolute; height: 18px; width: 289px; bottom: 208px;" >Your Bid or Sale has been approved buy now</label> 
-      <label id="fb-ui-return-data2" style="z-index: 1; left: 20px; top: 188px; position: absolute; height: 77px; width: 307px;" ></label>
-      </div>
-      <a href="play.aspx" target="_self" style="position:absolute;left:45px; top:26px; width:109px; height: 18px;" > Back to Game </a> 
-      <a href="creator.aspx" target="_self" style="position:absolute;left:178px; top:28px; width:170px; height: 18px; " id="creator" > Go to My TSpot </a> 
-      <label id="fb-ui-return-data" style="z-index: 1; left: 23px; top: 255px; position: absolute; height: 77px; width: 307px;" ></label>
-       <label id="fb-item-id" style="z-index: 1; left: 401px; top: 25px; position: absolute; height: 16px; width: 132px;" ></label>
+  <body>
 
-    <script src="http://connect.facebook.net/en_US/all.js"></script>
-    <script>
-        FB.init({ appId: "123405257731200", status: true, cookie: true });
+    <h2>Purchase a product:</h2>
+    <button id="pay">Buy Product</button>
+    <div class="returndata" id="output"></div>
 
-        // The dialog only opens if you've implemented the
-        // Credits Callback payments_get_items.
-        function buy() {
-            var obj = {
-                method: 'pay',
-                action: 'buy_item',
-                // You can pass any string, but your payments_get_items must
-                // be able to process and respond to this data.
-                order_info: { 'item_id': 'ts1' },
-                dev_purchase_params: { 'oscif': true }
-            };
-            
-            FB.ui(obj, js_callback);
-        }
 
-        
-        
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: 'YOUR_APP_ID',
+                status: true,
+                cookie: true,
+                xfbml: true
+            });
 
-        function buybid() {
-            var obj = {
-                method: 'pay',
-                action: 'buy_item',
-                // You can pass any string, but your payments_get_items must
-                // be able to process and respond to this data.
-                order_info: { 'item_id': 'ts2' },
-                dev_purchase_params: { 'oscif': true }
-            };
-            
-            FB.ui(obj, js_callback);
-        }
-        
-        // This JavaScript callback handles FB.ui's return data and differs
-        // from the Credits Callbacks.
-        var js_callback = function (data) {
-            if (data['order_id']) {
-                // Facebook only returns an order_id if you've implemented
-                // the Credits Callback payments_status_update and settled
-                // the user's placed order.
+            function buy() {
+                var obj = {
+                    method: 'pay',
+                    action: 'purchaseitem',
+                    product: 'https://treasurehunter.apphb.com/coin.html'
+                };
 
-                // Notify the user that the purchased item has been delivered
-                // without a complete reload of the game.
-                write_callback_data(
-                          "<br><b>Transaction Completed!</b> </br></br>"
-                          + "Data returned from Facebook: </br>"
-                          + "Order ID: " + data['order_id'] + "</br>"
-                          + "Status: " + data['status']);
-                
-            } else if (data['error_code']) {
-                // Appropriately alert the user.
-                write_callback_data(
-                          "<br><b>Transaction Failed!</b> </br></br>"
-                          + "Error message returned from Facebook:</br>"
-                          + data['error_code'] + " - "
-                          + data['error_message']);
-            } else {
-                // Appropriately alert the user.
-                write_callback_data("<br><b>Transaction failed!</b>");
+                FB.ui(obj, function (data) {
+                    console.log(data);
+                });
             }
-        }
 
-        function write_callback_data(str) {
-            document.getElementById('fb-ui-return-data').innerHTML = str;
-           
-           
-        }
+            document.getElementById('pay').onclick = function () { buy() };
+        };
+
+        // Load the SDK Asynchronously
+        (function (d) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
     </script>
-     
   </body>
 </html>

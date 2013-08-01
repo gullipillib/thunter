@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" EnableSessionState="True" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"  %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -23,11 +23,11 @@
 
         // 2. Grab the relevant CREDITS info from page POST form
         //------------------------------------------------------
-        string order_info = "no info"; try { order_info = Request.Form["order_info"]; }
+        //string order_info = "no info"; try { order_info = Request.Form["order_info"]; }
+        //catch { }
+        string order_id = "no order id"; try { order_id = Request.Form["payment_id"]; }
         catch { }
-        string order_id = "no order id"; try { order_id = Request.Form["order_id"]; }
-        catch { }
-        Session["orderid"] = order_id;
+        //Session["orderid"] = order_id;
         string method = "no method"; try { method = Request.Form["method"]; }
         catch { }
 
@@ -37,34 +37,15 @@
         {
             // Look up the item named 'order_info' and act accordingly
             //------------------------------------------------------------
-            order_info = order_info.Substring(1, (order_info.Length - 2)); // remove the quotes
+            //order_info = order_info.Substring(1, (order_info.Length - 2)); // remove the quotes
             
             // Code to handle your order here
-            ulong credscost =  30; // Price of purchase in facebook credits
+            //ulong credscost =  30; // Price of purchase in facebook credits
 
             // Construct the return item
             //------------------------------------------
-            var theItem = new FacebookBuyItem()
-            {
-                item_id = 1,
-                description = "Buy a Treasure Spot to be owned by you!",
-                price = credscost,
-                title = "Treasure Spot Buy!",
-                product_url = "https://treasurehunter.apphb.com/coin.html",
-                image_url = "https://treasurehunter.apphb.com/images/coin.png"
-            };
-            // Return the initial response to FB
-            //------------------------------------------
-            var res = new Dictionary<string, object>();
-            res["method"] = method;
-            res["order_id"] = order_id;
-            res["content"] = new object[] { theItem };
-            System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();
-            var ob = jss.Serialize(res);
-            ob = ob.Replace("#$", @"\/");
-            Response.ContentType = "application/json";
-            Response.Write(ob);
-            Response.End();
+            
+         Response.Redirect("https://graph.facebook.com/payment_id?access_token=APP_ACCESS_TOKEN");       
             
         }
 
@@ -80,11 +61,11 @@
 
                 // 4a. If order is PLACED then confirm and respond with settled so FB completes transaction
                 //----------------------------------------------------------------------------------------
-                if (status == "placed")
+                if (status == "completed")
                 {
 
                     // Get Order information
-                    var order_details_array = Request.Form["order_details"];
+                    var order_details_array = Request.Form["actions"];
                     System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();
                     Dictionary<string, object> order_details = jss.Deserialize<Dictionary<string, object>>(order_details_array);
                     string fb_id = order_details["buyer"].ToString();
@@ -134,7 +115,7 @@
 </head>
 <body style="height: 170px">
     <div>
-        <asp:TextBox ID="mypositionl" runat="server" AutoPostBack="false"  Text="" style="z-index: 1; left: 8px; top: 6px; position: absolute; height: 148px; width: 459px;"   ></asp:TextBox>
+        
                
     </div>
 </body>
