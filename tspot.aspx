@@ -1,85 +1,6 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
 
 
- public class subscription : IHttpHandler
-    {
-        private static readonly IList<string> InMemoryNoticiationStore = new List<string>();
-
-        public void ProcessRequest(HttpContext context)
-        {
-            var fb = new FacebookClient
-                         {
-                             AppSecret = "8037ae43536685123303ddc326c3ac63",
-                             SubscriptionVerifyToken = "testest1",
-                         };
-
-            var request = context.Request;
-            var response = context.Response;
-
-
-            if (request.QueryString["list"] == "true")
-            {
-                response.Write(string.Join(",", InMemoryNoticiationStore));
-                return;
-            }
-            else if (request.QueryString["clear"] == "true")
-            {
-                InMemoryNoticiationStore.Clear();
-                return;
-            }
-
-            if (request.HttpMethod.Equals("GET", StringComparison.OrdinalIgnoreCase))
-            {
-                try
-                {
-                    // VerifyGetSubscription will throw exception if verification fails.
-                    fb.VerifyGetSubscription(
-                        request.Params["hub.mode"],
-                        request.Params["hub.verify_token"],
-                        request.Params["hub.challenge"]);
-
-                    response.Write(request.Params["hub.challenge"]);
-                }
-                catch (Exception ex)
-                {
-                    InMemoryNoticiationStore.Add(ex.StackTrace);
-                }
-            }
-            else
-            {
-                try
-                {
-                    // VerifyPostSubscription will throw exception if verification fails.
-                    dynamic result = fb.VerifyPostSubscription(
-                        request.Headers["X-Hub-Signature"],
-                        new StreamReader(request.InputStream).ReadToEnd());
-
-                    // result is a json object that was sent by Facebook
-                    // for now just call ToString() so it returns the json string
-                    string jsonString = result.ToString();
-
-                    // Process the result
-                    // for this demo we will just add it to the list
-                    InMemoryNoticiationStore.Add(jsonString);
-                }
-                catch (Exception ex)
-                {
-                    InMemoryNoticiationStore.Add(ex.StackTrace);
-                }
-            }
-        }
-
-        public bool IsReusable
-        {
-            get
-            {
-                return false;
-            }
-        }
-    }
-}
-
-
 <script runat="server">
 
     protected void Page_Load(object sender, EventArgs e)
@@ -100,7 +21,7 @@
             string signedrequest = "no method"; try { signedrequest = Request.Form["signed_request"]; }
             catch { }
 
-            if (order_id != "")
+            if (order_id != "no order id")
             {
                 SqlDataSource1.InsertCommand = "INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '" + user + "', 'no', 'no', 'none','', 'no', 'no', 'none', '" + order_id + "', '" + status + "')";
                 SqlDataSource1.Insert();
