@@ -29,7 +29,7 @@ public class FacebookRealtimeSubscriptionSampleModule : NancyModule {
         if (Page.IsPostBack == true)
         {
 
-            var fb = new Facebook.UserProfile();
+            var fb = Microsoft.AspNet.Mvc.Facebook.Client.FacebookClientExtensions.GetCurrentUserAsync
             var user = fb.Name;
             string quantity = "no info"; try { quantity = Request.Form["quantity"]; }
             catch { }
@@ -58,9 +58,9 @@ public class FacebookRealtimeSubscriptionSampleModule : NancyModule {
 
 
 <!DOCTYPE HTML>
-<html>
+<html lang='en'>
   <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta charset="UTF-8" />
     <title>Treasure Hunter Payments</title>
       <style type="text/css">
           #pay {
