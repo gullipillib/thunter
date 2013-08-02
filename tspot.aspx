@@ -1,8 +1,47 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
 
+public class FacebookRealtimeSubscriptionSampleModule : NancyModule {
+
+    public FacebookRealtimeSubscriptionSampleModule() 
+        : base("/facebook/subscriptions") {
+
+        this.SubscribeToFacebookRealtimeUpdates("8037ae43536685123303ddc326c3ac63", "testest1", notification => {
+            // notification is a dynamic json object sent by facebook
+            // write your logic here
+        });
+
+    }
+}
+
 <script runat="server">
 
-    
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+
+        if (Page.IsPostBack == true)
+        {
+            var fb = new Facebook.UserProfile();
+
+
+            var user = fb.Name;
+            string quantity = "no info"; try { quantity = Request.Form["quantity"]; }
+            catch { }
+            string order_id = "no order id"; try { order_id = Request.Form["payment_id"]; }
+            catch { }
+            string status = "no method"; try { status = Request.Form["status"]; }
+            catch { }
+            string signedrequest = "no method"; try { signedrequest = Request.Form["signed_request"]; }
+            catch { }
+
+            if (order_id != "")
+            {
+                SqlDataSource1.InsertCommand = "INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '" + user + "', 'no', 'no', 'none','', 'no', 'no', 'none', '" + order_id + "', '" + status + "')";
+                SqlDataSource1.Insert();
+            }
+        }
+    }
+
     protected void Button1_Click(object sender, EventArgs e)
     {
         Server.Transfer("creator.aspx");
@@ -74,7 +113,10 @@
         <img alt="" src="Images/coin.png" style="z-index: 1; left: 11px; top: 5px; position: absolute" />
     <button id="pay">Buy A New Treasure Spot Now</button>
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 40px; top: 227px; position: absolute" Text="Go to My Treasure Spot Now" />
-      </div>
+               
+  <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT tspots.* FROM tspots" InsertCommand="INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '', 'no', 'no', 'none','', 'no', 'no', '', '', '')" UpdateCommand="UPDATE tspots SET tsitems = 'none'" DeleteCommand="DELETE FROM tspots"></asp:SqlDataSource>
+  
+    </div>
       </form>
       </body>
 </html>
