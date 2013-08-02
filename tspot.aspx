@@ -117,20 +117,10 @@
 </script>
 
 
-<!DOCTYPE HTML>
-<html lang="en-us">
+
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Treasure Hunter Payments</title>
-      <style type="text/css">
-          #pay {
-              z-index: 1;
-              left: 41px;
-              top: 157px;
-              position: absolute;
-              width: 251px;
-          }
-      </style>
+      <title></title>
   </head>
   <body>
 
