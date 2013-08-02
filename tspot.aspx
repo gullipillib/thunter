@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="Nancy.Facebook.RealtimeSubscription" %>
 
 public class FacebookRealtimeSubscriptionSampleModule : NancyModule {
 
@@ -8,22 +9,27 @@ public class FacebookRealtimeSubscriptionSampleModule : NancyModule {
         this.SubscribeToFacebookRealtimeUpdates("8037ae43536685123303ddc326c3ac63", "testest1", notification => {
             // notification is a dynamic json object sent by facebook
             // write your logic here
+
+            
+            
+            
         });
 
     }
 }
 
+
+
 <script runat="server">
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
 
         if (Page.IsPostBack == true)
         {
+
             var fb = new Facebook.UserProfile();
-
-
             var user = fb.Name;
             string quantity = "no info"; try { quantity = Request.Form["quantity"]; }
             catch { }
@@ -39,6 +45,8 @@ public class FacebookRealtimeSubscriptionSampleModule : NancyModule {
                 SqlDataSource1.InsertCommand = "INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('', '" + user + "', 'no', 'no', 'none','', 'no', 'no', 'none', '" + order_id + "', '" + status + "')";
                 SqlDataSource1.Insert();
             }
+            
+            
         }
     }
 
