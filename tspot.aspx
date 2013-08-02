@@ -58,7 +58,7 @@ public class FacebookRealtimeSubscriptionSampleModule : NancyModule {
 
 
 <!DOCTYPE HTML>
-<html lang='en'>
+<html lang="en-us">
   <head>
     <meta charset="UTF-8" />
     <title>Treasure Hunter Payments</title>
