@@ -1,23 +1,83 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
-<%@ Import Namespace="Nancy.Facebook.RealtimeSubscription" %>
 
-public class FacebookRealtimeSubscriptionSampleModule : NancyModule {
 
-    public FacebookRealtimeSubscriptionSampleModule() 
-        : base("/facebook/subscriptions") {
+ public class subscription : IHttpHandler
+    {
+        private static readonly IList<string> InMemoryNoticiationStore = new List<string>();
 
-        this.SubscribeToFacebookRealtimeUpdates("8037ae43536685123303ddc326c3ac63", "testest1", notification => {
-            // notification is a dynamic json object sent by facebook
-            // write your logic here
+        public void ProcessRequest(HttpContext context)
+        {
+            var fb = new FacebookClient
+                         {
+                             AppSecret = "8037ae43536685123303ddc326c3ac63",
+                             SubscriptionVerifyToken = "testest1",
+                         };
 
-            
-            
-            
-        });
+            var request = context.Request;
+            var response = context.Response;
 
+
+            if (request.QueryString["list"] == "true")
+            {
+                response.Write(string.Join(",", InMemoryNoticiationStore));
+                return;
+            }
+            else if (request.QueryString["clear"] == "true")
+            {
+                InMemoryNoticiationStore.Clear();
+                return;
+            }
+
+            if (request.HttpMethod.Equals("GET", StringComparison.OrdinalIgnoreCase))
+            {
+                try
+                {
+                    // VerifyGetSubscription will throw exception if verification fails.
+                    fb.VerifyGetSubscription(
+                        request.Params["hub.mode"],
+                        request.Params["hub.verify_token"],
+                        request.Params["hub.challenge"]);
+
+                    response.Write(request.Params["hub.challenge"]);
+                }
+                catch (Exception ex)
+                {
+                    InMemoryNoticiationStore.Add(ex.StackTrace);
+                }
+            }
+            else
+            {
+                try
+                {
+                    // VerifyPostSubscription will throw exception if verification fails.
+                    dynamic result = fb.VerifyPostSubscription(
+                        request.Headers["X-Hub-Signature"],
+                        new StreamReader(request.InputStream).ReadToEnd());
+
+                    // result is a json object that was sent by Facebook
+                    // for now just call ToString() so it returns the json string
+                    string jsonString = result.ToString();
+
+                    // Process the result
+                    // for this demo we will just add it to the list
+                    InMemoryNoticiationStore.Add(jsonString);
+                }
+                catch (Exception ex)
+                {
+                    InMemoryNoticiationStore.Add(ex.StackTrace);
+                }
+            }
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
+        }
     }
 }
-
 
 
 <script runat="server">
@@ -29,7 +89,7 @@ public class FacebookRealtimeSubscriptionSampleModule : NancyModule {
         if (Page.IsPostBack == true)
         {
 
-            var fb = Microsoft.AspNet.Mvc.Facebook.Client.FacebookClientExtensions.GetCurrentUserAsync
+            var fb = new Facebook.UserProfile();
             var user = fb.Name;
             string quantity = "no info"; try { quantity = Request.Form["quantity"]; }
             catch { }
