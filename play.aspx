@@ -1,12 +1,33 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"    %>
+<%@ Import Namespace="System.Data" %>  
+<%@ Import Namespace="System.Data.SqlClient" %>  
+<%@ Import Namespace="System.Configuration" %>  
+
 
 <!DOCTYPE html>
 <script runat="server">
+System.Net.WebClient webClient = new System.Net.WebClient();
+string mytoken = "";
 
-    
+protected void Page_Load_complete(object sender, EventArgs e)
+{
 
 
-    
+   
+
+}
+
+protected void Button1_Click(object sender, EventArgs e)
+{
+    //SqlDataSource1.Insert();
+    DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+    DataTable dt = new DataTable();
+    dt = dv.ToTable();
+
+    //DataTable dtr = dt;
+    //DataRow[] uniname = dtr.Select("tsname");
+    Label1.Text = dt.Rows[0].Field<string>("tsname");
+}
 </script>
 
 
@@ -18,6 +39,7 @@
    
 
 <script>
+    
     var marginl = 0;
     var margint = 0;
     var checked = 0;
@@ -214,7 +236,7 @@ transform-style: preserve-3d;
         <label style="position: absolute; top: 20px; left: 169px; height: 19px; right: 671px;" >Lives   </label>    
       
         <label id="lives" style="position: absolute; top: 20px; width: 39px; left: 211px; height: 19px;" > </label>
-        <label style="position: absolute; top: 20px; left: 280px; height: 19px;" >Khonjas   </label> 
+        <label style="position: absolute; top: 20px; left: 276px; height: 19px;" >Crisboos   </label> 
         <label id="points" style="position: absolute; top: 20px; width: 81px; left: 341px; height: 19px;" > </label>
         <label style="position: absolute; top: 20px; left: 450px; height: 19px;" >Treasure   </label> 
         <label id="treasure" style="position: absolute; top: 20px; width: 118px; left: 521px; height: 19px;" > </label>
@@ -235,7 +257,25 @@ transform-style: preserve-3d;
                     
 </div>        
        
+       
+             
         
+        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 640px; top: 55px; position: absolute; width: 187px" Text="Label"></asp:Label>
+       
+       <a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:600px;top:700px;width:89px">Invite Friends</a>
+
+   <a href="play.aspx" target="_self" style="border: medium outset #0000FF; position:absolute; left:316px; top:600px;width:143px; background-color: #0099FF; color: #FFFFFF; text-decoration:none" > Go On a TreasureHunt </a> 
+   
+    <a href="tspotbuy.html" target="_self" style="position:absolute;left:500px;top:600px;width:100px" > Pay for TSpot </a> 
+        
+	<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT tspots.* FROM tspots" InsertCommand="INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('Desert Air Strike', 'Gullipilli Bhaskar', 'yes', 'no', 'none','', 'yes', 'no', 'Gullipilli Bhaskar', '', '')" UpdateCommand="UPDATE tspots SET tsitems = 'test'"></asp:SqlDataSource>
+         
+        
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 702px; top: 198px; position: absolute" Text="Button" />
+             
+        
+        
+             
         
     </form>
    

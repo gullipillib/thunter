@@ -1,16 +1,101 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"   %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"    %>
+<%@ Import Namespace="System.Data" %>  
+<%@ Import Namespace="System.Data.SqlClient" %>  
+<%@ Import Namespace="System.Configuration" %>  
 
 <!DOCTYPE html>
 <script runat="server">
 
+
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        //connectionstring
+Session["ConnectionString"]="data source=localhost; uid=sa; password=thisgreatworld1; database=thunter";
+string myConnection = Session["ConnectionString"].ToString();
         
+        
+if (!Page.IsPostBack)
+{
+    SqlConnection mySqlConnection;
+    SqlCommand mySqlCommand;
+    SqlDataReader mySqlDataReader;
+
+    mySqlConnection = new SqlConnection();
+    mySqlConnection.ConnectionString = myConnection;
+        
+    mySqlCommand = new SqlCommand();
+    mySqlCommand.CommandText = "SELECT tsname FROM tspots";
+    mySqlCommand.CommandType = CommandType.Text;
+    mySqlCommand.Connection = mySqlConnection;
+
+    mySqlCommand.Connection.Open();
+    mySqlDataReader = mySqlCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+    //GridView1.DataSource = mySqlDataReader;
+    //GridView1.DataBind();
+
+    mySqlCommand.Dispose();
+    mySqlConnection.Dispose();
+}  
         
     }
 
+protected void Button4_Click(object sender, EventArgs e)
+{
+    //SqlDataSource1.Insert();
+    DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+    DataTable dt = new DataTable();
+    dt = dv.ToTable();
 
-    
+   
+
+    //DataTable dtr = dt;
+    //DataRow[] uniname = dtr.Select("tsname");
+    Label1.Text = dt.Rows[0].Field<string>("tsproductid");
+}
+
+// json object or class
+public class Product
+{
+  public string Name { get; set; }
+  public string Expiry { get; set; }
+  public string Price { get; set; }
+   
+}
+//json create    
+    public void parser()
+    {
+        
+        Product product = new Product();
+        product.Name = "Apple";
+        product.Expiry = "2008, 12, 28";
+        product.Price = "3.99";
+        
+
+        string json = Newtonsoft.Json.JsonConvert.SerializeObject(product);
+        TextBox3.Text = json;
+    }
+//json retrieve elements
+    public void deparser()
+    {
+        Product product = Newtonsoft.Json.JsonConvert.DeserializeObject<Product>(TextBox3.Text);
+        TextBox4.Text = product.Price;
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        if (TextBox1.Text != "")
+        {
+            Label2.Visible = true;
+            parser();
+        }
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        deparser();
+    }
 </script>
 
 
@@ -32,7 +117,7 @@
     var enemyhits = 0;
     var currentl = 0;
     var currentt = 0;
-    var myaddctrl = window.setTimeout(function () { addCtrl() }, 1000);
+    //var myaddctrl = window.setTimeout(function () { addCtrl() }, 1000);
     var userscounter = 3;
     var useridctrl = "ctrl";
 
@@ -63,116 +148,8 @@
 
 
 
-            if (event.which == 37) {
-                $('#uplayer').css({ '-moz-transform': 'rotate(1deg)', WebkitTransform: 'rotate(1deg)', '-ms-transform': 'rotate(1deg)' });
-                if (parseInt($('#ctrl2').css("left").replace("px", "")) > 10) {
-                    $('#ctrl2').css("left", "-=10");
-                    marginl = $('#ctrl2').css("left");
-                }
-            }
-
-            if (event.which == 39) {
-
-                //$('#viewer').addClass("twoto3d sidepan");
-                $('#uplayer').css({ '-moz-transform': 'rotate(-2deg)', WebkitTransform: 'rotate(-2deg)', '-ms-transform': 'rotate(-2deg)' });
-                if (parseInt($('#ctrl2').css("left").replace("px", "")) < 580) {
-                    $('#ctrl2').css("left", "+=10");
-                    marginl = $('#ctrl2').css("left");
-                }
-            }
-
-            if (event.which == 38) {
-
-                //$('#viewer').addClass("twoto3d sidepan");
-                if (parseInt($('#ctrl2').css("top").replace("px", "")) > 10) {
-                    $('#ctrl2').css("top", "-=10");
-                    margint = $('#ctrl2').css("top");
-                }
-            }
-
-            if (event.which == 40) {
-
-                //$('#viewer').addClass("twoto3d sidepan");
-                if (parseInt($('#ctrl2').css("top").replace("px", "")) < 320) {
-                    $('#ctrl2').css("top", "+=10");
-                    margint = $('#ctrl2').css("top");
-                }
-            }
-
-            if (event.which == 83) {
-
-                //$('#viewer').addClass("twoto3d sidepan");
-                if (fired == 1) {
-                    $('#ctrl3').css("width", "50");
-                    $('#ctrl3').css("height", "50");
-                    $('#ctrl3').css("left", $('#ctrl2').css("left"));
-                    $('#ctrl3').css("top", $('#ctrl2').css("top"));
-                    $('#ctrl3').css("right", $('#ctrl2').css("right"));
-                    $('#ctrl3').css("visibility", "visible");
-                    fired = 0;
-                }
-
-                var myaddctrl = window.setTimeout(function () { removeexplosion() }, 3000);
-                if (fired == 0) {
-                    function removeexplosion() {
-                        $('#ctrl3').css("visibility", "hidden");
-                        fired = 1;
-                        checked = 1;
-                    }
-                }
-
-                if (checked == 1) {
-                    fired = 0;
-                    checked = 0;
-                    marginl = $('#ctrl2').css("left");
-
-                    currentl = parseInt(marginl.replace("px", ""));
-                    currentt = $('#ctrl2').css("top");
-
-                    currentt = parseInt(currentt.replace("px", ""));
-
-
-                    margint = $('#ctrl1').css("top");
-                    margint = parseInt(margint.replace("px", ""));
-                    marginl = $('#ctrl1').css("left");
-                    marginl = parseInt(marginl.replace("px", ""));
-
-
-                    if (currentl >= marginl && currentl <= (marginl + 30) || currentt >= margint && (currentt <= margint + 30)) {
-                        $('#ctrl3').css("width", "10");
-                        $('#ctrl3').css("height", "10");
-                        $('#ctrl1').remove();
-                        enemyhits = enemyhits + 1;
-                        $('#ehits').text(enemyhits);
-
-                        started = 0;
-                        fired = 0;
-                    }
-
-                    var myaddctrl = window.setTimeout(function () { addCtrl() }, 1000);
-                    if (started == 0) {
-                        function addCtrl() {
-                            if (started == 0) {
-                                $('#ctrl3').css("visibility", "hidden");
-                                var $ctrl = $('<img/>').attr({ id: 'ctrl1', src: 'Images/fplane.gif', style: 'width:80px; height:60px; position:relative; top: 307px; left: 247px; z-index: 2; right: 532px; visibility: visible; margin-left: 0px; margin-top: 0px' }).addClass("twoto3d");
-                                $('#viewer').append($ctrl);
-                                started = 1
-
-                            }
-                        }
-                    }
-
-
-                }
-
-            }
-
-        }
-
-
-
-        )
-    });
+        })         
+    })
 </script>
 
 <style type="text/css">
@@ -223,29 +200,20 @@ transform-style: preserve-3d;
 
  
     </head>   
-<body style="height: 585px">
+<body style="height: 585px; ">
     
     <form id="form1" runat="server" >
-     <label style="position: absolute; top: 20px; left: 15px; right: 773px; height: 19px; color: #FFCC00;" >Achievements   </label> 
-        <label id="ehits" style="position: absolute; top: 20px; width: 39px; left: 110px; height: 19px; color: #FFFFFF;" > </label>
-        <label style="position: absolute; top: 20px; left: 169px; height: 19px; right: 671px; color: #FFCC00;" >Lives   </label>    
-      
-        <label id="lives" style="position: absolute; top: 20px; width: 39px; left: 211px; height: 19px; color: #FFFFFF;" > </label>
-        <label style="position: absolute; top: 20px; left: 280px; height: 19px; color: #FFCC00;" >Caribbs   </label> 
-        <label id="points" style="position: absolute; top: 20px; width: 81px; left: 341px; height: 19px; color: #FFFFFF;" > </label>
-        <label style="position: absolute; top: 20px; left: 450px; height: 19px; color: #FFCC00;" >Treasure   </label> 
-        <label id="treasure" style="position: absolute; top: 20px; width: 118px; left: 521px; height: 19px; color: #FFFFFF;" > </label>
+    
+    <label id="treasure" style="position: absolute; top: 29px; width: 118px; left: 497px; height: 19px; color: #FFFFFF;" > </label>
 
-         
-        
          
         <div  id="viewer" class="twoto3d perspective3d" tabindex="0" style="width: 658px; height: 299px; z-index: 1; left: 0px; top: 92px; position: relative"  >
  
-<object id="Object1" style="height: 390px; width: 640px; z-index: 0; position:absolute;background-color:transparent">
-    <param name="movie" value="https://www.youtube.com/v/XAbMQx-D7rE?version=3&feature=player_embedded&wmode=transparent&autoplay=1&controls=0&loop=1&playlist=XAbMQx-D7rE">
+<object id="utplayer" style="height: 390px; width: 640px; z-index: 0; position:absolute;background-color:transparent; top: -46px; left: 12px;">
+    <param name="movie" value="air.swf">
     <param name="allowFullScreen" value="true">
     <param name="allowScriptAccess" value="always">
-    <embed id="uplayer" src="https://www.youtube.com/v/XAbMQx-D7rE?version=3&feature=player_embedded&wmode=transparent&autoplay=1&controls=0&loop=1&playlist=XAbMQx-D7rE" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" wmode="transparent" width="640" height="390" style="position:relative">
+    <embed id="uplayer" src="air.swf" type="application/x-shockwave-flash" `autoplay="true" allowfullscreen="true" allowScriptAccess="always" wmode="transparent" width="640" height="390" style="position:relative">
 </object>
 
 
@@ -256,13 +224,81 @@ transform-style: preserve-3d;
        
         
         
-        
+        <div id="toolbox" style="border: medium outset #000000; z-index: 1; left: 688px; top: 45px; position: absolute; height: 527px; width: 164px; overflow: scroll;">
+    <div style="background-color: #FFFFCC; cursor: hand; overflow: scroll; z-index: 1; left: 3px; top: 38px; position: absolute; height: 62px; width: 159px; scrollbar-3dlight-color:white" id="landitems">  </div>
+    <div style="background-color: #FFFFCC; cursor: hand; overflow: scroll; z-index: 1; left: 3px; top: 138px; position: absolute; height: 62px; width: 159px;" id="wateritems">  </div>
+    <div style="background-color: #FFFFCC; cursor: hand; overflow: scroll; z-index: 1; left: 3px; top: 248px; position: absolute; height: 62px; width: 159px;" id="airitems">  </div>
+    <div style="background-color: #FFFFCC; cursor: hand; overflow: scroll; z-index: 1; left: 3px; top: 358px; position: absolute; height: 62px; width: 159px;" id="effects">  </div>
+    <div style="background-color: #FFFFCC; cursor: hand; overflow: scroll; z-index: 1; left: 3px; top: 468px; position: absolute; height: 62px; width: 159px;" id="weapons">  </div>
+    <div style="background-color: #FFFFCC; cursor: hand; overflow: scroll; z-index: 1; left: 3px; top: 560px; position: absolute; height: 62px; width: 159px;" id="paths">  </div>
+            
+            
+            <label style="position: absolute; top: 8px; width: 36px; left: 12px; height: 19px; color: #000000; " > Land<br />
+            </label>
+            <label style="position: absolute; top: 108px; width: 36px; left: 12px; height: 0px; color: #000000; " > Water<br />
+            </label>
+            <label style="position: absolute; top: 214px; width: 84px; left: 12px; height: 19px; color: #000000; right: 68px;" > Air or Space<br />
+            </label>
+            <label style="position: absolute; top: 324px; width: 84px; left: 12px; height: 19px; color: #000000; " > Effects<br />
+            </label>
+            <label style="position: absolute; top: 434px; width: 84px; left: 12px; height: 19px; color: #000000; " > Weapons<br />
+            </label>
+            <label style="position: absolute; top: 544px; width: 84px; left: 12px; height: 71px; color: #000000; " > Paths Obstacles others<br />
+            </label>
+        </div>
+    
+    <label style="position: absolute; top: 18px; width: 64px; left: 690px; height: 19px; color: #000000; right: 118px;" > Tool Box<br />
+        </label>
        
         
         
-        <label style="position: absolute; top: 24px; left: 663px; height: 100px; color: #FFCC00; width: 179px;" id="idstatus" >There are six steps
-        <br />
-        to be completed, use your order_id for communication</label><asp:Label ID="Label1" runat="server" style="z-index: 1; left: 677px; top: 145px; position: absolute; width: 163px; height: 292px" Text="Label"></asp:Label>
+        
+        
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 36px; top: 470px; position: absolute; height: 139px; width: 606px">
+            <asp:Label ID="Label1" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 14px; top: 11px; position: absolute; right: 424px" Text="Step 1  Name your TSpot"></asp:Label>
+        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 200px; top: 12px; position: absolute; width: 262px; right: 136px;"></asp:TextBox>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 485px; top: 10px; position: absolute" Text="ok" ToolTip="Click to Confirm Name" />
+        <asp:Label ID="Label2" runat="server" Font-Bold="True" ForeColor="Green" style="z-index: 1; left: 531px; top: 13px; position: absolute; right: 6px" Text="completed" Visible="False"></asp:Label>
+       
+
+                <asp:Label ID="Label3" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 14px; top: 51px; position: absolute; right: 424px" Text="Step 2  Add a youtube video embed path"></asp:Label>
+                <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 200px; top: 53px; position: absolute; width: 262px; right: 136px;"></asp:TextBox>
+                <asp:Button ID="Button2" runat="server"  style="z-index: 1; left: 485px; top: 53px; position: absolute" Text="ok" ToolTip="Click to Confirm path" OnClick="Button2_Click" />
+                <asp:Label ID="Label4" runat="server" Font-Bold="True" ForeColor="Green" style="z-index: 1; left: 531px; top: 58px; position: absolute; right: 6px" Text="completed" Visible="False"></asp:Label>
+                <asp:Button ID="Button3" runat="server"  style="z-index: 1; left: 15px; top: 93px; position: absolute; width: 98px; height: 24px;" Text="Show me How" ToolTip="Click to Confirm path" />
+
+
+
+                <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 152px; top: 97px; position: absolute; width: 154px;"></asp:TextBox>
+
+
+
+                <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 379px; top: 97px; position: absolute"></asp:TextBox>
+
+
+
+            </asp:Panel>
+
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+        
+       
+        
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT tspots.* FROM tspots" InsertCommand="INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('Desert Air Strike', 'Gullipilli Bhaskar', 'yes', 'no', 'none','', 'yes', 'no', 'Gullipilli Bhaskar', '', '')" UpdateCommand="UPDATE tspots SET tsitems = 'none'"></asp:SqlDataSource>
+         
+        
+        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" style="z-index: 1; left: 579px; top: 578px; position: absolute" Text="Button" />
+             
+        
+        
+        
     </form>
    
     

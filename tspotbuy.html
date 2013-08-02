@@ -3,15 +3,24 @@
   <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
     <title>My Sample Payment App</title>
+      <style type="text/css">
+          #pay {
+              z-index: 1;
+              left: 41px;
+              top: 157px;
+              position: absolute;
+              width: 251px;
+          }
+      </style>
   </head>
   <body>
 
-    <h2>Purchase a product:</h2>
-    <button id="pay">Buy Product</button>
-    <div class="returndata" id="output"></div>
+    <h2 style="width: 190px; z-index: 1; top: 20px; position: absolute; height: 26px; left: 413px">Treasure Hunter</h2>
+    <div class="returndata" id="output"> 
+      <a href="creator.aspx" target="_self" style="position:absolute;left:521px; top:97px; width:170px; height: 18px; " id="creator" > Go to My Treasure Spot </a> 
+      </div>
 
 
-    <div id="fb-root"></div>
     <script type="text/javascript">
         window.fbAsyncInit = function () {
             FB.init({
@@ -45,5 +54,13 @@
             ref.parentNode.insertBefore(js, ref);
         }(document));
     </script>
-  </body>
+    
+    <div style="position: absolute; border: medium solid #000000; top: 58px; left: 22px; width: 360px; height: 310px;"> 
+      <h2 style="width: 207px; position: absolute; top: 13px; left: 77px;">Buy Treasure Spot</h2>
+      <label style="z-index: 1; left: 12px; top: 52px; position: absolute; height: 77px; width: 307px;" >You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
+      Price : $3</label>
+        <img alt="" src="Images/coin.png" style="z-index: 1; left: 11px; top: 5px; position: absolute" />
+    <button id="pay">Buy A New Treasure Spot Now</button>
+      </div>
+      </body>
 </html>
