@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"    %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.MyAppUser>" %>
 <%@ Import Namespace="System.Data" %>  
 <%@ Import Namespace="System.Data.SqlClient" %>  
 <%@ Import Namespace="System.Configuration" %>  
@@ -6,15 +6,29 @@
 
 <!DOCTYPE html>
 <script runat="server">
-System.Net.WebClient webClient = new System.Net.WebClient();
-string mytoken = "";
+    System.Net.WebClient webClient = new System.Net.WebClient();
+    string mytoken = "";
+    string permanenttoken = "";
+    string tempstring = "";
+    string myid = "";
+    string receiptno = "";
 
-protected void Page_Load_complete(object sender, EventArgs e)
+protected void checkusername()
 {
+    Hiddenfield1.Value = Model.Name;
+    if (Hiddenfield1.Value != null)
+    {
+       
+    }
+    else
+    {
+        Response.Redirect("http://apps.facebook.com/gullipilli");
+    }
+}
 
-
-   
-
+protected void Page_Load(object sender, EventArgs e)
+{
+    checkusername();
 }
 
 protected void Button1_Click(object sender, EventArgs e)
@@ -32,14 +46,14 @@ protected void Button1_Click(object sender, EventArgs e)
 
 
 <html>
-<head runat="server">
+<head id="Head1" runat="server">
     <meta name="viewport" content="width=device-width" />
     <title></title>
      <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script> 
    
 
 <script>
-    
+
     var marginl = 0;
     var margint = 0;
     var checked = 0;
@@ -55,126 +69,124 @@ protected void Button1_Click(object sender, EventArgs e)
         if (started == 0) {
             var $ctrl = $('<img/>').attr({ id: 'ctrl1', src: 'Images/fplane.gif', style: 'width:80px; height:60px; position:relative; top: 307px; left: 247px; z-index: 2; right: 532px; visibility: visible: margin-left: 0px; margin-top: 0px' });
             $('#form1').append($ctrl);
-           started = 1
+            started = 1
         }
     }
-    
-$(document).ready(function ()
-        {
-        
-    
 
-            $(window).keydown(function (event) 
-            {
-                
-                
+    $(document).ready(function () {
 
-                if (event.which == 37) {
 
-                    //$('#viewer').addClass("twoto3d sidepan");
 
-                    $('#crosshair').css("left", "-=10");
-                    marginl = $('#crosshair').css("left");
+        $(window).keydown(function (event) {
+
+
+
+            if (event.which == 37) {
+
+                //$('#viewer').addClass("twoto3d sidepan");
+
+                $('#crosshair').css("left", "-=10");
+                marginl = $('#crosshair').css("left");
+            }
+
+            if (event.which == 39) {
+
+                //$('#viewer').addClass("twoto3d sidepan");
+
+                $('#crosshair').css("left", "+=10");
+                marginl = $('#crosshair').css("left");
+            }
+
+            if (event.which == 38) {
+
+                //$('#viewer').addClass("twoto3d sidepan");
+
+                $('#crosshair').css("top", "-=10");
+                margint = $('#crosshair').css("top");
+            }
+
+            if (event.which == 40) {
+
+                //$('#viewer').addClass("twoto3d sidepan");
+
+                $('#crosshair').css("top", "+=10");
+                margint = $('#crosshair').css("top");
+            }
+
+            if (event.which == 83) {
+
+                //$('#viewer').addClass("twoto3d sidepan");
+                if (fired == 1) {
+                    $('#explosion').css("width", "50");
+                    $('#explosion').css("height", "50");
+                    $('#explosion').css("left", $('#crosshair').css("left"));
+                    $('#explosion').css("top", $('#crosshair').css("top"));
+                    $('#explosion').css("right", $('#crosshair').css("right"));
+                    $('#explosion').css("visibility", "visible");
+                    fired = 0;
                 }
 
-                if (event.which == 39) {
-
-                    //$('#viewer').addClass("twoto3d sidepan");
-
-                    $('#crosshair').css("left", "+=10");
-                    marginl = $('#crosshair').css("left");
-                }
-
-                if (event.which == 38) {
-
-                    //$('#viewer').addClass("twoto3d sidepan");
-
-                    $('#crosshair').css("top", "-=10");
-                    margint = $('#crosshair').css("top");
-                }
-
-                if (event.which == 40) {
-
-                    //$('#viewer').addClass("twoto3d sidepan");
-
-                    $('#crosshair').css("top", "+=10");
-                    margint = $('#crosshair').css("top");
-                }
-
-                if (event.which == 83)
-                {
-
-                    //$('#viewer').addClass("twoto3d sidepan");
-                          if (fired == 1) {
-                            $('#explosion').css("width", "50");
-                            $('#explosion').css("height", "50");
-                            $('#explosion').css("left", $('#crosshair').css("left"));
-                            $('#explosion').css("top", $('#crosshair').css("top"));
-                            $('#explosion').css("right", $('#crosshair').css("right"));
-                            $('#explosion').css("visibility", "visible");
-                            fired = 0;
-                        }
-                    
-                    var myaddctrl = window.setTimeout(function () { removeexplosion() }, 3000);
-                    if (fired == 0) {
-                        function removeexplosion() {
-                            $('#explosion').css("visibility", "hidden");
-                            fired = 1;
-                            checked = 1;
-                         }
+                var myaddctrl = window.setTimeout(function () { removeexplosion() }, 3000);
+                if (fired == 0) {
+                    function removeexplosion() {
+                        $('#explosion').css("visibility", "hidden");
+                        fired = 1;
+                        checked = 1;
                     }
-   
-                            if (checked == 1) {
-                                fired = 0;
-                                checked = 0;
-                                marginl = $('#crosshair').css("left");
-                                
-                                currentl = parseInt(marginl.replace("px", ""));
-                                currentt = $('#crosshair').css("top");
-                                
-                                currentt = parseInt(currentt.replace("px", ""));
-                               
-                                
-                                margint = $('#ctrl1').css("top");
-                                margint = parseInt(margint.replace("px", ""));
-                                marginl = $('#ctrl1').css("left");
-                                marginl = parseInt(marginl.replace("px", ""));
-                                
-                               
-                                if (currentl >= marginl && currentl <= (marginl + 30) || currentt >= margint && (currentt <= margint + 30)) {
-                                    $('#explosion').css("width", "10");
-                                    $('#explosion').css("height", "10");
-                                    $('#ctrl1').remove();
-                                    enemyhits = enemyhits + 1;
-                                    $('#ehits').text(enemyhits);
-                                
-                                    started = 0;
-                                    fired = 0;
-                                }
-                          
-                            var myaddctrl = window.setTimeout(function () { addCtrl() }, 1000);
+                }
+
+                if (checked == 1) {
+                    fired = 0;
+                    checked = 0;
+                    marginl = $('#crosshair').css("left");
+
+                    currentl = parseInt(marginl.replace("px", ""));
+                    currentt = $('#crosshair').css("top");
+
+                    currentt = parseInt(currentt.replace("px", ""));
+
+
+                    margint = $('#ctrl1').css("top");
+                    margint = parseInt(margint.replace("px", ""));
+                    marginl = $('#ctrl1').css("left");
+                    marginl = parseInt(marginl.replace("px", ""));
+
+
+                    if (currentl >= marginl && currentl <= (marginl + 30) || currentt >= margint && (currentt <= margint + 30)) {
+                        $('#explosion').css("width", "10");
+                        $('#explosion').css("height", "10");
+                        $('#ctrl1').remove();
+                        enemyhits = enemyhits + 1;
+                        $('#ehits').text(enemyhits);
+
+                        started = 0;
+                        fired = 0;
+                    }
+
+                    var myaddctrl = window.setTimeout(function () { addCtrl() }, 1000);
+                    if (started == 0) {
+                        function addCtrl() {
                             if (started == 0) {
-                                function addCtrl() {
-                                    if (started == 0) {
-                                        $('#explosion').css("visibility", "hidden");
-                                        var $ctrl = $('<img/>').attr({ id: 'ctrl1', src: 'Images/fplane.gif', style: 'width:80px; height:60px; position:relative; top: 307px; left: 247px; z-index: 2; right: 532px; visibility: visible' }).addClass("twoto3d");
-                                        $('#form1').append($ctrl);
-                                        started = 1
-                                       
-                                    }
-                                }
-                            }
-                       
+                                $('#explosion').css("visibility", "hidden");
+                                var $ctrl = $('<img/>').attr({ id: 'ctrl1', src: 'Images/fplane.gif', style: 'width:80px; height:60px; position:relative; top: 307px; left: 247px; z-index: 2; right: 532px; visibility: visible' }).addClass("twoto3d");
+                                $('#form1').append($ctrl);
+                                started = 1
 
+                            }
+                        }
                     }
-                  
+
+
                 }
 
-            } 
-       
+            }
 
-       
-            )});
+        }
+
+
+
+        )
+    });
 </script>
 
 <style type="text/css">
@@ -273,7 +285,7 @@ transform-style: preserve-3d;
         
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 702px; top: 198px; position: absolute" Text="Button" />
              
-        
+      <asp:hiddenfield ID="Hiddenfield1" runat="server"></asp:hiddenfield>  
         
              
         
