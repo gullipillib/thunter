@@ -1,6 +1,14 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
 
 <!DOCTYPE html>
+<script runat="server">
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        string item_number = Request.Form["item_number"];
+        string pay_status = Request.Form["payment_status"];
+        Label2.Text = item_number + " " + pay_status;
+    }
+</script>
 
 <html>
 <head runat="server">
