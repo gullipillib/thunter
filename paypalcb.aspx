@@ -1,11 +1,7 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="System.Net" %>
 <%@ Import Namespace="System.IO" %>
-using System;
-using System.IO;
-using System.Text;
-using System.Net;
-using System.Web;
+
 
 
 <!DOCTYPE html>
