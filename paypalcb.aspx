@@ -8,9 +8,10 @@ using System.Web;
 
 <!DOCTYPE html>
 <script runat="server">
-    public partial class csIPNexample : System.Web.UI.Page
-{
+    
 protected void Page_Load(object sender, EventArgs e)
+{
+if (page.IsPostBack == false)
 {
 //Post back to either sandbox or live
 string strSandbox = "https://www.sandbox.paypal.com/cgi-bin/webscr";
