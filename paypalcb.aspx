@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="System.Net" %>
+<%@ Import Namespace="System.IO" %>
 using System;
 using System.IO;
 using System.Text;
@@ -11,7 +13,7 @@ using System.Web;
     
 protected void Page_Load(object sender, EventArgs e)
 {
-if (page.IsPostBack == false)
+if (Page.IsPostBack == false)
 {
 //Post back to either sandbox or live
 string strSandbox = "https://www.sandbox.paypal.com/cgi-bin/webscr";
