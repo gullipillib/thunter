@@ -9,7 +9,7 @@
     
 protected void Page_Load(object sender, EventArgs e)
 {
-if (Page.IsPostBack == false)
+if (Page.IsPostBack == true)
 {
 //Post back to either sandbox or live
 string strSandbox = "https://www.sandbox.paypal.com/cgi-bin/webscr";
