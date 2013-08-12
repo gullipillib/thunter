@@ -58,6 +58,10 @@ Label2.Text = strResponse;
 }
 
 
+protected void Button1_Click(object sender, EventArgs e)
+{
+    Label3.Text = "Got Receipt";
+}
 </script>
 
 <html>
@@ -70,10 +74,11 @@ Label2.Text = strResponse;
     <div>
     
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 60px; top: 15px; position: absolute" Text="PayPal Transaction Receipt"></asp:Label>
-        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 451px; top: 47px; position: absolute; width: 178px" Text="Go to My Treasure Spot" />
+        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 451px; top: 47px; position: absolute; width: 178px" Text="Go to My Treasure Spot" OnClick="Button1_Click" />
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 57px; top: 57px; position: absolute; width: 297px; height: 144px" Text="Label"></asp:Label>
     
     </div>
+        <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 43px; top: 128px; position: absolute; height: 20px; width: 129px" Text="Label"></asp:Label>
     </form>
 </body>
 </html>
