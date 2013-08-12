@@ -7,13 +7,15 @@
 <!DOCTYPE html>
 <script runat="server">
     
-protected void Page_Load(object sender, EventArgs e)
+
+
+
+protected void Button1_Click(object sender, EventArgs e)
 {
-if (Page.IsPostBack == true)
-{
+  
 //Post back to either sandbox or live
 string strSandbox = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-string strLive = "https://www.paypal.com/cgi-bin/webscr";
+//string strLive = "https://www.paypal.com/cgi-bin/webscr";
 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(strSandbox);
 
 //Set values for the request back
@@ -54,13 +56,7 @@ else
 //log response/ipn data for manual investigation
 Label2.Text = strResponse;
 }
-}
-}
 
-
-protected void Button1_Click(object sender, EventArgs e)
-{
-    Label3.Text = "Got Receipt";
 }
 </script>
 
