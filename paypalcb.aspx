@@ -10,12 +10,6 @@
 
 
 
-protected void Button1_Click(object sender, EventArgs e)
-{
-  
-
-
-}
 
 protected void Page_Load(object sender, EventArgs e)
 {
@@ -51,7 +45,7 @@ protected void Page_Load(object sender, EventArgs e)
         //check that receiver_email is your Primary PayPal email
         //check that payment_amount/payment_currency are correct
         //process payment
-        Label2.Text = strResponse;
+        
     }
     else if (strResponse == "INVALID")
     {
@@ -60,7 +54,7 @@ protected void Page_Load(object sender, EventArgs e)
     else
     {
         //log response/ipn data for manual investigation
-        Label2.Text = strResponse;
+        
     }
 }
 </script>
@@ -74,12 +68,8 @@ protected void Page_Load(object sender, EventArgs e)
     <form id="form1" runat="server">
     <div>
     
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 60px; top: 15px; position: absolute" Text="PayPal Transaction Receipt"></asp:Label>
-        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 451px; top: 47px; position: absolute; width: 178px" Text="Go to My Treasure Spot" OnClick="Button1_Click" />
-        <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 57px; top: 57px; position: absolute; width: 297px; height: 144px" Text="Label"></asp:Label>
-    
+        
     </div>
-        <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 43px; top: 128px; position: absolute; height: 20px; width: 129px" Text="Label"></asp:Label>
-    </form>
+        </form>
 </body>
 </html>
