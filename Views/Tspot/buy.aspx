@@ -3,7 +3,7 @@
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
-
+<%@ Import Namespace="PayPal" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -30,64 +30,69 @@ protected void checkusername()
 protected void Page_Load(object sender, EventArgs e)
 {
     checkusername();
+    
 }
 
 protected void Button1_Click(object sender, EventArgs e)
 {
 
 
-
-
-    //application token
-    permanenttoken = webClient.DownloadString("https://graph.facebook.com/oauth/access_token?client_id=123405257731200&format=json&client_secret=8037ae43536685123303ddc326c3ac63&grant_type=client_credentials");
-    //application token
-    //Read json product receipt
-    tempstring = webClient.DownloadString("https://graph.facebook.com/100000589342864/payment_transactions?request_id=abcd1002&" + permanenttoken);
-    //access_token=123405257731200|_AphXktFrrV_7aQ1PKX8iKqUNwA
-    Newtonsoft.Json.JsonTextReader myreader2 = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(tempstring));
-
-    while (myreader2.Read())
+    try
     {
 
-        if ((string)myreader2.Value == "id")
+        //application token
+        permanenttoken = webClient.DownloadString("https://graph.facebook.com/oauth/access_token?client_id=123405257731200&format=json&client_secret=8037ae43536685123303ddc326c3ac63&grant_type=client_credentials");
+        //application token
+        //Read json product receipt
+        tempstring = webClient.DownloadString("https://graph.facebook.com/100000589342864/payment_transactions?request_id=" + orderno.Text + "&" + permanenttoken);
+        //access_token=123405257731200|_AphXktFrrV_7aQ1PKX8iKqUNwA
+        Newtonsoft.Json.JsonTextReader myreader2 = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(tempstring));
+
+        while (myreader2.Read())
         {
-            myreader2.Read();
-            TextBox1.Text = (string)myreader2.Value;
-            break;
+
+            if ((string)myreader2.Value == "id")
+            {
+                myreader2.Read();
+                TextBox1.Text = (string)myreader2.Value;
+                break;
+            }
+
+        }
+
+        Newtonsoft.Json.JsonTextReader myreader3 = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(tempstring));
+
+        while (myreader3.Read())
+        {
+
+            if ((string)myreader3.Value == "status")
+            {
+                myreader3.Read();
+
+                HiddenField3.Value = (string)myreader3.Value;
+                break;
+            }
+
+        }
+
+        Newtonsoft.Json.JsonTextReader myreader4 = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(tempstring));
+
+        while (myreader4.Read())
+        {
+
+            if ((string)myreader4.Value == "product")
+            {
+                myreader4.Read();
+                HiddenField2.Value = (string)myreader4.Value;
+                break;
+            }
+
         }
 
     }
-
-    Newtonsoft.Json.JsonTextReader myreader3 = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(tempstring));
-
-    while (myreader3.Read())
+    catch
     {
-
-        if ((string)myreader3.Value == "status")
-        {
-            myreader3.Read();
-            
-            HiddenField3.Value = (string)myreader3.Value;
-            break;
-        }
-
     }
-
-    Newtonsoft.Json.JsonTextReader myreader4 = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(tempstring));
-
-    while (myreader4.Read())
-    {
-
-        if ((string)myreader4.Value == "product")
-        {
-            myreader4.Read();
-            HiddenField2.Value = (string)myreader4.Value;
-            break;
-        }
-
-    }
-
-
 
 
 }
@@ -98,43 +103,45 @@ protected void Button2_Click(object sender, EventArgs e)
     Label2.Text = "You have to buy a treasurespot and then get receipt to go and create treasure spot!";
     if (HiddenField3.Value == "completed" & HiddenField2.Value == @"https:\/\/treasurehunter.apphb.com\/coin.html") ;
     {
-        Response.Redirect("creator.aspx");
+        Response.Redirect("tspot/buy");
     }
 }
 
+protected void Button3_Click(object sender, EventArgs e)
+{
+
+   
+    
+}    
 </script>
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>buy</title>
-
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js">
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#orderno').val('1');
-            $('#orderno').change();
-            $('#orderno').focus();
-
-        })
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
-
+            
         <div style="position: absolute; border: medium solid #000000; top: 128px; left: 10px; width: 360px; height: 310px;">
             <h2 style="width: 207px; position: absolute; top: 13px; left: 77px;">Buy Treasure Spot</h2>
-            <button onclick="buy()" style="z-index: 1; left: 42px; top: 156px; position: absolute">By Payment System </button>
-            <button onclick="earn_currency()" style="z-index: 1; left: 64px; top: 223px; position: absolute">By Promotions </button>
+            <button onclick="buy()" style="z-index: 1; left: 42px; top: 156px; position: absolute; width: 137px; height: 28px;">By Payment System</button>
+            <img alt="" src="../../Images/coin.png" style="width: 57px; height: 27px; z-index: 1; left: 8px; top: 10px; position: absolute;" />
+            <label id="fb-ui-return-data" style="position: absolute; top: 269px; width: 306px; left: 9px; height: 31px;"></label>
+
+            
+            <button onclick="earn_currency()" style="z-index: 1; left: 64px; top: 223px; position: absolute">By Promotions</button>
+            <button onclick="free_currency()" style="z-index: 1; left: 339px; top: -36px; position: absolute; width: 120px;">Get Free Currency</button>
+        
 
             <label style="z-index: 1; left: 12px; top: 47px; position: absolute; height: 77px; width: 307px;">
                 You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
-                Price : $3
+               Price : $3
             </label>
-            <img alt="" src="../../Images/coin.png" style="z-index: 1; left: 11px; top: 5px; position: absolute" />
-            <label id="fb-ui-return-data" style="position: absolute; top: 269px; width: 306px; left: 9px; height: 31px;"></label>
-            <asp:Label ID="Label3" runat="server" Style="z-index: 1; left: 28px; top: 131px; position: absolute; width: 218px" Text="Buy a New Treasure Spot Now " Font-Bold="True"></asp:Label>
-            <asp:Label ID="Label4" runat="server" Style="z-index: 1; left: 122px; top: 199px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
+            
+           
+            &nbsp;<asp:Label ID="Label3" runat="server" Style="z-index: 1; left: 28px; top: 131px; position: absolute; width: 218px" Text="Buy a New Treasure Spot Now " Font-Bold="True"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Style="z-index: 1; left: 218px; top: 237px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Style="z-index: 1; left: 122px; top: 199px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
         </div>
         <button onclick="buybid()" style="z-index: 1; left: 518px; top: 248px; position: absolute; width: 62px;">Buy Now</button>
         <div style="position: absolute; border: medium solid #000000; top: 128px; left: 381px; width: 396px; height: 310px;">
@@ -145,10 +152,44 @@ protected void Button2_Click(object sender, EventArgs e)
 
         </div>
         <a href="intro.aspx" target="_self" style="position: absolute; left: 45px; top: 67px; width: 109px; height: 18px;">Back to Game </a>
+         <asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 695px; top: 33px; position: absolute">7</asp:TextBox>
+
+
+        <a href="#" onclick="tp_earn(); return false;" style="z-index: 1; left: 272px; top: 365px; position: absolute; height: 22px; width: 92px">Earn Currency</a>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js">
+
+        $(document).ready(function () {
+            $('#item_name').val('1');
+            $('#item_name').change();
+            $('#item_name').focus();
+
+        })
+</script> 
+
+    <script type="text/javascript">
+    function tp_earn() {
+        TRIALPAY.fb.show_overlay("123405257731200",
+                                 "fbdirect",
+                                 {
+                                     tp_vendor_id: "CAAVVIRI",
+                                     callback_url: "http://www.acmesoft.com/tastymorsels/callback.php",
+                                     currency_url: "http://www.acmesoft.com/vc/coins.php",
+                                     sid: "7plK3xiCN5tkXO8uO6kgowfoI3U",
+                                     onTransact : "my_onTransact"
+                                 });
+    }
+
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "//s-assets.tp-cdn.com/static3/js/api/payment_overlay.js";
+    document.getElementsByTagName("body")[0].appendChild(script);
+</script>
+
 
         <script src="https://connect.facebook.net/en_US/all.js"></script>
         <script>
-            var itemno = "";
+            var itemno = document.getElementById('orderno').valueOf();
             FB.init({ appId: "123405257731200", status: true, cookie: true });
 
             // The dialog only opens if you've implemented the
@@ -158,9 +199,9 @@ protected void Button2_Click(object sender, EventArgs e)
                     method: 'pay',
                     action: 'purchaseitem',
                     product: 'https://treasurehunter.apphb.com/coin.html',
-                    request_id: 'abcd1002'
+                    request_id: itemno
                 };
-                itemno = "ts1";
+                
                 FB.ui(obj, js_callback);
             }
 
@@ -170,9 +211,9 @@ protected void Button2_Click(object sender, EventArgs e)
                     method: 'pay',
                     action: 'purchaseitem',
                     product: 'https://treasurehunter.apphb.com/coin.html',
-                    request_id: 'abcd1002'
+                    request_id: itemno
                 };
-                itemno = "ts2";
+                
                 FB.ui(obj, js_callback);
             }
 
@@ -181,13 +222,24 @@ protected void Button2_Click(object sender, EventArgs e)
                     method: 'pay',
                     action: 'earn_currency',
                     product: 'https://treasurehunter.apphb.com/coin.html',
-                    request_id: 'abcd1002'
+                    request_id: itemno
                 };
 
-                itemno = "ts2";
+                itemno = "ts1";
                 FB.ui(obj, js_callback);
             }
 
+            function free_currency() {
+                var obj = {
+                    method: 'fbpromotion',
+                    display: 'popup',
+                    package_name: 'zero_promo',
+                    product: 'http://currency.object.url'
+                };
+                itemno = "ts2";
+                FB.ui(obj, npp_callback);
+
+            }
             //https://www.facebook.com/dialog/pay?app_id=YOUR_APP_ID&redirect_uri=YOUR_REDIRECT_URI&action=buy_item&order_info=SOME_DEV_JSON_ORDER_INFO&dev_purchase_params={"oscif":true}    
             // This JavaScript callback handles FB.ui's return data and differs
             // from the Credits Callbacks.
@@ -220,17 +272,19 @@ protected void Button2_Click(object sender, EventArgs e)
             }
 
             function write_callback_data(str) {
-                if (itemno == "ts1") {
-                    document.getElementById('fb-ui-return-data').innerText = str;
+                //if (itemno == "ts1") {
+                //    document.getElementById('fb-ui-return-data').innerText = str;
 
-                }
+                //}
 
-                if (itemno == "ts2") {
-                    document.getElementById('fb-ui-return-data2').innerText = str;
-                }
+                //if (itemno == "ts2") {
+                //    document.getElementById('fb-ui-return-data2').innerText = str;
+                //}
 
             }
         </script>
+
+        
 
         <h1 style="width: 259px; position: absolute; top: 19px; left: 357px; font-weight: bold; font-size: 30px; color: #0000FF;">&nbsp;Treasure Hunter</h1>
 
@@ -238,9 +292,7 @@ protected void Button2_Click(object sender, EventArgs e)
 
 
 
-        <asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 695px; top: 33px; position: absolute" ReadOnly="True"></asp:TextBox>
-
-
+       
 
         <asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 447px; top: 70px; position: absolute; width: 165px; height: 20px"></asp:TextBox>
 
@@ -264,13 +316,43 @@ protected void Button2_Click(object sender, EventArgs e)
 
 
 
-        <asp:TextBox ID="TextBox3" runat="server" Style="z-index: 1; left: 21px; top: 498px; position: absolute; width: 734px"></asp:TextBox>
+        <asp:TextBox ID="TextBox3" runat="server" Style="z-index: 1; left: 21px; top: 498px; position: absolute; width: 734px; height: 20px;"></asp:TextBox>
 
       
             <asp:HiddenField ID="Hiddenfield1" runat="server"></asp:HiddenField>
         
 
+        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" style="z-index: 1; left: 508px; top: 464px; position: absolute" Text="PayPal" />
+        
+  
+
     </form>
+
+    <form action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 529px; left: 532px;" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="item_name" value="thbuyuserid">
+<input type="hidden" name="hosted_button_id" value="UH68K68FR2L48">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" style="position:absolute; top: 542px; left: 34px;" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="item_name" value="thbuyppsand">
+<input type="hidden" name="invoice" value="userid">
+<input type="hidden" name="notify_url" value="https://treasurehunter.apphb.com/paypalcb.aspx">
+<input type="hidden" name="hosted_button_id" value="B9TNRX4UH3XFY">
+<input type="image" src="https://www.sandbox.paypal.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" style="position:absolute; top: 542px; left: 160px;" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="XNFF2J7M79UZ4">
+<input type="image" src="https://www.sandbox.paypal.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
 
 </body>
 </html>
