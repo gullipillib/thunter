@@ -51,7 +51,7 @@
                 Response.Write("<li>Name: " + results["first_name"] + " " + results["last_name"] + "</li>");
                 Response.Write("<li>Item: " + results["item_name"] + "</li>");
                 Response.Write("<li>Amount: " + results["payment_gross"] + "</li>");
-                Response.Write("<li>Amount: " + results["item_number"] + "</li>");
+                Response.Write("<li>user id: " + results["custom"] + "</li>");
                 Response.Write("<hr>");
             }
             else if (line == "FAIL")
