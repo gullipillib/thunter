@@ -17,6 +17,7 @@ string receiptno = "";
 protected void checkusername()
 {
     Hiddenfield1.Value = Model.Name;
+    Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
     if (Hiddenfield1.Value != null)
     {
        
@@ -107,12 +108,7 @@ protected void Button2_Click(object sender, EventArgs e)
     }
 }
 
-protected void Button3_Click(object sender, EventArgs e)
-{
 
-   
-    
-}    
 </script>
 <html>
 <head runat="server">
@@ -157,15 +153,7 @@ protected void Button3_Click(object sender, EventArgs e)
 
         <a href="#" onclick="tp_earn(); return false;" style="z-index: 1; left: 272px; top: 365px; position: absolute; height: 22px; width: 92px">Earn Currency</a>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js">
 
-        $(document).ready(function () {
-            $('#item_name').val('1');
-            $('#item_name').change();
-            $('#item_name').focus();
-
-        })
-</script> 
 
     <script type="text/javascript">
     function tp_earn() {
@@ -322,11 +310,11 @@ protected void Button3_Click(object sender, EventArgs e)
             <asp:HiddenField ID="Hiddenfield1" runat="server"></asp:HiddenField>
         
 
-        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" style="z-index: 1; left: 508px; top: 464px; position: absolute" Text="PayPal" />
-        
+       
   
 
     </form>
+
 
     <form action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 529px; left: 532px;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -336,22 +324,31 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>
 
-<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" style="position:absolute; top: 542px; left: 34px;" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="item_name" value="thbuyppsand">
-<input type="hidden" name="invoice" value="userid">
-<input type="hidden" name="notify_url" value="https://treasurehunter.apphb.com/paypalcb.aspx">
-<input type="hidden" name="hosted_button_id" value="B9TNRX4UH3XFY">
+
+
+
+
+
+<form id="paypalbutton" action="https://www.sandbox.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 529px; left: 2px;" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="BWZKHE4VDJPHU">
+<input type="hidden" name="lc" value="IN">
+<input type="hidden" name="item_name" value="Treasure Spot Buy">
+<input type="hidden" name="amount" value="3.00">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="button_subtype" value="services">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="tax_rate" value="0.000">
+<input type="hidden" name="shipping" value="0.00">
+<input type="hidden" id="customvalue" name="custom" value=<%=Hiddenfield1.Value%>>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
 <input type="image" src="https://www.sandbox.paypal.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
 <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>
 
-<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" style="position:absolute; top: 542px; left: 160px;" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="XNFF2J7M79UZ4">
-<input type="image" src="https://www.sandbox.paypal.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
+
+
 
 
 </body>

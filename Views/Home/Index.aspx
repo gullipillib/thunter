@@ -1,18 +1,56 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.MyAppUser>" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SqlClient" %>
+<%@ Import Namespace="System.Configuration" %>
 
 <!DOCTYPE html>
 
 <script runat="server">
 
+    string username = "";
+    string logintimes = "";
+    string tspots = "";
+    string invites = ""; 
+    
     protected void checkusername()
     {
         Hiddenfield1.Value = Model.Name;
+        Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
         if (Hiddenfield1.Value != null)
         {
             
+         //Insert User into appuser,loggeduser,ordercounter,treasureprize;
+            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
+
+            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataTable dt = new DataTable();
+            dt = dv.ToTable();
+            //DataTable dtr = dt;
+            //DataRow[] uniname = dtr.Select("uname");
+            //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
+
+            if (dt.Rows.Count == 0)
+            {
+
+                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1.Value + "', 'yes', 'no', '0', 'no', '0', '')";
+                AccessDataSource1.Insert();
+                //SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                //SqlDataSource1.InsertCommand = "INSERT INTO loggedusers(uname, uid, uposition, uimg, uspriteimg, ucrisboos, ustatus, tspots, logintimes, invites, available) VALUES ('" + Hiddenfield1.Value + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0', 'yes')";
+                //SqlDataSource1.Insert();
+                //SqlDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+                //SqlDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, counter) Values ('" + Hiddenfield1.Value + "','3')";
+                //SqlDataSource1.Insert();
+                //SqlDataSource1.SelectCommand = "SELECT * FROM treasureprize";
+                //SqlDataSource1.InsertCommand = "INSERT INTO treasureprize(name, treasurevalue) Values ('" + Hiddenfield1.Value + "','0')";
+                //SqlDataSource1.Insert();
+            }
+        //Insert User into appuser,loggeduser,ordercounter,treasureprize;  
+            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
+            Label3.Text = dt.Rows[0][0].ToString();
         }
         else
         {
+            
             Response.Redirect("http://apps.facebook.com/gullipilli");
         }
     }
@@ -65,14 +103,6 @@ to {left:10px;}
     <div id="fb-root">
         <asp:Label ID="Label3" runat="server" Font-Bold="True" style="z-index: 1; left: 396px; top: 69px; position: absolute" Text="3D Game - Multi Player"></asp:Label>
         </div>
-<script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/all.js#xfbml=1&appId=123405257731200";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 
 
 <script src="https://connect.facebook.net/en_US/all.js">
@@ -82,7 +112,17 @@ to {left:10px;}
         status: true,
         xfbml: true
     });
+</script>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/all.js#xfbml=1&appId=123405257731200";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
+
+<script>
     function FacebookInviteFriends() {
         FB.ui({
             method: 'apprequests',
@@ -98,7 +138,7 @@ to {left:10px;}
 <a href='#' onclick="" style="position:absolute;left:505px; top:172px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
 <a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:667px; top:128px; width:110px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Invite Friends</a>
 
-   <a href="https://localhost:44300/Play/play" target="_self" style="position:absolute;left:252px; top:126px; width:162px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 440px; text-align: center;" > Go On a TreasureHunt </a> 
+   <a href="Play/play" target="_self" style="position:absolute;left:252px; top:126px; width:162px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 440px; text-align: center;" > Go On a TreasureHunt </a> 
    
     <a href="Tspot/buy" target="_self" style="position:absolute;left:460px; top:126px; width:161px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 233px;" > Buy a Treasure Spot </a> 
                   
@@ -114,6 +154,8 @@ to {left:10px;}
                   
         <asp:Label ID="Label5" runat="server" Font-Size="8pt" style="z-index: 1; left: 401px; top: 560px; position: absolute" Text="Treasure Hunter - 2013"></asp:Label>
         <asp:hiddenfield ID="Hiddenfield1" runat="server"></asp:hiddenfield>
+        
+        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"> </asp:AccessDataSource>
 
     </form>
                   
