@@ -287,7 +287,7 @@ to {left:10px;}
 
       
 <a href='../../buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:172px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
-<a href='#' onclick="FacebookInviteFriends();" style="position:absolute;top:126px; width:97px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 109px;">Invite Friends</a>
+<a href='#' onclick="FacebookInviteFriends();" style="position:absolute;top:127px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 198px; height: 18px;">Invite Friends</a>
 <a href='Cpanel/gamesettings'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
    <a href="Play/play" target="_self" style="position:absolute;left:252px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 496px; text-align: center;" > Go On a TreasureHunt </a> 
    

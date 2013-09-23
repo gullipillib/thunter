@@ -490,7 +490,7 @@
 
 
 
-        <a href='Invite/friends' onclick="FacebookInviteFriends();" style="position: absolute; top: 60px; width: 113px; right: 68px;">Invite Friends</a>
+        <a href='../Invite/friends.aspx'  style="position: absolute; top: 60px; width: 113px; right: 68px;">Invite Friends</a>
 
         <a href="Tspot/buy" target="_self" style="position: absolute; left: 505px; top: 57px; width: 139px">Buy a TreasureSpot </a>
 
