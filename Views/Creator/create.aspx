@@ -4,11 +4,9 @@
 <%@ Import Namespace="System.Configuration" %>
 <!DOCTYPE html>
 
-<%@ Import Namespace="System.Data" %>  
-<%@ Import Namespace="System.Data.SqlClient" %>  
-<%@ Import Namespace="System.Configuration" %>  
 
-<!DOCTYPE html>
+
+
 <script runat="server">
 
     protected void checkusername()
@@ -18,9 +16,36 @@
         if (Hiddenfield1.Value != null)
         {
 
+            //Insert User into appuser,loggeduser,ordercounter,treasureprize;
+            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
+
+            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataTable dt = new DataTable();
+            dt = dv.ToTable();
+            //DataTable dtr = dt;
+            //DataRow[] uniname = dtr.Select("uname");
+            //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
+            //Label3.Text = dt.Rows[0][0].ToString();
+            if (dt.Rows.Count == 0)
+            {
+                //Insert User into appuser,loggeduser,ordercounter,winners;
+                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1.Value + "', 'no', 'no', '0', 'no', '0', '')";
+                AccessDataSource1.Insert();
+                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1.Value + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
+                AccessDataSource1.Insert();
+                AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1.Value + "','0')";
+                AccessDataSource1.Insert();
+                AccessDataSource1.SelectCommand = "SELECT * FROM winners";
+                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1.Value + "','0')";
+                AccessDataSource1.Insert();
+            }
+
         }
         else
         {
+
             Response.Redirect("http://apps.facebook.com/gullipilli");
         }
     }
@@ -31,32 +56,34 @@
     {
         checkusername();
         //connectionstring
-Session["ConnectionString"]="data source=localhost; uid=sa; password=thisgreatworld1; database=thunter";
-string myConnection = Session["ConnectionString"].ToString();
+//Session["ConnectionString"]="data source=localhost; uid=sa; password=thisgreatworld1; database=thunter";
+//string myConnection = Session["ConnectionString"].ToString();
         
         
 if (!Page.IsPostBack)
 {
-    SqlConnection mySqlConnection;
-    SqlCommand mySqlCommand;
-    SqlDataReader mySqlDataReader;
+    //SqlConnection mySqlConnection;
+    //SqlCommand mySqlCommand;
+    //SqlDataReader mySqlDataReader;
 
-    mySqlConnection = new SqlConnection();
-    mySqlConnection.ConnectionString = myConnection;
+    //mySqlConnection = new SqlConnection();
+    //mySqlConnection.ConnectionString = myConnection;
         
-    mySqlCommand = new SqlCommand();
-    mySqlCommand.CommandText = "SELECT tsname FROM tspots";
-    mySqlCommand.CommandType = CommandType.Text;
-    mySqlCommand.Connection = mySqlConnection;
+    //mySqlCommand = new SqlCommand();
+    //mySqlCommand.CommandText = "SELECT tsname FROM tspots";
+    //mySqlCommand.CommandType = CommandType.Text;
+    //mySqlCommand.Connection = mySqlConnection;
 
-    mySqlCommand.Connection.Open();
-    mySqlDataReader = mySqlCommand.ExecuteReader(CommandBehavior.CloseConnection);
+    //mySqlCommand.Connection.Open();
+    //mySqlDataReader = mySqlCommand.ExecuteReader(CommandBehavior.CloseConnection);
 
-    //GridView1.DataSource = mySqlDataReader;
-    //GridView1.DataBind();
+    ////GridView1.DataSource = mySqlDataReader;
+    ////GridView1.DataBind();
 
-    mySqlCommand.Dispose();
-    mySqlConnection.Dispose();
+    //mySqlCommand.Dispose();
+    //mySqlConnection.Dispose();
+    Microsoft.Web.Helpers.Video.Flash("http://www.youtube.com/v/XAbMQx-D7rE");
+   
 }  
         
     }
@@ -64,7 +91,7 @@ if (!Page.IsPostBack)
 protected void Button4_Click(object sender, EventArgs e)
 {
     //SqlDataSource1.Select();
-    DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+    DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
     DataTable dt = new DataTable();
     dt = dv.ToTable();
 
@@ -242,19 +269,10 @@ transform-style: preserve-3d;
          
         <div  id="viewer" class="twoto3d perspective3d" tabindex="0" style="width: 658px; height: 299px; z-index: 1; left: 0px; top: 92px; position: relative"  >
  
-<object id="utplayer" style="height: 390px; width: 640px; z-index: 0; position:absolute;background-color:transparent; top: -46px; left: 12px;">
-    <param name="movie" value="air.swf">
-    <param name="allowFullScreen" value="true">
-    <param name="allowScriptAccess" value="always">
-    <embed id="uplayer" src="air.swf" type="application/x-shockwave-flash" `autoplay="true" allowfullscreen="true" allowScriptAccess="always" wmode="transparent" width="640" height="390" style="position:relative">
-</object>
-
-
-
-   
                     
 </div>        
-       
+
+
         
         
         <div id="toolbox" style="border: medium outset #000000; z-index: 1; left: 688px; top: 45px; position: absolute; height: 527px; width: 164px; overflow: scroll;">
@@ -324,8 +342,8 @@ transform-style: preserve-3d;
         
        
         
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT tspots.* FROM tspots" InsertCommand="INSERT INTO tspots(tsname, tsowner, tssell, tsbid, tsbidder, tsitems, tsapproved, tsreported, tsapprover, tsproductid, tsstatus) VALUES ('Desert Air Strike', 'Gullipilli Bhaskar', 'yes', 'no', 'none','', 'yes', 'no', 'Gullipilli Bhaskar', '', '')" UpdateCommand="UPDATE tspots SET tsitems = 'none'"></asp:SqlDataSource>
-         
+        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"> </asp:AccessDataSource>
+
         
         <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" style="z-index: 1; left: 579px; top: 578px; position: absolute" Text="Button" />
              

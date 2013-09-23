@@ -27,22 +27,22 @@
 
     protected void Button3_Click(object sender, EventArgs e)
     {
-        SqlDataSource1.UpdateCommand = "UPDATE settings SET logintimes = '" + TextBox2.Text + "'";
+        AccessDataSource1.UpdateCommand = "UPDATE settings SET logintimes = '" + TextBox2.Text + "'";
     }
 
     protected void Button4_Click(object sender, EventArgs e)
     {
-        SqlDataSource1.UpdateCommand = "UPDATE settings SET tspots = '" + TextBox3.Text + "'";
+        AccessDataSource1.UpdateCommand = "UPDATE settings SET tspots = '" + TextBox3.Text + "'";
     }
 
     protected void Button5_Click(object sender, EventArgs e)
     {
-        SqlDataSource1.UpdateCommand = "UPDATE settings SET invites = '" + TextBox4.Text + "'";
+        AccessDataSource1.UpdateCommand = "UPDATE settings SET invites = '" + TextBox4.Text + "'";
     }
 
     protected void Button6_Click(object sender, EventArgs e)
     {
-        SqlDataSource1.UpdateCommand = "UPDATE settings SET loginreset = '" + TextBox5.Text + "'";
+        AccessDataSource1.UpdateCommand = "UPDATE settings SET loginreset = '" + TextBox5.Text + "'";
     }
 </script>
 
@@ -71,13 +71,13 @@
         </Triggers>
             </asp:UpdatePanel>
 
-        <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 17px; top: 424px; position: absolute; height: 117px; width: 443px">
+        <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 17px; top: 424px; position: absolute; height: 117px; width: 443px" Visible="False">
             <asp:Label ID="Label1" runat="server" Text="Password" style="z-index: 1; left: 83px; top: 28px; position: absolute"></asp:Label>
             <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 158px; top: 28px; position: absolute; width: 238px" TextMode="Password"></asp:TextBox>
             <asp:Button ID="Button1" runat="server" Text="OK" style="z-index: 1; left: 183px; top: 76px; position: absolute" OnClick="Button1_Click" />
         </asp:Panel>
         
-        <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: 20px; top: 61px; position: absolute; height: 450px; width: 856px" Visible="False">
+        <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: 20px; top: 61px; position: absolute; height: 450px; width: 856px">
             <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 710px; top: 15px; position: absolute" Text="Logout" OnClick="Button2_Click" />
             
         
@@ -107,8 +107,8 @@
         
         
         </asp:Panel>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM settings" InsertCommand="INSERT INTO settings(logintimes, tspots, invites, loginreset) VALUES ('', '', '','')" UpdateCommand="UPDATE settings SET logintimes = ''"></asp:SqlDataSource>
-      
+        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT * FROM settings" InsertCommand="INSERT INTO settings(logintimes, tspots, invites, loginreset) VALUES ('', '', '','')" UpdateCommand="UPDATE settings SET logintimes = ''"> </asp:AccessDataSource>
+
     </form>
 </body>
 </html>
