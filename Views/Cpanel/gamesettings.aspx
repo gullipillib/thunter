@@ -106,17 +106,15 @@ protected void Button12_Click(object sender, EventArgs e)
     <div>
         
         <asp:Label ID="Label7" runat="server" Font-Bold="True" style="z-index: 1; left: 15px; top: 7px; position: absolute" Text="Money Earned"></asp:Label>
-        <asp:Button ID="Button8" runat="server" style="z-index: 1; left: 674px; top: 4px; position: absolute" Text="Buy a New ToolBox Item" />
-        <asp:Button ID="Button7" runat="server" style="z-index: 1; left: 426px; top: 3px; position: absolute" Text="Buy a New Treasure Spot" />
-        <asp:Label ID="Label8" runat="server" Font-Bold="True" style="z-index: 1; left: 225px; top: 8px; position: absolute; height: 22px; width: 62px" Text="Crisboos"></asp:Label>
+        <asp:Label ID="Label8" runat="server" Font-Bold="True" style="z-index: 1; left: 225px; top: 8px; position: absolute; height: 22px; width: 89px" Text="Gold Coins"></asp:Label>
         
     </div>
     <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield.Value%>')"> </asp:AccessDataSource>
         <asp:ListBox ID="ListBox1" runat="server" DataSourceID="AccessDataSource8" DataTextField="amount" DataValueField="amount" style="z-index: 1; left: 124px; top: 7px; position: absolute; height: 24px"></asp:ListBox>
         <asp:HiddenField ID="HiddenField2" runat="server" />
         <asp:HiddenField ID="HiddenField3" runat="server" />
-        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 205px; top: 38px; position: absolute" Text="Buy" Enabled="False" OnClick="Button1_Click" />
-        <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 606px; top: 35px; position: absolute" Text="Bid" Enabled="False" />
+        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 224px; top: 38px; position: absolute" Text="Buy" Enabled="False" OnClick="Button1_Click" />
+        <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 602px; top: 35px; position: absolute" Text="Bid" Enabled="False" />
        <asp:Button ID="Button3" runat="server" style="z-index: 1; left: 186px; top: 309px; position: absolute" Text="Buy" Enabled="False" OnClick="Button3_Click" />
         <asp:Button ID="Button4" runat="server" style="z-index: 1; left: 608px; top: 305px; position: absolute" Text="Bid" Enabled="False" />
         <asp:Button ID="Button5" runat="server" style="z-index: 1; left: 168px; top: 855px; position: absolute" Text="Sell" Enabled="False" /> 
@@ -124,8 +122,11 @@ protected void Button12_Click(object sender, EventArgs e)
         <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE (tsowner = '<%=Hiddenfield1.Value%>')"> </asp:AccessDataSource>
         <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 660px; top: 306px; position: absolute" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
         <asp:AccessDataSource id="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE (tbowner = '<%=Hiddenfield1.Value%>')"> </asp:AccessDataSource>
+    <asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 854px; top: 17px; position: absolute; right: 14px;" Target="_self">Buy a ToolBox Item</asp:hyperlink>
         <asp:AccessDataSource id="AccessDataSource4" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate FROM tspots  WHERE  (tssell = 'yes' and tsselltype='sell')"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource5" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate FROM  tspots WHERE (tssell = 'yes' and tsselltype='bid')"> </asp:AccessDataSource>
+
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="false" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 719px; top: 17px; position: absolute" Target="_self">Buy a Treasure Spot</asp:hyperlink>
        <asp:AccessDataSource id="AccessDataSource6" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate FROM toolbox  WHERE  (tbsell = 'yes' and tbselltype='sell')"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource7" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate FROM toolbox  WHERE  (tbsell = 'yes' and tbselltype='bid')"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource8" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT amount FROM payments"> </asp:AccessDataSource>
@@ -276,7 +277,7 @@ protected void Button12_Click(object sender, EventArgs e)
     <asp:Label ID="Label1" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 29px; top: 584px; position: absolute; height: 18px;" Text="My Treasure Spots"></asp:Label>     
     <asp:Label ID="Label4" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 21px; top: 44px; position: absolute; bottom: 532px; right: 721px;" Text="Treasure Spots for Sale"></asp:Label>
         <asp:Label ID="Label6" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 20px; top: 315px; position: absolute; bottom: 401px; height: 19px;" Text="ToolBox items for Sale"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 651px; top: 39px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 644px; top: 40px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
         <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 231px; position: absolute; top: 854px;" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
         <asp:DropDownList ID="DropDownList1" runat="server" style="z-index: 1; left: 387px; top: 578px; position: absolute" AutoPostBack="True">
             <asp:ListItem>Bid</asp:ListItem>

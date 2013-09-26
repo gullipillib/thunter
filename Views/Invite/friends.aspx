@@ -67,19 +67,46 @@ protected void Page_Load(object sender, EventArgs e)
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        
-    </div>
+    <div id="fb-root">
+        </div>
+
+
+<script src="https://connect.facebook.net/en_US/all.js">
+    FB.init({
+        appId: '123405257731200',
+        cookie: true,
+        status: true,
+        xfbml: true
+    });
+</script>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/all.js#xfbml=1&appId=123405257731200";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<script>
+    function FacebookInviteFriends() {
+        FB.ui({
+            method: 'apprequests',
+            message: 'You are Invited to Play Treasure Hunter Game with me'
+        });
+    }
+</script>
     <asp:HiddenField ID="Hiddenfield1" runat="server"></asp:HiddenField>
     <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"> </asp:AccessDataSource>
 
 <a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:380px; top:161px; width:97px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 423px;">Invite Friends</a><p>
-            <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 263px; top: 191px; position: absolute" Text="Invite lots of tour friends to make this game more interesting "></asp:Label>
-        </p>
-    </form>
-   <a href="../Home/Play/play" target="_self" style="position:absolute;left:167px; top:124px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 581px; text-align: center;" > Go On a TreasureHunt </a> 
-   
-<a href='../Home/Cpanel/gamesettings'  style="position:absolute;left:542px; top:119px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
 
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 284px; top: 127px; position: absolute" Target="_self">Go on a Treasurehunt</asp:hyperlink>
+        
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/Cpanel/gamesettings" style="z-index: 1; left: 545px; top: 125px; position: absolute" Target="_self">My Game</asp:hyperlink>   
+
+        
+        </form>
+   
 </body>
 </html>

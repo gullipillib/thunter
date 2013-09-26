@@ -219,12 +219,12 @@
     <title>TreasureHunter</title>
 </head>
 
-<body>
+<body style="height: 587px; overflow: hidden;">
 <style type="text/css">
     .twoto3d {
             
-           width:235px;
-height:201px;
+           width:219px;
+height:157px;
 position:relative;
 animation:mymove 0.05s infinite;
 -webkit-animation:mymove 0.25s infinite;
@@ -286,22 +286,22 @@ to {left:10px;}
 
 
       
-<a href='../../buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:172px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
+<a href='../../buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
 <a href='#' onclick="FacebookInviteFriends();" style="position:absolute;top:127px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 198px; height: 18px;">Invite Friends</a>
 <a href='Cpanel/gamesettings'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
    <a href="Play/play" target="_self" style="position:absolute;left:252px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 496px; text-align: center;" > Go On a TreasureHunt </a> 
    
     <a href="Tspot/buy" target="_self" style="position:absolute;left:414px; top:126px; width:126px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 360px;" > Buy a Treasure Spot </a> 
-    <a href="Toolbox/tools" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
+    <a href="Tspot/buy" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
 
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 11px; top: 228px; position: absolute; width: 822px; height: 110px; bottom: 255px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many crisboos as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt."></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 11px; top: 202px; position: absolute; width: 822px; height: 110px; bottom: 296px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many crisboos as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt."></asp:Label>
         <asp:Label ID="Label4" runat="server" Font-Bold="True" style="z-index: 1; left: 293px; top: 96px; position: absolute" Text="Interactive Gaming with Fun Filled Places and Adventure"></asp:Label>
         
     <p>
-        <img alt="" class="twoto3d" src="../../Images/treasure_hunt.jpg" style="z-index: 1; left: 8px; top: 7px; position: absolute" /></p>
+        <img alt="" class="twoto3d" src="../../Images/landscape.jpg" style="z-index: 1; left: 8px; top: 7px; position: absolute" /></p>
                   
     <p>
-        <img alt="" src="../../Images/3dglass.jpg" style="z-index: 1; left: 436px; top: 169px; position: absolute; height: 27px; width: 56px" /></p>
+        <img alt="" src="../../Images/3dglass.jpg" style="z-index: 1; left: 436px; top: 155px; position: absolute; height: 27px; width: 56px" /></p>
                   
         <asp:Label ID="Label5" runat="server" Font-Size="8pt" style="z-index: 1; left: 401px; top: 587px; position: absolute" Text="Treasure Hunter - 2013"></asp:Label>
         <asp:hiddenfield ID="Hiddenfield1" runat="server"></asp:hiddenfield>
@@ -315,7 +315,7 @@ to {left:10px;}
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
             <ItemStyle BackColor="#DEDFDE" ForeColor="Black" />
             <ItemTemplate>
-                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("luimg") %>' style="z-index: 1; left: 97px; top: 316px; position: absolute; width:80px; height:80px" />
+                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("luimg") %>' style="z-index: 1; left: 4px; top: 20px; position: absolute; width:60px; height:60px" />
                 <br />
                 <br />
                 <asp:Label ID="unameLabel" runat="server" Text='<%# Eval("uname") %>' />

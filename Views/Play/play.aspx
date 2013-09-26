@@ -215,56 +215,132 @@
 </head>
 
 
-<body>
+<body  style="height: 587px; overflow: hidden; background-color:#000000">
     <script type="text/javascript">
-        var marginl = 0;
-        var margint = 0;
-        var checked = 0;
-
-        var started = 0;
-        var fired = 1;
+        
         var enemyhits = 0;
-        var currentl = 0;
-        var currentt = 0;
-        var myaddctrl = window.setTimeout(function () { addCtrl() }, 1000);
-
-        function addCtrl() {
-            if (started == 0) {
-                var ctrl = document.createElement('img');
-                ctrl.setAttribute("id", "ctrl1");
-                ctrl.setAttribute("src", "../../Images/fplane.gif");
-                ctrl.setAttribute("style", "width:80px; height:60px; position:relative; top: 307px; left: 247px; z-index: 2; right: 532px; visibility: visible: margin-left: 0px; margin-top: 0px");
-                form1.appendChild(ctrl);
-                var friend1 = document.createElement('img');
-                ctrl.setAttribute("id", "friend1");
-                ctrl.setAttribute("src", "../../Images/fplane.gif");
-                ctrl.setAttribute("style", "width:80px; height:60px; position:relative; top: 7px; left: 27px; z-index: 2; right: 532px; visibility: visible: margin-left: 0px; margin-top: 0px");
-                form1.appendChild(friend1);
-                var friend2 = document.createElement('img');
-                ctrl.setAttribute("id", "friend2");
-                ctrl.setAttribute("src", "../../Images/fplane.gif");
-                ctrl.setAttribute("style", "width:20px; height:20px; position:relative; top: 57px; left: 327px; z-index: 2; right: 532px; visibility: visible: margin-left: 0px; margin-top: 0px");
-                form1.appendChild(friend2);
-                var friend3 = document.createElement('img');
-                ctrl.setAttribute("id", "friend3");
-                ctrl.setAttribute("src", "../../Images/fplane.gif");
-                ctrl.setAttribute("style", "width:80px; height:60px; position:relative; top: 107px; left: 227px; z-index: 2; right: 532px; visibility: visible: margin-left: 0px; margin-top: 0px");
-                form1.appendChild(friend3);
-                var friend4 = document.createElement('img');
-                ctrl.setAttribute("id", "friend4");
-                ctrl.setAttribute("src", "../../Images/fplane.gif");
-                ctrl.setAttribute("style", "width:30px; height:30px; position:relative; top: 108px; left: 527px; z-index: 2; right: 532px; visibility: visible: margin-left: 0px; margin-top: 0px");
-                form1.appendChild(friend4);
-                var friend5 = document.createElement('img');
-                ctrl.setAttribute("id", "friend5");
-                ctrl.setAttribute("src", "../../Images/fplane.gif");
-                ctrl.setAttribute("style", "width:80px; height:60px; position:relative; top: 347px; left: 109px; z-index: 2; right: 532px; visibility: visible: margin-left: 0px; margin-top: 0px");
-                form1.appendChild(friend5);
-                started = 1
-            }
-        }
+        var lifes = 0;
+        
+       
 
         document.addEventListener('DOMContentLoaded', function () {
+
+            var myaddctrl = window.setInterval(function () { randomCtrl() }, 20000);
+            function randomCtrl() {
+                ctrl1.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160) + "px";
+                ctrl1.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160)   + "px";
+                ctrl2.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160)  + "px";
+                ctrl2.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160) + "px";
+                ctrl3.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160) + "px";
+                ctrl3.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160) + "px";
+                ctrl4.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160) + "px";
+                ctrl4.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160) + "px";
+                ctrl5.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160) + "px";
+                ctrl5.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160) + "px";
+            }
+
+            var myaddctrl = window.setInterval(function () { hitme() }, 10000);
+            function hitme() {
+                var myaddctrl = window.setTimeout(function () { hitmeonce() }, 1000);
+            }
+            function hitmeonce() {
+
+                explosion.style.width = "50px";
+                explosion.style.height = "50px";
+
+                explosion.style.left = crosshair.style.left;
+                explosion.style.top = crosshair.style.top;
+                explosion.style.right = crosshair.style.right;
+                explosion.style.visibility = "visible";
+
+                var myaddctrl = window.setTimeout(function () { removeexplosion() }, 3000);
+
+                function removeexplosion() {
+                    explosion.style.visibility = "hidden";
+                    lifes = lives.getAttribute("value");
+                    lifes = lifes - 1;
+                    lives.setAttribute("value", lifes);
+                    if (lifes == 0) {
+                        lives.setAttribute("value", '10');
+                    }
+                }
+                
+                
+            }
+            
+            function detectcollision() {
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl1.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl1.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl1.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl1.style.bottom.replace("px", ""))) {
+                    enemyhits = enemyhits + 1;
+                    document.getElementById('ehits').setAttribute("value", enemyhits);
+                }
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl2.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl2.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl2.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl2.style.bottom.replace("px", ""))) {
+                    enemyhits = enemyhits + 1;
+                    document.getElementById('ehits').setAttribute("value", enemyhits);
+                }
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl3.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl3.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl3.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl3.style.bottom.replace("px", ""))) {
+                    enemyhits = enemyhits + 1;
+                    document.getElementById('ehits').setAttribute("value", enemyhits);
+                }
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl4.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl4.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl4.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl4.style.bottom.replace("px", ""))) {
+                    enemyhits = enemyhits + 1;
+                    document.getElementById('ehits').setAttribute("value", enemyhits);
+                }
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl5.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl5.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl5.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl5.style.bottom.replace("px", ""))) {
+                    enemyhits = enemyhits + 1;
+                    document.getElementById('ehits').setAttribute("value", enemyhits);
+                }
+                }
+
+            function explode() {
+                
+                    explosion.style.width = "50px";
+                    explosion.style.height = "50px";
+
+                    explosion.style.left = crosshair.style.left;
+                    explosion.style.top = crosshair.style.top;
+                    explosion.style.right = crosshair.style.right;
+                    explosion.style.visibility = "visible";
+                    
+                    var myaddctrl = window.setTimeout(function () { removeexplosion() }, 3000);
+                
+                    function removeexplosion() {
+                        explosion.style.visibility = "hidden";
+                        }
+                }
+
+            var myaddctrl = window.setInterval(function () { moveCtrl() }, 2000);
+            function moveCtrl() {
+                if (parseInt(ctrl1.style.left.replace("px", "")) > 160 && parseInt(ctrl1.style.left.replace("px", "")) < 750) {
+                    ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", "")) + 5 + "px";
+                }
+                if (parseInt(ctrl1.style.top.replace("px", "")) > 171 && parseInt(ctrl1.style.top.replace("px", "")) < 455) {
+                    ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", "")) - 5 + "px";
+                }
+                if (parseInt(ctrl2.style.left.replace("px", "")) > 160 && parseInt(ctrl2.style.left.replace("px", "")) < 750) {
+                    ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", "")) + 5 + "px";
+                }
+                if (parseInt(ctrl2.style.top.replace("px", "")) > 171 && parseInt(ctrl2.style.top.replace("px", "")) < 455) {
+                    ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", "")) + 5 + "px";
+                }
+                if (parseInt(ctrl3.style.left.replace("px", "")) > 160 && parseInt(ctrl3.style.left.replace("px", "")) < 750) {
+                    ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", "")) + 5 + "px";
+                }
+                if (parseInt(ctrl3.style.top.replace("px", "")) > 171 && parseInt(ctrl3.style.top.replace("px", "")) < 455) {
+                    ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", "")) + 5 + "px";
+                }
+                if (parseInt(ctrl4.style.left.replace("px", "")) > 160 && parseInt(ctrl4.style.left.replace("px", "")) < 750) {
+                    ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", "")) + 5 + "px";
+                }
+                if (parseInt(ctrl4.style.top.replace("px", "")) > 171 && parseInt(ctrl4.style.top.replace("px", "")) < 455) {
+                    ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", "")) + 5 + "px";
+                }
+                if (parseInt(ctrl5.style.left.replace("px", "")) > 160 && parseInt(ctrl5.style.left.replace("px", "")) < 750) {
+                    ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", "")) + 5 + "px";
+                }
+                if (parseInt(ctrl5.style.top.replace("px", "")) > 171 && parseInt(ctrl5.style.top.replace("px", "")) < 455) {
+                    ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", "")) + 5 + "px";
+                }
+            }
 
             document.addEventListener("keydown", check, false);
 
@@ -275,160 +351,94 @@
                 if (code == 37) {
 
                     
-                    
-                    marginl = crosshair.style.left;
-                    currentl = parseInt(marginl.replace("px", ""));
-                    crosshair.style.left = currentl - 10 + "px";
-                    marginl = crosshair.style.left;
-                    
+                    if (parseInt(crosshair.style.left.replace("px", "")) > 160) {
+                        //marginl = crosshair.style.left;
+                        //currentl = parseInt(marginl.replace("px", ""));
+                        //crosshair.style.left = currentl - 10 + "px";
+                        //marginl = crosshair.style.left;
+                        crosshair.style.left = parseInt(crosshair.style.left.replace("px", "")) - 10 + "px";
+                    }
                 }
 
                 if (code == 39) {
 
-                    
-                    marginl = crosshair.style.left;
-                    currentl = parseInt(marginl.replace("px", ""));
-                    crosshair.style.left = currentl + 10 + "px";
-                    marginl = crosshair.style.left;
-                    
+                    if (parseInt(crosshair.style.left.replace("px", "")) < 750) {
+                        //currentl = parseInt(marginl.replace("px", ""));
+                        //crosshair.style.left = currentl + 10 + "px";
+                        //marginl = crosshair.style.left;
+                        crosshair.style.left = parseInt(crosshair.style.left.replace("px", "")) + 10 + "px";
+                    }
                 }
 
                 if (code == 38) {
 
                     
-
-                    marginl = crosshair.style.top;
-                    currentl = parseInt(marginl.replace("px", ""));
-                    crosshair.style.top = currentl - 10 + "px";
-                    marginl = crosshair.style.top;
+                    if (parseInt(crosshair.style.top.replace("px", "")) > 172) {
+                        //marginl = crosshair.style.top;
+                        //currentl = parseInt(marginl.replace("px", ""));
+                        //crosshair.style.top = currentl - 10 + "px";
+                        //marginl = crosshair.style.top;
+                        crosshair.style.top = parseInt(crosshair.style.top.replace("px", "")) - 10 + "px";
+                    }
                     
-
                 }
 
                 if (code == 40) {
 
-                    
-                    marginl = crosshair.style.top;
-                    currentl = parseInt(marginl.replace("px", ""));
-                    crosshair.style.top = currentl + 10 + "px";
-                    marginl = crosshair.style.top;
-                    
+                    if (parseInt(crosshair.style.top.replace("px", "")) < 455) {
+                        //marginl = crosshair.style.top;
+                        //currentl = parseInt(marginl.replace("px", ""));
+                        //crosshair.style.top = currentl + 10 + "px";
+                        //marginl = crosshair.style.top;
+                        crosshair.style.top = parseInt(crosshair.style.top.replace("px", "")) + 10 + "px";
+                    }
 
                 }
+
+
 
                 if (code == 83) {
 
-                    //$('#viewer').addClass("twoto3d sidepan");
-                    if (fired == 1) {
-                        explosion.style.width = "30";
-                        explosion.style.height = "30";
-                        
-                        explosion.style.left = crosshair.style.left;
-                        explosion.style.top = crosshair.style.top;
-                        explosion.style.right = crosshair.style.right;
-                        explosion.style.visibility = "visible";
-
-                        fired = 0;
-                    }
-
-                    var myaddctrl = window.setTimeout(function () { removeexplosion() }, 3000);
-                    if (fired == 0) {
-                        function removeexplosion() {
-                            explosion.style.visibility = "hidden";
-                            fired = 1;
-                            checked = 1;
-                        }
-                    }
-
-                    if (checked == 1) {
-                        fired = 0;
-                        checked = 0;
-                        marginl = crosshair.style.left;
-
-                        currentl = parseInt(marginl.replace("px", ""));
-                        currentt = crosshair.style.left;
-
-                        currentt = parseInt(currentt.replace("px", ""));
-
-
-                        margint = document.getElementById('ctrl1').style.top;
-                        margint = parseInt(margint.replace("px", ""));
-                        marginl = document.getElementById('ctrl1').style.left;
-                        marginl = parseInt(marginl.replace("px", ""));
-
-
-                        if (currentl >= marginl && currentl <= (marginl + 30) || currentt >= margint && (currentt <= margint + 30)) {
-                            explosion.style.width = "30px";
-                            explosion.style.height = "30px";
-                            form1.removeChild(ctrl1);
-                            enemyhits = enemyhits + 1;
-                            document.getElementById('ehits').setAttribute("value", enemyhits);
-                            
-                            started = 0;
-                            fired = 0;
-
-                        }
-
-                        var myaddctrl = window.setTimeout(function () { addCtrl() }, 1000);
-                        if (started == 0) {
-                            function addCtrl() {
-                                if (started == 0) {
-                                    explosion.style.visibility = "hidden";
-                                    var ctrl = document.createElement('img');
-                                    ctrl.setAttribute("id", "ctrl1");
-                                    ctrl.setAttribute("src", "../../Images/fplane.gif");
-                                    ctrl.setAttribute("style", "width:80px; height:60px; position:relative; top: 307px; left: 215px; z-index: 2; right: 532px; visibility: visible: margin-left: 0px; margin-top: 0px");
-                                    form1.appendChild(ctrl);
-                                    started = 1
-
-                                }
-                            }
-                        }
-
-
-                    }
+                    explode();
+                    detectcollision();
+                   }
 
                 }
 
-
-            }
-
-
-
-        });
+            });
 
     </script>
 
 
     <style type="text/css">
         .twoto3d {
-            width: 667px;
-            height: 359px;
+            width: 704px;
+            height: 391px;
             position: relative;
             animation: mymove 0.05s infinite;
             -webkit-animation: mymove 0.25s infinite;
-            top: 92px;
-            left: 0px;
+            top: 171px;
+            left: 160px;
         }
 
         @keyframes mymove {
             from {
-                left: 0px;
+                left: 160px;
             }
 
             to {
-                left: 2px;
+                left: 162px;
             }
         }
 
         @-webkit-keyframes mymove /* Safari and Chrome */
         {
             from {
-                left: 0px;
+                left: 160px;
             }
 
             to {
-                left: 2px;
+                left: 162px;
             }
         }
 
@@ -464,7 +474,7 @@
             width: 661px;
         }
     </style>
-    <iframe id="player" height="390" src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=transparent&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0" style="z-index: 0; left: 69px; top: 171px; position: absolute; background-color: transparent" onkeydown="check(e)" class="twoto3d"></iframe>
+    <iframe id="player" src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=transparent&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0" style="z-index: 0; left: 160px; top: 171px; position: absolute; background-color: transparent" onkeydown="check(e)" class="twoto3d"></iframe>
 
 
 
@@ -472,39 +482,37 @@
 
     <form id="form1" runat="server">
 
-        <label style="position: absolute; top: -30px; left: -9px; height: 26px; width: 869px; z-index: 200"></label>
-        <label style="position: absolute; top: 20px; left: 15px; right: 773px; height: 19px;">Achievements   </label>
-        <label style="position: absolute; top: 20px; left: 169px; height: 19px; right: 671px;">Lives   </label>
-
-        <label id="lives" style="position: absolute; top: 20px; width: 39px; left: 211px; height: 19px;"></label>
-        <label style="position: absolute; top: 20px; left: 276px; height: 19px;">Crisboos   </label>
-        <label id="points" style="position: absolute; top: 20px; width: 81px; left: 341px; height: 19px;"></label>
-        <label style="position: absolute; top: 20px; left: 450px; height: 19px;">Treasure   </label>
-        <label id="treasure" style="position: absolute; top: 20px; width: 118px; left: 521px; height: 19px;"></label>
-
+        <label style="position: absolute; top: -23px; left: 14px; height: 26px; width: 869px; z-index: 200; color: #FFCC00;"></label>
+        <label style="position: absolute; top: 20px; left: 15px; right: 773px; height: 19px; color: #FFCC00;">Achievements   </label>
+        
+        <label style="position: absolute; top: 20px; left: 169px; height: 19px; right: 645px; color: #FFCC00;">Lives   </label>
+        <asp:TextBox ID="lives" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 218px; top: 23px; position: absolute; width: 45px" ForeColor="#FFCC00">10</asp:TextBox>
+        
+        <label style="position: absolute; top: 20px; left: 276px; height: 19px; color: #FFCC00;">Gold Coins   </label>
+        <asp:TextBox ID="points" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 368px; top: 23px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
+        
+        <label style="position: absolute; top: 20px; left: 450px; height: 19px; color: #FFCC00;">Treasure   </label>
+        <asp:TextBox ID="treasure" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 528px; top: 23px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
+        
+        
         <img id="crosshair" src="../../Images/crosshair.png" style="width: 33px; height: 25px; position: absolute; top: 223px; left: 403px; z-index: 202; right: 416px;">
-        <img id="explosion" src="../../Images/explosion.gif" style="width: 10px; height: 10px; position: absolute; top: 247px; left: 307px; z-index: 21; right: 532px; visibility: hidden; margin-left: 0px; margin-top: 0px;">
-
-
-
-
-
-
-        <a href='../Invite/friends.aspx'  style="position: absolute; top: 60px; width: 113px; right: 68px;">Invite Friends</a>
-
-        <a href="Tspot/buy" target="_self" style="position: absolute; left: 505px; top: 57px; width: 139px">Buy a TreasureSpot </a>
-
+        <img id="explosion" src="../../Images/explosion.gif" style="width: 10px; height: 10px; position: absolute; top: 247px; left: 307px; z-index: 21; right: 532px; visibility: hidden; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl1" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl2" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl3" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl4" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl5" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="player1" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="player2" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="player3" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="player4" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="player5" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        
+        
         <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"></asp:AccessDataSource>
 
 
         <asp:HiddenField ID="Hiddenfield1" runat="server"></asp:HiddenField>
-
-
-
-
-
-
-
 
 
 
@@ -520,8 +528,7 @@
             </Triggers>
         </asp:UpdatePanel>     
 
-        <a href="../Home/Cpanel/gamesettings" style="position: absolute; left: 793px; top: 96px; width: 91px; text-decoration: none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; text-align: center">My Game</a>
-        <asp:TextBox ID="ehits" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 107px; top: 20px; position: absolute; width: 45px"></asp:TextBox>
+        &nbsp;<asp:TextBox ID="ehits" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 104px; top: 23px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
 
 
         <asp:HiddenField ID="tsrplayershf" runat="server" />
@@ -536,5 +543,11 @@
 
     </form>
 
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 284px; top: 127px; position: absolute; right: 582px;" Target="_self" ForeColor="#FFCC00">Buy a Treasure Spot</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 574px; top: 127px; position: absolute; right: 294px;" Target="_self" ForeColor="#FFCC00">Buy a ToolBox Item</asp:hyperlink>
+     <asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/Invite/friends" style="z-index: 1; left: 444px; top: 127px; position: absolute" Target="_self" ForeColor="#FFCC00">Invite Friends</asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/Cpanel/gamesettings" style="z-index: 1; left: 724px; top: 127px; position: absolute" Target="_self" ForeColor="#FFCC00">My Game</asp:hyperlink>   
+
 </body>
+
 </html>
