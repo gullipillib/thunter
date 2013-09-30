@@ -61,7 +61,7 @@
         else
         {
 
-            Response.Redirect("http://apps.facebook.com/gullipilli");
+            Response.Redirect("~/Tspot/buy");
         }
     }
     string tsname = "";
@@ -83,13 +83,15 @@
         {
             Random one = new Random();
             int t1 = one.Next(1, dt.Rows.Count);
-            tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
-            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-            tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
-            tsdplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
-            tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
-            tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
-            
+            if (dt.Rows.Count == 0)
+            {
+                tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
+                tsdplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
+                tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
+                tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
+            }
             // done till here
         }
         if (dt.Rows.Count == 0)
@@ -141,16 +143,24 @@
         var fcount = Model.Friends.Data.Count;
         if (fcount >= 5)
         {
-            int r1 = one.Next(1, Model.Friends.Data.Count);
-            Application["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
-            int r2 = one.Next(2, Model.Friends.Data.Count);
-            Application["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
-            int r3 = one.Next(3, Model.Friends.Data.Count);
-            Application["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
-            int r4 = one.Next(4, Model.Friends.Data.Count);
-            Application["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
-            int r5 = one.Next(5, Model.Friends.Data.Count);
-            Application["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
+            if (Model.Friends.Data.Count != 0)
+            {
+                int r1 = one.Next(1, Model.Friends.Data.Count);
+                Application["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
+                Application["friend1pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r2 = one.Next(2, Model.Friends.Data.Count);
+                Application["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
+                Application["friend2pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r3 = one.Next(3, Model.Friends.Data.Count);
+                Application["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
+                Application["friend3pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r4 = one.Next(4, Model.Friends.Data.Count);
+                Application["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
+                Application["friend4pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r5 = one.Next(5, Model.Friends.Data.Count);
+                Application["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
+                Application["friend5pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+            }
             
         }
         else
@@ -176,9 +186,11 @@
             DataTable dt = new DataTable();
             dt = dv.ToTable();
             DataView uniname = dt.DefaultView;
-            logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
-            btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
-
+            if (dt.Rows.Count == 0)
+            {
+                logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
+                btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
+            }
             if (logintimes != "0" && btspots == "0")
             {
                 //Timer1.Enabled = true;
@@ -215,7 +227,7 @@
 </head>
 
 
-<body  style="height: 587px; overflow: hidden; background-color:#000000">
+<body  style="height: 796px; overflow: hidden; background-color:#000000; width: 967px;" >
     <script type="text/javascript">
         
         var enemyhits = 0;
@@ -224,19 +236,24 @@
        
 
         document.addEventListener('DOMContentLoaded', function () {
+            Text1.focus();
+            function moveprop(e) {
+                crosshair.style.left = Math.round(e.clientX) + "px";
+                crosshair.style.top = Math.round(e.clientY) + "px";
+            }
 
             var myaddctrl = window.setInterval(function () { randomCtrl() }, 20000);
             function randomCtrl() {
-                ctrl1.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160) + "px";
-                ctrl1.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160)   + "px";
-                ctrl2.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160)  + "px";
-                ctrl2.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160) + "px";
-                ctrl3.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160) + "px";
-                ctrl3.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160) + "px";
-                ctrl4.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160) + "px";
-                ctrl4.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160) + "px";
-                ctrl5.style.left = Math.floor(Math.random() * (750 - 160 + 1) + 160) + "px";
-                ctrl5.style.top = Math.floor(Math.random() * (455 - 171 + 1) + 160) + "px";
+                ctrl1.style.left = Math.floor(Math.random() * (882 - 175 + 1) + 175) + "px";
+                ctrl1.style.top = Math.floor(Math.random() * (570 - 204 + 1) + 183)   + "px";
+                ctrl2.style.left = Math.floor(Math.random() * (882 - 175 + 1) + 175) + "px";
+                ctrl2.style.top = Math.floor(Math.random() * (570 - 204 + 1) + 183) + "px";
+                ctrl3.style.left = Math.floor(Math.random() * (882 - 175 + 1) + 175) + "px";
+                ctrl3.style.top = Math.floor(Math.random() * (570 - 204 + 1) + 183) + "px";
+                ctrl4.style.left = Math.floor(Math.random() * (882 - 175 + 1) + 175) + "px";
+                ctrl4.style.top = Math.floor(Math.random() * (570 - 204 + 1) + 183) + "px";
+                ctrl5.style.left = Math.floor(Math.random() * (882 - 175 + 1) + 175) + "px";
+                ctrl5.style.top = Math.floor(Math.random() * (570 - 204 + 1) + 183) + "px";
             }
 
             var myaddctrl = window.setInterval(function () { hitme() }, 10000);
@@ -272,22 +289,42 @@
                 if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl1.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl1.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl1.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl1.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     document.getElementById('ehits').setAttribute("value", enemyhits);
+                    friendimage.style.visibility = "visible";
+                    friendname.style.visibility = "visible";
+                    friendimage.src = '<%=Convert.ToString(Application["friend1pic"])%>';
+                    friendname.value = '<%=Application["friend1"]%>'; 
                 }
                 if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl2.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl2.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl2.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl2.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     document.getElementById('ehits').setAttribute("value", enemyhits);
+                    friendimage.style.visibility = "visible";
+                    friendname.style.visibility = "visible";
+                    friendimage.src = '<%=Convert.ToString(Application["friend2pic"])%>';
+                    friendname.value = '<%=Application["friend2"]%>'; 
                 }
                 if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl3.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl3.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl3.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl3.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     document.getElementById('ehits').setAttribute("value", enemyhits);
+                    friendimage.style.visibility = "visible";
+                    friendname.style.visibility = "visible";
+                    friendimage.src = '<%=Convert.ToString(Application["friend3pic"])%>';
+                    friendname.value = '<%=Application["friend3"]%>'; 
                 }
                 if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl4.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl4.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl4.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl4.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     document.getElementById('ehits').setAttribute("value", enemyhits);
+                    friendimage.style.visibility = "visible";
+                    friendname.style.visibility = "visible";
+                    friendimage.src = '<%=Convert.ToString(Application["friend4pic"])%>';
+                    friendname.value = '<%=Application["friend4"]%>'; 
                 }
                 if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl5.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl5.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl5.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl5.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     document.getElementById('ehits').setAttribute("value", enemyhits);
+                    friendimage.style.visibility = "visible";
+                    friendname.style.visibility = "visible";
+                    friendimage.src = '<%=Convert.ToString(Application["friend5pic"])%>';
+                    friendname.value = '<%=Application["friend5"]%>'; 
                 }
                 }
 
@@ -310,34 +347,34 @@
 
             var myaddctrl = window.setInterval(function () { moveCtrl() }, 2000);
             function moveCtrl() {
-                if (parseInt(ctrl1.style.left.replace("px", "")) > 160 && parseInt(ctrl1.style.left.replace("px", "")) < 750) {
+                if (parseInt(ctrl1.style.left.replace("px", "")) > 175 && parseInt(ctrl1.style.left.replace("px", "")) < 704) {
                     ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", "")) + 5 + "px";
                 }
-                if (parseInt(ctrl1.style.top.replace("px", "")) > 171 && parseInt(ctrl1.style.top.replace("px", "")) < 455) {
+                if (parseInt(ctrl1.style.top.replace("px", "")) > 205 && parseInt(ctrl1.style.top.replace("px", "")) < 570) {
                     ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", "")) - 5 + "px";
                 }
-                if (parseInt(ctrl2.style.left.replace("px", "")) > 160 && parseInt(ctrl2.style.left.replace("px", "")) < 750) {
+                if (parseInt(ctrl2.style.left.replace("px", "")) > 175 && parseInt(ctrl2.style.left.replace("px", "")) < 704) {
                     ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", "")) + 5 + "px";
                 }
-                if (parseInt(ctrl2.style.top.replace("px", "")) > 171 && parseInt(ctrl2.style.top.replace("px", "")) < 455) {
+                if (parseInt(ctrl2.style.top.replace("px", "")) > 205 && parseInt(ctrl2.style.top.replace("px", "")) < 570) {
                     ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", "")) + 5 + "px";
                 }
-                if (parseInt(ctrl3.style.left.replace("px", "")) > 160 && parseInt(ctrl3.style.left.replace("px", "")) < 750) {
+                if (parseInt(ctrl3.style.left.replace("px", "")) > 175 && parseInt(ctrl3.style.left.replace("px", "")) < 704) {
                     ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", "")) + 5 + "px";
                 }
-                if (parseInt(ctrl3.style.top.replace("px", "")) > 171 && parseInt(ctrl3.style.top.replace("px", "")) < 455) {
+                if (parseInt(ctrl3.style.top.replace("px", "")) > 205 && parseInt(ctrl3.style.top.replace("px", "")) < 570) {
                     ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", "")) + 5 + "px";
                 }
-                if (parseInt(ctrl4.style.left.replace("px", "")) > 160 && parseInt(ctrl4.style.left.replace("px", "")) < 750) {
+                if (parseInt(ctrl4.style.left.replace("px", "")) > 175 && parseInt(ctrl4.style.left.replace("px", "")) < 704) {
                     ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", "")) + 5 + "px";
                 }
-                if (parseInt(ctrl4.style.top.replace("px", "")) > 171 && parseInt(ctrl4.style.top.replace("px", "")) < 455) {
+                if (parseInt(ctrl4.style.top.replace("px", "")) > 205 && parseInt(ctrl4.style.top.replace("px", "")) < 570) {
                     ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", "")) + 5 + "px";
                 }
-                if (parseInt(ctrl5.style.left.replace("px", "")) > 160 && parseInt(ctrl5.style.left.replace("px", "")) < 750) {
+                if (parseInt(ctrl5.style.left.replace("px", "")) > 175 && parseInt(ctrl5.style.left.replace("px", "")) < 704) {
                     ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", "")) + 5 + "px";
                 }
-                if (parseInt(ctrl5.style.top.replace("px", "")) > 171 && parseInt(ctrl5.style.top.replace("px", "")) < 455) {
+                if (parseInt(ctrl5.style.top.replace("px", "")) > 205 && parseInt(ctrl5.style.top.replace("px", "")) < 570) {
                     ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", "")) + 5 + "px";
                 }
             }
@@ -351,7 +388,7 @@
                 if (code == 37) {
 
                     
-                    if (parseInt(crosshair.style.left.replace("px", "")) > 160) {
+                    if (parseInt(crosshair.style.left.replace("px", "")) > 175) {
                         //marginl = crosshair.style.left;
                         //currentl = parseInt(marginl.replace("px", ""));
                         //crosshair.style.left = currentl - 10 + "px";
@@ -362,7 +399,7 @@
 
                 if (code == 39) {
 
-                    if (parseInt(crosshair.style.left.replace("px", "")) < 750) {
+                    if (parseInt(crosshair.style.left.replace("px", "")) < 704) {
                         //currentl = parseInt(marginl.replace("px", ""));
                         //crosshair.style.left = currentl + 10 + "px";
                         //marginl = crosshair.style.left;
@@ -373,7 +410,7 @@
                 if (code == 38) {
 
                     
-                    if (parseInt(crosshair.style.top.replace("px", "")) > 172) {
+                    if (parseInt(crosshair.style.top.replace("px", "")) > 183) {
                         //marginl = crosshair.style.top;
                         //currentl = parseInt(marginl.replace("px", ""));
                         //crosshair.style.top = currentl - 10 + "px";
@@ -385,7 +422,7 @@
 
                 if (code == 40) {
 
-                    if (parseInt(crosshair.style.top.replace("px", "")) < 455) {
+                    if (parseInt(crosshair.style.top.replace("px", "")) < 704) {
                         //marginl = crosshair.style.top;
                         //currentl = parseInt(marginl.replace("px", ""));
                         //crosshair.style.top = currentl + 10 + "px";
@@ -417,28 +454,28 @@
             position: relative;
             animation: mymove 0.05s infinite;
             -webkit-animation: mymove 0.25s infinite;
-            top: 171px;
-            left: 160px;
+            top: 204px;
+            left: 35px;
         }
 
         @keyframes mymove {
             from {
-                left: 160px;
+                left: 178px;
             }
 
             to {
-                left: 162px;
+                left: 180px;
             }
         }
 
         @-webkit-keyframes mymove /* Safari and Chrome */
         {
             from {
-                left: 160px;
+                left: 178px;
             }
 
             to {
-                left: 162px;
+                left: 180px;
             }
         }
 
@@ -460,10 +497,10 @@
         #form1 {
             z-index: 1;
             left: 10px;
-            top: 34px;
+            top: 15px;
             position: absolute;
-            height: 29px;
-            width: 852px;
+            height: 581px;
+            width: 948px;
         }
 
         #vplayer {
@@ -473,40 +510,47 @@
             position: absolute;
             width: 661px;
         }
+        #Text1 {
+            z-index: 1;
+            left: 740px;
+            top: 80px;
+            position: absolute;
+            right: 80px;
+        }
     </style>
-    <iframe id="player" src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=transparent&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0" style="z-index: 0; left: 160px; top: 171px; position: absolute; background-color: transparent" onkeydown="check(e)" class="twoto3d"></iframe>
+    <iframe id="player"    src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=window&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0&disablekb=1" style="z-index: 0; left: 178px; top: 183px; position: absolute; background-color: transparent" onkeydown="check(e)" onmouseover="moveprop(e)" class="twoto3d"></iframe>
+    
 
 
 
 
+    <form id="form1"  onmouseover="moveprop(event)"  runat="server" style="z-index: 200">
 
-    <form id="form1" runat="server">
-
-        <label style="position: absolute; top: -23px; left: 14px; height: 26px; width: 869px; z-index: 200; color: #FFCC00;"></label>
-        <label style="position: absolute; top: 20px; left: 15px; right: 773px; height: 19px; color: #FFCC00;">Achievements   </label>
+        <label style="position: absolute; top: 4px; left: 116px; height: 23px; width: 733px; z-index: 200; color: #FFCC00;"></label>
+        <label style="position: absolute; top: 48px; left: 15px; right: 846px; height: 19px; color: #FFCC00;">Achievements   </label>
         
-        <label style="position: absolute; top: 20px; left: 169px; height: 19px; right: 645px; color: #FFCC00;">Lives   </label>
-        <asp:TextBox ID="lives" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 218px; top: 23px; position: absolute; width: 45px" ForeColor="#FFCC00">10</asp:TextBox>
+        <label style="position: absolute; top: 47px; left: 241px; height: 19px; right: 663px; color: #FFCC00;">Lives   </label>
+        <asp:TextBox ID="lives" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 308px; top: 50px; position: absolute; width: 45px" ForeColor="#FFCC00">10</asp:TextBox>
         
-        <label style="position: absolute; top: 20px; left: 276px; height: 19px; color: #FFCC00;">Gold Coins   </label>
-        <asp:TextBox ID="points" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 368px; top: 23px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
+        <label style="position: absolute; top: 47px; left: 406px; height: 19px; color: #FFCC00;">Gold Coins   </label>
+        <asp:TextBox ID="points" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 508px; top: 49px; position: absolute; width: 107px" ForeColor="#FFCC00"></asp:TextBox>
         
-        <label style="position: absolute; top: 20px; left: 450px; height: 19px; color: #FFCC00;">Treasure   </label>
-        <asp:TextBox ID="treasure" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 528px; top: 23px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
+        <label style="position: absolute; top: 47px; left: 660px; height: 19px; color: #FFCC00;">Treasure   </label>
+        <asp:TextBox ID="treasure" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 748px; top: 47px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
         
         
-        <img id="crosshair" src="../../Images/crosshair.png" style="width: 33px; height: 25px; position: absolute; top: 223px; left: 403px; z-index: 202; right: 416px;">
+        <img id="crosshair"  src="../../Images/crosshair.png" style="width: 33px; height: 25px; position: absolute; top: 328px; left: 385px; z-index: 202; right: 434px;">
         <img id="explosion" src="../../Images/explosion.gif" style="width: 10px; height: 10px; position: absolute; top: 247px; left: 307px; z-index: 21; right: 532px; visibility: hidden; margin-left: 0px; margin-top: 0px;">&nbsp;
-        <img id="ctrl1" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
-        <img id="ctrl2" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
-        <img id="ctrl3" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
-        <img id="ctrl4" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
-        <img id="ctrl5" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl1"  src="../../Images/fplane.gif" style="width: 50px; height: 50px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl2"  src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 413px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl3"  src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl4"  src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 283px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="ctrl5"  src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 328px; left: 339px; z-index: 21; right: 483px; margin-left: 0px; margin-top: 0px;">&nbsp;
         <img id="player1" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
-        <img id="player2" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="player2" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 296px; left: 260px; z-index: 21; right: 562px; margin-left: 0px; margin-top: 0px;">&nbsp;
         <img id="player3" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
-        <img id="player4" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
-        <img id="player5" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 247px; left: 270px; z-index: 21; right: 532px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="player4" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">&nbsp;
+        <img id="player5" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 401px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px;">&nbsp;
         
         
         <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"></asp:AccessDataSource>
@@ -517,7 +561,8 @@
 
 
 
-         <asp:ScriptManager ID="ScriptManager1" runat="server">
+         <input id="Text1" style="background-color: transparent; text-decoration:none" type="text" />
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
@@ -528,7 +573,7 @@
             </Triggers>
         </asp:UpdatePanel>     
 
-        &nbsp;<asp:TextBox ID="ehits" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 104px; top: 23px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
+        &nbsp;<asp:TextBox ID="ehits" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 121px; top: 52px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
 
 
         <asp:HiddenField ID="tsrplayershf" runat="server" />
@@ -543,10 +588,13 @@
 
     </form>
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 284px; top: 127px; position: absolute; right: 582px;" Target="_self" ForeColor="#FFCC00">Buy a Treasure Spot</asp:hyperlink>
-    <asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 574px; top: 127px; position: absolute; right: 294px;" Target="_self" ForeColor="#FFCC00">Buy a ToolBox Item</asp:hyperlink>
-     <asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/Invite/friends" style="z-index: 1; left: 444px; top: 127px; position: absolute" Target="_self" ForeColor="#FFCC00">Invite Friends</asp:hyperlink>   
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/Cpanel/gamesettings" style="z-index: 1; left: 724px; top: 127px; position: absolute" Target="_self" ForeColor="#FFCC00">My Game</asp:hyperlink>   
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 224px; top: 127px; position: absolute; height: 29px; width:141px" Target="_self" ForeColor="#FFCC00">Buy a Treasure Spot</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 501px; top: 127px; position: absolute; right: 349px; width:141px" Target="_self" ForeColor="#FFCC00">Buy a ToolBox Item</asp:hyperlink>
+     <asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/Invite/friends" style="z-index: 1; left: 384px; top: 127px; position: absolute" Target="_self" ForeColor="#FFCC00">Invite Friends</asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/Cpanel/gamesettings" style="z-index: 1; left: 655px; top: 127px; position: absolute; width: 84px;" Target="_self" ForeColor="#FFCC00">My Game</asp:hyperlink>   
+
+    &nbsp;<img alt="" src="../../Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 53px; top: 235px; position: absolute;" id="friendimage" />
+    <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 38px; top: 338px; position: absolute; width: 91px;" type="text" />   
 
 </body>
 

@@ -49,7 +49,7 @@
         else
         {
             
-            Response.Redirect("http://apps.facebook.com/gullipilli");
+            Response.Redirect("~/Tspot/buy");
         }
     }
 

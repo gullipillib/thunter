@@ -15,8 +15,8 @@
     string btspots = "";
     string tscompleted = "";
     string tbcompleted = "";
-    
-    
+
+
     protected void checkusername()
     {
         Hiddenfield1.Value = Model.Name;
@@ -24,8 +24,8 @@
         Application["loggeduser"] = Model.Name;
         if (Hiddenfield1.Value != null)
         {
-            
-         //Insert User into appuser,loggeduser,ordercounter,treasureprize;
+
+            //Insert User into appuser,loggeduser,ordercounter,treasureprize;
             AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
 
             DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
@@ -51,31 +51,33 @@
                 AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1.Value + "','0')";
                 AccessDataSource1.Insert();
             }
-         
+
         }
         else
         {
-            
-            Response.Redirect("http://apps.facebook.com/gullipilli");
+
+            Response.Redirect("~/Tspot/buy");
         }
     }
-    
+
 
     public class FacebookFriend
     {
         public string name { get; set; }
         public string id { get; set; }
     }
-    
-    
-    
+
+
+
     protected void addfriends()
     {
         //IList myfriends = Model.Friends.Data.ToList();
         Random one = new Random();
-        int r1 = one.Next(1, Model.Friends.Data.Count);
-        Application["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
-        
+        if (Model.Friends.Data.Count != 0)
+        {
+            int r1 = one.Next(1, Model.Friends.Data.Count);
+            Application["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
+        }
     }
 
     protected void verifysettings()
@@ -87,19 +89,19 @@
         DataView uniname = dt.DefaultView;
         logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
         btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
-        
+
         if (logintimes == "0" && btspots == "0")
         {
             AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1.Value + "'";
             AccessDataSource1.Update();
             Response.Redirect("~/Play/play");
-            
-            
+
+
         }
-        
+
         AccessDataSource1.SelectCommand = "SELECT * FROM settings";
-       dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-         dt = new DataTable();
+        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        dt = new DataTable();
         dt = dv.ToTable();
         uniname = dt.DefaultView;
         invites = dt.Rows[0].Field<string>("invites"); //usethis to get field value
@@ -155,7 +157,7 @@
                 Response.Redirect("~/Tspot/buy");
             }
         }
-        
+
         AccessDataSource1.SelectCommand = "SELECT tbcompleted FROM toolbox where tbcompleted = 'no'";
         dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
@@ -169,14 +171,14 @@
                 Response.Redirect("~/Toolbox/tools");
             }
         }
-        
+
         if (logintimes == invites)
         {
             AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
             AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1.Value + "'";
             AccessDataSource1.Update();
             Response.Redirect("~/Invite/friends");
-            
+
         }
         if (logintimes == reset)
         {
@@ -184,7 +186,7 @@
             AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '3', luloggedin='no' where luname='" + Hiddenfield1.Value + "'";
             AccessDataSource1.Update();
             Response.Redirect("~/Tspot/buy");
-           
+
         }
 
         if (logintimes == "6" && btspots != tspots)
@@ -200,7 +202,7 @@
         AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
         AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1.Value + "'";
         AccessDataSource1.Update();
-        
+
     }
     
     protected void Page_Load(object sender, EventArgs e)
@@ -286,15 +288,15 @@ to {left:10px;}
 
 
       
-<a href='../../buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
-<a href='#' onclick="FacebookInviteFriends();" style="position:absolute;top:127px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 198px; height: 18px;">Invite Friends</a>
-<a href='Cpanel/gamesettings'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
+<a href='../../buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
+<a href='#' onclick="FacebookInviteFriends();" style="position:absolute; left:694px; top:127px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 190px; height: 18px;">Invite Friends</a>
+<a href='Cpanel/gamesettings'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
    <a href="Play/play" target="_self" style="position:absolute;left:252px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 496px; text-align: center;" > Go On a TreasureHunt </a> 
    
-    <a href="Tspot/buy" target="_self" style="position:absolute;left:414px; top:126px; width:126px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 360px;" > Buy a Treasure Spot </a> 
-    <a href="Tspot/buy" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
+    <a href="Tspot/buy" target="_self" style="position:absolute;left:414px; top:126px; width:126px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 360px;" > Buy a Treasure Spot </a> 
+    <a href="Tspot/buy" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
 
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 11px; top: 202px; position: absolute; width: 822px; height: 110px; bottom: 296px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many crisboos as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt."></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 11px; top: 202px; position: absolute; width: 822px; height: 110px; bottom: 296px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many gold coins as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt."></asp:Label>
         <asp:Label ID="Label4" runat="server" Font-Bold="True" style="z-index: 1; left: 293px; top: 96px; position: absolute" Text="Interactive Gaming with Fun Filled Places and Adventure"></asp:Label>
         
     <p>
@@ -320,8 +322,8 @@ to {left:10px;}
                 <br />
                 <asp:Label ID="unameLabel" runat="server" Text='<%# Eval("uname") %>' />
                 <br />
-                <asp:Label ID="crisboosLabel" runat="server" Text='<%# Eval("crisboos") %>' />
-                
+                <asp:Label ID="crisboosLabel" runat="server" Text='<%# Eval("crisboos") %>'  />
+                <asp:Label ID="Label8" runat="server" Text="Gold Coins"  />
             </ItemTemplate>
             <SelectedItemStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
         </asp:DataList>
@@ -334,8 +336,9 @@ to {left:10px;}
                 Name
                 <asp:Label ID="unameLabel" runat="server" Text='<%# Eval("uname") %>' />
                 <br />
-                Amount
+                Amount($)
                 <asp:Label ID="amountLabel" runat="server" Text='<%# Eval("amount") %>' />
+                
                 <br />
                 <br />
             </ItemTemplate>

@@ -46,7 +46,7 @@
         else
         {
 
-            Response.Redirect("http://apps.facebook.com/gullipilli");
+            Response.Redirect("~/Tspot/buy");
         }
     }
 
@@ -82,7 +82,7 @@ if (!Page.IsPostBack)
 
     //mySqlCommand.Dispose();
     //mySqlConnection.Dispose();
-    Microsoft.Web.Helpers.Video.Flash("http://www.youtube.com/v/XAbMQx-D7rE");
+    //Microsoft.Web.Helpers.Video.Flash("http://www.youtube.com/v/XAbMQx-D7rE");
    
 }  
         

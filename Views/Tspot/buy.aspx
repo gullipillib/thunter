@@ -3,7 +3,7 @@
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
-<%@ Import Namespace="PayPal" %>
+
 
 <!DOCTYPE html>
 <script runat="server">
@@ -21,46 +21,46 @@ string invites = "";
 string reset = "";
 string btspots = "";
 
-protected void checkusername()
-{
-    Hiddenfield1.Value = Model.Name;
-    Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
-    if (Hiddenfield1.Value != null)
-    {
+//protected void checkusername()
+//{
+//    Hiddenfield1.Value = Model.Name;
+//    Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
+//    if (Hiddenfield1.Value != null)
+//    {
 
-        //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-        AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
+//        //Insert User into appuser,loggeduser,ordercounter,treasureprize;
+//        AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
 
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        DataTable dt = new DataTable();
-        dt = dv.ToTable();
-        //DataTable dtr = dt;
-        //DataRow[] uniname = dtr.Select("uname");
-        //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
-        //Label3.Text = dt.Rows[0][0].ToString();
-        if (dt.Rows.Count == 0)
-        {
-            //Insert User into appuser,loggeduser,ordercounter,winners;
-            AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1.Value + "', 'no', 'no', '0', 'no', '0', '')";
-            AccessDataSource1.Insert();
-            AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-            AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1.Value + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
-            AccessDataSource1.Insert();
-            AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-            AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1.Value + "','0')";
-            AccessDataSource1.Insert();
-            AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-            AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1.Value + "','0')";
-            AccessDataSource1.Insert();
-        }
+//        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+//        DataTable dt = new DataTable();
+//        dt = dv.ToTable();
+//        //DataTable dtr = dt;
+//        //DataRow[] uniname = dtr.Select("uname");
+//        //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
+//        //Label3.Text = dt.Rows[0][0].ToString();
+//        if (dt.Rows.Count == 0)
+//        {
+//            //Insert User into appuser,loggeduser,ordercounter,winners;
+//            AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1.Value + "', 'no', 'no', '0', 'no', '0', '')";
+//            AccessDataSource1.Insert();
+//            AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+//            AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1.Value + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
+//            AccessDataSource1.Insert();
+//            AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+//            AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1.Value + "','0')";
+//            AccessDataSource1.Insert();
+//            AccessDataSource1.SelectCommand = "SELECT * FROM winners";
+//            AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1.Value + "','0')";
+//            AccessDataSource1.Insert();
+//        }
 
-    }
-    else
-    {
+//    }
+//    else
+//    {
 
-        Response.Redirect("http://apps.facebook.com/gullipilli");
-    }
-}
+//        Response.Redirect("~/Play/play");
+//    }
+//}
 
 
 
@@ -77,7 +77,7 @@ protected void Page_Load(object sender, EventArgs e)
     }
     
     
-    checkusername();
+    //checkusername();
     Label8.Text = Convert.ToString(Application["tbprice"]);
     Label10.Text = Convert.ToString(Application["toolboxname"]);
     Label13.Text = Convert.ToString(Application["tspotname"]);
@@ -196,99 +196,45 @@ protected void Button2_Click(object sender, EventArgs e)
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>buy</title>
+    
+    <style type="text/css">
+        #orderno1 {
+            z-index: 1;
+            left: 701px;
+            top: -114px;
+            position: absolute;
+        }
+    </style>
+    
 </head>
 <body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px" >
   
     
-      
-    <form id="form1" runat="server">
-            
-       
-             
-        
-        <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 201px; top: 107px; position: absolute; width: 236px" Text="Buy at mygame premade treasurespots"></asp:Label>
-       
-        
-        <div style="position: absolute; border: medium solid #000000; top: 174px; left: 10px; width: 360px; height: 310px;">
-            <h2 style="width: 258px; position: absolute; top: 13px; left: 77px;">Buy New Treasure Spot</h2>
-            <button onclick="buy()" style="z-index: 1; left: 10px; top: 156px; position: absolute; width: 181px; height: 32px;">Buy By Payment System</button>
-            <img alt="" src="../../Images/coin.png" style="width: 57px; height: 27px; z-index: 1; left: 8px; top: 10px; position: absolute;" />
-            <label id="fb-ui-return-data" style="position: absolute; top: 269px; width: 306px; left: 9px; height: 31px;"></label>
-
-            
-            <button onclick="earn_currency()" style="z-index: 1; left: 49px; top: 223px; position: absolute">By Promotions</button>
-            <button onclick="free_currency()" style="z-index: 1; left: 339px; top: -46px; position: absolute; width: 120px;">Get Free Currency</button>
-        
-
-            <label style="z-index: 1; left: 12px; top: 47px; position: absolute; height: 77px; width: 307px;">
-                You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
-               Price : $5
-            </label>
-            
-           
-            &nbsp;<asp:Label ID="Label3" runat="server" Style="z-index: 1; left: 28px; top: 131px; position: absolute; width: 218px" Text="Buy a New Treasure Spot Now " Font-Bold="True"></asp:Label>
-            <asp:Label ID="Label4" runat="server" Style="z-index: 1; left: 218px; top: 167px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
-            <asp:Label ID="Label5" runat="server" Style="z-index: 1; left: 100px; top: 199px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
-        </div>
-        <button onclick="buybid()" style="z-index: 1; left: 400px; top: 351px; position: absolute; width: 184px;">Buy By Payment System</button>
-        <div style="position: absolute; border: medium solid #000000; top: 171px; left: 391px; width: 396px; height: 310px;">
-            <h2 style="width: 319px; position: absolute; top: 12px; left: 55px;">Buy A Bid/Sale Treasure Spot</h2>
-            <img alt="" src="../../Images/bid.png" style="z-index: 1; left: 4px; top: 12px; position: absolute; right: 308px;" />
-            <label style="z-index: 1; left: 68px; top: 52px; position: absolute; height: 18px; width: 289px; bottom: 240px;">Your Bid or Sale has been approved buy now</label>
-            <label id="fb-ui-return-data2" style="position: absolute; top: 230px; width: 306px; left: 20px; height: 61px;"></label>
-            
-            <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 16px; top: 85px; position: absolute" Text="Item Name"></asp:Label>
-            <asp:Label ID="Label12" runat="server" style="z-index: 1; left: 21px; top: 113px; position: absolute" Text="Price($)"></asp:Label>
-            <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 103px; top: 85px; position: absolute"></asp:Label>
-            <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 104px; top: 116px; position: absolute"></asp:Label>
-            
-        </div>
-         <div style="position: absolute; border: medium solid #000000; top: 546px; left: 451px; width: 350px; height: 191px;">
-          <h2 style="width: 319px; position: absolute; top: 16px; left: 12px;">Buy A Bid/Sale ToolBox Item</h2>
-             <asp:Label ID="Label7" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
-             <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text=""></asp:Label>
-             <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 15px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
-             <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 117px; top: 59px; position: absolute; width: 211px"></asp:Label>
-         </div>  
-
-        <div style="position: absolute; border: medium solid #000000; top: 546px; left: 21px; width: 350px; height: 191px;">
-          <h2 style="width: 319px; position: absolute; top: 16px; left: 12px;">Buy A New ToolBox Item</h2>
-             <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
-             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text="3"></asp:Label>
-             <asp:Label ID="Label17" runat="server" style="z-index: 1; left: 15px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
-             <asp:Label ID="Label18" runat="server" style="z-index: 1; left: 117px; top: 59px; position: absolute; width: 211px">ToolBox Item</asp:Label>
-         </div>
-
-         <asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 695px; top: 33px; position: absolute"></asp:TextBox>
-
-
-        <a href="#" onclick="tp_earn(); return false;" style="border-color: #C0C0C0; z-index: 1; text-decoration:none; left: 272px; top: 342px; position: absolute; height: 22px; width: 92px">Earn Currency</a>
-
-
 
     <script type="text/javascript">
-    function tp_earn() {
-        TRIALPAY.fb.show_overlay("123405257731200",
-                                 "fbdirect",
-                                 {
-                                     tp_vendor_id: "CAAVVIRI",
-                                     callback_url: "http://www.acmesoft.com/tastymorsels/callback.php",
-                                     currency_url: "http://www.acmesoft.com/vc/coins.php",
-                                     sid: "7plK3xiCN5tkXO8uO6kgowfoI3U",
-                                     onTransact : "my_onTransact"
-                                 });
-    }
+        function tp_earn() {
+            TRIALPAY.fb.show_overlay("123405257731200",
+                                     "fbdirect",
+                                     {
+                                         tp_vendor_id: "CAAVVIRI",
+                                         callback_url: "http://www.acmesoft.com/tastymorsels/callback.php",
+                                         currency_url: "http://www.acmesoft.com/vc/coins.php",
+                                         sid: "7plK3xiCN5tkXO8uO6kgowfoI3U",
+                                         onTransact: "my_onTransact",
+                                         zindex: "5"
+                                     });
+        }
 
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "//s-assets.tp-cdn.com/static3/js/api/payment_overlay.js";
-    document.getElementsByTagName("body")[0].appendChild(script);
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "//s-assets.tp-cdn.com/static3/js/api/payment_overlay.js";
+        form1.appendChild(script);
 </script>
 
 
         <script src="https://connect.facebook.net/en_US/all.js"></script>
         <script>
-            var itemno = document.getElementById('orderno').getAttribute("value").toString;
+            var itemno =  orderno1.getAttribute("value").toString;
             FB.init({ appId: "123405257731200", status: true, cookie: true });
 
             // The dialog only opens if you've implemented the
@@ -300,7 +246,7 @@ protected void Button2_Click(object sender, EventArgs e)
                     product: 'https://treasurehunter.apphb.com/coin.html',
                     request_id: itemno
                 };
-                
+
                 FB.ui(obj, js_callback);
             }
 
@@ -312,7 +258,7 @@ protected void Button2_Click(object sender, EventArgs e)
                     product: 'https://treasurehunter.apphb.com/coin.html',
                     request_id: itemno
                 };
-                
+
                 FB.ui(obj, js_callback);
             }
 
@@ -383,6 +329,73 @@ protected void Button2_Click(object sender, EventArgs e)
             }
         </script>
 
+      
+    <form id="form1" runat="server">
+            
+       
+             
+        
+        <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 201px; top: 107px; position: absolute; width: 236px" Text="Buy at mygame premade treasurespots"></asp:Label>
+       
+        
+        <div style="position: absolute; border: medium solid #000000; top: 174px; left: 10px; width: 360px; height: 310px;">
+            <h2 style="width: 258px; position: absolute; top: 13px; left: 77px;">Buy New Treasure Spot</h2>
+            <button onclick="buy()" style="z-index: 1; left: 10px; top: 156px; position: absolute; width: 181px; height: 32px;">Buy By Payment System</button>
+            <img alt="" src="../../Images/coin.png" style="width: 57px; height: 27px; z-index: 1; left: 8px; top: 10px; position: absolute;" />
+            <label id="fb-ui-return-data" style="position: absolute; top: 269px; width: 306px; left: 9px; height: 31px;"></label>
+
+            
+            <button onclick="earn_currency()" style="z-index: 1; left: 49px; top: 223px; position: absolute">By Promotions</button>
+            <button onclick="free_currency()" style="z-index: 1; left: 339px; top: -46px; position: absolute; width: 120px;">Get Free Currency</button>
+        
+
+            <label style="z-index: 1; left: 12px; top: 47px; position: absolute; height: 77px; width: 307px;">
+                You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
+               Price : $5
+            </label>
+            <input id="orderno1" type="text" value="8" />
+           
+            &nbsp;<asp:Label ID="Label3" runat="server" Style="z-index: 1; left: 28px; top: 131px; position: absolute; width: 218px" Text="Buy a New Treasure Spot Now " Font-Bold="True"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Style="z-index: 1; left: 218px; top: 167px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Style="z-index: 1; left: 100px; top: 199px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
+        </div>
+        <button onclick="buybid()" style="z-index: 1; left: 400px; top: 351px; position: absolute; width: 184px;">Buy By Payment System</button>
+        <div style="position: absolute; border: medium solid #000000; top: 171px; left: 391px; width: 396px; height: 310px;">
+            <h2 style="width: 319px; position: absolute; top: 12px; left: 55px;">Buy A Bid/Sale Treasure Spot</h2>
+            <img alt="" src="../../Images/bid.png" style="z-index: 1; left: 4px; top: 12px; position: absolute; right: 308px;" />
+            <label style="z-index: 1; left: 68px; top: 52px; position: absolute; height: 18px; width: 289px; bottom: 240px;">Your Bid or Sale has been approved buy now</label>
+            <label id="fb-ui-return-data2" style="position: absolute; top: 230px; width: 306px; left: 20px; height: 61px;"></label>
+            
+            <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 16px; top: 85px; position: absolute" Text="Item Name"></asp:Label>
+            <asp:Label ID="Label12" runat="server" style="z-index: 1; left: 21px; top: 113px; position: absolute" Text="Price($)"></asp:Label>
+            <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 103px; top: 85px; position: absolute"></asp:Label>
+            <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 104px; top: 116px; position: absolute"></asp:Label>
+            
+        </div>
+         <div style="position: absolute; border: medium solid #000000; top: 546px; left: 451px; width: 350px; height: 191px;">
+          <h2 style="width: 319px; position: absolute; top: 16px; left: 12px;">Buy A Bid/Sale ToolBox Item</h2>
+             <asp:Label ID="Label7" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
+             <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text=""></asp:Label>
+             <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 15px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
+             <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 117px; top: 59px; position: absolute; width: 211px"></asp:Label>
+         </div>  
+
+        <div style="position: absolute; border: medium solid #000000; top: 546px; left: 21px; width: 350px; height: 191px;">
+          <h2 style="width: 319px; position: absolute; top: 16px; left: 12px;">Buy A New ToolBox Item</h2>
+             <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
+             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text="3"></asp:Label>
+             <asp:Label ID="Label17" runat="server" style="z-index: 1; left: 15px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
+             <asp:Label ID="Label18" runat="server" style="z-index: 1; left: 117px; top: 59px; position: absolute; width: 211px">ToolBox Item</asp:Label>
+         </div>
+
+         <asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 695px; top: 33px; position: absolute"></asp:TextBox>
+
+
+        <a href="#" onclick="tp_earn(); return false;" style="border-color: #C0C0C0; z-index: 1; text-decoration:none; left: 261px; top: 317px; position: absolute; height: 55px; width: 103px">&nbsp;Earn&nbsp; Free&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Currency</a>
+
+
+
+    
         
 
         <h1 style="width: 259px; position: absolute; top: 9px; left: 357px; font-weight: bold; font-size: 30px; color: #0000FF;">&nbsp;Treasure Hunter</h1>
@@ -409,6 +422,7 @@ protected void Button2_Click(object sender, EventArgs e)
 <asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/Cpanel/gamesettings" style="z-index: 1; left: 463px; top: 106px; position: absolute" Target="_self">My Game</asp:hyperlink>   
 
 
+
         <asp:HiddenField ID="HiddenField2" runat="server" />
 
 
@@ -426,8 +440,6 @@ protected void Button2_Click(object sender, EventArgs e)
       
             <asp:HiddenField ID="Hiddenfield1" runat="server"></asp:HiddenField>
         
-
-       
   
 
     </form>

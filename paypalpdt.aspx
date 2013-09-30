@@ -82,7 +82,7 @@
                     dt = dv.ToTable();
                     DataView uniname = dt.DefaultView;
                     string lutspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
-                    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + Convert.ToString(Application["loggeduser"]) + "'";
+                    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + Convert.ToString(Application["loggeduser"]) + "'";
                     AccessDataSource1.Update();
                     AccessDataSource1.SelectCommand = "SELECT * FROM payments";
                     AccessDataSource1.InsertCommand = "INSERT INTO payments(anount,uname) Values ('" + Convert.ToString(Convert.ToInt16(results["payment_gross"]) - 5 / 2) + "','" + Convert.ToString(Application["loggeduser"]) + "')";

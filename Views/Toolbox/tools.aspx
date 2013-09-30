@@ -49,7 +49,7 @@
         else
         {
             
-            Response.Redirect("http://apps.facebook.com/gullipilli");
+            Response.Redirect("~/Tspot/buy");
         }
     }
 
@@ -303,7 +303,7 @@
         <asp:Button ID="Button5" runat="server" Enabled="False" style="z-index: 1; left: 681px; top: 55px; position: absolute" Text="Back to Game " OnClick="Button5_Click" />
          <asp:AccessDataSource id="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT subcategoryname FROM subcategory"> </asp:AccessDataSource>
             <asp:AccessDataSource id="AccessDataSource4" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT othersname FROM others"> </asp:AccessDataSource>
-        <asp:AccessDataSource id="AccessDataSource6" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT crname FROM collisionresults"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource6" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT crname FROM collisionresult"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource7" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT cescname FROM collisionescape"> </asp:AccessDataSource>
 
 
@@ -340,12 +340,12 @@
         <asp:Button ID="Button4" runat="server" BackColor="Blue" ForeColor="White" style="z-index: 1; left: 668px; top: 588px; position: absolute" Text="Finalize" ToolTip="Only after all the fields are completed, finalization takes place" OnClick="Button4_Click" />
 
         <asp:Label ID="Label1" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 42px; top: 64px; position: absolute" Text="Name of Tool Box Item" ToolTip="Tool Box display Name"></asp:Label>
-        <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource4" DataTextField="othersname" DataValueField="othersname" style="z-index: 1; left: 221px; top: 182px; position: absolute; height: 31px; width: 270px" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="AccessDataSource4" DataTextField="othersname" DataValueField="othersname" style="z-index: 1; left: 221px; top: 182px; position: absolute; height: 31px; width: 270px" AutoPostBack="True">
         </asp:DropDownList>
         <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 31px; top: 186px; position: absolute" Text="Tools Sub Category"></asp:Label>
-        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="subcategoryname" DataValueField="subcategoryname" style="z-index: 1; left: 219px; top: 142px; position: absolute; height: 31px; width: 233px" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="AccessDataSource3" DataTextField="subcategoryname" DataValueField="subcategoryname" style="z-index: 1; left: 219px; top: 142px; position: absolute; height: 31px; width: 233px" AutoPostBack="True">
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="categoryname" DataValueField="categoryname" style="z-index: 1; left: 220px; top: 99px; position: absolute; height: 31px; width: 236px" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="AccessDataSource2" DataTextField="categoryname" DataValueField="categoryname" style="z-index: 1; left: 220px; top: 99px; position: absolute; height: 31px; width: 236px" AutoPostBack="True">
         </asp:DropDownList>
         <asp:DropDownList ID="DropDownList1" runat="server" style="z-index: 1; left: 260px; top: 376px; position: absolute; height: 21px; width: 135px" AutoPostBack="True">
             <asp:ListItem Selected="True">fixed</asp:ListItem>
@@ -370,10 +370,10 @@
     <asp:HyperLink ID="HyperLink2" runat="server" ForeColor="Red" NavigateUrl="http://eng.universal-soundbank.com" style="z-index: 1; left: 222px; top: 486px; position: absolute" Target="_blank">Sound Files link, copy only the url path do not download</asp:HyperLink>
         <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 34px; top: 519px; position: absolute; right: 766px" Text="Escape Collision"></asp:Label>
         <asp:Label ID="Label12" runat="server" style="z-index: 1; left: 39px; top: 554px; position: absolute" Text="Collision Result"></asp:Label>
-    </form>
+   
     <asp:hiddenfield ID="Hiddenfield1" runat="server"></asp:hiddenfield>
         
         <asp:AccessDataSource id="AccessDataSource5" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"> </asp:AccessDataSource>
-
+     </form>
 </body>
 </html>
