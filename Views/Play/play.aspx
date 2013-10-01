@@ -227,7 +227,7 @@
 </head>
 
 
-<body  style="height: 796px; overflow: hidden; background-color:#000000; width: 967px;" >
+<body  style="height: 796px; overflow: hidden; background-color:#000000; width: 967px;" onmouseover="moveprop(e)" onmousedown="explodeprop(e)" >
     <script type="text/javascript">
         
         var enemyhits = 0;
@@ -527,7 +527,7 @@
             right: 80px;
         }
     </style>
-    <iframe id="player"    src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=window&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0&disablekb=1" style="z-index: 0; left: 178px; top: 183px; position: absolute; background-color: transparent" onkeydown="check(e)" onmouseover="moveprop(e)" onmousedown="explodeprop(e)" class="twoto3d"></iframe>
+    <iframe id="player"    src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=window&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0&disablekb=1" style="z-index: 0; left: 178px; top: 183px; position: absolute; background-color: transparent" onkeydown="check(e)"  class="twoto3d"></iframe>
     
 
 
