@@ -237,10 +237,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             Text1.focus();
-            function moveprop(e) {
-                crosshair.style.left = Math.round(e.clientX) + "px";
-                crosshair.style.top = Math.round(e.clientY) + "px";
-            }
+            
 
             var myaddctrl = window.setInterval(function () { randomCtrl() }, 20000);
             function randomCtrl() {
@@ -380,10 +377,22 @@
             }
 
             document.addEventListener("keydown", check, false);
+            document.addEventListener("mousedown", check, false);
+            document.addEventListener("mouseover", check, false);
+
+            function moveprop(e) {
+                crosshair.style.left = Math.round(e.clientX) + "px";
+                crosshair.style.top = Math.round(e.clientY) + "px";
+            }
+
+            function explodeprop(e) {
+                explode();
+            }
 
             function check(e) {
                 var code = e.keyCode;
 
+                
 
                 if (code == 37) {
 
@@ -518,7 +527,7 @@
             right: 80px;
         }
     </style>
-    <iframe id="player"    src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=window&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0&disablekb=1" style="z-index: 0; left: 178px; top: 183px; position: absolute; background-color: transparent" onkeydown="check(e)" onmouseover="moveprop(e)" class="twoto3d"></iframe>
+    <iframe id="player"    src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=window&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0&disablekb=1" style="z-index: 0; left: 178px; top: 183px; position: absolute; background-color: transparent" onkeydown="check(e)" onmouseover="moveprop(e)" onmousedown="explodeprop(e)" class="twoto3d"></iframe>
     
 
 
