@@ -21,46 +21,46 @@ string invites = "";
 string reset = "";
 string btspots = "";
 
-//protected void checkusername()
-//{
-//    Hiddenfield1.Value = Model.Name;
-//    Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
-//    if (Hiddenfield1.Value != null)
-//    {
+protected void checkusername()
+{
+    Hiddenfield1.Value = Model.Name;
+    Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
+    if (Hiddenfield1.Value != null)
+    {
 
-//        //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-//        AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
+        //Insert User into appuser,loggeduser,ordercounter,treasureprize;
+        AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
 
-//        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-//        DataTable dt = new DataTable();
-//        dt = dv.ToTable();
-//        //DataTable dtr = dt;
-//        //DataRow[] uniname = dtr.Select("uname");
-//        //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
-//        //Label3.Text = dt.Rows[0][0].ToString();
-//        if (dt.Rows.Count == 0)
-//        {
-//            //Insert User into appuser,loggeduser,ordercounter,winners;
-//            AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1.Value + "', 'no', 'no', '0', 'no', '0', '')";
-//            AccessDataSource1.Insert();
-//            AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-//            AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1.Value + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
-//            AccessDataSource1.Insert();
-//            AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-//            AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1.Value + "','0')";
-//            AccessDataSource1.Insert();
-//            AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-//            AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1.Value + "','0')";
-//            AccessDataSource1.Insert();
-//        }
+        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        DataTable dt = new DataTable();
+        dt = dv.ToTable();
+        //DataTable dtr = dt;
+        //DataRow[] uniname = dtr.Select("uname");
+        //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
+        //Label3.Text = dt.Rows[0][0].ToString();
+        if (dt.Rows.Count == 0)
+        {
+            //Insert User into appuser,loggeduser,ordercounter,winners;
+            AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1.Value + "', 'no', 'no', '0', 'no', '0', '')";
+            AccessDataSource1.Insert();
+            AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+            AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1.Value + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
+            AccessDataSource1.Insert();
+            AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+            AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1.Value + "','0')";
+            AccessDataSource1.Insert();
+            AccessDataSource1.SelectCommand = "SELECT * FROM winners";
+            AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1.Value + "','0')";
+            AccessDataSource1.Insert();
+        }
 
-//    }
-//    else
-//    {
+    }
+    else
+    {
 
-//        Response.Redirect("~/Play/play");
-//    }
-//}
+        Response.Redirect("~/Homw/index1");
+    }
+}
 
 
 
@@ -75,9 +75,10 @@ protected void Page_Load(object sender, EventArgs e)
     {
         Application["tbprice"] = "10000";
     }
+
+
+    checkusername();
     
-    
-    //checkusername();
     Label8.Text = Convert.ToString(Application["tbprice"]);
     Label10.Text = Convert.ToString(Application["toolboxname"]);
     Label13.Text = Convert.ToString(Application["tspotname"]);
@@ -88,20 +89,33 @@ protected void Page_Load(object sender, EventArgs e)
     DataTable dt = new DataTable();
     dt = dv.ToTable();
     DataView uniname = dt.DefaultView;
-    logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
-    btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
-
-    if (btspots == "0")
+    if (dt.Rows.Count != 0)
     {
-        Hyperlink1.Enabled = false;
-    }
+        logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
+        btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
 
-    if (btspots != "0")
-    {
-        Hyperlink1.Enabled = true;
-        
+        if (btspots == "0")
+        {
+            Hyperlink1.Enabled = false;
+        }
+
+        if (btspots != "0")
+        {
+            Hyperlink1.Enabled = true;
+
+        }
     }
-    
+       
+    AccessDataSource1.SelectCommand = "SELECT ccounter, uname  FROM ordercounter where uname ='" + Hiddenfield1.Value + "'";
+    dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+    dt = new DataTable();
+    dt = dv.ToTable();
+    uniname = dt.DefaultView;
+    if (dt.Rows.Count != 0)
+    {
+        string ccounter = dt.Rows[0].Field<string>("ccounter"); //usethis to get field value
+        orderno.Text = ccounter;
+    }
 }
 
 protected void Button1_Click(object sender, EventArgs e)
@@ -177,6 +191,10 @@ protected void Button2_Click(object sender, EventArgs e)
         AccessDataSource1.SelectCommand = "SELECT * FROM tspots";
         AccessDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails) Values ('no','yes','5','buy','no','no',' ',' ',' ','no',' ',' ',' ','" + Hiddenfield1.Value + "','thbuy','" + HiddenField2.Value + "','no',' ',' ',' ',' ','no',' ',' ',' ',' ',' ',' ',' ')";
         AccessDataSource1.Insert();
+        AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+        AccessDataSource1.UpdateCommand = "UPDATE ordercounter SET ccounter = '" + Convert.ToString(Convert.ToInt16(orderno.Text) + 1) + "' where uname='" + Hiddenfield1.Value + "'";
+        AccessDataSource1.Update();
+        orderno.Text = Convert.ToString(Convert.ToInt16(orderno.Text) + 1);
         AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
         DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
@@ -234,7 +252,7 @@ protected void Button2_Click(object sender, EventArgs e)
 
         <script src="https://connect.facebook.net/en_US/all.js"></script>
         <script>
-            var itemno =  orderno1.getAttribute("value").toString;
+            var itemno = '<%=orderno.Text%>';
             FB.init({ appId: "123405257731200", status: true, cookie: true });
 
             // The dialog only opens if you've implemented the
@@ -340,7 +358,7 @@ protected void Button2_Click(object sender, EventArgs e)
         
         <div style="position: absolute; border: medium solid #000000; top: 174px; left: 10px; width: 360px; height: 310px;">
             <h2 style="width: 258px; position: absolute; top: 13px; left: 77px;">Buy New Treasure Spot</h2>
-            <button onclick="buy()" style="z-index: 1; left: 10px; top: 156px; position: absolute; width: 181px; height: 32px;">Buy By Payment System</button>
+            <button onclick="buy()" style="z-index: 1; left: 10px; top: 156px; position: absolute; width: 181px; height: 32px;">Buy By FB Payment System</button>
             <img alt="" src="../../Images/coin.png" style="width: 57px; height: 27px; z-index: 1; left: 8px; top: 10px; position: absolute;" />
             <label id="fb-ui-return-data" style="position: absolute; top: 269px; width: 306px; left: 9px; height: 31px;"></label>
 
@@ -359,7 +377,6 @@ protected void Button2_Click(object sender, EventArgs e)
             <asp:Label ID="Label4" runat="server" Style="z-index: 1; left: 218px; top: 167px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
             <asp:Label ID="Label5" runat="server" Style="z-index: 1; left: 100px; top: 199px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
         </div>
-        <button onclick="buybid()" style="z-index: 1; left: 400px; top: 351px; position: absolute; width: 184px;">Buy By Payment System</button>
         <div style="position: absolute; border: medium solid #000000; top: 171px; left: 391px; width: 396px; height: 310px;">
             <h2 style="width: 319px; position: absolute; top: 12px; left: 55px;">Buy A Bid/Sale Treasure Spot</h2>
             <img alt="" src="../../Images/bid.png" style="z-index: 1; left: 4px; top: 12px; position: absolute; right: 308px;" />
@@ -453,7 +470,7 @@ protected void Button2_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>--%>
 
-<form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 328px; left: 607px;" method="post" target="_top">
+<form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 328px; left: 557px;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="business" value="servicestwts@yahoo.com">
 <input type="hidden" name="lc" value="IN">

@@ -308,6 +308,8 @@ to {left:10px;}
         <asp:Label ID="Label5" runat="server" Font-Size="8pt" style="z-index: 1; left: 401px; top: 587px; position: absolute" Text="Treasure Hunter - 2013"></asp:Label>
         <asp:hiddenfield ID="Hiddenfield1" runat="server"></asp:hiddenfield>
         
+   <a href="Creator/create" target="_self" style="position:absolute;left:720px; top:155px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 143px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
+   
         <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1.Value%>')"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT TOP 5 winners.uname, winners.crisboos, loggedusers.luname, loggedusers.luimg FROM loggedusers,winners WHERE loggedusers.luname = winners.uname"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT TOP 5 uname, amount FROM payments Order by amount DESC"> </asp:AccessDataSource>

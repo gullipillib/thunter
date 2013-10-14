@@ -59,7 +59,7 @@
                 if (results["item_name"] == "Treasure Spot Buy")
                 {
                     AccessDataSource1.SelectCommand = "SELECT * FROM tspots";
-                    AccessDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails) Values ('no','yes','5','buy','no','no',' ',' ',' ','no',' ',' ',' ','" + Convert.ToString(Application["loggeduser"]) + "','thppbuy','paypal','no',' ',' ',' ',' ','no',' ',' ',' ',' ',' ',' ',' ')";
+                    AccessDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails, tspaylater, tsbidfailed, tscoowner) Values ('no','yes','5','buy','no','no',' ',' ',' ','no',' ',' ',' ','" + Convert.ToString(Application["loggeduser"]) + "','thppbuy','paypal','no',' ',' ',' ',' ','no',' ',' ',' ',' ',' ',' ',' ', ' ', ' ', '" + Convert.ToString(Application["loggeduser"]) + "'" )";
                     AccessDataSource1.Insert();
                     AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
                     DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
@@ -74,27 +74,68 @@
                 if (results["item_name"] == "Treasure Spot Bid")
                 {
                     AccessDataSource1.SelectCommand = "SELECT * FROM tspots";
-                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsprice = '" + results["payment_gross"] + "', tsselltype='', tsbid='no', tsbidder=' ', tsowner='" + Convert.ToString(Application["loggeduser"]) + "', tsproductid='thppbid', tsproducturl='paypal', tssell='no', tsbiddate=' ', tsaward='no' where tspotname='" + Convert.ToString(Application["tspotname"]) + "'";
+			
+    DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+    DataTable dt = new DataTable();
+    dt = dv.ToTable();
+    DataView uniname = dt.DefaultView;
+    if (dt.Rows.Count != 0)
+    {
+        string tsowner = dt.Rows[0].Field<string>("tsowner"); //usethis to get field value
+        string tscoowner = dt.Rows[0].Field<string>("tscoowner"); //usethis to get field value
+	if (tsowner != "TresureHunter")
+{
+                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsprice = '" + results["payment_gross"] + "', tsselltype='', tsbid='no', tsbidder=' ', tsowner='" + Convert.ToString(Application["loggeduser"]) + "', tsproductid='thppbid', tsproducturl='paypal', tssell='no', tsbiddate=' ', tsaward='no', tscowner='" + Convert.ToString(Application["loggeduser"]) + "' where tspotname='" + Convert.ToString(Application["tspotname"]) + "'";
                     AccessDataSource1.Update();
-                    AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
-                    DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-                    DataTable dt = new DataTable();
+                    AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers where luname='" + Convert.ToString(Application["loggeduser"]) + "'" ;
+                    dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                    dt = new DataTable();
                     dt = dv.ToTable();
-                    DataView uniname = dt.DefaultView;
+                    uniname = dt.DefaultView;
                     string lutspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
                     AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + Convert.ToString(Application["loggeduser"]) + "'";
+                    AccessDataSource1.Update();
+			        AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers where luname='" + tsowner + "'" ;
+                    dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                    dt = new DataTable();
+                    dt = dv.ToTable();
+                    uniname = dt.DefaultView;
+                    lutspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
+			        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + Convert.ToString(Convert.ToInt16(lutspots) - 1) + "' where luname='" + tsowner + "'";
                     AccessDataSource1.Update();
                     AccessDataSource1.SelectCommand = "SELECT * FROM payments";
                     AccessDataSource1.InsertCommand = "INSERT INTO payments(anount,uname) Values ('" + Convert.ToString(Convert.ToInt16(results["payment_gross"]) - 5 / 2) + "','" + Convert.ToString(Application["loggeduser"]) + "')";
                     AccessDataSource1.Insert();
                     Label1.Text = "You have purchased " + Convert.ToString(Application["tspotname"]);
                     
-                }
+}
+if (tsowner == "TresureHunter")
+{
+                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsprice = '" + results["payment_gross"] + "', tsselltype='', tsbid='no', tsbidder=' ', tsowner='" + "TreasureHunter" + "', tsproductid='thppbid', tsproducturl='paypal', tssell='no', tsbiddate=' ', tsaward='no', tscowner='" + tscoowner + ", " + Convert.ToString(Application["loggeduser"]) + "' where tspotname='" + Convert.ToString(Application["tspotname"]) + "'";
+                    AccessDataSource1.Update();
+                    AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
+                    dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                    dt = new DataTable();
+                    dt = dv.ToTable();
+                    uniname = dt.DefaultView;
+                    string lutspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
+                    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + Convert.ToString(Application["loggeduser"]) + "'";
+                    AccessDataSource1.Update();
+
+                    AccessDataSource1.SelectCommand = "SELECT * FROM payments";
+                    AccessDataSource1.InsertCommand = "INSERT INTO payments(anount,uname) Values ('" + Convert.ToString(Convert.ToInt16(results["payment_gross"]) - 5 / 2) + "','" + Convert.ToString(Application["loggeduser"]) + "')";
+                    AccessDataSource1.Insert();
+                    Label1.Text = "You have purchased " + Convert.ToString(Application["tspotname"]);
+                    
+}
+
+}                
+}
 
                 if (results["item_name"] == "ToolBox Item Buy")
                 {
                     AccessDataSource1.SelectCommand = "SELECT * FROM toolbox";
-                    AccessDataSource1.InsertCommand = "INSERT INTO toolbox(tbcompleted,tbnew,tbprice,tbselltype,tbactive,tbapproved,tbapprover1,tbapprover2,tbapprover3,tbbid,tbbidder,tbdetails,tbname,tbowner,tbinvoice,tbreported,tbreportcomments,tba1status,tba2status,tba3status,tbsell,tbreportaddress,tbbiddate,tbaward) Values ('no','yes','5','buy','no','no',' ',' ',' ','no',' ',' ',' ','" + Convert.ToString(Application["loggeduser"]) + "','thtbbuy','no',' ',' ',' ',' ','no',' ',' ',' ')";
+                    AccessDataSource1.InsertCommand = "INSERT INTO toolbox(tbcompleted,tbnew,tbprice,tbselltype,tbactive,tbapproved,tbapprover1,tbapprover2,tbapprover3,tbbid,tbbidder,tbdetails,tbname,tbowner,tbinvoice,tbreported,tbreportcomments,tba1status,tba2status,tba3status,tbsell,tbreportaddress,tbbiddate,tbaward, tbimgurl, tbpaylater, tbbidfailed, tbcoowner) Values ('no','yes','5','buy','no','no',' ',' ',' ','no',' ',' ',' ','" + Convert.ToString(Application["loggeduser"]) + "','thtbbuy','no',' ',' ',' ',' ','no',' ',' ',' ',' ',' ',' ','" + Convert.ToString(Application["loggeduser"]) + "'")";
                     AccessDataSource1.Insert();
                     Response.Redirect("~/Toolbox/tools");
                 }
@@ -102,7 +143,7 @@
                 if (results["item_name"] == "ToolBox Item Bid")
                 {
                     AccessDataSource1.SelectCommand = "SELECT * FROM toolbox";
-                    AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbprice = '" + results["payment_gross"] + "', tbselltype='', tbbid='no', tbbidder=' ', tbowner='" + Convert.ToString(Application["loggeduser"]) + "', tbproductid='thppbid', tbproducturl='paypal', tbsell='no', tbbiddate=' ', tbaward='no' where toolboxname='" + Convert.ToString(Application["toolboxname"]) + "'";
+                    AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbprice = '" + results["payment_gross"] + "', tbselltype='', tbbid='no', tbbidder=' ', tbowner='" + "TreasureHunter" + "', tbproductid='thppbid', tbproducturl='paypal', tbsell='no', tbbiddate=' ', tbaward='no', tbcowner='" + Convert.ToString(Application["loggeduser"]) + "'  where toolboxname='" + Convert.ToString(Application["toolboxname"]) + "'";
                     AccessDataSource1.Update();
                     AccessDataSource1.SelectCommand = "SELECT * FROM payments";
                     AccessDataSource1.InsertCommand = "INSERT INTO payments(anount,uname) Values ('" + Convert.ToString(Convert.ToInt16(results["payment_gross"]) - 3 / 2) + "','" + Convert.ToString(Application["loggeduser"]) + "')";

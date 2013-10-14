@@ -104,10 +104,8 @@
         tempstring = json;
         if (TextBox1.Text != null && TextBox2.Text != null && TextBox3.Text != null && TextBox4.Text != null && TextBox5.Text != null && TextBox6.Text != null)
         {
-            AccessDataSource1.InsertCommand = "INSERT INTO toolbox(tbcategory, tbsubcategory, tbapproved, tbname, tbapprover1, tbapprover3, tbapprover2, tbsell, tbbid, tbbidder, tbprice, tbaward, tbreported, tbactive, tbowner, tbtoolscategory, tbnew, tbdetails, tbcompleted, tbinvoice) VALUES ('" + DropDownList2.SelectedValue + "', '" + DropDownList3.SelectedValue + "', 'yes', '" + TextBox1.Text + "', 'GullipilliBhaskar', 'GullipilliBhaskar', 'GullipilliBhaskar', 'no', 'no', 'none', 'none', 'no', 'no', 'yes', 'GullipilliBhaskar', '" + DropDownList4.SelectedValue + "', 'no', '" + tempstring + "', 'yes', '')";
-            AccessDataSource1.Insert();
-            //SqlDataSource1.UpdateCommand = "UPDATE toolbox SET tbcategory = 'land', tbsubcategory = 'friendly', tbname = 'health', tbtoolscategory = 'obstacles', new = 'no', tbdetails = '"+ tempstring + "', completed = 'yes' where tbowner='" + HiddenField1.Value + "'";
-            //SqlDataSource1.Update();
+            AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbcategory = '" + DropDownList2.SelectedValue + "', tbsubcategory = '" + DropDownList3.SelectedValue + "', tbname = '" + TextBox1.Text + "', tbcoowner = '" + Hiddenfield1.Value + "', new = 'no', tbdetails = '" + tempstring + "', tbtoolscategory = '" + DropDownList4.SelectedValue + "', tbimageurl = '" + TextBox2.Text  + "' where tbcoowner='" + Hiddenfield1.Value + "'";
+            AccessDataSource1.Update();
             Button5.Enabled = true;
         }
     }
@@ -201,15 +199,16 @@
     <meta name="viewport" content="width=device-width" />
     <title>tools</title>
 </head>
+    
+<body>
     <!-- Place this asynchronous JavaScript just before your </body> tag -->
-    <script type="text/javascript">
+<%--    <script type="text/javascript">
         (function () {
             var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
             po.src = 'https://apis.google.com/js/client:plusone.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
         })();
     </script>
-<body>
     <span id="signinButton">
   <span
     class="g-signin"
@@ -234,7 +233,7 @@
         function createPicker() {
             var view = new google.picker.View(google.picker.ViewId.FOLDERS);
             view.setMimeTypes("image/png,image/gif");
-
+            
 
 
             var picker = new google.picker.PickerBuilder()
@@ -246,6 +245,7 @@
                 .addView(new google.picker.DocsUploadView())
                 .setCallback(pickerCallback)
                 .setAuthUser("gullipillivj@gmail.com")
+                .setSelectableMimeTypes("gif")
                 .build();
             picker.setVisible(true);
         }
@@ -253,27 +253,30 @@
         // A simple callback implementation.
         function pickerCallback(data) {
             if (data.action == google.picker.Action.PICKED) {
-                var fileId = data.docs[0].id;
-                alert('The user selected: ' + fileId);
-                if (document.getElementById('HiddenField2').getAttribute("value") == "TextBox2") {
-                    document.getElementById('HiddenField3').setAttribute("value", "http://drive.google.com/uc?export=view&id=" + fileId);
-                    document.getElementById('Button1').setAttribute("Enabled", "false");
+                
+                    var fileId = data.docs[0].id;
+                    alert('The user selected: ' + fileId);
+                    if (document.getElementById('HiddenField2').getAttribute("value") == "TextBox2") {
+                        document.getElementById('HiddenField3').setAttribute("value", "http://drive.google.com/uc?export=view&id=" + fileId);
+                        document.getElementById('Button1').setAttribute("Enabled", "false");
+
+                    }
+                    if (document.getElementById('HiddenField2').getAttribute("value") == "TextBox3") {
+                        document.getElementById('HiddenField4').setAttribute("value", "http://drive.google.com/uc?export=view&id=" + fileId);
+                        document.getElementById('Button2').setAttribute("Enabled", "false");
+                    }
+                    if (document.getElementById('HiddenField2').getAttribute("value") == "TextBox4") {
+                        document.getElementById('HiddenField5').setAttribute("value", "http://drive.google.com/uc?export=view&id=" + fileId);
+                        document.getElementById('Button3').setAttribute("Enabled", "false");
+                    }
+                    document.getElementById('TextBox2').setAttribute("value", document.getElementById('HiddenField3').getAttribute("value"));
+                    document.getElementById('TextBox3').setAttribute("value", document.getElementById('HiddenField4').getAttribute("value"));
+                    document.getElementById('TextBox4').setAttribute("value", document.getElementById('HiddenField5').getAttribute("value"));
 
                 }
-                if (document.getElementById('HiddenField2').getAttribute("value") == "TextBox3") {
-                    document.getElementById('HiddenField4').setAttribute("value", "http://drive.google.com/uc?export=view&id=" + fileId);
-                    document.getElementById('Button2').setAttribute("Enabled", "false");
-                }
-                if (document.getElementById('HiddenField2').getAttribute("value") == "TextBox4") {
-                    document.getElementById('HiddenField5').setAttribute("value", "http://drive.google.com/uc?export=view&id=" + fileId);
-                    document.getElementById('Button3').setAttribute("Enabled", "false");
-                }
-                document.getElementById('TextBox2').setAttribute("value", document.getElementById('HiddenField3').getAttribute("value"));
-                document.getElementById('TextBox3').setAttribute("value", document.getElementById('HiddenField4').getAttribute("value"));
-                document.getElementById('TextBox4').setAttribute("value", document.getElementById('HiddenField5').getAttribute("value"));
-
             }
-        }
+       
+        
         function signinCallback(authResult) {
             if (authResult['access_token']) {
                 // Successfully authorized
@@ -288,7 +291,7 @@
             }
         }
 
-    </script>
+    </script>--%>
     <form id="form1" runat="server">
  
     <div>
@@ -307,16 +310,16 @@
         <asp:AccessDataSource id="AccessDataSource7" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT cescname FROM collisionescape"> </asp:AccessDataSource>
 
 
-<asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 250px; top: 235px; position: absolute; width: 385px; height: 24px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox2_TextChanged" AutoPostBack="True" ClientIDMode="Static" ReadOnly="True"></asp:TextBox>
-<asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 234px; top: 337px; position: absolute; width: 383px; height: 29px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox3_TextChanged" AutoPostBack="True" ClientIDMode="Static" ReadOnly="True"></asp:TextBox>
- <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 229px; top: 411px; position: absolute; width: 382px; height: 28px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox4_TextChanged" AutoPostBack="True" ClientIDMode="Static" ReadOnly="True"></asp:TextBox>
+<asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 250px; top: 235px; position: absolute; width: 385px; height: 24px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox2_TextChanged" ClientIDMode="Static"></asp:TextBox>
+<asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 234px; top: 337px; position: absolute; width: 383px; height: 29px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox3_TextChanged" ClientIDMode="Static"></asp:TextBox>
+ <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 229px; top: 411px; position: absolute; width: 382px; height: 28px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox4_TextChanged" ClientIDMode="Static"></asp:TextBox>
             
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 711px; top: 130px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
         <asp:CheckBox ID="CheckBox3" runat="server" Checked="True" Enabled="False" ForeColor="Red" style="z-index: 1; left: 523px; top: 103px; position: absolute" Text="I Agree to the terms and conditions of TreasureHunter" />
-        <asp:DropDownList ID="DropDownList6" runat="server" DataSourceID="AccessDataSource6" DataTextField="crname" DataValueField="crname" style="z-index: 1; left: 215px; top: 562px; position: absolute; height: 33px; width: 311px; right: 374px" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList6" runat="server" DataSourceID="AccessDataSource6" DataTextField="crname" DataValueField="crname" style="z-index: 1; left: 215px; top: 562px; position: absolute; height: 33px; width: 311px; right: 374px">
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="AccessDataSource7" DataTextField="cescname" DataValueField="cescname" style="z-index: 1; left: 224px; top: 516px; position: absolute; height: 30px; width: 309px" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="AccessDataSource7" DataTextField="cescname" DataValueField="cescname" style="z-index: 1; left: 224px; top: 516px; position: absolute; height: 30px; width: 309px">
         </asp:DropDownList>
          <asp:HiddenField ID="HiddenField2" runat="server" />
         <asp:HiddenField ID="HiddenField3" runat="server" Value="TextBox2" />
@@ -324,7 +327,7 @@
         <asp:HiddenField ID="HiddenField5" runat="server" Value="" />
         <asp:HiddenField ID="HiddenField6" runat="server" Value="" />
         <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" style="z-index: 1; left: 71px; top: 367px; position: absolute; width: 64px" Text="None" OnCheckedChanged="CheckBox1_CheckedChanged" />
-                 <asp:CheckBox ID="CheckBox2" runat="server" style="z-index: 1; left: 588px; top: 189px; position: absolute" Text="Enable Trivia" AutoPostBack="True" />
+                 <asp:CheckBox ID="CheckBox2" runat="server" style="z-index: 1; left: 588px; top: 189px; position: absolute" Text="Enable Trivia" />
 
         
         
@@ -337,17 +340,17 @@
         <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 677px; top: 273px; position: absolute; width: 28px; height: 29px;"  ImageUrl="<%:TextBox2.Text%>"/>
 
        
-        <asp:Button ID="Button4" runat="server" BackColor="Blue" ForeColor="White" style="z-index: 1; left: 668px; top: 588px; position: absolute" Text="Finalize" ToolTip="Only after all the fields are completed, finalization takes place" OnClick="Button4_Click" />
+        <asp:Button ID="Button4" runat="server" BackColor="Blue" ForeColor="White" style="z-index: 1; left: 668px; top: 588px; position: absolute" Text="Finalize" ToolTip="Only after all the fields are completed, finalization takes place" OnClick="Button4_Click" UseSubmitBehavior="False" />
 
         <asp:Label ID="Label1" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 42px; top: 64px; position: absolute" Text="Name of Tool Box Item" ToolTip="Tool Box display Name"></asp:Label>
-        <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="AccessDataSource4" DataTextField="othersname" DataValueField="othersname" style="z-index: 1; left: 221px; top: 182px; position: absolute; height: 31px; width: 270px" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="AccessDataSource4" DataTextField="othersname" DataValueField="othersname" style="z-index: 1; left: 221px; top: 182px; position: absolute; height: 31px; width: 270px">
         </asp:DropDownList>
         <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 31px; top: 186px; position: absolute" Text="Tools Sub Category"></asp:Label>
-        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="AccessDataSource3" DataTextField="subcategoryname" DataValueField="subcategoryname" style="z-index: 1; left: 219px; top: 142px; position: absolute; height: 31px; width: 233px" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="AccessDataSource3" DataTextField="subcategoryname" DataValueField="subcategoryname" style="z-index: 1; left: 219px; top: 142px; position: absolute; height: 31px; width: 233px">
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="AccessDataSource2" DataTextField="categoryname" DataValueField="categoryname" style="z-index: 1; left: 220px; top: 99px; position: absolute; height: 31px; width: 236px" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="AccessDataSource2" DataTextField="categoryname" DataValueField="categoryname" style="z-index: 1; left: 220px; top: 99px; position: absolute; height: 31px; width: 236px">
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList1" runat="server" style="z-index: 1; left: 260px; top: 376px; position: absolute; height: 21px; width: 135px" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList1" runat="server" style="z-index: 1; left: 260px; top: 376px; position: absolute; height: 21px; width: 135px">
             <asp:ListItem Selected="True">fixed</asp:ListItem>
             <asp:ListItem>movable</asp:ListItem>
         </asp:DropDownList>
@@ -358,7 +361,7 @@
         <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 651px; top: 339px; position: absolute" Text="Upload file to google drive" OnClick="Button2_Click" />
         <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 650px; top: 234px; position: absolute" Text="Upload file to google drive" OnClick="Button1_Click" OnClientClick="createPicker()" />
         
-        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 219px; top: 62px; position: absolute; width: 420px; height: 26px" ToolTip="Less than 50 chars, no spaces allowed" AutoPostBack="True" OnTextChanged="TextBox1_TextChanged" ClientIDMode="Static"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 219px; top: 62px; position: absolute; width: 420px; height: 26px" ToolTip="Less than 50 chars, no spaces allowed" OnTextChanged="TextBox1_TextChanged" ClientIDMode="Static"></asp:TextBox>
         <asp:Label ID="Label2" runat="server" ForeColor="Blue" style="z-index: 1; left: 43px; top: 100px; position: absolute; height: 18px" Text="Play Category"></asp:Label>
         <asp:Label ID="Label4" runat="server" ForeColor="Blue" style="z-index: 1; left: 25px; top: 236px; position: absolute" Text="Image file url to display in game" ToolTip="this image will be used in the game"></asp:Label>
         <asp:Label ID="Label5" runat="server" ForeColor="Blue" style="z-index: 1; left: 51px; top: 340px; position: absolute" Text="Prop Image file url" ToolTip="eg: coss hair, or sword or spear or books, pointers etc"></asp:Label>

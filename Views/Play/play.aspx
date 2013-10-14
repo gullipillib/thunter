@@ -227,7 +227,7 @@
 </head>
 
 
-<body  style="height: 796px; overflow: hidden; background-color:#000000; width: 967px;" onmouseover="moveprop(e)" onmousedown="explodeprop(e)" >
+<body  style="height: 796px; background-color:#000000; width: 967px" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)" >
     <script type="text/javascript">
         
         var enemyhits = 0;
@@ -374,13 +374,15 @@
                 if (parseInt(ctrl5.style.top.replace("px", "")) > 205 && parseInt(ctrl5.style.top.replace("px", "")) < 570) {
                     ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", "")) + 5 + "px";
                 }
+                divplayer.focus();
             }
 
             document.addEventListener("keydown", check, false);
-            document.addEventListener("mousedown", check, false);
-            document.addEventListener("mouseover", check, false);
+            document.addEventListener("mousedown", explodeprop, false);
+            document.addEventListener("mousemove", moveprop, false);
 
             function moveprop(e) {
+                
                 crosshair.style.left = Math.round(e.clientX) + "px";
                 crosshair.style.top = Math.round(e.clientY) + "px";
             }
@@ -521,19 +523,55 @@
         }
         #Text1 {
             z-index: 1;
-            left: 740px;
-            top: 80px;
+            left: 605px;
+            top: -115px;
             position: absolute;
-            right: 80px;
+            right: -14px;
+        }
+        #divplayer {
+            z-index: 1;
+            left: 166px;
+            top: 181px;
+            position: absolute;
+            height: 401px;
+            width: 719px;
         }
     </style>
-    <iframe id="player"    src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=window&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0&disablekb=1" style="z-index: 0; left: 178px; top: 183px; position: absolute; background-color: transparent" onkeydown="check(e)"  class="twoto3d"></iframe>
     
 
 
 
 
-    <form id="form1"  onmouseover="moveprop(event)"  runat="server" style="z-index: 200">
+    <form id="form1"  runat="server" >
+        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"></asp:AccessDataSource>
+        <asp:HiddenField ID="Hiddenfield1" runat="server"></asp:HiddenField>
+   
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick"></asp:Timer>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+            </Triggers>
+        </asp:UpdatePanel>     
+
+       <asp:TextBox ID="ehits" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 121px; top: 52px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
+
+        <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 224px; top: 127px; position: absolute; height: 29px; width:141px" Target="_self" ForeColor="#FFCC00">Buy a Treasure Spot</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 501px; top: 127px; position: absolute; right: 349px; width:141px" Target="_self" ForeColor="#FFCC00">Buy a ToolBox Item</asp:hyperlink>
+     <asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/Invite/friends" style="z-index: 1; left: 384px; top: 127px; position: absolute" Target="_self" ForeColor="#FFCC00">Invite Friends</asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/Cpanel/gamesettings" style="z-index: 1; left: 655px; top: 127px; position: absolute; width: 84px;" Target="_self" ForeColor="#FFCC00">My Game</asp:hyperlink>   
+
+        <asp:HiddenField ID="tsrplayershf" runat="server" />
+        <asp:HiddenField ID="tsrplayersdetailshf" runat="server" />
+        <asp:HiddenField ID="tsdplayershf" runat="server" />
+        <asp:HiddenField ID="tsdplayersdetailshf" runat="server" />
+        <asp:HiddenField ID="gettspothf" runat="server" />
+        <asp:HiddenField ID="tspotnamehf" runat="server" />
+        <asp:HiddenField ID="tsspotdetailshf" runat="server" />
+        <asp:HiddenField ID="gettsplayers" runat="server" />
 
         <label style="position: absolute; top: 4px; left: 116px; height: 23px; width: 733px; z-index: 200; color: #FFCC00;"></label>
         <label style="position: absolute; top: 48px; left: 15px; right: 846px; height: 19px; color: #FFCC00;">Achievements   </label>
@@ -548,6 +586,9 @@
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 748px; top: 47px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
         
         
+        
+    </form>
+    <div id="divplayer" style="z-index: 203; background-color: transparent;" >
         <img id="crosshair"  src="../../Images/crosshair.png" style="width: 33px; height: 25px; position: absolute; top: 328px; left: 385px; z-index: 202; right: 434px;">
         <img id="explosion" src="../../Images/explosion.gif" style="width: 10px; height: 10px; position: absolute; top: 247px; left: 307px; z-index: 21; right: 532px; visibility: hidden; margin-left: 0px; margin-top: 0px;">&nbsp;
         <img id="ctrl1"  src="../../Images/fplane.gif" style="width: 50px; height: 50px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
@@ -560,51 +601,17 @@
         <img id="player3" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 428px; left: 229px; z-index: 21; right: 593px; margin-left: 0px; margin-top: 0px;">&nbsp;
         <img id="player4" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">&nbsp;
         <img id="player5" src="../../Images/fplane.gif" style="width: 30px; height: 30px; position: absolute; top: 401px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px;">&nbsp;
-        
-        
-        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"></asp:AccessDataSource>
-
-
-        <asp:HiddenField ID="Hiddenfield1" runat="server"></asp:HiddenField>
-
-
-
-
+  
          <input id="Text1" style="background-color: transparent; text-decoration:none" type="text" />
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
-                <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick"></asp:Timer>
-            </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
-            </Triggers>
-        </asp:UpdatePanel>     
+  
+ <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 38px; top: 338px; position: absolute; width: 91px;" type="text" />   
 
-        &nbsp;<asp:TextBox ID="ehits" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 121px; top: 52px; position: absolute; width: 45px" ForeColor="#FFCC00"></asp:TextBox>
-
-
-        <asp:HiddenField ID="tsrplayershf" runat="server" />
-        <asp:HiddenField ID="tsrplayersdetailshf" runat="server" />
-        <asp:HiddenField ID="tsdplayershf" runat="server" />
-        <asp:HiddenField ID="tsdplayersdetailshf" runat="server" />
-        <asp:HiddenField ID="gettspothf" runat="server" />
-        <asp:HiddenField ID="tspotnamehf" runat="server" />
-        <asp:HiddenField ID="tsspotdetailshf" runat="server" />
-        <asp:HiddenField ID="gettsplayers" runat="server" />
-
-
-    </form>
-
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 224px; top: 127px; position: absolute; height: 29px; width:141px" Target="_self" ForeColor="#FFCC00">Buy a Treasure Spot</asp:hyperlink>
-    <asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 501px; top: 127px; position: absolute; right: 349px; width:141px" Target="_self" ForeColor="#FFCC00">Buy a ToolBox Item</asp:hyperlink>
-     <asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/Invite/friends" style="z-index: 1; left: 384px; top: 127px; position: absolute" Target="_self" ForeColor="#FFCC00">Invite Friends</asp:hyperlink>   
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/Cpanel/gamesettings" style="z-index: 1; left: 655px; top: 127px; position: absolute; width: 84px;" Target="_self" ForeColor="#FFCC00">My Game</asp:hyperlink>   
-
-    &nbsp;<img alt="" src="../../Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 53px; top: 235px; position: absolute;" id="friendimage" />
-    <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 38px; top: 338px; position: absolute; width: 91px;" type="text" />   
-
+    
+    <img alt="" src="../../Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 53px; top: 235px; position: absolute;" id="friendimage" />
+   
+    </div>
+    <iframe id="player"   src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=transparent&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0&disablekb=1" style="z-index: 0; left: 178px; top: 183px; position: absolute; background-color: transparent"   class="twoto3d"></iframe>
+        
 </body>
 
 </html>

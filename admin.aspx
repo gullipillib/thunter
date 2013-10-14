@@ -6,29 +6,26 @@
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Page.IsPostBack == true)
+        if (Page.IsPostBack == false)
         {
             if (Convert.ToString(Application["adlogin"]) == "yes")
             {
-                Panel1.Enabled = false;
+
                 Panel2.Enabled = true;
+            }
+            else
+            {
+                //Response.Redirect("~/login.aspx");
             }
             
         }
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        if (TextBox1.Text == HiddenField1.Value)
-        {
-            Application["adlogin"] = "yes";
-            
-        }
-    }
+    
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        Panel1.Enabled = true;
+        
         Panel2.Enabled = false;
         Response.Redirect("https://Treasure Hunter.apphb.com");
     }
@@ -131,7 +128,7 @@
 
         </ContentTemplate>
             <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
+                
                 <asp:AsyncPostBackTrigger ControlID="Button2" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="Button3" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="Button4" EventName="Click" />
@@ -140,13 +137,7 @@
         </Triggers>
             </asp:UpdatePanel>
 
-        <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 401px; top: 132px; position: absolute; height: 117px; width: 443px">
-            <asp:Label ID="Label1" runat="server" Text="Password" style="z-index: 1; left: 83px; top: 28px; position: absolute"></asp:Label>
-            <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 158px; top: 28px; position: absolute; width: 238px" TextMode="Password" AutoPostBack="True"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" Text="OK" style="z-index: 1; left: 183px; top: 76px; position: absolute" OnClick="Button1_Click" />
-        </asp:Panel>
-        
-        <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: 20px; top: 301px; position: absolute; height: 1256px; width: 974px">
+        <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: 20px; top: 301px; position: absolute; height: 1256px; width: 974px" Enabled="False">
             <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 710px; top: 15px; position: absolute" Text="Logout" OnClick="Button2_Click" />
             
         
@@ -176,8 +167,6 @@
             <asp:Button ID="Button7" runat="server"  style="z-index: 1; left: 251px; top: 302px; position: absolute" Text="add" OnClick="Button7_Click" />
         <asp:Button ID="Button8" runat="server"  style="z-index: 1; left: 251px; top: 353px; position: absolute" Text="add" OnClick="Button8_Click"  />
         
-            <asp:HiddenField ID="HiddenField1" runat="server" Value="zxpoqwmn0912" />
-            
         
         
             <asp:AccessDataSource ID="AccessDataSource2" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tsowner = 'Treasure Hunter'"></asp:AccessDataSource>
@@ -218,7 +207,7 @@
         
         
             <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 50px; top: 302px; position: absolute; width: 151px;" Text="Add New TreasureSpot"></asp:Label>
-            <asp:Label ID="Label7" runat="server" style="z-index: 1; left: 51px; top: 353px; position: absolute; width: 151px;" Text="Add New TreasureSpot"></asp:Label>
+            <asp:Label ID="Label7" runat="server" style="z-index: 1; left: 51px; top: 353px; position: absolute; width: 151px;" Text="Add New ToolBox item"></asp:Label>
             
         
         

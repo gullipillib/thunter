@@ -12,8 +12,8 @@
     {
         Hiddenfield1.Value = Model.Name;
         Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
-        AccessDataSource2.SelectCommand = "SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tsowner = '" + Hiddenfield1.Value  + "'";
-        AccessDataSource3.SelectCommand = "SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbowner = '" + Hiddenfield1.Value + "'";
+        AccessDataSource2.SelectCommand = "SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner like '%" + Hiddenfield1.Value  + "%'";
+        AccessDataSource3.SelectCommand = "SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbowner = '%" + Hiddenfield1.Value + "%'";
         if (Hiddenfield1.Value != null)
         {
 
@@ -73,14 +73,14 @@ protected void Button3_Click(object sender, EventArgs e)
 protected void Button9_Click(object sender, EventArgs e)
 {
     AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
-    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'yes' where tsowner='" + Hiddenfield1.Value + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'" ;
+    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'yes' where tscoowner like '%" + Hiddenfield1.Value + "%' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'" ;
     AccessDataSource1.Update();
 }
 
 protected void Button10_Click(object sender, EventArgs e)
 {
     AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
-    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'no' where tsowner='" + Hiddenfield1.Value + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'no' where tscoowner like '%" + Hiddenfield1.Value + "%' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
     AccessDataSource1.Update();
 }
 
@@ -121,9 +121,9 @@ protected void Button12_Click(object sender, EventArgs e)
         <asp:Button ID="Button4" runat="server" style="z-index: 1; left: 608px; top: 305px; position: absolute" Text="Bid" Enabled="False" />
         <asp:Button ID="Button5" runat="server" style="z-index: 1; left: 168px; top: 855px; position: absolute" Text="Sell" Enabled="False" /> 
         <asp:Button ID="Button6" runat="server" style="z-index: 1; left: 176px; top: 576px; position: absolute" Text="Sell" Enabled="False" />
-        <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tsowner = ''"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner = ''"> </asp:AccessDataSource>
         <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 660px; top: 306px; position: absolute" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
-        <asp:AccessDataSource id="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbowner = ''"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbcoowner = ''"> </asp:AccessDataSource>
     <asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 854px; top: 17px; position: absolute; right: 14px;" Target="_self">Buy a ToolBox Item</asp:hyperlink>
         <asp:AccessDataSource id="AccessDataSource4" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate FROM tspots  WHERE  (tssell = 'yes' and tsselltype='sell')"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource5" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate FROM  tspots WHERE (tssell = 'yes' and tsselltype='bid')"> </asp:AccessDataSource>
@@ -291,8 +291,8 @@ protected void Button12_Click(object sender, EventArgs e)
         </asp:DropDownList>
         <asp:Button ID="Button9" runat="server" style="z-index: 1; left: 530px; top: 576px; position: absolute" Text="Approve Bid" OnClick="Button9_Click" />
         <asp:Button ID="Button10" runat="server" style="z-index: 1; left: 651px; top: 577px; position: absolute" Text="Revoke" OnClick="Button10_Click" />
-        <asp:Button ID="Button11" runat="server" style="z-index: 1; left: 530px; top: 853px; position: absolute" Text="Approve Bid" OnClick="Button11_Click" />
-        <asp:Button ID="Button12" runat="server" style="z-index: 1; left: 651px; top: 855px; position: absolute" Text="Revoke" OnClick="Button12_Click" />
+        <asp:Button ID="Button11" runat="server" style="z-index: 1; left: 530px; top: 853px; position: absolute" Text="Approve Bid" OnClick="Button11_Click" Enabled="False" />
+        <asp:Button ID="Button12" runat="server" style="z-index: 1; left: 651px; top: 855px; position: absolute" Text="Revoke" OnClick="Button12_Click" Enabled="False" />
         
     </form>
 </body>
