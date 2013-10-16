@@ -2,6 +2,7 @@
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
+<%@ Import Namespace="Microsoft.Live" %>
 
 <!DOCTYPE html>
 
@@ -53,9 +54,12 @@
         }
     }
 
+    
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         checkusername();
+       
     }
     public class Toolbox
     {
@@ -113,19 +117,19 @@
     protected void TextBox2_TextChanged(object sender, EventArgs e)
     {
         Image1.ImageUrl = TextBox2.Text;
-        Button1.Enabled = false;
+       
     }
 
     protected void TextBox3_TextChanged(object sender, EventArgs e)
     {
         Image2.ImageUrl = TextBox3.Text;
-        Button2.Enabled = false;
+        ;
     }
 
     protected void TextBox4_TextChanged(object sender, EventArgs e)
     {
         Image3.ImageUrl = TextBox4.Text;
-        Button3.Enabled = false;
+        
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -157,40 +161,25 @@
         {
             TextBox3.Enabled = false;
             DropDownList1.Enabled = false;
-            Button2.Enabled = false;
+            
         }
         if (CheckBox1.Checked == false)
         {
             TextBox3.Enabled = true;
             DropDownList1.Enabled = true;
-            Button2.Enabled = true;
+            
         }
 
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        HiddenField2.Value = "TextBox2";
-        Button1.Enabled = false;
-
-    }
+   
 
     protected void Button5_Click(object sender, EventArgs e)
     {
         Response.Redirect("Play/play");
     }
 
-    protected void Button2_Click(object sender, EventArgs e)
-    {
-        HiddenField2.Value = "TextBox3";
-        Button2.Enabled = false;
-    }
-
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-        HiddenField2.Value = "TextBox4";
-        Button3.Enabled = false;
-    }
+    
     
 </script>
 
@@ -201,106 +190,122 @@
 </head>
     
 <body>
-    <!-- Place this asynchronous JavaScript just before your </body> tag -->
-<%--    <script type="text/javascript">
-        (function () {
-            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-            po.src = 'https://apis.google.com/js/client:plusone.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-        })();
-    </script>
-    <span id="signinButton">
-  <span
-    class="g-signin"
-    data-callback="signinCallback"
-    data-clientid="824040232468-81jkefn5eq9dhf88uimpiqa2f2v8o1ak.apps.googleusercontent.com"
-    data-cookiepolicy="single_host_origin"
-    data-requestvisibleactions="http://schemas.google.com/AddActivity"
-    data-scope="https://www.googleapis.com/auth/plus.login">
-  </span>
-</span>
-
-    <!-- The standard Google Loader script; use your own key. -->
-    <script src="http://www.google.com/jsapi?key=824040232468-81jkefn5eq9dhf88uimpiqa2f2v8o1ak.apps.googleusercontent.com"></script>
+  <style type="text/css">
+        #pick {
+            z-index: 1;
+            left: 718px;
+            top: 193px;
+            position: absolute;
+            width: 119px;
+        }
+      #uploadFile_div {
+          z-index: 1;
+          left: 700px;
+          top: 217px;
+          position: absolute;
+          height: 44px;
+          width: 206px;
+      }
+      #file {
+          z-index: 1;
+          left: 686px;
+          top: 166px;
+          position: absolute;
+      }
+    </style> 
+ <script src="//js.live.net/v5.0/wl.js" type="text/javascript"></script>
     <script type="text/javascript">
+        var APPLICATION_CLIENT_ID = "0000000040108151",
+        REDIRECT_URL = "https://treasurehunter.apphb.com";
+        WL.Event.subscribe("auth.login", onLogin);
+        WL.init({
+            client_id: APPLICATION_CLIENT_ID,
+            redirect_uri: REDIRECT_URL,
+            response_type: "token"
+        });
 
+        WL.ui({
+            name: "signin",
+            element: "signInButton",
+            brand: "hotmail",
+            type: "connect"
+        });
 
-        // Use the Google Loader script to load the google.picker script.
-        google.setOnLoadCallback(createPicker);
-        google.load('picker', '1');
-
-        // Create and render a Picker object for searching images.
-        function createPicker() {
-            var view = new google.picker.View(google.picker.ViewId.FOLDERS);
-            view.setMimeTypes("image/png,image/gif");
-            
-
-
-            var picker = new google.picker.PickerBuilder()
-                //.enableFeature(google.picker.Feature.NAV_HIDDEN)
-                //.enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
-                .setAppId("824040232468.apps.googleusercontent.com")
-                .setOAuthToken() //Optional: The auth token used in the current Drive API session.
-                .addView(view)
-                .addView(new google.picker.DocsUploadView())
-                .setCallback(pickerCallback)
-                .setAuthUser("gullipillivj@gmail.com")
-                .setSelectableMimeTypes("gif")
-                .build();
-            picker.setVisible(true);
-        }
-
-        // A simple callback implementation.
-        function pickerCallback(data) {
-            if (data.action == google.picker.Action.PICKED) {
-                
-                    var fileId = data.docs[0].id;
-                    alert('The user selected: ' + fileId);
-                    if (document.getElementById('HiddenField2').getAttribute("value") == "TextBox2") {
-                        document.getElementById('HiddenField3').setAttribute("value", "http://drive.google.com/uc?export=view&id=" + fileId);
-                        document.getElementById('Button1').setAttribute("Enabled", "false");
-
-                    }
-                    if (document.getElementById('HiddenField2').getAttribute("value") == "TextBox3") {
-                        document.getElementById('HiddenField4').setAttribute("value", "http://drive.google.com/uc?export=view&id=" + fileId);
-                        document.getElementById('Button2').setAttribute("Enabled", "false");
-                    }
-                    if (document.getElementById('HiddenField2').getAttribute("value") == "TextBox4") {
-                        document.getElementById('HiddenField5').setAttribute("value", "http://drive.google.com/uc?export=view&id=" + fileId);
-                        document.getElementById('Button3').setAttribute("Enabled", "false");
-                    }
-                    document.getElementById('TextBox2').setAttribute("value", document.getElementById('HiddenField3').getAttribute("value"));
-                    document.getElementById('TextBox3').setAttribute("value", document.getElementById('HiddenField4').getAttribute("value"));
-                    document.getElementById('TextBox4').setAttribute("value", document.getElementById('HiddenField5').getAttribute("value"));
-
+        function greetUser(session) {
+            var strGreeting = "";
+            WL.api(
+            {
+                path: "me",
+                method: "GET"
+            },
+            function (response) {
+                if (!response.error) {
+                    strGreeting = "Hi, " + response.first_name + "!"
+                    document.getElementById("greeting").innerHTML = strGreeting;
                 }
-            }
-       
-        
-        function signinCallback(authResult) {
-            if (authResult['access_token']) {
-                // Successfully authorized
-                // Hide the sign-in button now that the user is authorized, for example:
-                document.getElementById('signinButton').setAttribute('style', 'display: none');
-            } else if (authResult['error']) {
-                // There was an error.
-                // Possible error codes:
-                //   "access_denied" - User denied access to your app
-                //   "immediate_failed" - Could not automatically log in the user
-                // console.log('There was an error: ' + authResult['error']);
-            }
+            });
         }
 
-    </script>--%>
+        function onLogin() {
+            var session = WL.getSession();
+            if (session) {
+                //greetUser(session);
+            }
+        }
+    </script>  
+
+    
+    <div id="greeting"></div>
+    <div id="signInButton"></div>
+   <form>
+    <input id="file" name="file" type="file" />
+</form>
+    <div id="uploadFile_div">SkyDrive save button to appear here</div>
+    <script type="text/javascript"> 
+        WL.ui({
+            name: "skydrivepicker",
+            element: "uploadFile_div",
+            mode: "save",
+            onselected: onUploadFileCompleted,
+            onerror: onUploadFileError
+        });
+
+        function onUploadFileCompleted(response) {
+            WL.upload({
+                path: response.data.folders[0].id,
+                element: "file",
+                overwrite: "rename"
+            }).then(
+                function (response) {
+                    document.getElementById("info").innerText =
+                        "File uploaded.";
+                },
+                function (responseFailed) {
+                    document.getElementById("info").innerText =
+                        "Error uploading file: " + responseFailed.error.message;
+                }
+            );
+        };
+
+        function onUploadFileError(response) {
+            document.getElementById("info").innerText =
+                "Error getting folder info: " + response.error.message;
+        }
+    </script>
+
+   
     <form id="form1" runat="server">
  
     <div>
     
+        
+    </div>
         <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="20pt" style="z-index: 1; left: 251px; top: 12px; position: absolute; height: 21px" Text="Treasure Hunter Tool Box Creator"></asp:Label>
     
-    </div>
        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1.Value%>')"> </asp:AccessDataSource>
 
+   <a href="Play/play" target="_self" style="position:absolute;left:839px; top:57px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 24px; text-align: center; height: 22px;" > Complete Later </a> 
+   
         <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT categoryname FROM category"> </asp:AccessDataSource>
 
         <asp:Button ID="Button5" runat="server" Enabled="False" style="z-index: 1; left: 681px; top: 55px; position: absolute" Text="Back to Game " OnClick="Button5_Click" />
@@ -310,9 +315,9 @@
         <asp:AccessDataSource id="AccessDataSource7" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT cescname FROM collisionescape"> </asp:AccessDataSource>
 
 
-<asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 250px; top: 235px; position: absolute; width: 385px; height: 24px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox2_TextChanged" ClientIDMode="Static"></asp:TextBox>
-<asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 234px; top: 337px; position: absolute; width: 383px; height: 29px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox3_TextChanged" ClientIDMode="Static"></asp:TextBox>
- <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 229px; top: 411px; position: absolute; width: 382px; height: 28px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox4_TextChanged" ClientIDMode="Static"></asp:TextBox>
+<asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 250px; top: 235px; position: absolute; width: 385px; height: 24px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox2_TextChanged" ClientIDMode="Static" ReadOnly="True"></asp:TextBox>
+<asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 234px; top: 337px; position: absolute; width: 383px; height: 29px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox3_TextChanged" ClientIDMode="Static" ReadOnly="True"></asp:TextBox>
+ <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 229px; top: 411px; position: absolute; width: 382px; height: 28px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox4_TextChanged" ClientIDMode="Static" ReadOnly="True"></asp:TextBox>
             
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 711px; top: 130px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
@@ -321,13 +326,8 @@
         </asp:DropDownList>
         <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="AccessDataSource7" DataTextField="cescname" DataValueField="cescname" style="z-index: 1; left: 224px; top: 516px; position: absolute; height: 30px; width: 309px">
         </asp:DropDownList>
-         <asp:HiddenField ID="HiddenField2" runat="server" />
-        <asp:HiddenField ID="HiddenField3" runat="server" Value="TextBox2" />
-        <asp:HiddenField ID="HiddenField4" runat="server" Value="" />
-        <asp:HiddenField ID="HiddenField5" runat="server" Value="" />
-        <asp:HiddenField ID="HiddenField6" runat="server" Value="" />
         <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" style="z-index: 1; left: 71px; top: 367px; position: absolute; width: 64px" Text="None" OnCheckedChanged="CheckBox1_CheckedChanged" />
-                 <asp:CheckBox ID="CheckBox2" runat="server" style="z-index: 1; left: 588px; top: 189px; position: absolute" Text="Enable Trivia" />
+                 <asp:CheckBox ID="CheckBox2" runat="server" style="z-index: 1; left: 519px; top: 204px; position: absolute" Text="Enable Trivia" />
 
         
         
@@ -357,9 +357,6 @@
         <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Red" NavigateUrl="http://eng.universal-soundbank.com" style="z-index: 1; left: 235px; top: 303px; position: absolute" Target="_blank">Sound Files link, copy only the url path do not download</asp:HyperLink>
         <asp:TextBox ID="TextBox5" runat="server" style="z-index: 1; left: 233px; top: 270px; position: absolute; width: 373px; height: 27px" ClientIDMode="Static"></asp:TextBox>
         <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 33px; top: 270px; position: absolute" Text="Sound file url found at"></asp:Label>
-        <asp:Button ID="Button3" runat="server" style="z-index: 1; left: 642px; top: 411px; position: absolute" Text="Upload file to google drive" OnClick="Button3_Click" />
-        <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 651px; top: 339px; position: absolute" Text="Upload file to google drive" OnClick="Button2_Click" />
-        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 650px; top: 234px; position: absolute" Text="Upload file to google drive" OnClick="Button1_Click" OnClientClick="createPicker()" />
         
         <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 219px; top: 62px; position: absolute; width: 420px; height: 26px" ToolTip="Less than 50 chars, no spaces allowed" OnTextChanged="TextBox1_TextChanged" ClientIDMode="Static"></asp:TextBox>
         <asp:Label ID="Label2" runat="server" ForeColor="Blue" style="z-index: 1; left: 43px; top: 100px; position: absolute; height: 18px" Text="Play Category"></asp:Label>
