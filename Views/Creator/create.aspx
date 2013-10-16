@@ -85,7 +85,7 @@
         
         string json = Newtonsoft.Json.JsonConvert.SerializeObject(tbitems);
         tempstring = json;
-        if (TextBox1.Text != null && TextBox2.Text != null && TextBox3.Text != null && TextBox4.Text != null && TextBox5.Text != null && TextBox6.Text != null)
+        if (TextBox1.Text != null && TextBox2.Text != null)
         {
             AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbcategory = '" + DropDownList2.SelectedValue + "', tbsubcategory = '" + DropDownList3.SelectedValue + "', tbname = '" + TextBox1.Text + "', tbcoowner = '" + Hiddenfield1.Value + "', new = 'no', tbdetails = '" + tempstring + "', tbtoolscategory = '" + DropDownList4.SelectedValue + "', tbimageurl = '" + TextBox2.Text + "' where tbcoowner='" + Hiddenfield1.Value + "'";
             AccessDataSource1.Update();
@@ -199,9 +199,10 @@
     
     <div id="greeting"></div>
     <div id="signInButton"></div>
-   <form>
+ 
+    <form id="form1" runat="server" >
+        <asp:Button ID="Button5" runat="server" style="z-index: 1; left: 587px; top: 38px; position: absolute" Text="Button" />
     <input id="file" name="file" type="file" />
-</form>
     <div id="uploadFile_div">SkyDrive save button to appear here</div>
     <script type="text/javascript">
         WL.ui({
@@ -235,7 +236,6 @@
         }
     </script>
  
-    <form id="form1" runat="server" >
     <iframe id="Iframe1"   src="//www.youtube.com/embed/XAbMQx-D7rE?enablejsapi=1&wmmode=transparent&autoplay=1&start=30&end=60&loop=1&playlist=XAbMQx-D7rE&rel=0&showinfo=0&controls=0&disablekb=1" style="z-index: 0;  left: 150px; top: 454px; position: absolute; background-color: transparent; width: 623px; height: 361px;"   class="twoto3d"></iframe>
        <img alt="" id="imager" src="Images/fplane.gif" style="z-index: 1; left: 806px; top: 320px; position: absolute; height: 30px; width: 34px" /> 
        
@@ -302,16 +302,27 @@
         
         
         
-    </form>
-   
-    
-        
-   
    <a href="../Toolbox/Play/play" target="_self" style="position:absolute;left:699px; top:359px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 118px; text-align: center; height: 22px;" > Complete Later </a> 
    
             
         
    
-</body>
+        
+        
+        
+        <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 216px; top: 410px; position: absolute; width: 414px; height: 24px"></asp:TextBox>
+        
+        
+        
+
+        
+        
+        
+    </form>
+   
+    
+        
+   
+   </body>
 </html>
 
