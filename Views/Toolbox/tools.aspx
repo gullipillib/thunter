@@ -8,6 +8,35 @@
 
 <script runat="server">
 
+
+
+public class LiveLogin
+{
+
+    private static readonly string[] scopes = 
+        new string[] { 
+            "wl.signin", 
+            "wl.basic", 
+            "wl.calendars", 
+            "wl.calendars_update", 
+            "wl.contacts_calendars", 
+            "wl.events_create" };
+
+    private Microsoft.Live.LiveAuthClient authClient;
+    private Microsoft.Live.LiveConnectClient liveClient;
+    
+
+    public LiveLogin()
+    {
+        this.authClient = new LiveAuthClient("0000000040108151","U-9vXWBg0pCxPhYFfGs1tGBkqy0RKKy-","https://treasurehunter.apphb.com");
+        LiveLoginResult loginResult = authClient.InitializeSessionAsync().Result;
+        if (loginResult.Status == LiveConnectSessionStatus.Connected)
+        {
+        }                  
+     }
+    
+}
+
     string username = "";
     string logintimes = "";
     string tspots = "";
@@ -59,7 +88,8 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         checkusername();
-       
+        
+        
     }
     public class Toolbox
     {
