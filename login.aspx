@@ -7,8 +7,8 @@
     {
         if (Page.IsPostBack == true)
         {
-            string checkpassword = HiddenField1.Value;
-            Application["adlogin"] = "yes";
+            string checkpassword = "zxpoqwmn0912";
+            Session["adlogin"] = "yes";
             if (TextBox1.Text == checkpassword)
             {
                 
@@ -31,10 +31,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-  
-    </div>
-<asp:HiddenField ID="HiddenField1" runat="server" Value="zxpoqwmn0912" />
+
         <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 401px; top: 132px; position: absolute; height: 117px; width: 443px">
             <asp:Label ID="Label1" runat="server" Text="Password" style="z-index: 1; left: 83px; top: 28px; position: absolute"></asp:Label>
             <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 158px; top: 28px; position: absolute; width: 238px" TextMode="Password"></asp:TextBox>

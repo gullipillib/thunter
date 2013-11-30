@@ -8,8 +8,11 @@
     <title></title>
 </head>
 <body>
+    <form id="form1" runat="server">
     <div>
     
     </div>
+        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderColor="White" BorderStyle="None" ForeColor="Black" ReadOnly="True" style="z-index: 1; left: 246px; top: 142px; position: absolute; width: 547px; height: 330px" TextMode="MultiLine">You Can Buy and use 3d Glasses at Amazon or ebay or mild grey shaded sun glasses also produces the 3D effect.</asp:TextBox>
+    </form>
 </body>
 </html>

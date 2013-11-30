@@ -21,15 +21,19 @@ string invites = "";
 string reset = "";
 string btspots = "";
 
+string Hiddenfield1;
+string HiddenField2;
+string HiddenField3;
+
 protected void checkusername()
 {
-    Hiddenfield1.Value = Model.Name;
-    Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
-    if (Hiddenfield1.Value != null)
+    Hiddenfield1 = Model.Name;
+    Hiddenfield1 = Hiddenfield1.Replace(" ", "");
+    if (Hiddenfield1 != null)
     {
 
         //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-        AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
+        AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
 
         DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
@@ -41,16 +45,16 @@ protected void checkusername()
         if (dt.Rows.Count == 0)
         {
             //Insert User into appuser,loggeduser,ordercounter,winners;
-            AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1.Value + "', 'no', 'no', '0', 'no', '0', '')";
+            AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
             AccessDataSource1.Insert();
             AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-            AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1.Value + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
+            AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
             AccessDataSource1.Insert();
             AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-            AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1.Value + "','0')";
+            AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
             AccessDataSource1.Insert();
             AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-            AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1.Value + "','0')";
+            AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
             AccessDataSource1.Insert();
         }
 
@@ -66,23 +70,23 @@ protected void checkusername()
 
 protected void Page_Load(object sender, EventArgs e)
 {
-    if (Convert.ToString(Application["tspotprice"]) == "")
+    if (Convert.ToString(Session["tspotprice"]) == "")
     {
-        Application["tspotprice"] = "10000";  
+        Session["tspotprice"] = "10000";  
     }
 
-    if (Convert.ToString(Application["tbprice"]) == "")
+    if (Convert.ToString(Session["tbprice"]) == "")
     {
-        Application["tbprice"] = "10000";
+        Session["tbprice"] = "10000";
     }
 
 
     checkusername();
     
-    Label8.Text = Convert.ToString(Application["tbprice"]);
-    Label10.Text = Convert.ToString(Application["toolboxname"]);
-    Label13.Text = Convert.ToString(Application["tspotname"]);
-    Label14.Text = Convert.ToString(Application["tspotprice"]);
+    Label8.Text = Convert.ToString(Session["tbprice"]);
+    Label10.Text = Convert.ToString(Session["toolboxname"]);
+    Label13.Text = Convert.ToString(Session["tspotname"]);
+    Label14.Text = Convert.ToString(Session["tspotprice"]);
     
     AccessDataSource1.SelectCommand = "SELECT lulogintimes, luloggedin, lutspots FROM loggedusers";
     DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
@@ -106,7 +110,7 @@ protected void Page_Load(object sender, EventArgs e)
         }
     }
        
-    AccessDataSource1.SelectCommand = "SELECT ccounter, uname  FROM ordercounter where uname ='" + Hiddenfield1.Value + "'";
+    AccessDataSource1.SelectCommand = "SELECT ccounter, uname  FROM ordercounter where uname ='" + Hiddenfield1 + "'";
     dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
     dt = new DataTable();
     dt = dv.ToTable();
@@ -154,7 +158,7 @@ protected void Button1_Click(object sender, EventArgs e)
             {
                 myreader3.Read();
 
-                HiddenField3.Value = (string)myreader3.Value;
+                HiddenField3 = (string)myreader3.Value;
                 break;
             }
 
@@ -168,7 +172,7 @@ protected void Button1_Click(object sender, EventArgs e)
             if ((string)myreader4.Value == "product")
             {
                 myreader4.Read();
-                HiddenField2.Value = (string)myreader4.Value;
+                HiddenField2 = (string)myreader4.Value;
                 break;
             }
 
@@ -186,13 +190,13 @@ protected void Button1_Click(object sender, EventArgs e)
 protected void Button2_Click(object sender, EventArgs e)
 {
     Label2.Text = "You have to buy a treasurespot and then get receipt to go and create treasure spot!";
-    if (HiddenField3.Value == "completed" & HiddenField2.Value == "https://treasurehunter.apphb.com/coin.html") 
+    if (HiddenField3 == "completed" & HiddenField2 == "https://treasurehunter.apphb.com/coin.html") 
     {
         AccessDataSource1.SelectCommand = "SELECT * FROM tspots";
-        AccessDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails) Values ('no','yes','5','buy','no','no',' ',' ',' ','no',' ',' ',' ','" + Hiddenfield1.Value + "','thbuy','" + HiddenField2.Value + "','no',' ',' ',' ',' ','no',' ',' ',' ',' ',' ',' ',' ')";
+        AccessDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails) Values ('no','yes','5','buy','no','no',' ',' ',' ','no',' ',' ',' ','" + Hiddenfield1 + "','thbuy','" + HiddenField2 + "','no',' ',' ',' ',' ','no',' ',' ',' ',' ',' ',' ',' ')";
         AccessDataSource1.Insert();
         AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-        AccessDataSource1.UpdateCommand = "UPDATE ordercounter SET ccounter = '" + Convert.ToString(Convert.ToInt16(orderno.Text) + 1) + "' where uname='" + Hiddenfield1.Value + "'";
+        AccessDataSource1.UpdateCommand = "UPDATE ordercounter SET ccounter = '" + Convert.ToString(Convert.ToInt16(orderno.Text) + 1) + "' where uname='" + Hiddenfield1 + "'";
         AccessDataSource1.Update();
         orderno.Text = Convert.ToString(Convert.ToInt16(orderno.Text) + 1);
         AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
@@ -201,9 +205,9 @@ protected void Button2_Click(object sender, EventArgs e)
         dt = dv.ToTable();
         DataView uniname = dt.DefaultView;
         string lutspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
-        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + Hiddenfield1.Value + "'";
+        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + Hiddenfield1 + "'";
         AccessDataSource1.Update();
-        Response.Redirect("~/Creator/create");
+        Response.Redirect("~/create.aspx");
     }
 }
 
@@ -214,44 +218,223 @@ protected void Button2_Click(object sender, EventArgs e)
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>buy</title>
-    
     <style type="text/css">
+        #Button3 {
+            z-index: 1;
+            left: 193px;
+            top: 176px;
+            position: absolute;
+            height: 28px;
+        }
         #orderno1 {
             z-index: 1;
-            left: 701px;
-            top: -114px;
+            left: 215px;
+            top: 8px;
             position: absolute;
+            width: 24px;
         }
     </style>
-    
 </head>
 <body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px" >
   
     
 
-    <script type="text/javascript">
-        function tp_earn() {
-            TRIALPAY.fb.show_overlay("123405257731200",
-                                     "fbdirect",
-                                     {
-                                         tp_vendor_id: "CAAVVIRI",
-                                         callback_url: "http://www.acmesoft.com/tastymorsels/callback.php",
-                                         currency_url: "http://www.acmesoft.com/vc/coins.php",
-                                         sid: "7plK3xiCN5tkXO8uO6kgowfoI3U",
-                                         onTransact: "my_onTransact",
-                                         zindex: "5"
-                                     });
-        }
-
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "//s-assets.tp-cdn.com/static3/js/api/payment_overlay.js";
-        form1.appendChild(script);
-</script>
 
 
-        <script src="https://connect.facebook.net/en_US/all.js"></script>
-        <script>
+      
+    <form id="form1" runat="server">
+            
+       
+             
+        
+        <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 5px; top: 2px; position: absolute; width: 236px" Text="Buy at mygame premade treasurespots"></asp:Label>
+       
+        
+        <div style="position: absolute; border: medium solid #000000; top: 233px; left: 593px; width: 307px; height: 165px;">
+            <h2 style="width: 173px; position: absolute; top: 13px; left: 77px; font-size: 14px;">Buy New Treasure Spot</h2>
+            
+            <img alt="" src="../../Images/coin.png" style="width: 34px; height: 27px; z-index: 1; left: 7px; top: 6px; position: absolute;" />
+            
+            <label style="z-index: 1; left: 7px; top: 47px; position: absolute; height: 105px; width: 127px; font-size: 12px;">
+                You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
+               Price : $5
+            </label>
+            
+        </div>
+        <div style="position: absolute; border: medium solid #000000; top: 644px; left: 738px; width: 294px; height: 166px;">
+            <h2 style="width: 161px; position: absolute; top: 12px; left: 55px; font-size: 10px;">Buy A Bid/Sale Treasure Spot</h2>
+            <img alt="" src="../../Images/bid.png" style="z-index: 1; left: 4px; top: 12px; position: absolute; right: 308px;" />
+            <label style="z-index: 1; left: 57px; top: 34px; position: absolute; height: 18px; width: 197px; bottom: 114px; font-size: 10px;">Your Bid or Sale has been approved buy now</label>
+            
+            
+            <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 10px; top: 59px; position: absolute" Text="Item Name"></asp:Label>
+            <asp:Label ID="Label12" runat="server" style="z-index: 1; left: 9px; top: 133px; position: absolute" Text="Price($)"></asp:Label>
+            <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 8px; top: 87px; position: absolute"></asp:Label>
+            <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 95px; top: 131px; position: absolute; width: 118px;"></asp:Label>
+            
+        </div>
+         <div style="position: absolute; border: medium solid #000000; top: 659px; left: 1px; width: 350px; height: 188px;">
+          <h2 style="width: 319px; position: absolute; top: 16px; left: 12px;">Buy A Bid/Sale ToolBox Item</h2>
+             <asp:Label ID="Label7" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
+             <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text=""></asp:Label>
+             <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 15px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
+             <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 117px; top: 59px; position: absolute; width: 195px"></asp:Label>
+         </div>  
+
+        <div style="position: absolute; border: medium solid #000000; top: 688px; left: 367px; width: 350px; height: 155px;">
+          <h2 style="width: 264px; position: absolute; top: 6px; left: 7px;">Buy A New ToolBox Item</h2>
+             <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
+             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text="3"></asp:Label>
+             <asp:Label ID="Label17" runat="server" style="z-index: 1; left: 7px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
+             <asp:Label ID="Label18" runat="server" style="z-index: 1; left: 94px; top: 54px; position: absolute; width: 93px">ToolBox Item</asp:Label>
+         </div>
+
+         
+
+        <h1 style="width: 231px; position: absolute; top: -19px; left: 326px; font-weight: bold; font-size: 30px; color: #0000FF;">&nbsp;Treasure Hunter</h1>
+
+        
+
+        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
+
+
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/Cpanel/gamesettings" style="z-index: 1; left: 254px; top: 0px; position: absolute" Target="_self">My Game</asp:hyperlink>   
+
+
+
+        
+
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 731px; top: 4px; position: absolute; right: 7px;" Target="_self" Enabled="False">Go on a Treasurehunt</asp:hyperlink>
+        
+        
+
+
+<asp:Panel ID="panel12" runat="server" style="z-index: 1; left: 596px; top: 52px; position: absolute; height: 161px; width: 296px" BorderStyle="Dotted" BorderColor="Black">
+        <asp:TextBox ID="TextBox3" runat="server" Style="z-index: 1; left: 180px; top: 26px; position: absolute; width: 98px; height: 20px;"></asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" Style="z-index: 1; left: 173px; top: 130px; position: absolute; width: 106px" ReadOnly="True" BorderStyle="None"></asp:TextBox>
+      <asp:Label ID="Label2" runat="server" Style="z-index: 1; left: 20px; top: 43px; position: absolute; width: 76px"></asp:Label>
+<asp:Label ID="Label3" runat="server" Style="z-index: 1; left: 7px; top: 13px; position: absolute; width: 168px; height: 19px;" Text="Buy a New Treasure Spot Now " Font-Bold="True" Font-Size="9pt"></asp:Label> 
+<asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 191px; top: 59px; position: absolute; width: 85px; height: 20px"></asp:TextBox>
+<asp:Label ID="Label1" runat="server" Style="z-index: 1; left: 188px; top: 6px; position: absolute; width: 82px;" Text="Your Receipt No" Font-Size="8pt"></asp:Label>
+<asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 189px; top: 97px; position: absolute; width: 91px;"></asp:TextBox>
+<asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 10px; top: 77px; position: absolute; width: 174px" Text="Go to my Treasure Spot" OnClick="Button2_Click" />
+<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 18px; top: 117px; position: absolute" Text="Get Your Receipt" />
+</asp:Panel>           
+        </form>
+
+    <div style="position: absolute; border-style: dashed; border-width: thin; top: 418px; left: 594px; width: 296px; height: 164px;">
+        <input id="orderno1" type="text" value="8" />
+        <button onclick="earn_currency()" style="z-index: 1; left: 9px; top: 109px; position: absolute">By Promotions</button>
+            <button onclick="free_currency()" style="z-index: 1; left: 10px; top: 72px; position: absolute; width: 146px; bottom: 66px;">Get Free Currency</button>
+        <button onclick="buy()" style="z-index: 1; left: 10px; top: 5px; position: absolute; width: 178px; height: 50px;">Buy By FB Payment System</button>
+    <label id="fb-ui-return-data" style="position: absolute; top: 48px; width: 89px; left: 197px; height: 21px;"></label>
+    <label id="fb-ui-return-data2" style="position: absolute; top: 84px; width: 84px; left: 192px; height: 19px;"></label>
+    </div>
+
+    <%--<form action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 529px; left: 532px;" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="item_name" value="thbuyuserid">
+<input type="hidden" name="hosted_button_id" value="UH68K68FR2L48">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>--%>
+
+            <form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 711px; left: 860px; height: 51px; width: 165px;" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="servicestwts@yahoo.com">
+<input type="hidden" name="lc" value="IN">
+<input type="hidden" name="item_name" value="Treasure Spot Bid">
+<input type="hidden" name="amount" value=<%=Session["tspotprice"]%>>
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="button_subtype" value="services">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="tax_rate" value="0.000">
+<input type="hidden" name="shipping" value="0.00">
+<input type="hidden" id="Hidden1" name="custom" value=<%=Hiddenfield1%>>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 288px; left: 739px;" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="servicestwts@yahoo.com">
+<input type="hidden" name="lc" value="IN">
+<input type="hidden" name="item_name" value="Treasure Spot Buy">
+<input type="hidden" name="amount" value="5">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="button_subtype" value="services">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="tax_rate" value="0.000">
+<input type="hidden" name="shipping" value="0.00">
+<input type="hidden" id="Hidden3" name="custom" value=<%=Hiddenfield1%>>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<form id="Form3" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 777px; left: 179px;" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="servicestwts@yahoo.com">
+<input type="hidden" name="lc" value="IN">
+<input type="hidden" name="item_name" value="ToolBox Item Bid">
+<input type="hidden" name="amount" value=<%=Session["tbprice"]%>>
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="button_subtype" value="services">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="tax_rate" value="0.000">
+<input type="hidden" name="shipping" value="0.00">
+<input type="hidden" id="Hidden2" name="custom" value=<%=Hiddenfield1%>>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+    <form id="Form5" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 780px; left: 546px;" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="servicestwts@yahoo.com">
+<input type="hidden" name="lc" value="IN">
+<input type="hidden" name="item_name" value="ToolBox Item Buy">
+<input type="hidden" name="amount" value="3">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="button_subtype" value="services">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="tax_rate" value="0.000">
+<input type="hidden" name="shipping" value="0.00">
+<input type="hidden" id="Hidden4" name="custom" value=<%=Hiddenfield1%>>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<%--<form id="paypalbutton" action="https://www.sandbox.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 529px; left: 2px;" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="BWZKHE4VDJPHU">
+<input type="hidden" name="lc" value="IN">
+<input type="hidden" name="item_name" value="Treasure Spot Buy">
+<input type="hidden" name="amount" value="5.00">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="button_subtype" value="services">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="tax_rate" value="0.000">
+<input type="hidden" name="shipping" value="0.00">
+<input type="hidden" id="customvalue" name="custom" value=<%=Hiddenfield1%>>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+<input type="image" src="https://www.sandbox.paypal.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>--%>
+
+   
+    <iframe width="585" scrolling="no" frameborder="0" style="border: 1px none white; z-index: 1; left: 5px; top: 34px; position: absolute; height: 610px;" src="https://www.trialpay.com/dispatch/c0959f54259e6c43409b3ef18b98479d?sid=7plK3xiCN5tkXO8uO6kgowfoI3U&order_info=1&tpi=CAAVVIRI&currency_url=http://www.acmesoft.com/vc/coins.php&callback_url=http://www.acmesoft.com/tastymorsels/callback.php"></iframe>
+
+
+        
+        <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js">
             var itemno = '<%=orderno.Text%>';
             FB.init({ appId: "123405257731200", status: true, cookie: true });
 
@@ -347,221 +530,9 @@ protected void Button2_Click(object sender, EventArgs e)
             }
         </script>
 
-      
-    <form id="form1" runat="server">
-            
-       
-             
+
+   <a href="../../create.aspx" target="_self" style="position:absolute;left:567px; top:3px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 161px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
+   
         
-        <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 201px; top: 107px; position: absolute; width: 236px" Text="Buy at mygame premade treasurespots"></asp:Label>
-       
-        
-        <div style="position: absolute; border: medium solid #000000; top: 174px; left: 10px; width: 360px; height: 310px;">
-            <h2 style="width: 258px; position: absolute; top: 13px; left: 77px;">Buy New Treasure Spot</h2>
-            <button onclick="buy()" style="z-index: 1; left: 10px; top: 156px; position: absolute; width: 181px; height: 32px;">Buy By FB Payment System</button>
-            <img alt="" src="../../Images/coin.png" style="width: 57px; height: 27px; z-index: 1; left: 8px; top: 10px; position: absolute;" />
-            <label id="fb-ui-return-data" style="position: absolute; top: 269px; width: 306px; left: 9px; height: 31px;"></label>
-
-            
-            <button onclick="earn_currency()" style="z-index: 1; left: 49px; top: 223px; position: absolute">By Promotions</button>
-            <button onclick="free_currency()" style="z-index: 1; left: 339px; top: -46px; position: absolute; width: 120px;">Get Free Currency</button>
-        
-
-            <label style="z-index: 1; left: 12px; top: 47px; position: absolute; height: 77px; width: 307px;">
-                You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
-               Price : $5
-            </label>
-            <input id="orderno1" type="text" value="8" />
-           
-            &nbsp;<asp:Label ID="Label3" runat="server" Style="z-index: 1; left: 28px; top: 131px; position: absolute; width: 218px" Text="Buy a New Treasure Spot Now " Font-Bold="True"></asp:Label>
-            <asp:Label ID="Label4" runat="server" Style="z-index: 1; left: 218px; top: 167px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
-            <asp:Label ID="Label5" runat="server" Style="z-index: 1; left: 100px; top: 199px; position: absolute; height: 16px; width: 20px" Text="or"></asp:Label>
-        </div>
-        <div style="position: absolute; border: medium solid #000000; top: 171px; left: 391px; width: 396px; height: 310px;">
-            <h2 style="width: 319px; position: absolute; top: 12px; left: 55px;">Buy A Bid/Sale Treasure Spot</h2>
-            <img alt="" src="../../Images/bid.png" style="z-index: 1; left: 4px; top: 12px; position: absolute; right: 308px;" />
-            <label style="z-index: 1; left: 68px; top: 52px; position: absolute; height: 18px; width: 289px; bottom: 240px;">Your Bid or Sale has been approved buy now</label>
-            <label id="fb-ui-return-data2" style="position: absolute; top: 230px; width: 306px; left: 20px; height: 61px;"></label>
-            
-            <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 16px; top: 85px; position: absolute" Text="Item Name"></asp:Label>
-            <asp:Label ID="Label12" runat="server" style="z-index: 1; left: 21px; top: 113px; position: absolute" Text="Price($)"></asp:Label>
-            <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 103px; top: 85px; position: absolute"></asp:Label>
-            <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 104px; top: 116px; position: absolute"></asp:Label>
-            
-        </div>
-         <div style="position: absolute; border: medium solid #000000; top: 546px; left: 451px; width: 350px; height: 191px;">
-          <h2 style="width: 319px; position: absolute; top: 16px; left: 12px;">Buy A Bid/Sale ToolBox Item</h2>
-             <asp:Label ID="Label7" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
-             <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text=""></asp:Label>
-             <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 15px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
-             <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 117px; top: 59px; position: absolute; width: 211px"></asp:Label>
-         </div>  
-
-        <div style="position: absolute; border: medium solid #000000; top: 546px; left: 21px; width: 350px; height: 191px;">
-          <h2 style="width: 319px; position: absolute; top: 16px; left: 12px;">Buy A New ToolBox Item</h2>
-             <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
-             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text="3"></asp:Label>
-             <asp:Label ID="Label17" runat="server" style="z-index: 1; left: 15px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
-             <asp:Label ID="Label18" runat="server" style="z-index: 1; left: 117px; top: 59px; position: absolute; width: 211px">ToolBox Item</asp:Label>
-         </div>
-
-         <asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 695px; top: 33px; position: absolute"></asp:TextBox>
-
-
-        <a href="#" onclick="tp_earn(); return false;" style="border-color: #C0C0C0; z-index: 1; text-decoration:none; left: 261px; top: 317px; position: absolute; height: 55px; width: 103px">&nbsp;Earn&nbsp; Free&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Currency</a>
-
-
-
-    
-        
-
-        <h1 style="width: 259px; position: absolute; top: 9px; left: 357px; font-weight: bold; font-size: 30px; color: #0000FF;">&nbsp;Treasure Hunter</h1>
-
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 172px; top: 65px; position: absolute" Text="Get Your Receipt" />
-
-
-
-       
-
-        <asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 447px; top: 70px; position: absolute; width: 165px; height: 20px"></asp:TextBox>
-
-
-
-        <asp:TextBox ID="TextBox2" runat="server" Style="z-index: 1; left: 24px; top: 30px; position: absolute; width: 268px" ReadOnly="True"></asp:TextBox>
-
-
-
-        <asp:Label ID="Label1" runat="server" Style="z-index: 1; left: 333px; top: 70px; position: absolute" Text="Your Receipt No"></asp:Label>
-
-        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1.Value%>')"> </asp:AccessDataSource>
-
-
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/Cpanel/gamesettings" style="z-index: 1; left: 463px; top: 106px; position: absolute" Target="_self">My Game</asp:hyperlink>   
-
-
-
-        <asp:HiddenField ID="HiddenField2" runat="server" />
-
-
-
-        <asp:HiddenField ID="HiddenField3" runat="server" />
-
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 696px; top: 139px; position: absolute; right: 34px;" Target="_self" Enabled="False">Go on a Treasurehunt</asp:hyperlink>
-        <asp:Label ID="Label2" runat="server" Style="z-index: 1; left: 25px; top: 99px; position: absolute; width: 371px"></asp:Label>
-        <asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 669px; top: 102px; position: absolute; width: 174px" Text="Go to my Treasure Spot" OnClick="Button2_Click" />
-
-
-
-        <asp:TextBox ID="TextBox3" runat="server" Style="z-index: 1; left: 22px; top: 503px; position: absolute; width: 734px; height: 20px;"></asp:TextBox>
-
-      
-            <asp:HiddenField ID="Hiddenfield1" runat="server"></asp:HiddenField>
-        
-  
-
-    </form>
-
-
-    <%--<form action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 529px; left: 532px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="item_name" value="thbuyuserid">
-<input type="hidden" name="hosted_button_id" value="UH68K68FR2L48">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>--%>
-
-<form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 328px; left: 557px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="servicestwts@yahoo.com">
-<input type="hidden" name="lc" value="IN">
-<input type="hidden" name="item_name" value="Treasure Spot Bid">
-<input type="hidden" name="amount" value=<%=Application["tspotprice"]%>>
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="no_shipping" value="1">
-<input type="hidden" name="tax_rate" value="0.000">
-<input type="hidden" name="shipping" value="0.00">
-<input type="hidden" id="Hidden1" name="custom" value=<%=Hiddenfield1.Value%>>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-<form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 380px; left: 200px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="servicestwts@yahoo.com">
-<input type="hidden" name="lc" value="IN">
-<input type="hidden" name="item_name" value="Treasure Spot Buy">
-<input type="hidden" name="amount" value="5">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="no_shipping" value="1">
-<input type="hidden" name="tax_rate" value="0.000">
-<input type="hidden" name="shipping" value="0.00">
-<input type="hidden" id="Hidden3" name="custom" value=<%=Hiddenfield1.Value%>>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-<form id="Form3" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 668px; left: 542px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="servicestwts@yahoo.com">
-<input type="hidden" name="lc" value="IN">
-<input type="hidden" name="item_name" value="ToolBox Item Bid">
-<input type="hidden" name="amount" value=<%=Application["tbprice"]%>>
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="no_shipping" value="1">
-<input type="hidden" name="tax_rate" value="0.000">
-<input type="hidden" name="shipping" value="0.00">
-<input type="hidden" id="Hidden2" name="custom" value=<%=Hiddenfield1.Value%>>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-    <form id="Form5" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 668px; left: 112px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="servicestwts@yahoo.com">
-<input type="hidden" name="lc" value="IN">
-<input type="hidden" name="item_name" value="ToolBox Item Buy">
-<input type="hidden" name="amount" value="3">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="no_shipping" value="1">
-<input type="hidden" name="tax_rate" value="0.000">
-<input type="hidden" name="shipping" value="0.00">
-<input type="hidden" id="Hidden4" name="custom" value=<%=Hiddenfield1.Value%>>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-<%--<form id="paypalbutton" action="https://www.sandbox.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 529px; left: 2px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="BWZKHE4VDJPHU">
-<input type="hidden" name="lc" value="IN">
-<input type="hidden" name="item_name" value="Treasure Spot Buy">
-<input type="hidden" name="amount" value="5.00">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="no_shipping" value="1">
-<input type="hidden" name="tax_rate" value="0.000">
-<input type="hidden" name="shipping" value="0.00">
-<input type="hidden" id="customvalue" name="custom" value=<%=Hiddenfield1.Value%>>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-<input type="image" src="https://www.sandbox.paypal.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>--%>
-
-
-
-
 </body>
 </html>

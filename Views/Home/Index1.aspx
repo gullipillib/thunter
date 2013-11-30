@@ -16,17 +16,20 @@
     string tscompleted = "";
     string tbcompleted = "";
 
-
+    string Hiddenfield1;
+    
     protected void checkusername()
     {
-        Hiddenfield1.Value = Model.Name;
-        Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
-        Application["loggeduser"] = Model.Name;
-        if (Hiddenfield1.Value != null)
+        Hiddenfield1 = Model.Name;
+        Hiddenfield1 = Hiddenfield1.Replace(" ", "");
+        Session["loggeduser"] = Model.Name;
+        Session["loggeduserid"] = Model.Id;
+        Session["loggeduserurl"] = Model.ProfilePicture.Data.Url;
+        if (Hiddenfield1 != null)
         {
 
             //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
+            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
 
             DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
@@ -39,16 +42,16 @@
             {
                 //Insert User into appuser,loggeduser,ordercounter,winners;
                 AccessDataSource1.SelectCommand = "SELECT * FROM appuserdetails";
-                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1.Value + "', 'no', 'no', '0', 'no', '0', '')";
+                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
                 AccessDataSource1.Insert();
                 AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1.Value + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'no', '0', '0', '0')";
+                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'no', '0', '0', '0')";
                 AccessDataSource1.Insert();
                 AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1.Value + "','0')";
+                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
                 AccessDataSource1.Insert();
                 AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1.Value + "','0')";
+                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
                 AccessDataSource1.Insert();
             }
 
@@ -76,7 +79,7 @@
         if (Model.Friends.Data.Count != 0)
         {
             int r1 = one.Next(1, Model.Friends.Data.Count);
-            Application["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
+            Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
         }
     }
 
@@ -92,7 +95,7 @@
 
         if (logintimes == "0" && btspots == "0")
         {
-            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1.Value + "'";
+            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
             AccessDataSource1.Update();
             Response.Redirect("~/Play/play");
 
@@ -116,12 +119,12 @@
         {
             tscompleted = dt.Rows[0].Field<string>("tscompleted"); //usethis to get field value
         }
-        if (dt.Rows.Count != 0)
+        if (dt.Rows.Count == 0)
         {
-            Response.Redirect("~/Creator/create");
+            Response.Redirect("/create.aspx");
         }
 
-        AccessDataSource1.SelectCommand = "SELECT tsprice, tsname, tsbidder, tsbid, tsaward FROM tspots where tsbid ='yes' and tsaward = 'yes' and tsbidder ='" + Hiddenfield1.Value + "'";
+        AccessDataSource1.SelectCommand = "SELECT tsprice, tsname, tsbidder, tsbid, tsaward FROM tspots where tsbid ='yes' and tsaward = 'yes' and tsbidder ='" + Hiddenfield1 + "'";
         dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
@@ -133,14 +136,14 @@
 
             if (tsname != null)
             {
-                Application["tspotname"] = tsname;
-                Application["tsprice"] = tsprice;
-                Application["tsselltype"] = "bid";
+                Session["tspotname"] = tsname;
+                Session["tsprice"] = tsprice;
+                Session["tsselltype"] = "bid";
                 Response.Redirect("~/Tspot/buy");
             }
         }
 
-        AccessDataSource1.SelectCommand = "SELECT tbprice, tbname, tbbidder, tbbid, tbaward FROM toolbox where tbbid ='yes' and tbaward = 'yes' and tbbidder ='" + Hiddenfield1.Value + "'";
+        AccessDataSource1.SelectCommand = "SELECT tbprice, tbname, tbbidder, tbbid, tbaward FROM toolbox where tbbid ='yes' and tbaward = 'yes' and tbbidder ='" + Hiddenfield1 + "'";
         dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
@@ -151,9 +154,9 @@
             string tbprice = dt.Rows[0].Field<string>("tbprice"); //usethis to get field value
             if (tsname2 != null)
             {
-                Application["toolboxname"] = tsname2;
-                Application["tbprice"] = tbprice;
-                Application["tbselltype"] = "bid";
+                Session["toolboxname"] = tsname2;
+                Session["tbprice"] = tbprice;
+                Session["tbselltype"] = "bid";
                 Response.Redirect("~/Tspot/buy");
             }
         }
@@ -168,14 +171,14 @@
             tbcompleted = dt.Rows[0].Field<string>("tbcompleted"); //usethis to get field value
             if (dt.Rows.Count != 0)
             {
-                Response.Redirect("~/Toolbox/tools");
+                Response.Redirect("~/tools.aspx");
             }
         }
 
         if (logintimes == invites)
         {
             AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1.Value + "'";
+            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1 + "'";
             AccessDataSource1.Update();
             Response.Redirect("~/Invite/friends");
 
@@ -183,7 +186,7 @@
         if (logintimes == reset)
         {
             AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '3', luloggedin='no' where luname='" + Hiddenfield1.Value + "'";
+            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '3', luloggedin='no' where luname='" + Hiddenfield1 + "'";
             AccessDataSource1.Update();
             Response.Redirect("~/Tspot/buy");
 
@@ -200,7 +203,7 @@
         }
 
         AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1.Value + "'";
+        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1 + "'";
         AccessDataSource1.Update();
 
     }
@@ -279,7 +282,7 @@ to {left:10px;}
     function FacebookInviteFriends() {
         FB.ui({
             method: 'apprequests',
-            message: 'You are Invited to Play Treasure Hunter Game with me'
+            message: 'You are Invited to Play Treasure Hunter 3D MultiPlayer Game with me'
         });
     }
 </script>
@@ -288,12 +291,12 @@ to {left:10px;}
 
 
       
-<a href='../../buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
+<a href='~/../../buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
 <a href='#' onclick="FacebookInviteFriends();" style="position:absolute; left:694px; top:127px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 190px; height: 18px;">Invite Friends</a>
 <a href='Cpanel/gamesettings'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
-   <a href="Play/play" target="_self" style="position:absolute;left:252px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 496px; text-align: center;" > Go On a TreasureHunt </a> 
+   <a href="Play/play" target="_self" style="position:absolute;left:233px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 529px; text-align: center;" > Go On a TreasureHunt </a> 
    
-    <a href="Tspot/buy" target="_self" style="position:absolute;left:414px; top:126px; width:126px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 360px;" > Buy a Treasure Spot </a> 
+    <a href="Tspot/buy" target="_self" style="position:absolute;left:394px; top:126px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 376px;" > Buy a Treasure Spot </a> 
     <a href="Tspot/buy" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
 
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 11px; top: 202px; position: absolute; width: 822px; height: 110px; bottom: 296px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many gold coins as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt."></asp:Label>
@@ -303,14 +306,14 @@ to {left:10px;}
         <img alt="" class="twoto3d" src="../../Images/landscape.jpg" style="z-index: 1; left: 8px; top: 7px; position: absolute" /></p>
                   
     <p>
-        <img alt="" src="../../Images/3dglass.jpg" style="z-index: 1; left: 436px; top: 155px; position: absolute; height: 27px; width: 56px" /></p>
+        <img alt="" src="../../Images/3dglass.gif" style="z-index: 1; left: 436px; top: 155px; position: absolute; height: 27px; width: 56px" /></p>
                   
         <asp:Label ID="Label5" runat="server" Font-Size="8pt" style="z-index: 1; left: 401px; top: 587px; position: absolute" Text="Treasure Hunter - 2013"></asp:Label>
-        <asp:hiddenfield ID="Hiddenfield1" runat="server"></asp:hiddenfield>
+       
         
-   <a href="Creator/create" target="_self" style="position:absolute;left:720px; top:155px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 143px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
+   <a href="../../tools.aspx" target="_self" style="position:absolute;left:740px; top:155px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 22px; text-align: center; height: 22px;" > Go to My ToolsBox </a> 
    
-        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1.Value%>')"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT TOP 5 luname, lucrisboos, luimg FROM loggedusers  order by lucrisboos desc "> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT TOP 5 uname, amount FROM payments Order by amount DESC"> </asp:AccessDataSource>
 
@@ -330,6 +333,9 @@ to {left:10px;}
             <SelectedItemStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
         </asp:DataList>
 
+        
+   <a href="../../create.aspx" target="_self" style="position:absolute;left:562px; top:154px; width:160px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 192px; text-align: center; height: 23px;" > Go to My TreasureSpot </a> 
+   
         <asp:DataList ID="DataList2" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="AccessDataSource3" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="z-index: 1; left: 455px; top: 367px; position: absolute; height: 183px; width: 426px">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />

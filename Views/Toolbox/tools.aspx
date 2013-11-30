@@ -1,56 +1,34 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Language="C#" %>
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
-<%@ Import Namespace="Microsoft.Live" %>
 
 <!DOCTYPE html>
 
 <script runat="server">
 
-
-
-public class LiveLogin
-{
-
-    private static readonly string[] scopes = 
-        new string[] { 
-            "wl.signin", 
-            "wl.basic", 
-            "wl.calendars", 
-            "wl.calendars_update", 
-            "wl.contacts_calendars", 
-            "wl.events_create" };
-
-    private Microsoft.Live.LiveAuthClient authClient;
-    private Microsoft.Live.LiveConnectClient liveClient;
-    
-
-    public LiveLogin()
-    {
-        this.authClient = new LiveAuthClient("0000000040108151","U-9vXWBg0pCxPhYFfGs1tGBkqy0RKKy-","https://treasurehunter.apphb.com");
-        LiveLoginResult loginResult = authClient.InitializeSessionAsync().Result;
-        if (loginResult.Status == LiveConnectSessionStatus.Connected)
-        {
-        }                  
-     }
-    
-}
-
     string username = "";
     string logintimes = "";
     string tspots = "";
-    string invites = ""; 
+    string invites = "";
+    string Hiddenfield1;
+    string HiddenField2;
+    string HiddenField3;
+    string HiddenField4;
+    string HiddenField5;
     
     protected void checkusername()
     {
-        Hiddenfield1.Value = Model.Name;
-        Hiddenfield1.Value = Hiddenfield1.Value.Replace(" ", "");
-        if (Hiddenfield1.Value != null)
+        Hiddenfield1 = Convert.ToString(Session["loggeduser"]);
+        HiddenField4 = Convert.ToString(Session["loggeduserid"]);
+        HiddenField5 = Convert.ToString(Session["loggeduserurl"]);
+        Hiddenfield1 = Hiddenfield1.Replace(" ", "");
+        Label14.Text = Hiddenfield1;
+        if (Hiddenfield1 != null)
         {
-            
-         //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-            AccessDataSource5.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1.Value + "')";
+
+            //Insert User into appuser,loggeduser,ordercounter,treasureprize;
+            AccessDataSource5.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
 
             DataView dv = (DataView)AccessDataSource5.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
@@ -62,34 +40,30 @@ public class LiveLogin
             if (dt.Rows.Count == 0)
             {
                 //Insert User into appuser,loggeduser,ordercounter,winners;
-                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1.Value + "', 'no', 'no', '0', 'no', '0', '')";
+                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
                 AccessDataSource1.Insert();
                 AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1.Value + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
+                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + HiddenField4 + "', '{left : 0, top:0}', '" + HiddenField5 + "', '" + HiddenField5 + "', '100', 'yes', '0', '0', '0')";
                 AccessDataSource1.Insert();
                 AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1.Value + "','0')";
+                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
                 AccessDataSource1.Insert();
                 AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1.Value + "','0')";
+                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
                 AccessDataSource1.Insert();
             }
-         
+
         }
         else
         {
-            
+
             Response.Redirect("~/Tspot/buy");
         }
     }
 
-    
-    
     protected void Page_Load(object sender, EventArgs e)
     {
-        checkusername();
-        
-        
+        checkusername();  
     }
     public class Toolbox
     {
@@ -138,28 +112,11 @@ public class LiveLogin
         tempstring = json;
         if (TextBox1.Text != null && TextBox2.Text != null && TextBox3.Text != null && TextBox4.Text != null && TextBox5.Text != null && TextBox6.Text != null)
         {
-            AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbcategory = '" + DropDownList2.SelectedValue + "', tbsubcategory = '" + DropDownList3.SelectedValue + "', tbname = '" + TextBox1.Text + "', tbcoowner = '" + Hiddenfield1.Value + "', new = 'no', tbdetails = '" + tempstring + "', tbtoolscategory = '" + DropDownList4.SelectedValue + "', tbimageurl = '" + TextBox2.Text  + "' where tbcoowner='" + Hiddenfield1.Value + "'";
+            AccessDataSource1.SelectCommand = "Select Top 1 * from toolbox";
+            AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbcategory = '" + DropDownList2.SelectedValue + "', tbsubcategory = '" + DropDownList3.SelectedValue + "', tbname = '" + TextBox1.Text + "', tbcoowner = '" + "TreasureHunter" + "', tbnew = 'no', tbdetails = '" + tempstring + "', tbtoolscategory = '" + DropDownList4.SelectedValue + "', tbimgurl = '" + TextBox2.Text  + "' where tbowner = '" + Hiddenfield1 + "'";
             AccessDataSource1.Update();
             Button5.Enabled = true;
         }
-    }
-
-    protected void TextBox2_TextChanged(object sender, EventArgs e)
-    {
-        Image1.ImageUrl = TextBox2.Text;
-       
-    }
-
-    protected void TextBox3_TextChanged(object sender, EventArgs e)
-    {
-        Image2.ImageUrl = TextBox3.Text;
-        ;
-    }
-
-    protected void TextBox4_TextChanged(object sender, EventArgs e)
-    {
-        Image3.ImageUrl = TextBox4.Text;
-        
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -202,140 +159,183 @@ public class LiveLogin
 
     }
 
-   
+    
 
     protected void Button5_Click(object sender, EventArgs e)
     {
         Response.Redirect("Play/play");
     }
 
-    
-    
+
+    protected void TextBox2_TextChanged(object sender, EventArgs e)
+    {
+        Image1.ImageUrl = TextBox2.Text;
+    }
+
+    protected void TextBox3_TextChanged(object sender, EventArgs e)
+    {
+        Image2.ImageUrl = TextBox3.Text;
+    }
+
+    protected void TextBox4_TextChanged(object sender, EventArgs e)
+    {
+        Image3.ImageUrl = TextBox3.Text;
+    }
 </script>
 
 <html>
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>tools</title>
-</head>
-    
-<body>
-  <style type="text/css">
-        #pick {
-            z-index: 1;
-            left: 718px;
-            top: 193px;
-            position: absolute;
-            width: 119px;
-        }
-      #uploadFile_div {
-          z-index: 1;
-          left: 700px;
-          top: 217px;
-          position: absolute;
-          height: 44px;
-          width: 206px;
-      }
-      #file {
-          z-index: 1;
-          left: 686px;
-          top: 166px;
-          position: absolute;
-      }
-    </style> 
- <script src="//js.live.net/v5.0/wl.js" type="text/javascript"></script>
     <script type="text/javascript">
-        var APPLICATION_CLIENT_ID = "0000000040108151",
-        REDIRECT_URL = "https://treasurehunter.apphb.com";
-        WL.Event.subscribe("auth.login", onLogin);
-        WL.init({
-            client_id: APPLICATION_CLIENT_ID,
-            redirect_uri: REDIRECT_URL,
-            response_type: "token"
-        });
+        var CLIENT_ID = '824040232468-81jkefn5eq9dhf88uimpiqa2f2v8o1ak.apps.googleusercontent.com';
+        var SCOPES = 'https://www.googleapis.com/auth/drive';
 
-        WL.ui({
-            name: "signin",
-            element: "signInButton",
-            brand: "hotmail",
-            type: "connect"
-        });
+        /**
+         * Called when the client library is loaded to start the auth flow.
+         */
+        function handleClientLoad() {
+            window.setTimeout(checkAuth, 1);
+        }
 
-        function greetUser(session) {
-            var strGreeting = "";
-            WL.api(
-            {
-                path: "me",
-                method: "GET"
-            },
-            function (response) {
-                if (!response.error) {
-                    strGreeting = "Hi, " + response.first_name + "!"
-                    document.getElementById("greeting").innerHTML = strGreeting;
-                }
+        /**
+         * Check if the current user has authorized the application.
+         */
+        function checkAuth() {
+            gapi.auth.authorize(
+                { 'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': true },
+                handleAuthResult);
+        }
+
+        /**
+         * Called when authorization server replies.
+         *
+         * @param {Object} authResult Authorization result.
+         */
+        function handleAuthResult(authResult) {
+            var authButton = document.getElementById('authorizeButton');
+            var filePicker = document.getElementById('filePicker');
+            authButton.style.display = 'none';
+            filePicker.style.display = 'none';
+            if (authResult && !authResult.error) {
+                // Access token has been successfully retrieved, requests can be sent to the API.
+                filePicker.style.display = 'block';
+                filePicker.onchange = uploadFile;
+            } else {
+                // No access token could be retrieved, show the button to start the authorization flow.
+                authButton.style.display = 'block';
+                authButton.onclick = function () {
+                    gapi.auth.authorize(
+                        { 'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false },
+                        handleAuthResult);
+                };
+            }
+        }
+
+        /**
+         * Start the file upload.
+         *
+         * @param {Object} evt Arguments from the file selector.
+         */
+        function uploadFile(evt) {
+            gapi.client.load('drive', 'v2', function () {
+                var file = evt.target.files[0];
+                insertFile(file);
+
             });
         }
 
-        function onLogin() {
-            var session = WL.getSession();
-            if (session) {
-                //greetUser(session);
+        /**
+         * Insert new file.
+         *
+         * @param {File} fileData File object to read data from.
+         * @param {Function} callback Function to call when the request is complete.
+         */
+        function insertFile(fileData, callback) {
+            var boundary = '-------314159265358979323846';
+            var delimiter = "\r\n--" + boundary + "\r\n";
+            var close_delim = "\r\n--" + boundary + "--";
+
+            var reader = new FileReader();
+            reader.readAsBinaryString(fileData);
+            reader.onload = function (e) {
+                var contentType = fileData.type || 'application/octet-stream' || application / vnd.google - apps.folder;
+                var metadata = {
+                    'title': fileData.name,
+                    'mimeType': contentType,
+                    "parents": [{
+                        "kind": "drive#fileLink",
+                        "id": "0B2sEBRwlC-jMeGdJSWZxVUNQRGs"
+                    }]
+
+                };
+
+                var base64Data = btoa(reader.result);
+                var multipartRequestBody =
+                    delimiter +
+                    'Content-Type: application/json\r\n\r\n' +
+                    JSON.stringify(metadata) +
+                    delimiter +
+                    'Content-Type: ' + contentType + '\r\n' +
+                    'Content-Transfer-Encoding: base64\r\n' +
+                    '\r\n' +
+                    base64Data +
+                    close_delim;
+
+                var request = gapi.client.request({
+                    'path': '/upload/drive/v2/files/',
+                    'method': 'POST',
+                    'params': { 'uploadType': 'multipart' },
+                    'headers': {
+                        'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+                    },
+                    'body': multipartRequestBody
+                });
+
+
+
+
+                if (!callback) {
+                    callback = function (file) {
+                        if ('<%=TextBox2.ReadOnly%>' == true && '<%=TextBox3.ReadOnly%>' == true && '<%=TextBox4.ReadOnly%>' == true) {
+                            '<%=TextBox2.Text%>' = "https://googledrive.com/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + fileData.name;
+                            '<%=Image1.ImageUrl%>' = "https://googledrive.com/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + fileData.name;
+                        }
+                        if ('<%=TextBox2.ReadOnly%>' == false && '<%=TextBox3.ReadOnly%>' == true && '<%=TextBox4.ReadOnly%>' == true) {
+                            '<%=TextBox3.Text%>' = "https://googledrive.com/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + fileData.name;
+                            '<%=Image2.ImageUrl%>' = "https://googledrive.com/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + fileData.name;
+                        }
+                        if ('<%=TextBox2.ReadOnly%>' == false && '<%=TextBox3.ReadOnly%>' == false && '<%=TextBox4.ReadOnly%>' == true) {
+                            '<%=TextBox4.Text%>' = "https://googledrive.com/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + fileData.name;
+                            '<%=Image3.ImageUrl%>' = "https://googledrive.com/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + fileData.name;
+                            filePicker.style.display = "none";
+                        }
+                    }
+
+                    request.execute(callback);
+                }
+
             }
         }
-    </script>  
-
-    
-    <div id="greeting"></div>
-    <div id="signInButton"></div>
-   <form>
-    <input id="file" name="file" type="file" />
-</form>
-    <div id="uploadFile_div">SkyDrive save button to appear here</div>
-    <script type="text/javascript"> 
-        WL.ui({
-            name: "skydrivepicker",
-            element: "uploadFile_div",
-            mode: "save",
-            onselected: onUploadFileCompleted,
-            onerror: onUploadFileError
-        });
-
-        function onUploadFileCompleted(response) {
-            WL.upload({
-                path: response.data.folders[0].id,
-                element: "file",
-                overwrite: "rename"
-            }).then(
-                function (response) {
-                    document.getElementById("info").innerText =
-                        "File uploaded.";
-                },
-                function (responseFailed) {
-                    document.getElementById("info").innerText =
-                        "Error uploading file: " + responseFailed.error.message;
-                }
-            );
-        };
-
-        function onUploadFileError(response) {
-            document.getElementById("info").innerText =
-                "Error getting folder info: " + response.error.message;
-        }
     </script>
-
-   
-    <form id="form1" runat="server">
- 
-    <div>
+    <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>   
+</head>
     
-        
-    </div>
+
+<body>
+   
+
+  <input type="file" id="filePicker" style="position:absolute; display:none; top: 236px; left: 675px;" />
+    <input type="button" id="authorizeButton" style="display: none; position:absolute" value="Authorize" /> 
+   
+   <form id="form1" runat="server">
+ <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 709px; top: 12px; position: absolute; height: 21px; width: 172px" Text="Label"></asp:Label>
+     
+   
         <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="20pt" style="z-index: 1; left: 251px; top: 12px; position: absolute; height: 21px" Text="Treasure Hunter Tool Box Creator"></asp:Label>
     
        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1.Value%>')"> </asp:AccessDataSource>
 
-   <a href="Play/play" target="_self" style="position:absolute;left:839px; top:57px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 24px; text-align: center; height: 22px;" > Complete Later </a> 
-   
         <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT categoryname FROM category"> </asp:AccessDataSource>
 
         <asp:Button ID="Button5" runat="server" Enabled="False" style="z-index: 1; left: 681px; top: 55px; position: absolute" Text="Back to Game " OnClick="Button5_Click" />
@@ -345,9 +345,9 @@ public class LiveLogin
         <asp:AccessDataSource id="AccessDataSource7" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT cescname FROM collisionescape"> </asp:AccessDataSource>
 
 
-<asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 250px; top: 235px; position: absolute; width: 385px; height: 24px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox2_TextChanged" ClientIDMode="Static" ReadOnly="True"></asp:TextBox>
-<asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 234px; top: 337px; position: absolute; width: 383px; height: 29px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox3_TextChanged" ClientIDMode="Static" ReadOnly="True"></asp:TextBox>
- <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 229px; top: 411px; position: absolute; width: 382px; height: 28px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" OnTextChanged="TextBox4_TextChanged" ClientIDMode="Static" ReadOnly="True"></asp:TextBox>
+<asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 250px; top: 235px; position: absolute; width: 385px; height: 24px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" ClientIDMode="Static" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+<asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 234px; top: 337px; position: absolute; width: 383px; height: 29px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" ClientIDMode="Static" OnTextChanged="TextBox3_TextChanged"></asp:TextBox>
+ <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 229px; top: 411px; position: absolute; width: 382px; height: 28px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" ClientIDMode="Static" OnTextChanged="TextBox4_TextChanged"></asp:TextBox>
             
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 711px; top: 130px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
@@ -356,8 +356,9 @@ public class LiveLogin
         </asp:DropDownList>
         <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="AccessDataSource7" DataTextField="cescname" DataValueField="cescname" style="z-index: 1; left: 224px; top: 516px; position: absolute; height: 30px; width: 309px">
         </asp:DropDownList>
-        <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" style="z-index: 1; left: 71px; top: 367px; position: absolute; width: 64px" Text="None" OnCheckedChanged="CheckBox1_CheckedChanged" />
-                 <asp:CheckBox ID="CheckBox2" runat="server" style="z-index: 1; left: 519px; top: 204px; position: absolute" Text="Enable Trivia" />
+        
+        <asp:CheckBox ID="CheckBox1" runat="server" style="z-index: 1; left: 71px; top: 367px; position: absolute; width: 64px" Text="None" OnCheckedChanged="CheckBox1_CheckedChanged" />
+                 <asp:CheckBox ID="CheckBox2" runat="server" style="z-index: 1; left: 588px; top: 189px; position: absolute" Text="Enable Trivia" />
 
         
         
@@ -367,7 +368,7 @@ public class LiveLogin
         <asp:Image ID="Image3" runat="server" style="z-index: 1; left: 686px; top: 456px; position: absolute; height: 30px; width: 30px" />
         <asp:Image ID="Image2" runat="server" style="z-index: 1; left: 685px; top: 374px; position: absolute; height: 30px; width: 32px" />
 
-        <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 677px; top: 273px; position: absolute; width: 28px; height: 29px;"  ImageUrl="<%:TextBox2.Text%>"/>
+        <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 677px; top: 273px; position: absolute; width: 28px; height: 29px;"/>
 
        
         <asp:Button ID="Button4" runat="server" BackColor="Blue" ForeColor="White" style="z-index: 1; left: 668px; top: 588px; position: absolute" Text="Finalize" ToolTip="Only after all the fields are completed, finalization takes place" OnClick="Button4_Click" UseSubmitBehavior="False" />
@@ -401,9 +402,11 @@ public class LiveLogin
         <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 34px; top: 519px; position: absolute; right: 766px" Text="Escape Collision"></asp:Label>
         <asp:Label ID="Label12" runat="server" style="z-index: 1; left: 39px; top: 554px; position: absolute" Text="Collision Result"></asp:Label>
    
-    <asp:hiddenfield ID="Hiddenfield1" runat="server"></asp:hiddenfield>
+    
         
         <asp:AccessDataSource id="AccessDataSource5" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"> </asp:AccessDataSource>
-     </form>
+        <asp:HyperLink ID="HyperLink4" runat="server" style="z-index: 1; left: 723px; top: 237px; position: absolute; width: 155px;" NavigateUrl="~/googlepickerlatest.html" Target="_blank">Files Uploader(3 files)</asp:HyperLink>
+        </form>
+    
 </body>
 </html>
