@@ -151,7 +151,7 @@
         ctrl5mainname = tsitemsfulldetails.tsctrl5name;
         
         Label1.Text = tsitemsfulldetails.tsName;
-        
+        string mytemp = tsitemsfulldetails.tsctrl1name;
 
         AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
         dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
