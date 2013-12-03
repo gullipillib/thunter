@@ -330,27 +330,27 @@
         gettreasureprize();
 
 
-        var client = new Facebook.FacebookClient();
-        dynamic result = client.Get("oauth/access_token", new
-        {
-            client_id = ConfigurationManager.AppSettings["FacebookAppId"].ToString(),
-            client_secret = ConfigurationManager.AppSettings["FacebookAppSecret"].ToString(),
-            redirect_uri = ConfigurationManager.AppSettings["FacebookRedirectUrl"].ToString(),
+        //var client = new Facebook.FacebookClient();
+        //dynamic result = client.Get("oauth/access_token", new
+        //{
+            //client_id = ConfigurationManager.AppSettings["FacebookAppId"].ToString(),
+            //client_secret = ConfigurationManager.AppSettings["FacebookAppSecret"].ToString(),
+            //redirect_uri = ConfigurationManager.AppSettings["FacebookRedirectUrl"].ToString(),
             
-        });
-        var token = result.access_token as string;
-        Session["Facebooktoken"] = token;
-        if (string.IsNullOrEmpty(token))
-        {
+        //});
+        //var token = result.access_token as string;
+        //Session["Facebooktoken"] = token;
+        //if (string.IsNullOrEmpty(token))
+        //{
             client = new Facebook.FacebookClient();
-        }
-        else
-        {
-            client = new Facebook.FacebookClient(token);
-        }  
-            postparameters["message"] = "Collected Gold Coins";
-            postparameters["name"] = "Collected Gold Coins";
-            postparameters["description"] = "Playing TreasureHunter Collected Gold Coins";
+        //}
+        //else
+        //{
+            //client = new Facebook.FacebookClient(token);
+        //}  
+            //postparameters["message"] = "Collected Gold Coins";
+            //postparameters["name"] = "Collected Gold Coins";
+            //postparameters["description"] = "Playing TreasureHunter Collected Gold Coins";
 
             
         
@@ -423,8 +423,8 @@
             
             var myaddctrl1 = window.setInterval(function () { getTspot() }, 120000);
             function getTspot() {
-                '<%=postparameters["message"] = Hiddenfield1 +  " Collected " + points.Text + " Gold Coins"%>';
-                var result = '<%=client.Post("/me/feed", postparameters)%>';
+                //'<%=postparameters["message"] = Hiddenfield1 +  " Collected " + points.Text + " Gold Coins"%>';
+                //var result = '<%=client.Post("/me/feed", postparameters)%>';
                 var textbox1value = document.getElementById('TextBox1').getAttribute("value");
                 if (textbox1value == null) {
                     document.getElementById('TextBox1').setAttribute("value", "get");
