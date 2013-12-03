@@ -1051,11 +1051,11 @@
             
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 567px; top: 26px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
-        <asp:Image ID="Image1" runat="server" Style="z-index: 200; left: 250px; top: 405px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
-        <asp:Image ID="Image2" runat="server" Style="z-index: 200; left: 240px; top: 405px; position: absolute; right: 654px;" ClientIDMode="Static" Height="20px" Width="20px" />
-        <asp:Image ID="Image3" runat="server" Style="z-index: 200; left: 132px; top: 315px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
-        <asp:Image ID="Image4" runat="server" Style="z-index: 200; left: 412px; top: 405px; position: absolute; height: 16px;" ClientIDMode="Static" Height="20px" Width="20px" />
-        <asp:Image ID="Image5" runat="server" Style="z-index: 200; left: 251px; top: 405px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
+        <asp:Image ID="Image1" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 250px; top: 405px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
+        <asp:Image ID="Image2" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 240px; top: 405px; position: absolute; right: 654px;" ClientIDMode="Static" Height="20px" Width="20px" />
+        <asp:Image ID="Image3" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 132px; top: 315px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
+        <asp:Image ID="Image4" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 412px; top: 405px; position: absolute; height: 16px;" ClientIDMode="Static" Height="20px" Width="20px" />
+        <asp:Image ID="Image5" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 251px; top: 405px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
         <asp:Button ID="Button11" runat="server" Style="z-index: 1; left: 297px; top: 13px; position: absolute; cursor:pointer;" Text="Select" OnClick="Button11_Click" UseSubmitBehavior="False" BackColor="#99CCFF" ForeColor="Maroon" />
         <asp:AccessDataSource ID="AccessDataSource4" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'air or space')"></asp:AccessDataSource>
         <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 13px; top: 16px; position: absolute; height:14px; width: 67px; right: 834px;" Text="Game Category" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>

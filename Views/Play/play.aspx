@@ -316,7 +316,8 @@
         treasure.Text = dt.Rows[0].Field<string>("treasurevalue"); 
     }
 
-   
+    Facebook.FacebookClient client = new Facebook.FacebookClient();
+    Dictionary<string, object> postparameters = new Dictionary<string, object>();
     
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -327,6 +328,31 @@
         gettreasurespot();
         addfriends();
         gettreasureprize();
+
+
+        var client = new Facebook.FacebookClient();
+        dynamic result = client.Get("oauth/access_token", new
+        {
+            client_id = ConfigurationManager.AppSettings["FacebookAppId"].ToString(),
+            client_secret = ConfigurationManager.AppSettings["FacebookAppSecret"].ToString(),
+            redirect_uri = ConfigurationManager.AppSettings["FacebookRedirectUrl"].ToString(),
+            
+        });
+        var token = result.access_token as string;
+        Session["Facebooktoken"] = token;
+        if (string.IsNullOrEmpty(token))
+        {
+            client = new Facebook.FacebookClient();
+        }
+        else
+        {
+            client = new Facebook.FacebookClient(token);
+        }  
+            postparameters["message"] = "Collected Gold Coins";
+            postparameters["name"] = "Collected Gold Coins";
+            postparameters["description"] = "Playing TreasureHunter Collected Gold Coins";
+
+            
         
         if (Page.IsPostBack == false)
         {
@@ -395,8 +421,10 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             
-            var myaddctrl1 = window.setInterval(function () { getTspot() }, 300000);
+            var myaddctrl1 = window.setInterval(function () { getTspot() }, 120000);
             function getTspot() {
+                '<%=postparameters["message"] = Hiddenfield1 +  " Collected " + points.Text + " Gold Coins"%>';
+                var result = '<%=client.Post("/me/feed", postparameters)%>';
                 var textbox1value = document.getElementById('TextBox1').getAttribute("value");
                 if (textbox1value == null) {
                     document.getElementById('TextBox1').setAttribute("value", "get");
@@ -417,29 +445,81 @@
                 var temp = '<%=ctrl1mainres%>';
                 temp = temp.replace("px", "");
                 temp = parseInt(temp);
-                ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                ctrl1.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
-                ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                ctrl2.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
-                
-                ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                ctrl3.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
-                ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                ctrl4.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
-                ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                ctrl5.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                var randno1 = Math.floor(Math.random() * 10 - 1 + 1) + 10;
+                var randno2 = Math.floor(Math.random() * 10 - 1 + 1) + 10;
+                var randno3 = Math.floor(Math.random() * 10 - 1 + 1) + 10;
 
-                Img1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                Img1.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
-                Img2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                Img2.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
-                Img3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                Img3.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
-                Img4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                Img4.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
-                Img5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                Img5.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
-                
+                if(randno1 == 1 || randno2 == 1 || randno3 == 1)
+                {
+                    ctrl1.style.visibility = "visible";
+                    ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl1.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
+                if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
+                    ctrl2.style.visibility = "visible";
+                    ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl2.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
+                if (randno1 == 3 || randno2 == 3 || randno3 == 3) {
+                    ctrl3.style.visibility = "visible";
+                    ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl3.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
+                if (randno1 == 4 || randno2 == 4 || randno3 == 4) {
+                    ctrl4.style.visibility = "visible";
+                    ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl4.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
+                if (randno1 == 5 || randno2 == 5 || randno3 == 5) {
+                    ctrl5.style.visibility = "visible";
+                    ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl5.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
+                if (randno1 == 6 || randno2 == 6 || randno3 == 6) {
+                    Img1.style.visibility = "visible";
+                    if ('<%=ctrl1mainname%>' == "goldcoins" || '<%=ctrl1mainname%>' == "health") {
+                        Img1.style.width = "20px";
+                        Img1.style.height = "20px";
+                    }
+                    Img1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img1.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
+                if (randno1 == 7 || randno2 == 7 || randno3 == 7) {
+                    Img2.style.visibility = "visible";
+                    if ('<%=ctrl2mainname%>' == "goldcoins" || '<%=ctrl2mainname%>' == "health") {
+                        Img2.style.width = "20px";
+                        Img2.style.height = "20px";
+                    }
+                    Img2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img2.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
+                if (randno1 == 8 || randno2 == 8 || randno3 == 8) {
+                    Img3.style.visibility = "visible";
+                    if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
+                        Img3.style.width = "20px";
+                        Img3.style.height = "20px";
+                    }
+                    Img3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img3.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
+                if (randno1 == 9 || randno2 == 9 || randno3 == 9) {
+                    Img4.style.visibility = "visible";
+                    if ('<%=ctrl4mainname%>' == "goldcoins" || '<%=ctrl4mainname%>' == "health") {
+                        Img4.style.width = "20px";
+                        Img4.style.height = "20px";
+                    }
+                    Img4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img4.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
+                if (randno1 == 10 || randno2 == 10 || randno3 == 10) {
+                    Img5.style.visibility = "visible";
+                    if ('<%=ctrl5mainname%>' == "goldcoins" || '<%=ctrl5mainname%>' == "health") {
+                        Img5.style.width = "20px";
+                        Img5.style.height = "20px";
+                    }
+                    Img5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img5.style.top = Math.floor(Math.random() * (372 - parseInt(temp)) + 1) + parseInt(temp) + "px";
+                }
 
             }
 
@@ -474,22 +554,25 @@
             
             function detectcollision() {
                 
-                
-                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl1.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl1.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl1.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl1.style.bottom.replace("px", ""))) {
-                    enemyhits = enemyhits + 1;
-                    if (enemyhits == 10) {
-                        enemyhits = 0;
-                        document.getElementById('points').setAttribute("value", document.getElementById('points').getAttribute("value") + 1);
+                if (ctrl1.style.visibility == "visible")
+                    {
+                    if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl1.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl1.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl1.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl1.style.bottom.replace("px", ""))) {
+                        enemyhits = enemyhits + 1;
+                        if (enemyhits == 10) {
+                            enemyhits = 0;
+                            document.getElementById('points').setAttribute("value", document.getElementById('points').getAttribute("value") + 1);
+                        }
+                        document.getElementById('ehits').setAttribute("value", enemyhits);
+                        friendimage.style.visibility = "visible";
+                        friendname.style.visibility = "visible";
+                        friendimage.src = '<%=Convert.ToString(Session["friend1pic"])%>';
+                        friendname.value = '<%=Session["friend1"]%>';
+                        sound1.src = myctrl1.tbCollionSound;
                     }
-                    document.getElementById('ehits').setAttribute("value", enemyhits);
-                    friendimage.style.visibility = "visible";
-                    friendname.style.visibility = "visible";
-                    friendimage.src = '<%=Convert.ToString(Session["friend1pic"])%>';
-                    friendname.value = '<%=Session["friend1"]%>'; 
-                    sound1.src = myctrl1.tbCollionSound;
-                    
                 }
-                else if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl2.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl2.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl2.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl2.style.bottom.replace("px", ""))) {
+                if (ctrl2.style.visibility == "visible")
+                {
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl2.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl2.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl2.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl2.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     if (enemyhits == 10) {
                         enemyhits = 0;
@@ -503,7 +586,10 @@
                     sound1.src = myctrl2.tbCollionSound;
                     
                 }
-                else if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl3.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl3.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl3.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl3.style.bottom.replace("px", ""))) {
+                }
+                if (ctrl3.style.visibility == "visible")
+                {
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl3.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl3.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl3.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl3.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     if (enemyhits == 10) {
                         enemyhits = 0;
@@ -517,7 +603,10 @@
                     sound1.src = myctrl3.tbCollionSound;
                     
                 }
-                else if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl4.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl4.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl4.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl4.style.bottom.replace("px", ""))) {
+                }
+                if (ctrl4.style.visibility == "visible")
+                {
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl4.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl4.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl4.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl4.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     if (enemyhits == 10) {
                         enemyhits = 0;
@@ -531,7 +620,10 @@
                     sound1.src = myctrl4.tbCollionSound;
                     
                 }
-                else if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl5.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl5.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl5.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl5.style.bottom.replace("px", ""))) {
+                }
+                if (ctrl5.style.visibility == "visible")
+                {
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(ctrl5.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(ctrl5.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(ctrl5.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(ctrl5.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     if (enemyhits == 10) {
                         enemyhits = 0;
@@ -545,20 +637,25 @@
                     sound1.src = myctrl5.tbCollionSound;
                     
                 }
-                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img1.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img1.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img1.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img1.style.bottom.replace("px", ""))) {
-                    enemyhits = enemyhits + 1;
-                    if (enemyhits == 10) {
-                        enemyhits = 0;
-                        document.getElementById('points').setAttribute("value", document.getElementById('points').getAttribute("value") + 1);
-                    }
-                    document.getElementById('ehits').setAttribute("value", enemyhits);
-                    sound1.src = myctrl1.tbCollionSound;
-                    if ('<%=ctrl1mainname%>' == "goldcoins") {
-                        document.getElementById('points').setAttribute("value", document.getElementById('points').getAttribute("value") + 1);
-                    }
-
                 }
-                else if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img2.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img2.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img2.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img2.style.bottom.replace("px", ""))) {
+                if (Img1.style.visibility == "visible") {
+                    if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img1.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img1.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img1.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img1.style.bottom.replace("px", ""))) {
+                        enemyhits = enemyhits + 1;
+                        if (enemyhits == 10) {
+                            enemyhits = 0;
+                            document.getElementById('points').setAttribute("value", document.getElementById('points').getAttribute("value") + 1);
+                        }
+                        document.getElementById('ehits').setAttribute("value", enemyhits);
+                        sound1.src = myctrl1.tbCollionSound;
+                        if ('<%=ctrl1mainname%>' == "goldcoins") {
+                            document.getElementById('points').setAttribute("value", document.getElementById('points').getAttribute("value") + 1);
+                        }
+
+                    }
+                }
+                if (Img2.style.visibility == "visible")
+                {
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img2.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img2.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img2.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img2.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     if (enemyhits == 10) {
                         enemyhits = 0;
@@ -570,7 +667,10 @@
                     } sound1.src = myctrl2.tbCollionSound;
 
                 }
-                else if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img3.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img3.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img3.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img3.style.bottom.replace("px", ""))) {
+                }
+                if (Img3.style.visibility == "visible")
+                {
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img3.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img3.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img3.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img3.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     if (enemyhits == 10) {
                         enemyhits = 0;
@@ -582,7 +682,10 @@
                     } sound1.src = myctrl3.tbCollionSound;
 
                 }
-                else if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img4.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img4.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img4.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img4.style.bottom.replace("px", ""))) {
+                }
+                if (Img4.style.visibility == "visible")
+                {
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img4.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img4.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img4.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img4.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     if (enemyhits == 10) {
                         enemyhits = 0;
@@ -594,7 +697,10 @@
                         document.getElementById('points').setAttribute("value", document.getElementById('points').getAttribute("value") + 1);
                     }
                 }
-                else if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img5.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img5.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img5.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img5.style.bottom.replace("px", ""))) {
+                }
+                if (Img5.style.visibility == "visible")
+                {
+                if (parseInt(crosshair.style.left.replace("px", "")) >= parseInt(Img5.style.left.replace("px", "")) && parseInt(crosshair.style.right.replace("px", "")) <= parseInt(Img5.style.right.replace("px", "")) || parseInt(crosshair.style.top.replace("px", "")) >= parseInt(Img5.style.top.replace("px", "")) && parseInt(crosshair.style.bottom.replace("px", "")) <= parseInt(Img5.style.bottom.replace("px", ""))) {
                     enemyhits = enemyhits + 1;
                     if (enemyhits == 10) {
                         enemyhits = 0;
@@ -605,6 +711,7 @@
                     if ('<%=ctrl5mainname%>' == "goldcoins") {
                         document.getElementById('points').setAttribute("value", document.getElementById('points').getAttribute("value") + 1);
                     }
+                }
                 }
                 }
 
@@ -659,6 +766,7 @@
                 }
                 divplayer.focus();
             }
+            
 
             document.addEventListener("keydown", check, false);
             document.addEventListener("mousedown", explodeprop, false);
@@ -867,22 +975,22 @@
     <div id="divplayer" style="z-index: 203; background-color: transparent; overflow:hidden;" >
         <img id="crosshair"  src='<%=propurl%>' style="width: 33px; height: 25px; position: absolute; top: 328px; left: 385px; z-index: 202; right: 434px;">
         <img id="explosion" src='<%=collisionurl%>' style="width: 10px; height: 10px; position: absolute; top: 247px; left: 307px; z-index: 21; right: 532px; visibility: hidden; margin-left: 0px; margin-top: 0px;">
-        <img id="ctrl1"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 229px; z-index: 21; right: 440px; margin-left: 0px; margin-top: 0px;">
-        <img id="ctrl2"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 419px; margin-left: 0px; margin-top: 0px;">
-        <img id="ctrl3"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 349px; z-index: 21; right: 340px; margin-left: 0px; margin-top: 0px;">
-        <img id="ctrl4"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px;">
-        <img id="ctrl5"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 339px; z-index: 21; right: 483px; margin-left: 0px; margin-top: 0px;">
+        <img id="ctrl1"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 229px; z-index: 21; right: 440px; margin-left: 0px; margin-top: 0px; visibility:hidden">
+        <img id="ctrl2"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 419px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
+        <img id="ctrl3"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 349px; z-index: 21; right: 340px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
+        <img id="ctrl4"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
+        <img id="ctrl5"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 339px; z-index: 21; right: 483px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
         <%--<img id="player1" src="" style="width: 30px; height: 30px; position: absolute; top: 278px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player2" src="" style="width: 30px; height: 30px; position: absolute; top: 296px; left: 260px; z-index: 21; right: 562px; margin-left: 0px; margin-top: 0px;">
         <img id="player3" src="" style="width: 30px; height: 30px; position: absolute; top: 78px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player4" src="" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">
         <img id="player5" src="" style="width: 30px; height: 30px; position: absolute; top: 251px; left: 390px; z-index: 21; right: 299px; margin-left: 0px; margin-top: 0px;">
         --%>
-        <img id="Img1"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 229px; z-index: 21; right: 440px; margin-left: 0px; margin-top: 0px;">
-        <img id="Img2"  src='<%=ctrl2mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 419px; margin-left: 0px; margin-top: 0px;">
-        <img id="Img3"  src='<%=ctrl3mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 349px; z-index: 21; right: 340px; margin-left: 0px; margin-top: 0px;">
-        <img id="Img4"  src='<%=ctrl4mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px;">
-        <img id="Img5"  src='<%=ctrl5mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 339px; z-index: 21; right: 483px; margin-left: 0px; margin-top: 0px;">
+        <img id="Img1"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 229px; z-index: 21; right: 440px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
+        <img id="Img2"  src='<%=ctrl2mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 419px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
+        <img id="Img3"  src='<%=ctrl3mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 349px; z-index: 21; right: 340px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
+        <img id="Img4"  src='<%=ctrl4mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
+        <img id="Img5"  src='<%=ctrl5mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 339px; z-index: 21; right: 483px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
         
          
   
