@@ -423,8 +423,7 @@
             
             var myaddctrl1 = window.setInterval(function () { getTspot() }, 120000);
             function getTspot() {
-                //'<%=postparameters["message"] = Hiddenfield1 +  " Collected " + points.Text + " Gold Coins"%>';
-                //var result = '<%=client.Post("/me/feed", postparameters)%>';
+                
                 var textbox1value = document.getElementById('TextBox1').getAttribute("value");
                 if (textbox1value == null) {
                     document.getElementById('TextBox1').setAttribute("value", "get");
@@ -973,24 +972,24 @@
         </audio>
         
     <div id="divplayer" style="z-index: 203; background-color: transparent; overflow:hidden;" >
-        <img id="crosshair"  src='<%=propurl%>' style="width: 33px; height: 25px; position: absolute; top: 328px; left: 385px; z-index: 202; right: 434px;">
-        <img id="explosion" src='<%=collisionurl%>' style="width: 10px; height: 10px; position: absolute; top: 247px; left: 307px; z-index: 21; right: 532px; visibility: hidden; margin-left: 0px; margin-top: 0px;">
-        <img id="ctrl1"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 229px; z-index: 21; right: 440px; margin-left: 0px; margin-top: 0px; visibility:hidden">
-        <img id="ctrl2"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 419px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
-        <img id="ctrl3"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 349px; z-index: 21; right: 340px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
-        <img id="ctrl4"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
-        <img id="ctrl5"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 339px; z-index: 21; right: 483px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
+        <img id="crosshair"  src='<%=propurl%>' style="width: 33px; height: 25px; position: absolute; top: 147px; left: 119px; z-index: 202; right: 332px;">
+        <img id="explosion" src='<%=collisionurl%>' style="width: 10px; height: 10px; position: absolute; top: 187px; left: 199px; z-index: 21; right: 275px; visibility: hidden; margin-left: 0px; margin-top: 0px;">
+        <img id="ctrl1"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 211px; left: 61px; z-index: 21; right: 373px; margin-left: 0px; margin-top: 0px; visibility:visible">
+        <img id="ctrl2"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 197px; left: 162px; z-index: 21; right: 272px; margin-left: 0px; margin-top: 0px; visibility:visible">
+        <img id="ctrl3"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 72px; left: 177px; z-index: 21; right: 257px; margin-left: 0px; margin-top: 0px; visibility:visible">
+        <img id="ctrl4"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 168px; left: 347px; z-index: 21; right: 87px; margin-left: 0px; margin-top: 0px; visibility:visible">
+        <img id="ctrl5"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 197px; left: 184px; z-index: 21; right: 250px; margin-left: 0px; margin-top: 0px; visibility:visible">
         <%--<img id="player1" src="" style="width: 30px; height: 30px; position: absolute; top: 278px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player2" src="" style="width: 30px; height: 30px; position: absolute; top: 296px; left: 260px; z-index: 21; right: 562px; margin-left: 0px; margin-top: 0px;">
         <img id="player3" src="" style="width: 30px; height: 30px; position: absolute; top: 78px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player4" src="" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">
         <img id="player5" src="" style="width: 30px; height: 30px; position: absolute; top: 251px; left: 390px; z-index: 21; right: 299px; margin-left: 0px; margin-top: 0px;">
         --%>
-        <img id="Img1"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 229px; z-index: 21; right: 440px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
-        <img id="Img2"  src='<%=ctrl2mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 419px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
-        <img id="Img3"  src='<%=ctrl3mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 349px; z-index: 21; right: 340px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
-        <img id="Img4"  src='<%=ctrl4mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 270px; z-index: 21; right: 552px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
-        <img id="Img5"  src='<%=ctrl5mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 360px; left: 339px; z-index: 21; right: 483px; margin-left: 0px; margin-top: 0px; visibility:hidden"">
+        <img id="Img1"  src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 194px; left: 365px; z-index: 21; right: 69px; margin-left: 0px; margin-top: 0px; visibility:visible">
+        <img id="Img2"  src='<%=ctrl2mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 99px; left: 275px; z-index: 21; right: 159px; margin-left: 0px; margin-top: 0px; visibility:visible">
+        <img id="Img3"  src='<%=ctrl3mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 47px; left: 57px; z-index: 21; right: 377px; margin-left: 0px; margin-top: 0px; visibility:visible">
+        <img id="Img4"  src='<%=ctrl4mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 310px; left: 58px; z-index: 21; right: 376px; margin-left: 0px; margin-top: 0px; visibility:visible">
+        <img id="Img5"  src='<%=ctrl5mainurl%>' style="width: 50px; height: 50px; position: absolute; top: 86px; left: 379px; z-index: 21; right: 55px; margin-left: 0px; margin-top: 0px; visibility:visible">
         
          
   
@@ -1000,7 +999,8 @@
 
     
     <img alt="" src="~/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 50px; top: 132px; position: absolute; bottom: 357px;" id="friendimage" />
-       <iframe id="fplayer" ftameborder="0"  src='<%=iframeurl%>'  width="480"  height="397"  style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 397px;"   class="twoto3d"></iframe>
-   </body>
+      <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 397px;"   class="twoto3d" id="fplayer" />
+      
+    </body>
 
 </html>
