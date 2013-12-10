@@ -25,6 +25,7 @@
               position: absolute;
               width: 652px;
               height: 29px;
+              right: 238px;
           }
           #TextBox4 {
               z-index: 1;
@@ -130,7 +131,7 @@
         var reader = new FileReader();
         reader.readAsBinaryString(fileData);
         var baseData = btoa(reader.result);
-        if (baseData.length * 3 / 4 < 120000) {
+        if (baseData.length * 3 / 4 < 2500000) {  
             reader.onload = function (e) {
 
                 var contentType = fileData.type || 'application/octet-stream' || application / vnd.google - apps.folder;
@@ -143,30 +144,29 @@
                     }]
 
                 };
-            
-          var base64Data = btoa(reader.result);
-          
-              var multipartRequestBody =
-                  delimiter +
-                  'Content-Type: application/json\r\n\r\n' +
-                  JSON.stringify(metadata) +
-                  delimiter +
-                  'Content-Type: ' + contentType + '\r\n' +
-                  'Content-Transfer-Encoding: base64\r\n' +
-                  '\r\n' +
-                  base64Data +
-                  close_delim;
 
-              var request = gapi.client.request({
-                  'path': '/upload/drive/v2/files/',
-                  'method': 'POST',
-                  'params': { 'uploadType': 'multipart' },
-                  'headers': {
-                      'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
-                  },
-                  'body': multipartRequestBody
-              });
-          
+                var base64Data = btoa(reader.result);
+                var multipartRequestBody =
+                    delimiter +
+                    'Content-Type: application/json\r\n\r\n' +
+                    JSON.stringify(metadata) +
+                    delimiter +
+                    'Content-Type: ' + contentType + '\r\n' +
+                    'Content-Transfer-Encoding: base64\r\n' +
+                    '\r\n' +
+                    base64Data +
+                    close_delim;
+
+                var request = gapi.client.request({
+                    'path': '/upload/drive/v2/files/',
+                    'method': 'POST',
+                    'params': { 'uploadType': 'multipart' },
+                    'headers': {
+                        'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+                    },
+                    'body': multipartRequestBody
+                });
+
             }
 
 
@@ -191,27 +191,16 @@
           }
           function uploadchanged() {
               var tbox2 = document.getElementById('Textbox2');
-              var tbox3 = document.getElementById('Textbox3');
-              var tbox4 = document.getElementById('Textbox4');
+              
               var img1 = document.getElementById('Image1');
-              var img2 = document.getElementById('Image2');
-              var img3 = document.getElementById('Image3');
+              
               if (tbox2.readOnly == false && tbox3.readOnly == false && tbox4.readOnly == false) {
                   tbox2.value = "https://googledrive.com/host/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + document.getElementById('filepicker').name;
                   img1.src = "https://googledrive.com/host/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + document.getElementById('filepicker').name;
                   tbox2.readOnly = true;
-              }
-              if (tbox2.readOnly == true && tbox3.readOnly == false && tbox4.readOnly == false) {
-                  tbox3.value = "https://googledrive.com/host/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + document.getElementById('filepicker').name;
-                  img2.src = "https://googledrive.com/host/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + document.getElementById('filepicker').name;
-                  tbox3.readOnly = true;
-              }
-              if (tbox2.readOnly == true && tbox3.readOnly == true && tbox4.readOnly == false) {
-                  tbox4.value = "https://googledrive.com/host/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + document.getElementById('filepicker').name;
-                  img5.src = "https://googledrive.com/host/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/" + document.getElementById('filepicker').name;
-                  tbox4.readOnly = true;
                   document.getElementById('filepicker').style.display = "none";
               }
+             
           }
           }
       }
@@ -225,12 +214,8 @@
     <!--Add a file picker for the user to start the upload process -->
     <input type="file" id="filePicker" style="position:absolute; top: 56px; left: 529px;"  onchange="uploadchanged();"/>
     <input type="button" id="authorizeButton" style="display: none" value="Authorize" />
-      <input id="TextBox2" type="text" />
-      <input id="TextBox3" type="text" />
-      <input id="TextBox4" type="text" />
-      <img id="Image1" alt="" src="" style="z-index: 1; left: 706px; top: 89px; position: absolute; height: 38px; width: 33px" />
-      <img id="Image2" alt="" src="" style="z-index: 1; left: 707px; top: 147px; position: absolute; height: 38px; width: 33px" />
-      <img id="Image3" alt="" src="" style="z-index: 1; left: 709px; top: 206px; position: absolute; height: 38px; width: 33px" />
+      <input id="TextBox2" type="text" />&nbsp;&nbsp;
+      <img id="Image1" alt="" src="" style="z-index: 1; left: 706px; top: 89px; position: absolute; height: 38px; width: 33px" />&nbsp;&nbsp;
   <label id="lbl1"> Copy These&nbsp; Url Address to your toolbox </label>
       &nbsp;<label id="Label1">TreasureHunter ToolBox Fileuploader</label>
   </body>

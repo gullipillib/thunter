@@ -220,7 +220,9 @@
 
 <html>
 <head runat="server">
+    
     <meta name="viewport" content="width=device-width" />
+    
     <title>TreasureHunter</title>
 </head>
 

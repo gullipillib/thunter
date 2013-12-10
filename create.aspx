@@ -1014,8 +1014,13 @@
 
     protected void TextBox2_TextChanged1(object sender, EventArgs e)
     {
-        TextBox2.Text = "//www.youtube.com/embed/" + TextBox2.Text + "?enablejsapi=1&wmmode=transparent&autoplay=1&start=30&end=60&loop=1&playlist=" + TextBox2.Text + "&rel=0&showinfo=0&controls=0&disablekb=1";
-        
+        if (TextBox2.Text.Contains("https://googledrive.com/host/0B2sEBRwlC-jMeGdJSWZxVUNQRGs/"))
+        {
+        }
+        else
+        {
+            TextBox2.Text = "";
+        }
         Label25.Text = TextBox2.Text.Replace(" ", "");
     }
 </script>
@@ -1030,10 +1035,13 @@
 
 
 <body style="height: 585px; background-color:transparent">
-    <a href="../Play/play" target="_self" style="position: absolute; left: 390px; top: 33px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 372px; text-align: center; height: 22px;">Complete Later </a>
+    <a href="Play/play" target="_self" style="position: absolute; left: 390px; top: 33px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 372px; text-align: center; height: 22px;">Complete Later </a>
+    <a href="Play/play" target="_self" style="position: absolute; left: 542px; top: 61px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 220px; text-align: center; height: 22px;">Approver Comments </a>
     
-    <iframe id="Iframe1" src='<%=TextBox2.Text%>'
-     style="z-index:auto; position:absolute; left: 7px; top: 58px; background-color: transparent; width: 480px; height: 397px; display: inline;" class="twoto3d" contenteditable="true" seamless="seamless" height="397" width="480"></iframe>
+    <img alt="" src='<%=TextBox2.Text%>' style="z-index:auto; position:absolute; left: 7px; top: 58px; background-color: transparent; width: 480px; height: 397px; display: inline;" class="twoto3d" height="397" width="480" id="Iframe1" />
+      
+   <iframe id="iframe2" style="position:absolute; top: 639px; left: 10px; width: 895px; height: 353px;" src="googlepickerlatest2.html"></iframe>
+ 
    
     <form id="form1" runat="server">
         
@@ -1070,7 +1078,7 @@
         <asp:Label ID="Label22" runat="server" style="z-index: 1; left: 716px; top: 307px; position: absolute; height:14px; width: 32px; right: 166px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label23" runat="server" style="z-index: 1; left:  719px; top: 329px; position: absolute; height:14px; width: 32px; right: 163px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label24" runat="server" style="z-index: 1; left:  174px; top: 610px; position: absolute; height:14px; width: 32px; right: 708px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Transparent"></asp:Label>
-        <asp:Label ID="Label25" runat="server" style="z-index: 1; left:  181px; top: 633px; position: absolute; height:14px; width: 32px; right: 701px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Transparent"></asp:Label>
+        <asp:Label ID="Label25" runat="server" style="z-index: 1; left:  262px; top: 607px; position: absolute; height:14px; width: 32px; right: 620px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Transparent"></asp:Label>
         <asp:Label ID="Label26" runat="server" style="z-index: 1; left:  346px; top: 437px; position: absolute; height:14px; width: 214px; right: 354px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:AccessDataSource ID="AccessDataSource5" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'others or players')  or  (tbtoolscategory = 'player')"></asp:AccessDataSource>
 

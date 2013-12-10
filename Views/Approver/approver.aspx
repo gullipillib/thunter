@@ -15,7 +15,7 @@
         public string tsrPlayerPosition { get; set; }
         public string tsdPlayerPosition { get; set; }
     }
-
+    
     string username = "";
     string logintimes = "";
     string tspots = "";
@@ -57,7 +57,7 @@
                 AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
                 AccessDataSource1.Insert();
             }
-
+            
         }
         else
         {
@@ -132,7 +132,7 @@
         //tsitemsfulld = tsitemsfulld.Replace('\\', '"');
         //ts1itemsfulldetails = tsitemsfulld;
 
-
+        
 
 
         tsitemsfulldetails = Json.Decode(tsitems);
@@ -894,6 +894,7 @@
    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" style="z-index: 1; left: 347px; top: 0px; position: absolute; width: 293px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>     
    <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="14pt" ForeColor="#9999FF" style="z-index: 1; left: 341px; top: 84px; position: absolute; width: 505px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
      <label style="position: absolute; top: 132px; left: 151px; height: 19px; color: #FFCC00;">This Treasure Spot Contains   </label>       
+<label style="position: absolute; top: 59px; left: 216px; height: 19px; color: #FFCC00;">I Agree to the terms and Conditions of Aprroving  </label>
 <asp:CheckBox ID="CheckBox1" runat="server" ForeColor="White" style="z-index: 1; left: 141px; top: 167px; position: absolute" Text="Obscenity" />
         <asp:CheckBox ID="CheckBox2" runat="server" ForeColor="White" style="z-index: 1; left: 141px; top: 198px; position: absolute; width: 198px;" Text="Objectionable or Provocative" />
         <asp:CheckBox ID="CheckBox3" runat="server" ForeColor="White" style="z-index: 1; left: 142px; top: 231px; position: absolute" Text="Unrealistic" />
@@ -903,7 +904,7 @@
 <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 5px; top: 478px; position: absolute" Text="Disapprove" OnClick="Button2_Click" />
 
 <asp:HyperLink ID="HyperLink5" runat="server" Enabled="False" ForeColor="White" NavigateUrl="~/Play/play" style="z-index: 1; left: 773px; top: 56px; position: absolute">Back to Game</asp:HyperLink>
-   
+ <asp:HyperLink ID="HyperLink1" runat="server" Enabled="False" ForeColor="White" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 527px; top: 60px; position: absolute">Terms and Conditions</asp:HyperLink>  
         
 
         <asp:TextBox ID="ehits" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 129px; top: 34px; position: absolute; width: 45px" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1"></asp:TextBox>
@@ -911,8 +912,8 @@
         <asp:TextBox ID="points" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 488px; top: 34px; position: absolute; width: 107px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1"></asp:TextBox>
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 747px; top: 33px; position: absolute; width: 73px" ForeColor="#FFCC00" meta:resourcekey="treasureResource1"></asp:TextBox>
         <asp:panel id="panel1" runat="server">
-        <asp:TextBox ID="TextBox1" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 751px; top: 57px; position: absolute; width: 73px" ForeColor="Black" BorderColor="Black" OnTextChanged="TextBox1_TextChanged" ></asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 751px; top: 57px; position: absolute; width: 73px" ForeColor="Black" BorderColor="Black" OnTextChanged="TextBox2_TextChanged" ></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 801px; top: 20px; position: absolute; width: 73px" ForeColor="Black" BorderColor="Black" OnTextChanged="TextBox1_TextChanged" ></asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 537px; top: 6px; position: absolute; width: 73px" ForeColor="Black" BorderColor="Black" OnTextChanged="TextBox2_TextChanged" ></asp:TextBox>
         </asp:panel>
     </form>
         <label style="position: absolute; top: 48px; left: 15px; right: 846px; height: 19px; color: #FFCC00;">Achievements</label>
