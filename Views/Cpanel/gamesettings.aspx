@@ -132,6 +132,28 @@ protected void Button5_Click(object sender, EventArgs e)
         }
     }
 }
+
+protected void Button13_Click(object sender, EventArgs e)
+{
+    AccessDataSource11.SelectCommand = "select luspots from loggedusers where luname = '" + Hiddenfield1 + "'";
+     DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataTable dt = new DataTable();
+            dt = dv.ToTable();
+            if (dt.Rows.Count != 0)
+            {
+            
+    Random one = new Random();
+    int t1 = one.Next(0, 1);
+    if (t1 == 0)
+    {
+        Response.Redirect("~/Approver/approver");
+    }
+    if (t1 == 1)
+    {
+        Response.Redirect("~/Approver1/approver1");
+    }
+            }
+}
 </script>
 <html>
 <head runat="server">
@@ -146,8 +168,10 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:Label ID="Label7" runat="server" Font-Bold="True" style="z-index: 1; left: 15px; top: 7px; position: absolute" Text="Money Earned"></asp:Label>
         <asp:Label ID="Label8" runat="server" Font-Bold="True" style="z-index: 1; left: 232px; top: 8px; position: absolute; height: 22px; width: 89px" Text="Gold Coins"></asp:Label>
         
+    <asp:AccessDataSource id="AccessDataSource11" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
     
     <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
+        <asp:Button ID="Button13" runat="server" OnClick="Button13_Click" style="z-index: 1; left: 382px; top: 9px; position: absolute" Text="Earn through approving" />
         <asp:ListBox ID="ListBox1" runat="server" DataSourceID="AccessDataSource8" DataTextField="amount" DataValueField="amount" style="z-index: 1; left: 124px; top: 7px; position: absolute; height: 24px"></asp:ListBox>
         
         <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 224px; top: 38px; position: absolute" Text="Buy" Enabled="False" OnClick="Button1_Click" />
@@ -156,22 +180,23 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:Button ID="Button4" runat="server" style="z-index: 1; left: 608px; top: 305px; position: absolute" Text="Bid" Enabled="False" />
         <asp:Button ID="Button5" runat="server" style="z-index: 1; left: 168px; top: 855px; position: absolute" Text="Sell" Enabled="False" OnClick="Button5_Click" /> 
         <asp:Button ID="Button6" runat="server" style="z-index: 1; left: 176px; top: 576px; position: absolute" Text="Sell" Enabled="False" OnClick="Button6_Click" />
-        <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner = ''" UpdateCommand="update tspots set tsbidamount = ''"> </asp:AccessDataSource>
-        <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 660px; top: 306px; position: absolute" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
+        <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner = ''" UpdateCommand="update tspots set tsprice = ''"> </asp:AccessDataSource>
+        <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 681px; top: 306px; position: absolute" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
         <asp:AccessDataSource id="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbcoowner = ''"> </asp:AccessDataSource>
-    <asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 630px; top: 8px; position: absolute; right: 113px;" Target="_self">Buy a ToolBox Item</asp:hyperlink>
-        <asp:AccessDataSource id="AccessDataSource4" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsname, tsowner, tsprice, tssellamount FROM tspots  WHERE  (tssell = 'yes')"> </asp:AccessDataSource>
-        <asp:AccessDataSource id="AccessDataSource5" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate, tsbidder, tsbidamount FROM  tspots WHERE (tssell = 'yes')"> </asp:AccessDataSource>
+    <asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 744px; top: 11px; position: absolute; right: 12px;" Target="_self">Buy a ToolBox Item</asp:hyperlink>
+        <asp:AccessDataSource id="AccessDataSource4" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsname, tsowner, tsprice FROM tspots  WHERE  (tssell = 'yes')"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource5" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate, tsbidder FROM  tspots WHERE (tssell = 'yes')"> </asp:AccessDataSource>
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="false" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 473px; top: 8px; position: absolute" Target="_self">Buy a Treasure Spot</asp:hyperlink>
-       <asp:AccessDataSource id="AccessDataSource6" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbname, tbowner, tbprice, tbsellamount FROM toolbox  WHERE  (tbsell = 'yes')"> </asp:AccessDataSource>
-        <asp:AccessDataSource id="AccessDataSource7" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate, tbbidder, tbbidamount FROM toolbox  WHERE  (tbsell = 'yes')"> </asp:AccessDataSource>
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="false" NavigateUrl="~/Tspot/buy" style="z-index: 1; left: 601px; top: 10px; position: absolute" Target="_self">Buy a Treasure Spot</asp:hyperlink>
+       <asp:AccessDataSource id="AccessDataSource6" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbname, tbowner, tbprice, tbsell FROM toolbox WHERE (tbsell = 'yes')"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource7" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate, tbbidder FROM toolbox WHERE (tbsell = 'yes')"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource8" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT amount FROM payments"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource9" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT lucrisboos FROM loggedusers"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource10" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate FROM toolbox  WHERE  (tbsell = 'yes' and tbselltype='bid')"> </asp:AccessDataSource>
          <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource2" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 24px; top: 608px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                 <asp:BoundField DataField="tsprice" HeaderText="tsprice" SortExpression="tsprice" />
                 <asp:BoundField DataField="tsapproved" HeaderText="tsapproved" SortExpression="tsapproved" />
                 <asp:BoundField DataField="tsactive" HeaderText="tsactive" SortExpression="tsactive" />
@@ -201,6 +226,7 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource3" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 19px; top: 885px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                 <asp:BoundField DataField="tbprice" HeaderText="tbprice" SortExpression="tbprice" />
                 <asp:BoundField DataField="tbapproved" HeaderText="tbapproved" SortExpression="tbapproved" />
                 <asp:BoundField DataField="tbactive" HeaderText="tbactive" SortExpression="tbactive" />
@@ -228,10 +254,11 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource4" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 18px; top: 69px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                 <asp:BoundField DataField="tsname" HeaderText="tsname" SortExpression="tsname" />
                 <asp:BoundField DataField="tsowner" HeaderText="tsowner" SortExpression="tsowner" />
                 <asp:BoundField DataField="tsprice" HeaderText="tsprice" SortExpression="tsprice" />
-                <asp:BoundField DataField="tssellamount" HeaderText="tssellamount" SortExpression="tssellamount" />
+                
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -248,12 +275,13 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:GridView ID="GridView4" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource5" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 434px; top: 66px; position: absolute; height: 181px; width: 384px" ToolTip="Treasure Spots">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                 <asp:BoundField DataField="tsname" HeaderText="tsname" SortExpression="tsname" />
                 <asp:BoundField DataField="tsowner" HeaderText="tsowner" SortExpression="tsowner" />
                 <asp:BoundField DataField="tsprice" HeaderText="tsprice" SortExpression="tsprice" />
                 <asp:BoundField DataField="tsbiddate" HeaderText="tsbiddate" SortExpression="tsbiddate" />
                 <asp:BoundField DataField="tsbidder" HeaderText="tsbidder" SortExpression="tsbidder" />
-                <asp:BoundField DataField="tsbidamount" HeaderText="tsbidamount" SortExpression="tsbidamount" />
+                
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -270,10 +298,11 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:GridView ID="GridView5" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource6" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 18px; top: 341px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                 <asp:BoundField DataField="tbname" HeaderText="tbname" SortExpression="tbname" />
                 <asp:BoundField DataField="tbowner" HeaderText="tbowner" SortExpression="tbowner" />
                 <asp:BoundField DataField="tbprice" HeaderText="tbprice" SortExpression="tbprice" />
-                <asp:BoundField DataField="tbsellamount" HeaderText="tbsellamount" SortExpression="tbsellamount" />
+                <asp:BoundField DataField="tbsell" HeaderText="tbsell" SortExpression="tbsell" />
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -290,12 +319,12 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:GridView ID="GridView6" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource7" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 437px; top: 335px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                 <asp:BoundField DataField="tbname" HeaderText="tbname" SortExpression="tbname" />
                 <asp:BoundField DataField="tbowner" HeaderText="tbowner" SortExpression="tbowner" />
                 <asp:BoundField DataField="tbprice" HeaderText="tbprice" SortExpression="tbprice" />
                 <asp:BoundField DataField="tbbiddate" HeaderText="tbbiddate" SortExpression="tbbiddate" />
                 <asp:BoundField DataField="tbbidder" HeaderText="tbbidder" SortExpression="tbbidder" />
-                <asp:BoundField DataField="tbbidamount" HeaderText="tbbidamount" SortExpression="tbbidamount" />
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -309,8 +338,6 @@ protected void Button5_Click(object sender, EventArgs e)
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
 
-
-    
     <asp:Label ID="Label2" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 441px; top: 313px; position: absolute; bottom: 403px; height: 19px; right: 312px;" Text="ToolBox items for Bid"></asp:Label>
         <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 233px; top: 578px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
         <asp:Label ID="Label5" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 440px; top: 41px; position: absolute; height: 18px;" Text="Treasure Spots for Bid"></asp:Label>
@@ -318,7 +345,7 @@ protected void Button5_Click(object sender, EventArgs e)
     <asp:Label ID="Label1" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 29px; top: 584px; position: absolute; height: 18px;" Text="My Treasure Spots"></asp:Label>     
     <asp:Label ID="Label4" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 21px; top: 40px; position: absolute; bottom: 1040px; right: 695px;" Text="Treasure Spots for Sale"></asp:Label>
         <asp:Label ID="Label6" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 20px; top: 315px; position: absolute; bottom: 401px; height: 19px;" Text="ToolBox items for Sale"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 644px; top: 40px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 665px; top: 40px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
         <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 231px; position: absolute; top: 854px;" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)"></asp:TextBox>
         <asp:DropDownList ID="DropDownList1" runat="server" style="z-index: 1; left: 387px; top: 578px; position: absolute" AutoPostBack="True">
             <asp:ListItem>Bid</asp:ListItem>
