@@ -59,7 +59,7 @@
         else
         {
 
-            Response.Redirect("~/Tspot/buy");
+            Response.Redirect("~/buy.aspx");
         }
     }
 
@@ -121,7 +121,7 @@
         }
         if (dt.Rows.Count == 0)
         {
-            Response.Redirect("/create.aspx");
+            Response.Redirect("~/create.aspx");
         }
 
         AccessDataSource1.SelectCommand = "SELECT tsprice, tsname, tsbidder, tsbid, tsaward FROM tspots where tsbid ='yes' and tsaward = 'yes' and tsbidder ='" + Hiddenfield1 + "'";
@@ -139,7 +139,7 @@
                 Session["tspotname"] = tsname;
                 Session["tsprice"] = tsprice;
                 Session["tsselltype"] = "bid";
-                Response.Redirect("~/Tspot/buy");
+                Response.Redirect("~/buy.aspx");
             }
         }
 
@@ -157,7 +157,7 @@
                 Session["toolboxname"] = tsname2;
                 Session["tbprice"] = tbprice;
                 Session["tbselltype"] = "bid";
-                Response.Redirect("~/Tspot/buy");
+                Response.Redirect("~/buy.aspx");
             }
         }
 
@@ -188,18 +188,18 @@
             AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
             AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '3', luloggedin='no' where luname='" + Hiddenfield1 + "'";
             AccessDataSource1.Update();
-            Response.Redirect("~/Tspot/buy");
+            Response.Redirect("~/buy.aspx");
 
         }
 
         if (logintimes == "6" && btspots != tspots)
         {
-            Response.Redirect("~/Tspot/buy");
+            Response.Redirect("~/buy.aspx");
         }
 
         if (btspots == "0" && Convert.ToInt16(logintimes) > 0)
         {
-            Response.Redirect("~/Tspot/buy");
+            Response.Redirect("~/buy.aspx");
         }
 
         AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
@@ -295,11 +295,11 @@ to {left:10px;}
       
 <a href='~/../../buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
 <a href='#' onclick="FacebookInviteFriends();" style="position:absolute; left:694px; top:127px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 190px; height: 18px;">Invite Friends</a>
-<a href='Cpanel/gamesettings'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
-   <a href="Play/play" target="_self" style="position:absolute;left:233px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 529px; text-align: center;" > Go On a TreasureHunt </a> 
+<a href='../../gamesettings.aspx'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
+   <a href="~/Play/play" target="_self" style="position:absolute;left:233px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 529px; text-align: center;" > Go On a TreasureHunt </a> 
    
-    <a href="Tspot/buy" target="_self" style="position:absolute;left:394px; top:126px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 376px;" > Buy a Treasure Spot </a> 
-    <a href="Tspot/buy" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
+    <a href="../../buy.aspx" target="_self" style="position:absolute;left:394px; top:126px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 376px;" > Buy a Treasure Spot </a> 
+    <a href="../../buy.aspx" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
 
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 11px; top: 202px; position: absolute; width: 822px; height: 110px; bottom: 296px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many gold coins as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt."></asp:Label>
         <asp:Label ID="Label4" runat="server" Font-Bold="True" style="z-index: 1; left: 293px; top: 96px; position: absolute" Text="Interactive Gaming with Fun Filled Places and Adventure"></asp:Label>

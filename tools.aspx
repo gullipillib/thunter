@@ -57,7 +57,7 @@
         else
         {
 
-            Response.Redirect("~/Tspot/buy");
+            Response.Redirect("~/buy.aspx");
         }
     }
 
@@ -189,7 +189,7 @@
 
     protected void Button5_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Play/play");
+        Response.Redirect("~/play.aspx");
     }
 
 
@@ -234,7 +234,7 @@
 
         <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT categoryname FROM category"> </asp:AccessDataSource>
 
-        <asp:Button ID="Button5" runat="server" Enabled="False" style="z-index: 1; left: 681px; top: 55px; position: absolute; cursor:pointer" Text="Back to Game " OnClick="Button5_Click" />
+        <asp:Button ID="Button5" runat="server" Enabled="False" style="z-index: 1; left: 681px; top: 55px; position: absolute; cursor:pointer" Text="Back to Game " OnClick="Button5_Click" UseSubmitBehavior="False" />
          <asp:AccessDataSource id="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT subcategoryname FROM subcategory"> </asp:AccessDataSource>
             <asp:AccessDataSource id="AccessDataSource4" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT othersname FROM others"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource6" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT crname FROM collisionresult"> </asp:AccessDataSource>

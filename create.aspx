@@ -103,7 +103,7 @@
         else
         {
 
-            Response.Redirect("~/Tspot/buy");
+            Response.Redirect("~/buy.aspx");
         }
     }
 
@@ -119,7 +119,7 @@
         //Label3.Text = dt.Rows[0][0].ToString();
         if (dt.Rows.Count == 0)
         {
-            Response.Redirect("~/Tspot/buy");
+            Response.Redirect("~/buy.aspx");
         }
     }
 
@@ -1229,7 +1229,7 @@
         <asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 523px; top: 138px; position: absolute; width: 168px; height: 24px" ClientIDMode="Static" ViewStateMode="Enabled" OnTextChanged="TextBox1_TextChanged1" ToolTip="less than 50 chars only"></asp:TextBox>
         <asp:TextBox ID="TextBox2" runat="server" Style="z-index: 1; left: 88px; top: 468px; position: absolute; width: 388px; height: 24px" ClientIDMode="Static" ViewStateMode="Enabled" OnTextChanged="TextBox2_TextChanged1" ToolTip="Enter Only Youtube Video ID"></asp:TextBox>
         <asp:Button ID="Button4" runat="server" BackColor="Blue" ForeColor="White" Style="z-index: 1; left: 516px; top: 528px; position: absolute; height: 26px; cursor:pointer;" Text="Finalize" ToolTip="Only after all the fields are completed, finalization takes place" OnClick="Button4_Click" Enabled="False" ClientIDMode="Static" UseSubmitBehavior="False" />
-        <asp:Button ID="Button5" runat="server" BackColor="Blue" ForeColor="White" Style="z-index: 1; left: 777px; top: 6px; position: absolute; height: 26px; bottom: 561px; cursor:pointer;" Text="Back to Game" ToolTip="Only after all the fields are completed, finalization takes place" Enabled="False" />
+        <asp:Button ID="Button5" runat="server" BackColor="Blue" ForeColor="White" Style="z-index: 1; left: 777px; top: 6px; position: absolute; height: 26px; bottom: 561px; cursor:pointer;" Text="Back to Game" ToolTip="Only after all the fields are completed, finalization takes place" Enabled="False" UseSubmitBehavior="False" />
         <asp:Button ID="Button6" runat="server" Style="z-index: 1; left: 667px; top: 355px; position: absolute; bottom: 188px; width: 71px; height:40px;" Text="Add" OnClick="Button6_Click" ClientIDMode="Static" CausesValidation="False" Enabled="False" Height="40px" Width="70px" UseSubmitBehavior="False" />
         </asp:Panel>
             <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Size="12pt" ForeColor="Blue" Style="z-index: 1; top: 391px; position: absolute; left: 769px; bottom: 183px;" Text="air or space" ViewStateMode="Enabled"></asp:Label>
