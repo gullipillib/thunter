@@ -1690,7 +1690,7 @@ explosion.style.height = "30px";
 );
 
     <div id="fb-root"></div>
-    <div class="fb-share-button" data-href="http://developers.facebook.com/docs/plugins/" data-type="button_count" style="position: absolute; top: 102px; left: 225px; width: 99px; height: 23px;"></div>
+    <div class="fb-share-button" data-href="http://developers.facebook.com/docs/plugins/" data-type="button_count" style="position: absolute; top: 20px; left: 127px; width: 99px; height: 23px;"></div>
 
     <label style="position: absolute; top: 48px; left: 15px; right: 846px; height: 19px; color: #FFCC00;">Achievements</label>
 
