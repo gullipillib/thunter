@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.MyAppUser>"   Culture="auto" AutoEventWireup="true" meta:resourcekey="PageResource1" UICulture="auto" EnableSessionState="True" Debug="true" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.MyAppUser>"   Culture="auto"  meta:resourcekey="PageResource1" UICulture="auto" EnableSessionState="True" Debug="true" %>
 
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
@@ -508,8 +508,16 @@
 
             var myaddctrl1 = window.setInterval(function () { getTcoins() }, 50000);
             function getTcoins() {
-                
-                $("#<%=TextBox1%>").text(mygoldcoins);
+                var myajax = XMLHttpRequest.create();
+                myajax.open("GET", "~/Play/play", true);
+                myajax.send();
+                myajax.onreadystatechange = function () {
+                    if (myajax.readyState == 4 && ajaxObject.status == 200) {
+                        document.getElementById('points').setAttribute("value", mygoldcoins);
+
+                    }
+                }
+                //$("#<%=TextBox1%>").text(mygoldcoins);
                 
                 
                 
@@ -1490,8 +1498,8 @@ explosion.style.height = "30px";
                         }
                         if (myctrl1.tbPropType == "fixed") {
                             crosshair.style.top = "368px";
-                            crosshair.style.height = "50px";
-                            crosshair.style.width = "50px";
+                            crosshair.style.height = "30px";
+                            crosshair.style.width = "30px";
 explosion.style.height = "30px";
 			    explosion.style.width = "30px";
                             explosion.style.visibility = "visible";
@@ -1515,8 +1523,8 @@ explosion.style.height = "30px";
                         }
                         if (myctrl1.tbPropType == "fixed") {
                             crosshair.style.top = "368px";
-                            crosshair.style.height = "50px";
-			    crosshair.style.width = "50px";
+                            crosshair.style.height = "30px";
+			    crosshair.style.width = "30px";
 				explosion.style.height = "30px";
 			    explosion.style.width = "30px";
                             explosion.style.visibility = "visible";
@@ -1690,7 +1698,7 @@ explosion.style.height = "30px";
 );
 
     <div id="fb-root"></div>
-    <div class="fb-share-button" data-href="http://developers.facebook.com/docs/plugins/" data-type="button_count" style="position: absolute; top: 20px; left: 127px; width: 99px; height: 23px;"></div>
+    <div class="fb-share-button" data-href="http://developers.facebook.com/docs/plugins/" data-type="button_count" style="position: absolute; top: 102px; left: 225px; width: 99px; height: 23px;"></div>
 
     <label style="position: absolute; top: 48px; left: 15px; right: 846px; height: 19px; color: #FFCC00;">Achievements</label>
 
@@ -1705,7 +1713,7 @@ explosion.style.height = "30px";
 
     <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden;">
         <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 332px;">
-        <img id="explosion" src='<%=collisionurl%>' style="width: 30px; height: 30px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; right: 275px; visibility: hidden; margin-left: 0px; margin-top: 0px;">
+        <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; right: 275px; visibility: hidden; margin-left: 0px; margin-top: 0px;">
         <img id="ctrl1" src='<%=ctrl1mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: 61px; z-index: 21; right: 373px; margin-left: 0px; margin-top: 0px; visibility: hidden">
         <img id="ctrl2" src='<%=ctrl1mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: 162px; z-index: 21; right: 272px; margin-left: 0px; margin-top: 0px; visibility: visible">
         <img id="ctrl3" src='<%=ctrl1mainurl%>' style="width:'<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: 177px; z-index: 21; right: 257px; margin-left: 0px; margin-top: 0px; visibility: hidden">
@@ -1717,11 +1725,11 @@ explosion.style.height = "30px";
         <img id="player4" src="" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">
         <img id="player5" src="" style="width: 30px; height: 30px; position: absolute; top: 251px; left: 390px; z-index: 21; right: 299px; margin-left: 0px; margin-top: 0px;">
         --%>
-        <img id="Img1" src='<%=ctrl1mainurl%>' style="width: 50px; height: 50px; position: absolute; top: '<%=ctrl1maintop%>'; left: 365px; z-index: 21; right: 69px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="Img2" src='<%=ctrl2mainurl%>' style="width: 50px; height: 50px; position: absolute; top: '<%=ctrl1maintop%>'; left: 275px; z-index: 21; right: 159px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="Img3" src='<%=ctrl3mainurl%>' style="width: 50px; height: 50px; position: absolute; top: '<%=ctrl1maintop%>'; left: 57px; z-index: 21; right: 377px; margin-left: 0px; margin-top: 0px; visibility: visible">
-        <img id="Img4" src='<%=ctrl4mainurl%>' style="width: 50px; height: 50px; position: absolute; top: '<%=ctrl1maintop%>'; left: 58px; z-index: 21; right: 376px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="Img5" src='<%=ctrl5mainurl%>' style="width: 50px; height: 50px; position: absolute; top: '<%=ctrl1maintop%>'; left: 379px; z-index: 21; right: 55px; margin-left: 0px; margin-top: 0px; visibility: visible">
+        <img id="Img1" src='<%=ctrl1mainurl%>' style="width: 30px; height: 30px; position: absolute; top: '<%=ctrl1maintop%>'; left: 365px; z-index: 21; right: 69px; margin-left: 0px; margin-top: 0px; visibility: hidden">
+        <img id="Img2" src='<%=ctrl2mainurl%>' style="width: 30px; height: 30px; position: absolute; top: '<%=ctrl1maintop%>'; left: 275px; z-index: 21; right: 159px; margin-left: 0px; margin-top: 0px; visibility: hidden">
+        <img id="Img3" src='<%=ctrl3mainurl%>' style="width: 30px; height: 30px; position: absolute; top: '<%=ctrl1maintop%>'; left: 57px; z-index: 21; right: 377px; margin-left: 0px; margin-top: 0px; visibility: visible">
+        <img id="Img4" src='<%=ctrl4mainurl%>' style="width: 30px; height: 30px; position: absolute; top: '<%=ctrl1maintop%>'; left: 58px; z-index: 21; right: 376px; margin-left: 0px; margin-top: 0px; visibility: hidden">
+        <img id="Img5" src='<%=ctrl5mainurl%>' style="width: 30px; height: 30px; position: absolute; top: '<%=ctrl1maintop%>'; left: 379px; z-index: 21; right: 55px; margin-left: 0px; margin-top: 0px; visibility: visible">
     </div>
     <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 40px; top: 237px; position: absolute; width: 91px;" type="text" readonly="true" />
 
