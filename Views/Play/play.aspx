@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.MyAppUser>"   Culture="auto"  meta:resourcekey="PageResource1" UICulture="auto" EnableSessionState="True" Debug="true" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter22.Models.MyAppUser>"   Culture="auto"  meta:resourcekey="PageResource1" UICulture="auto" EnableSessionState="True" Debug="true" %>
 
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <script runat="server">
     public static System.Timers.Timer timer = new System.Timers.Timer(10000); // This will raise the event every one minute.
-    public static System.Timers.Timer timer1 = new System.Timers.Timer(60000); // This will raise the event every one minute.
+    public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
 
     string tsname = "";
     string tsitems = "";
@@ -406,9 +406,14 @@
     
     }
 
-    public int runnow(string c)
+    public  int runnow(string c)
     {
         goldcoins = c;
+        AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
+
+        AccessDataSource1.Update();
+        gettreasurespot();
         return 1;
     }
     
@@ -421,24 +426,22 @@
     }
 
 
-
+    public static string mycoins = "";
 
     public void updatecoins(object sender, System.Timers.ElapsedEventArgs e)
     {
 
-
-
-
         if (Session["mycoins"] != null)
-        {
+
             goldcoins = Session["mycoins"].ToString();
-            AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
+             
+                AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+                AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
 
-            AccessDataSource1.Update();
-            gettreasurespot();
+                AccessDataSource1.Update();
+                gettreasurespot();
 
-        }
+            
     }
         
      
@@ -547,6 +550,14 @@
             top: 35px;
             position: absolute;
         }
+        #myframe {
+            z-index: 1;
+            left: 7px;
+            top: 395px;
+            position: absolute;
+            width: 115px;
+            height: 53px;
+        }
     </style>
 
 
@@ -587,7 +598,7 @@
 
     <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00;">Lives</label>
 
-    <label style="position: absolute; top: 32px; left: 406px; height: 19px; color: 30px; height: 30px; position: absolute; #ffcc00;">Gold Coins</label>
+    <label style="position: absolute; top: 32px; left: 406px; height: 19px; color: #FFCC00; height: 30px; position: absolute; ">Gold Coins</label>
 
     <label style="position: absolute; top: 31px; left: 660px; height: 19px; color: #FFCC00;">Treasure($)</label>
     <label style="position: absolute; top: 100px; left: 18px; height: 19px; color: #FFCC00; width: 185px;">You Made Achievement over</label>
@@ -615,7 +626,6 @@
         <img id="Img5" src='<%=ctrl5mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1maintop%>'; left: 379px; z-index: 21; right: 55px; margin-left: 0px; margin-top: 0px; visibility: hidden">
     </div>
     <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 40px; top: 237px; position: absolute; width: 91px;" type="text" readonly="true" />
-
        <img alt="" src="~/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 50px; top: 132px; position: absolute; bottom: 357px;" id="friendimage" />
     <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 397px;" class="twoto3d" id="fplayer" />
 <script type="text/javascript" >
@@ -700,14 +710,17 @@
                 alert("done till here");
             }
 
-            var myaddctrl1 = window.setInterval(function () { getTcoins() }, 90000);
+            var myaddctrl1 = window.setInterval(function () { getTcoins() }, 60000);
             function getTcoins() {
                 
                 alert("started");
                 
                 
                 if (enemyhits != null) {
-                    //window.location.href = "jsresult/" + enemyhits;
+                    //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
+                    //myframe.src = "~/Play/jsresult/" + enemyhits;
+                    // window.location.href("jsresult/" + enemyhits);
+                    _doPostBack(  
                 }
                 
             }
@@ -1651,30 +1664,34 @@
             document.addEventListener("mousemove", moveprop, false);
 
             function moveprop(e) {
+                document.body.style.cursor = "pointer";
+                crosshair.style.visibility = "hidden";
+                crosshair.style.left = Math.round(e.clientX) + "px";
+                crosshair.style.top = Math.round(e.clientY) + "px";
 
-                if (e.clientX > 1 && e.clientX < 470 && e.clientY > parseInt('<%=ctrl1mainres%>', 10)  && e.clientY < 358) {
+                if (parseInt(crosshair.style.left.replace("px", ""), 10) > 1 && parseInt(crosshair.style.left.replace("px", ""), 10) < 470 && parseInt(crosshair.style.top.replace("px", ""), 10) > parseInt('<%=ctrl1mainres%>', 10) && parseInt(crosshair.style.top.replace("px", ""), 10) < 358) {
                     
                     document.body.style.cursor = "none";
-                    crosshair.style.left = Math.round(e.clientX) + "px";
+                    
                     if (myctrl1.tbPropType == "movable")
                     {
                         explosion.style.visibility = "hidden";
-                        crosshair.style.top = Math.round(e.clientY) + "px";
-			crosshair.style.height = "30px";
+                        
+			            crosshair.style.height = "30px";
                         crosshair.style.width = "30px";
 				explosion.style.height = "30px";
 			    explosion.style.width = "30px";
                     }
                     if (myctrl1.tbPropType == "fixed")
                     {
-                        crosshair.style.top = "352px";
+                        crosshair.style.top = "358px";
                         crosshair.style.height = "90px";
                         crosshair.style.width = "90px";
 				explosion.style.height = "40px";
 			    explosion.style.width = "40px";
                         explosion.style.visibility = "visible";
-                        explosion.style.left = Math.round(e.clientX) + "px";
-                        explosion.style.top = Math.round(e.clientY) + "px";
+                        explosion.style.left = crosshair.style.left;
+                        explosion.style.top = crosshair.style.top;
                     }
                 }
             }
@@ -1731,7 +1748,7 @@
 			    explosion.style.width = "40px";
                         }
                         if (myctrl1.tbPropType == "fixed") {
-                            crosshair.style.top = "352px";
+                            crosshair.style.top = "358px";
                             crosshair.style.height = "90px";
                             crosshair.style.width = "90px";
 				explosion.style.height = "40px";
@@ -1757,7 +1774,7 @@
 			    explosion.style.width = "40px";
                         }
                         if (myctrl1.tbPropType == "fixed") {
-                            crosshair.style.top = "352px";
+                            crosshair.style.top = "358px";
                             crosshair.style.height = "90px";
 			    crosshair.style.width = "90px";
 				explosion.style.height = "40px";
