@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter22.Models.MyAppUser>"   Culture="auto"  meta:resourcekey="PageResource1" UICulture="auto" EnableSessionState="True" Debug="true" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.MyAppUser>"   Culture="auto"  meta:resourcekey="PageResource1" UICulture="auto" EnableSessionState="True" Debug="true" %>
 
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
@@ -720,7 +720,7 @@
                     //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
                     //myframe.src = "~/Play/jsresult/" + enemyhits;
                     // window.location.href("jsresult/" + enemyhits);
-                    _doPostBack(  
+                    
                 }
                 
             }
