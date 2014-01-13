@@ -667,6 +667,7 @@ public string one5 = "";
                         if (noofhits >= ranhits && noofcoins >= noofcoins) {
                             document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
                             feed();
+				document.getElementById('TextBox2').setAttribute("value", "250");
                         }
                     }
                 }
@@ -2300,7 +2301,7 @@ public string one5 = "";
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1399709040269730";
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123405257731200";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
   
