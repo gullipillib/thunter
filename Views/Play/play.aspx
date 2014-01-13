@@ -2312,7 +2312,7 @@ public string one5 = "";
         function feed() {
             FB.ui({
                 method: 'feed',
-                link: 'https://treasurehunter/apphb.com/',
+                link: 'https://treasurehunter.apphb.com/',
                 caption: 'Treasure Hunter 3D Multiplayer Game - Completed TreasureSpot ' + '<%=Label1.Text%>' + 'and Collected ' + '<%=points.Text%>',
             }, function (response) { });
         }
