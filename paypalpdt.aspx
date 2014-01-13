@@ -116,7 +116,7 @@
 }
 if (tsowner == "TresureHunter")
 {
-                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsprice = '" + results["payment_gross"] + "', tsselltype='', tsbid='no', tsbidder=' ', tsowner='" + "TreasureHunter" + "', tsproductid='thppbid', tsproducturl='paypal', tssell='no', tsbiddate=' ', tsaward='no', tscowner='" + tscoowner + ", " + Convert.ToString(Session["loggeduser"]) + "' where tspotname='" + Convert.ToString(Session["tspotname"]) + "'";
+                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsprice = '" + results["payment_gross"] + "', tsselltype='', tsbid='no', tsbidder=' ', tsowner='" + "treasurehunter" + "', tsproductid='thppbid', tsproducturl='paypal', tssell='no', tsbiddate=' ', tsaward='no', tscowner='" + tscoowner + ", " + Convert.ToString(Session["loggeduser"]) + "' where tspotname='" + Convert.ToString(Session["tspotname"]) + "'";
                     AccessDataSource1.Update();
                     AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
                     dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
@@ -152,7 +152,7 @@ if (tsowner == "TresureHunter")
                 if (results["item_name"] == "ToolBox Item Bid")
                 {
                     AccessDataSource1.SelectCommand = "SELECT * FROM toolbox";
-                    AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbprice = '" + results["payment_gross"] + "', tbselltype='', tbbid='no', tbbidder=' ', tbowner='" + "TreasureHunter" + "', tbproductid='thppbid', tbproducturl='paypal', tbsell='no', tbbiddate=' ', tbaward='no', tbcowner='" + Convert.ToString(Session["loggeduser"]) + "'  where toolboxname='" + Convert.ToString(Session["toolboxname"]) + "'";
+                    AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbprice = '" + results["payment_gross"] + "', tbselltype='', tbbid='no', tbbidder=' ', tbowner='" + "treasurehunter" + "', tbproductid='thppbid', tbproducturl='paypal', tbsell='no', tbbiddate=' ', tbaward='no', tbcowner='" + Convert.ToString(Session["loggeduser"]) + "'  where toolboxname='" + Convert.ToString(Session["toolboxname"]) + "'";
                     AccessDataSource1.Update();
                     AccessDataSource1.SelectCommand = "SELECT * FROM payments";
                     AccessDataSource1.InsertCommand = "INSERT INTO payments(anount,uname) Values ('" + Convert.ToString(Convert.ToInt16(results["payment_gross"]) - 3 / 2) + "','" + Convert.ToString(Session["loggeduser"]) + "')";

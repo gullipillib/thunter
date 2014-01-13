@@ -54,12 +54,12 @@
     protected void Button7_Click(object sender, EventArgs e)
     {
         string lutspots = "";
-        AccessDataSource1.SelectCommand = "SELECT * FROM tspots where tsowner ='TreasureHunter' order by tsorder DESC";
+        AccessDataSource1.SelectCommand = "SELECT * FROM tspots where tsowner ='treasurehunter' order by tsorder DESC";
         DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
 
         string tsorderno = dv[0]["tsorder"].ToString();
         tsorderno = Convert.ToString(Convert.ToInt16(tsorderno) + 1);
-        AccessDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails,tsorder) Values ('yes','yes','5','buy','yes','yes','TreasureHunter','TreasureHunter','TreasureHunter','no',' ',' ',' ','" + "TreasureHunter" + "','thppbuy','paypal','no','yes','yes','yes',' ','no',' ',' ',' ',' ',' ',' ',' ','" + tsorderno + "')";
+        AccessDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails,tsorder) Values ('yes','yes','5','buy','yes','yes','treasurehunter','treasurehunter','treasurehunter','no',' ',' ',' ','" + "treasurehunter" + "','thppbuy','paypal','no','yes','yes','yes',' ','no',' ',' ',' ',' ',' ',' ',' ','" + tsorderno + "')";
         AccessDataSource1.Insert();
         AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
         dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
@@ -81,12 +81,12 @@
 
     protected void Button8_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.SelectCommand = "SELECT * FROM toolbox  where tbowner ='TreasureHunter' order by tborder DESC";
+        AccessDataSource1.SelectCommand = "SELECT * FROM toolbox  where tbowner ='treasurehunter' order by tborder DESC";
         DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
 
         string tborderno = dv[0]["tborder"].ToString();
         tborderno = Convert.ToString(Convert.ToInt16(tborderno) + 1);
-        AccessDataSource1.InsertCommand = "INSERT INTO toolbox(tbcompleted,tbnew,tbprice,tbselltype,tbactive,tbapproved,tbapprover1,tbapprover2,tbapprover3,tbbid,tbbidder,tbdetails,tbname,tbowner,tbinvoice,tbreported,tbreportcomments,tba1status,tba2status,tba3status,tbsell,tbreportaddress,tbbiddate,tbaward,tborder) Values ('no','yes','5','buy','yes','yes','TreasureHunter','TreasureHunter','TreasureHunter','no',' ',' ',' ','" + "TreasureHunter" + "','thtbbuy','no',' ','yes','yes','yes','no',' ',' ',' ', '" + tborderno + "')";
+        AccessDataSource1.InsertCommand = "INSERT INTO toolbox(tbcompleted,tbnew,tbprice,tbselltype,tbactive,tbapproved,tbapprover1,tbapprover2,tbapprover3,tbbid,tbbidder,tbdetails,tbname,tbowner,tbinvoice,tbreported,tbreportcomments,tba1status,tba2status,tba3status,tbsell,tbreportaddress,tbbiddate,tbaward,tborder) Values ('no','yes','5','buy','yes','yes','treasurehunter','treasurehunter','treasurehunter','no',' ',' ',' ','" + "treasurehunter" + "','thtbbuy','no',' ','yes','yes','yes','no',' ',' ',' ', '" + tborderno + "')";
         AccessDataSource1.Insert();
         Response.Redirect("~/Toolbox/tools");
     }

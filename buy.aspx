@@ -68,6 +68,7 @@ protected void checkusername()
 
         Response.Redirect("~/Homw/index1");
     }
+    
 }
 
 
@@ -217,6 +218,12 @@ protected void Button2_Click(object sender, EventArgs e)
 
 
 
+protected void Button3_Click(object sender, EventArgs e)
+{
+    AccessDataSource1.SelectCommand = "SELECT * FROM tspots where tsowner ='" + Hiddenfield1 + "' order by tsorder DESC";
+    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + "1" + "' where luname='" + Hiddenfield1 + "'";
+    AccessDataSource1.Update();
+}
 </script>
 <html>
 <head runat="server">
@@ -302,13 +309,16 @@ protected void Button2_Click(object sender, EventArgs e)
         <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
 
 
+        <asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:737px; top:19px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" />
+
+
 <asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 254px; top: 0px; position: absolute" Target="_self">My Game</asp:hyperlink>   
 
 
 
         
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 731px; top: 4px; position: absolute; right: 7px;" Target="_self" Enabled="False">Go on a Treasurehunt</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 731px; top: -6px; position: absolute; right: 7px;" Target="_self" Enabled="False">Go on a Treasurehunt</asp:hyperlink>
         
         
 
@@ -535,7 +545,7 @@ protected void Button2_Click(object sender, EventArgs e)
         </script>
 
 
-   <a href="../../create.aspx" target="_self" style="position:absolute;left:567px; top:3px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 161px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
+   <a href="../../create.aspx" target="_self" style="position:absolute;left:567px; top:-6px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 161px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
    
         
 </body>

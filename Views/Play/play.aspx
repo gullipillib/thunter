@@ -7,8 +7,8 @@
 
 <!DOCTYPE html>
 <script runat="server">
-    public static System.Timers.Timer timer = new System.Timers.Timer(10000); // This will raise the event every one minute.
-    public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
+    //public static System.Timers.Timer timer = new System.Timers.Timer(280000); // This will raise the event every one minute.
+    //public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
 
     string tsname = "";
     string tsitems = "";
@@ -135,6 +135,11 @@
             Response.Redirect("~/Tspot/buy");
         }
     }
+public string one1 = "";
+public string one2 = "";
+public string one3 = "";
+public string one4 = "";
+public string one5 = "";
 
     protected void gettreasurespot()
     {
@@ -143,8 +148,45 @@
         DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
-        if (dt.Rows.Count != 0)
+	if (dt.Rows.Count != 0)
         {
+		
+            Random one = new Random();
+            int t1 = one.Next(0, dt.Rows.Count);
+		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+		tsitemsfulldetails = Json.Decode(tsitems);
+		one1 = tsitemsfulldetails.tsUrl;
+
+		one = new Random();
+            	t1 = one.Next(0, dt.Rows.Count);
+		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+		tsitemsfulldetails = Json.Decode(tsitems);
+		one2 = tsitemsfulldetails.tsUrl;
+		
+		one = new Random();
+            	t1 = one.Next(0, dt.Rows.Count);
+		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+		tsitemsfulldetails = Json.Decode(tsitems);
+		one3 = tsitemsfulldetails.tsUrl;
+
+		one = new Random();
+            	t1 = one.Next(0, dt.Rows.Count);
+		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+		tsitemsfulldetails = Json.Decode(tsitems);
+		one4 = tsitemsfulldetails.tsUrl;
+		
+		one = new Random();
+            	t1 = one.Next(0, dt.Rows.Count);
+		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+		tsitemsfulldetails = Json.Decode(tsitems);
+		one5 = tsitemsfulldetails.tsUrl;
+		
+        }   
+	     
+
+	if (dt.Rows.Count != 0)
+        {
+
             Random one = new Random();
             int t1 = one.Next(0, dt.Rows.Count);
             tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
@@ -157,11 +199,11 @@
        
 
 
-        
-
         tsitemsfulldetails = Json.Decode(tsitems);
         tsitems1 = tsitems;
 
+        
+        
         iframeurl = tsitemsfulldetails.tsUrl;
         ctrl1mainres = tsitemsfulldetails.tsctrl1res;
         ctrl1mainname = tsitemsfulldetails.tsctrl1name;
@@ -371,8 +413,8 @@
             gettreasurespot();
             addfriends();
             gettreasureprize();
-            timer.Enabled = true;
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
+            //timer.Enabled = true;
+            //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
             
         }
 
@@ -406,45 +448,47 @@
     
     }
 
-    public  int runnow(string c)
-    {
-        goldcoins = c;
-        AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
+    //public  int runnow(string c)
+    //{
+    //    goldcoins = c;
+    //    AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+    //    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
 
-        AccessDataSource1.Update();
-        gettreasurespot();
-        return 1;
-    }
-    
+    //    AccessDataSource1.Update();
+    //    gettreasurespot();
+    //    return 1;
+    //}
+
     protected void startupdatecoins(object sender, System.Timers.ElapsedEventArgs e)
     {
 
-        timer1.Enabled = true;
-        timer1.Elapsed += new System.Timers.ElapsedEventHandler(updatecoins);
+        //timer1.Enabled = true;
+        //timer1.Elapsed += new System.Timers.ElapsedEventHandler(updatecoins);
+        //gettreasurespot();
 
     }
 
 
-    public static string mycoins = "";
+    //public static string mycoins = "";
 
-    public void updatecoins(object sender, System.Timers.ElapsedEventArgs e)
-    {
+    //public void updatecoins(object sender, System.Timers.ElapsedEventArgs e)
+    //{
 
-        if (Session["mycoins"] != null)
+    //    if (Session["mycoins"] != null)
 
-            goldcoins = Session["mycoins"].ToString();
+    //        goldcoins = Session["mycoins"].ToString();
              
-                AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-                AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
+    //            AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+    //            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
 
-                AccessDataSource1.Update();
-                gettreasurespot();
+    //            AccessDataSource1.Update();
+    //            gettreasurespot();
 
             
-    }
-        
-     
+    //}
+
+
+   
 </script>
 
 
@@ -456,14 +500,6 @@
 
 
 <body   onbeforeunload="getcoins" style="height: 507px; background-color: #000000; width: 967px; overflow: hidden;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
-
-    <script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1399709040269730";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
     <style type="text/css">
         .twoto3d {
@@ -512,183 +548,135 @@
             -webkit-transform-style: preserve-3d;
         }
 
-        #form1 {
-            z-index: 1;
-            left: 10px;
-            top: 15px;
-            position: absolute;
-            height: 513px;
-            width: 948px;
-        }
-
-        #vplayer {
-            z-index: 1;
-            left: 14px;
-            top: 166px;
-            position: absolute;
-            width: 661px;
-        }
-
-        #divplayer {
-            z-index: 1;
-            left: 363px;
-            top: 131px;
-            position: absolute;
-            height: 401px;
-            width: 484px;
-        }
-
-        #sound1 {
-            z-index: 1;
-            left: 10px;
-            top: 30px;
-            position: absolute;
-        }
-        #Button2 {
-            z-index: 1;
-            left: 773px;
-            top: 35px;
-            position: absolute;
-        }
-        #myframe {
-            z-index: 1;
-            left: 7px;
-            top: 395px;
-            position: absolute;
-            width: 115px;
-            height: 53px;
-        }
+        
     </style>
 
-
-
     
 
-    <form id="form1" runat="server" >
-
-        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
-
-
-
-        <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
-
-
-
-        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 347px; top: 0px; position: absolute; width: 293px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
-        <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 341px; top: 75px; position: absolute; width: 505px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
-
-        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="../../buy.aspx" Style="z-index: 1; left: 224px; top: 57px; position: absolute; height: 29px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="../../buy.aspx" Style="z-index: 1; top: 57px; position: absolute; right: 306px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="~/Invite/friends" Style="z-index: 1; left: 384px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="../../gamesettings.aspx" Style="z-index: 1; left: 655px; top: 57px; position: absolute; width: 84px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
-
-
-
-        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 129px; top: 34px; position: absolute; width: 45px; right: 770px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
-        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 308px; top: 33px; position: absolute; width: 45px; right: 591px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">10</asp:TextBox>
-        <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 488px; top: 34px; position: absolute; width: 107px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="True">100</asp:TextBox>
-        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 747px; top: 33px; position: absolute; width: 73px" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
- <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" style="z-index: 1; left: 563px; top: 334px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
-
-
-    <div id="fb-root"></div>
-    <div id="fbshare" class="fb-share-button" data-href="https://treasurehunter22.apphb.com" data-type="button_count" style="position: absolute; top: 102px; left: 225px; width: 99px; height: 23px;"></div>
-
-    <label style="position: absolute; top: 30px; left: 15px; right: 846px; height: 19px; color: #FFCC00;">Achievements</label>
-
-    <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00;">Lives</label>
-
-    <label style="position: absolute; top: 32px; left: 406px; height: 19px; color: #FFCC00; height: 30px; position: absolute; ">Gold Coins</label>
-
-    <label style="position: absolute; top: 31px; left: 660px; height: 19px; color: #FFCC00;">Treasure($)</label>
-    <label style="position: absolute; top: 100px; left: 18px; height: 19px; color: #FFCC00; width: 185px;">You Made Achievement over</label>
-    <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
-    </audio>
-
-    <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden;">
-        <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 332px;">
-        <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; right: 275px; visibility: hidden; margin-left: 0px; margin-top: 0px;">
-        <img id="ctrl1" src='<%=ctrl1mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: 61px; z-index: 21; right: 373px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="ctrl2" src='<%=ctrl1mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: 162px; z-index: 21; right: 272px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="ctrl3" src='<%=ctrl1mainurl%>' style="width:'<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: 177px; z-index: 21; right: 257px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="ctrl4" src='<%=ctrl1mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height:'<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: 347px; z-index: 21; right: 87px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="ctrl5" src='<%=ctrl1mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: 184px; z-index: 21; right: 250px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <%--<img id="player1" src="" style="width: 30px; height: 30px; position: absolute; top: 278px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
-        <img id="player2" src="" style="width: 30px; height: 30px; position: absolute; top: 296px; left: 260px; z-index: 21; right: 562px; margin-left: 0px; margin-top: 0px;">
-        <img id="player3" src="" style="width: 30px; height: 30px; position: absolute; top: 78px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
-        <img id="player4" src="" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">
-        <img id="player5" src="" style="width: 30px; height: 30px; position: absolute; top: 251px; left: 390px; z-index: 21; right: 299px; margin-left: 0px; margin-top: 0px;">
-        --%>
-        <img id="Img1" src='<%=ctrl1mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1maintop%>'; left: 365px; z-index: 21; right: 69px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="Img2" src='<%=ctrl2mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1maintop%>'; left: 275px; z-index: 21; right: 159px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="Img3" src='<%=ctrl3mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1maintop%>'; left: 57px; z-index: 21; right: 377px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="Img4" src='<%=ctrl4mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1maintop%>'; left: 58px; z-index: 21; right: 376px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-        <img id="Img5" src='<%=ctrl5mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1maintop%>'; left: 379px; z-index: 21; right: 55px; margin-left: 0px; margin-top: 0px; visibility: hidden">
-    </div>
-    <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 40px; top: 237px; position: absolute; width: 91px;" type="text" readonly="true" />
-       <img alt="" src="~/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 50px; top: 132px; position: absolute; bottom: 357px;" id="friendimage" />
-    <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 397px;" class="twoto3d" id="fplayer" />
-<script type="text/javascript" >
-
-    FB.init({ appId: "123405257731200", status: true, cookie: true });
-
-    // The dialog only opens if you've implemented the
-    // Credits Callback payments_get_items.
-    function feed() {
-        FB.ui({
-            method: 'feed',
-            link: 'https://localhost:44301/',
-            caption: 'Treasure Hunter 3D Multiplayer Game - Collected ' + '<%=points.Text%>',
-                }, function (response) { });
-            }
-  </script>  
-        <input id="submit2jsresult" type="submit" value="" />
-
-    
-
-
-    <script type="text/javascript">
-
-        var enemyhits = sessionStorage.getItem("achievements");
-        var mygoldcoins = sessionStorage.getItem("points");
-        
-        
-        var lifes = 0;
-        var myctrl1 = JSON.parse('<%=tbitems1%>');
-        var myctrl2 = JSON.parse('<%=tbitems2%>');
-        var myctrl3 = JSON.parse('<%=tbitems3%>');
-        var myctrl4 = JSON.parse('<%=tbitems4%>');
-        var myctrl5 = JSON.parse('<%=tbitems5%>');
-        var mytsdetails = JSON.parse('<%=tsitems1%>');
-
-
-        
-        document.addEventListener('DOMContentLoaded', function () {
-            //alert(ctrl1.height);
-            //alert(ctrl1.width);
-            //alert(ctrl2.height);
-            //alert(ctrl2.width);
-            //alert(ctrl3.height);
-            //alert(ctrl3.width);
-            //alert(ctrl4.height);
-            //alert(ctrl5.width);
-            //alert(Img1.height);
-            //alert(Img1.width);
-            //alert(Img2.height);
-            //alert(Img2.width);
-            //alert(Img3.height);
-            //alert(Img3.width);
-            //alert(Img4.height);
-            //alert(Img4.width);
-            //alert(Img5.height);
-            //alert(Img5.width);
+<script src="https://treasurehunter/apphb.com/Scripts/jquery-1.8.2.js"></script>
+<script src="https://treasurehunter/apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
+<script src="https://treasurehunter/apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>    
+<script src="https://treasurehunter/apphb.com/SignalR/hubs"></script>
+    `<script>
+        var chat = $.connection.sysmessages;
+        var pname = '<%=Hiddenfield1%>';
+         
+        $(function () {
             
+            // Reference the auto-generated proxy for the hub.  
+           
+            // Create a function that the hub can call back to display messages.
+           chat.client.hello = function (messages, values) {
 
-            var myaddctrl1 = window.setInterval(function () { getTspot() }, 120000);
-            function getTspot() {
-                 
-                
-                document.getElementById('divplayer').getElementsByTagName('ctrl1').src =  '<%=ctrl1mainurl%>';
+                // Add the message to the page. 
+                if ($('#Text2').val().length > 500) {
+                    $('#Text2').val("");
+
+                }
+                $('#Text2').val($('#Text2').val() + "\r\n" + messages + " " + values);
+                $('#Text1').val("");
+                var textArea = $('#Text1');
+                textArea.blur();
+                textArea.focus();
+               
+            };
+            
+           
+            // Start the connection.
+
+            
+            $.connection.hub.start().done(function () {
+                //chat.server.Hello(pname + ":", $('#Text1').val());
+               
+                chat.server.Hello(pname + ":", $('#Text1').val()).done(function () {
+                });
+                    
+         });     
+        });
+
+        function checkEnter(event) {
+            if (event.keyCode == 13) {
+
+                return false;
+            }
+        }
+
+        function send2server() {
+
+            if ($('#Text1').val() != null) {
+
+
+                chat.server.Hello(pname + ":", $('#Text1').val()).done(function () {
+                });
+            }
+        }
+         </script>
+        
+        <script type="text/javascript">
+            var enemyhits = sessionStorage.getItem("achievements");
+            var mygoldcoins = sessionStorage.getItem("points");
+
+
+            var lifes = 0;
+            var myctrl1 = JSON.parse('<%=tbitems1%>');
+            var myctrl2 = JSON.parse('<%=tbitems2%>');
+            var myctrl3 = JSON.parse('<%=tbitems3%>');
+            var myctrl4 = JSON.parse('<%=tbitems4%>');
+            var myctrl5 = JSON.parse('<%=tbitems5%>');
+            var mytsdetails = JSON.parse('<%=tsitems1%>');
+
+
+
+            document.addEventListener('DOMContentLoaded', function () {
+                //alert(ctrl1.height);
+                //alert(ctrl1.width);
+                //alert(ctrl2.height);
+                //alert(ctrl2.width);
+                //alert(ctrl3.height);
+                //alert(ctrl3.width);
+                //alert(ctrl4.height);
+                //alert(ctrl5.width);
+                //alert(Img1.height);
+                //alert(Img1.width);
+                //alert(Img2.height);
+                //alert(Img2.width);
+                //alert(Img3.height);
+                //alert(Img3.width);
+                //alert(Img4.height);
+                //alert(Img4.width);
+                //alert(Img5.height);
+                //alert(Img5.width);
+
+                var noofhits = 0;
+                var noofcoins = 0;
+                var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
+                var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
+                document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+
+
+                var myaddctrl1 = window.setInterval(function () { tcounter() }, 1000);
+                function tcounter() {
+                    var mycounter = document.getElementById('TextBox2').getAttribute("value");
+                    mycounter = parseInt(mycounter, 10) - 1;
+                    document.getElementById('TextBox2').setAttribute("value", mycounter);
+                    if (mycounter < 0) {
+                        mycounter = 0;
+                    }
+                    if (mycounter != 0) {
+                        if (noofhits >= ranhits && noofcoins >= noofcoins) {
+                            document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
+                            feed();
+                        }
+                    }
+                }
+
+                var myaddctrl1 = window.setInterval(function () { getTspot() }, 300000);
+                function getTspot() {
+
+
+
+                document.getElementById('divplayer').getElementsByTagName('ctrl1').src = '<%=ctrl1mainurl%>';
                 document.getElementById('divplayer').getElementsByTagName('ctrl2').src = '<%=ctrl1mainurl%>';
                 document.getElementById('divplayer').getElementsByTagName('ctrl3').src = '<%=ctrl1mainurl%>';
                 document.getElementById('divplayer').getElementsByTagName('ctrl4').src = '<%=ctrl1mainurl%>';
@@ -701,61 +689,96 @@
                 document.getElementById('fplayer').src = '<%=iframeurl%>';
                 document.getElementById('divplayer').getElementsByTagName('explosion').src = '<%=collisionurl%>';
                 document.getElementById('divplayer').getElementsByTagName('crosshair').src = '<%=propurl%>';
-                    
+
                 document.getElementById('Button1').click();
-               
+
             }
 
             function getcoins() {
-                alert("done till here");
+
             }
 
             var myaddctrl1 = window.setInterval(function () { getTcoins() }, 60000);
             function getTcoins() {
-                
-                alert("started");
-                
-                
+
+
+
+
                 if (enemyhits != null) {
                     //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
                     //myframe.src = "~/Play/jsresult/" + enemyhits;
                     // window.location.href("jsresult/" + enemyhits);
-                    
+                    document.getElementById("myframe").setAttribute("src", "http://localhost:56687/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value"));
+
                 }
-                
+
             }
 
-            
 
-            var myaddctrl1 = window.setInterval(function () { randomCtrlhide() }, 5000);
+
+            var myaddctrl1 = window.setInterval(function () { randomCtrlhide() }, 10000);
             function randomCtrlhide() {
 
                 mygoldcoins = document.getElementById('points').getAttribute("value");
-                
-                ctrl1.style.visibility = "hidden";
-                ctrl2.style.visibility = "hidden";
-                ctrl3.style.visibility = "hidden";
-                ctrl4.style.visibility = "hidden";
-                ctrl5.style.visibility = "hidden";
-                Img1.style.visibility = "hidden";
-                Img2.style.visibility = "hidden";
-                Img3.style.visibility = "hidden";
-                Img4.style.visibility = "hidden";
-                Img5.style.visibility = "hidden";
+
+                if (attacked.style.visibility == "visible") {
+                    attacked.style.visibility = "hidden";
+                }
+                if (ctrl1.style.visibility == "visible") {
+                    ctrl1.style.visibility = "hidden";
+                }
+                if (ctrl2.style.visibility == "visible") {
+                    ctrl2.style.visibility = "hidden";
+                }
+                if (ctrl3.style.visibility == "visible") {
+                    ctrl3.style.visibility = "hidden";
+                }
+                if (ctrl4.style.visibility == "visible") {
+                    ctrl4.style.visibility = "hidden";
+                }
+                if (ctrl5.style.visibility == "visible") {
+                    ctrl5.style.visibility = "hidden";
+                }
+                if (Img1.style.visibility == "visible") {
+                    Img1.style.visibility = "hidden";
+                }
+                if (Img2.style.visibility == "visible") {
+                    Img2.style.visibility = "hidden";
+                }
+                if (Img3.style.visibility == "visible") {
+                    Img3.style.visibility = "hidden";
+                }
+                if (Img4.style.visibility == "visible") {
+                    Img4.style.visibility = "hidden";
+                }
+                if (Img5.style.visibility == "visible") {
+                    Img5.style.visibility = "hidden";
+                }
 
             }
+            var temp = '<%=ctrl1mainres%>'.replace("px", "");
+            var visible1 = "no";
+            var visible2 = "no";
+            var visible3 = "no";
+            var visible4 = "no";
+            var visible5 = "no";
 
-            var myaddctrl1 = window.setInterval(function () { randomCtrl1() }, 10000);
+            var myaddctrl1 = window.setInterval(function () { randomCtrl1() }, 3000);
             function randomCtrl1() {
-                ctrl1.style.visibility = "visible";
+
+
+
+
+
+
                 ctrl1.style.width = "60px";
-                ctrl2.style.visibility = "visible";
+
                 ctrl2.style.width = "60px";
-                ctrl3.style.visibility = "visible";
+
                 ctrl3.style.width = "60px";
-                ctrl4.style.visibility = "visible";
+
                 ctrl4.style.width = "60px";
-                ctrl5.style.visibility = "visible";
+
                 ctrl5.style.width = "60px";
                 Img1.style.width = "60px";
                 Img1.style.height = "60px";
@@ -768,47 +791,52 @@
                 Img5.style.width = "60px";
                 Img5.style.height = "60px";
                 Label3.style.visibility = "hidden";
-                var temp = '<%=ctrl1mainres%>';
-                temp = temp.replace("px", "");
-                temp = parseInt(temp, 10);
+
+                //temp = temp.replace("px", "");
+                //temp = parseInt(temp, 10);
                 var randno1 = Math.floor(Math.random() * 5 - 1 + 1) + 1;
                 var randno2 = Math.floor(Math.random() * 6 - 10 + 1) + 6;
                 var randno3 = Math.floor(Math.random() * 10 - 1 + 1) + 1;
 
                 if (randno1 == 1 || randno2 == 1 || randno3 == 1) {
                     ctrl1.style.visibility = "visible";
-			ctrl1.style.width = "100px";
-                        ctrl1.style.height = "100px";
+                    ctrl1.style.width = "100px";
+                    ctrl1.style.height = "100px";
                     ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl1.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    ctrl1.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    visible1 = "yes";
                 }
                 if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
                     ctrl2.style.visibility = "visible";
-			ctrl2.style.width = "100px";
-                        ctrl2.style.height = "100px";
+                    ctrl2.style.width = "100px";
+                    ctrl2.style.height = "100px";
                     ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl2.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    ctrl2.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    visible2 = "yes";
                 }
                 if (randno1 == 3 || randno2 == 3 || randno3 == 3) {
                     ctrl3.style.visibility = "visible";
-			ctrl3.style.width = "100px";
-                        ctrl3.style.height = "100px";
+                    ctrl3.style.width = "100px";
+                    ctrl3.style.height = "100px";
                     ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl3.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    ctrl3.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    visible3 = "yes";
                 }
                 if (randno1 == 4 || randno2 == 4 || randno3 == 4) {
                     ctrl4.style.visibility = "visible";
-			ctrl4.style.width = "100px";
-                        ctrl4.style.height = "100px";
+                    ctrl4.style.width = "100px";
+                    ctrl4.style.height = "100px";
                     ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl4.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    ctrl4.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    visible4 = "yes";
                 }
                 if (randno1 == 5 || randno2 == 5 || randno3 == 5) {
                     ctrl5.style.visibility = "visible";
-			ctrl5.style.width = "100px";
-                        ctrl5.style.height = "100px";
+                    ctrl5.style.width = "100px";
+                    ctrl5.style.height = "100px";
                     ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl5.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    ctrl5.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    visible5 = "yes";
                 }
                 if (randno1 == 6 || randno2 == 6 || randno3 == 6) {
                     Img1.style.visibility = "visible";
@@ -819,7 +847,7 @@
                         Img1.style.height = "30px";
                     }
                     Img1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img1.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    Img1.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
                 }
                 if (randno1 == 7 || randno2 == 7 || randno3 == 7) {
                     Img2.style.visibility = "visible";
@@ -830,7 +858,7 @@
                         Img2.style.height = "30px";
                     }
                     Img2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img2.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    Img2.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
                 }
                 if (randno1 == 8 || randno2 == 8 || randno3 == 8) {
                     Img3.style.visibility = "visible";
@@ -841,7 +869,7 @@
                         Img3.style.height = "30px";
                     }
                     Img3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img3.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    Img3.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
                 }
                 if (randno1 == 9 || randno2 == 9 || randno3 == 9) {
                     Img4.style.visibility = "visible";
@@ -852,7 +880,7 @@
                         Img4.style.height = "30px";
                     }
                     Img4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img4.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    Img4.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
                 }
                 if (randno1 == 10 || randno2 == 10 || randno3 == 10) {
                     Img5.style.visibility = "visible";
@@ -863,44 +891,158 @@
                         Img5.style.height = "30px";
                     }
                     Img5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img5.style.top = Math.floor(Math.random() * (358 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
+                    Img5.style.top = Math.floor(Math.random() * (275 - parseInt(temp, 10)) + 1) + parseInt(temp, 10) + "px";
                 }
-                
-               
+
+
             }
 
-            var myaddctrl = window.setInterval(function () { hitme() }, 10000);
+            var myaddctrl = window.setInterval(function () { hitme() }, 5000);
             function hitme() {
-                var myaddctrl = window.setTimeout(function () { hitmeonce() }, 1000);
+                var myaddctrl = window.setTimeout(function () { hitmeonce() }, 2000);
+                explosion.style.visibility = "visible";
+                if (visible1 == "yes") {
+                    explosion.style.width = "8px";
+                    explosion.style.height = "8px";
+                    explosion.style.left = ctrl1.style.left;
+                    explosion.style.top = ctrl1.style.top;
+                }
+                else if (visible2 == "yes") {
+                    explosion.style.width = "8px";
+                    explosion.style.height = "8px";
+                    explosion.style.left = ctrl2.style.left;
+                    explosion.style.top = ctrl2.style.top;
+                }
+                else if (visible3 == "yes") {
+                    explosion.style.width = "8px";
+                    explosion.style.height = "8px";
+                    explosion.style.left = ctrl3.style.left;
+                    explosion.style.top = ctrl3.style.top;
+                }
+                else if (visible4 == "yes") {
+                    explosion.style.width = "8px";
+                    explosion.style.height = "8px";
+                    explosion.style.left = ctrl4.style.left;
+                    explosion.style.top = ctrl4.style.top;
+                }
+                else if (visible5 == "yes") {
+                    explosion.style.width = "8px";
+                    explosion.style.height = "8px";
+                    explosion.style.left = ctrl5.style.left;
+                    explosion.style.top = ctrl5.style.top;
+                }
             }
             function hitmeonce() {
-		if (myctrl1.tbPropType == "movable") {
-                explosion.style.width = "30px";
-                explosion.style.height = "30px";
-		}
+                if (myctrl1.tbPropType == "movable") {
+                    explosion.style.width = "30px";
+                    explosion.style.height = "30px";
+                }
+
+                attacked.style.visibility = "visible";
+                document.getElementById('attacked').setAttribute("value", "You are Targetted Now");
 
                 explosion.style.left = crosshair.style.left;
                 explosion.style.top = crosshair.style.top;
                 explosion.style.right = crosshair.style.right;
                 explosion.style.visibility = "visible";
 
-                var myaddctrl = window.setTimeout(function () { removeexplosion() }, 3000);
+
+                var myaddctrl = window.setTimeout(function () { removeexplosion() }, 1000);
 
                 function removeexplosion() {
+
                     explosion.style.visibility = "hidden";
-                    lifes = lives.getAttribute("value");
-                    lifes = lifes - 1;
-                    lives.setAttribute("value", lifes);
+                    if (positionresult != "") {
+
+                        if (visible1 == "yes") {
+
+                            if (myctrl1.tbEscape == positionresult) {
+                                document.getElementById('attacked').setAttribute("value", "You have escaped");
+                                positionresult = "";
+                            }
+                            else {
+
+                                lifes = lives.getAttribute("value");
+                                lifes = lifes - 1;
+                                lives.setAttribute("value", lifes);
+                                document.getElementById('attacked').setAttribute("value", "You Lost a Life");
+                                positionresult = "";
+                            }
+                        }
+                        else if (visible2 == "yes") {
+
+                            if (myctrl2.tbEscape == positionresult) {
+                                document.getElementById('attacked').setAttribute("value", "You have escaped");
+                                positionresult = "";
+                            }
+                            else {
+
+                                lifes = lives.getAttribute("value");
+                                lifes = lifes - 1;
+                                lives.setAttribute("value", lifes);
+                                document.getElementById('attacked').setAttribute("value", "You Lost a Life");
+                                positionresult = "";
+                            }
+                        }
+                        else if (visible3 == "yes") {
+
+                            if (myctrl3.tbEscape == positionresult) {
+                                document.getElementById('attacked').setAttribute("value", "You have escaped");
+                                positionresult = "";
+                            }
+                            else {
+
+                                lifes = lives.getAttribute("value");
+                                lifes = lifes - 1;
+                                lives.setAttribute("value", lifes);
+                                document.getElementById('attacked').setAttribute("value", "You Lost a Life");
+                                positionresult = "";
+                            }
+                        }
+                        else if (visible4 == "yes") {
+
+                            if (myctrl4.tbEscape == positionresult) {
+                                document.getElementById('attacked').setAttribute("value", "You have escaped");
+                                positionresult = "";
+                            }
+                            else {
+
+                                lifes = lives.getAttribute("value");
+                                lifes = lifes - 1;
+                                lives.setAttribute("value", lifes);
+                                document.getElementById('attacked').setAttribute("value", "You Lost a Life");
+                                positionresult = "";
+                            }
+                        }
+                        else if (visible5 == "yes") {
+
+                            if (myctrl5.tbEscape == positionresult) {
+                                document.getElementById('attacked').setAttribute("value", "You have escaped");
+                                positionresult = "";
+                            }
+                            else {
+
+                                lifes = lives.getAttribute("value");
+                                lifes = lifes - 1;
+                                lives.setAttribute("value", lifes);
+                                document.getElementById('attacked').setAttribute("value", "You Lost a Life");
+                                positionresult = "";
+                            }
+                        }
+
+                    }
+
                     if (lifes == 0) {
                         lives.setAttribute("value", '10');
                     }
+
                 }
 
 
             }
 
             function detectcollision() {
-                
+
                 if (enemyhits == null) {
                     enemyhits = 0;
                 }
@@ -911,102 +1053,268 @@
                 mygoldcoins = parseInt(mygoldcoins, 10);
 
                 if (myctrl1.tbPropType == "movable") {
-                if (ctrl1.style.visibility == "visible") {
-                    if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl1.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl1.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl1.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl1.style.bottom.replace("px", ""), 10)) {
-                        enemyhits = enemyhits + 1;
-
-                        if (enemyhits == 10) {
-                            enemyhits = 0;
-                            if (mygoldcoins == null || mygoldcoins == 0) {
-                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                    if (ctrl1.style.visibility == "visible") {
+                        if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl1.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl1.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl1.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl1.style.bottom.replace("px", ""), 10)) {
+                            enemyhits = enemyhits + 1;
+                            
+                            if (enemyhits == 10) {
+                                enemyhits = 0;
+                                if (mygoldcoins == null || mygoldcoins == 0) {
+                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                }
+                                if (mygoldcoins != null || mygoldcoins != 0) {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                }
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
                             }
-                            if (mygoldcoins != null || mygoldcoins != 0) {
+                            document.getElementById('ehits').setAttribute("value", enemyhits);
+                            sessionStorage.setItem("points", mygoldcoins);
+                            sessionStorage.setItem("achievements", enemyhits);
+                            friendimage.style.visibility = "visible";
+                            friendname.style.visibility = "visible";
+                            friendimage.src = '<%=Convert.ToString(Session["friend1pic"])%>';
+                            friendname.value = '<%=Session["friend1"]%>';
+                            sound1.src = myctrl1.tbCollionSound;
+                            ctrl1.style.visibility = "hidden";
+                            if ('<%=ctrl1mainname%>' == "goldcoins") {
+                                if (myctrl1.tbResult == "giveonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                                    
+                                }
+                                if (myctrl1.tbResult == "takeonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                }
+                            }
+                            if ('<%=ctrl1mainname%>' == "health") {
+                                if (myctrl1.tbResult == "giveonelife") {
+                                    lifes = String(parseInt(lifes, 10) + 1);
+                                    document.getElementById('lives').setAttribute("value", lifes);
+                                }
+                                if (myctrl1.tbResult == "takeonelife") {
+                                    lifes = String(parseInt(lifes, 10) - 1);
+                                    document.getElementById('lives').setAttribute("value", lifes);
+                                }
+                            }
+                            if (myctrl1.tbResult == "giveonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
                             }
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        document.getElementById('ehits').setAttribute("value", enemyhits);
-                        sessionStorage.setItem("points", mygoldcoins);
-                        sessionStorage.setItem("achievements", enemyhits);
-                        friendimage.style.visibility = "visible";
-                        friendname.style.visibility = "visible";
-                        friendimage.src = '<%=Convert.ToString(Session["friend1pic"])%>';
-                        friendname.value = '<%=Session["friend1"]%>';
-                        sound1.src = myctrl1.tbCollionSound;
-                        ctrl1.style.visibility = "hidden";
-                        if ('<%=ctrl1mainname%>' == "goldcoins")
-                        {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        if ('<%=ctrl1mainname%>' == "health") {
-                            mygoldcoins = String(parseInt(lifes, 10) + 1);
-                            document.getElementById('lives').setAttribute("value", lifes);
+                            if (myctrl1.tbResult == "takeonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                            if (myctrl1.tbResult == "giveonelife") {
+                                lifes = String(parseInt(lifes, 10) + 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if (myctrl1.tbResult == "takeonelife") {
+                                lifes = String(parseInt(lifes, 10) - 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if (myctrl1.tbResult == "donothing") {
+                                crosshair.style.left = currentlposition;
+                                crosshair.style.top = currenttposition;
+                            }
+                            if (myctrl1.tbResult == "cry") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                            }
+                            if (myctrl1.tbResult == "laugh") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl1.tbResult == "stunned") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                            }
+                            if (myctrl1.tbResult == "stunned") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl1.tbResult == "applaud") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                            }
+                            if (myctrl1.tbResult == "dizzy") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                                crosshair.style.left = "130px";
+                                crosshair.style.top = "250px";
+                            }
+                            noofhits = noofhits + 1;
+                            document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
                         }
                     }
-                }
-                if (ctrl2.style.visibility == "visible") {
-                    if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl2.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl2.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl2.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl2.style.bottom.replace("px", ""), 10)) {
-                        enemyhits = enemyhits + 1;
+                    if (ctrl2.style.visibility == "visible") {
+                        if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl2.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl2.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl2.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl2.style.bottom.replace("px", ""), 10)) {
+                            enemyhits = enemyhits + 1;
 
-                        if (enemyhits == 10) {
-                            enemyhits = 0;
-                            if (mygoldcoins == null || mygoldcoins == 0) {
-                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                            if (enemyhits == 10) {
+                                enemyhits = 0;
+                                if (mygoldcoins == null || mygoldcoins == 0) {
+                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                }
+                                if (mygoldcoins != null || mygoldcoins != 0) {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                }
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
                             }
-                            if (mygoldcoins != null || mygoldcoins != 0) {
+                            document.getElementById('ehits').setAttribute("value", enemyhits);
+                            sessionStorage.setItem("points", mygoldcoins);
+                            sessionStorage.setItem("achievements", enemyhits);
+                            friendimage.style.visibility = "visible";
+                            friendname.style.visibility = "visible";
+                            friendimage.src = '<%=Convert.ToString(Session["friend2pic"])%>';
+                            friendname.value = '<%=Session["friend2"]%>';
+                            sound1.src = myctrl2.tbCollionSound;
+                            ctrl2.style.visibility = "hidden";
+                            if ('<%=ctrl2mainname%>' == "goldcoins") {
+                            if (myctrl2.tbResult == "giveonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
                             }
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        document.getElementById('ehits').setAttribute("value", enemyhits);
-                        sessionStorage.setItem("points", mygoldcoins);
-                        sessionStorage.setItem("achievements", enemyhits);
-                        friendimage.style.visibility = "visible";
-                        friendname.style.visibility = "visible";
-                        friendimage.src = '<%=Convert.ToString(Session["friend2pic"])%>';
-                        friendname.value = '<%=Session["friend2"]%>';
-                        sound1.src = myctrl2.tbCollionSound;
-                        ctrl2.style.visibility = "hidden";
-                        if ('<%=ctrl2mainname%>' == "goldcoins") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                            if (myctrl2.tbResult == "takeonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
                         }
                         if ('<%=ctrl2mainname%>' == "health") {
-                            mygoldcoins = String(parseInt(lifes, 10) + 1);
-                            document.getElementById('lives').setAttribute("value", lifes);
+                                if (myctrl2.tbResult == "giveonelife") {
+                                    lifes = String(parseInt(lifes, 10) + 1);
+                                    document.getElementById('lives').setAttribute("value", lifes);
+                                }
+                                if (myctrl2.tbResult == "takeonelife") {
+                                    lifes = String(parseInt(lifes, 10) - 1);
+                                    document.getElementById('lives').setAttribute("value", lifes);
+                                }
+                            }
+                            if (myctrl2.tbResult == "giveonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                            if (myctrl2.tbResult == "takeonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                            if (myctrl2.tbResult == "giveonelife") {
+                                lifes = String(parseInt(lifes, 10) + 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if (myctrl2.tbResult == "takeonelife") {
+                                lifes = String(parseInt(lifes, 10) - 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if (myctrl2.tbResult == "donothing") {
+                                crosshair.style.left = currentlposition;
+                                crosshair.style.top = currenttposition;
+                            }
+                            if (myctrl2.tbResult == "cry") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                            }
+                            if (myctrl2.tbResult == "laugh") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl2.tbResult == "stunned") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                            }
+                            if (myctrl2.tbResult == "stunned") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl2.tbResult == "applaud") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                            }
+                            if (myctrl2.tbResult == "dizzy") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                                crosshair.style.left = "130px";
+                                crosshair.style.top = "250px";
+                            }
                         }
                     }
-                }
-                if (ctrl3.style.visibility == "visible") {
-                    if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl3.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl3.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl3.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl3.style.bottom.replace("px", ""), 10)) {
-                        enemyhits = enemyhits + 1;
-                        if (enemyhits == 10) {
-                            enemyhits = 0;
-                            if (mygoldcoins == null || mygoldcoins == 0) {
-                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                    if (ctrl3.style.visibility == "visible") {
+                        if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl3.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl3.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl3.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl3.style.bottom.replace("px", ""), 10)) {
+                            enemyhits = enemyhits + 1;
+                            if (enemyhits == 10) {
+                                enemyhits = 0;
+                                if (mygoldcoins == null || mygoldcoins == 0) {
+                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                }
+                                if (mygoldcoins != null || mygoldcoins != 0) {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                }
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
                             }
-                            if (mygoldcoins != null || mygoldcoins != 0) {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            }
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        document.getElementById('ehits').setAttribute("value", enemyhits);
-                        sessionStorage.setItem("points", mygoldcoins);
-                        sessionStorage.setItem("achievements", enemyhits);
-                        friendimage.style.visibility = "visible";
-                        friendname.style.visibility = "visible";
-                        friendimage.src = '<%=Convert.ToString(Session["friend3pic"])%>';
+                            document.getElementById('ehits').setAttribute("value", enemyhits);
+                            sessionStorage.setItem("points", mygoldcoins);
+                            sessionStorage.setItem("achievements", enemyhits);
+                            friendimage.style.visibility = "visible";
+                            friendname.style.visibility = "visible";
+                            friendimage.src = '<%=Convert.ToString(Session["friend3pic"])%>';
                         friendname.value = '<%=Session["friend3"]%>';
                         sound1.src = myctrl3.tbCollionSound;
                         ctrl3.style.visibility = "hidden";
                         if ('<%=ctrl3mainname%>' == "goldcoins") {
+                            if (myctrl3.tbResult == "giveonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                            if (myctrl3.tbResult == "takeonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                        }
+                        if ('<%=ctrl3mainname%>' == "health") {
+                            if (myctrl3.tbResult == "giveonelife") {
+                                lifes = String(parseInt(lifes, 10) + 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if (myctrl3.tbResult == "takeonelife") {
+                                lifes = String(parseInt(lifes, 10) - 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                        }
+                        if (myctrl3.tbResult == "giveonecrisboo") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
                         }
-                        if ('<%=ctrl3mainname%>' == "health") {
-                            mygoldcoins = String(parseInt(lifes, 10) + 1);
+                        if (myctrl3.tbResult == "takeonecrisboo") {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        if (myctrl3.tbResult == "giveonelife") {
+                            lifes = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
+                        }
+                        if (myctrl3.tbResult == "takeonelife") {
+                            lifes = String(parseInt(lifes, 10) - 1);
+                            document.getElementById('lives').setAttribute("value", lifes);
+                        }
+                        if (myctrl3.tbResult == "donothing") {
+                            crosshair.style.left = currentlposition;
+                            crosshair.style.top = currenttposition;
+                        }
+                        if (myctrl3.tbResult == "cry") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                        }
+                        if (myctrl3.tbResult == "laugh") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                        }
+                        if (myctrl3.tbResult == "stunned") {
+                            crosshair.style.left = "0px";
+                            crosshair.style.top = "130px";
+                        }
+                        if (myctrl3.tbResult == "stunned") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                        }
+                        if (myctrl3.tbResult == "applaud") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                        }
+                        if (myctrl3.tbResult == "dizzy") {
+                            crosshair.style.left = "0px";
+                            crosshair.style.top = "130px";
+                            crosshair.style.left = "130px";
+                            crosshair.style.top = "250px";
                         }
                     }
                 }
@@ -1034,12 +1342,66 @@
                         sound1.src = myctrl4.tbCollionSound;
                         ctrl4.style.visibility = "hidden";
                         if ('<%=ctrl4mainname%>' == "goldcoins") {
+                            if (myctrl4.tbResult == "giveonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                            if (myctrl4.tbResult == "takeonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                        }
+                        if ('<%=ctrl4mainname%>' == "health") {
+                            if (myctrl4.tbResult == "giveonelife") {
+                                lifes = String(parseInt(lifes, 10) + 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if (myctrl4.tbResult == "takeonelife") {
+                                lifes = String(parseInt(lifes, 10) - 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                        }
+                        if (myctrl4.tbResult == "giveonecrisboo") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
                         }
-                        if ('<%=ctrl4mainname%>' == "health") {
-                            mygoldcoins = String(parseInt(lifes, 10) + 1);
+                        if (myctrl4.tbResult == "takeonecrisboo") {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        if (myctrl4.tbResult == "giveonelife") {
+                            lifes = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
+                        }
+                        if (myctrl4.tbResult == "takeonelife") {
+                            lifes = String(parseInt(lifes, 10) - 1);
+                            document.getElementById('lives').setAttribute("value", lifes);
+                        }
+                        if (myctrl4.tbResult == "donothing") {
+                            crosshair.style.left = currentlposition;
+                            crosshair.style.top = currenttposition;
+                        }
+                        if (myctrl4.tbResult == "cry") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                        }
+                        if (myctrl4.tbResult == "laugh") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                        }
+                        if (myctrl4.tbResult == "stunned") {
+                            crosshair.style.left = "0px";
+                            crosshair.style.top = "130px";
+                        }
+                        if (myctrl4.tbResult == "stunned") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                        }
+                        if (myctrl4.tbResult == "applaud") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                        }
+                        if (myctrl4.tbResult == "dizzy") {
+                            crosshair.style.left = "0px";
+                            crosshair.style.top = "130px";
+                            crosshair.style.left = "130px";
+                            crosshair.style.top = "250px";
                         }
                     }
                 }
@@ -1066,12 +1428,66 @@
                         sound1.src = myctrl5.tbCollionSound;
                         ctrl5.style.visibility = "hidden";
                         if ('<%=ctrl5mainname%>' == "goldcoins") {
+                            if (myctrl5.tbResult == "giveonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                            if (myctrl5.tbResult == "takeonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                        }
+                        if ('<%=ctrl5mainname%>' == "health") {
+                            if (myctrl5.tbResult == "giveonelife") {
+                                lifes = String(parseInt(lifes, 10) + 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if (myctrl5.tbResult == "takeonelife") {
+                                lifes = String(parseInt(lifes, 10) - 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                        }
+                        if (myctrl5.tbResult == "giveonecrisboo") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
                         }
-                        if ('<%=ctrl5mainname%>' == "health") {
-                            mygoldcoins = String(parseInt(lifes, 10) + 1);
+                        if (myctrl5.tbResult == "takeonecrisboo") {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        if (myctrl5.tbResult == "giveonelife") {
+                            lifes = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
+                        }
+                        if (myctrl5.tbResult == "takeonelife") {
+                            lifes = String(parseInt(lifes, 10) - 1);
+                            document.getElementById('lives').setAttribute("value", lifes);
+                        }
+                        if (myctrl5.tbResult == "donothing") {
+                            crosshair.style.left = currentlposition;
+                            crosshair.style.top = currenttposition;
+                        }
+                        if (myctrl5.tbResult == "cry") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                        }
+                        if (myctrl5.tbResult == "laugh") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                        }
+                        if (myctrl5.tbResult == "stunned") {
+                            crosshair.style.left = "0px";
+                            crosshair.style.top = "130px";
+                        }
+                        if (myctrl5.tbResult == "stunned") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                        }
+                        if (myctrl5.tbResult == "applaud") {
+                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                        }
+                        if (myctrl5.tbResult == "dizzy") {
+                            crosshair.style.left = "0px";
+                            crosshair.style.top = "130px";
+                            crosshair.style.left = "130px";
+                            crosshair.style.top = "250px";
                         }
                     }
                 }
@@ -1162,16 +1578,19 @@
                         if ('<%=ctrl3mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+
                         }
                         if ('<%=ctrl3mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
-                        
+
                         if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
                             Img3.style.visibility = "hidden";
                         }
-                    
+
 
                     }
                 }
@@ -1200,11 +1619,11 @@
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
-                    
+
                         if ('<%=ctrl4mainname%>' == "goldcoins" || '<%=ctrl4mainname%>' == "health") {
                             Img4.style.visibility = "hidden";
                         }
-                    
+
                     }
                 }
                 if (Img5.style.visibility == "visible") {
@@ -1227,41 +1646,44 @@
                         if ('<%=ctrl5mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+
                         }
                         if ('<%=ctrl5mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
-                    
+
                         if ('<%=ctrl5mainname%>' == "goldcoins" || '<%=ctrl5mainname%>' == "health") {
                             Img5.style.visibility = "hidden";
                         }
-                    
+                        noofhits = noofhits + 1;
+                        document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
                     }
                 }
-                }
-                if (myctrl1.tbPropType == "fixed")
-                {
-                    if (ctrl1.style.visibility == "visible") {
-                        if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(ctrl1.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(ctrl1.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(ctrl1.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(ctrl1.style.bottom.replace("px", ""), 10)) {
-                            enemyhits = enemyhits + 1;
+            }
+            if (myctrl1.tbPropType == "fixed") {
+                if (ctrl1.style.visibility == "visible") {
+                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(ctrl1.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(ctrl1.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(ctrl1.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(ctrl1.style.bottom.replace("px", ""), 10)) {
+                        enemyhits = enemyhits + 1;
 
-                            if (enemyhits == 10) {
-                                enemyhits = 0;
-                                if (mygoldcoins == null || mygoldcoins == 0) {
-                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                                }
-                                if (mygoldcoins != null || mygoldcoins != 0) {
-                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                }
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                        if (enemyhits == 10) {
+                            enemyhits = 0;
+                            if (mygoldcoins == null || mygoldcoins == 0) {
+                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
                             }
-                            document.getElementById('ehits').setAttribute("value", enemyhits);
-                            sessionStorage.setItem("points", mygoldcoins);
-                            sessionStorage.setItem("achievements", enemyhits);
-                            friendimage.style.visibility = "visible";
-                            friendname.style.visibility = "visible";
-                            friendimage.src = '<%=Convert.ToString(Session["friend1pic"])%>';
+                            if (mygoldcoins != null || mygoldcoins != 0) {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            }
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        document.getElementById('ehits').setAttribute("value", enemyhits);
+                        sessionStorage.setItem("points", mygoldcoins);
+                        sessionStorage.setItem("achievements", enemyhits);
+                        friendimage.style.visibility = "visible";
+                        friendname.style.visibility = "visible";
+                        friendimage.src = '<%=Convert.ToString(Session["friend1pic"])%>';
                         friendname.value = '<%=Session["friend1"]%>';
                         sound1.src = myctrl1.tbCollionSound;
                         ctrl1.style.visibility = "hidden";
@@ -1273,6 +1695,8 @@
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
+                        noofhits = noofhits + 1;
+                        document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
                     }
                 }
                 if (ctrl2.style.visibility == "visible") {
@@ -1299,10 +1723,10 @@
                         sound1.src = myctrl2.tbCollionSound;
                         ctrl2.style.visibility = "hidden";
                         if ('<%=ctrl2mainname%>' == "goldcoins") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        if ('<%=ctrl2mainname%>' == "health") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                            if ('<%=ctrl2mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
@@ -1327,21 +1751,86 @@
                         friendimage.style.visibility = "visible";
                         friendname.style.visibility = "visible";
                         friendimage.src = '<%=Convert.ToString(Session["friend3pic"])%>';
-                        friendname.value = '<%=Session["friend3"]%>';
-                        sound1.src = myctrl3.tbCollionSound;
-                        ctrl3.style.visibility = "hidden";
-                        if ('<%=ctrl3mainname%>' == "goldcoins") {
-                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
+                            friendname.value = '<%=Session["friend3"]%>';
+                            sound1.src = myctrl3.tbCollionSound;
+                            ctrl3.style.visibility = "hidden";
+                            if ('<%=ctrl3mainname%>' == "goldcoins") {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        if ('<%=ctrl3mainname%>' == "health") {
+                                mygoldcoins = String(parseInt(lifes, 10) + 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                        }
                     }
-                    if ('<%=ctrl3mainname%>' == "health") {
+                    if (ctrl4.style.visibility == "visible") {
+                        if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(ctrl4.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(ctrl4.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(ctrl4.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(ctrl4.style.bottom.replace("px", ""), 10)) {
+                            enemyhits = enemyhits + 1;
+                            if (enemyhits == 10) {
+                                enemyhits = 0;
+                                if (mygoldcoins == null || mygoldcoins == 0) {
+                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                }
+                                if (mygoldcoins != null || mygoldcoins != 0) {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                }
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+
+                            }
+                            document.getElementById('ehits').setAttribute("value", enemyhits);
+                            sessionStorage.setItem("points", mygoldcoins);
+                            sessionStorage.setItem("achievements", enemyhits);
+                            friendimage.style.visibility = "visible";
+                            friendname.style.visibility = "visible";
+                            friendimage.src = '<%=Convert.ToString(Session["friend4pic"])%>';
+                        friendname.value = '<%=Session["friend4"]%>';
+                        sound1.src = myctrl4.tbCollionSound;
+                        ctrl4.style.visibility = "hidden";
+                        if ('<%=ctrl4mainname%>' == "goldcoins") {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        if ('<%=ctrl4mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
                     }
                 }
-                if (ctrl4.style.visibility == "visible") {
-                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(ctrl4.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(ctrl4.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(ctrl4.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(ctrl4.style.bottom.replace("px", ""), 10)) {
+                if (ctrl5.style.visibility == "visible") {
+                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(ctrl5.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(ctrl5.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(ctrl5.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(ctrl5.style.bottom.replace("px", ""), 10)) {
+                        enemyhits = enemyhits + 1;
+                        if (enemyhits == 10) {
+                            enemyhits = 0;
+                            if (mygoldcoins == null || mygoldcoins == 0) {
+                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                            }
+                            if (mygoldcoins != null || mygoldcoins != 0) {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            }
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        document.getElementById('ehits').setAttribute("value", enemyhits);
+                        sessionStorage.setItem("points", mygoldcoins);
+                        sessionStorage.setItem("achievements", enemyhits);
+                        friendimage.style.visibility = "visible";
+                        friendname.style.visibility = "visible";
+                        friendimage.src = '<%=Convert.ToString(Session["friend5pic"])%>';
+                        friendname.value = '<%=Session["friend5"]%>';
+                        sound1.src = myctrl5.tbCollionSound;
+                        ctrl5.style.visibility = "hidden";
+                        if ('<%=ctrl5mainname%>' == "goldcoins") {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        if ('<%=ctrl5mainname%>' == "health") {
+                            mygoldcoins = String(parseInt(lifes, 10) + 1);
+                            document.getElementById('lives').setAttribute("value", lifes);
+                        }
+                    }
+                }
+                if (Img1.style.visibility == "visible") {
+                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img1.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img1.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img1.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img1.style.bottom.replace("px", ""), 10)) {
                         enemyhits = enemyhits + 1;
                         if (enemyhits == 10) {
                             enemyhits = 0;
@@ -1357,106 +1846,41 @@
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
                         sessionStorage.setItem("achievements", enemyhits);
-                        friendimage.style.visibility = "visible";
-                        friendname.style.visibility = "visible";
-                        friendimage.src = '<%=Convert.ToString(Session["friend4pic"])%>';
-                    friendname.value = '<%=Session["friend4"]%>';
-                    sound1.src = myctrl4.tbCollionSound;
-                    ctrl4.style.visibility = "hidden";
-                    if ('<%=ctrl4mainname%>' == "goldcoins") {
-                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
-                    }
-                    if ('<%=ctrl4mainname%>' == "health") {
-                        mygoldcoins = String(parseInt(lifes, 10) + 1);
-                        document.getElementById('lives').setAttribute("value", lifes);
+                        sound1.src = myctrl1.tbCollionSound;
+                        if ('<%=ctrl1mainname%>' == "goldcoins") {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        if ('<%=ctrl1mainname%>' == "health") {
+                            mygoldcoins = String(parseInt(lifes, 10) + 1);
+                            document.getElementById('lives').setAttribute("value", lifes);
+                        }
+                        if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
+
+                            Img1.style.visibility = "hidden";
+
+                        }
+
                     }
                 }
-            }
-            if (ctrl5.style.visibility == "visible") {
-                if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(ctrl5.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(ctrl5.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(ctrl5.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(ctrl5.style.bottom.replace("px", ""), 10)) {
-                    enemyhits = enemyhits + 1;
-                    if (enemyhits == 10) {
-                        enemyhits = 0;
-                        if (mygoldcoins == null || mygoldcoins == 0) {
-                            mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                if (Img2.style.visibility == "visible") {
+                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img2.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img2.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img2.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img2.style.bottom.replace("px", ""), 10)) {
+                        enemyhits = enemyhits + 1;
+                        if (enemyhits == 10) {
+                            enemyhits = 0;
+                            if (mygoldcoins == null || mygoldcoins == 0) {
+                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                            }
+                            if (mygoldcoins != null || mygoldcoins != 0) {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            }
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
                         }
-                        if (mygoldcoins != null || mygoldcoins != 0) {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                        }
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
-                    }
-                    document.getElementById('ehits').setAttribute("value", enemyhits);
-                    sessionStorage.setItem("points", mygoldcoins);
-                    sessionStorage.setItem("achievements", enemyhits);
-                    friendimage.style.visibility = "visible";
-                    friendname.style.visibility = "visible";
-                    friendimage.src = '<%=Convert.ToString(Session["friend5pic"])%>';
-                    friendname.value = '<%=Session["friend5"]%>';
-                    sound1.src = myctrl5.tbCollionSound;
-                    ctrl5.style.visibility = "hidden";
-                    if ('<%=ctrl5mainname%>' == "goldcoins") {
-                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
-                    }
-                    if ('<%=ctrl5mainname%>' == "health") {
-                        mygoldcoins = String(parseInt(lifes, 10) + 1);
-                        document.getElementById('lives').setAttribute("value", lifes);
-                    }
-                }
-            }
-            if (Img1.style.visibility == "visible") {
-                if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img1.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img1.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img1.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img1.style.bottom.replace("px", ""), 10)) {
-                    enemyhits = enemyhits + 1;
-                    if (enemyhits == 10) {
-                        enemyhits = 0;
-                        if (mygoldcoins == null || mygoldcoins == 0) {
-                            mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                        }
-                        if (mygoldcoins != null || mygoldcoins != 0) {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                        }
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
-
-                    }
-                    document.getElementById('ehits').setAttribute("value", enemyhits);
-                    sessionStorage.setItem("points", mygoldcoins);
-                    sessionStorage.setItem("achievements", enemyhits);
-                    sound1.src = myctrl1.tbCollionSound;
-                    if ('<%=ctrl1mainname%>' == "goldcoins") {
-                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
-                    }
-                    if ('<%=ctrl1mainname%>' == "health") {
-                        mygoldcoins = String(parseInt(lifes, 10) + 1);
-                        document.getElementById('lives').setAttribute("value", lifes);
-                    }
-                    if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
-
-                        Img1.style.visibility = "hidden";
-
-                    }
-
-                }
-            }
-            if (Img2.style.visibility == "visible") {
-                if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img2.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img2.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img2.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img2.style.bottom.replace("px", ""), 10)) {
-                    enemyhits = enemyhits + 1;
-                    if (enemyhits == 10) {
-                        enemyhits = 0;
-                        if (mygoldcoins == null || mygoldcoins == 0) {
-                            mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                        }
-                        if (mygoldcoins != null || mygoldcoins != 0) {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                        }
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
-                    }
-                    document.getElementById('ehits').setAttribute("value", enemyhits);
-                    sessionStorage.setItem("points", mygoldcoins);
-                    sessionStorage.setItem("achievements", enemyhits);
-                    sound1.src = myctrl2.tbCollionSound;
-                    if ('<%=ctrl2mainname%>' == "goldcoins") {
+                        document.getElementById('ehits').setAttribute("value", enemyhits);
+                        sessionStorage.setItem("points", mygoldcoins);
+                        sessionStorage.setItem("achievements", enemyhits);
+                        sound1.src = myctrl2.tbCollionSound;
+                        if ('<%=ctrl2mainname%>' == "goldcoins") {
                         mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                         document.getElementById('points').setAttribute("value", mygoldcoins);
                     }
@@ -1490,39 +1914,39 @@
                     sessionStorage.setItem("achievements", enemyhits);
                     sound1.src = myctrl3.tbCollionSound;
                     if ('<%=ctrl3mainname%>' == "goldcoins") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        if ('<%=ctrl3mainname%>' == "health") {
-                            mygoldcoins = String(parseInt(lifes, 10) + 1);
-                            document.getElementById('lives').setAttribute("value", lifes);
-                        }
-
-                        if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
-                            Img3.style.visibility = "hidden";
-                        }
-
-
+                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                        document.getElementById('points').setAttribute("value", mygoldcoins);
                     }
+                    if ('<%=ctrl3mainname%>' == "health") {
+                        mygoldcoins = String(parseInt(lifes, 10) + 1);
+                        document.getElementById('lives').setAttribute("value", lifes);
+                    }
+
+                    if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
+                        Img3.style.visibility = "hidden";
+                    }
+
+
                 }
-                if (Img4.style.visibility == "visible") {
-                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img4.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img4.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img4.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img4.style.bottom.replace("px", ""), 10)) {
-                        enemyhits = enemyhits + 1;
-                        if (enemyhits == 10) {
-                            enemyhits = 0;
-                            if (mygoldcoins == null || mygoldcoins == 0) {
-                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                            }
-                            if (mygoldcoins != null || mygoldcoins != 0) {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            }
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
+            }
+            if (Img4.style.visibility == "visible") {
+                if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img4.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img4.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img4.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img4.style.bottom.replace("px", ""), 10)) {
+                    enemyhits = enemyhits + 1;
+                    if (enemyhits == 10) {
+                        enemyhits = 0;
+                        if (mygoldcoins == null || mygoldcoins == 0) {
+                            mygoldcoins = String(parseInt(enemyhits, 10) + 1);
                         }
-                        document.getElementById('ehits').setAttribute("value", enemyhits);
-                        sessionStorage.setItem("points", mygoldcoins);
-                        sessionStorage.setItem("achievements", enemyhits);
-                        sound1.src = myctrl4.tbCollionSound;
-                        if ('<%=ctrl4mainname%>' == "goldcoins") {
+                        if (mygoldcoins != null || mygoldcoins != 0) {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                        }
+                        document.getElementById('points').setAttribute("value", mygoldcoins);
+                    }
+                    document.getElementById('ehits').setAttribute("value", enemyhits);
+                    sessionStorage.setItem("points", mygoldcoins);
+                    sessionStorage.setItem("achievements", enemyhits);
+                    sound1.src = myctrl4.tbCollionSound;
+                    if ('<%=ctrl4mainname%>' == "goldcoins") {
                         mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                         document.getElementById('points').setAttribute("value", mygoldcoins);
                     }
@@ -1537,6 +1961,7 @@
 
                 }
             }
+
             if (Img5.style.visibility == "visible") {
                 if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img5.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img5.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img5.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img5.style.bottom.replace("px", ""), 10)) {
                     enemyhits = enemyhits + 1;
@@ -1569,17 +1994,18 @@
 
                 }
             }
-                }
         }
+    }
 
             function explode() {
+
 
                 explosion.style.width = "30px";
                 explosion.style.height = "30px";
 
                 explosion.style.left = crosshair.style.left;
                 explosion.style.top = crosshair.style.top;
-                explosion.style.right = crosshair.style.right;
+                //explosion.style.right = crosshair.style.right;
                 explosion.style.visibility = "visible";
 
                 var myaddctrl = window.setTimeout(function () { removeexplosion() }, 3000);
@@ -1595,7 +2021,7 @@
                     ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", ""), 10) + 45 + "px";
                 }
                 if (parseInt(ctrl2.style.left.replace("px", ""), 10) > 175 && parseInt(ctrl2.style.left.replace("px", ""), 10) < 879) {
-                    ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", ""), 10) + 5 + "px";
+                    ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", ""), 10) + 45 + "px";
                 }
                 if (parseInt(ctrl3.style.left.replace("px", ""), 10) > 175 && parseInt(ctrl3.style.left.replace("px", ""), 10) < 879) {
                     ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", ""), 10) + 45 + "px";
@@ -1624,76 +2050,144 @@
 
 
 
-                if (parseInt(ctrl1.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(ctrl1.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(ctrl1.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl1.style.top.replace("px", ""), 10) < 275) {
                     ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(ctrl2.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(ctrl2.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(ctrl2.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl2.style.top.replace("px", ""), 10) < 275) {
                     ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(ctrl3.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(ctrl3.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(ctrl3.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl3.style.top.replace("px", ""), 10) < 275) {
                     ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(ctrl4.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(ctrl4.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(ctrl4.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl4.style.top.replace("px", ""), 10) < 275) {
                     ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(ctrl5.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(ctrl5.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(ctrl5.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl5.style.top.replace("px", ""), 10) < 275) {
                     ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img1.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(Img1.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(Img1.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img1.style.top.replace("px", ""), 10) < 275) {
                     Img1.style.top = parseInt(Img1.style.top.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img2.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(Img2.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(Img2.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img2.style.top.replace("px", ""), 10) < 275) {
                     Img1.style.top = parseInt(Img2.style.top.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img3.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(Img3.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(Img3.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img3.style.top.replace("px", ""), 10) < 275) {
                     Img1.style.top = parseInt(Img3.style.top.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img4.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(Img4.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(Img4.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img4.style.top.replace("px", ""), 10) < 275) {
                     Img1.style.top = parseInt(Img4.style.top.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img5.style.top.replace("px", ""), 10) > parseInt(ctrl1mainres.replace("px", ""), 10) && parseInt(Img5.style.top.replace("px", ""), 10) < 368) {
+                if (parseInt(Img5.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img5.style.top.replace("px", ""), 10) < 275) {
                     Img1.style.top = parseInt(Img5.style.top.replace("px", ""), 10) + 45 + "px";
                 }
 
-                divplayer.focus();
+                //divplayer.focus();
             }
 
 
             document.addEventListener("keydown", check, false);
             document.addEventListener("mousedown", explodeprop, false);
             document.addEventListener("mousemove", moveprop, false);
+            var currentlposition = "moveleft";
+            var currenttposition = "moveleft";
+            var positionresult = "moveleft";
 
             function moveprop(e) {
+
                 document.body.style.cursor = "pointer";
-                crosshair.style.visibility = "hidden";
+                crosshair.style.visibility = "visible";
+
                 crosshair.style.left = Math.round(e.clientX) + "px";
                 crosshair.style.top = Math.round(e.clientY) + "px";
 
-                if (parseInt(crosshair.style.left.replace("px", ""), 10) > 1 && parseInt(crosshair.style.left.replace("px", ""), 10) < 470 && parseInt(crosshair.style.top.replace("px", ""), 10) > parseInt('<%=ctrl1mainres%>', 10) && parseInt(crosshair.style.top.replace("px", ""), 10) < 358) {
-                    
-                    document.body.style.cursor = "none";
-                    
-                    if (myctrl1.tbPropType == "movable")
-                    {
-                        explosion.style.visibility = "hidden";
-                        
-			            crosshair.style.height = "30px";
-                        crosshair.style.width = "30px";
-				explosion.style.height = "30px";
-			    explosion.style.width = "30px";
-                    }
-                    if (myctrl1.tbPropType == "fixed")
-                    {
-                        crosshair.style.top = "358px";
-                        crosshair.style.height = "90px";
-                        crosshair.style.width = "90px";
-				explosion.style.height = "40px";
-			    explosion.style.width = "40px";
-                        explosion.style.visibility = "visible";
-                        explosion.style.left = crosshair.style.left;
-                        explosion.style.top = crosshair.style.top;
-                    }
+
+                //if (Math.round(e.clientY) < temp, 10) {
+                //    explosion.style.top = temp + "px";
+
+                //}
+
+                if (Math.round(e.clientX) > 365) {
+                    crosshair.style.left = Math.round(e.clientX) - 365 + "px";
+
                 }
+
+                else if (Math.round(e.clientX) < 365) {
+                    crosshair.style.left = 1 + "px";
+
+                }
+
+                else if (Math.round(e.clientX) > 879) {
+                    crosshair.style.left = 879 + "px";
+
+                }
+
+                else if (Math.round(e.clientY) > 130) {
+                    crosshair.style.top = Math.round(e.clientY) - 130 + "px";
+
+                }
+
+                else if (Math.round(e.clientY) < 130) {
+                    crosshair.style.top = 130 + "px";
+
+                }
+
+                else if (Math.round(e.clientY) > 275) {
+                    crosshair.style.top = 275 + "px";
+
+                }
+
+                if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientX)) {
+                    positionresult = "moveright";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientX)) {
+                    positionresult = "moveleft";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientY)) {
+                    positionresult = "moveup";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientY)) {
+                    positionresult = "movedown";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientY) && parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientX)) {
+                    positionresult = "jump";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientY) && parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientX)) {
+                    positionresult = "crawl";
+                }
+
+
+
+                if (myctrl1.tbPropType == "movable") {
+
+                    document.body.style.cursor = "none";
+                    explosion.style.visibility = "hidden";
+
+                    crosshair.style.height = "30px";
+                    crosshair.style.width = "30px";
+                    explosion.style.height = "30px";
+                    explosion.style.width = "30px";
+
+
+                    //if (Math.round(e.clientY) > temp, 10) {
+                    //    crosshair.style.top = temp + "px";
+                    //}
+                }
+                if (myctrl1.tbPropType == "fixed") {
+
+                    document.body.style.cursor = "none";
+                    crosshair.style.top = "275px";
+                    crosshair.style.height = "90px";
+                    crosshair.style.width = "90px";
+                    explosion.style.height = "40px";
+                    explosion.style.width = "40px";
+                    explosion.style.visibility = "visible";
+                    explosion.style.left = Math.round(e.clientX) - 365 + "px";
+                    explosion.style.top = Math.round(e.clientY) - temp + "px";
+
+
+                }
+                currentlposition = Math.round(e.clientX) + "px";
+                currenttposition = Math.round(e.clientX) + "px";
             }
 
             function explodeprop(e) {
@@ -1702,6 +2196,7 @@
 
 
             }
+
 
             function check(e) {
                 var code = e.keyCode;
@@ -1712,7 +2207,7 @@
 
 
                     if (parseInt(crosshair.style.left.replace("px", ""), 10) > 1) {
-                        
+
                         crosshair.style.left = parseInt(crosshair.style.left.replace("px", ""), 10) - 10 + "px";
                         if (myctrl1.tbPropType == "fixed") {
                             explosion.style.left = parseInt(explosion.style.left.replace("px", ""), 10) - 10 + "px";
@@ -1724,7 +2219,7 @@
                 if (code == 39) {
 
                     if (parseInt(crosshair.style.left.replace("px", ""), 10) < 470) {
-                        
+
                         crosshair.style.left = parseInt(crosshair.style.left.replace("px", ""), 10) + 10 + "px";
                         if (myctrl1.tbPropType == "fixed") {
                             explosion.style.left = parseInt(explosion.style.left.replace("px", ""), 10) + 10 + "px";
@@ -1736,49 +2231,47 @@
                 if (code == 38) {
 
 
-                    if (parseInt(crosshair.style.top.replace("px", ""), 10) > parseInt('<%=ctrl1mainres%>') ) {
-                        
-                        if (myctrl1.tbPropType == "movable")
-                        {
+                    if (parseInt(crosshair.style.top.replace("px", ""), 10) > parseInt('<%=ctrl1mainres%>')) {
+
+                        if (myctrl1.tbPropType == "movable") {
                             explosion.style.visibility = "hidden";
                             crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) - 10 + "px";
-				crosshair.style.height = "40px";
-                        crosshair.style.width = "40px";
-				explosion.style.height = "40px";
-			    explosion.style.width = "40px";
+                            crosshair.style.height = "40px";
+                            crosshair.style.width = "40px";
+                            explosion.style.height = "40px";
+                            explosion.style.width = "40px";
                         }
                         if (myctrl1.tbPropType == "fixed") {
-                            crosshair.style.top = "358px";
+                            crosshair.style.top = "275px";
                             crosshair.style.height = "90px";
                             crosshair.style.width = "90px";
-				explosion.style.height = "40px";
-			    explosion.style.width = "40px";
+                            explosion.style.height = "40px";
+                            explosion.style.width = "40px";
                             explosion.style.visibility = "visible";
                             explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) - 10 + "px";
-                            }
+                        }
                     }
 
                 }
 
                 if (code == 40) {
 
-                    if (parseInt(crosshair.style.top.replace("px", ""), 10) < 358) {
-                       
-                        if (myctrl1.tbPropType == "movable")
-                        {
+                    if (parseInt(crosshair.style.top.replace("px", ""), 10) < 275) {
+
+                        if (myctrl1.tbPropType == "movable") {
                             explosion.style.visibility = "hidden";
                             crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) + 10 + "px";
-				crosshair.style.height = "40px";
-                        crosshair.style.width = "40px";
-				explosion.style.height = "40px";
-			    explosion.style.width = "40px";
+                            crosshair.style.height = "40px";
+                            crosshair.style.width = "40px";
+                            explosion.style.height = "40px";
+                            explosion.style.width = "40px";
                         }
                         if (myctrl1.tbPropType == "fixed") {
-                            crosshair.style.top = "358px";
+                            crosshair.style.top = "275px";
                             crosshair.style.height = "90px";
-			    crosshair.style.width = "90px";
-				explosion.style.height = "40px";
-			    explosion.style.width = "40px";
+                            crosshair.style.width = "90px";
+                            explosion.style.height = "40px";
+                            explosion.style.width = "40px";
                             explosion.style.visibility = "visible";
                             explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) + 10 + "px";
 
@@ -1797,12 +2290,134 @@
 
             }
 
+
+
         });
 
     </script>
 
+    <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1399709040269730";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  
+    <script type="text/javascript" >
+        FB.init({ appId: "123405257731200", status: true, cookie: true });
+
+        // The dialog only opens if you've implemented the
+        // Credits Callback payments_get_items.
+        function feed() {
+            FB.ui({
+                method: 'feed',
+                link: 'https://treasurehunter/apphb.com/',
+                caption: 'Treasure Hunter 3D Multiplayer Game - Completed TreasureSpot ' + '<%=Label1.Text%>' + 'and Collected ' + '<%=points.Text%>',
+            }, function (response) { });
+        }
+  </script>        
+   
+        <form id="form1" runat="server" >
+
+        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
+
+
+
         
-   </form> 
+
+
+
+        <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
+
+
+
+        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 347px; top: 0px; position: absolute; width: 293px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 360px; top: 75px; position: absolute; width: 505px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
+
+        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter/apphb.com/buy.aspx" Style="z-index: 1; left: 224px; top: 57px; position: absolute; height: 18px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter/apphb.com/buy.aspx" Style="z-index: 1; top: 56px; position: absolute; right: 180px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter/apphb.com/Invite/friends" Style="z-index: 1; left: 384px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter/apphb.com/gamesettings.aspx" Style="z-index: 1; top: 57px; position: absolute; width: 84px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
+
+
+
+        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 129px; top: 34px; position: absolute; width: 45px; right: 770px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
+        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 308px; top: 33px; position: absolute; width: 45px; right: 591px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">10</asp:TextBox>
+        <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 488px; top: 34px; position: absolute; width: 107px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
+        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 728px; top: 33px; position: absolute; width: 73px" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
+ <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" style="z-index: 1; left: 563px; top: 334px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
+
+    <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
+    </audio>
+    
+    <label style="position: absolute; top: 30px; left: 15px; right: 846px; height: 19px; color: #FFCC00;">Achievements</label>
+
+    <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00;">Lives</label>
+
+    <label style="position: absolute; top: 32px; left: 406px; height: 19px; color: #FFCC00; height: 30px; position: absolute; ">Gold Coins</label>
+
+    <label style="position: absolute; top: 31px; left: 644px; height: 19px; color: #FFCC00;">Treasure($)</label>
+    <label style="position: absolute; top: 90px; left: 7px; height: 19px; color: #FFCC00; width: 88px;">Achievements</label>
+    <div id="divplayer"  style="z-index: 203; background-color: transparent; overflow: hidden;  width: 480px; height: 375px; position: absolute; top: 132px; left: 365px; right: 855px; bottom: 502px; display: inline;">
+        <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 159px; bottom: 140px;">
+        <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+        <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px; " >
+        <img id="ctrl2" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="ctrl3" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width:'<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="ctrl4" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height:'<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="ctrl5" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <%--<img id="player1" src="" style="width: 30px; height: 30px; position: absolute; top: 278px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
+        <img id="player2" src="" style="width: 30px; height: 30px; position: absolute; top: 296px; left: 260px; z-index: 21; right: 562px; margin-left: 0px; margin-top: 0px;">
+        <img id="player3" src="" style="width: 30px; height: 30px; position: absolute; top: 78px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
+        <img id="player4" src="" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">
+        <img id="player5" src="" style="width: 30px; height: 30px; position: absolute; top: 251px; left: 390px; z-index: 21; right: 299px; margin-left: 0px; margin-top: 0px;">
+        --%>
+        <img id="Img1" src='<%=ctrl1mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="Img2" src='<%=ctrl2mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="Img3" src='<%=ctrl3mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="Img4" src='<%=ctrl4mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="Img5" src='<%=ctrl5mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"  >
+    </div>
+    <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 7px; top: 219px; position: absolute; width: 91px; cursor:none;" type="text" readonly="true" />
+       <img alt="" src="http://treasurehunter/apphb.com/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 11px; top: 125px; position: absolute; bottom: 308px;" id="friendimage" />
+    <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 374px;" class="twoto3d" id="fplayer" />
+<label style="position: absolute; top: 321px; left: 7px; height: 19px; color: #FFFFFF;">Talk to Players</label>
+<input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 281px; top: 492px; position: absolute;" type="button" value="Send"  onclick="send2server();" /> 
+  <div style="position: absolute; z-index: 210; width: 335px; height: 134px; top: 347px; right: 532px; bottom: 85px; left: 5px; overflow: hidden; cursor: crosshair;">
+    <textarea id="Text2" class="TextArea1" style="border-style: none; border-color: #000000; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 366px; height: 126px;" readonly="readonly"></textarea>
+  </div>
+      <input id="Text1" type="text" style="position: absolute; left: 12px; top: 493px; width: 242px;" onkeydown="checkEnter(event);"/> 
+<iframe id="myframe" src="http://treasurehunter/apphb.com/updatecoins.aspx" runat="server" style="position: absolute; top: 4px; left: 791px; height: 48px; width: 151px; display:none" ></iframe>
+<div style="position: absolute; z-index: 210; width: 239px; height: 181px; top: 97px; right: 515px; bottom: 288px; left: 118px; overflow: hidden; cursor: crosshair;">
+    <div id="aimg" style="position: absolute; left: 0px; top: 0px; width: 326px; height: 200px; overflow: scroll; scrollbar-3dlight-color:transparent; scrollbar-arrow-color:transparent; scrollbar-base-color:transparent; scrollbar-darkshadow-color:transparent; scrollbar-face-color:transparent; scrollbar-highlight-color:transparent; scrollbar-shadow-color:transparent; scrollbar-track-color:transparent;">
+    <img alt="" src="http://treasurehunter/apphb.com/Images/achievements.gif" style="width: 232px; height: 247px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 174px; background-color: Transparent;" id="Img6" />
+    <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 55px; top: 130px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one1%>' />
+    <asp:Image ID="Image2" runat="server" style="z-index: 1; left: 93px; top: 68px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one2%>' />
+    <asp:Image ID="Image3" runat="server" style="z-index: 1; left: 133px; top: 40px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one3%>' />
+    <asp:Image ID="Image4" runat="server" style="z-index: 1; left: 20px; top: 180px; position: absolute; width: 60px; height: 41px;" ImageUrl='<%=one4%>' />
+    <asp:Image ID="Image5" runat="server" style="z-index: 1; left: 185px; top: 7px; position: absolute; width: 50px; height: 40px;" ImageUrl='<%=one5%>' />
+
+    <asp:Image ID="Image6" runat="server" style="z-index: 301; left: 115px; top: 132px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image7" runat="server" style="z-index: 301; left: 147px; top: 78px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image8" runat="server" style="z-index: 301; left: 150px; top: 32px; position: absolute; width: 20px; height: 21px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image9" runat="server" style="z-index: 301; left: 20px; top: 180px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image10" runat="server" style="z-index: 301; left: 170px; top: 7px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+
+</div>
+    </div>
+    <label style="position: absolute; top: 76px; left: 127px; height: 19px; color: #FFCC00; height: 16px; position: absolute; font-size: 10px; width: 67px;">Treasure Map</label>
+    <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 488px; top: 105px; position: absolute; width: 253px" ForeColor="White"  ReadOnly="true"></asp:TextBox>    
+<asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 796px; top: 9px; position: absolute; width: 111px; right: 72px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">Time Remaining</asp:TextBox>
+<asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 915px; top: 12px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">250</asp:TextBox>
+<asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 289px; position: absolute; width: 44px; right: 706px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">Collect</asp:TextBox>
+<asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 177px; top: 288px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
+<asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 316px; position: absolute; width: 105px; right: 752px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">Conquer Players</asp:TextBox>
+<asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 238px; top: 316px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
+<img id="Img7" src="http://treasurehunter/apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 290px; left: 250px; z-index: 21; visibility: visible; right: 603px; bottom: 257px; " >
+<img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 317px; left: 310px; z-index: 21; visibility: visible; right: 543px; bottom: 230px; " >        
+</form> 
+
 </body>
 
 </html>

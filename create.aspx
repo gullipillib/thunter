@@ -136,37 +136,42 @@
             tsitems.tsctrl1name = Label14.Text;
             tsitems.tsctrl1url = Label19.Text;
             tsitems.tsctrl1height = Image1.Height.ToString();
-            tsitems.tsctrl1left = Image1.Style["left"].ToString();
-            tsitems.tsctrl1top = Image1.Style["top"].ToString();
+            tsitems.tsctrl1left = Image1.Style["left"];
+            tsitems.tsctrl1top = Image1.Style["top"];
             tsitems.tsctrl1width = Image1.Width.ToString();
-
+            tsitems.tsctrl1res = Label11.Style["top"];
+            
             tsitems.tsctrl2name = Label15.Text;
             tsitems.tsctrl2url = Label20.Text;
             tsitems.tsctrl2height = Image2.Height.ToString();
-            tsitems.tsctrl2left = Image2.Style["left"].ToString();
-            tsitems.tsctrl2top = Image2.Style["top"].ToString();
+            tsitems.tsctrl2left = Image2.Style["left"];
+            tsitems.tsctrl2top = Image1.Style["top"];
             tsitems.tsctrl2width = Image2.Width.ToString();
+            tsitems.tsctrl2res = Convert.ToString(Convert.ToInt16(Label11.Style["top"].ToString().Replace("px", "")) - 58 + 130) + "px";
 
             tsitems.tsctrl3name = Label16.Text;
             tsitems.tsctrl3url = Label21.Text;
             tsitems.tsctrl3height = Image3.Height.ToString();
-            tsitems.tsctrl3left = Image3.Style["left"].ToString();
-            tsitems.tsctrl3top = Image3.Style["top"].ToString();
+            tsitems.tsctrl3left = Image3.Style["left"];
+            tsitems.tsctrl3top = Image3.Style["top"];
             tsitems.tsctrl3width = Image3.Width.ToString();
+            tsitems.tsctrl3res = Label11.Style["top"];
 
             tsitems.tsctrl4name = Label17.Text;
             tsitems.tsctrl4url = Label22.Text;
             tsitems.tsctrl4height = Image4.Height.ToString();
-            tsitems.tsctrl4left = Image4.Style["left"].ToString();
-            tsitems.tsctrl4top = Image4.Style["top"].ToString();
+            tsitems.tsctrl4left = Image4.Style["left"];
+            tsitems.tsctrl4top = Image4.Style["top"];
             tsitems.tsctrl4width = Image4.Width.ToString();
+            tsitems.tsctrl4res = Label11.Style["top"];
 
             tsitems.tsctrl5name = Label18.Text;
             tsitems.tsctrl5url = Label23.Text;
             tsitems.tsctrl5height = Image5.Height.ToString();
-            tsitems.tsctrl5left = Image5.Style["left"].ToString();
-            tsitems.tsctrl5top = Image5.Style["top"].ToString();
+            tsitems.tsctrl5left = Image5.Style["left"];
+            tsitems.tsctrl5top = Image5.Style["top"];
             tsitems.tsctrl5width = Image5.Width.ToString();
+            tsitems.tsctrl5res = Label11.Style["top"];
 
 
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(tsitems);
@@ -1035,21 +1040,29 @@
 
 
 <body style="height: 585px; background-color:transparent">
-    <a href="Play/play" target="_self" style="position: absolute; left: 390px; top: 33px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 372px; text-align: center; height: 22px;">Complete Later </a>
-    <a href="Play/play" target="_self" style="position: absolute; left: 542px; top: 61px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 220px; text-align: center; height: 22px;">Approver Comments </a>
+    <a href="Play/play" target="_self" style="position: absolute; left: 540px; top: 53px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 221px; text-align: center; height: 22px;">Complete Later </a>
+    <a href="Play/play" target="_self" style="position: absolute; left: 542px; top: 85px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 219px; text-align: center; height: 22px;">Approver Comments </a>
     
-    <img alt="" src='<%=TextBox2.Text%>' style="z-index:auto; position:absolute; left: 7px; top: 58px; background-color: transparent; width: 480px; height: 397px; display: inline;" class="twoto3d" height="397" width="480" id="Iframe1" />
-      
-   <iframe id="iframe2" style="position:absolute; top: 639px; left: 10px; width: 895px; height: 353px;" src="googlepickerlatest2.html"></iframe>
+    <div id="divplayer" style="z-index: 0; background-color: transparent; overflow: hidden; position:absolute; top: 38px; left: 6px; width: 476px; height: 394px;">
+    <img alt="Images" src='<%=TextBox2.Text%>' style="z-index:21; position:absolute; left: 0px; top: 0px; background-color: transparent; width: 476px; height: 394px;" class="twoto3d"  id="Iframe1" />
+        <asp:Image ID="Image1" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 250px; top: 345px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
+        <asp:Image ID="Image2" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 240px; top: 345px; position: absolute; right: 654px;" ClientIDMode="Static" Height="20px" Width="20px" />
+        <asp:Image ID="Image3" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 132px; top: 315px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
+        <asp:Image ID="Image4" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 412px; top: 295px; position: absolute; height: 16px;" ClientIDMode="Static" Height="20px" Width="20px" />
+        <asp:Image ID="Image5" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 251px; top: 175px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
+        
+    </div>  
+   
+    <iframe id="iframe2" style="position:absolute; top: 639px; left: 10px; width: 895px; height: 353px;" src="googlepickerlatest2.html"></iframe>
  
    
     <form id="form1" runat="server">
         
 
         <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" UpdateCommand="UPDATE tspots SET tscompleted = '[no]'"></asp:AccessDataSource>
-        <asp:CheckBox ID="CheckBox3" runat="server" Checked="True" Enabled="False" ForeColor="Red" style="z-index: 1; left: 356px; top: 3px; position: absolute" Text="I Agree to the terms and conditions of TreasureHunter" />
-        <asp:Label ID="Label1" runat="server" Style="z-index: 1; left: 599px; top: 109px; position: absolute; width: 41px; height: 20px;" Text="Name"></asp:Label>
-        <asp:Label ID="Label7" runat="server" Style="z-index: 1; left: 15px; top: 474px; position: absolute; width: 68px; height: 20px;" Text="Video Url"></asp:Label>
+        <asp:CheckBox ID="CheckBox3" runat="server" Checked="True" Enabled="False" ForeColor="Red" style="z-index: 1; left: 356px; top: 3px; position: absolute" Text="I Agree to the terms and conditions of treasurehunter" />
+        <asp:Label ID="Label1" runat="server" Style="z-index: 1; left: 525px; top: 121px; position: absolute; width: 41px; height: 20px;" Text="Name" Font-Bold="True" ForeColor="Blue"></asp:Label>
+        <asp:Label ID="Label7" runat="server" Style="z-index: 1; left: 15px; top: 474px; position: absolute; width: 68px; height: 20px;" Text="Video Url" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:AccessDataSource ID="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'land')"></asp:AccessDataSource>
 
         <asp:AccessDataSource ID="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT tbname, tbtoolscategory,  tbcategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'water')"></asp:AccessDataSource>
@@ -1059,12 +1072,7 @@
             
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 567px; top: 26px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
-        <asp:Image ID="Image1" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 250px; top: 405px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
-        <asp:Image ID="Image2" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 240px; top: 405px; position: absolute; right: 654px;" ClientIDMode="Static" Height="20px" Width="20px" />
-        <asp:Image ID="Image3" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 132px; top: 315px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
-        <asp:Image ID="Image4" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 412px; top: 405px; position: absolute; height: 16px;" ClientIDMode="Static" Height="20px" Width="20px" />
-        <asp:Image ID="Image5" runat="server" BorderStyle="Solid" Style="z-index: 200; left: 251px; top: 405px; position: absolute" ClientIDMode="Static" Height="20px" Width="20px" />
-        <asp:Button ID="Button11" runat="server" Style="z-index: 1; left: 297px; top: 13px; position: absolute; cursor:pointer;" Text="Select" OnClick="Button11_Click" UseSubmitBehavior="False" BackColor="#99CCFF" ForeColor="Maroon" />
+        <asp:Button ID="Button11" runat="server" Style="z-index: 1; left: 297px; top: 5px; position: absolute; cursor:pointer;" Text="Select" OnClick="Button11_Click" UseSubmitBehavior="False" BackColor="#99CCFF" ForeColor="Maroon" />
         <asp:AccessDataSource ID="AccessDataSource4" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'air or space')"></asp:AccessDataSource>
         <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 13px; top: 16px; position: absolute; height:14px; width: 67px; right: 834px;" Text="Game Category" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 644px; top: 244px; position: absolute; height:14px; width: 59px; right: 211px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
@@ -1086,8 +1094,8 @@
         <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 668px; top: 209px; position: absolute; height:14px; width: 85px" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="12pt" ForeColor="Blue" Style="z-index: 1; top: 421px; position: absolute; left: 606px" Text="others or players"></asp:Label>
         <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="12pt" ForeColor="Blue" Style="z-index: 1; left: 714px; top: 11px; position: absolute; height: 22px;" Text="land"></asp:Label>
-        <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 486px; top: 54px; position: absolute; height:14px; width: 18px" Text="58" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
-        <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 490px; top: 448px; position: absolute; height:14px; width: 37px" Text="378" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
+        <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 488px; top: 36px; position: absolute; height:14px; width: 18px" Text="0" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
+        <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 491px; top: 426px; position: absolute; height:14px; width: 37px" Text="350" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 485px; top: 58px; position: absolute; height:18px; width: 20px" Text="&lt;-" Font-Size="11pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         
 
@@ -1226,8 +1234,8 @@
         </asp:GridView>
             </asp:Panel>
         <asp:Panel runat="server" ID="Panel7">
-        <asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 523px; top: 138px; position: absolute; width: 168px; height: 24px" ClientIDMode="Static" ViewStateMode="Enabled" OnTextChanged="TextBox1_TextChanged1" ToolTip="less than 50 chars only"></asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server" Style="z-index: 1; left: 88px; top: 468px; position: absolute; width: 388px; height: 24px" ClientIDMode="Static" ViewStateMode="Enabled" OnTextChanged="TextBox2_TextChanged1" ToolTip="Enter Only Youtube Video ID"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 523px; top: 151px; position: absolute; width: 168px; height: 24px" ClientIDMode="Static" ViewStateMode="Enabled" OnTextChanged="TextBox1_TextChanged1" ToolTip="less than 50 chars only"></asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" Style="z-index: 1; left: 95px; top: 468px; position: absolute; width: 388px; height: 24px" ClientIDMode="Static" ViewStateMode="Enabled" OnTextChanged="TextBox2_TextChanged1" ToolTip="Enter Only Youtube Video ID"></asp:TextBox>
         <asp:Button ID="Button4" runat="server" BackColor="Blue" ForeColor="White" Style="z-index: 1; left: 516px; top: 528px; position: absolute; height: 26px; cursor:pointer;" Text="Finalize" ToolTip="Only after all the fields are completed, finalization takes place" OnClick="Button4_Click" Enabled="False" ClientIDMode="Static" UseSubmitBehavior="False" />
         <asp:Button ID="Button5" runat="server" BackColor="Blue" ForeColor="White" Style="z-index: 1; left: 777px; top: 6px; position: absolute; height: 26px; bottom: 561px; cursor:pointer;" Text="Back to Game" ToolTip="Only after all the fields are completed, finalization takes place" Enabled="False" UseSubmitBehavior="False" />
         <asp:Button ID="Button6" runat="server" Style="z-index: 1; left: 667px; top: 355px; position: absolute; bottom: 188px; width: 71px; height:40px;" Text="Add" OnClick="Button6_Click" ClientIDMode="Static" CausesValidation="False" Enabled="False" Height="40px" Width="70px" UseSubmitBehavior="False" />

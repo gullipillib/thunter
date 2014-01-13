@@ -223,7 +223,7 @@
     
     <meta name="viewport" content="width=device-width" />
     
-    <title>TreasureHunter</title>
+    <title>treasurehunter</title>
 </head>
 
 <body style="height: 587px; overflow: hidden;">
