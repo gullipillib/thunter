@@ -553,10 +553,10 @@ public string one5 = "";
 
     
 
-<script src="https://treasurehunter/apphb.com/Scripts/jquery-1.8.2.js"></script>
-<script src="https://treasurehunter/apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
-<script src="https://treasurehunter/apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>    
-<script src="https://treasurehunter/apphb.com/SignalR/hubs"></script>
+<script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
+<script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
+<script src="https://treasurehunter.apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>    
+<script src="https://treasurehunter.apphb.com/SignalR/hubs"></script>
     `<script>
         var chat = $.connection.sysmessages;
         var pname = '<%=Hiddenfield1%>';
@@ -709,7 +709,7 @@ public string one5 = "";
                     //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
                     //myframe.src = "~/Play/jsresult/" + enemyhits;
                     // window.location.href("jsresult/" + enemyhits);
-                    document.getElementById("myframe").setAttribute("src", "http://localhost:56687/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value"));
+                    document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value"));
 
                 }
 
@@ -2313,6 +2313,7 @@ public string one5 = "";
         function feed() {
             FB.ui({
                 method: 'feed',
+		redirect_uri: ''https://apps.facebook.com/treasure_huntermp',
                 link: 'https://treasurehunter.apphb.com/',
                 caption: 'Treasure Hunter 3D Multiplayer Game - Completed TreasureSpot ' + '<%=Label1.Text%>' + 'and Collected ' + '<%=points.Text%>',
             }, function (response) { });
@@ -2336,10 +2337,10 @@ public string one5 = "";
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 347px; top: 0px; position: absolute; width: 293px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
         <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 360px; top: 75px; position: absolute; width: 505px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
-        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter/apphb.com/buy.aspx" Style="z-index: 1; left: 224px; top: 57px; position: absolute; height: 18px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter/apphb.com/buy.aspx" Style="z-index: 1; top: 56px; position: absolute; right: 180px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter/apphb.com/Invite/friends" Style="z-index: 1; left: 384px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter/apphb.com/gamesettings.aspx" Style="z-index: 1; top: 57px; position: absolute; width: 84px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; left: 224px; top: 57px; position: absolute; height: 18px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; top: 56px; position: absolute; right: 180px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Invite/friends" Style="z-index: 1; left: 384px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="z-index: 1; top: 57px; position: absolute; width: 84px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
 
 
 
@@ -2381,7 +2382,7 @@ public string one5 = "";
         <img id="Img5" src='<%=ctrl5mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"  >
     </div>
     <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 7px; top: 219px; position: absolute; width: 91px; cursor:none;" type="text" readonly="true" />
-       <img alt="" src="http://treasurehunter/apphb.com/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 11px; top: 125px; position: absolute; bottom: 308px;" id="friendimage" />
+       <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 11px; top: 125px; position: absolute; bottom: 308px;" id="friendimage" />
     <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 374px;" class="twoto3d" id="fplayer" />
 <label style="position: absolute; top: 321px; left: 7px; height: 19px; color: #FFFFFF;">Talk to Players</label>
 <input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 281px; top: 492px; position: absolute;" type="button" value="Send"  onclick="send2server();" /> 
@@ -2389,10 +2390,10 @@ public string one5 = "";
     <textarea id="Text2" class="TextArea1" style="border-style: none; border-color: #000000; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 366px; height: 126px;" readonly="readonly"></textarea>
   </div>
       <input id="Text1" type="text" style="position: absolute; left: 12px; top: 493px; width: 242px;" onkeydown="checkEnter(event);"/> 
-<iframe id="myframe" src="http://treasurehunter/apphb.com/updatecoins.aspx" runat="server" style="position: absolute; top: 4px; left: 791px; height: 48px; width: 151px; display:none" ></iframe>
+<iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="position: absolute; top: 4px; left: 791px; height: 48px; width: 151px; display:none" ></iframe>
 <div style="position: absolute; z-index: 210; width: 239px; height: 181px; top: 97px; right: 515px; bottom: 288px; left: 118px; overflow: hidden; cursor: crosshair;">
     <div id="aimg" style="position: absolute; left: 0px; top: 0px; width: 326px; height: 200px; overflow: scroll; scrollbar-3dlight-color:transparent; scrollbar-arrow-color:transparent; scrollbar-base-color:transparent; scrollbar-darkshadow-color:transparent; scrollbar-face-color:transparent; scrollbar-highlight-color:transparent; scrollbar-shadow-color:transparent; scrollbar-track-color:transparent;">
-    <img alt="" src="http://treasurehunter/apphb.com/Images/achievements.gif" style="width: 232px; height: 247px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 174px; background-color: Transparent;" id="Img6" />
+    <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 232px; height: 247px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 174px; background-color: Transparent;" id="Img6" />
     <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 55px; top: 130px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one1%>' />
     <asp:Image ID="Image2" runat="server" style="z-index: 1; left: 93px; top: 68px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one2%>' />
     <asp:Image ID="Image3" runat="server" style="z-index: 1; left: 133px; top: 40px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one3%>' />
@@ -2415,7 +2416,7 @@ public string one5 = "";
 <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 177px; top: 288px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
 <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 316px; position: absolute; width: 105px; right: 752px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">Conquer Players</asp:TextBox>
 <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 238px; top: 316px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
-<img id="Img7" src="http://treasurehunter/apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 290px; left: 250px; z-index: 21; visibility: visible; right: 603px; bottom: 257px; " >
+<img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 290px; left: 250px; z-index: 21; visibility: visible; right: 603px; bottom: 257px; " >
 <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 317px; left: 310px; z-index: 21; visibility: visible; right: 543px; bottom: 230px; " >        
 </form> 
 
