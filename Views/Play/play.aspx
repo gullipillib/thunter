@@ -664,17 +664,17 @@ public string one5 = "";
                         mycounter = 0;
                     }
                     if (noofhits < 0) {
-                        noofhits = 0;
+                        noofhits = -10;
                     }
                     if (noofcoins < 0) {
-                        noofcoins = 0;
+                        noofcoins = -15;
                     }
                     if (mycounter != 0) {
                         if (noofhits >= ranhits && noofcoins >= noofcoins) {
                             document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
                             feed();
-                            document.getElementById('TextBox2').setAttribute("value", "250");
-                            mycounter = "0";
+                            document.getElementById('TextBox2').setAttribute("value", "0");
+                            
                         }
                     }
                 }
