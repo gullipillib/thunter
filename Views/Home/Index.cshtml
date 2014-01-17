@@ -27,7 +27,7 @@
 
 
 
-@if (Request.Browser.IsMobileDevice || isAndroid)
+@if (Request.Browser.IsMobileDevice)
 {
     Response.Redirect("~/Indexmobile/indexmobile");
 } else {
