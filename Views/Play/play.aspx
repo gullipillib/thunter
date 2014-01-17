@@ -659,18 +659,19 @@ public string one5 = "";
                 function tcounter() {
                     var mycounter = document.getElementById('TextBox2').getAttribute("value");
                     mycounter = parseInt(mycounter, 10) - 1;
-                    document.getElementById('TextBox2').setAttribute("value", mycounter);
                     if (mycounter < 0) {
                         mycounter = 0;
                     }
-                    if (noofhits < 0) {
-                        noofhits = -10;
+                    document.getElementById('TextBox2').setAttribute("value", mycounter);
+                    
+                    if (noofhits = ranhits) {
+                        noofhits = -100;
                     }
-                    if (noofcoins < 0) {
-                        noofcoins = -15;
+                    if (noofcoins = rancoins) {
+                        noofcoins = -150;
                     }
                     if (mycounter != 0) {
-                        if (noofhits >= ranhits && noofcoins >= noofcoins) {
+                        if (noofhits >= ranhits || noofcoins >= rancoins) {
                             document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
                             feed();
                             document.getElementById('TextBox2').setAttribute("value", "0");
