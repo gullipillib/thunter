@@ -2043,16 +2043,16 @@ public string one5 = "";
                     Img1.style.left = parseInt(Img1.style.left.replace("px", ""), 10) + 45 + "px";
                 }
                 if (parseInt(Img2.style.left.replace("px", ""), 10) > 175 && parseInt(Img2.style.left.replace("px", ""), 10) < 879) {
-                    Img1.style.left = parseInt(Img2.style.left.replace("px", ""), 10) + 45 + "px";
+                    Img2.style.left = parseInt(Img2.style.left.replace("px", ""), 10) + 45 + "px";
                 }
                 if (parseInt(Img3.style.left.replace("px", ""), 10) > 175 && parseInt(Img3.style.left.replace("px", ""), 10) < 879) {
-                    Img1.style.left = parseInt(Img3.style.left.replace("px", ""), 10) + 45 + "px";
+                    Img3.style.left = parseInt(Img3.style.left.replace("px", ""), 10) + 45 + "px";
                 }
                 if (parseInt(Img4.style.left.replace("px", ""), 10) > 175 && parseInt(Img4.style.left.replace("px", ""), 10) < 879) {
-                    Img1.style.left = parseInt(Img4.style.left.replace("px", ""), 10) + 45 + "px";
+                    Img4.style.left = parseInt(Img4.style.left.replace("px", ""), 10) + 45 + "px";
                 }
                 if (parseInt(Img5.style.left.replace("px", ""), 10) > 175 && parseInt(Img5.style.left.replace("px", ""), 10) < 879) {
-                    Img1.style.left = parseInt(Img5.style.left.replace("px", ""), 10) + 45 + "px";
+                    Img5.style.left = parseInt(Img5.style.left.replace("px", ""), 10) + 45 + "px";
                 }
 
 
@@ -2061,31 +2061,31 @@ public string one5 = "";
                     ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", ""), 10) - 45 + "px";
                 }
                 if (parseInt(ctrl2.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl2.style.top.replace("px", ""), 10) < 275) {
-                    ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", ""), 10) + 45 + "px";
+                    ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", ""), 10) - 45 + "px";
                 }
                 if (parseInt(ctrl3.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl3.style.top.replace("px", ""), 10) < 275) {
-                    ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", ""), 10) + 45 + "px";
+                    ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", ""), 10) - 45 + "px";
                 }
                 if (parseInt(ctrl4.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl4.style.top.replace("px", ""), 10) < 275) {
-                    ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", ""), 10) + 45 + "px";
+                    ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", ""), 10) - 45 + "px";
                 }
                 if (parseInt(ctrl5.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl5.style.top.replace("px", ""), 10) < 275) {
-                    ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", ""), 10) + 45 + "px";
+                    ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", ""), 10) - 45 + "px";
                 }
                 if (parseInt(Img1.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img1.style.top.replace("px", ""), 10) < 275) {
-                    Img1.style.top = parseInt(Img1.style.top.replace("px", ""), 10) + 45 + "px";
+                    Img1.style.top = parseInt(Img1.style.top.replace("px", ""), 10) - 45 + "px";
                 }
                 if (parseInt(Img2.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img2.style.top.replace("px", ""), 10) < 275) {
-                    Img1.style.top = parseInt(Img2.style.top.replace("px", ""), 10) + 45 + "px";
+                    Img2.style.top = parseInt(Img2.style.top.replace("px", ""), 10) - 45 + "px";
                 }
                 if (parseInt(Img3.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img3.style.top.replace("px", ""), 10) < 275) {
-                    Img1.style.top = parseInt(Img3.style.top.replace("px", ""), 10) + 45 + "px";
+                    Img3.style.top = parseInt(Img3.style.top.replace("px", ""), 10) - 45 + "px";
                 }
                 if (parseInt(Img4.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img4.style.top.replace("px", ""), 10) < 275) {
-                    Img1.style.top = parseInt(Img4.style.top.replace("px", ""), 10) + 45 + "px";
+                    Img4.style.top = parseInt(Img4.style.top.replace("px", ""), 10) - 45 + "px";
                 }
                 if (parseInt(Img5.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img5.style.top.replace("px", ""), 10) < 275) {
-                    Img1.style.top = parseInt(Img5.style.top.replace("px", ""), 10) + 45 + "px";
+                    Img5.style.top = parseInt(Img5.style.top.replace("px", ""), 10) - 45 + "px";
                 }
 
                 //divplayer.focus();
@@ -2381,11 +2381,11 @@ public string one5 = "";
         <img id="player4" src="" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">
         <img id="player5" src="" style="width: 30px; height: 30px; position: absolute; top: 251px; left: 390px; z-index: 21; right: 299px; margin-left: 0px; margin-top: 0px;">
         --%>
-        <img id="Img1" src='<%=ctrl1mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="Img2" src='<%=ctrl2mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="Img3" src='<%=ctrl3mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="Img4" src='<%=ctrl4mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="Img5" src='<%=ctrl5mainurl%>' style="width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"  >
+        <img id="Img1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="Img2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
+        <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"  >
     </div>
     <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 7px; top: 219px; position: absolute; width: 91px; cursor:none;" type="text" readonly="true" />
        <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 11px; top: 125px; position: absolute; bottom: 308px;" id="friendimage" />
