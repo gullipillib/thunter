@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"  Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+<script runat="server">
+
+
+</script>
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+        <title>TreasureHunter 3D</title>
+        <meta name="viewport" content="width=device-width" />
+       
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            
+        </asp:ContentPlaceHolder>
+    
+    </form>
+     
+</body>
+</html>

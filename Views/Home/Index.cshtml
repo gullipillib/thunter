@@ -3,6 +3,35 @@
 @model MyAppUser
 @{
     ViewBag.Title = "Treasure Hunter";
+    
+}
+@{
+    var useragent = Request.UserAgent;
+
+    var isAndroid = false;
+
+
+
+    if (useragent != null)
+    {
+
+        if (useragent.ToLower().Contains("Constants.MobileDevices.Android"))
+        {
+
+            isAndroid = true;
+
+        }
+
+    }  
+}
+
+
+
+@if (Request.Browser.IsMobileDevice || isAndroid)
+{
+    Response.Redirect("~/Indexmobile/indexmobile");
+} else {
+    Response.Redirect("~/Home/Index1");
 }
 
 @{
