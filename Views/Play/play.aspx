@@ -673,7 +673,8 @@ public string one5 = "";
                         if (noofhits >= ranhits && noofcoins >= noofcoins) {
                             document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
                             feed();
-				document.getElementById('TextBox2').setAttribute("value", "250");
+                            document.getElementById('TextBox2').setAttribute("value", "250");
+                            mycounter = "0";
                         }
                     }
                 }
@@ -763,7 +764,7 @@ public string one5 = "";
                 }
 
             }
-            var temp = '<%=ctrl1mainres%>'.replace("px", "");
+            var temp = '<%=ctrl1mainres%>';
             var visible1 = "no";
             var visible2 = "no";
             var visible3 = "no";
@@ -2024,67 +2025,67 @@ public string one5 = "";
 
             var myaddctrl = window.setInterval(function () { moveCtrl() }, 2000);
             function moveCtrl() {
-                if (parseInt(ctrl1.style.left.replace("px", ""), 10) > 175 && parseInt(ctrl1.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(ctrl1.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl1.style.left.replace("px", ""), 10) < 879) {
                     ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(ctrl2.style.left.replace("px", ""), 10) > 175 && parseInt(ctrl2.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(ctrl2.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl2.style.left.replace("px", ""), 10) < 879) {
                     ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(ctrl3.style.left.replace("px", ""), 10) > 175 && parseInt(ctrl3.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(ctrl3.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl3.style.left.replace("px", ""), 10) < 879) {
                     ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(ctrl4.style.left.replace("px", ""), 10) > 175 && parseInt(ctrl4.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(ctrl4.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl4.style.left.replace("px", ""), 10) < 879) {
                     ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(ctrl5.style.left.replace("px", ""), 10) > 175 && parseInt(ctrl5.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(ctrl5.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl5.style.left.replace("px", ""), 10) < 879) {
                     ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img1.style.left.replace("px", ""), 10) > 175 && parseInt(Img1.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(Img1.style.left.replace("px", ""), 10) > 365 && parseInt(Img1.style.left.replace("px", ""), 10) < 879) {
                     Img1.style.left = parseInt(Img1.style.left.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img2.style.left.replace("px", ""), 10) > 175 && parseInt(Img2.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(Img2.style.left.replace("px", ""), 10) > 365 && parseInt(Img2.style.left.replace("px", ""), 10) < 879) {
                     Img2.style.left = parseInt(Img2.style.left.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img3.style.left.replace("px", ""), 10) > 175 && parseInt(Img3.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(Img3.style.left.replace("px", ""), 10) > 365 && parseInt(Img3.style.left.replace("px", ""), 10) < 879) {
                     Img3.style.left = parseInt(Img3.style.left.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img4.style.left.replace("px", ""), 10) > 175 && parseInt(Img4.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(Img4.style.left.replace("px", ""), 10) > 365 && parseInt(Img4.style.left.replace("px", ""), 10) < 879) {
                     Img4.style.left = parseInt(Img4.style.left.replace("px", ""), 10) + 45 + "px";
                 }
-                if (parseInt(Img5.style.left.replace("px", ""), 10) > 175 && parseInt(Img5.style.left.replace("px", ""), 10) < 879) {
+                if (parseInt(Img5.style.left.replace("px", ""), 10) > 365 && parseInt(Img5.style.left.replace("px", ""), 10) < 879) {
                     Img5.style.left = parseInt(Img5.style.left.replace("px", ""), 10) + 45 + "px";
                 }
 
 
 
-                if (parseInt(ctrl1.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl1.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(ctrl1.style.top.replace("px", ""), 10) > parseInt(temp.replace("px",""), 10) && parseInt(ctrl1.style.top.replace("px", ""), 10) < 275) {
                     ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(ctrl2.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl2.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(ctrl2.style.top.replace("px", ""), 10) > parseInt(temp.replace("px", ""), 10) && parseInt(ctrl2.style.top.replace("px", ""), 10) < 275) {
                     ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(ctrl3.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl3.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(ctrl3.style.top.replace("px", ""), 10) > parseInt(temp.replace("px", ""), 10) && parseInt(ctrl3.style.top.replace("px", ""), 10) < 275) {
                     ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(ctrl4.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl4.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(ctrl4.style.top.replace("px", ""), 10) > parseInt(temp.replace("px", ""), 10) && parseInt(ctrl4.style.top.replace("px", ""), 10) < 275) {
                     ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(ctrl5.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(ctrl5.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(ctrl5.style.top.replace("px", ""), 10) > parseInt(temp.replace("px", ""), 10) && parseInt(ctrl5.style.top.replace("px", ""), 10) < 275) {
                     ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(Img1.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img1.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(Img1.style.top.replace("px", ""), 10) > parseInt(temp.replace("px", ""), 10) && parseInt(Img1.style.top.replace("px", ""), 10) < 275) {
                     Img1.style.top = parseInt(Img1.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(Img2.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img2.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(Img2.style.top.replace("px", ""), 10) > parseInt(temp.replace("px", ""), 10) && parseInt(Img2.style.top.replace("px", ""), 10) < 275) {
                     Img2.style.top = parseInt(Img2.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(Img3.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img3.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(Img3.style.top.replace("px", ""), 10) > parseInt(temp.replace("px", ""), 10) && parseInt(Img3.style.top.replace("px", ""), 10) < 275) {
                     Img3.style.top = parseInt(Img3.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(Img4.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img4.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(Img4.style.top.replace("px", ""), 10) > parseInt(temp.replace("px", ""), 10) && parseInt(Img4.style.top.replace("px", ""), 10) < 275) {
                     Img4.style.top = parseInt(Img4.style.top.replace("px", ""), 10) - 45 + "px";
                 }
-                if (parseInt(Img5.style.top.replace("px", ""), 10) > parseInt(temp, 10) && parseInt(Img5.style.top.replace("px", ""), 10) < 275) {
+                if (parseInt(Img5.style.top.replace("px", ""), 10) > parseInt(temp.replace("px", ""), 10) && parseInt(Img5.style.top.replace("px", ""), 10) < 275) {
                     Img5.style.top = parseInt(Img5.style.top.replace("px", ""), 10) - 45 + "px";
                 }
 
@@ -2189,7 +2190,7 @@ public string one5 = "";
                     explosion.style.width = "40px";
                     explosion.style.visibility = "visible";
                     explosion.style.left = Math.round(e.clientX) - 365 + "px";
-                    explosion.style.top = Math.round(e.clientY) - temp + "px";
+                    explosion.style.top = Math.round(e.clientY) - temp.replace("px","") + "px";
 
 
                 }
