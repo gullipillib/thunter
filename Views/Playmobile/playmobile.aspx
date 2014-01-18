@@ -1,7 +1,8 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.MyAppUser>" %>
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
+//System.Web.Mvc.ViewPage<dynamic>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -94,8 +95,9 @@
 
     protected void checkusername()
     {
-
-        Hiddenfield1 = "TreasureHunte";
+        
+           
+        Hiddenfield1 = Model.Name;
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
         if (Hiddenfield1 != null)
         {
@@ -133,14 +135,54 @@
             Response.Redirect("~/Tspot/buy");
         }
     }
-
+public string one1 = "";
+public string one2 = "";
+public string one3 = "";
+public string one4 = "";
+public string one5 = "";
     protected void gettreasurespot()
     {
-
+        
         AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
         DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
+
+        if (dt.Rows.Count != 0)
+        {
+
+            Random one = new Random();
+            int t1 = one.Next(0, dt.Rows.Count);
+            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+            tsitemsfulldetails = Json.Decode(tsitems);
+            one1 = tsitemsfulldetails.tsUrl;
+
+            one = new Random();
+            t1 = one.Next(0, dt.Rows.Count);
+            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+            tsitemsfulldetails = Json.Decode(tsitems);
+            one2 = tsitemsfulldetails.tsUrl;
+
+            one = new Random();
+            t1 = one.Next(0, dt.Rows.Count);
+            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+            tsitemsfulldetails = Json.Decode(tsitems);
+            one3 = tsitemsfulldetails.tsUrl;
+
+            one = new Random();
+            t1 = one.Next(0, dt.Rows.Count);
+            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+            tsitemsfulldetails = Json.Decode(tsitems);
+            one4 = tsitemsfulldetails.tsUrl;
+
+            one = new Random();
+            t1 = one.Next(0, dt.Rows.Count);
+            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+            tsitemsfulldetails = Json.Decode(tsitems);
+            one5 = tsitemsfulldetails.tsUrl;
+
+        }   
+        
         if (dt.Rows.Count != 0)
         {
            //dt.Rows.Count
@@ -153,38 +195,7 @@
             tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
             tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
 
-        //    if (t1 == 0)
-        //    {
-        //        iframeurl = "http://localhost:64453/Images/air.gif";
-        //    }
-        //    if (t1 == 1)
-        //    {
-        //        iframeurl = "http://localhost:64453/Images/boatracing.gif";
-        //    }
-        //    if (t1 == 2)
-        //    {
-        //        iframeurl = "http://localhost:64453/Images/outerspace.gif";
-        //    }
-        //    if (t1 == 3)
-        //    {
-        //        iframeurl = "http://localhost:64453/Images/undersea.gif";
-        //    }
-        //    if (t1 == 4)
-        //    {
-        //        iframeurl = "http://localhost:64453/Images/horseracing.gif";
-        //    }
-        //    if (t1 == 5)
-        //    {
-        //        iframeurl = "http://localhost:64453/Images/highsea.gif";
-        //    }
-        }
-
-
-        ctrl1mainurl = "http://localhost:64453/Images/fplane.gif";
-        ctrl2mainurl = "http://localhost:64453/Images/goldcoin.gif";
-        ctrl3mainurl = "http://localhost:64453/Images/3dhlass.gif";
-        ctrl4mainurl = "http://localhost:64453/Images/parachute.gif";
-        ctrl5mainurl = "http://localhost:64453/Images/bid.png";
+        
 
         tsitemsfulldetails = Json.Decode(tsitems);
         tsitems1 = tsitems;
@@ -334,12 +345,26 @@
 
        
         Random one = new Random();
-        var fcount = 0;
+        var fcount = Model.Friends.Data.Count;
         if (fcount >= 5)
         {
-            if (fcount != 0)
+            if (Model.Friends.Data.Count != 0)
             {
-                
+                int r1 = one.Next(1, Model.Friends.Data.Count);
+                Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
+                Session["friend1pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r2 = one.Next(2, Model.Friends.Data.Count);
+                Session["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
+                Session["friend2pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r3 = one.Next(3, Model.Friends.Data.Count);
+                Session["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
+                Session["friend3pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r4 = one.Next(4, Model.Friends.Data.Count);
+                Session["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
+                Session["friend4pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r5 = one.Next(5, Model.Friends.Data.Count);
+                Session["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
+                Session["friend5pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
             }
 
         }
