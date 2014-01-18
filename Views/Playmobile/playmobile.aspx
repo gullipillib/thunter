@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter22.Models.MyAppUser>" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
-//System.Web.Mvc.ViewPage<dynamic>
+
 
 <!DOCTYPE html>
 <script runat="server">
