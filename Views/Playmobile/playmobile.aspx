@@ -492,7 +492,7 @@
     </script>
 
 <html>
-<head runat="server">
+<head runat="server" >
     <meta name="viewport" content="width=device-width" />
     <title>treasurehunter22 Mobile</title>
 
@@ -568,12 +568,10 @@
 
          $(function () {
 
-             // Reference the auto-generated proxy for the hub.  
-
-             // Create a function that the hub can call back to display messages.
+             
              chat.client.hello = function (messages, values) {
 
-                 // Add the message to the page. 
+                
                  if ($('#Text2').val().length > 500) {
                      $('#Text2').val("");
 
@@ -587,11 +585,11 @@
              };
 
 
-             // Start the connection.
+             
 
 
              $.connection.hub.start().done(function () {
-                 //chat.server.Hello(pname + ":", $('#Text1').val());
+                 
 
                  chat.server.Hello(pname + ":", $('#Text1').val()).done(function () {
                  });
@@ -633,24 +631,7 @@
 
 
         document.addEventListener('DOMContentLoaded', function () {
-            //alert(ctrl1.height);
-            //alert(ctrl1.width);
-            //alert(ctrl2.height);
-            //alert(ctrl2.width);
-            //alert(ctrl3.height);
-            //alert(ctrl3.width);
-            //alert(ctrl4.height);
-            //alert(ctrl5.width);
-            //alert(Img1.height);
-            //alert(Img1.width);
-            //alert(Img2.height);
-            //alert(Img2.width);
-            //alert(Img3.height);
-            //alert(Img3.width);
-            //alert(Img4.height);
-            //alert(Img4.width);
-            //alert(Img5.height);
-            //alert(Img5.width);
+            
 
             var noofhits = 0;
             var noofcoins = 0;
@@ -719,9 +700,7 @@
 
 
                     if (enemyhits != null) {
-                        //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
-                        //myframe.src = "~/Play/jsresult/" + enemyhits;
-                        // window.location.href("jsresult/" + enemyhits);
+                        
                         document.getElementById("myframe").setAttribute("src", "https://treasurehunter22.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value"));
 
                     }
@@ -806,8 +785,7 @@
                     Img5.style.height = "60px";
                     Label3.style.visibility = "hidden";
 
-                    //temp = temp.replace("px", "");
-                    //temp = parseInt(temp, 10);
+                   
                     var randno1 = Math.floor(Math.random() * 5 - 1 + 1) + 1;
                     var randno2 = Math.floor(Math.random() * 6 - 10 + 1) + 6;
                     var randno3 = Math.floor(Math.random() * 10 - 1 + 1) + 1;
@@ -2019,7 +1997,7 @@
 
                     explosion.style.left = crosshair.style.left;
                     explosion.style.top = crosshair.style.top;
-                    //explosion.style.right = crosshair.style.right;
+                   
                     explosion.style.visibility = "visible";
 
                     var myaddctrl = window.setTimeout(function () { removeexplosion() }, 3000);
@@ -2095,7 +2073,7 @@
                         Img5.style.top = parseInt(Img5.style.top.replace("px", ""), 10) - 45 + "px";
                     }
 
-                    //divplayer.focus();
+                   
                 }
 
 
@@ -2115,10 +2093,7 @@
                     crosshair.style.top = Math.round(e.clientY) + "px";
 
 
-                    //if (Math.round(e.clientY) < temp, 10) {
-                    //    explosion.style.top = temp + "px";
-
-                    //}
+                    
 
                     if (Math.round(e.clientX) > 365) {
                         crosshair.style.left = Math.round(e.clientX) - 365 + "px";
@@ -2182,9 +2157,7 @@
                         explosion.style.width = "30px";
 
 
-                        //if (Math.round(e.clientY) > temp, 10) {
-                        //    crosshair.style.top = temp + "px";
-                        //}
+                       
                     }
                     if (myctrl1.tbPropType == "fixed") {
 
@@ -2353,22 +2326,22 @@
         <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden; width: 360px; height: 299px; position: absolute; top: 216px; left: 5px; right: 542px; bottom: 51px; display: inline;">
             <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 159px; bottom: 140px;">
             <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-            <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-            <img id="ctrl2" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-            <img id="ctrl3" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-            <img id="ctrl4" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-            <img id="ctrl5" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+            <img id="ctrl2" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+            <img id="ctrl3" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+            <img id="ctrl4" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+            <img id="ctrl5" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
             <%--<img id="player1" src="" style="width: 30px; height: 30px; position: absolute; top: 278px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player2" src="" style="width: 30px; height: 30px; position: absolute; top: 296px; left: 260px; z-index: 21; right: 562px; margin-left: 0px; margin-top: 0px;">
         <img id="player3" src="" style="width: 30px; height: 30px; position: absolute; top: 78px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player4" src="" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">
         <img id="player5" src="" style="width: 30px; height: 30px; position: absolute; top: 251px; left: 390px; z-index: 21; right: 299px; margin-left: 0px; margin-top: 0px;">
             --%>
-            <img id="Img1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-            <img id="Img2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-            <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-            <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-            <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="Img1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+            <img id="Img2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+            <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+            <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+            <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
         </div>
         <input id="friendname" style="visibility: visible; text-decoration: none; height: 18px; background-color: transparent; color: #FFCC00; z-index: 1; left: 3px; top: 140px; position: absolute; width: 91px; cursor: none; font-size: x-small;" type="text" readonly="true" />
         <img alt="" src="https://treasurehunter22.apphb.com/Images/landscape.jpg" style="width: 33px; height: 28px; visibility: visible; z-index: 1; left: 11px; top: 107px; position: absolute; bottom: 431px;" id="friendimage" />
@@ -2405,8 +2378,10 @@
         <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 239px; top: 66px; position: absolute; width: 47px; height: 9px; right: 582px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small"></asp:TextBox>
         <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 75px; position: absolute; width: 78px; right: 600px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Conquer Players</asp:TextBox>
         <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 285px; top: 76px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small"></asp:TextBox>
-        <img id="Img7" src="https://treasurehunter22.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 56px; left: 303px; z-index: 21; visibility: visible; right: 550px; bottom: 491px;">
-        <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 71px; left: 310px; z-index: 21; visibility: visible; right: 568px; bottom: 476px;">
+        <img id="Img7" src="https://treasurehunter22.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 56px; left: 303px; z-index: 21; visibility: visible; right: 550px; bottom: 491px;"/>
+        
+        <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 71px; left: 310px; z-index: 21; visibility: visible; right: 568px; bottom: 476px;"/>
+        
     </form>
 
   
