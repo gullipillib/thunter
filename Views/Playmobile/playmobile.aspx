@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
@@ -6,17 +7,20 @@
 
 
 <!DOCTYPE html>
-
 <html>
 <head id="Head1" runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>treasurehunter22 Mobile</title>
-    
+
 </head>
-<body   onbeforeunload="getcoins" style="height: 507px; background-color: #000000; width: 967px; overflow: hidden;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
+
+
+
+<body style="height: 507px; background-color: #000000; width: 967px; overflow: hidden;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
 
     <style type="text/css">
-        .twoto3d {
+        .twoto3d
+        {
             width: 365px;
             height: 307px;
             position: relative;
@@ -26,32 +30,39 @@
             left: 1px;
         }
 
-        @keyframes mymove {
-            from {
+        @keyframes mymove
+        {
+            from
+            {
                 left: 1px;
             }
 
-            to {
+            to
+            {
                 left: 3px;
             }
         }
 
         @-webkit-keyframes mymove /* Safari and Chrome */
         {
-            from {
+            from
+            {
                 left: 1px;
             }
 
-            to {
+            to
+            {
                 left: 3px;
             }
         }
 
-        .zoom {
+        .zoom
+        {
             zoom: 1;
         }
 
-        .perspective3d {
+        .perspective3d
+        {
             perspective: 300;
             -webkit-perspective: 300; /* Safari and Chrome */
             perspective-origin: 40% 20%;
@@ -61,142 +72,141 @@
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
         }
-
     </style>
 
     <script src="https://treasurehunter22.apphb.com/Scripts/jquery-1.8.2.js"></script>
-<script src="https://treasurehunter22.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
-<script src="https://treasurehunter22.apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>    
-<script src="https://treasurehunter22.apphb.com/SignalR/hubs"></script>
+    <script src="https://treasurehunter22.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
+    <script src="https://treasurehunter22.apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>
+    <script src="https://treasurehunter22.apphb.com/SignalR/hubs"></script>
     `<script>
          var chat = $.connection.sysmessages;
          var pname = '<%=Hiddenfield1%>';
 
-        $(function () {
+         $(function () {
 
-            // Reference the auto-generated proxy for the hub.  
+             // Reference the auto-generated proxy for the hub.  
 
-            // Create a function that the hub can call back to display messages.
-            chat.client.hello = function (messages, values) {
+             // Create a function that the hub can call back to display messages.
+             chat.client.hello = function (messages, values) {
 
-                // Add the message to the page. 
-                if ($('#Text2').val().length > 500) {
-                    $('#Text2').val("");
+                 // Add the message to the page. 
+                 if ($('#Text2').val().length > 500) {
+                     $('#Text2').val("");
 
-                }
-                $('#Text2').val($('#Text2').val() + "\r\n" + messages + " " + values);
-                $('#Text1').val("");
-                var textArea = $('#Text1');
-                textArea.blur();
-                textArea.focus();
+                 }
+                 $('#Text2').val($('#Text2').val() + "\r\n" + messages + " " + values);
+                 $('#Text1').val("");
+                 var textArea = $('#Text1');
+                 textArea.blur();
+                 textArea.focus();
 
-            };
-
-
-            // Start the connection.
+             };
 
 
-            $.connection.hub.start().done(function () {
-                //chat.server.Hello(pname + ":", $('#Text1').val());
-
-                chat.server.Hello(pname + ":", $('#Text1').val()).done(function () {
-                });
-
-            });
-        });
-
-        function checkEnter(event) {
-            if (event.keyCode == 13) {
-
-                return false;
-            }
-        }
-
-        function send2server() {
-
-            if ($('#Text1').val() != null) {
+             // Start the connection.
 
 
-                chat.server.Hello(pname + ":", $('#Text1').val()).done(function () {
-                });
-            }
-        }
-         </script>
-        
-        <script type="text/javascript">
-            var enemyhits = sessionStorage.getItem("achievements");
-            var mygoldcoins = sessionStorage.getItem("points");
+             $.connection.hub.start().done(function () {
+                 //chat.server.Hello(pname + ":", $('#Text1').val());
+
+                 chat.server.Hello(pname + ":", $('#Text1').val()).done(function () {
+                 });
+
+             });
+         });
+
+         function checkEnter(event) {
+             if (event.keyCode == 13) {
+
+                 return false;
+             }
+         }
+
+         function send2server() {
+
+             if ($('#Text1').val() != null) {
 
 
-            var lifes = 0;
-            var myctrl1 = JSON.parse('<%=tbitems1%>');
+                 chat.server.Hello(pname + ":", $('#Text1').val()).done(function () {
+                 });
+             }
+         }
+    </script>
+
+    <script type="text/javascript">
+        var enemyhits = sessionStorage.getItem("achievements");
+        var mygoldcoins = sessionStorage.getItem("points");
+
+
+        var lifes = 0;
+        var myctrl1 = JSON.parse('<%=tbitems1%>');
             var myctrl2 = JSON.parse('<%=tbitems2%>');
-            var myctrl3 = JSON.parse('<%=tbitems3%>');
-            var myctrl4 = JSON.parse('<%=tbitems4%>');
-            var myctrl5 = JSON.parse('<%=tbitems5%>');
-            var mytsdetails = JSON.parse('<%=tsitems1%>');
+        var myctrl3 = JSON.parse('<%=tbitems3%>');
+        var myctrl4 = JSON.parse('<%=tbitems4%>');
+        var myctrl5 = JSON.parse('<%=tbitems5%>');
+        var mytsdetails = JSON.parse('<%=tsitems1%>');
 
 
 
-            document.addEventListener('DOMContentLoaded', function () {
-                //alert(ctrl1.height);
-                //alert(ctrl1.width);
-                //alert(ctrl2.height);
-                //alert(ctrl2.width);
-                //alert(ctrl3.height);
-                //alert(ctrl3.width);
-                //alert(ctrl4.height);
-                //alert(ctrl5.width);
-                //alert(Img1.height);
-                //alert(Img1.width);
-                //alert(Img2.height);
-                //alert(Img2.width);
-                //alert(Img3.height);
-                //alert(Img3.width);
-                //alert(Img4.height);
-                //alert(Img4.width);
-                //alert(Img5.height);
-                //alert(Img5.width);
+        document.addEventListener('DOMContentLoaded', function () {
+            //alert(ctrl1.height);
+            //alert(ctrl1.width);
+            //alert(ctrl2.height);
+            //alert(ctrl2.width);
+            //alert(ctrl3.height);
+            //alert(ctrl3.width);
+            //alert(ctrl4.height);
+            //alert(ctrl5.width);
+            //alert(Img1.height);
+            //alert(Img1.width);
+            //alert(Img2.height);
+            //alert(Img2.width);
+            //alert(Img3.height);
+            //alert(Img3.width);
+            //alert(Img4.height);
+            //alert(Img4.width);
+            //alert(Img5.height);
+            //alert(Img5.width);
 
-                var noofhits = 0;
-                var noofcoins = 0;
-                var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
-                var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
-                document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
-                document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+            var noofhits = 0;
+            var noofcoins = 0;
+            var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
+            var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
+            document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+            document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
 
 
-                var myaddctrl1 = window.setInterval(function () { tcounter() }, 1000);
-                function tcounter() {
-                    var mycounter = document.getElementById('TextBox2').getAttribute("value");
-                    mycounter = parseInt(mycounter, 10) - 1;
-                    if (mycounter < 0) {
-                        mycounter = 0;
-                    }
-                    document.getElementById('TextBox2').setAttribute("value", mycounter);
+            var myaddctrl1 = window.setInterval(function () { tcounter() }, 1000);
+            function tcounter() {
+                var mycounter = document.getElementById('TextBox2').getAttribute("value");
+                mycounter = parseInt(mycounter, 10) - 1;
+                if (mycounter < 0) {
+                    mycounter = 0;
+                }
+                document.getElementById('TextBox2').setAttribute("value", mycounter);
 
-                    if (noofhits = ranhits) {
-                        noofhits = -100;
-                    }
-                    if (noofcoins = rancoins) {
-                        noofcoins = -150;
-                    }
-                    if (mycounter != 0) {
-                        if (noofhits >= ranhits || noofcoins >= rancoins) {
-                            document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
-                            feed();
-                            document.getElementById('TextBox2').setAttribute("value", "0");
+                if (noofhits = ranhits) {
+                    noofhits = -100;
+                }
+                if (noofcoins = rancoins) {
+                    noofcoins = -150;
+                }
+                if (mycounter != 0) {
+                    if (noofhits >= ranhits || noofcoins >= rancoins) {
+                        document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
+                        feed();
+                        document.getElementById('TextBox2').setAttribute("value", "0");
 
-                        }
                     }
                 }
+            }
 
-                var myaddctrl1 = window.setInterval(function () { getTspot() }, 300000);
-                function getTspot() {
+            var myaddctrl1 = window.setInterval(function () { getTspot() }, 300000);
+            function getTspot() {
 
 
 
-                    document.getElementById('divplayer').getElementsByTagName('ctrl1').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('ctrl1').src = '<%=ctrl1mainurl%>';
                     document.getElementById('divplayer').getElementsByTagName('ctrl2').src = '<%=ctrl1mainurl%>';
                     document.getElementById('divplayer').getElementsByTagName('ctrl3').src = '<%=ctrl1mainurl%>';
                     document.getElementById('divplayer').getElementsByTagName('ctrl4').src = '<%=ctrl1mainurl%>';
@@ -277,92 +287,92 @@
 
                 }
                 var temp = '<%=ctrl1mainres%>';
-            var visible1 = "no";
-            var visible2 = "no";
-            var visible3 = "no";
-            var visible4 = "no";
-            var visible5 = "no";
+                var visible1 = "no";
+                var visible2 = "no";
+                var visible3 = "no";
+                var visible4 = "no";
+                var visible5 = "no";
 
-            var myaddctrl1 = window.setInterval(function () { randomCtrl1() }, 3000);
-            function randomCtrl1() {
-
-
+                var myaddctrl1 = window.setInterval(function () { randomCtrl1() }, 3000);
+                function randomCtrl1() {
 
 
 
 
-                ctrl1.style.width = "60px";
 
-                ctrl2.style.width = "60px";
 
-                ctrl3.style.width = "60px";
+                    ctrl1.style.width = "60px";
 
-                ctrl4.style.width = "60px";
+                    ctrl2.style.width = "60px";
 
-                ctrl5.style.width = "60px";
-                Img1.style.width = "60px";
-                Img1.style.height = "60px";
-                Img2.style.width = "60px";
-                Img2.style.height = "60px";
-                Img3.style.width = "60px";
-                Img3.style.height = "60px";
-                Img4.style.width = "60px";
-                Img4.style.height = "60px";
-                Img5.style.width = "60px";
-                Img5.style.height = "60px";
-                Label3.style.visibility = "hidden";
+                    ctrl3.style.width = "60px";
 
-                //temp = temp.replace("px", "");
-                //temp = parseInt(temp, 10);
-                var randno1 = Math.floor(Math.random() * 5 - 1 + 1) + 1;
-                var randno2 = Math.floor(Math.random() * 6 - 10 + 1) + 6;
-                var randno3 = Math.floor(Math.random() * 10 - 1 + 1) + 1;
+                    ctrl4.style.width = "60px";
 
-                if (randno1 == 1 || randno2 == 1 || randno3 == 1) {
-                    ctrl1.style.visibility = "visible";
-                    ctrl1.style.width = "100px";
-                    ctrl1.style.height = "100px";
-                    ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl1.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
-                    visible1 = "yes";
-                }
-                if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
-                    ctrl2.style.visibility = "visible";
-                    ctrl2.style.width = "100px";
-                    ctrl2.style.height = "100px";
-                    ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl2.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
-                    visible2 = "yes";
-                }
-                if (randno1 == 3 || randno2 == 3 || randno3 == 3) {
-                    ctrl3.style.visibility = "visible";
-                    ctrl3.style.width = "100px";
-                    ctrl3.style.height = "100px";
-                    ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl3.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
-                    visible3 = "yes";
-                }
-                if (randno1 == 4 || randno2 == 4 || randno3 == 4) {
-                    ctrl4.style.visibility = "visible";
-                    ctrl4.style.width = "100px";
-                    ctrl4.style.height = "100px";
-                    ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl4.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
-                    visible4 = "yes";
-                }
-                if (randno1 == 5 || randno2 == 5 || randno3 == 5) {
-                    ctrl5.style.visibility = "visible";
-                    ctrl5.style.width = "100px";
-                    ctrl5.style.height = "100px";
-                    ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl5.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
-                    visible5 = "yes";
-                }
-                if (randno1 == 6 || randno2 == 6 || randno3 == 6) {
-                    Img1.style.visibility = "visible";
-                    Img1.style.width = "80px";
-                    Img1.style.height = "80px";
-                    if ('<%=ctrl1mainname%>' == "goldcoins" || '<%=ctrl1mainname%>' == "health") {
+                    ctrl5.style.width = "60px";
+                    Img1.style.width = "60px";
+                    Img1.style.height = "60px";
+                    Img2.style.width = "60px";
+                    Img2.style.height = "60px";
+                    Img3.style.width = "60px";
+                    Img3.style.height = "60px";
+                    Img4.style.width = "60px";
+                    Img4.style.height = "60px";
+                    Img5.style.width = "60px";
+                    Img5.style.height = "60px";
+                    Label3.style.visibility = "hidden";
+
+                    //temp = temp.replace("px", "");
+                    //temp = parseInt(temp, 10);
+                    var randno1 = Math.floor(Math.random() * 5 - 1 + 1) + 1;
+                    var randno2 = Math.floor(Math.random() * 6 - 10 + 1) + 6;
+                    var randno3 = Math.floor(Math.random() * 10 - 1 + 1) + 1;
+
+                    if (randno1 == 1 || randno2 == 1 || randno3 == 1) {
+                        ctrl1.style.visibility = "visible";
+                        ctrl1.style.width = "100px";
+                        ctrl1.style.height = "100px";
+                        ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                        ctrl1.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                        visible1 = "yes";
+                    }
+                    if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
+                        ctrl2.style.visibility = "visible";
+                        ctrl2.style.width = "100px";
+                        ctrl2.style.height = "100px";
+                        ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                        ctrl2.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                        visible2 = "yes";
+                    }
+                    if (randno1 == 3 || randno2 == 3 || randno3 == 3) {
+                        ctrl3.style.visibility = "visible";
+                        ctrl3.style.width = "100px";
+                        ctrl3.style.height = "100px";
+                        ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                        ctrl3.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                        visible3 = "yes";
+                    }
+                    if (randno1 == 4 || randno2 == 4 || randno3 == 4) {
+                        ctrl4.style.visibility = "visible";
+                        ctrl4.style.width = "100px";
+                        ctrl4.style.height = "100px";
+                        ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                        ctrl4.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                        visible4 = "yes";
+                    }
+                    if (randno1 == 5 || randno2 == 5 || randno3 == 5) {
+                        ctrl5.style.visibility = "visible";
+                        ctrl5.style.width = "100px";
+                        ctrl5.style.height = "100px";
+                        ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                        ctrl5.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                        visible5 = "yes";
+                    }
+                    if (randno1 == 6 || randno2 == 6 || randno3 == 6) {
+                        Img1.style.visibility = "visible";
+                        Img1.style.width = "80px";
+                        Img1.style.height = "80px";
+                        if ('<%=ctrl1mainname%>' == "goldcoins" || '<%=ctrl1mainname%>' == "health") {
                         Img1.style.width = "30px";
                         Img1.style.height = "30px";
                     }
@@ -593,10 +603,10 @@
                                 friendimage.style.visibility = "visible";
                                 friendname.style.visibility = "visible";
                                 friendimage.src = '<%=Convert.ToString(Session["friend1pic"])%>';
-                            friendname.value = '<%=Session["friend1"]%>';
-                            sound1.src = myctrl1.tbCollionSound;
-                            ctrl1.style.visibility = "hidden";
-                            if ('<%=ctrl1mainname%>' == "goldcoins") {
+                                friendname.value = '<%=Session["friend1"]%>';
+                                sound1.src = myctrl1.tbCollionSound;
+                                ctrl1.style.visibility = "hidden";
+                                if ('<%=ctrl1mainname%>' == "goldcoins") {
                                 if (myctrl1.tbResult == "giveonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
@@ -610,6 +620,23 @@
                                 }
                             }
                             if ('<%=ctrl1mainname%>' == "health") {
+                                    if (myctrl1.tbResult == "giveonelife") {
+                                        lifes = String(parseInt(lifes, 10) + 1);
+                                        document.getElementById('lives').setAttribute("value", lifes);
+                                    }
+                                    if (myctrl1.tbResult == "takeonelife") {
+                                        lifes = String(parseInt(lifes, 10) - 1);
+                                        document.getElementById('lives').setAttribute("value", lifes);
+                                    }
+                                }
+                                if (myctrl1.tbResult == "giveonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                }
+                                if (myctrl1.tbResult == "takeonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                }
                                 if (myctrl1.tbResult == "giveonelife") {
                                     lifes = String(parseInt(lifes, 10) + 1);
                                     document.getElementById('lives').setAttribute("value", lifes);
@@ -618,73 +645,56 @@
                                     lifes = String(parseInt(lifes, 10) - 1);
                                     document.getElementById('lives').setAttribute("value", lifes);
                                 }
+                                if (myctrl1.tbResult == "donothing") {
+                                    crosshair.style.left = currentlposition;
+                                    crosshair.style.top = currenttposition;
+                                }
+                                if (myctrl1.tbResult == "cry") {
+                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                                }
+                                if (myctrl1.tbResult == "laugh") {
+                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                                }
+                                if (myctrl1.tbResult == "stunned") {
+                                    crosshair.style.left = "0px";
+                                    crosshair.style.top = "130px";
+                                }
+                                if (myctrl1.tbResult == "stunned") {
+                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                                }
+                                if (myctrl1.tbResult == "applaud") {
+                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                                }
+                                if (myctrl1.tbResult == "dizzy") {
+                                    crosshair.style.left = "0px";
+                                    crosshair.style.top = "130px";
+                                    crosshair.style.left = "130px";
+                                    crosshair.style.top = "250px";
+                                }
+                                noofhits = noofhits + 1;
+                                document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
                             }
-                            if (myctrl1.tbResult == "giveonecrisboo") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                            }
-                            if (myctrl1.tbResult == "takeonecrisboo") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                            }
-                            if (myctrl1.tbResult == "giveonelife") {
-                                lifes = String(parseInt(lifes, 10) + 1);
-                                document.getElementById('lives').setAttribute("value", lifes);
-                            }
-                            if (myctrl1.tbResult == "takeonelife") {
-                                lifes = String(parseInt(lifes, 10) - 1);
-                                document.getElementById('lives').setAttribute("value", lifes);
-                            }
-                            if (myctrl1.tbResult == "donothing") {
-                                crosshair.style.left = currentlposition;
-                                crosshair.style.top = currenttposition;
-                            }
-                            if (myctrl1.tbResult == "cry") {
-                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
-                            }
-                            if (myctrl1.tbResult == "laugh") {
-                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                            }
-                            if (myctrl1.tbResult == "stunned") {
-                                crosshair.style.left = "0px";
-                                crosshair.style.top = "130px";
-                            }
-                            if (myctrl1.tbResult == "stunned") {
-                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                            }
-                            if (myctrl1.tbResult == "applaud") {
-                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
-                            }
-                            if (myctrl1.tbResult == "dizzy") {
-                                crosshair.style.left = "0px";
-                                crosshair.style.top = "130px";
-                                crosshair.style.left = "130px";
-                                crosshair.style.top = "250px";
-                            }
-                            noofhits = noofhits + 1;
-                            document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
                         }
-                    }
-                    if (ctrl2.style.visibility == "visible") {
-                        if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl2.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl2.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl2.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl2.style.bottom.replace("px", ""), 10)) {
-                            enemyhits = enemyhits + 1;
+                        if (ctrl2.style.visibility == "visible") {
+                            if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl2.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl2.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl2.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl2.style.bottom.replace("px", ""), 10)) {
+                                enemyhits = enemyhits + 1;
 
-                            if (enemyhits == 10) {
-                                enemyhits = 0;
-                                if (mygoldcoins == null || mygoldcoins == 0) {
-                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                if (enemyhits == 10) {
+                                    enemyhits = 0;
+                                    if (mygoldcoins == null || mygoldcoins == 0) {
+                                        mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                    }
+                                    if (mygoldcoins != null || mygoldcoins != 0) {
+                                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                    }
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
                                 }
-                                if (mygoldcoins != null || mygoldcoins != 0) {
-                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                }
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                            }
-                            document.getElementById('ehits').setAttribute("value", enemyhits);
-                            sessionStorage.setItem("points", mygoldcoins);
-                            sessionStorage.setItem("achievements", enemyhits);
-                            friendimage.style.visibility = "visible";
-                            friendname.style.visibility = "visible";
-                            friendimage.src = '<%=Convert.ToString(Session["friend2pic"])%>';
+                                document.getElementById('ehits').setAttribute("value", enemyhits);
+                                sessionStorage.setItem("points", mygoldcoins);
+                                sessionStorage.setItem("achievements", enemyhits);
+                                friendimage.style.visibility = "visible";
+                                friendname.style.visibility = "visible";
+                                friendimage.src = '<%=Convert.ToString(Session["friend2pic"])%>';
                             friendname.value = '<%=Session["friend2"]%>';
                             sound1.src = myctrl2.tbCollionSound;
                             ctrl2.style.visibility = "hidden";
@@ -775,16 +785,16 @@
                             sound1.src = myctrl3.tbCollionSound;
                             ctrl3.style.visibility = "hidden";
                             if ('<%=ctrl3mainname%>' == "goldcoins") {
-                            if (myctrl3.tbResult == "giveonecrisboo") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                                if (myctrl3.tbResult == "giveonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                }
+                                if (myctrl3.tbResult == "takeonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                }
                             }
-                            if (myctrl3.tbResult == "takeonecrisboo") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                            }
-                        }
-                        if ('<%=ctrl3mainname%>' == "health") {
+                            if ('<%=ctrl3mainname%>' == "health") {
                                 if (myctrl3.tbResult == "giveonelife") {
                                     lifes = String(parseInt(lifes, 10) + 1);
                                     document.getElementById('lives').setAttribute("value", lifes);
@@ -858,10 +868,10 @@
                             friendimage.style.visibility = "visible";
                             friendname.style.visibility = "visible";
                             friendimage.src = '<%=Convert.ToString(Session["friend4pic"])%>';
-                        friendname.value = '<%=Session["friend4"]%>';
-                        sound1.src = myctrl4.tbCollionSound;
-                        ctrl4.style.visibility = "hidden";
-                        if ('<%=ctrl4mainname%>' == "goldcoins") {
+                            friendname.value = '<%=Session["friend4"]%>';
+                            sound1.src = myctrl4.tbCollionSound;
+                            ctrl4.style.visibility = "hidden";
+                            if ('<%=ctrl4mainname%>' == "goldcoins") {
                             if (myctrl4.tbResult == "giveonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
@@ -872,6 +882,23 @@
                             }
                         }
                         if ('<%=ctrl4mainname%>' == "health") {
+                                if (myctrl4.tbResult == "giveonelife") {
+                                    lifes = String(parseInt(lifes, 10) + 1);
+                                    document.getElementById('lives').setAttribute("value", lifes);
+                                }
+                                if (myctrl4.tbResult == "takeonelife") {
+                                    lifes = String(parseInt(lifes, 10) - 1);
+                                    document.getElementById('lives').setAttribute("value", lifes);
+                                }
+                            }
+                            if (myctrl4.tbResult == "giveonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
+                            if (myctrl4.tbResult == "takeonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                            }
                             if (myctrl4.tbResult == "giveonelife") {
                                 lifes = String(parseInt(lifes, 10) + 1);
                                 document.getElementById('lives').setAttribute("value", lifes);
@@ -880,70 +907,53 @@
                                 lifes = String(parseInt(lifes, 10) - 1);
                                 document.getElementById('lives').setAttribute("value", lifes);
                             }
-                        }
-                        if (myctrl4.tbResult == "giveonecrisboo") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        if (myctrl4.tbResult == "takeonecrisboo") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        if (myctrl4.tbResult == "giveonelife") {
-                            lifes = String(parseInt(lifes, 10) + 1);
-                            document.getElementById('lives').setAttribute("value", lifes);
-                        }
-                        if (myctrl4.tbResult == "takeonelife") {
-                            lifes = String(parseInt(lifes, 10) - 1);
-                            document.getElementById('lives').setAttribute("value", lifes);
-                        }
-                        if (myctrl4.tbResult == "donothing") {
-                            crosshair.style.left = currentlposition;
-                            crosshair.style.top = currenttposition;
-                        }
-                        if (myctrl4.tbResult == "cry") {
-                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
-                        }
-                        if (myctrl4.tbResult == "laugh") {
-                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                        }
-                        if (myctrl4.tbResult == "stunned") {
-                            crosshair.style.left = "0px";
-                            crosshair.style.top = "130px";
-                        }
-                        if (myctrl4.tbResult == "stunned") {
-                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                        }
-                        if (myctrl4.tbResult == "applaud") {
-                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
-                        }
-                        if (myctrl4.tbResult == "dizzy") {
-                            crosshair.style.left = "0px";
-                            crosshair.style.top = "130px";
-                            crosshair.style.left = "130px";
-                            crosshair.style.top = "250px";
+                            if (myctrl4.tbResult == "donothing") {
+                                crosshair.style.left = currentlposition;
+                                crosshair.style.top = currenttposition;
+                            }
+                            if (myctrl4.tbResult == "cry") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                            }
+                            if (myctrl4.tbResult == "laugh") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl4.tbResult == "stunned") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                            }
+                            if (myctrl4.tbResult == "stunned") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl4.tbResult == "applaud") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                            }
+                            if (myctrl4.tbResult == "dizzy") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                                crosshair.style.left = "130px";
+                                crosshair.style.top = "250px";
+                            }
                         }
                     }
-                }
-                if (ctrl5.style.visibility == "visible") {
-                    if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl5.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl5.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl5.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl5.style.bottom.replace("px", ""), 10)) {
-                        enemyhits = enemyhits + 1;
-                        if (enemyhits == 10) {
-                            enemyhits = 0;
-                            if (mygoldcoins == null || mygoldcoins == 0) {
-                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                    if (ctrl5.style.visibility == "visible") {
+                        if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl5.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl5.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl5.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl5.style.bottom.replace("px", ""), 10)) {
+                            enemyhits = enemyhits + 1;
+                            if (enemyhits == 10) {
+                                enemyhits = 0;
+                                if (mygoldcoins == null || mygoldcoins == 0) {
+                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                }
+                                if (mygoldcoins != null || mygoldcoins != 0) {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                }
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
                             }
-                            if (mygoldcoins != null || mygoldcoins != 0) {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            }
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        document.getElementById('ehits').setAttribute("value", enemyhits);
-                        sessionStorage.setItem("points", mygoldcoins);
-                        sessionStorage.setItem("achievements", enemyhits);
-                        friendimage.style.visibility = "visible";
-                        friendname.style.visibility = "visible";
-                        friendimage.src = '<%=Convert.ToString(Session["friend5pic"])%>';
+                            document.getElementById('ehits').setAttribute("value", enemyhits);
+                            sessionStorage.setItem("points", mygoldcoins);
+                            sessionStorage.setItem("achievements", enemyhits);
+                            friendimage.style.visibility = "visible";
+                            friendname.style.visibility = "visible";
+                            friendimage.src = '<%=Convert.ToString(Session["friend5pic"])%>';
                         friendname.value = '<%=Session["friend5"]%>';
                         sound1.src = myctrl5.tbCollionSound;
                         ctrl5.style.visibility = "hidden";
@@ -1275,10 +1285,10 @@
                         sound1.src = myctrl3.tbCollionSound;
                         ctrl3.style.visibility = "hidden";
                         if ('<%=ctrl3mainname%>' == "goldcoins") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                            }
-                            if ('<%=ctrl3mainname%>' == "health") {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        if ('<%=ctrl3mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
@@ -1304,53 +1314,21 @@
                         friendimage.style.visibility = "visible";
                         friendname.style.visibility = "visible";
                         friendimage.src = '<%=Convert.ToString(Session["friend4pic"])%>';
-                            friendname.value = '<%=Session["friend4"]%>';
-                            sound1.src = myctrl4.tbCollionSound;
-                            ctrl4.style.visibility = "hidden";
-                            if ('<%=ctrl4mainname%>' == "goldcoins") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        if ('<%=ctrl4mainname%>' == "health") {
-                                mygoldcoins = String(parseInt(lifes, 10) + 1);
-                                document.getElementById('lives').setAttribute("value", lifes);
-                            }
-                        }
-                    }
-                    if (ctrl5.style.visibility == "visible") {
-                        if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(ctrl5.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(ctrl5.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(ctrl5.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(ctrl5.style.bottom.replace("px", ""), 10)) {
-                            enemyhits = enemyhits + 1;
-                            if (enemyhits == 10) {
-                                enemyhits = 0;
-                                if (mygoldcoins == null || mygoldcoins == 0) {
-                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                                }
-                                if (mygoldcoins != null || mygoldcoins != 0) {
-                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                }
+                        friendname.value = '<%=Session["friend4"]%>';
+                        sound1.src = myctrl4.tbCollionSound;
+                        ctrl4.style.visibility = "hidden";
+                        if ('<%=ctrl4mainname%>' == "goldcoins") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
                             }
-                            document.getElementById('ehits').setAttribute("value", enemyhits);
-                            sessionStorage.setItem("points", mygoldcoins);
-                            sessionStorage.setItem("achievements", enemyhits);
-                            friendimage.style.visibility = "visible";
-                            friendname.style.visibility = "visible";
-                            friendimage.src = '<%=Convert.ToString(Session["friend5pic"])%>';
-                        friendname.value = '<%=Session["friend5"]%>';
-                        sound1.src = myctrl5.tbCollionSound;
-                        ctrl5.style.visibility = "hidden";
-                        if ('<%=ctrl5mainname%>' == "goldcoins") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                        }
-                        if ('<%=ctrl5mainname%>' == "health") {
+                            if ('<%=ctrl4mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
                     }
                 }
-                if (Img1.style.visibility == "visible") {
-                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img1.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img1.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img1.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img1.style.bottom.replace("px", ""), 10)) {
+                if (ctrl5.style.visibility == "visible") {
+                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(ctrl5.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(ctrl5.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(ctrl5.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(ctrl5.style.bottom.replace("px", ""), 10)) {
                         enemyhits = enemyhits + 1;
                         if (enemyhits == 10) {
                             enemyhits = 0;
@@ -1361,13 +1339,45 @@
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
-
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
                         sessionStorage.setItem("achievements", enemyhits);
-                        sound1.src = myctrl1.tbCollionSound;
-                        if ('<%=ctrl1mainname%>' == "goldcoins") {
+                        friendimage.style.visibility = "visible";
+                        friendname.style.visibility = "visible";
+                        friendimage.src = '<%=Convert.ToString(Session["friend5pic"])%>';
+                            friendname.value = '<%=Session["friend5"]%>';
+                            sound1.src = myctrl5.tbCollionSound;
+                            ctrl5.style.visibility = "hidden";
+                            if ('<%=ctrl5mainname%>' == "goldcoins") {
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        if ('<%=ctrl5mainname%>' == "health") {
+                                mygoldcoins = String(parseInt(lifes, 10) + 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                        }
+                    }
+                    if (Img1.style.visibility == "visible") {
+                        if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img1.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img1.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img1.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img1.style.bottom.replace("px", ""), 10)) {
+                            enemyhits = enemyhits + 1;
+                            if (enemyhits == 10) {
+                                enemyhits = 0;
+                                if (mygoldcoins == null || mygoldcoins == 0) {
+                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                }
+                                if (mygoldcoins != null || mygoldcoins != 0) {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                }
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+
+                            }
+                            document.getElementById('ehits').setAttribute("value", enemyhits);
+                            sessionStorage.setItem("points", mygoldcoins);
+                            sessionStorage.setItem("achievements", enemyhits);
+                            sound1.src = myctrl1.tbCollionSound;
+                            if ('<%=ctrl1mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
                         }
@@ -1434,39 +1444,39 @@
                         sessionStorage.setItem("achievements", enemyhits);
                         sound1.src = myctrl3.tbCollionSound;
                         if ('<%=ctrl3mainname%>' == "goldcoins") {
-                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
-                    }
-                    if ('<%=ctrl3mainname%>' == "health") {
-                        mygoldcoins = String(parseInt(lifes, 10) + 1);
-                        document.getElementById('lives').setAttribute("value", lifes);
-                    }
-
-                    if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
-                        Img3.style.visibility = "hidden";
-                    }
-
-
-                }
-            }
-            if (Img4.style.visibility == "visible") {
-                if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img4.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img4.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img4.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img4.style.bottom.replace("px", ""), 10)) {
-                    enemyhits = enemyhits + 1;
-                    if (enemyhits == 10) {
-                        enemyhits = 0;
-                        if (mygoldcoins == null || mygoldcoins == 0) {
-                            mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                        }
-                        if (mygoldcoins != null || mygoldcoins != 0) {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
                         }
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
+                        if ('<%=ctrl3mainname%>' == "health") {
+                            mygoldcoins = String(parseInt(lifes, 10) + 1);
+                            document.getElementById('lives').setAttribute("value", lifes);
+                        }
+
+                        if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
+                            Img3.style.visibility = "hidden";
+                        }
+
+
                     }
-                    document.getElementById('ehits').setAttribute("value", enemyhits);
-                    sessionStorage.setItem("points", mygoldcoins);
-                    sessionStorage.setItem("achievements", enemyhits);
-                    sound1.src = myctrl4.tbCollionSound;
-                    if ('<%=ctrl4mainname%>' == "goldcoins") {
+                }
+                if (Img4.style.visibility == "visible") {
+                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img4.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img4.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img4.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img4.style.bottom.replace("px", ""), 10)) {
+                        enemyhits = enemyhits + 1;
+                        if (enemyhits == 10) {
+                            enemyhits = 0;
+                            if (mygoldcoins == null || mygoldcoins == 0) {
+                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                            }
+                            if (mygoldcoins != null || mygoldcoins != 0) {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            }
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                        }
+                        document.getElementById('ehits').setAttribute("value", enemyhits);
+                        sessionStorage.setItem("points", mygoldcoins);
+                        sessionStorage.setItem("achievements", enemyhits);
+                        sound1.src = myctrl4.tbCollionSound;
+                        if ('<%=ctrl4mainname%>' == "goldcoins") {
                         mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                         document.getElementById('points').setAttribute("value", mygoldcoins);
                     }
@@ -1753,75 +1763,75 @@
 
                         if (parseInt(crosshair.style.top.replace("px", ""), 10) > parseInt('<%=ctrl1mainres%>')) {
 
-                        if (myctrl1.tbPropType == "movable") {
-                            explosion.style.visibility = "hidden";
-                            crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) - 10 + "px";
-                            crosshair.style.height = "40px";
-                            crosshair.style.width = "40px";
-                            explosion.style.height = "40px";
-                            explosion.style.width = "40px";
+                            if (myctrl1.tbPropType == "movable") {
+                                explosion.style.visibility = "hidden";
+                                crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) - 10 + "px";
+                                crosshair.style.height = "40px";
+                                crosshair.style.width = "40px";
+                                explosion.style.height = "40px";
+                                explosion.style.width = "40px";
+                            }
+                            if (myctrl1.tbPropType == "fixed") {
+                                crosshair.style.top = "275px";
+                                crosshair.style.height = "90px";
+                                crosshair.style.width = "90px";
+                                explosion.style.height = "40px";
+                                explosion.style.width = "40px";
+                                explosion.style.visibility = "visible";
+                                explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) - 10 + "px";
+                            }
                         }
-                        if (myctrl1.tbPropType == "fixed") {
-                            crosshair.style.top = "275px";
-                            crosshair.style.height = "90px";
-                            crosshair.style.width = "90px";
-                            explosion.style.height = "40px";
-                            explosion.style.width = "40px";
-                            explosion.style.visibility = "visible";
-                            explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) - 10 + "px";
+
+                    }
+
+                    if (code == 40) {
+
+                        if (parseInt(crosshair.style.top.replace("px", ""), 10) < 275) {
+
+                            if (myctrl1.tbPropType == "movable") {
+                                explosion.style.visibility = "hidden";
+                                crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) + 10 + "px";
+                                crosshair.style.height = "40px";
+                                crosshair.style.width = "40px";
+                                explosion.style.height = "40px";
+                                explosion.style.width = "40px";
+                            }
+                            if (myctrl1.tbPropType == "fixed") {
+                                crosshair.style.top = "275px";
+                                crosshair.style.height = "90px";
+                                crosshair.style.width = "90px";
+                                explosion.style.height = "40px";
+                                explosion.style.width = "40px";
+                                explosion.style.visibility = "visible";
+                                explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) + 10 + "px";
+
+                            }
                         }
+
+                    }
+
+
+
+                    if (code == 83) {
+                        detectcollision();
+                        explode();
+
                     }
 
                 }
-
-                if (code == 40) {
-
-                    if (parseInt(crosshair.style.top.replace("px", ""), 10) < 275) {
-
-                        if (myctrl1.tbPropType == "movable") {
-                            explosion.style.visibility = "hidden";
-                            crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) + 10 + "px";
-                            crosshair.style.height = "40px";
-                            crosshair.style.width = "40px";
-                            explosion.style.height = "40px";
-                            explosion.style.width = "40px";
-                        }
-                        if (myctrl1.tbPropType == "fixed") {
-                            crosshair.style.top = "275px";
-                            crosshair.style.height = "90px";
-                            crosshair.style.width = "90px";
-                            explosion.style.height = "40px";
-                            explosion.style.width = "40px";
-                            explosion.style.visibility = "visible";
-                            explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) + 10 + "px";
-
-                        }
-                    }
-
-                }
-
-
-
-                if (code == 83) {
-                    detectcollision();
-                    explode();
-
-                }
-
-            }
 
 
 
             });
 
     </script>
- <form id="form1" runat="server" >
+    <form id="form1" runat="server">
 
         <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
 
 
 
-        
+
 
 
 
@@ -1837,525 +1847,525 @@
         <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter22.apphb.com/Invite/friends" Style="z-index: 1; left: 144px; top: 47px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled" Font-Size="X-Small">Invite Friends</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter22.apphb.com/gamesettings.aspx" Style="z-index: 1; top: 47px; position: absolute; width: 47px; left: 10px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled" Font-Size="X-Small">My Game</asp:HyperLink>
 
-     
+
 
         <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 100px; top: 26px; position: absolute; width: 45px; right: 748px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled" Font-Size="Small"></asp:TextBox>
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 202px; top: 25px; position: absolute; width: 18px; height: 18px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Size="Small">10</asp:TextBox>
         <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 303px; top: 25px; position: absolute; width: 53px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Small"></asp:TextBox>
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 275px; top: 7px; position: absolute; width: 45px; height: 12px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled" Font-Size="Small"></asp:TextBox>
- <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" style="z-index: 1; left: 76px; top: 344px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
+        <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" Style="z-index: 1; left: 76px; top: 344px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
 
-    <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
-    </audio>
-    
-    <label style="position: absolute; top: 26px; left: 7px; height: 19px; color: #FFCC00; font-size: small; width: 83px;">Achievements</label>
+        <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
+        </audio>
 
-    <label style="position: absolute; top: 25px; left: 161px; height: 19px; right: 702px; color: #FFCC00; font-size: small; width: 34px; bottom: 522px;">Lives</label>
+        <label style="position: absolute; top: 26px; left: 7px; height: 19px; color: #FFCC00; font-size: small; width: 83px;">Achievements</label>
 
-    <label style="position: absolute; top: 25px; left: 235px; height: 19px; color: #FFCC00; height: 20px; position: absolute; font-size: small;">Gold Coins</label>
+        <label style="position: absolute; top: 25px; left: 161px; height: 19px; right: 702px; color: #FFCC00; font-size: small; width: 34px; bottom: 522px;">Lives</label>
 
-    <label style="position: absolute; top: 3px; left: 202px; height: 19px; color: #FFCC00; font-size: small;">Treasure($)</label>
-    <label style="position: absolute; top: 90px; left: 7px; height: 19px; color: #FFCC00; width: 88px; font-size: x-small;">Achievements</label>
-    <div id="divplayer"  style="z-index: 203; background-color: transparent; overflow: hidden;  width: 360px; height: 299px; position: absolute; top: 216px; left: 5px; right: 542px; bottom: 51px; display: inline;">
-        <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 159px; bottom: 140px;">
-        <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
-        <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px; " >
-        <img id="ctrl2" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="ctrl3" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width:'<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="ctrl4" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height:'<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="ctrl5" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <%--<img id="player1" src="" style="width: 30px; height: 30px; position: absolute; top: 278px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
+        <label style="position: absolute; top: 25px; left: 235px; height: 19px; color: #FFCC00; height: 20px; position: absolute; font-size: small;">Gold Coins</label>
+
+        <label style="position: absolute; top: 3px; left: 202px; height: 19px; color: #FFCC00; font-size: small;">Treasure($)</label>
+        <label style="position: absolute; top: 90px; left: 7px; height: 19px; color: #FFCC00; width: 88px; font-size: x-small;">Achievements</label>
+        <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden; width: 360px; height: 299px; position: absolute; top: 216px; left: 5px; right: 542px; bottom: 51px; display: inline;">
+            <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 159px; bottom: 140px;">
+            <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="ctrl2" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="ctrl3" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="ctrl4" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="ctrl5" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <%--<img id="player1" src="" style="width: 30px; height: 30px; position: absolute; top: 278px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player2" src="" style="width: 30px; height: 30px; position: absolute; top: 296px; left: 260px; z-index: 21; right: 562px; margin-left: 0px; margin-top: 0px;">
         <img id="player3" src="" style="width: 30px; height: 30px; position: absolute; top: 78px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player4" src="" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">
         <img id="player5" src="" style="width: 30px; height: 30px; position: absolute; top: 251px; left: 390px; z-index: 21; right: 299px; margin-left: 0px; margin-top: 0px;">
-        --%>
-        <img id="Img1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="Img2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" >
-        <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"  >
-    </div>
-    <input id="friendname" style="visibility: visible; text-decoration: none; height: 18px; background-color: transparent; color: #FFCC00; z-index: 1; left: 3px; top: 140px; position: absolute; width: 91px; cursor:none; font-size: x-small;" type="text" readonly="true" />
-       <img alt="" src="https://treasurehunter22.apphb.com/Images/landscape.jpg" style="width: 33px; height: 28px; visibility: visible; z-index: 1; left: 11px; top: 107px; position: absolute; bottom: 431px;" id="friendimage" />
-    <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 1px; top: 216px; position: absolute; background-color: transparent; width: 365px; height: 297px;" class="twoto3d" id="fplayer" />
-<label style="position: absolute; top: 149px; left: 113px; height: 19px; color: #FFFFFF; font-size: x-small;">Talk to Players</label>
-<input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 186px; top: 130px; position: absolute; font-size: x-small;" type="button" value="Send"  onclick="send2server();" /> 
-  <div style="position: absolute; z-index: 210; width: 175px; height: 42px; top: 134px; right: 539px; bottom: 390px; left: 183px; overflow: hidden; cursor: crosshair;">
-    <textarea id="Text2" class="TextArea1" style="border-style: none; border-color: #000000; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 193px; height: 35px; font-size: small;" readonly="readonly"></textarea>
-  </div>
-      <input id="Text1" type="text" style="position: absolute; left: 187px; top: 113px; width: 144px; height: 9px;" onkeydown="checkEnter(event);"/> 
-<iframe id="myframe" src="https://treasurehunter22.apphb.com/updatecoins.aspx" runat="server" style="position: absolute; top: 4px; left: 791px; height: 48px; width: 151px; display:none" ></iframe>
-<div style="position: absolute; z-index: 210; width: 65px; height: 44px; top: 97px; right: 689px; bottom: 425px; left: 118px; overflow: hidden; cursor: crosshair;">
-    <div id="aimg" style="position: absolute; left: 0px; top: 0px; width: 326px; height: 200px; overflow: scroll; scrollbar-3dlight-color:transparent; scrollbar-arrow-color:transparent; scrollbar-base-color:transparent; scrollbar-darkshadow-color:transparent; scrollbar-face-color:transparent; scrollbar-highlight-color:transparent; scrollbar-shadow-color:transparent; scrollbar-track-color:transparent;">
-    <img alt="" src="https://treasurehunter22.apphb.com/Images/achievements.gif" style="width: 70px; height: 45px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 155px; background-color: Transparent;" id="Img6" />
-    <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 55px; top: 130px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one1%>' />
-    <asp:Image ID="Image2" runat="server" style="z-index: 1; left: 93px; top: 68px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one2%>' />
-    <asp:Image ID="Image3" runat="server" style="z-index: 1; left: 133px; top: 40px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one3%>' />
-    <asp:Image ID="Image4" runat="server" style="z-index: 1; left: 20px; top: 180px; position: absolute; width: 60px; height: 41px;" ImageUrl='<%=one4%>' />
-    <asp:Image ID="Image5" runat="server" style="z-index: 1; left: 185px; top: 7px; position: absolute; width: 50px; height: 40px;" ImageUrl='<%=one5%>' />
+            --%>
+            <img id="Img1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="Img2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+            <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;">
+        </div>
+        <input id="friendname" style="visibility: visible; text-decoration: none; height: 18px; background-color: transparent; color: #FFCC00; z-index: 1; left: 3px; top: 140px; position: absolute; width: 91px; cursor: none; font-size: x-small;" type="text" readonly="true" />
+        <img alt="" src="https://treasurehunter22.apphb.com/Images/landscape.jpg" style="width: 33px; height: 28px; visibility: visible; z-index: 1; left: 11px; top: 107px; position: absolute; bottom: 431px;" id="friendimage" />
+        <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 1px; top: 216px; position: absolute; background-color: transparent; width: 365px; height: 297px;" class="twoto3d" id="fplayer" />
+        <label style="position: absolute; top: 149px; left: 113px; height: 19px; color: #FFFFFF; font-size: x-small;">Talk to Players</label>
+        <input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 186px; top: 130px; position: absolute; font-size: x-small;" type="button" value="Send" onclick="send2server();" />
+        <div style="position: absolute; z-index: 210; width: 175px; height: 42px; top: 134px; right: 539px; bottom: 390px; left: 183px; overflow: hidden; cursor: crosshair;">
+            <textarea id="Text2" class="TextArea1" style="border-style: none; border-color: #000000; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 193px; height: 35px; font-size: small;" readonly="readonly"></textarea>
+        </div>
+        <input id="Text1" type="text" style="position: absolute; left: 187px; top: 113px; width: 144px; height: 9px;" onkeydown="checkEnter(event);" />
+        <iframe id="myframe" src="https://treasurehunter22.apphb.com/updatecoins.aspx" runat="server" style="position: absolute; top: 4px; left: 791px; height: 48px; width: 151px; display: none"></iframe>
+        <div style="position: absolute; z-index: 210; width: 65px; height: 44px; top: 97px; right: 689px; bottom: 425px; left: 118px; overflow: hidden; cursor: crosshair;">
+            <div id="aimg" style="position: absolute; left: 0px; top: 0px; width: 326px; height: 200px; overflow: scroll; scrollbar-3dlight-color: transparent; scrollbar-arrow-color: transparent; scrollbar-base-color: transparent; scrollbar-darkshadow-color: transparent; scrollbar-face-color: transparent; scrollbar-highlight-color: transparent; scrollbar-shadow-color: transparent; scrollbar-track-color: transparent;">
+                <img alt="" src="https://treasurehunter22.apphb.com/Images/achievements.gif" style="width: 70px; height: 45px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 155px; background-color: Transparent;" id="Img6" />
+                <asp:Image ID="Image1" runat="server" Style="z-index: 1; left: 55px; top: 130px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one1%>' />
+                <asp:Image ID="Image2" runat="server" Style="z-index: 1; left: 93px; top: 68px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one2%>' />
+                <asp:Image ID="Image3" runat="server" Style="z-index: 1; left: 133px; top: 40px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one3%>' />
+                <asp:Image ID="Image4" runat="server" Style="z-index: 1; left: 20px; top: 180px; position: absolute; width: 60px; height: 41px;" ImageUrl='<%=one4%>' />
+                <asp:Image ID="Image5" runat="server" Style="z-index: 1; left: 185px; top: 7px; position: absolute; width: 50px; height: 40px;" ImageUrl='<%=one5%>' />
 
-    <asp:Image ID="Image6" runat="server" style="z-index: 301; left: 115px; top: 132px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image7" runat="server" style="z-index: 301; left: 147px; top: 78px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image8" runat="server" style="z-index: 301; left: 150px; top: 32px; position: absolute; width: 20px; height: 21px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image9" runat="server" style="z-index: 301; left: 20px; top: 180px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image10" runat="server" style="z-index: 301; left: 170px; top: 7px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+                <asp:Image ID="Image6" runat="server" Style="z-index: 301; left: 115px; top: 132px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+                <asp:Image ID="Image7" runat="server" Style="z-index: 301; left: 147px; top: 78px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />
+                <asp:Image ID="Image8" runat="server" Style="z-index: 301; left: 150px; top: 32px; position: absolute; width: 20px; height: 21px;" ImageUrl="~/Images/tick.png" />
+                <asp:Image ID="Image9" runat="server" Style="z-index: 301; left: 20px; top: 180px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+                <asp:Image ID="Image10" runat="server" Style="z-index: 301; left: 170px; top: 7px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
 
-</div>
-    </div>
-    <label style="position: absolute; top: 73px; left: 120px; height: 19px; color: #FFCC00; height: 16px; position: absolute; font-size: 10px; width: 63px; right: 714px;">Treasure Map</label>
-    <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 9px; top: 196px; position: absolute; width: 180px" ForeColor="White"  ReadOnly="true" Font-Size="X-Small"></asp:TextBox>    
-<asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 97px; position: absolute; width: 83px; right: 595px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Time Remaining</asp:TextBox>
-<asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 285px; top: 92px; position: absolute; width: 33px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Medium">250</asp:TextBox>
-<asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 62px; position: absolute; width: 44px; right: 634px; bottom: 489px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Collect</asp:TextBox>
-<asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 239px; top: 66px; position: absolute; width: 47px; height: 9px; right: 582px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small"></asp:TextBox>
-<asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 75px; position: absolute; width: 78px; right: 600px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Conquer Players</asp:TextBox>
-<asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 285px; top: 76px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small"></asp:TextBox>
-<img id="Img7" src="https://treasurehunter22.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 56px; left: 303px; z-index: 21; visibility: visible; right: 550px; bottom: 491px; " >
-<img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 71px; left: 310px; z-index: 21; visibility: visible; right: 568px; bottom: 476px; " >        
-</form> 
+            </div>
+        </div>
+        <label style="position: absolute; top: 73px; left: 120px; height: 19px; color: #FFCC00; height: 16px; position: absolute; font-size: 10px; width: 63px; right: 714px;">Treasure Map</label>
+        <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 9px; top: 196px; position: absolute; width: 180px" ForeColor="White" ReadOnly="true" Font-Size="X-Small"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 97px; position: absolute; width: 83px; right: 595px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Time Remaining</asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 285px; top: 92px; position: absolute; width: 33px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Medium">250</asp:TextBox>
+        <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 62px; position: absolute; width: 44px; right: 634px; bottom: 489px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Collect</asp:TextBox>
+        <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 239px; top: 66px; position: absolute; width: 47px; height: 9px; right: 582px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small"></asp:TextBox>
+        <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 75px; position: absolute; width: 78px; right: 600px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Conquer Players</asp:TextBox>
+        <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 285px; top: 76px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small"></asp:TextBox>
+        <img id="Img7" src="https://treasurehunter22.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 56px; left: 303px; z-index: 21; visibility: visible; right: 550px; bottom: 491px;">
+        <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 71px; left: 310px; z-index: 21; visibility: visible; right: 568px; bottom: 476px;">
+    </form>
 
-<script runat="server">
-    //public static System.Timers.Timer timer = new System.Timers.Timer(10000); // This will raise the event every one minute.
-    //public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
-    //border: medium dashed #FF0000; 
-    string tsname = "";
-    string tsitems = "";
-    string tsrplayers = "";
-    string tsdplayers = "";
-    string tsrplayersdetails = "";
-    string tsdplayersdetails = "";
-    
-    string ts1itemsfulldetails = "";
-    string tsrplayerfulldetails = "";
-    string tb1fulldetails = "";
-    string tb2fulldetails = "";
-    string tb3fulldetails = "";
-    string tb4fulldetails = "";
-    string tb5fulldetails = "";
-    string iframeurl;
-    string ctrl1mainurl;
-    string ctrl1mainres;
-    string ctrl1mainleft;
-    string ctrl1maintop;
-    string ctrl1mainwidth;
-    string ctrl1mainheight;
-    string ctrl1mainname;
-    string ctrl2mainurl;
-    string ctrl2mainres;
-    string ctrl2mainname;
-    string ctrl2mainleft;
-    string ctrl2maintop;
-    string ctrl2mainwidth;
-    string ctrl2mainheight;
-    string ctrl3mainurl;
-    string ctrl3mainres;
-    string ctrl3mainname;
-    string ctrl3mainleft;
-    string ctrl3maintop;
-    string ctrl3mainwidth;
-    string ctrl3mainheight;
-    string ctrl4mainurl;
-    string ctrl4mainres;
-    string ctrl4mainname;
-    string ctrl4mainleft;
-    string ctrl4maintop;
-    string ctrl4mainwidth;
-    string ctrl4mainheight;
-    string ctrl5mainurl;
-    string ctrl5mainres;
-    string ctrl5mainname;
-    string ctrl5mainleft;
-    string ctrl5maintop;
-    string ctrl5mainwidth;
-    string ctrl5mainheight;
-    string propurl;
-    string collisionurl;
-    string ctrl1mainsound;
-    dynamic tsitemsfulldetails;
-    dynamic tb1itemsfulldetails;
-    dynamic tb2itemsfulldetails;
-    dynamic tb3itemsfulldetails;
-    dynamic tb4itemsfulldetails;
-    dynamic tb5itemsfulldetails;
-    string tsitems1;
-    string tbitems1;
-    string tbitems2;
-    string tbitems3;
-    string tbitems4;
-    string tbitems5;
+    <script runat="server">
+        //public static System.Timers.Timer timer = new System.Timers.Timer(10000); // This will raise the event every one minute.
+        //public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
+        //border: medium dashed #FF0000; 
+        string tsname = "";
+        string tsitems = "";
+        string tsrplayers = "";
+        string tsdplayers = "";
+        string tsrplayersdetails = "";
+        string tsdplayersdetails = "";
+
+        string ts1itemsfulldetails = "";
+        string tsrplayerfulldetails = "";
+        string tb1fulldetails = "";
+        string tb2fulldetails = "";
+        string tb3fulldetails = "";
+        string tb4fulldetails = "";
+        string tb5fulldetails = "";
+        string iframeurl;
+        string ctrl1mainurl;
+        string ctrl1mainres;
+        string ctrl1mainleft;
+        string ctrl1maintop;
+        string ctrl1mainwidth;
+        string ctrl1mainheight;
+        string ctrl1mainname;
+        string ctrl2mainurl;
+        string ctrl2mainres;
+        string ctrl2mainname;
+        string ctrl2mainleft;
+        string ctrl2maintop;
+        string ctrl2mainwidth;
+        string ctrl2mainheight;
+        string ctrl3mainurl;
+        string ctrl3mainres;
+        string ctrl3mainname;
+        string ctrl3mainleft;
+        string ctrl3maintop;
+        string ctrl3mainwidth;
+        string ctrl3mainheight;
+        string ctrl4mainurl;
+        string ctrl4mainres;
+        string ctrl4mainname;
+        string ctrl4mainleft;
+        string ctrl4maintop;
+        string ctrl4mainwidth;
+        string ctrl4mainheight;
+        string ctrl5mainurl;
+        string ctrl5mainres;
+        string ctrl5mainname;
+        string ctrl5mainleft;
+        string ctrl5maintop;
+        string ctrl5mainwidth;
+        string ctrl5mainheight;
+        string propurl;
+        string collisionurl;
+        string ctrl1mainsound;
+        dynamic tsitemsfulldetails;
+        dynamic tb1itemsfulldetails;
+        dynamic tb2itemsfulldetails;
+        dynamic tb3itemsfulldetails;
+        dynamic tb4itemsfulldetails;
+        dynamic tb5itemsfulldetails;
+        string tsitems1;
+        string tbitems1;
+        string tbitems2;
+        string tbitems3;
+        string tbitems4;
+        string tbitems5;
 
 
-    public class Playersdetails
-    {
-        public string tsrPlayerName { get; set; }
-        public string tsdPlayerName { get; set; }
-        public string tsrPlayerPosition { get; set; }
-        public string tsdPlayerPosition { get; set; }
-    }
+        public class Playersdetails
+        {
+            public string tsrPlayerName { get; set; }
+            public string tsdPlayerName { get; set; }
+            public string tsrPlayerPosition { get; set; }
+            public string tsdPlayerPosition { get; set; }
+        }
 
-    string username = "";
-    string logintimes = "";
-    string tspots = "";
-    string invites = "";
-    string reset = "";
-    string btspots = "";
-     public string goldcoins = "100";
-    string Hiddenfield1;
+        string username = "";
+        string logintimes = "";
+        string tspots = "";
+        string invites = "";
+        string reset = "";
+        string btspots = "";
+        public string goldcoins = "100";
+        string Hiddenfield1;
 
-    protected void checkusername()
-    {
-        
-           
-        Hiddenfield1 = Model.Name;
-        Hiddenfield1 = Hiddenfield1.Replace(" ", "");
-        if (Hiddenfield1 != null)
+        protected void checkusername()
         {
 
-            //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
 
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            DataTable dt = new DataTable();
-            dt = dv.ToTable();
-            //DataTable dtr = dt;
-            //DataRow[] uniname = dtr.Select("uname");
-            //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
-            //Label3.Text = dt.Rows[0][0].ToString();
-            if (dt.Rows.Count == 0)
+            Hiddenfield1 = Model.Name;
+            Hiddenfield1 = Hiddenfield1.Replace(" ", "");
+            if (Hiddenfield1 != null)
             {
-                //Insert User into appuser,loggeduser,ordercounter,winners;
-                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + "10020010100" + "', '{left : 0, top:0}', '" + "" + "', '" + "" + "', '100', 'yes', '0', '0', '0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
+
+                //Insert User into appuser,loggeduser,ordercounter,treasureprize;
+                AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
+
+                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                DataTable dt = new DataTable();
+                dt = dv.ToTable();
+                //DataTable dtr = dt;
+                //DataRow[] uniname = dtr.Select("uname");
+                //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
+                //Label3.Text = dt.Rows[0][0].ToString();
+                if (dt.Rows.Count == 0)
+                {
+                    //Insert User into appuser,loggeduser,ordercounter,winners;
+                    AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
+                    AccessDataSource1.Insert();
+                    AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                    AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + "10020010100" + "', '{left : 0, top:0}', '" + "" + "', '" + "" + "', '100', 'yes', '0', '0', '0')";
+                    AccessDataSource1.Insert();
+                    AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+                    AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
+                    AccessDataSource1.Insert();
+                    AccessDataSource1.SelectCommand = "SELECT * FROM winners";
+                    AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
+                    AccessDataSource1.Insert();
+                }
+
             }
+            else
+            {
 
+                Response.Redirect("~/Tspot/buy");
+            }
         }
-        else
+        public string one1 = "";
+        public string one2 = "";
+        public string one3 = "";
+        public string one4 = "";
+        public string one5 = "";
+        protected void gettreasurespot()
         {
 
-            Response.Redirect("~/Tspot/buy");
-        }
-    }
-public string one1 = "";
-public string one2 = "";
-public string one3 = "";
-public string one4 = "";
-public string one5 = "";
-    protected void gettreasurespot()
-    {
-        
-        AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        DataTable dt = new DataTable();
-        dt = dv.ToTable();
-
-        if (dt.Rows.Count != 0)
-        {
-
-            Random one = new Random();
-            int t1 = one.Next(0, dt.Rows.Count);
-            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-            tsitemsfulldetails = Json.Decode(tsitems);
-            one1 = tsitemsfulldetails.tsUrl;
-
-            one = new Random();
-            t1 = one.Next(0, dt.Rows.Count);
-            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-            tsitemsfulldetails = Json.Decode(tsitems);
-            one2 = tsitemsfulldetails.tsUrl;
-
-            one = new Random();
-            t1 = one.Next(0, dt.Rows.Count);
-            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-            tsitemsfulldetails = Json.Decode(tsitems);
-            one3 = tsitemsfulldetails.tsUrl;
-
-            one = new Random();
-            t1 = one.Next(0, dt.Rows.Count);
-            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-            tsitemsfulldetails = Json.Decode(tsitems);
-            one4 = tsitemsfulldetails.tsUrl;
-
-            one = new Random();
-            t1 = one.Next(0, dt.Rows.Count);
-            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-            tsitemsfulldetails = Json.Decode(tsitems);
-            one5 = tsitemsfulldetails.tsUrl;
-
-        }   
-        
-        if (dt.Rows.Count != 0)
-        {
-           //dt.Rows.Count
-            Random one = new Random();
-            int t1 = one.Next(0, dt.Rows.Count);
-            tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
-            tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-            tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
-            tsdplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
-            tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
-            tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
-
-        }
-
-        tsitemsfulldetails = Json.Decode(tsitems);
-        tsitems1 = tsitems;
-
-        iframeurl = tsitemsfulldetails.tsUrl;
-        
-        ctrl1mainres = tsitemsfulldetails.tsctrl1res;
-        ctrl1mainname = tsitemsfulldetails.tsctrl1name;
-        ctrl1mainleft = tsitemsfulldetails.tsctrl1left;
-        ctrl1maintop = tsitemsfulldetails.tsctrl1top;
-        ctrl1mainwidth = tsitemsfulldetails.tsctrl1width;
-        ctrl1mainheight = tsitemsfulldetails.tsctrl1height;
-        ctrl2mainres = tsitemsfulldetails.tsctrl2res;
-        ctrl2mainname = tsitemsfulldetails.tsctrl2name;
-        ctrl2mainleft = tsitemsfulldetails.tsctrl2left;
-        ctrl2maintop = tsitemsfulldetails.tsctrl2top;
-        ctrl2mainwidth = tsitemsfulldetails.tsctrl2width;
-        ctrl2mainheight = tsitemsfulldetails.tsctrl2height;
-        ctrl3mainres = tsitemsfulldetails.tsctrl3res;
-        ctrl3mainname = tsitemsfulldetails.tsctrl3name;
-        ctrl3mainleft = tsitemsfulldetails.tsctrl3left;
-        ctrl3maintop = tsitemsfulldetails.tsctrl3top;
-        ctrl3mainwidth = tsitemsfulldetails.tsctrl3width;
-        ctrl3mainheight = tsitemsfulldetails.tsctrl3height;
-        ctrl4mainres = tsitemsfulldetails.tsctrl4res;
-        ctrl4mainname = tsitemsfulldetails.tsctrl4name;
-        ctrl4mainleft = tsitemsfulldetails.tsctrl4left;
-        ctrl4maintop = tsitemsfulldetails.tsctrl4top;
-        ctrl4mainwidth = tsitemsfulldetails.tsctrl4width;
-        ctrl4mainheight = tsitemsfulldetails.tsctrl4height;
-        ctrl5mainres = tsitemsfulldetails.tsctrl5res;
-        ctrl5mainname = tsitemsfulldetails.tsctrl5name;
-        ctrl5mainleft = tsitemsfulldetails.tsctrl5left;
-        ctrl5maintop = tsitemsfulldetails.tsctrl5top;
-        ctrl5mainwidth = tsitemsfulldetails.tsctrl5width;
-        ctrl5mainheight = tsitemsfulldetails.tsctrl5height;
-
-        Label1.Text = tsitemsfulldetails.tsName;
-        string mytemp = tsitemsfulldetails.tsctrl1name;
-
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        dt = new DataTable();
-        dt = dv.ToTable();
-        tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
-        tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
-        tbitems1 = tb1fulldetails;
-        ctrl1mainurl = tb1itemsfulldetails.tbMain;
-
-        propurl = tb1itemsfulldetails.tbProp;
-        collisionurl = tb1itemsfulldetails.tbCollionResult;
-        //propurl = "http://localhost:64453/Images/crosshair.png";
-        //collisionurl = "http://localhost:64453/Images/orderedList0.png";
-        ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
-        //ctrl1mainsound = "http://localhost:64453/Images/ding.wav";
-        
-
-
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        dt = new DataTable();
-        dt = dv.ToTable();
-        tb2fulldetails = dt.Rows[0].Field<string>("tbdetails");
-        tb2itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb2fulldetails);
-        tbitems2 = tb2fulldetails;
-        //tb2itemsfulldetails = Json.Decode(tb2itemsfulldetails);
-       ctrl2mainurl = tb2itemsfulldetails.tbMain;
-
-       
-
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        dt = new DataTable();
-        dt = dv.ToTable();
-        tb3fulldetails = dt.Rows[0].Field<string>("tbdetails");
-
-        tb3itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb3fulldetails);
-        tbitems3 = tb3fulldetails;
-        ctrl3mainurl = tb3itemsfulldetails.tbMain;
-
-        
-
-
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        dt = new DataTable();
-        dt = dv.ToTable();
-        tb4fulldetails = dt.Rows[0].Field<string>("tbdetails");
-        tb4itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb4fulldetails);
-
-        ctrl4mainurl = tb4itemsfulldetails.tbMain;
-        tbitems4 = tb4fulldetails;
-        
-
-
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        dt = new DataTable();
-        dt = dv.ToTable();
-        tb5fulldetails = dt.Rows[0].Field<string>("tbdetails");
-
-        tb5itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb5fulldetails);
-        
-        ctrl5mainurl = tb5itemsfulldetails.tbMain;
-        tbitems5 = tb5fulldetails;
-        
-
-
-    }
-    protected void addloggedusers()
-    {
-
-        {
-            AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
+            AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
             DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
 
             if (dt.Rows.Count != 0)
             {
+
                 Random one = new Random();
-                int t1 = one.Next(1, dt.Rows.Count);
+                int t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one1 = tsitemsfulldetails.tsUrl;
+
+                one = new Random();
+                t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one2 = tsitemsfulldetails.tsUrl;
+
+                one = new Random();
+                t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one3 = tsitemsfulldetails.tsUrl;
+
+                one = new Random();
+                t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one4 = tsitemsfulldetails.tsUrl;
+
+                one = new Random();
+                t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one5 = tsitemsfulldetails.tsUrl;
+
+            }
+
+            if (dt.Rows.Count != 0)
+            {
+                //dt.Rows.Count
+                Random one = new Random();
+                int t1 = one.Next(0, dt.Rows.Count);
                 tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
                 tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
                 tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
                 tsdplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
                 tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
                 tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
+
             }
 
+            tsitemsfulldetails = Json.Decode(tsitems);
+            tsitems1 = tsitems;
+
+            iframeurl = tsitemsfulldetails.tsUrl;
+
+            ctrl1mainres = tsitemsfulldetails.tsctrl1res;
+            ctrl1mainname = tsitemsfulldetails.tsctrl1name;
+            ctrl1mainleft = tsitemsfulldetails.tsctrl1left;
+            ctrl1maintop = tsitemsfulldetails.tsctrl1top;
+            ctrl1mainwidth = tsitemsfulldetails.tsctrl1width;
+            ctrl1mainheight = tsitemsfulldetails.tsctrl1height;
+            ctrl2mainres = tsitemsfulldetails.tsctrl2res;
+            ctrl2mainname = tsitemsfulldetails.tsctrl2name;
+            ctrl2mainleft = tsitemsfulldetails.tsctrl2left;
+            ctrl2maintop = tsitemsfulldetails.tsctrl2top;
+            ctrl2mainwidth = tsitemsfulldetails.tsctrl2width;
+            ctrl2mainheight = tsitemsfulldetails.tsctrl2height;
+            ctrl3mainres = tsitemsfulldetails.tsctrl3res;
+            ctrl3mainname = tsitemsfulldetails.tsctrl3name;
+            ctrl3mainleft = tsitemsfulldetails.tsctrl3left;
+            ctrl3maintop = tsitemsfulldetails.tsctrl3top;
+            ctrl3mainwidth = tsitemsfulldetails.tsctrl3width;
+            ctrl3mainheight = tsitemsfulldetails.tsctrl3height;
+            ctrl4mainres = tsitemsfulldetails.tsctrl4res;
+            ctrl4mainname = tsitemsfulldetails.tsctrl4name;
+            ctrl4mainleft = tsitemsfulldetails.tsctrl4left;
+            ctrl4maintop = tsitemsfulldetails.tsctrl4top;
+            ctrl4mainwidth = tsitemsfulldetails.tsctrl4width;
+            ctrl4mainheight = tsitemsfulldetails.tsctrl4height;
+            ctrl5mainres = tsitemsfulldetails.tsctrl5res;
+            ctrl5mainname = tsitemsfulldetails.tsctrl5name;
+            ctrl5mainleft = tsitemsfulldetails.tsctrl5left;
+            ctrl5maintop = tsitemsfulldetails.tsctrl5top;
+            ctrl5mainwidth = tsitemsfulldetails.tsctrl5width;
+            ctrl5mainheight = tsitemsfulldetails.tsctrl5height;
+
+            Label1.Text = tsitemsfulldetails.tsName;
+            string mytemp = tsitemsfulldetails.tsctrl1name;
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
+            tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
+            tbitems1 = tb1fulldetails;
+            ctrl1mainurl = tb1itemsfulldetails.tbMain;
+
+            propurl = tb1itemsfulldetails.tbProp;
+            collisionurl = tb1itemsfulldetails.tbCollionResult;
+            //propurl = "http://localhost:64453/Images/crosshair.png";
+            //collisionurl = "http://localhost:64453/Images/orderedList0.png";
+            ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
+            //ctrl1mainsound = "http://localhost:64453/Images/ding.wav";
+
+
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb2fulldetails = dt.Rows[0].Field<string>("tbdetails");
+            tb2itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb2fulldetails);
+            tbitems2 = tb2fulldetails;
+            //tb2itemsfulldetails = Json.Decode(tb2itemsfulldetails);
+            ctrl2mainurl = tb2itemsfulldetails.tbMain;
+
+
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb3fulldetails = dt.Rows[0].Field<string>("tbdetails");
+
+            tb3itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb3fulldetails);
+            tbitems3 = tb3fulldetails;
+            ctrl3mainurl = tb3itemsfulldetails.tbMain;
+
+
+
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb4fulldetails = dt.Rows[0].Field<string>("tbdetails");
+            tb4itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb4fulldetails);
+
+            ctrl4mainurl = tb4itemsfulldetails.tbMain;
+            tbitems4 = tb4fulldetails;
+
+
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb5fulldetails = dt.Rows[0].Field<string>("tbdetails");
+
+            tb5itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb5fulldetails);
+
+            ctrl5mainurl = tb5itemsfulldetails.tbMain;
+            tbitems5 = tb5fulldetails;
+
+
+
         }
-
-
-    }
-
-    protected void addfriends()
-    {
-       
-        if (tsrplayers == "0")
+        protected void addloggedusers()
         {
-            
-        }
-        if (tsrplayers != "0")
-        {
-            
-        }
 
-       
-        Random one = new Random();
-        var fcount = Model.Friends.Data.Count;
-        if (fcount >= 5)
-        {
-            if (Model.Friends.Data.Count != 0)
             {
-                int r1 = one.Next(1, Model.Friends.Data.Count);
-                Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
-                Session["friend1pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                int r2 = one.Next(2, Model.Friends.Data.Count);
-                Session["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
-                Session["friend2pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                int r3 = one.Next(3, Model.Friends.Data.Count);
-                Session["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
-                Session["friend3pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                int r4 = one.Next(4, Model.Friends.Data.Count);
-                Session["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
-                Session["friend4pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                int r5 = one.Next(5, Model.Friends.Data.Count);
-                Session["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
-                Session["friend5pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
+                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                DataTable dt = new DataTable();
+                dt = dv.ToTable();
+
+                if (dt.Rows.Count != 0)
+                {
+                    Random one = new Random();
+                    int t1 = one.Next(1, dt.Rows.Count);
+                    tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
+                    tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                    tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
+                    tsdplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
+                    tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
+                    tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
+                }
+
+            }
+
+
+        }
+
+        protected void addfriends()
+        {
+
+            if (tsrplayers == "0")
+            {
+
+            }
+            if (tsrplayers != "0")
+            {
+
+            }
+
+
+            Random one = new Random();
+            var fcount = Model.Friends.Data.Count;
+            if (fcount >= 5)
+            {
+                if (Model.Friends.Data.Count != 0)
+                {
+                    int r1 = one.Next(1, Model.Friends.Data.Count);
+                    Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
+                    Session["friend1pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                    int r2 = one.Next(2, Model.Friends.Data.Count);
+                    Session["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
+                    Session["friend2pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                    int r3 = one.Next(3, Model.Friends.Data.Count);
+                    Session["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
+                    Session["friend3pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                    int r4 = one.Next(4, Model.Friends.Data.Count);
+                    Session["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
+                    Session["friend4pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                    int r5 = one.Next(5, Model.Friends.Data.Count);
+                    Session["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
+                    Session["friend5pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                }
+
+            }
+            else
+            {
+                Session["friend1"] = "sussie carr";
+                Session["friend2"] = "robert thomson";
+                Session["friend3"] = "annie san";
+                Session["friend4"] = "sui chang";
+                Session["friend5"] = "marie jane";
             }
 
         }
-        else
+
+        protected void gettreasureprize()
         {
-            Session["friend1"] = "sussie carr";
-            Session["friend2"] = "robert thomson";
-            Session["friend3"] = "annie san";
-            Session["friend4"] = "sui chang";
-            Session["friend5"] = "marie jane";
-        }
-
-    }
-
-    protected void gettreasureprize()
-    {
-        AccessDataSource1.SelectCommand = "SELECT treasurevalue FROM treasureprize";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        DataTable dt = new DataTable();
-        dt = dv.ToTable();
-        treasure.Text = dt.Rows[0].Field<string>("treasurevalue");
-        AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        dt = new DataTable();
-        dt = dv.ToTable();
-        if (dt.Rows.Count != 0)
-        {
-            goldcoins = dt.Rows[0].Field<string>("lucrisboos");
-        }
-        
-
-    }
-
-    
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        
-
-        if (Page.IsPostBack == false)
-        {
-            
-            checkusername();
-            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
-            AccessDataSource1.Update();
-            gettreasurespot();
-            addfriends();
-            gettreasureprize();
-            //timer.Enabled = true;
-            //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
-            
-        }
-
-
-        if (Page.IsPostBack == false)
-        {
-            AccessDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
+            AccessDataSource1.SelectCommand = "SELECT treasurevalue FROM treasureprize";
             DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
-            DataView uniname = dt.DefaultView;
+            treasure.Text = dt.Rows[0].Field<string>("treasurevalue");
+            AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
             if (dt.Rows.Count != 0)
             {
-                logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
-                btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
-            }
-            if (logintimes != "0" && btspots != "0")
-            {
-                //Timer1.Enabled = true;
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
-                AccessDataSource1.Update();
+                goldcoins = dt.Rows[0].Field<string>("lucrisboos");
             }
 
-            if (logintimes != "0" && btspots == "0")
-            {
-                Response.Redirect("~/Tspot/buy");
 
-            }
         }
-    
-    }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+
+            if (Page.IsPostBack == false)
+            {
+
+                checkusername();
+                AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+                AccessDataSource1.Update();
+                gettreasurespot();
+                addfriends();
+                gettreasureprize();
+                //timer.Enabled = true;
+                //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
+
+            }
+
+
+            if (Page.IsPostBack == false)
+            {
+                AccessDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
+                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                DataTable dt = new DataTable();
+                dt = dv.ToTable();
+                DataView uniname = dt.DefaultView;
+                if (dt.Rows.Count != 0)
+                {
+                    logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
+                    btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
+                }
+                if (logintimes != "0" && btspots != "0")
+                {
+                    //Timer1.Enabled = true;
+                    AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+                    AccessDataSource1.Update();
+                }
+
+                if (logintimes != "0" && btspots == "0")
+                {
+                    Response.Redirect("~/Tspot/buy");
+
+                }
+            }
+
+        }
 
     //public  int runnow(string c)
     //{
@@ -2396,10 +2406,10 @@ public string one5 = "";
     //}
         
      
-</script>
+    </script>
 
 
-   
+
 </body>
 </html>
 
