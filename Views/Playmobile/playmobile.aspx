@@ -7,8 +7,492 @@
 
 
 <!DOCTYPE html>
+
+  <script runat="server">
+        //public static System.Timers.Timer timer = new System.Timers.Timer(10000); // This will raise the event every one minute.
+        //public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
+        //border: medium dashed #FF0000; 
+        string tsname = "";
+        string tsitems = "";
+        string tsrplayers = "";
+        string tsdplayers = "";
+        string tsrplayersdetails = "";
+        string tsdplayersdetails = "";
+
+        string ts1itemsfulldetails = "";
+        string tsrplayerfulldetails = "";
+        string tb1fulldetails = "";
+        string tb2fulldetails = "";
+        string tb3fulldetails = "";
+        string tb4fulldetails = "";
+        string tb5fulldetails = "";
+        string iframeurl;
+        string ctrl1mainurl;
+        string ctrl1mainres;
+        string ctrl1mainleft;
+        string ctrl1maintop;
+        string ctrl1mainwidth;
+        string ctrl1mainheight;
+        string ctrl1mainname;
+        string ctrl2mainurl;
+        string ctrl2mainres;
+        string ctrl2mainname;
+        string ctrl2mainleft;
+        string ctrl2maintop;
+        string ctrl2mainwidth;
+        string ctrl2mainheight;
+        string ctrl3mainurl;
+        string ctrl3mainres;
+        string ctrl3mainname;
+        string ctrl3mainleft;
+        string ctrl3maintop;
+        string ctrl3mainwidth;
+        string ctrl3mainheight;
+        string ctrl4mainurl;
+        string ctrl4mainres;
+        string ctrl4mainname;
+        string ctrl4mainleft;
+        string ctrl4maintop;
+        string ctrl4mainwidth;
+        string ctrl4mainheight;
+        string ctrl5mainurl;
+        string ctrl5mainres;
+        string ctrl5mainname;
+        string ctrl5mainleft;
+        string ctrl5maintop;
+        string ctrl5mainwidth;
+        string ctrl5mainheight;
+        string propurl;
+        string collisionurl;
+        string ctrl1mainsound;
+        dynamic tsitemsfulldetails;
+        dynamic tb1itemsfulldetails;
+        dynamic tb2itemsfulldetails;
+        dynamic tb3itemsfulldetails;
+        dynamic tb4itemsfulldetails;
+        dynamic tb5itemsfulldetails;
+        string tsitems1;
+        string tbitems1;
+        string tbitems2;
+        string tbitems3;
+        string tbitems4;
+        string tbitems5;
+
+
+        public class Playersdetails
+        {
+            public string tsrPlayerName { get; set; }
+            public string tsdPlayerName { get; set; }
+            public string tsrPlayerPosition { get; set; }
+            public string tsdPlayerPosition { get; set; }
+        }
+
+        string username = "";
+        string logintimes = "";
+        string tspots = "";
+        string invites = "";
+        string reset = "";
+        string btspots = "";
+        public string goldcoins = "100";
+        string Hiddenfield1;
+
+        protected void checkusername()
+        {
+
+
+            Hiddenfield1 = Model.Name;
+            Hiddenfield1 = Hiddenfield1.Replace(" ", "");
+            if (Hiddenfield1 != null)
+            {
+
+                //Insert User into appuser,loggeduser,ordercounter,treasureprize;
+                AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
+
+                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                DataTable dt = new DataTable();
+                dt = dv.ToTable();
+                //DataTable dtr = dt;
+                //DataRow[] uniname = dtr.Select("uname");
+                //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
+                //Label3.Text = dt.Rows[0][0].ToString();
+                if (dt.Rows.Count == 0)
+                {
+                    //Insert User into appuser,loggeduser,ordercounter,winners;
+                    AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
+                    AccessDataSource1.Insert();
+                    AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                    AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + "10020010100" + "', '{left : 0, top:0}', '" + "" + "', '" + "" + "', '100', 'yes', '0', '0', '0')";
+                    AccessDataSource1.Insert();
+                    AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+                    AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
+                    AccessDataSource1.Insert();
+                    AccessDataSource1.SelectCommand = "SELECT * FROM winners";
+                    AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
+                    AccessDataSource1.Insert();
+                }
+
+            }
+            else
+            {
+
+                Response.Redirect("~/Tspot/buy");
+            }
+        }
+        public string one1 = "";
+        public string one2 = "";
+        public string one3 = "";
+        public string one4 = "";
+        public string one5 = "";
+        protected void gettreasurespot()
+        {
+
+            AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
+            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataTable dt = new DataTable();
+            dt = dv.ToTable();
+
+            if (dt.Rows.Count != 0)
+            {
+
+                Random one = new Random();
+                int t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one1 = tsitemsfulldetails.tsUrl;
+
+                one = new Random();
+                t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one2 = tsitemsfulldetails.tsUrl;
+
+                one = new Random();
+                t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one3 = tsitemsfulldetails.tsUrl;
+
+                one = new Random();
+                t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one4 = tsitemsfulldetails.tsUrl;
+
+                one = new Random();
+                t1 = one.Next(0, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsitemsfulldetails = Json.Decode(tsitems);
+                one5 = tsitemsfulldetails.tsUrl;
+
+            }
+
+            if (dt.Rows.Count != 0)
+            {
+                //dt.Rows.Count
+                Random one = new Random();
+                int t1 = one.Next(0, dt.Rows.Count);
+                tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
+                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
+                tsdplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
+                tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
+                tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
+
+            }
+
+            tsitemsfulldetails = Json.Decode(tsitems);
+            tsitems1 = tsitems;
+
+            iframeurl = tsitemsfulldetails.tsUrl;
+
+            ctrl1mainres = tsitemsfulldetails.tsctrl1res;
+            ctrl1mainname = tsitemsfulldetails.tsctrl1name;
+            ctrl1mainleft = tsitemsfulldetails.tsctrl1left;
+            ctrl1maintop = tsitemsfulldetails.tsctrl1top;
+            ctrl1mainwidth = tsitemsfulldetails.tsctrl1width;
+            ctrl1mainheight = tsitemsfulldetails.tsctrl1height;
+            ctrl2mainres = tsitemsfulldetails.tsctrl2res;
+            ctrl2mainname = tsitemsfulldetails.tsctrl2name;
+            ctrl2mainleft = tsitemsfulldetails.tsctrl2left;
+            ctrl2maintop = tsitemsfulldetails.tsctrl2top;
+            ctrl2mainwidth = tsitemsfulldetails.tsctrl2width;
+            ctrl2mainheight = tsitemsfulldetails.tsctrl2height;
+            ctrl3mainres = tsitemsfulldetails.tsctrl3res;
+            ctrl3mainname = tsitemsfulldetails.tsctrl3name;
+            ctrl3mainleft = tsitemsfulldetails.tsctrl3left;
+            ctrl3maintop = tsitemsfulldetails.tsctrl3top;
+            ctrl3mainwidth = tsitemsfulldetails.tsctrl3width;
+            ctrl3mainheight = tsitemsfulldetails.tsctrl3height;
+            ctrl4mainres = tsitemsfulldetails.tsctrl4res;
+            ctrl4mainname = tsitemsfulldetails.tsctrl4name;
+            ctrl4mainleft = tsitemsfulldetails.tsctrl4left;
+            ctrl4maintop = tsitemsfulldetails.tsctrl4top;
+            ctrl4mainwidth = tsitemsfulldetails.tsctrl4width;
+            ctrl4mainheight = tsitemsfulldetails.tsctrl4height;
+            ctrl5mainres = tsitemsfulldetails.tsctrl5res;
+            ctrl5mainname = tsitemsfulldetails.tsctrl5name;
+            ctrl5mainleft = tsitemsfulldetails.tsctrl5left;
+            ctrl5maintop = tsitemsfulldetails.tsctrl5top;
+            ctrl5mainwidth = tsitemsfulldetails.tsctrl5width;
+            ctrl5mainheight = tsitemsfulldetails.tsctrl5height;
+
+            Label1.Text = tsitemsfulldetails.tsName;
+            string mytemp = tsitemsfulldetails.tsctrl1name;
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
+            tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
+            tbitems1 = tb1fulldetails;
+            ctrl1mainurl = tb1itemsfulldetails.tbMain;
+
+            propurl = tb1itemsfulldetails.tbProp;
+            collisionurl = tb1itemsfulldetails.tbCollionResult;
+            //propurl = "http://localhost:64453/Images/crosshair.png";
+            //collisionurl = "http://localhost:64453/Images/orderedList0.png";
+            ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
+            //ctrl1mainsound = "http://localhost:64453/Images/ding.wav";
+
+
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb2fulldetails = dt.Rows[0].Field<string>("tbdetails");
+            tb2itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb2fulldetails);
+            tbitems2 = tb2fulldetails;
+            //tb2itemsfulldetails = Json.Decode(tb2itemsfulldetails);
+            ctrl2mainurl = tb2itemsfulldetails.tbMain;
+
+
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb3fulldetails = dt.Rows[0].Field<string>("tbdetails");
+
+            tb3itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb3fulldetails);
+            tbitems3 = tb3fulldetails;
+            ctrl3mainurl = tb3itemsfulldetails.tbMain;
+
+
+
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb4fulldetails = dt.Rows[0].Field<string>("tbdetails");
+            tb4itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb4fulldetails);
+
+            ctrl4mainurl = tb4itemsfulldetails.tbMain;
+            tbitems4 = tb4fulldetails;
+
+
+
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            tb5fulldetails = dt.Rows[0].Field<string>("tbdetails");
+
+            tb5itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb5fulldetails);
+
+            ctrl5mainurl = tb5itemsfulldetails.tbMain;
+            tbitems5 = tb5fulldetails;
+
+
+
+        }
+        protected void addloggedusers()
+        {
+
+            {
+                AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
+                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                DataTable dt = new DataTable();
+                dt = dv.ToTable();
+
+                if (dt.Rows.Count != 0)
+                {
+                    Random one = new Random();
+                    int t1 = one.Next(1, dt.Rows.Count);
+                    tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
+                    tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
+                    tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
+                    tsdplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
+                    tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
+                    tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
+                }
+
+            }
+
+
+        }
+
+        protected void addfriends()
+        {
+
+            if (tsrplayers == "0")
+            {
+
+            }
+            if (tsrplayers != "0")
+            {
+
+            }
+
+
+            Random one = new Random();
+            var fcount = Model.Friends.Data.Count;
+            if (fcount >= 5)
+            {
+                if (Model.Friends.Data.Count != 0)
+                {
+                    int r1 = one.Next(1, Model.Friends.Data.Count);
+                    Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
+                    Session["friend1pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                    int r2 = one.Next(2, Model.Friends.Data.Count);
+                    Session["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
+                    Session["friend2pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                    int r3 = one.Next(3, Model.Friends.Data.Count);
+                    Session["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
+                    Session["friend3pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                    int r4 = one.Next(4, Model.Friends.Data.Count);
+                    Session["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
+                    Session["friend4pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                    int r5 = one.Next(5, Model.Friends.Data.Count);
+                    Session["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
+                    Session["friend5pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                }
+
+            }
+            else
+            {
+                Session["friend1"] = "sussie carr";
+                Session["friend2"] = "robert thomson";
+                Session["friend3"] = "annie san";
+                Session["friend4"] = "sui chang";
+                Session["friend5"] = "marie jane";
+            }
+
+        }
+
+        protected void gettreasureprize()
+        {
+            AccessDataSource1.SelectCommand = "SELECT treasurevalue FROM treasureprize";
+            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataTable dt = new DataTable();
+            dt = dv.ToTable();
+            treasure.Text = dt.Rows[0].Field<string>("treasurevalue");
+            AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+            if (dt.Rows.Count != 0)
+            {
+                goldcoins = dt.Rows[0].Field<string>("lucrisboos");
+            }
+
+
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+
+            if (Page.IsPostBack == false)
+            {
+
+                checkusername();
+                AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+                AccessDataSource1.Update();
+                gettreasurespot();
+                addfriends();
+                gettreasureprize();
+                //timer.Enabled = true;
+                //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
+
+            }
+
+
+            if (Page.IsPostBack == false)
+            {
+                AccessDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
+                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                DataTable dt = new DataTable();
+                dt = dv.ToTable();
+                DataView uniname = dt.DefaultView;
+                if (dt.Rows.Count != 0)
+                {
+                    logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
+                    btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
+                }
+                if (logintimes != "0" && btspots != "0")
+                {
+                    //Timer1.Enabled = true;
+                    AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+                    AccessDataSource1.Update();
+                }
+
+                if (logintimes != "0" && btspots == "0")
+                {
+                    Response.Redirect("~/Tspot/buy");
+
+                }
+            }
+
+        }
+
+    //public  int runnow(string c)
+    //{
+    //    goldcoins = c;
+    //    AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+    //    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
+
+    //    AccessDataSource1.Update();
+    //    gettreasurespot();
+    //    return 1;
+    //}
+    
+    //protected void startupdatecoins(object sender, System.Timers.ElapsedEventArgs e)
+    //{
+
+    //    timer1.Enabled = true;
+    //    timer1.Elapsed += new System.Timers.ElapsedEventHandler(updatecoins);
+
+    //}
+
+
+    //public static string mycoins = "";
+
+    //public void updatecoins(object sender, System.Timers.ElapsedEventArgs e)
+    //{
+
+    //    if (Session["mycoins"] != null)
+
+    //        goldcoins = Session["mycoins"].ToString();
+             
+    //            AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+    //            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
+
+    //            AccessDataSource1.Update();
+    //            gettreasurespot();
+
+            
+    //}
+        
+     
+    </script>
+
 <html>
-<head id="Head1" runat="server">
+<head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>treasurehunter22 Mobile</title>
 
@@ -78,7 +562,7 @@
     <script src="https://treasurehunter22.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
     <script src="https://treasurehunter22.apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>
     <script src="https://treasurehunter22.apphb.com/SignalR/hubs"></script>
-    `<script>
+    `<script type="text/javascript">
          var chat = $.connection.sysmessages;
          var pname = '<%=Hiddenfield1%>';
 
@@ -1925,491 +2409,7 @@
         <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 71px; left: 310px; z-index: 21; visibility: visible; right: 568px; bottom: 476px;">
     </form>
 
-    <script runat="server">
-        //public static System.Timers.Timer timer = new System.Timers.Timer(10000); // This will raise the event every one minute.
-        //public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
-        //border: medium dashed #FF0000; 
-        string tsname = "";
-        string tsitems = "";
-        string tsrplayers = "";
-        string tsdplayers = "";
-        string tsrplayersdetails = "";
-        string tsdplayersdetails = "";
-
-        string ts1itemsfulldetails = "";
-        string tsrplayerfulldetails = "";
-        string tb1fulldetails = "";
-        string tb2fulldetails = "";
-        string tb3fulldetails = "";
-        string tb4fulldetails = "";
-        string tb5fulldetails = "";
-        string iframeurl;
-        string ctrl1mainurl;
-        string ctrl1mainres;
-        string ctrl1mainleft;
-        string ctrl1maintop;
-        string ctrl1mainwidth;
-        string ctrl1mainheight;
-        string ctrl1mainname;
-        string ctrl2mainurl;
-        string ctrl2mainres;
-        string ctrl2mainname;
-        string ctrl2mainleft;
-        string ctrl2maintop;
-        string ctrl2mainwidth;
-        string ctrl2mainheight;
-        string ctrl3mainurl;
-        string ctrl3mainres;
-        string ctrl3mainname;
-        string ctrl3mainleft;
-        string ctrl3maintop;
-        string ctrl3mainwidth;
-        string ctrl3mainheight;
-        string ctrl4mainurl;
-        string ctrl4mainres;
-        string ctrl4mainname;
-        string ctrl4mainleft;
-        string ctrl4maintop;
-        string ctrl4mainwidth;
-        string ctrl4mainheight;
-        string ctrl5mainurl;
-        string ctrl5mainres;
-        string ctrl5mainname;
-        string ctrl5mainleft;
-        string ctrl5maintop;
-        string ctrl5mainwidth;
-        string ctrl5mainheight;
-        string propurl;
-        string collisionurl;
-        string ctrl1mainsound;
-        dynamic tsitemsfulldetails;
-        dynamic tb1itemsfulldetails;
-        dynamic tb2itemsfulldetails;
-        dynamic tb3itemsfulldetails;
-        dynamic tb4itemsfulldetails;
-        dynamic tb5itemsfulldetails;
-        string tsitems1;
-        string tbitems1;
-        string tbitems2;
-        string tbitems3;
-        string tbitems4;
-        string tbitems5;
-
-
-        public class Playersdetails
-        {
-            public string tsrPlayerName { get; set; }
-            public string tsdPlayerName { get; set; }
-            public string tsrPlayerPosition { get; set; }
-            public string tsdPlayerPosition { get; set; }
-        }
-
-        string username = "";
-        string logintimes = "";
-        string tspots = "";
-        string invites = "";
-        string reset = "";
-        string btspots = "";
-        public string goldcoins = "100";
-        string Hiddenfield1;
-
-        protected void checkusername()
-        {
-
-
-            Hiddenfield1 = Model.Name;
-            Hiddenfield1 = Hiddenfield1.Replace(" ", "");
-            if (Hiddenfield1 != null)
-            {
-
-                //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-                AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
-
-                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-                DataTable dt = new DataTable();
-                dt = dv.ToTable();
-                //DataTable dtr = dt;
-                //DataRow[] uniname = dtr.Select("uname");
-                //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
-                //Label3.Text = dt.Rows[0][0].ToString();
-                if (dt.Rows.Count == 0)
-                {
-                    //Insert User into appuser,loggeduser,ordercounter,winners;
-                    AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
-                    AccessDataSource1.Insert();
-                    AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                    AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + "10020010100" + "', '{left : 0, top:0}', '" + "" + "', '" + "" + "', '100', 'yes', '0', '0', '0')";
-                    AccessDataSource1.Insert();
-                    AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                    AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-                    AccessDataSource1.Insert();
-                    AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                    AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-                    AccessDataSource1.Insert();
-                }
-
-            }
-            else
-            {
-
-                Response.Redirect("~/Tspot/buy");
-            }
-        }
-        public string one1 = "";
-        public string one2 = "";
-        public string one3 = "";
-        public string one4 = "";
-        public string one5 = "";
-        protected void gettreasurespot()
-        {
-
-            AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            DataTable dt = new DataTable();
-            dt = dv.ToTable();
-
-            if (dt.Rows.Count != 0)
-            {
-
-                Random one = new Random();
-                int t1 = one.Next(0, dt.Rows.Count);
-                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-                tsitemsfulldetails = Json.Decode(tsitems);
-                one1 = tsitemsfulldetails.tsUrl;
-
-                one = new Random();
-                t1 = one.Next(0, dt.Rows.Count);
-                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-                tsitemsfulldetails = Json.Decode(tsitems);
-                one2 = tsitemsfulldetails.tsUrl;
-
-                one = new Random();
-                t1 = one.Next(0, dt.Rows.Count);
-                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-                tsitemsfulldetails = Json.Decode(tsitems);
-                one3 = tsitemsfulldetails.tsUrl;
-
-                one = new Random();
-                t1 = one.Next(0, dt.Rows.Count);
-                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-                tsitemsfulldetails = Json.Decode(tsitems);
-                one4 = tsitemsfulldetails.tsUrl;
-
-                one = new Random();
-                t1 = one.Next(0, dt.Rows.Count);
-                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-                tsitemsfulldetails = Json.Decode(tsitems);
-                one5 = tsitemsfulldetails.tsUrl;
-
-            }
-
-            if (dt.Rows.Count != 0)
-            {
-                //dt.Rows.Count
-                Random one = new Random();
-                int t1 = one.Next(0, dt.Rows.Count);
-                tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
-                tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-                tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
-                tsdplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
-                tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
-                tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
-
-            }
-
-            tsitemsfulldetails = Json.Decode(tsitems);
-            tsitems1 = tsitems;
-
-            iframeurl = tsitemsfulldetails.tsUrl;
-
-            ctrl1mainres = tsitemsfulldetails.tsctrl1res;
-            ctrl1mainname = tsitemsfulldetails.tsctrl1name;
-            ctrl1mainleft = tsitemsfulldetails.tsctrl1left;
-            ctrl1maintop = tsitemsfulldetails.tsctrl1top;
-            ctrl1mainwidth = tsitemsfulldetails.tsctrl1width;
-            ctrl1mainheight = tsitemsfulldetails.tsctrl1height;
-            ctrl2mainres = tsitemsfulldetails.tsctrl2res;
-            ctrl2mainname = tsitemsfulldetails.tsctrl2name;
-            ctrl2mainleft = tsitemsfulldetails.tsctrl2left;
-            ctrl2maintop = tsitemsfulldetails.tsctrl2top;
-            ctrl2mainwidth = tsitemsfulldetails.tsctrl2width;
-            ctrl2mainheight = tsitemsfulldetails.tsctrl2height;
-            ctrl3mainres = tsitemsfulldetails.tsctrl3res;
-            ctrl3mainname = tsitemsfulldetails.tsctrl3name;
-            ctrl3mainleft = tsitemsfulldetails.tsctrl3left;
-            ctrl3maintop = tsitemsfulldetails.tsctrl3top;
-            ctrl3mainwidth = tsitemsfulldetails.tsctrl3width;
-            ctrl3mainheight = tsitemsfulldetails.tsctrl3height;
-            ctrl4mainres = tsitemsfulldetails.tsctrl4res;
-            ctrl4mainname = tsitemsfulldetails.tsctrl4name;
-            ctrl4mainleft = tsitemsfulldetails.tsctrl4left;
-            ctrl4maintop = tsitemsfulldetails.tsctrl4top;
-            ctrl4mainwidth = tsitemsfulldetails.tsctrl4width;
-            ctrl4mainheight = tsitemsfulldetails.tsctrl4height;
-            ctrl5mainres = tsitemsfulldetails.tsctrl5res;
-            ctrl5mainname = tsitemsfulldetails.tsctrl5name;
-            ctrl5mainleft = tsitemsfulldetails.tsctrl5left;
-            ctrl5maintop = tsitemsfulldetails.tsctrl5top;
-            ctrl5mainwidth = tsitemsfulldetails.tsctrl5width;
-            ctrl5mainheight = tsitemsfulldetails.tsctrl5height;
-
-            Label1.Text = tsitemsfulldetails.tsName;
-            string mytemp = tsitemsfulldetails.tsctrl1name;
-
-            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
-            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            dt = new DataTable();
-            dt = dv.ToTable();
-            tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
-            tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
-            tbitems1 = tb1fulldetails;
-            ctrl1mainurl = tb1itemsfulldetails.tbMain;
-
-            propurl = tb1itemsfulldetails.tbProp;
-            collisionurl = tb1itemsfulldetails.tbCollionResult;
-            //propurl = "http://localhost:64453/Images/crosshair.png";
-            //collisionurl = "http://localhost:64453/Images/orderedList0.png";
-            ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
-            //ctrl1mainsound = "http://localhost:64453/Images/ding.wav";
-
-
-
-            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
-            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            dt = new DataTable();
-            dt = dv.ToTable();
-            tb2fulldetails = dt.Rows[0].Field<string>("tbdetails");
-            tb2itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb2fulldetails);
-            tbitems2 = tb2fulldetails;
-            //tb2itemsfulldetails = Json.Decode(tb2itemsfulldetails);
-            ctrl2mainurl = tb2itemsfulldetails.tbMain;
-
-
-
-            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
-            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            dt = new DataTable();
-            dt = dv.ToTable();
-            tb3fulldetails = dt.Rows[0].Field<string>("tbdetails");
-
-            tb3itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb3fulldetails);
-            tbitems3 = tb3fulldetails;
-            ctrl3mainurl = tb3itemsfulldetails.tbMain;
-
-
-
-
-            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
-            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            dt = new DataTable();
-            dt = dv.ToTable();
-            tb4fulldetails = dt.Rows[0].Field<string>("tbdetails");
-            tb4itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb4fulldetails);
-
-            ctrl4mainurl = tb4itemsfulldetails.tbMain;
-            tbitems4 = tb4fulldetails;
-
-
-
-            AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
-            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            dt = new DataTable();
-            dt = dv.ToTable();
-            tb5fulldetails = dt.Rows[0].Field<string>("tbdetails");
-
-            tb5itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb5fulldetails);
-
-            ctrl5mainurl = tb5itemsfulldetails.tbMain;
-            tbitems5 = tb5fulldetails;
-
-
-
-        }
-        protected void addloggedusers()
-        {
-
-            {
-                AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
-                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-                DataTable dt = new DataTable();
-                dt = dv.ToTable();
-
-                if (dt.Rows.Count != 0)
-                {
-                    Random one = new Random();
-                    int t1 = one.Next(1, dt.Rows.Count);
-                    tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
-                    tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-                    tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
-                    tsdplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
-                    tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
-                    tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
-                }
-
-            }
-
-
-        }
-
-        protected void addfriends()
-        {
-
-            if (tsrplayers == "0")
-            {
-
-            }
-            if (tsrplayers != "0")
-            {
-
-            }
-
-
-            Random one = new Random();
-            var fcount = Model.Friends.Data.Count;
-            if (fcount >= 5)
-            {
-                if (Model.Friends.Data.Count != 0)
-                {
-                    int r1 = one.Next(1, Model.Friends.Data.Count);
-                    Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
-                    Session["friend1pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                    int r2 = one.Next(2, Model.Friends.Data.Count);
-                    Session["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
-                    Session["friend2pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                    int r3 = one.Next(3, Model.Friends.Data.Count);
-                    Session["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
-                    Session["friend3pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                    int r4 = one.Next(4, Model.Friends.Data.Count);
-                    Session["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
-                    Session["friend4pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                    int r5 = one.Next(5, Model.Friends.Data.Count);
-                    Session["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
-                    Session["friend5pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                }
-
-            }
-            else
-            {
-                Session["friend1"] = "sussie carr";
-                Session["friend2"] = "robert thomson";
-                Session["friend3"] = "annie san";
-                Session["friend4"] = "sui chang";
-                Session["friend5"] = "marie jane";
-            }
-
-        }
-
-        protected void gettreasureprize()
-        {
-            AccessDataSource1.SelectCommand = "SELECT treasurevalue FROM treasureprize";
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            DataTable dt = new DataTable();
-            dt = dv.ToTable();
-            treasure.Text = dt.Rows[0].Field<string>("treasurevalue");
-            AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            dt = new DataTable();
-            dt = dv.ToTable();
-            if (dt.Rows.Count != 0)
-            {
-                goldcoins = dt.Rows[0].Field<string>("lucrisboos");
-            }
-
-
-        }
-
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-
-            if (Page.IsPostBack == false)
-            {
-
-                checkusername();
-                AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
-                AccessDataSource1.Update();
-                gettreasurespot();
-                addfriends();
-                gettreasureprize();
-                //timer.Enabled = true;
-                //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
-
-            }
-
-
-            if (Page.IsPostBack == false)
-            {
-                AccessDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
-                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-                DataTable dt = new DataTable();
-                dt = dv.ToTable();
-                DataView uniname = dt.DefaultView;
-                if (dt.Rows.Count != 0)
-                {
-                    logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
-                    btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
-                }
-                if (logintimes != "0" && btspots != "0")
-                {
-                    //Timer1.Enabled = true;
-                    AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
-                    AccessDataSource1.Update();
-                }
-
-                if (logintimes != "0" && btspots == "0")
-                {
-                    Response.Redirect("~/Tspot/buy");
-
-                }
-            }
-
-        }
-
-    //public  int runnow(string c)
-    //{
-    //    goldcoins = c;
-    //    AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-    //    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
-
-    //    AccessDataSource1.Update();
-    //    gettreasurespot();
-    //    return 1;
-    //}
-    
-    //protected void startupdatecoins(object sender, System.Timers.ElapsedEventArgs e)
-    //{
-
-    //    timer1.Enabled = true;
-    //    timer1.Elapsed += new System.Timers.ElapsedEventHandler(updatecoins);
-
-    //}
-
-
-    //public static string mycoins = "";
-
-    //public void updatecoins(object sender, System.Timers.ElapsedEventArgs e)
-    //{
-
-    //    if (Session["mycoins"] != null)
-
-    //        goldcoins = Session["mycoins"].ToString();
-             
-    //            AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-    //            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
-
-    //            AccessDataSource1.Update();
-    //            gettreasurespot();
-
-            
-    //}
-        
-     
-    </script>
-
-
-
+  
 </body>
 </html>
 
