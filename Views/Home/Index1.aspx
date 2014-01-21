@@ -20,6 +20,7 @@
     
     protected void checkusername()
     {
+       
         Hiddenfield1 = Model.Name;
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
         Session["loggeduser"] = Model.Name;
@@ -210,6 +211,11 @@
     
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Request.Browser.IsMobileDevice)
+        {
+            Response.Redirect("https://treasurehunter/apphb.com/Indexmobile/indexmobile");
+        }
+        
         checkusername();
         addfriends();
         verifysettings();
