@@ -760,7 +760,11 @@ public string one5 = "";
                     ctrl1.style.width = "100px";
                     ctrl1.style.height = "100px";
                     ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl1.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    ctrl1.style.top = mytemp;
                     visible1 = "yes";
                 }
                 if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
@@ -768,7 +772,11 @@ public string one5 = "";
                     ctrl2.style.width = "100px";
                     ctrl2.style.height = "100px";
                     ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl2.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    ctrl2.style.top = mytemp;
                     visible2 = "yes";
                 }
                 if (randno1 == 3 || randno2 == 3 || randno3 == 3) {
@@ -776,7 +784,11 @@ public string one5 = "";
                     ctrl3.style.width = "100px";
                     ctrl3.style.height = "100px";
                     ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl3.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    ctrl3.style.top = mytemp;
                     visible3 = "yes";
                 }
                 if (randno1 == 4 || randno2 == 4 || randno3 == 4) {
@@ -784,7 +796,11 @@ public string one5 = "";
                     ctrl4.style.width = "100px";
                     ctrl4.style.height = "100px";
                     ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl4.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    ctrl4.style.top = mytemp;
                     visible4 = "yes";
                 }
                 if (randno1 == 5 || randno2 == 5 || randno3 == 5) {
@@ -792,7 +808,11 @@ public string one5 = "";
                     ctrl5.style.width = "100px";
                     ctrl5.style.height = "100px";
                     ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    ctrl5.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    ctrl5.style.top = mytemp;
                     visible5 = "yes";
                 }
                 if (randno1 == 6 || randno2 == 6 || randno3 == 6) {
@@ -804,7 +824,11 @@ public string one5 = "";
                         Img1.style.height = "30px";
                     }
                     Img1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img1.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    Img1.style.top = mytemp;
                 }
                 if (randno1 == 7 || randno2 == 7 || randno3 == 7) {
                     Img2.style.visibility = "visible";
@@ -815,7 +839,11 @@ public string one5 = "";
                         Img2.style.height = "30px";
                     }
                     Img2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img2.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    Img2.style.top = mytemp;
                 }
                 if (randno1 == 8 || randno2 == 8 || randno3 == 8) {
                     Img3.style.visibility = "visible";
@@ -826,7 +854,11 @@ public string one5 = "";
                         Img3.style.height = "30px";
                     }
                     Img3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img3.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    Img3.style.top = mytemp;
                 }
                 if (randno1 == 9 || randno2 == 9 || randno3 == 9) {
                     Img4.style.visibility = "visible";
@@ -837,7 +869,11 @@ public string one5 = "";
                         Img4.style.height = "30px";
                     }
                     Img4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img4.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    Img4.style.top = mytemp;
                 }
                 if (randno1 == 10 || randno2 == 10 || randno3 == 10) {
                     Img5.style.visibility = "visible";
@@ -848,7 +884,11 @@ public string one5 = "";
                         Img5.style.height = "30px";
                     }
                     Img5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                    Img5.style.top = Math.floor(Math.random() * (275 - parseInt(temp.replace("px", ""), 10)) + 1) + parseInt(temp.replace("px", ""), 10) + "px";
+                    var mytemp = parseInt(temp.replace("px", ""), 10);
+                    var mytemp = 275 - mytemp;
+                    var mytemp = Math.floor(Math.random() * (mytemp - 1) + 1);
+                    var mytemp = mytemp + parseInt(temp.replace("px", ""), 10) + "px";
+                    Img5.style.top = mytemp;
                 }
 
 
