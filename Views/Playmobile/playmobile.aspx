@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.AccountModels>" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 
 <%@ Import Namespace="System.Data" %>
@@ -97,9 +97,9 @@
 
     protected void checkusername()
     {
-        
-         
-        Hiddenfield1 = username;
+
+
+        Hiddenfield1 = Convert.ToString(Session["loggeduser"]); 
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
         if (Hiddenfield1 != null)
         {
@@ -249,10 +249,10 @@ public string one5 = "";
 
         propurl = tb1itemsfulldetails.tbProp;
         collisionurl = tb1itemsfulldetails.tbCollionResult;
-        //propurl = "http://localhost:64453/Images/crosshair.png";
-        //collisionurl = "http://localhost:64453/Images/orderedList0.png";
+        //propurl = "http://localhost:44301/Images/crosshair.png";
+        //collisionurl = "http://localhost:44301/Images/orderedList0.png";
         ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
-        //ctrl1mainsound = "http://localhost:64453/Images/ding.wav";
+        //ctrl1mainsound = "http://localhost:44301/Images/ding.wav";
         
 
 
@@ -333,53 +333,7 @@ public string one5 = "";
 
     }
 
-    protected void addfriends()
-    {
-       
-        if (tsrplayers == "0")
-        {
-            
-        }
-        if (tsrplayers != "0")
-        {
-            
-        }
-
-       
-        Random one = new Random();
-        var fcount = Model.Friends.Data.Count;
-        if (fcount >= 5)
-        {
-            if (Model.Friends.Data.Count != 0)
-            {
-                int r1 = one.Next(1, Model.Friends.Data.Count);
-                Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
-                Session["friend1pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                int r2 = one.Next(2, Model.Friends.Data.Count);
-                Session["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
-                Session["friend2pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                int r3 = one.Next(3, Model.Friends.Data.Count);
-                Session["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
-                Session["friend3pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                int r4 = one.Next(4, Model.Friends.Data.Count);
-                Session["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
-                Session["friend4pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-                int r5 = one.Next(5, Model.Friends.Data.Count);
-                Session["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
-                Session["friend5pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
-            }
-
-        }
-        else
-        {
-            Session["friend1"] = "sussie carr";
-            Session["friend2"] = "robert thomson";
-            Session["friend3"] = "annie san";
-            Session["friend4"] = "sui chang";
-            Session["friend5"] = "marie jane";
-        }
-
-    }
+   
 
     protected void gettreasureprize()
     {
@@ -412,7 +366,6 @@ public string one5 = "";
             AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
             AccessDataSource1.Update();
             gettreasurespot();
-            addfriends();
             gettreasureprize();
             //timer.Enabled = true;
             //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
@@ -2299,11 +2252,33 @@ public string one5 = "";
             });
 
     </script>
+    <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123405257731200";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  
+    <script type="text/javascript" >
+        FB.init({ appId: "123405257731200", status: true, cookie: true });
+
+        // The dialog only opens if you've implemented the
+        // Credits Callback payments_get_items.
+        function feed() {
+            FB.ui({
+                method: 'feed',
+                redirect_uri: 'https://apps.facebook.com/treasure_huntermp',
+                link: 'https://treasurehunter.apphb.com/',
+                caption: 'Treasure Hunter 3D Multiplayer Game - Completed TreasureSpot ' + '<%=Label1.Text%>' + 'and Collected ' + '<%=points.Text%>',
+            }, function (response) { });
+        }
+  </script>        
  <form id="form1" runat="server" >
 
         <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
 
-
+     <div class="fb-like" data-href="https://www.facebook.com/TreasureHunterCommunity" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="position: absolute; width: 88px; height: 23px; top: 184px; right: 506px; bottom: 359px; left: 278px; font-size: x-small;"></div>
 
         
 
@@ -2314,7 +2289,7 @@ public string one5 = "";
 
 
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#9999FF" Style="z-index: 1; left: 3px; top: 0px; position: absolute; width: 208px; height: 18px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
-        <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="X-Small" ForeColor="#9999FF" Style="z-index: 1; left: 10px; top: 180px; position: absolute; width: 294px; height: 19px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="X-Small" ForeColor="#9999FF" Style="z-index: 1; left: 10px; top: 180px; position: absolute; width: 261px; height: 19px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
         <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; left: 66px; top: 48px; position: absolute; height: 10px; width: 70px; right: 736px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="X-Small">Buy a Treasure Spot</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; top: 46px; position: absolute; right: 581px; width: 90px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled" Font-Size="X-Small">Buy a ToolBox Item</asp:HyperLink>
@@ -2364,11 +2339,11 @@ public string one5 = "";
        <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 33px; height: 28px; visibility: visible; z-index: 1; left: 11px; top: 107px; position: absolute; bottom: 431px;" id="friendimage" />
     <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 1px; top: 216px; position: absolute; background-color: transparent; width: 365px; height: 297px;" class="twoto3d" id="fplayer" />
 <label style="position: absolute; top: 149px; left: 113px; height: 19px; color: #FFFFFF; font-size: x-small;">Talk to Players</label>
-<input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 186px; top: 130px; position: absolute; font-size: x-small;" type="button" value="Send"  onclick="send2server();" /> 
+<input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 332px; top: 108px; position: absolute; font-size: x-small;" type="button" value="Send"  onclick="send2server();" /> 
   <div style="position: absolute; z-index: 210; width: 175px; height: 42px; top: 134px; right: 539px; bottom: 390px; left: 183px; overflow: hidden; cursor: crosshair;">
     <textarea id="Text2" class="TextArea1" style="border-style: none; border-color: #000000; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 193px; height: 35px; font-size: small;" readonly="readonly"></textarea>
   </div>
-      <input id="Text1" type="text" style="position: absolute; left: 187px; top: 113px; width: 144px; height: 9px;" onkeydown="checkEnter(event);"/> 
+      <input id="Text1" type="text" style="position: absolute; left: 187px; top: 113px; width: 128px; height: 9px;" onkeydown="checkEnter(event);"/> 
 <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="position: absolute; top: 4px; left: 791px; height: 48px; width: 151px; display:none" ></iframe>
 <div style="position: absolute; z-index: 210; width: 65px; height: 44px; top: 97px; right: 689px; bottom: 425px; left: 118px; overflow: hidden; cursor: crosshair;">
     <div id="aimg" style="position: absolute; left: 0px; top: 0px; width: 326px; height: 200px; overflow: scroll; scrollbar-3dlight-color:transparent; scrollbar-arrow-color:transparent; scrollbar-base-color:transparent; scrollbar-darkshadow-color:transparent; scrollbar-face-color:transparent; scrollbar-highlight-color:transparent; scrollbar-shadow-color:transparent; scrollbar-track-color:transparent;">

@@ -15,8 +15,57 @@
     string btspots = "";
     string tscompleted = "";
     string tbcompleted = "";
-
+    string tsrplayers = "0";
+    
     string Hiddenfield1;
+
+    protected void addfriends()
+    {
+
+        if (tsrplayers == "0")
+        {
+
+        }
+        if (tsrplayers != "0")
+        {
+
+        }
+
+
+        Random one = new Random();
+        var fcount = Model.Friends.Data.Count;
+        if (fcount >= 5)
+        {
+            if (Model.Friends.Data.Count != 0)
+            {
+                int r1 = one.Next(1, Model.Friends.Data.Count);
+                Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
+                Session["friend1pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r2 = one.Next(2, Model.Friends.Data.Count);
+                Session["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
+                Session["friend2pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r3 = one.Next(3, Model.Friends.Data.Count);
+                Session["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
+                Session["friend3pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r4 = one.Next(4, Model.Friends.Data.Count);
+                Session["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
+                Session["friend4pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r5 = one.Next(5, Model.Friends.Data.Count);
+                Session["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
+                Session["friend5pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+            }
+
+        }
+        else
+        {
+            Session["friend1"] = "sussie carr";
+            Session["friend2"] = "robert thomson";
+            Session["friend3"] = "annie san";
+            Session["friend4"] = "sui chang";
+            Session["friend5"] = "marie jane";
+        }
+
+    }
     
     protected void checkusername()
     {
@@ -26,6 +75,7 @@
         Session["loggeduser"] = Model.Name;
         Session["loggeduserid"] = Model.Id;
         Session["loggeduserurl"] = Model.ProfilePicture.Data.Url;
+        
         if (Hiddenfield1 != null)
         {
 
@@ -71,18 +121,6 @@
         public string id { get; set; }
     }
 
-
-
-    protected void addfriends()
-    {
-        //IList myfriends = Model.Friends.Data.ToList();
-        Random one = new Random();
-        if (Model.Friends.Data.Count != 0)
-        {
-            int r1 = one.Next(1, Model.Friends.Data.Count);
-            Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
-        }
-    }
 
     protected void verifysettings()
     {
