@@ -621,6 +621,7 @@ public string one5 = "";
                     if (mycounter != 0) {
                         if (noofhits >= ranhits || noofcoins >= rancoins) {
                             document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
+                            Img9.style.visibility = "visibile";
                             feed();
                             document.getElementById('TextBox2').setAttribute("value", "0");
 
@@ -729,7 +730,7 @@ public string one5 = "";
 
 
 
-
+                    Img9.style.visibility = "hidden";
                     ctrl1.style.width = "60px";
 
                     ctrl2.style.width = "60px";
@@ -1994,7 +1995,7 @@ public string one5 = "";
                     }
                 }
 
-                var myaddctrl = window.setInterval(function () { moveCtrl() }, 2000);
+                var myaddctrl = window.setInterval(function () { moveCtrl() }, 900);
                 function moveCtrl() {
                     if (parseInt(ctrl1.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl1.style.left.replace("px", ""), 10) < 879) {
                         ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", ""), 10) + 45 + "px";
@@ -2301,7 +2302,7 @@ public string one5 = "";
 
         <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
 
-     <div class="fb-like" data-href="https://www.facebook.com/TreasureHunterCommunity" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="position: absolute; width: 88px; height: 23px; top: 184px; right: 506px; bottom: 359px; left: 278px; font-size: x-small;"></div>
+     <div class="fb-like" data-href="https://www.facebook.com/TreasureHunterCommunity" data-width="50" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="position: absolute; width: 88px; height: 23px; top: 184px; right: 506px; bottom: 359px; left: 278px; font-size: x-small;"></div>
 
         
 
@@ -2357,6 +2358,8 @@ public string one5 = "";
         <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
         <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
         <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+     <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 300px; height: 200px; top: 41px; left: 22px; z-index: 1; visibility: hidden; right: 34px; bottom: 54px; position: absolute;" />
+    
     </div>
     <input id="friendname" style="visibility: visible; text-decoration: none; height: 18px; background-color: transparent; color: #FFCC00; z-index: 1; left: 3px; top: 140px; position: absolute; width: 91px; cursor:none; font-size: x-small;" type="text" readonly="true" />
        <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 33px; height: 28px; visibility: visible; z-index: 1; left: 11px; top: 107px; position: absolute; bottom: 431px;" id="friendimage" />
@@ -2368,20 +2371,20 @@ public string one5 = "";
   </div>
       <input id="Text1" type="text" style="position: absolute; left: 187px; top: 113px; width: 128px; height: 9px;" onkeydown="checkEnter(event);"/> 
 <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="position: absolute; top: 4px; left: 791px; height: 48px; width: 151px; display:none" ></iframe>
-<div style="position: absolute; z-index: 210; width: 65px; height: 44px; top: 97px; right: 689px; bottom: 425px; left: 118px; overflow: hidden; cursor: crosshair;">
-    <div id="aimg" style="position: absolute; left: 0px; top: 0px; width: 326px; height: 200px; overflow: scroll; scrollbar-3dlight-color:transparent; scrollbar-arrow-color:transparent; scrollbar-base-color:transparent; scrollbar-darkshadow-color:transparent; scrollbar-face-color:transparent; scrollbar-highlight-color:transparent; scrollbar-shadow-color:transparent; scrollbar-track-color:transparent;">
+<div style="position: absolute; z-index: 210; width: 69px; height: 49px; top: 90px; right: 694px; bottom: 427px; left: 109px; overflow: hidden; cursor: crosshair;">
+    <div id="aimg" style="position: absolute; left: -3px; top: 1px; width: 326px; height: 200px; overflow: scroll; scrollbar-3dlight-color:transparent; scrollbar-arrow-color:transparent; scrollbar-base-color:transparent; scrollbar-darkshadow-color:transparent; scrollbar-face-color:transparent; scrollbar-highlight-color:transparent; scrollbar-shadow-color:transparent; scrollbar-track-color:transparent;">
     <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 70px; height: 45px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 155px; background-color: Transparent;" id="Img6" />
-    <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 55px; top: 130px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one1%>' />
-    <asp:Image ID="Image2" runat="server" style="z-index: 1; left: 93px; top: 68px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one2%>' />
-    <asp:Image ID="Image3" runat="server" style="z-index: 1; left: 133px; top: 40px; position: absolute; width: 60px; height: 40px;" ImageUrl='<%=one3%>' />
-    <asp:Image ID="Image4" runat="server" style="z-index: 1; left: 20px; top: 180px; position: absolute; width: 60px; height: 41px;" ImageUrl='<%=one4%>' />
-    <asp:Image ID="Image5" runat="server" style="z-index: 1; left: 185px; top: 7px; position: absolute; width: 50px; height: 40px;" ImageUrl='<%=one5%>' />
+    <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 10px; top: 32px; position: absolute; width: 14px; height: 14px;" ImageUrl='<%=one1%>' />
+    <asp:Image ID="Image2" runat="server" style="z-index: 1; left: 34px; top: 6px; position: absolute; width: 15px; height: 16px;" ImageUrl='<%=one2%>' />
+    <asp:Image ID="Image3" runat="server" style="z-index: 1; left: 47px; top: 0px; position: absolute; width: 12px; height: 13px;" ImageUrl='<%=one3%>' />
+    <asp:Image ID="Image4" runat="server" style="z-index: 1; left: 34px; top: 19px; position: absolute; width: 13px; height: 11px;" ImageUrl='<%=one4%>' />
+    <asp:Image ID="Image5" runat="server" style="z-index: 1; left: 59px; top: 0px; position: absolute; width: 18px; height: 15px;" ImageUrl='<%=one5%>' />
 
-    <asp:Image ID="Image6" runat="server" style="z-index: 301; left: 115px; top: 132px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image7" runat="server" style="z-index: 301; left: 147px; top: 78px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image8" runat="server" style="z-index: 301; left: 150px; top: 32px; position: absolute; width: 20px; height: 21px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image9" runat="server" style="z-index: 301; left: 20px; top: 180px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image10" runat="server" style="z-index: 301; left: 170px; top: 7px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image6" runat="server" style="z-index: 301; left: 31px; top: 34px; position: absolute; width: 16px; height: 13px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image7" runat="server" style="z-index: 301; left: 48px; top: 10px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image8" runat="server" style="z-index: 301; left: 60px; top: 5px; position: absolute; width: 14px; height: 15px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image9" runat="server" style="z-index: 301; left: 19px; top: 18px; position: absolute; width: 14px; height: 12px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image10" runat="server" style="z-index: 301; left: 30px; top: 0px; position: absolute; width: 15px; height: 13px;" ImageUrl="~/Images/tick.png" />
 
 </div>
     </div>

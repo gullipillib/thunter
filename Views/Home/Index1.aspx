@@ -33,8 +33,13 @@
 
 
         Random one = new Random();
-        var fcount = Model.Friends.Data.Count;
-        if (fcount >= 5)
+        var fcount = 0;
+        if (Model.Friends.Data != null)
+        {
+            fcount = Model.Friends.Data.Count;
+        }
+        
+            if (fcount >= 5)
         {
             if (Model.Friends.Data.Count != 0)
             {
@@ -337,27 +342,27 @@ to {left:10px;}
 
 
       
-<a href='~/../../buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
+<a href='https://treasurehunter.apphb.com/Images/buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">Buy</a>
 <a href='#' onclick="FacebookInviteFriends();" style="position:absolute; left:694px; top:127px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 190px; height: 18px;">Invite Friends</a>
-<a href='../../gamesettings.aspx'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
-   <a href="~/Play/play" target="_self" style="position:absolute;left:233px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 529px; text-align: center;" > Go On a TreasureHunt </a> 
+<a href='https://treasurehunter.apphb.com/Images/gamesettings.aspx'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center;">My Game</a>
+   <a href="https://treasurehunter.apphb.com/Images/Play/play" target="_self" style="position:absolute;left:233px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 529px; text-align: center;" > Go On a TreasureHunt </a> 
    
-    <a href="../../buy.aspx" target="_self" style="position:absolute;left:394px; top:126px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 376px;" > Buy a Treasure Spot </a> 
-    <a href="../../buy.aspx" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
+    <a href="https://treasurehunter.apphb.com/Images/buy.aspx" target="_self" style="position:absolute;left:394px; top:126px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 376px;" > Buy a Treasure Spot </a> 
+    <a href="https://treasurehunter.apphb.com/Images/buy.aspx" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
 
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 11px; top: 202px; position: absolute; width: 822px; height: 110px; bottom: 296px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many gold coins as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt."></asp:Label>
         <asp:Label ID="Label4" runat="server" Font-Bold="True" style="z-index: 1; left: 293px; top: 96px; position: absolute" Text="Interactive Gaming with Fun Filled Places and Adventure"></asp:Label>
         
     <p>
-        <img alt="" class="twoto3d" src="../../Images/landscape.jpg" style="z-index: 1; left: 8px; top: 7px; position: absolute" /></p>
+        <img alt="" class="twoto3d" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="z-index: 1; left: 8px; top: 7px; position: absolute" /></p>
                   
     <p>
-        <img alt="" src="../../Images/3dglass.gif" style="z-index: 1; left: 436px; top: 155px; position: absolute; height: 27px; width: 56px" /></p>
+        <img alt="" src="https://treasurehunter.apphb.com/Images/3dglass.gif" style="z-index: 1; left: 436px; top: 155px; position: absolute; height: 27px; width: 56px" /></p>
                   
         <asp:Label ID="Label5" runat="server" Font-Size="8pt" style="z-index: 1; left: 401px; top: 587px; position: absolute" Text="Treasure Hunter - 2013"></asp:Label>
        
         
-   <a href="../../tools.aspx" target="_self" style="position:absolute;left:740px; top:155px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 22px; text-align: center; height: 22px;" > Go to My ToolsBox </a> 
+   <a href="https://treasurehunter.apphb.com/Images/tools.aspx" target="_self" style="position:absolute;left:740px; top:155px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 22px; text-align: center; height: 22px;" > Go to My ToolsBox </a> 
    
         <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT TOP 5 luname, lucrisboos, luimg FROM loggedusers  order by lucrisboos desc "> </asp:AccessDataSource>
@@ -380,7 +385,7 @@ to {left:10px;}
         </asp:DataList>
 
         
-   <a href="../../create.aspx" target="_self" style="position:absolute;left:562px; top:154px; width:160px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 192px; text-align: center; height: 23px;" > Go to My TreasureSpot </a> 
+   <a href="https://treasurehunter.apphb.com/Images/create.aspx" target="_self" style="position:absolute;left:562px; top:154px; width:160px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 192px; text-align: center; height: 23px;" > Go to My TreasureSpot </a> 
    
         <asp:DataList ID="DataList2" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="AccessDataSource3" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="z-index: 1; left: 455px; top: 367px; position: absolute; height: 183px; width: 426px">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />

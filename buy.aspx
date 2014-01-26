@@ -354,75 +354,75 @@ protected void Button3_Click(object sender, EventArgs e)
 </form>--%>
 
             <form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 711px; left: 860px; height: 51px; width: 165px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="servicestwts@yahoo.com">
-<input type="hidden" name="lc" value="IN">
-<input type="hidden" name="item_name" value="Treasure Spot Bid">
-<input type="hidden" name="amount" value=<%=Session["tspotprice"]%>>
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="no_shipping" value="1">
-<input type="hidden" name="tax_rate" value="0.000">
-<input type="hidden" name="shipping" value="0.00">
-<input type="hidden" id="Hidden1" name="custom" value=<%=Hiddenfield1%>>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="cmd" value="_xclick"/>
+<input type="hidden" name="business" value="servicestwts@yahoo.com"/>
+<input type="hidden" name="lc" value="IN"/>
+<input type="hidden" name="item_name" value="Treasure Spot Bid"/>
+<input type="hidden" name="amount" value='<%=Session["tspotprice"]%>'/>
+<input type="hidden" name="currency_code" value="USD"/>
+<input type="hidden" name="button_subtype" value="services"/>
+<input type="hidden" name="no_note" value="1"/>
+<input type="hidden" name="no_shipping" value="1"/>
+<input type="hidden" name="tax_rate" value="0.000"/>
+<input type="hidden" name="shipping" value="0.00"/>
+<input type="hidden" id="Hidden1" name="custom" value='<%=Hiddenfield1%>'/>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted"/>
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"  name="submit" alt="PayPal – The safer, easier way to pay online."/>
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
 </form>
 
 <form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 288px; left: 739px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="servicestwts@yahoo.com">
-<input type="hidden" name="lc" value="IN">
-<input type="hidden" name="item_name" value="Treasure Spot Buy">
-<input type="hidden" name="amount" value="5">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="no_shipping" value="1">
-<input type="hidden" name="tax_rate" value="0.000">
-<input type="hidden" name="shipping" value="0.00">
-<input type="hidden" id="Hidden3" name="custom" value=<%=Hiddenfield1%>>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="cmd" value="_xclick"/>
+<input type="hidden" name="business" value="servicestwts@yahoo.com"/>
+<input type="hidden" name="lc" value="IN"/>
+<input type="hidden" name="item_name" value="Treasure Spot Buy"/>
+<input type="hidden" name="amount" value="5"/>
+<input type="hidden" name="currency_code" value="USD"/>
+<input type="hidden" name="button_subtype" value="services"/>
+<input type="hidden" name="no_note" value="1"/>
+<input type="hidden" name="no_shipping" value="1"/>
+<input type="hidden" name="tax_rate" value="0.000"/>
+<input type="hidden" name="shipping" value="0.00"/>
+<input type="hidden" id="Hidden3" name="custom" value='<%=Hiddenfield1%>'/>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted"/>
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"  name="submit" alt="PayPal – The safer, easier way to pay online."/>
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
 </form>
 
 <form id="Form3" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 777px; left: 179px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="servicestwts@yahoo.com">
-<input type="hidden" name="lc" value="IN">
-<input type="hidden" name="item_name" value="ToolBox Item Bid">
-<input type="hidden" name="amount" value=<%=Session["tbprice"]%>>
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="no_shipping" value="1">
-<input type="hidden" name="tax_rate" value="0.000">
-<input type="hidden" name="shipping" value="0.00">
-<input type="hidden" id="Hidden2" name="custom" value=<%=Hiddenfield1%>>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="cmd" value="_xclick"/>
+<input type="hidden" name="business" value="servicestwts@yahoo.com"/>
+<input type="hidden" name="lc" value="IN"/>
+<input type="hidden" name="item_name" value="ToolBox Item Bid"/>
+<input type="hidden" name="amount" value='<%=Session["tbprice"]%>'/>
+<input type="hidden" name="currency_code" value="USD"/>
+<input type="hidden" name="button_subtype" value="services"/>
+<input type="hidden" name="no_note" value="1"/>
+<input type="hidden" name="no_shipping" value="1"/>
+<input type="hidden" name="tax_rate" value="0.000"/>
+<input type="hidden" name="shipping" value="0.00"/>
+<input type="hidden" id="Hidden2" name="custom" value='<%=Hiddenfield1%>'/>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted"/>
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"  name="submit" alt="PayPal – The safer, easier way to pay online."/>
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
 </form>
 
     <form id="Form5" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 780px; left: 546px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="servicestwts@yahoo.com">
-<input type="hidden" name="lc" value="IN">
-<input type="hidden" name="item_name" value="ToolBox Item Buy">
-<input type="hidden" name="amount" value="3">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="button_subtype" value="services">
-<input type="hidden" name="no_note" value="1">
-<input type="hidden" name="no_shipping" value="1">
-<input type="hidden" name="tax_rate" value="0.000">
-<input type="hidden" name="shipping" value="0.00">
-<input type="hidden" id="Hidden4" name="custom" value=<%=Hiddenfield1%>>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="cmd" value="_xclick"/>
+<input type="hidden" name="business" value="servicestwts@yahoo.com"/>
+<input type="hidden" name="lc" value="IN"/>
+<input type="hidden" name="item_name" value="ToolBox Item Buy"/>
+<input type="hidden" name="amount" value="3"/>
+<input type="hidden" name="currency_code" value="USD"/>
+<input type="hidden" name="button_subtype" value="services"/>
+<input type="hidden" name="no_note" value="1"/>
+<input type="hidden" name="no_shipping" value="1"/>
+<input type="hidden" name="tax_rate" value="0.000"/>
+<input type="hidden" name="shipping" value="0.00"/>
+<input type="hidden" id="Hidden4" name="custom" value='<%=Hiddenfield1%>'/>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted"/>
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"  name="submit" alt="PayPal – The safer, easier way to pay online."/>
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
 </form>
 
 <%--<form id="paypalbutton" action="https://www.sandbox.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 529px; left: 2px;" method="post" target="_top">
@@ -545,7 +545,7 @@ protected void Button3_Click(object sender, EventArgs e)
         </script>
 
 
-   <a href="../../create.aspx" target="_self" style="position:absolute;left:567px; top:-6px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 161px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
+   <a href="https://treasurehunter.apphb.com/Images/create.aspx" target="_self" style="position:absolute;left:567px; top:-6px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 161px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
    
         
 </body>
