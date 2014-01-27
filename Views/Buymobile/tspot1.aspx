@@ -8,6 +8,7 @@
     <title>Buy</title>
 </head>
 <body>
+    
    <div style="position: absolute; border: medium solid #000000; top: 19px; left: 12px; width: 350px; height: 155px;">
           <h2 style="width: 264px; position: absolute; top: 6px; left: 7px;">Buy A New ToolBox Item</h2>
              <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
@@ -27,7 +28,7 @@
 <input type="hidden" name="no_shipping" value="1"/>
 <input type="hidden" name="tax_rate" value="0.000"/>
 <input type="hidden" name="shipping" value="0.00"/>
-<input type="hidden" id="Hidden4" name="custom" value='<%=Hiddenfield1%>'/>
+<input type="hidden" id="Hidden4" name="custom" value='<%=Convert.ToString(Session["loggeduser"])%>'/>
 <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted"/>
 <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"  name="submit" alt="PayPal – The safer, easier way to pay online."/>
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
