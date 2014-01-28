@@ -33,11 +33,7 @@
 
 
         Random one = new Random();
-        var fcount = 0;
-        if (Model.Friends.Data != null)
-        {
-            fcount = Model.Friends.Data.Count;
-        }
+        
         
             if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
