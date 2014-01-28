@@ -312,8 +312,8 @@ protected void Button3_Click(object sender, EventArgs e)
         <asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:737px; top:19px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" />
 
 
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 254px; top: 0px; position: absolute" Target="_self">My Game</asp:hyperlink>   
-
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 245px; top: -7px; position: absolute; bottom: 749px;" Target="_self">My Game</asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="false" NavigateUrl="~/Home/Index1" style="z-index: 1; left: 386px; top: 11px; position: absolute" Target="_self">Home</asp:hyperlink>
 
 
         

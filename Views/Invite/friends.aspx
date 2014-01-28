@@ -16,6 +16,7 @@
      
     protected void checkusername()
     {
+        
         Hiddenfield1 = Model.Name;
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
         if (Hiddenfield1 != null)
@@ -50,7 +51,7 @@
         }
         else
         {
-
+            
             Response.Redirect("~/buy.aspx");
         }
     }
@@ -100,11 +101,11 @@ protected void Page_Load(object sender, EventArgs e)
    
     <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
 
-<a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:380px; top:161px; width:97px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 423px;">Invite Friends</a><p>
+<a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:42%; top:27%; width:13%; height: 5%; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 396px;">Invite Friends</a><p>
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 284px; top: 127px; position: absolute; right: 499px;" Target="_self">Go on a Treasurehunt</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 30%; top: 22%; position: absolute; right: 463px; width: 17%; height: 4%;" Target="_self">Go on a Treasurehunt</asp:hyperlink>
         
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 545px; top: 125px; position: absolute" Target="_self">My Game</asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 53%; top: 22%; position: absolute; height: 4%;" Target="_self" Width="12%">My Game</asp:hyperlink>   
 
         
         </form>
