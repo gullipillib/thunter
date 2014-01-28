@@ -55,7 +55,7 @@
 <script src="Scripts/jquery-1.8.2.js"></script>
     <script src="Scripts/jquery-ui-1.10.3.js"></script>
     <script src="Scripts/jquery.signalR-2.0.1.js"></script> 
-       <script src="https://treasurehunter/apphb.com/SignalR/hubs"></script>
+       <script src="https://treasurehunter.apphb.com/SignalR/hubs"></script>
 <body>
     
     <script>
