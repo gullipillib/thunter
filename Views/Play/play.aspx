@@ -689,6 +689,9 @@ public string one5 = "";
                             document.getElementById('TextBox2').setAttribute("value", "0");
                             
                         }
+                        document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                        document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+
                     }
                 }
 
@@ -2367,8 +2370,6 @@ public string one5 = "";
         <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
 
         <div class="fb-like" data-href="https://www.facebook.com/TreasureHunterCommunity" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="position: absolute; width: 128px; height: 23px; top: 3px; right: 89px; bottom: 540px; left: 655px"></div>
-        
-            <div class="fb-activity" data-app-id="123405257731200" data-site="https://treasurehunter.apphb.com" data-action="likes, recommends" data-colorscheme="light" data-header="true" style="position: absolute"></div>
         
 
 
