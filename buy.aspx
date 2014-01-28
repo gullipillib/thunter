@@ -313,7 +313,7 @@ protected void Button3_Click(object sender, EventArgs e)
 
 
 <asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 245px; top: -7px; position: absolute; bottom: 749px;" Target="_self">My Game</asp:hyperlink>   
-<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="false" NavigateUrl="~/Home/Index1" style="z-index: 1; left: 386px; top: 11px; position: absolute" Target="_self">Home</asp:hyperlink>
+<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="false" NavigateUrl="~/Home/Index1" style="z-index: 1; left: 165px; top: -13px; position: absolute" Target="_self">Home</asp:hyperlink>
 
 
         
