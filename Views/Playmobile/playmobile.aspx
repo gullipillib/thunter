@@ -571,7 +571,7 @@ public string one5 = "";
                 });
             }
         }
-         </script>
+              </script>
         
         <script type="text/javascript">
             var enemyhits = sessionStorage.getItem("achievements");
@@ -639,6 +639,9 @@ public string one5 = "";
                             document.getElementById('TextBox2').setAttribute("value", "0");
 
                         }
+                        document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                        document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+
                     }
                 }
 
@@ -728,104 +731,104 @@ public string one5 = "";
 
                 }
                 var temp = '<%=ctrl1mainres%>';
-                var temp = parseInt(temp.replace("px", ""), 10);
-                var temp = 275 - temp;
-                var visible1 = "no";
-                var visible2 = "no";
-                var visible3 = "no";
-                var visible4 = "no";
-                var visible5 = "no";
+            var temp = parseInt(temp.replace("px", ""), 10);
+            var temp = 275 - temp;
+            var visible1 = "no";
+            var visible2 = "no";
+            var visible3 = "no";
+            var visible4 = "no";
+            var visible5 = "no";
 
-                var myaddctrl1 = window.setInterval(function () { randomCtrl1() }, 3000);
-                function randomCtrl1() {
-
-
+            var myaddctrl1 = window.setInterval(function () { randomCtrl1() }, 3000);
+            function randomCtrl1() {
 
 
 
-                    Img9.style.visibility = "hidden";
-                    ctrl1.style.width = "60px";
 
-                    ctrl2.style.width = "60px";
+                Img9.style.visibility = "hidden";
 
-                    ctrl3.style.width = "60px";
+                ctrl1.style.width = "60px";
 
-                    ctrl4.style.width = "60px";
+                ctrl2.style.width = "60px";
 
-                    ctrl5.style.width = "60px";
-                    Img1.style.width = "60px";
-                    Img1.style.height = "60px";
-                    Img2.style.width = "60px";
-                    Img2.style.height = "60px";
-                    Img3.style.width = "60px";
-                    Img3.style.height = "60px";
-                    Img4.style.width = "60px";
-                    Img4.style.height = "60px";
-                    Img5.style.width = "60px";
-                    Img5.style.height = "60px";
-                    Label3.style.visibility = "hidden";
+                ctrl3.style.width = "60px";
 
-                    //temp = temp.replace("px", "");
-                    //temp = parseInt(temp, 10);
-                    var randno1 = Math.floor(Math.random() * 5 - 1 + 1) + 1;
-                    var randno2 = Math.floor(Math.random() * 6 - 10 + 1) + 6;
-                    var randno3 = Math.floor(Math.random() * 10 - 1 + 1) + 1;
+                ctrl4.style.width = "60px";
 
-                    if (randno1 == 1 || randno2 == 1 || randno3 == 1) {
-                        ctrl1.style.visibility = "visible";
-                        ctrl1.style.width = "100px";
-                        ctrl1.style.height = "100px";
-                        ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                        var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
-                        mytemp = mytemp + temp + "px";
-                        ctrl1.style.top = mytemp;
-                        visible1 = "yes";
-                    }
-                    if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
-                        ctrl2.style.visibility = "visible";
-                        ctrl2.style.width = "100px";
-                        ctrl2.style.height = "100px";
-                        ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                        var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
-                        mytemp = mytemp + temp + "px";
-                        ctrl2.style.top = mytemp;
-                        visible2 = "yes";
-                    }
-                    if (randno1 == 3 || randno2 == 3 || randno3 == 3) {
-                        ctrl3.style.visibility = "visible";
-                        ctrl3.style.width = "100px";
-                        ctrl3.style.height = "100px";
-                        ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                        var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
-                        mytemp = mytemp + temp + "px";
-                        ctrl3.style.top = mytemp;
-                        visible3 = "yes";
-                    }
-                    if (randno1 == 4 || randno2 == 4 || randno3 == 4) {
-                        ctrl4.style.visibility = "visible";
-                        ctrl4.style.width = "100px";
-                        ctrl4.style.height = "100px";
-                        ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                        var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
-                        mytemp = mytemp + temp + "px";
-                        ctrl4.style.top = mytemp;
-                        visible4 = "yes";
-                    }
-                    if (randno1 == 5 || randno2 == 5 || randno3 == 5) {
-                        ctrl5.style.visibility = "visible";
-                        ctrl5.style.width = "100px";
-                        ctrl5.style.height = "100px";
-                        ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
-                        var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
-                        mytemp = mytemp + temp + "px";
-                        ctrl5.style.top = mytemp;
-                        visible5 = "yes";
-                    }
-                    if (randno1 == 6 || randno2 == 6 || randno3 == 6) {
-                        Img1.style.visibility = "visible";
-                        Img1.style.width = "80px";
-                        Img1.style.height = "80px";
-                        if ('<%=ctrl1mainname%>' == "goldcoins" || '<%=ctrl1mainname%>' == "health") {
+                ctrl5.style.width = "60px";
+                Img1.style.width = "60px";
+                Img1.style.height = "60px";
+                Img2.style.width = "60px";
+                Img2.style.height = "60px";
+                Img3.style.width = "60px";
+                Img3.style.height = "60px";
+                Img4.style.width = "60px";
+                Img4.style.height = "60px";
+                Img5.style.width = "60px";
+                Img5.style.height = "60px";
+                Label3.style.visibility = "hidden";
+
+                //temp = temp.replace("px", "");
+                //temp = parseInt(temp, 10);
+                var randno1 = Math.floor(Math.random() * 5 - 1 + 1) + 1;
+                var randno2 = Math.floor(Math.random() * 6 - 10 + 1) + 6;
+                var randno3 = Math.floor(Math.random() * 10 - 1 + 1) + 1;
+
+                if (randno1 == 1 || randno2 == 1 || randno3 == 1) {
+                    ctrl1.style.visibility = "visible";
+                    ctrl1.style.width = "100px";
+                    ctrl1.style.height = "100px";
+                    ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
+                    mytemp = mytemp + temp + "px";
+                    ctrl1.style.top = mytemp;
+                    visible1 = "yes";
+                }
+                if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
+                    ctrl2.style.visibility = "visible";
+                    ctrl2.style.width = "100px";
+                    ctrl2.style.height = "100px";
+                    ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
+                    mytemp = mytemp + temp + "px";
+                    ctrl2.style.top = mytemp;
+                    visible2 = "yes";
+                }
+                if (randno1 == 3 || randno2 == 3 || randno3 == 3) {
+                    ctrl3.style.visibility = "visible";
+                    ctrl3.style.width = "100px";
+                    ctrl3.style.height = "100px";
+                    ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
+                    mytemp = mytemp + temp + "px";
+                    ctrl3.style.top = mytemp;
+                    visible3 = "yes";
+                }
+                if (randno1 == 4 || randno2 == 4 || randno3 == 4) {
+                    ctrl4.style.visibility = "visible";
+                    ctrl4.style.width = "100px";
+                    ctrl4.style.height = "100px";
+                    ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
+                    mytemp = mytemp + temp + "px";
+                    ctrl4.style.top = mytemp;
+                    visible4 = "yes";
+                }
+                if (randno1 == 5 || randno2 == 5 || randno3 == 5) {
+                    ctrl5.style.visibility = "visible";
+                    ctrl5.style.width = "100px";
+                    ctrl5.style.height = "100px";
+                    ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
+                    mytemp = mytemp + temp + "px";
+                    ctrl5.style.top = mytemp;
+                    visible5 = "yes";
+                }
+                if (randno1 == 6 || randno2 == 6 || randno3 == 6) {
+                    Img1.style.visibility = "visible";
+                    Img1.style.width = "80px";
+                    Img1.style.height = "80px";
+                    if ('<%=ctrl1mainname%>' == "goldcoins" || '<%=ctrl1mainname%>' == "health") {
                         Img1.style.width = "30px";
                         Img1.style.height = "30px";
                     }
@@ -2191,7 +2194,6 @@ public string one5 = "";
                 }
 
 
-
                 function check(e) {
                     var code = e.keyCode;
 
@@ -2368,6 +2370,8 @@ public string one5 = "";
             <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
             <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
             <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+        <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 300px; height: 200px; top: 41px; left: 22px; z-index: 1; visibility: hidden; right: 34px; bottom: 54px; position: absolute;" />
+    
         </div>
         <input id="friendname" style="visibility: visible; text-decoration: none; height: 18px; background-color: transparent; color: #FFCC00; z-index: 1; left: 3px; top: 140px; position: absolute; width: 91px; cursor: none; font-size: x-small;" type="text" readonly="true" />
         <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 33px; height: 28px; visibility: visible; z-index: 1; left: 11px; top: 107px; position: absolute; bottom: 431px;" id="friendimage" />
