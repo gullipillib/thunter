@@ -2,26 +2,27 @@
 <%@ Import Namespace="Microsoft.AspNet.SignalR"%>
 <!DOCTYPE html>
 <script runat="server">
-    public static System.Timers.Timer timer = new System.Timers.Timer(1000); // This will raise the event every one minute.
+    //public static System.Timers.Timer timer = new System.Timers.Timer(40000); // This will raise the event every one minute.
     //Microsoft.AspNet.SignalR.Client.HubConnection mycon = null;
     //Microsoft.AspNet.SignalR.Client.HubConnection myproxy = null;
     string messages = "";
     string values = "";
-    Microsoft.AspNet.SignalR.IHubContext mycon = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext("sysmessages");
+    //Microsoft.AspNet.SignalR.IHubContext mycon = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext("sysmessages");
             
     protected void page_load(object sender, EventArgs e)
     {
         if (Page.IsPostBack == false)
         {
             
-            timer.Enabled = true;
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
+            //timer.Enabled = true;
+            //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
         }
     } 
     protected void startupdatecoins(object sender, System.Timers.ElapsedEventArgs e)
         {
-            mycon.Clients.All.hello(messages, values);
-            TextBox1.Text = messages + " " + values;
+            
+        //mycon.Clients.All.hello(messages, values);
+            //TextBox1.Text = messages + " " + values;
         }
       
     //protected void startupdatecoins(object sender, System.Timers.ElapsedEventArgs e)
