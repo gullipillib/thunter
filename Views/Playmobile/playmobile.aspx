@@ -457,8 +457,8 @@ public string one5 = "";
 
     <style type="text/css">
         .twoto3d {
-            width: 365px; 
-            height: 297px;
+            width: 480px; 
+            height: 378px;
             position: relative;
             animation: mymove 0.05s infinite;
             -webkit-animation: mymove 0.25s infinite;
@@ -2349,7 +2349,7 @@ public string one5 = "";
 
         <label style="position: absolute; top: 3px; left: 202px; height: 19px; color: #FFCC00; font-size: small;">Treasure($)</label>
         <label style="position: absolute; top: 90px; left: 7px; height: 19px; color: #FFCC00; width: 88px; font-size: x-small;">Achievements</label>
-        <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden; width: 360px; height: 299px; position: absolute; top: 216px; left: 5px; right: 542px; bottom: 51px; display: inline;">
+        <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden; width: 480px; height: 378px; position: absolute; top: 216px; left: 5px; right: 542px; bottom: 51px; display: inline;">
             <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 159px; bottom: 140px;"/>
             <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
             <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>

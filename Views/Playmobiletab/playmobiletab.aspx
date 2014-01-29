@@ -457,33 +457,33 @@ public string one5 = "";
 
     <style type="text/css">
         .twoto3d {
-            width: 365px; 
-            height: 275px;
+            width: 480px;
+            height: 378px;
             position: relative;
             animation: mymove 0.05s infinite;
             -webkit-animation: mymove 0.25s infinite;
-            left: 443px; 
-            top: 245px;
+            top: 130px;
+            left: 365px;
         }
 
         @keyframes mymove {
             from {
-                left: 443px;
+                left: 365px;
             }
 
             to {
-                left: 445px;
+                left: 366px;
             }
         }
 
         @-webkit-keyframes mymove /* Safari and Chrome */
         {
             from {
-                left: 443px;
+                left: 365px;
             }
 
             to {
-                left: 445px;
+                left: 366px;
             }
         }
 
@@ -2318,9 +2318,9 @@ public string one5 = "";
 
 
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#9999FF" Style="z-index: 1; left: 337px; top: 12px; position: absolute; width: 181px; height: 18px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
-        <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="Small" ForeColor="#9999FF" Style="z-index: 1; left: 456px; top: 182px; position: absolute; width: 348px; height: 19px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="Small" ForeColor="#9999FF" Style="z-index: 1; left: 376px; top: 74px; position: absolute; width: 348px; height: 19px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
-        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Buymobile/tspot1" Style="z-index: 1; top: 80px; position: absolute; right: 363px; width: 38px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled" Font-Size="Medium">Buy</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Buymobile/tspot1" Style="z-index: 1; top: 79px; position: absolute; right: 657px; width: 38px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled" Font-Size="Medium">Buy</asp:HyperLink>
 
 
 
@@ -2328,21 +2328,21 @@ public string one5 = "";
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 440px; top: 52px; position: absolute; width: 18px; height: 18px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Size="Small">10</asp:TextBox>
         <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 792px; top: 52px; position: absolute; width: 53px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Small"></asp:TextBox>
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 764px; top: 17px; position: absolute; width: 45px; height: 14px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled" Font-Size="Medium"></asp:TextBox>
-        <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" Style="z-index: 1; left: 581px; top: 340px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
+        <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" Style="z-index: 1; left: 545px; top: 297px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
 
         <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
         </audio>
 
         <label style="position: absolute; top: 56px; left: 23px; height: 19px; color: #FFCC00; font-size: small; width: 83px;">Achievements</label>
 
-        <label style="position: absolute; top: 51px; left: 385px; height: 19px; right: 453px; color: #FFCC00; font-size: small; width: 34px; bottom: 496px;">Lives</label>
+        <label style="position: absolute; top: 51px; left: 375px; height: 19px; right: 453px; color: #FFCC00; font-size: medium; width: 44px; bottom: 496px;">Lives</label>
 
         <label style="position: absolute; top: 49px; left: 707px; height: 19px; color: #FFCC00; height: 20px; position: absolute; font-size: small;">Gold Coins</label>
 
         <label style="position: absolute; top: 16px; left: 661px; height: 16px; color: #FFCC00; font-size: medium; width: 88px;">Treasure($)</label>
         <label style="position: absolute; top: 238px; left: 13px; height: 19px; color: #FFCC00; width: 88px; font-size: x-small;">Achievements</label>
-        <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden; width: 360px; height: 299px; position: absolute; top: 244px; left: 449px; right: 63px; bottom: 23px; display: inline;">
-            <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 159px; bottom: 140px;"/>
+        <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden; width: 480px; height: 378px; position: absolute; top: 127px; left: 362px; right: 139px; bottom: 158px; display: inline;">
+            <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: ''124px''; left: 73px; z-index: 202; right: 247px; bottom: 135px;"/>
             <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
             <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
             <img id="ctrl2" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
@@ -2363,7 +2363,7 @@ public string one5 = "";
         </div>
         <input id="friendname" style="visibility: visible; text-decoration: none; height: 18px; background-color: transparent; color: #FFCC00; z-index: 1; left: 18px; top: 314px; position: absolute; width: 91px; cursor: none; font-size: x-small;" type="text" readonly="true" />
         <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 33px; height: 28px; visibility: visible; z-index: 1; left: 19px; top: 270px; position: absolute; bottom: 268px;" id="friendimage" />
-        <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 443px; top: 245px; position: absolute; background-color: transparent; width: 365px; height: 275px;" class="twoto3d" id="fplayer" />
+        <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 365px; height: 275px;" class="twoto3d" id="fplayer" />
         <label style="position: absolute; top: 356px; left: 14px; height: 19px; color: #FFFFFF; font-size: small;">Talk to Players</label>
         <input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 302px; top: 383px; position: absolute; font-size: x-small;" type="button" value="Send" onclick="send2server();" />
         <div style="position: absolute; z-index: 210; width: 321px; height: 136px; top: 411px; bottom: 19px; left: 15px; overflow: hidden; cursor: crosshair;">
@@ -2389,13 +2389,13 @@ public string one5 = "";
             </div>
         </div>
         <label style="position: absolute; top: 216px; left: 209px; height: 19px; color: #FFCC00; height: 16px; position: absolute; font-size: 10px; width: 63px; right: 600px;">Treasure Map</label>
-        <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 451px; top: 220px; position: absolute; width: 335px" ForeColor="White" ReadOnly="true" Font-Size="Medium"></asp:TextBox>
+        <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 378px; top: 97px; position: absolute; width: 335px" ForeColor="White" ReadOnly="true" Font-Size="Medium"></asp:TextBox>
         <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 19px; top: 188px; position: absolute; width: 83px; right: 766px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Time Remaining</asp:TextBox>
         <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 120px; top: 189px; position: absolute; width: 33px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Medium">250</asp:TextBox>
-        <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 20px; top: 118px; position: absolute; width: 44px; right: 804px; bottom: 433px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Collect</asp:TextBox>
-        <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 80px; top: 121px; position: absolute; width: 47px; height: 9px; right: 741px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small"></asp:TextBox>
-        <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 16px; top: 153px; position: absolute; width: 78px; right: 774px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Conquer Players</asp:TextBox>
-        <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 133px; top: 154px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small"></asp:TextBox>
+        <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 20px; top: 118px; position: absolute; width: 44px; right: 804px; bottom: 433px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Small">Collect</asp:TextBox>
+        <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 88px; top: 121px; position: absolute; width: 47px; height: 9px; right: 733px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Small"></asp:TextBox>
+        <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 16px; top: 153px; position: absolute; width: 78px; right: 774px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Small">Conquer Players</asp:TextBox>
+        <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 133px; top: 154px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Small"></asp:TextBox>
         <img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 119px; left: 176px; z-index: 21; visibility: visible; right: 677px; bottom: 428px;"/>
         
         <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 148px; left: 220px; z-index: 21; visibility: visible; right: 633px; bottom: 399px;"/>
