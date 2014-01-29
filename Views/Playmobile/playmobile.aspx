@@ -361,12 +361,7 @@ public string one5 = "";
 
         if (Page.IsPostBack == false)
         {
-            int wight = Request.Browser.ScreenPixelsWidth; 
-            int height = Request.Browser.ScreenPixelsHeight; 
-            if (Request.Browser.IsMobileDevice && wight > 480 && height > 480) 
-            {
-                Response.Redirect("https://treasurehunter.apphb.com/Playmobiletab/playmobiletab"); 
-            }
+            
             checkusername();
             AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
             AccessDataSource1.Update();
@@ -462,8 +457,8 @@ public string one5 = "";
 
     <style type="text/css">
         .twoto3d {
-            width: 365px;
-            height: 307px;
+            width: 37%;
+            height: 58%;
             position: relative;
             animation: mymove 0.05s infinite;
             -webkit-animation: mymove 0.25s infinite;
@@ -2390,11 +2385,11 @@ public string one5 = "";
 <div style="position: absolute; z-index: 210; width: 8%; height: 9%; top: 15%; right: 700px; bottom: 429px; left: 10%; overflow: hidden; cursor: crosshair;">
     <div id="aimg" style="position: absolute; left: -3px; top: 1px; width: 326px; height: 200px; overflow: scroll; scrollbar-3dlight-color:transparent; scrollbar-arrow-color:transparent; scrollbar-base-color:transparent; scrollbar-darkshadow-color:transparent; scrollbar-face-color:transparent; scrollbar-highlight-color:transparent; scrollbar-shadow-color:transparent; scrollbar-track-color:transparent;">
     <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 70px; height: 45px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 155px; background-color: Transparent;" id="Img6" />
-    <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 10px; top: 32px; position: absolute; width: 14px; height: 14px;" ImageUrl='<%=one1%>' />
-    <asp:Image ID="Image2" runat="server" style="z-index: 1; left: 34px; top: 6px; position: absolute; width: 15px; height: 16px;" ImageUrl='<%=one2%>' />
-    <asp:Image ID="Image3" runat="server" style="z-index: 1; left: 47px; top: 0px; position: absolute; width: 12px; height: 13px;" ImageUrl='<%=one3%>' />
-    <asp:Image ID="Image4" runat="server" style="z-index: 1; left: 34px; top: 19px; position: absolute; width: 13px; height: 11px;" ImageUrl='<%=one4%>' />
-    <asp:Image ID="Image5" runat="server" style="z-index: 1; left: 59px; top: 0px; position: absolute; width: 18px; height: 15px;" ImageUrl='<%=one5%>' />
+    <asp:Image ID="Image1" runat="server" style="z-index: 300; left: 10px; top: 32px; position: absolute; width: 14px; height: 14px;" ImageUrl='<%=one1%>' />
+    <asp:Image ID="Image2" runat="server" style="z-index: 300; left: 34px; top: 6px; position: absolute; width: 15px; height: 16px;" ImageUrl='<%=one2%>' />
+    <asp:Image ID="Image3" runat="server" style="z-index: 300; left: 47px; top: 0px; position: absolute; width: 12px; height: 13px;" ImageUrl='<%=one3%>' />
+    <asp:Image ID="Image4" runat="server" style="z-index: 300; left: 34px; top: 19px; position: absolute; width: 13px; height: 11px;" ImageUrl='<%=one4%>' />
+    <asp:Image ID="Image5" runat="server" style="z-index: 300; left: 59px; top: 0px; position: absolute; width: 18px; height: 15px;" ImageUrl='<%=one5%>' />
 
     <asp:Image ID="Image6" runat="server" style="z-index: 301; left: 31px; top: 34px; position: absolute; width: 16px; height: 13px;" ImageUrl="~/Images/tick.png" />
     <asp:Image ID="Image7" runat="server" style="z-index: 301; left: 48px; top: 10px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />

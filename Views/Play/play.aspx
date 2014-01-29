@@ -2440,11 +2440,11 @@ public string one5 = "";
 <div style="position: absolute; z-index: 210; width: 239px; height: 181px; top: 97px; right: 515px; bottom: 288px; left: 118px; overflow: hidden; cursor: crosshair;">
     <div id="aimg" style="position: absolute; left: 0px; top: 0px; width: 326px; height: 200px; overflow: scroll; scrollbar-3dlight-color:transparent; scrollbar-arrow-color:transparent; scrollbar-base-color:transparent; scrollbar-darkshadow-color:transparent; scrollbar-face-color:transparent; scrollbar-highlight-color:transparent; scrollbar-shadow-color:transparent; scrollbar-track-color:transparent;">
     <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 232px; height: 247px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: -47px; background-color: Transparent;" id="Img6" />
-    <asp:Image ID="Image1" runat="server" style="z-index: 1; left: 82px; top: 130px; position: absolute; width: 33px; height: 40px;" ImageUrl='<%=one1%>' />
-    <asp:Image ID="Image2" runat="server" style="z-index: 1; left: 114px; top: 74px; position: absolute; width: 32px; height: 35px;" ImageUrl='<%=one2%>' />
-    <asp:Image ID="Image3" runat="server" style="z-index: 1; left: 159px; top: 40px; position: absolute; width: 34px; height: 31px;" ImageUrl='<%=one3%>' />
-    <asp:Image ID="Image4" runat="server" style="z-index: 1; left: 20px; top: 180px; position: absolute; width: 60px; height: 41px;" ImageUrl='<%=one4%>' />
-    <asp:Image ID="Image5" runat="server" style="z-index: 1; left: 200px; top: 10px; position: absolute; width: 29px; height: 46px;" ImageUrl='<%=one5%>' />
+    <asp:Image ID="Image1" runat="server" style="z-index: 300; left: 82px; top: 130px; position: absolute; width: 33px; height: 40px;" ImageUrl='<%=one1%>' />
+    <asp:Image ID="Image2" runat="server" style="z-index: 300; left: 114px; top: 74px; position: absolute; width: 32px; height: 35px;" ImageUrl='<%=one2%>' />
+    <asp:Image ID="Image3" runat="server" style="z-index: 300; left: 159px; top: 40px; position: absolute; width: 34px; height: 31px;" ImageUrl='<%=one3%>' />
+    <asp:Image ID="Image4" runat="server" style="z-index: 300; left: 20px; top: 180px; position: absolute; width: 60px; height: 41px;" ImageUrl='<%=one4%>' />
+    <asp:Image ID="Image5" runat="server" style="z-index: 300; left: 200px; top: 10px; position: absolute; width: 29px; height: 46px;" ImageUrl='<%=one5%>' />
 
     <asp:Image ID="Image6" runat="server" style="z-index: 301; left: 130px; top: 132px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
     <asp:Image ID="Image7" runat="server" style="z-index: 301; left: 168px; top: 81px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />
