@@ -127,7 +127,7 @@
                 AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
                 AccessDataSource1.Insert();
             }
-
+            Session["reached"] = "yes";
         }
         else
         {
@@ -346,10 +346,9 @@ public string one5 = "";
 
        
         Random one = new Random();
-        var fcount = Model.Friends.Data.Count;
-        if (fcount >= 5)
+        if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
-            if (Model.Friends.Data.Count != 0)
+            if (Model.Friends.Data.Count > 5)
             {
                 int r1 = one.Next(1, Model.Friends.Data.Count);
                 Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
@@ -598,7 +597,8 @@ public string one5 = "";
             
             $.connection.hub.start().done(function () {
                 //chat.server.Hello(pname + ":", $('#Text1').val());
-               
+                chat.server.Hello(pname + ":", $('#attacked').val()).done(function () {
+                });
                 chat.server.Hello(pname + ":", $('#Text1').val()).done(function () {
                 });
                     
@@ -2381,10 +2381,10 @@ public string one5 = "";
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 347px; top: 0px; position: absolute; width: 293px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
         <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 360px; top: 75px; position: absolute; width: 505px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
-        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; top: 56px; position: absolute; height: 18px; width: 141px; left: 11px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; top: 56px; position: absolute; right: 180px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Invite/friends" Style="z-index: 1; left: 384px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="z-index: 1; top: 57px; position: absolute; width: 84px; left: 260px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; border-radius:15px; background-color: #0000FF;  top: 56px; position: absolute; height: 18px; width: 141px; left: 11px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; border-radius:15px; background-color: #0000FF;  top: 56px; position: absolute; right: 180px; width: 141px" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Invite/friends" Style="z-index: 1; border-radius:15px; background-color: #0000FF;  left: 384px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="z-index: 1; border-radius:15px; background-color: #0000FF; top: 57px; position: absolute; width: 84px; left: 260px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
 
 
 
@@ -2436,7 +2436,7 @@ public string one5 = "";
     <textarea id="Text2" class="TextArea1" style="border-style: none; border-color: #000000; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 366px; height: 126px;" readonly="readonly"></textarea>
   </div>
       <input id="Text1" type="text" style="position: absolute; left: 12px; top: 493px; width: 242px;" onkeydown="checkEnter(event);"/> 
-<iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="position: absolute; top: 147px; left: 862px; height: 40px; width: 93px; margin-top: 0px;" ></iframe>
+<iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none; position: absolute; top: 147px; left: 862px; height: 40px; width: 93px; margin-top: 0px;" ></iframe>
 <div id="aimg" style="position: absolute; left: 118px; top: 99px; width: 236px; height: 200px;">
     <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 232px; height: 199px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 1px; background-color: Transparent;" id="Img6" />
     <asp:Image ID="Image1" runat="server" style="z-index: 300; left: 82px; top: 130px; position: absolute; width: 33px; height: 33px;" ImageUrl='<%=one1%>' />

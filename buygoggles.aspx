@@ -1,6 +1,14 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
 
 <!DOCTYPE html>
+<script runat="server">
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+</script>
+
 
 <html>
 <head runat="server">
@@ -16,6 +24,10 @@
         
 
 <asp:HyperLink ID="HyperLink5" runat="server" ForeColor="Black" NavigateUrl="~/Play/play" style="z-index: 1; left: 719px; top: 54px; position: absolute">Back to Game</asp:HyperLink>
+        
+        <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="http://www.amazon.com/gp/registry/wishlist/1PGNINJD506B3/ref=topnav_lists_1" style="z-index: 1; left: 66px; top: 150px; position: absolute; width: 67px; text-decoration:none; cursor:pointer" Target="_blank">Buy Now</asp:HyperLink>
+        
+        <asp:Image ID="Image1" runat="server" ImageUrl="http://ecx.images-amazon.com/images/I/31R6lUgaBAL._SL500_SL135_.jpg" style="z-index: 1; left: 31px; top: 59px; position: absolute" />
         
     </form>
 </body>

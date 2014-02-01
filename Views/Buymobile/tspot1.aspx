@@ -10,9 +10,9 @@
 <body>
     
    <div style="position: absolute; border: medium solid #000000; top: 19px; left: 12px; width: 350px; height: 155px;">
-          <h2 style="width: 264px; position: absolute; top: 6px; left: 7px;">Buy A New ToolBox Item</h2>
+          <h2 style="width: 264px; position: absolute; top: 6px; left: 7px;">Buy A TreasureSpot</h2>
              <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
-             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text="3"></asp:Label>
+             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text="2"></asp:Label>
              <asp:Label ID="Label17" runat="server" style="z-index: 1; left: 7px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
              <asp:Label ID="Label18" runat="server" style="z-index: 1; left: 94px; top: 54px; position: absolute; width: 93px">ToolBox Item</asp:Label>
          </div>
@@ -21,7 +21,7 @@
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
 <input type="hidden" name="item_name" value="ToolBox Item Buy"/>
-<input type="hidden" name="amount" value="3"/>
+<input type="hidden" name="amount" value="2"/>
 <input type="hidden" name="currency_code" value="USD"/>
 <input type="hidden" name="button_subtype" value="services"/>
 <input type="hidden" name="no_note" value="1"/>

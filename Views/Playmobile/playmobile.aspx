@@ -548,7 +548,8 @@ public string one5 = "";
 
             $.connection.hub.start().done(function () {
                 //chat.server.Hello(pname + ":", $('#Text1').val());
-
+                chat.server.Hello(pname + ":", $('#attacked').val()).done(function () {
+                });
                 chat.server.Hello(pname + ":", $('#Text1').val()).done(function () {
                 });
 
@@ -2330,7 +2331,7 @@ public string one5 = "";
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#9999FF" Style="z-index: 1; left: 3px; top: 0px; position: absolute; width: 208px; height: 18px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
         <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="X-Small" ForeColor="#9999FF" Style="z-index: 1; left: 10px; top: 180px; position: absolute; width: 294px; height: 19px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
-        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Buymobile/tspot1" Style="z-index: 1; left: 66px; top: 48px; position: absolute; height: 10px; width: 70px; right: 736px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="X-Small">Buy a Treasure Spot</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Buymobile/tspot1" Style="z-index: 1; border-radius:15px; background-color: #0000FF; left: 66px; top: 48px; position: absolute; height: 14px; width: 95px; right: 711px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="X-Small">Buy a Treasure Spot</asp:HyperLink>
         
 
 
@@ -2383,7 +2384,7 @@ public string one5 = "";
         </div>
         <input id="Text1" type="text" style="position: absolute; left: 187px; top: 113px; width: 144px; height: 9px;" onkeydown="checkEnter(event);" />
      
-         <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx"  style="position: absolute; top: 183px; left: 324px; height: 27px; width: 52px;"position: absolute; z-index: 210; width: 65px; height: 44px; top: 97px; right: 689px; bottom: 425px; left: 118px; overflow: hidden; cursor: crosshair">
+         <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx"  style="border-style: none; position: absolute; top: 183px; left: 324px; height: 27px; width: 52px;"position: absolute; z-index: 210; width: 65px; height: 44px; top: 97px; right: 689px; bottom: 425px; left: 118px; overflow: hidden; cursor: crosshair">
 
          </iframe>
             &nbsp;<asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 9px; top: 196px; position: absolute; width: 180px" ForeColor="White" ReadOnly="true" Font-Size="X-Small"></asp:TextBox>

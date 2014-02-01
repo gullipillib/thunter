@@ -268,7 +268,7 @@ protected void Button3_Click(object sender, EventArgs e)
             
             <label style="z-index: 1; left: 7px; top: 47px; position: absolute; height: 105px; width: 127px; font-size: 12px;">
                 You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
-               Price : $5
+               Price : $2
             </label>
             
         </div>
@@ -295,7 +295,7 @@ protected void Button3_Click(object sender, EventArgs e)
         <div style="position: absolute; border: medium solid #000000; top: 688px; left: 367px; width: 350px; height: 155px;">
           <h2 style="width: 264px; position: absolute; top: 6px; left: 7px;">Buy A New ToolBox Item</h2>
              <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
-             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text="3"></asp:Label>
+             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text="1"></asp:Label>
              <asp:Label ID="Label17" runat="server" style="z-index: 1; left: 7px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
              <asp:Label ID="Label18" runat="server" style="z-index: 1; left: 94px; top: 54px; position: absolute; width: 93px">ToolBox Item</asp:Label>
          </div>
@@ -309,16 +309,16 @@ protected void Button3_Click(object sender, EventArgs e)
         <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
 
 
-        <asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:737px; top:19px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" />
+        <asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:737px; top:19px; border-radius:15px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" />
 
 
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 245px; top: -7px; position: absolute; bottom: 749px;" Target="_self">My Game</asp:hyperlink>   
-<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="false" NavigateUrl="~/Home/Index1" style="z-index: 1; left: 165px; top: -13px; position: absolute" Target="_self">Home</asp:hyperlink>
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 245px; top: -7px; position: absolute; bottom: 749px; border-radius:15px; background-color: #0000FF;" Target="_self">My Game</asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="false" NavigateUrl="~/Home/Index1" style="z-index: 1; border-radius:15px; background-color: #0000FF; left: 165px; top: -13px; position: absolute" Target="_self">Home</asp:hyperlink>
 
 
         
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 731px; top: -6px; position: absolute; right: 7px;" Target="_self" Enabled="False">Go on a Treasurehunt</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 731px; top: -6px; position: absolute; right: 7px; border-radius:15px; background-color: #0000FF;" Target="_self" Enabled="False">Go on a Treasurehunt</asp:hyperlink>
         
         
 
@@ -331,16 +331,16 @@ protected void Button3_Click(object sender, EventArgs e)
 <asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 191px; top: 59px; position: absolute; width: 85px; height: 20px"></asp:TextBox>
 <asp:Label ID="Label1" runat="server" Style="z-index: 1; left: 188px; top: 6px; position: absolute; width: 82px;" Text="Your Receipt No" Font-Size="8pt"></asp:Label>
 <asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 189px; top: 97px; position: absolute; width: 91px;"></asp:TextBox>
-<asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 10px; top: 77px; position: absolute; width: 174px" Text="Go to my Treasure Spot" OnClick="Button2_Click" />
-<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 18px; top: 117px; position: absolute" Text="Get Your Receipt" />
+<asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 10px; top: 77px; position: absolute; width: 174px; border-radius:15px; background-color: #0000FF;" Text="Go to my Treasure Spot" OnClick="Button2_Click" />
+<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 18px; top: 117px; position: absolute; border-radius:15px; background-color: #0000FF;" Text="Get Your Receipt" />
 </asp:Panel>           
         </form>
 
     <div style="position: absolute; border-style: dashed; border-width: thin; top: 418px; left: 594px; width: 296px; height: 164px;">
         <input id="orderno1" type="text" value="8" />
-        <button onclick="earn_currency()" style="z-index: 1; left: 9px; top: 109px; position: absolute">By Promotions</button>
-            <button onclick="free_currency()" style="z-index: 1; left: 10px; top: 72px; position: absolute; width: 146px; bottom: 66px;">Get Free Currency</button>
-        <button onclick="buy()" style="z-index: 1; left: 10px; top: 5px; position: absolute; width: 178px; height: 50px;">Buy By FB Payment System</button>
+        <button onclick="earn_currency()" style="z-index: 1; left: 9px; top: 109px; position: absolute; border-radius:15px; background-color: #0000FF;">By Promotions</button>
+            <button onclick="free_currency()" style="z-index: 1; left: 10px; top: 72px; position: absolute; width: 146px; bottom: 66px; border-radius:15px; background-color: #0000FF;">Get Free Currency</button>
+        <button onclick="buy()" style="z-index: 1; left: 10px; top: 5px; position: absolute; width: 178px; height: 50px; border-radius:15px; background-color: #0000FF;">Buy By FB Payment System</button>
     <label id="fb-ui-return-data" style="position: absolute; top: 48px; width: 89px; left: 197px; height: 21px;"></label>
     <label id="fb-ui-return-data2" style="position: absolute; top: 84px; width: 84px; left: 192px; height: 19px;"></label>
     </div>
@@ -376,7 +376,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
 <input type="hidden" name="item_name" value="Treasure Spot Buy"/>
-<input type="hidden" name="amount" value="5"/>
+<input type="hidden" name="amount" value="2"/>
 <input type="hidden" name="currency_code" value="USD"/>
 <input type="hidden" name="button_subtype" value="services"/>
 <input type="hidden" name="no_note" value="1"/>
@@ -412,7 +412,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
 <input type="hidden" name="item_name" value="ToolBox Item Buy"/>
-<input type="hidden" name="amount" value="3"/>
+<input type="hidden" name="amount" value="1"/>
 <input type="hidden" name="currency_code" value="USD"/>
 <input type="hidden" name="button_subtype" value="services"/>
 <input type="hidden" name="no_note" value="1"/>
