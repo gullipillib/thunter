@@ -346,11 +346,11 @@ to {left:10px;}
 
 
       
-<a href='https://treasurehunter.apphb.com/Images/buygoggles.aspx' onclick="" style="position:absolute;left:505px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;  border-radius:20px; text-align: center;">Buy</a>
+<a href='https://treasurehunter.apphb.com/buygoggles.aspx' onclick="" style="position:absolute;left:420px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;  border-radius:20px; text-align: center;">Buy</a>
 <a href='https://treasurehunter.apphb.com/Invite/friends' onclick="FacebookInviteFriends();" style="position:absolute; left:694px; top:127px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 190px; height: 18px;">Invite Friends</a>
 <a href='https://treasurehunter.apphb.com/gamesettings.aspx'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center;">My Game</a>
    <a href="https://treasurehunter.apphb.com/Play/play" target="_self" style="position:absolute;left:233px; top:126px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 529px; text-align: center;" > Go On a TreasureHunt </a> 
-   <a href="https://treasurehunter.apphb.com/Images/thhelp.aspx" target="_self" style="position:absolute;left:241px; top:157px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 479px; text-align: center;" > Help for the Game</a> 
+   <a href="https://treasurehunter.apphb.com/thhelp.aspx" target="_self" style="position:absolute;left:241px; top:157px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 479px; text-align: center;" > Help for the Game</a> 
    
     <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:394px; top:126px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 376px;" > Buy a Treasure Spot </a> 
     <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:549px; top:126px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 215px;" > Buy a ToolBox Item </a>                  
