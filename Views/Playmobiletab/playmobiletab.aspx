@@ -618,10 +618,10 @@ public string one5 = "";
                     }
                     document.getElementById('TextBox2').setAttribute("value", mycounter);
 
-                    if (noofhits = ranhits) {
+                    if (noofhits == ranhits) {
                         noofhits = -100;
                     }
-                    if (noofcoins = rancoins) {
+                    if (noofcoins == rancoins) {
                         noofcoins = -150;
                     }
                     if (mycounter != 0) {
