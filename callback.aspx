@@ -30,9 +30,9 @@
         catch { }
 	string signedrequest = "no method"; try { signedrequest = Request.Form["signed_request"]; }
         catch { }
-	string signedrequest = "no method"; try { hubmode = Request.Form["hub.mode"]; }
+	string hubmode = "no method"; try { hubmode = Request.Form["hub.mode"]; }
         catch { }
-	string signedrequest = "no method"; try { hubchallenge = Request.Form["hub.challenge"]; }
+	string hubchallenge = "no method"; try { hubchallenge = Request.Form["hub.challenge"]; }
         catch { }
 	
 	// Return the response
