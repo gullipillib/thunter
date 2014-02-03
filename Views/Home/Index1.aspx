@@ -345,7 +345,7 @@ to {left:10px;}
 
 
 
-      
+<a href="https://plus.google.com/103286494679541419770" rel="publisher" style="z-index: 1; left: 784px; top: 17px; position: absolute; text-decoration: none;">Google+</a>      
 <a href='https://treasurehunter.apphb.com/buygoggles.aspx' onclick="" style="position:absolute;left:420px; top:157px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;  border-radius:20px; text-align: center;">Buy</a>
 <a href='https://treasurehunter.apphb.com/Invite/friends' onclick="FacebookInviteFriends();" style="position:absolute; left:694px; top:127px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 190px; height: 18px;">Invite Friends</a>
 <a href='https://treasurehunter.apphb.com/gamesettings.aspx'  style="position:absolute;left:802px; top:126px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center;">My Game</a>
@@ -362,7 +362,7 @@ to {left:10px;}
         <img alt="" class="twoto3d" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="z-index: 1; left: 8px; top: 7px; position: absolute" /></p>
                   
     <p>
-        <img alt="" src="https://treasurehunter.apphb.com/Images/3dglass.gif" style="z-index: 1; left: 436px; top: 155px; position: absolute; height: 27px; width: 56px" /></p>
+        <img alt="" src="https://treasurehunter.apphb.com/Images/3dglass.gif" style="z-index: 1; left: 474px; top: 151px; position: absolute; height: 27px; width: 56px" /></p>
                   
         <asp:Label ID="Label5" runat="server" Font-Size="8pt" style="z-index: 1; left: 401px; top: 587px; position: absolute" Text="Treasure Hunter - 2013"></asp:Label>
        

@@ -618,20 +618,24 @@ public string one5 = "";
                     }
                     document.getElementById('TextBox2').setAttribute("value", mycounter);
 
+                    var showshower = 0;
+			
                     if (noofhits == ranhits) {
                         noofhits = -100;
+			showshower = 1;
                     }
                     if (noofcoins == rancoins) {
                         noofcoins = -150;
+			showshower = 1;
                     }
-                    if (mycounter != 0) {
-                        if (noofhits >= ranhits || noofcoins >= rancoins) {
+                    if (showshower == 1) {
+                        
                             document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
                             Img9.style.visibility = "visibile";
                             feed();
                             document.getElementById('TextBox2').setAttribute("value", "0");
 
-                        }
+                       
                         document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                         document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
 
