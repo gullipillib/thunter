@@ -197,7 +197,7 @@
 
 
     <form id="form1"  runat="server" >
-        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
         
         <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 29px; top: 393px; position: absolute; height: 54px; width: 562px" TextMode="MultiLine" CausesValidation="True"></asp:TextBox>
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 322px; top: 44px; position: absolute; width: 496px" Text="Label"></asp:Label>

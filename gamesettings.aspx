@@ -154,9 +154,9 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:Label ID="Label7" runat="server" Font-Bold="True" style="z-index: 1; left: 8px; top: 7px; position: absolute" Text="Money Earned"></asp:Label>
         <asp:Label ID="Label8" runat="server" Font-Bold="True" style="z-index: 1; left: 204px; top: 8px; position: absolute; height: 22px; width: 77px" Text="Gold Coins"></asp:Label>
         
-    <asp:AccessDataSource id="AccessDataSource11" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
+    <asp:AccessDataSource id="AccessDataSource11" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
     
-    <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
+    <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
         <asp:ListBox ID="ListBox1" runat="server" DataSourceID="AccessDataSource8" DataTextField="amount" DataValueField="amount" Enabled="False" style="z-index: 1; left: 122px; top: 7px; position: absolute; height: 23px; width: 72px;"></asp:ListBox>
         <asp:ListBox ID="ListBox2" runat="server" DataSourceID="AccessDataSource9" DataTextField="lucrisboos" DataValueField="lucrisboos" Enabled="False" style="z-index: 1; left: 289px; top: 7px; position: absolute; height: 25px; width: 75px;"></asp:ListBox>
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 224px; top: 38px; position: absolute; " Text="Buy" UseSubmitBehavior="False" />
@@ -166,20 +166,20 @@ protected void Button5_Click(object sender, EventArgs e)
        <asp:Button ID="Button4" runat="server" style="z-index: 1; left: 608px; top: 305px; position: absolute" Text="Bid" UseSubmitBehavior="False" />
         <asp:Button ID="Button5" runat="server" style="z-index: 1; left: 168px; top: 855px; position: absolute" Text="Sell" OnClick="Button5_Click" UseSubmitBehavior="False" />
         <asp:Button ID="Button6" runat="server" style="z-index: 1; left: 176px; top: 576px; position: absolute" Text="Sell" OnClick="Button6_Click" UseSubmitBehavior="False" /> 
-        <asp:AccessDataSource ID="AccessDataSource2" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner = ''" UpdateCommand="update tspots set tsprice = ''"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource2" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner = ''" UpdateCommand="update tspots set tsprice = ''"></asp:AccessDataSource>
         <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 681px; top: 306px; position: absolute" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True"></asp:TextBox>
-        <asp:AccessDataSource ID="AccessDataSource3" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbcoowner = ''"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource3" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbcoowner = ''"></asp:AccessDataSource>
         <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" style="z-index: 1; left: 744px; top: 11px; position: absolute; right: 12px;" Target="_self">Buy a ToolBox Item</asp:HyperLink>
-        <asp:AccessDataSource ID="AccessDataSource4" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tsname, tsowner, tsprice FROM tspots  WHERE  (tssell = 'yes')"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource5" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate, tsbidder FROM  tspots WHERE (tssell = 'yes')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource4" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsname, tsowner, tsprice FROM tspots  WHERE  (tssell = 'yes')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource5" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate, tsbidder FROM  tspots WHERE (tssell = 'yes')"></asp:AccessDataSource>
         <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="false" NavigateUrl="~/buy.aspx" style="z-index: 1; left: 601px; top: 10px; position: absolute" Target="_self">Buy a Treasure Spot</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="false" NavigateUrl="~/approver.aspx" style="z-index: 1; left: 383px; top: 11px; position: absolute" Target="_self">Treasure Spot Approving($0.25)</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="~/approver1.aspx" style="z-index: 1; left: 273px; top: 41px; position: absolute" Target="_self">Game Items Approving($0.10)</asp:HyperLink>
-        <asp:AccessDataSource ID="AccessDataSource6" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbsell FROM toolbox WHERE (tbsell = 'yes')"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource7" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate, tbbidder FROM toolbox WHERE (tbsell = 'yes')"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource8" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT amount FROM appuserdetails where uname='Tresurehunter'"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource9" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT lucrisboos FROM loggedusers where luname='Tresurehunter'"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource10" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate FROM toolbox  WHERE  (tbsell = 'yes' and tbselltype='bid')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource6" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbsell FROM toolbox WHERE (tbsell = 'yes')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource7" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate, tbbidder FROM toolbox WHERE (tbsell = 'yes')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource8" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT amount FROM appuserdetails where uname='Tresurehunter'"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource9" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT lucrisboos FROM loggedusers where luname='Tresurehunter'"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource10" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate FROM toolbox  WHERE  (tbsell = 'yes' and tbselltype='bid')"></asp:AccessDataSource>
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource2" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 24px; top: 608px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
             <AlternatingRowStyle BackColor="White" />
             <Columns>

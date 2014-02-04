@@ -177,8 +177,8 @@
         
         
         
-            <asp:AccessDataSource ID="AccessDataSource2" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tsowner = 'Treasure Hunter'"></asp:AccessDataSource>
-            <asp:AccessDataSource ID="AccessDataSource3" runat="server" DataFile="~/Views/Datab/th.mdb" SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE (tbowner = 'Treasure Hunter')"></asp:AccessDataSource>
+            <asp:AccessDataSource ID="AccessDataSource2" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tsowner = 'Treasure Hunter'"></asp:AccessDataSource>
+            <asp:AccessDataSource ID="AccessDataSource3" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE (tbowner = 'Treasure Hunter')"></asp:AccessDataSource>
             <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource2" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 24px; top: 428px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
@@ -258,7 +258,7 @@
         
         
         </asp:Panel>
-        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT * FROM settings" InsertCommand="INSERT INTO settings(logintimes, tspots, invites, loginreset) VALUES ('', '', '','')" UpdateCommand="UPDATE settings SET logintimes = ''"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT * FROM settings" InsertCommand="INSERT INTO settings(logintimes, tspots, invites, loginreset) VALUES ('', '', '','')" UpdateCommand="UPDATE settings SET logintimes = ''"> </asp:AccessDataSource>
 
     </form>
 </body>

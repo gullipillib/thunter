@@ -99,7 +99,7 @@ protected void Page_Load(object sender, EventArgs e)
     }
 </script>
    
-    <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
+    <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
 
 <a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:42%; top:27%; width:13%; height: 5%; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 396px;">Invite Friends</a><p>
 

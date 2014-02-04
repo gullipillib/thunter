@@ -14,7 +14,7 @@
 </head>
 <body>
     <form runat="server">
-        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server"  SelectCommand="SELECT tsapprovercomments FROM tspots WHERE (tsowner = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT tsapprovercomments FROM tspots WHERE (tsowner = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
         
     <div>
     

@@ -1059,13 +1059,13 @@
     <form id="form1" runat="server">
         
 
-        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" UpdateCommand="UPDATE tspots SET tscompleted = '[no]'"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" UpdateCommand="UPDATE tspots SET tscompleted = '[no]'"></asp:AccessDataSource>
         <asp:CheckBox ID="CheckBox3" runat="server" Checked="True" Enabled="False" ForeColor="Red" style="z-index: 1; left: 356px; top: 3px; position: absolute" Text="I Agree to the terms and conditions of treasurehunter" />
         <asp:Label ID="Label1" runat="server" Style="z-index: 1; left: 525px; top: 121px; position: absolute; width: 41px; height: 20px;" Text="Name" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label7" runat="server" Style="z-index: 1; left: 15px; top: 474px; position: absolute; width: 68px; height: 20px;" Text="Video Url" Font-Bold="True" ForeColor="Blue"></asp:Label>
-        <asp:AccessDataSource ID="AccessDataSource2" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'land')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource2" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'land')"></asp:AccessDataSource>
 
-        <asp:AccessDataSource ID="AccessDataSource3" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT tbname, tbtoolscategory,  tbcategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'water')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource3" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT tbname, tbtoolscategory,  tbcategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'water')"></asp:AccessDataSource>
             
            
     <a href="creatorhelp.aspx" target="_self" style="position: absolute; left: 504px; top: 487px; width: 86px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 324px; text-align: center; height: 22px;">Help </a>
@@ -1073,7 +1073,7 @@
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 567px; top: 26px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
         <asp:Button ID="Button11" runat="server" Style="z-index: 1; left: 297px; top: 5px; position: absolute; cursor:pointer;" Text="Select" OnClick="Button11_Click" UseSubmitBehavior="False" BackColor="#99CCFF" ForeColor="Maroon" />
-        <asp:AccessDataSource ID="AccessDataSource4" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'air or space')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource4" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'air or space')"></asp:AccessDataSource>
         <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 13px; top: 16px; position: absolute; height:14px; width: 67px; right: 834px;" Text="Game Category" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 644px; top: 244px; position: absolute; height:14px; width: 59px; right: 211px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 646px; top: 264px; position: absolute; height:11px; width: 56px; right: 212px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
@@ -1088,7 +1088,7 @@
         <asp:Label ID="Label24" runat="server" style="z-index: 1; left:  174px; top: 610px; position: absolute; height:14px; width: 32px; right: 708px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Transparent"></asp:Label>
         <asp:Label ID="Label25" runat="server" style="z-index: 1; left:  262px; top: 607px; position: absolute; height:14px; width: 32px; right: 620px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Transparent"></asp:Label>
         <asp:Label ID="Label26" runat="server" style="z-index: 1; left:  346px; top: 437px; position: absolute; height:14px; width: 214px; right: 354px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
-        <asp:AccessDataSource ID="AccessDataSource5" DataFile="~/Views/Datab/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'others or players')  or  (tbtoolscategory = 'player')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource5" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'others or players')  or  (tbtoolscategory = 'player')"></asp:AccessDataSource>
 
         <asp:Image ID="Image6" runat="server" Height="20px" style="z-index: 1; left: 702px; top: 228px; position: absolute; height:10px; width:10px" Width="20px" />
         <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 668px; top: 209px; position: absolute; height:14px; width: 85px" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
