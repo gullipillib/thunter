@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.MyAppUser>"   Culture="auto"  meta:resourcekey="PageResource1" UICulture="auto" EnableSessionState="True" Debug="true" %>
 
-<%@ Import Namespace="System.Data" %>
-<%@ Import Namespace="System.Data.SqlClient" %>
+<%@ Import Namespace="System.Data.OleDb" %>
 <%@ Import Namespace="System.Configuration" %>
 
 
@@ -9,7 +8,7 @@
 <script runat="server">
     //public static System.Timers.Timer timer = new System.Timers.Timer(280000); // This will raise the event every one minute.
     //public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
-
+    
     string tsname = "";
     string tsitems = "";
     string tsrplayers = "";
@@ -2442,18 +2441,18 @@ public string one5 = "";
       <input id="Text1" type="text" style="position: absolute; left: 12px; top: 493px; width: 242px;" onkeydown="checkEnter(event);"/> 
 <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none; position: absolute; top: 147px; left: 862px; height: 40px; width: 93px; margin-top: 0px;" ></iframe>
 <div id="aimg" style="position: absolute; left: 118px; top: 99px; width: 236px; height: 200px;">
-    <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 232px; height: 199px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 1px; background-color: Transparent;" id="Img6" />
-    <asp:Image ID="Image1" runat="server" style="z-index: 300; left: 82px; top: 130px; position: absolute; width: 33px; height: 33px;" ImageUrl='<%=one1%>' />
-    <asp:Image ID="Image2" runat="server" style="z-index: 300; left: 114px; top: 74px; position: absolute; width: 32px; height: 35px;" ImageUrl='<%=one2%>' />
-    <asp:Image ID="Image3" runat="server" style="z-index: 300; left: 159px; top: 40px; position: absolute; width: 34px; height: 31px;" ImageUrl='<%=one3%>' />
-    <asp:Image ID="Image4" runat="server" style="z-index: 300; left: 122px; top: 169px; position: absolute; width: 32px; height: 22px;" ImageUrl='<%=one4%>' />
-    <asp:Image ID="Image5" runat="server" style="z-index: 300; left: 200px; top: 10px; position: absolute; width: 29px; height: 46px;" ImageUrl='<%=one5%>' />
+    <img alt="" src="../../Images/achievements.gif" style="width: 232px; height: 199px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 1px; background-color: Transparent;" id="Img6" />
+    <asp:Image ID="Image1" runat="server" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" ImageUrl='<%=one1%>' />
+    <asp:Image ID="Image2" runat="server" style="z-index: 300; left: 114px; top: 60px; position: absolute; width: 32px; height: 30px;" ImageUrl='<%=one2%>' />
+    <asp:Image ID="Image3" runat="server" style="z-index: 300; left: 159px; top: 30px; position: absolute; width: 34px; height: 32px;" ImageUrl='<%=one3%>' />
+    <asp:Image ID="Image4" runat="server" style="z-index: 300; left: 35px; top: 149px; position: absolute; width: 39px; height: 35px;" ImageUrl='<%=one4%>' />
+    <asp:Image ID="Image5" runat="server" style="z-index: 300; left: 203px; top: 10px; position: absolute; width: 26px; height: 33px;" ImageUrl='<%=one5%>' />
 
-    <asp:Image ID="Image6" runat="server" style="z-index: 301; left: 130px; top: 132px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image7" runat="server" style="z-index: 301; left: 168px; top: 81px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image8" runat="server" style="z-index: 301; left: 120px; top: 36px; position: absolute; width: 20px; height: 21px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image9" runat="server" style="z-index: 301; left: 190px; top: 160px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image10" runat="server" style="z-index: 301; left: 170px; top: 7px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image6" runat="server" style="z-index: 301; left: 130px; top: 111px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image7" runat="server" style="z-index: 301; left: 156px; top: 65px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image8" runat="server" style="z-index: 301; left: 135px; top: 33px; position: absolute; width: 20px; height: 21px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image9" runat="server" style="z-index: 301; left: 83px; top: 162px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+    <asp:Image ID="Image10" runat="server" style="z-index: 301; left: 181px; top: 4px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
 
 </div>
     
