@@ -30,10 +30,7 @@
         catch { }
 	string signedrequest = "no method"; try { signedrequest = Request.Form["signed_request"]; }
         catch { }
-	string signedrequest = "no method"; try { hubmode = Request.Form["hub.mode"]; }
-        catch { }
-	string signedrequest = "no method"; try { hubchallenge = Request.Form["hub.challenge"]; }
-        catch { }
+    
 	
 	// Return the response
         System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();
@@ -43,8 +40,7 @@
                     content["status"] = status;
                     content["quantity"] = quantity;
 		            content["signed_request"] = signedrequest;
-			content["hub.mode"] = hubmode;
-			content["hub.challenge"] = hubchallenge;
+			
 
                     var res = new Dictionary<string, object>();
                     res["content"] = content;

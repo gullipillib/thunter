@@ -66,7 +66,7 @@ protected void checkusername()
     else
     {
 
-        Response.Redirect("~/Homw/index1");
+        Response.Redirect("~/Home/Index1");
     }
     
 }
@@ -194,7 +194,6 @@ protected void Button1_Click(object sender, EventArgs e)
 
 protected void Button2_Click(object sender, EventArgs e)
 {
-    Label2.Text = "You have to buy a treasurespot and then get receipt to go and create treasure spot!";
     if (HiddenField3 == "completed" & HiddenField2 == "https://treasurehunter.apphb.com/coin.html") 
     {
         AccessDataSource1.SelectCommand = "SELECT * FROM tspots";
@@ -239,111 +238,148 @@ protected void Button3_Click(object sender, EventArgs e)
         }
         #orderno1 {
             z-index: 1;
-            left: 215px;
-            top: 8px;
+            left: 43px;
+            top: -788px;
             position: absolute;
             width: 24px;
         }
     </style>
 </head>
-<body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px" >
+<body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px; background-color:blueviolet" >
   
+ <form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 200px; left: 589px; width: 105px; height: 41px;" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick"/>
+<input type="hidden" name="business" value="servicestwts@yahoo.com"/>
+<input type="hidden" name="lc" value="IN"/>
+<input type="hidden" name="item_name" value="Treasure Spot Buy"/>
+<input type="hidden" name="amount" value="2"/>
+<input type="hidden" name="currency_code" value="USD"/>
+<input type="hidden" name="button_subtype" value="services"/>
+<input type="hidden" name="no_note" value="1"/>
+<input type="hidden" name="no_shipping" value="1"/>
+<input type="hidden" name="tax_rate" value="0.000"/>
+<input type="hidden" name="shipping" value="0.00"/>
+<input type="hidden" id="Hidden3" name="custom" value='<%=Hiddenfield1%>'/>
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted"/>
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"  name="submit" alt="PayPal – The safer, easier way to pay online."/>
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
+</form>
     
-
-
-
+ 
       
     <form id="form1" runat="server">
-            
-       
-             
         
-        <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 5px; top: 2px; position: absolute; width: 236px" Text="Buy at mygame premade treasurespots"></asp:Label>
+        <asp:Label ID="Label6" runat="server" style="z-index: 1;  left: 64px; top: 19px; position: absolute; width: 236px; height: 14px;" Text="Buy at mygame premade treasurespots" Font-Size="10pt" ForeColor="White"></asp:Label>
        
-        
-        <div style="position: absolute; border: medium solid #000000; top: 233px; left: 593px; width: 307px; height: 165px;">
-            <h2 style="width: 173px; position: absolute; top: 13px; left: 77px; font-size: 14px;">Buy New Treasure Spot</h2>
-            
-            <img alt="" src="../../Images/coin.png" style="width: 34px; height: 27px; z-index: 1; left: 7px; top: 6px; position: absolute;" />
-            
-            <label style="z-index: 1; left: 7px; top: 47px; position: absolute; height: 105px; width: 127px; font-size: 12px;">
-                You have to own atleast one&nbsp; Treasure Hunting Spot. You can later sell it for a specific price or on a bid system.<br />
-               Price : $2
-            </label>
-            
-        </div>
-        <div style="position: absolute; border: medium solid #000000; top: 644px; left: 738px; width: 294px; height: 166px;">
-            <h2 style="width: 161px; position: absolute; top: 12px; left: 55px; font-size: 10px;">Buy A Bid/Sale Treasure Spot</h2>
-            <img alt="" src="../../Images/bid.png" style="z-index: 1; left: 4px; top: 12px; position: absolute; right: 308px;" />
-            <label style="z-index: 1; left: 57px; top: 34px; position: absolute; height: 18px; width: 197px; bottom: 114px; font-size: 10px;">Your Bid or Sale has been approved buy now</label>
-            
-            
-            <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 10px; top: 59px; position: absolute" Text="Item Name"></asp:Label>
-            <asp:Label ID="Label12" runat="server" style="z-index: 1; left: 9px; top: 133px; position: absolute" Text="Price($)"></asp:Label>
-            <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 8px; top: 87px; position: absolute"></asp:Label>
-            <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 95px; top: 131px; position: absolute; width: 118px;"></asp:Label>
-            
-        </div>
-         <div style="position: absolute; border: medium solid #000000; top: 659px; left: 1px; width: 350px; height: 188px;">
-          <h2 style="width: 319px; position: absolute; top: 16px; left: 12px;">Buy A Bid/Sale ToolBox Item</h2>
-             <asp:Label ID="Label7" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
-             <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text=""></asp:Label>
-             <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 15px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
-             <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 117px; top: 59px; position: absolute; width: 195px"></asp:Label>
-         </div>  
-
-        <div style="position: absolute; border: medium solid #000000; top: 688px; left: 367px; width: 350px; height: 155px;">
-          <h2 style="width: 264px; position: absolute; top: 6px; left: 7px;">Buy A New ToolBox Item</h2>
-             <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 22px; top: 86px; position: absolute" Text="Price($)"></asp:Label>
-             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 116px; top: 87px; position: absolute" Text="1"></asp:Label>
-             <asp:Label ID="Label17" runat="server" style="z-index: 1; left: 7px; top: 56px; position: absolute" Text="Item Name"></asp:Label>
-             <asp:Label ID="Label18" runat="server" style="z-index: 1; left: 94px; top: 54px; position: absolute; width: 93px">ToolBox Item</asp:Label>
-         </div>
-
-         
-
-        <h1 style="width: 231px; position: absolute; top: -19px; left: 326px; font-weight: bold; font-size: 30px; color: #0000FF;">&nbsp;Treasure Hunter</h1>
+        <h1 style="width: 231px; position: absolute; top: -9px; left: 355px; font-weight: bold; font-size: 30px; color: #FFCCFF; right: 294px;">Treasure Hunter</h1>
 
         
 
         <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
 
 
-        <asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:737px; top:19px; border-radius:15px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" />
+        <div id="mainwindow" style="background-color: #FFCCCC; border: 40px ridge #FFFFCC; height: 637px; z-index: 1; left: 23px; top: 38px; position: absolute; width: 706px;">
+            <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 546px; left: 13px; width: 670px; height: 68px; background-color: #FF99FF;">
+                <label style="z-index: 300; left: 15px; top: 17px; position: absolute; height: 35px; width: 241px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bolder; font-style: normal; letter-spacing: 2pt;">
+                Earn Free Currency</label>
+                <label style="z-index: 300; left: 300px; top: 28px; position: absolute; height: 20px; width: 46px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                TrialPay</label>&nbsp;
+                </div>
+            <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 12px; left: 16px; width: 670px; height: 68px; background-color: #FF99FF;">
+                <label style="z-index: 300; left: 13px; top: 18px; position: absolute; height: 35px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
+                Treasure Spot</label>
+                <label style="z-index: 300; left: 294px; top: 8px; position: absolute; height: 20px; width: 134px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                Facebook Payment System</label>
+                <label style="z-index: 300; left: 464px; top: 6px; position: absolute; height: 21px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal; right: 184px;">
+                $2</label>
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
+                <button onclick="buy();" style="z-index: 1; left: 517px; top: 2px; position: absolute; width: 64px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</button>    
+            </div>
 
+            <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 99px; left: 16px; width: 670px; height: 68px; background-color: #FF99FF;">
+                <label style="z-index: 300; left: 13px; top: 18px; position: absolute; height: 35px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
+                Treasure Spot</label>
+                <label style="z-index: 300; left: 294px; top: 30px; position: absolute; height: 20px; width: 53px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                PayPal</label>
+                <label style="z-index: 300; left: 464px; top: 24px; position: absolute; height: 20px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal;">
+                $2</label>
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
+                </div>
 
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="false" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 245px; top: -7px; position: absolute; bottom: 749px; border-radius:15px; background-color: #0000FF;" Target="_self">My Game</asp:hyperlink>   
-<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="false" NavigateUrl="~/Home/Index1" style="z-index: 1; border-radius:15px; background-color: #0000FF; left: 165px; top: -13px; position: absolute" Target="_self">Home</asp:hyperlink>
+            <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 184px; left: 15px; width: 670px; height: 68px; background-color: #FF99FF;">
+                <label style="z-index: 300; left: 13px; top: 18px; position: absolute; height: 35px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
+                Game Tools</label>
+                <label style="z-index: 300; left: 294px; top: 25px; position: absolute; height: 20px; width: 53px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                PayPal</label>
+                <label style="z-index: 300; left: 464px; top: 24px; position: absolute; height: 20px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal;">
+                $1</label>
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
+                </div>
+
+            <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 267px; left: 14px; width: 670px; height: 68px; background-color: #FF99FF;">
+                <label style="z-index: 300; left: 13px; top: 8px; position: absolute; height: 24px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
+                Treasure Spot</label>
+                <label style="z-index: 300; left: 294px; top: 25px; position: absolute; height: 20px; width: 53px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                PayPal</label>
+                <label style="z-index: 300; left: 465px; top: 5px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                Bid</label>&nbsp;
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
+                </div>
+
+            <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 350px; left: 14px; width: 670px; height: 68px; background-color: #FF99FF;">
+                <label style="z-index: 300; left: 13px; top: 8px; position: absolute; height: 22px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
+                Game Tools</label>
+                <label style="z-index: 300; left: 294px; top: 25px; position: absolute; height: 20px; width: 53px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                PayPal</label>
+                <label style="z-index: 300; left: 465px; top: 5px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                Bid</label>&nbsp;
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
+                </div>
+<div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 450px; left: 14px; width: 670px; height: 68px; background-color: #FF99FF;">
+                <label style="z-index: 300; left: 13px; top: 10px; position: absolute; height: 51px; width: 208px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 449px;">
+                Treasure Spot<br />
+                Free Promotion</label>
+                <label style="z-index: 300; left: 294px; top: 25px; position: absolute; height: 20px; width: 137px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                Facebook Payment System</label>
+                <label style="z-index: 300; left: 464px; top: 27px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                Free</label>&nbsp;
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
+                </div>
+            <button onclick="payer_promotion();" style="z-index: 1; left: 556px; top: 474px; position: absolute; width: 95px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Payer Promotion</button>
+            </div>
+
+        
+
+<asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/trialpay.aspx" style="z-index: 1; left: 606px; top: 638px; position: absolute; bottom: 72px; border-radius:15px; background-color: #FF9900;  width: 122px; cursor:pointer; text-decoration:none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="~/Images/trialpay.jpg"></asp:hyperlink>   
+
+        
+<asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:751px; top:-3px; border-radius:15px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" ToolTip="Use this to Play further on, Create one Treasure Spot but you cannot Sell or Bid or Approve to Earn Real Cash" />
+            
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 101px; top: -4px; position: absolute; bottom: 746px; border-radius:15px; background-color: #FF9900;  width: 66px;" Target="_self" ForeColor="White" BackColor="#FF9900">My Game</asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Home/Index1" style="z-index: 1; border-radius:15px; background-color: #FF9900;  left: 18px; top: -6px; position: absolute; height: 23px; width: 43px;" Target="_self" ForeColor="White">Home</asp:hyperlink>
 
 
         
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 731px; top: -6px; position: absolute; right: 7px; border-radius:15px; background-color: #0000FF;" Target="_self" Enabled="False">Go on a Treasurehunt</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 598px; top: 2px; position: absolute; right: 140px; border-radius:15px; background-color: #FF9900; " Target="_self" Enabled="False" ForeColor="White">Go on a Treasurehunt</asp:hyperlink>
         
         
+<asp:Label ID="Label8" runat="server" style="z-index: 1; left: 539px; top: 373px; position: absolute" Text=""></asp:Label>
+<asp:Label ID="Label10" runat="server" style="z-index: 1; left: 94px; top: 391px; position: absolute; width: 195px"></asp:Label>
+<asp:Label ID="Label13" runat="server" style="z-index: 1; left: 97px; top: 475px; position: absolute; width: 181px;"></asp:Label>
+<asp:Label ID="Label14" runat="server" style="z-index: 1; left: 534px; top: 457px; position: absolute; width: 63px;"></asp:Label>
+               
+<asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 501px; top: 131px; position: absolute; width: 225px; height: 20px; text-decoration:none; background-color:transparent" BorderStyle="None"></asp:TextBox> 
+<asp:TextBox ID="TextBox3" runat="server" Style="z-index: 1; left: -84px; top: -970px; position: absolute; width: 162px; height: 15px; text-decoration:none" ForeColor="White" BackColor="Transparent" BorderStyle="None"></asp:TextBox>
+        
+<asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 687px; top: 102px; position: absolute; width: 53px;" BackColor="Transparent" BorderStyle="None"></asp:TextBox>
 
-
-<asp:Panel ID="panel12" runat="server" style="z-index: 1; left: 596px; top: 52px; position: absolute; height: 161px; width: 296px" BorderStyle="Dotted" BorderColor="Black">
-        <asp:TextBox ID="TextBox3" runat="server" Style="z-index: 1; left: 180px; top: 26px; position: absolute; width: 98px; height: 20px;"></asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server" Style="z-index: 1; left: 173px; top: 130px; position: absolute; width: 106px" ReadOnly="True" BorderStyle="None"></asp:TextBox>
-      <asp:Label ID="Label2" runat="server" Style="z-index: 1; left: 20px; top: 43px; position: absolute; width: 76px"></asp:Label>
-<asp:Label ID="Label3" runat="server" Style="z-index: 1; left: 7px; top: 13px; position: absolute; width: 168px; height: 19px;" Text="Buy a New Treasure Spot Now " Font-Bold="True" Font-Size="9pt"></asp:Label> 
-<asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 191px; top: 59px; position: absolute; width: 85px; height: 20px"></asp:TextBox>
-<asp:Label ID="Label1" runat="server" Style="z-index: 1; left: 188px; top: 6px; position: absolute; width: 82px;" Text="Your Receipt No" Font-Size="8pt"></asp:Label>
-<asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 189px; top: 97px; position: absolute; width: 91px;"></asp:TextBox>
-<asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 10px; top: 77px; position: absolute; width: 174px; border-radius:15px; background-color: #0000FF;" Text="Go to my Treasure Spot" OnClick="Button2_Click" />
-<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 18px; top: 117px; position: absolute; border-radius:15px; background-color: #0000FF;" Text="Get Your Receipt" />
-</asp:Panel>           
-        </form>
-
-    <div style="position: absolute; border-style: dashed; border-width: thin; top: 418px; left: 594px; width: 296px; height: 164px;">
-        <input id="orderno1" type="text" value="8" />
-        <button onclick="earn_currency()" style="z-index: 1; left: 9px; top: 109px; position: absolute; border-radius:15px; background-color: #0000FF;">By Promotions</button>
-            <button onclick="free_currency()" style="z-index: 1; left: 10px; top: 72px; position: absolute; width: 146px; bottom: 66px; border-radius:15px; background-color: #0000FF;">Get Free Currency</button>
-        <button onclick="buy()" style="z-index: 1; left: 10px; top: 5px; position: absolute; width: 178px; height: 50px; border-radius:15px; background-color: #0000FF;">Buy By FB Payment System</button>
-    <label id="fb-ui-return-data" style="position: absolute; top: 48px; width: 89px; left: 197px; height: 21px;"></label>
-    <label id="fb-ui-return-data2" style="position: absolute; top: 84px; width: 84px; left: 192px; height: 19px;"></label>
-    </div>
+<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 380px; top: 132px; position: absolute; border-radius:15px; background-color: #0000FF; width: 110px;" Text="Get Your Receipt" Font-Size="9pt" ForeColor="White" />
+ 
+   <a href="https://treasurehunter.apphb.com/Images/create.aspx" target="_self" style="position:absolute;top:-5px; width:152px; text-decoration:none; background-color: #FF9900; color: #FFFFFF; border-radius:20px; right: 543px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
+   
+    
+</form>
 
     <%--<form action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 529px; left: 532px;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -353,7 +389,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>--%>
 
-            <form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 711px; left: 860px; height: 51px; width: 165px;" method="post" target="_top">
+            <form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 341px; left: 604px; height: 51px; width: 130px;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -371,25 +407,9 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
 </form>
 
-<form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 288px; left: 739px;" method="post" target="_top">
-<input type="hidden" name="cmd" value="_xclick"/>
-<input type="hidden" name="business" value="servicestwts@yahoo.com"/>
-<input type="hidden" name="lc" value="IN"/>
-<input type="hidden" name="item_name" value="Treasure Spot Buy"/>
-<input type="hidden" name="amount" value="2"/>
-<input type="hidden" name="currency_code" value="USD"/>
-<input type="hidden" name="button_subtype" value="services"/>
-<input type="hidden" name="no_note" value="1"/>
-<input type="hidden" name="no_shipping" value="1"/>
-<input type="hidden" name="tax_rate" value="0.000"/>
-<input type="hidden" name="shipping" value="0.00"/>
-<input type="hidden" id="Hidden3" name="custom" value='<%=Hiddenfield1%>'/>
-<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted"/>
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"  name="submit" alt="PayPal – The safer, easier way to pay online."/>
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
-</form>
 
-<form id="Form3" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 777px; left: 179px;" method="post" target="_top">
+
+<form id="Form3" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 447px; left: 606px; width: 109px; height: 43px;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -407,7 +427,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
 </form>
 
-    <form id="Form5" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 780px; left: 546px;" method="post" target="_top">
+    <form id="Form5" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 287px; left: 618px; width: 116px; height: 35px;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -442,11 +462,6 @@ protected void Button3_Click(object sender, EventArgs e)
 <input type="image" src="https://www.sandbox.paypal.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
 <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>--%>
-
-   
-    <iframe width="585" scrolling="no" frameborder="0" style="border: 1px none white; z-index: 1; left: 5px; top: 34px; position: absolute; height: 610px;" src="https://www.trialpay.com/dispatch/c0959f54259e6c43409b3ef18b98479d?sid=7plK3xiCN5tkXO8uO6kgowfoI3U&order_info=1&tpi=CAAVVIRI&currency_url=http://www.acmesoft.com/vc/coins.php&callback_url=http://www.acmesoft.com/tastymorsels/callback.php"></iframe>
-
-
         
         <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js">
             var itemno = '<%=orderno.Text%>';
@@ -476,30 +491,17 @@ protected void Button3_Click(object sender, EventArgs e)
 
                 FB.ui(obj, js_callback);
             }
+function payer_promotion() {
+            var obj = {
+  method: 'fbpromotion',
+  display: 'popup',
+  quantity: 1,
+  product: 'https://treasurehunter.apphb.com/coin.html'
+};
 
-            function earn_currency() {
-                var obj = {
-                    method: 'pay',
-                    action: 'earn_currency',
-                    product: 'https://treasurehunter.apphb.com/coin.html',
-                    request_id: itemno
-                };
-
-                itemno = "ts1";
-                FB.ui(obj, js_callback);
+FB.ui(obj, js_callback);
             }
 
-            function free_currency() {
-                var obj = {
-                    method: 'fbpromotion',
-                    display: 'popup',
-                    package_name: 'zero_promo',
-                    product: 'http://currency.object.url'
-                };
-                itemno = "ts2";
-                FB.ui(obj, npp_callback);
-
-            }
             //https://www.facebook.com/dialog/pay?app_id=YOUR_APP_ID&redirect_uri=YOUR_REDIRECT_URI&action=buy_item&order_info=SOME_DEV_JSON_ORDER_INFO&dev_purchase_params={"oscif":true}    
             // This JavaScript callback handles FB.ui's return data and differs
             // from the Credits Callbacks.
@@ -545,7 +547,6 @@ protected void Button3_Click(object sender, EventArgs e)
         </script>
 
 
-   <a href="https://treasurehunter.apphb.com/Images/create.aspx" target="_self" style="position:absolute;left:567px; top:-6px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; right: 161px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
    
         
 </body>

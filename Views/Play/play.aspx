@@ -499,7 +499,7 @@ public string one5 = "";
 </head>
 
 
-<body   onbeforeunload="getcoins" style="height: 507px; background-color: #000000; width: 967px; overflow: hidden;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
+<body   onbeforeunload="getcoins" style="height: 507px; background-color: #000000; width: 967px; overflow: hidden; margin-top: 15px;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
 
     <style type="text/css">
         .twoto3d {
@@ -2374,7 +2374,7 @@ public string one5 = "";
 
         <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
 
-        <div class="fb-like" data-href="https://www.facebook.com/TreasureHunterCommunity" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 23px; top: 3px; right: 89px; bottom: 540px; left: 655px"></div>
+        <div class="fb-like" data-href="https://www.facebook.com/TreasureHunterCommunity" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
         
 
 
@@ -2383,7 +2383,7 @@ public string one5 = "";
 
 
 
-        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 347px; top: 0px; position: absolute; width: 293px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 196px; top: 0px; position: absolute; width: 353px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
         <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 360px; top: 75px; position: absolute; width: 505px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
         <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; border-radius:15px; background-color: #0000FF;  top: 56px; position: absolute; height: 18px; width: 141px; left: 11px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
@@ -2393,8 +2393,8 @@ public string one5 = "";
 
 
 
-        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 129px; top: 34px; position: absolute; width: 45px; right: 770px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
-        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 308px; top: 33px; position: absolute; width: 45px; right: 591px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">10</asp:TextBox>
+        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 168px; top: 32px; position: absolute; width: 40px; right: 660px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
+        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">10</asp:TextBox>
         <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 488px; top: 34px; position: absolute; width: 107px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 728px; top: 33px; position: absolute; width: 56px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
  <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" style="z-index: 1; left: 563px; top: 334px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
@@ -2402,14 +2402,14 @@ public string one5 = "";
     <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
     </audio>
     
-    <label style="position: absolute; top: 30px; left: 15px; right: 846px; height: 19px; color: #FFCC00;">Achievements</label>
+    <label style="position: absolute; top: 30px; left: 15px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large; font-weight: lighter;">Achievements</label>
 
-    <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00;">Lives</label>
+    <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Lives</label>
 
-    <label style="position: absolute; top: 32px; left: 406px; height: 19px; color: #FFCC00; height: 20px; position: absolute; ">Gold Coins</label>
+    <label style="position: absolute; top: 32px; left: 406px; height: 19px; color: #FFCC00; height: 20px; position: absolute; font-family: 'Jokerman LET'; font-size: large;">Gold Coins</label>
 
-    <label style="position: absolute; top: 31px; left: 644px; height: 19px; color: #FFCC00;">Treasure($)</label>
-    <label style="position: absolute; top: 101px; left: 7px; height: 19px; color: #FFCC00; width: 88px;">Achievements</label>
+    <label style="position: absolute; top: 31px; left: 644px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Treasure($)</label>
+    <label style="position: absolute; top: 101px; left: 7px; height: 19px; color: #FFCC00; width: 97px; font-family: 'Victorian LET'; font-size: large;">Achievements</label>
     <div id="divplayer"  style="z-index: 203; background-color: transparent; overflow: hidden;  width: 480px; height: 375px; position: absolute; top: 132px; left: 365px; right: 855px; bottom: 502px; display: inline;">
         <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 159px; bottom: 140px;"/>
         <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
@@ -2435,14 +2435,14 @@ public string one5 = "";
     <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 7px; top: 219px; position: absolute; width: 91px; cursor:none;" type="text" readonly="true" />
        <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 11px; top: 125px; position: absolute; bottom: 308px;" id="friendimage" />
     <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 374px;" class="twoto3d" id="fplayer" />
-<label style="position: absolute; top: 321px; left: 7px; height: 19px; color: #FFFFFF;">Talk to Players</label>
-<input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 281px; top: 492px; position: absolute;" type="button" value="Send"  onclick="send2server();" /> 
-  <div style="position: absolute; z-index: 210; width: 335px; height: 134px; top: 347px; right: 532px; bottom: 85px; left: 5px; overflow: hidden; cursor: crosshair;">
-    <textarea id="Text2" class="TextArea1" style="border-style: none; border-color: #000000; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 366px; height: 126px;" readonly="readonly"></textarea>
+<label style="position: absolute; top: 320px; left: 7px; height: 24px; color: #FFFFFF; font-family: Script; font-size: x-large;">Talk to Players</label>
+<input id="Button2" style="border: medium outset #FF00FF; background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 281px; top: 492px; position: absolute; width: 56px; border-radius:15px; " type="button" value="Send"  onclick="send2server();" /> 
+  <div style="position: absolute; z-index: 210; width: 349px; height: 134px; top: 347px; right: 518px; bottom: 85px; left: 5px; overflow: hidden; cursor: crosshair;">
+    <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 316px; height: 99px;" readonly="readonly"></textarea>
   </div>
-      <input id="Text1" type="text" style="position: absolute; left: 12px; top: 493px; width: 242px;" onkeydown="checkEnter(event);"/> 
+      <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 12px; top: 493px; width: 242px; background-color: #FFFFCC; color: #000000;" onkeydown="checkEnter(event);"/> 
 <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none; position: absolute; top: 147px; left: 862px; height: 40px; width: 93px; margin-top: 0px;" ></iframe>
-<div id="aimg" style="position: absolute; left: 118px; top: 99px; width: 236px; height: 200px;">
+<div id="aimg" style="position: absolute; left: 118px; top: 101px; width: 236px; height: 200px;">
     <img alt="" src="../../Images/achievements.gif" style="width: 232px; height: 199px; visibility: visible; z-index: 10; left: 0px; top: 0px; position: absolute; bottom: 1px; background-color: Transparent;" id="Img6" />
     <asp:Image ID="Image1" runat="server" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" ImageUrl='<%=one1%>' />
     <asp:Image ID="Image2" runat="server" style="z-index: 300; left: 114px; top: 60px; position: absolute; width: 32px; height: 30px;" ImageUrl='<%=one2%>' />
@@ -2458,14 +2458,14 @@ public string one5 = "";
 
 </div>
     
-    <label style="position: absolute; top: 79px; left: 192px; height: 19px; color: #FFCC00; height: 16px; position: absolute; font-size: 10px; width: 67px;">Treasure Map</label>
+    <label style="position: absolute; top: 76px; left: 151px; height: 19px; color: #FFCC00; height: 21px; position: absolute; font-size: large; width: 122px; font-family: 'John Handy LET';">Treasure Map</label>
     <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 488px; top: 105px; position: absolute; width: 253px" ForeColor="White"  ReadOnly="true"></asp:TextBox>    
-<asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 796px; top: 9px; position: absolute; width: 105px; " ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">Time Remaining</asp:TextBox>
-<asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 915px; top: 12px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">250</asp:TextBox>
-<asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 304px; position: absolute; width: 44px; right: 706px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">Collect</asp:TextBox>
-<asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 223px; top: 304px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
-<asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 324px; position: absolute; width: 105px; right: 645px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">Conquer Players</asp:TextBox>
-<asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 238px; top: 325px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
+<asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 773px; top: 9px; position: absolute; width: 143px; " ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="Medium">Time Remaining</asp:TextBox>
+<asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 929px; top: 14px; position: absolute; width: 34px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">250</asp:TextBox>
+<asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 305px; position: absolute; width: 62px; " ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="Medium">Collect</asp:TextBox>
+<asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 223px; top: 306px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
+<asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 325px; position: absolute; width: 112px; right: 638px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="Medium">Conquer Players</asp:TextBox>
+<asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 252px; top: 325px; position: absolute; width: 36px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
 <img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 300px; left: 323px; z-index: 21; visibility: visible; right: 530px; bottom: 247px; " >
 <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 322px; left: 310px; z-index: 21; visibility: visible; right: 543px; bottom: 225px; " >        
 </form> 
