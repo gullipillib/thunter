@@ -247,7 +247,7 @@ protected void Button3_Click(object sender, EventArgs e)
 </head>
 <body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px; background-color:blueviolet" >
   
- <form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 200px; left: 589px; width: 105px; height: 41px; z-index: 300;" method="post" target="_top">
+ <form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 187px; left: 589px; width: 105px; height: 41px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -389,7 +389,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>--%>
 
-            <form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 344px; left: 584px; height: 51px; width: 117px; z-index: 300;" method="post" target="_top">
+            <form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 360px; left: 584px; height: 51px; width: 117px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -409,7 +409,7 @@ protected void Button3_Click(object sender, EventArgs e)
 
 
 
-<form id="Form3" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 428px; left: 586px; width: 109px; height: 43px; z-index: 300;" method="post" target="_top">
+<form id="Form3" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 449px; left: 586px; width: 109px; height: 43px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -427,7 +427,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
 </form>
 
-    <form id="Form5" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 262px; left: 587px; width: 116px; height: 35px; z-index: 300;" method="post" target="_top">
+    <form id="Form5" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 276px; left: 595px; width: 116px; height: 35px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>

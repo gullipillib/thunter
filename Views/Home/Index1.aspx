@@ -95,17 +95,48 @@
             {
                 //Insert User into appuser,loggeduser,ordercounter,winners;
                 AccessDataSource1.SelectCommand = "SELECT * FROM appuserdetails";
-                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
+                AccessDataSource1.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                AccessDataSource1.InsertParameters["uloggedin"].DefaultValue = "no";
+                AccessDataSource1.InsertParameters["winner"].DefaultValue = "no";
+                AccessDataSource1.InsertParameters["wintimes"].DefaultValue = "0";
+                AccessDataSource1.InsertParameters["paid"].DefaultValue = "no";
+                AccessDataSource1.InsertParameters["amount"].DefaultValue = "0";
+                AccessDataSource1.InsertParameters["currenttspot"].DefaultValue = "";
+                
+                
+                //AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
                 AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'no', '0', '0', '0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
+                
+                AccessDataSource4.SelectCommand = "SELECT * FROM loggedusers";
+                AccessDataSource4.InsertParameters["luname"].DefaultValue = Hiddenfield1;
+                AccessDataSource4.InsertParameters["luid"].DefaultValue = Model.Id;
+                AccessDataSource4.InsertParameters["luposition"].DefaultValue = "{left : 0, top:0}";
+                AccessDataSource4.InsertParameters["luimg"].DefaultValue = Model.ProfilePicture.Data.Url;
+                AccessDataSource4.InsertParameters["luspriteimg"].DefaultValue = Model.ProfilePicture.Data.Url;
+                AccessDataSource4.InsertParameters["lucrisboos"].DefaultValue = "0";
+                AccessDataSource4.InsertParameters["luloggedin"].DefaultValue = "no";
+                AccessDataSource4.InsertParameters["lutspots"].DefaultValue = "0";
+                AccessDataSource4.InsertParameters["lulogintimes"].DefaultValue = "0";
+                AccessDataSource4.InsertParameters["luinvites"].DefaultValue = "0";
+                
+                
+                //AccessDataSource4.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'no', '0', '0', '0')";
+                AccessDataSource4.Insert();
+                
+                AccessDataSource5.SelectCommand = "SELECT * FROM ordercounter";
+                
+                AccessDataSource5.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                AccessDataSource5.InsertParameters["ccounter"].DefaultValue = "0";
+                
+                //AccessDataSource5.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
+                AccessDataSource5.Insert();
+                
+                AccessDataSource6.SelectCommand = "SELECT * FROM winners";
+                AccessDataSource6.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                AccessDataSource6.InsertParameters["crisboos"].DefaultValue = "0";
+                
+                //AccessDataSource6.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
+                AccessDataSource6.Insert();
             }
 
         }
@@ -126,8 +157,8 @@
 
     protected void verifysettings()
     {
-        AccessDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource4.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
+        DataView dv = (DataView)AccessDataSource4.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         DataView uniname = dt.DefaultView;
@@ -136,8 +167,8 @@
 
         if (logintimes == "0" && btspots == "0")
         {
-            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
-            AccessDataSource1.Update();
+            AccessDataSource4.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+            AccessDataSource4.Update();
             Response.Redirect("~/Play/play");
 
 
@@ -255,15 +286,16 @@
         {
             Response.Redirect("https://treasurehunter/apphb.com/Indexmobile/indexmobile");
         }
+
         
         checkusername();
         addfriends();
         if (Session["reached"] != null)
         {
-            
+
             if (Convert.ToString(Session["reached"]) == "no")
             {
-                verifysettings();
+        verifysettings();
             }  
         }
         
@@ -370,9 +402,59 @@ to {left:10px;}
         
    <a href="https://treasurehunter.apphb.com/tools.aspx" target="_self" style="position:absolute;left:733px; top:170px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; border-radius:20px; right: -13px; text-align: center; height: 22px;" > Go to My ToolsBox </a> 
    
-        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" InsertCommand="INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('', 'no', 'no', '0', 'no', '0', '')" UpdateCommand="UPDATE loggedusers SET luloggedin='yes', lucrisboos='0'"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT * FROM appuserdetails" InsertCommand="INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES (@uname, @uloggedin, @winner, @wintimes, @paid, @amount, @currenttspot)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'">
+            <InsertParameters>
+                <asp:Parameter Name="uname" />
+                <asp:Parameter Name="uloggedin" />
+                <asp:Parameter Name="winner" />
+                <asp:Parameter Name="wintimes" />
+                <asp:Parameter Name="paid" />
+                <asp:Parameter Name="amount" />
+                <asp:Parameter Name="currenttspot" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uloggedin" />
+            </UpdateParameters>
+        </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource2" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT TOP 5 luname, lucrisboos, luimg FROM loggedusers  order by lucrisboos desc "> </asp:AccessDataSource>
         <asp:AccessDataSource id="AccessDataSource3" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT TOP 5 uname, amount FROM payments Order by amount DESC"> </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource4" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT * FROM loggedusers" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'">
+            <InsertParameters>
+                <asp:Parameter Name="luname" />
+                <asp:Parameter Name="luid" />
+                <asp:Parameter Name="luposition" />
+                <asp:Parameter Name="luimg" />
+                <asp:Parameter Name="luspriteimg" />
+                <asp:Parameter Name="lucrisboos" />
+                <asp:Parameter Name="luloggedin" />
+                <asp:Parameter Name="lutspots" />
+                <asp:Parameter Name="lulogintimes" />
+                <asp:Parameter Name="luinvites" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uloggedin" />
+            </UpdateParameters>
+        </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource5" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT * FROM ordercounter" InsertCommand="INSERT INTO ordercounter(uname, ccounter) Values (@uname, @ccounter)" UpdateCommand="UPDATE ordercounter SET @uname=''">
+            <InsertParameters>
+                <asp:Parameter Name="uname" />
+                <asp:Parameter Name="ccounter" />
+                
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uname" />
+            </UpdateParameters>
+        </asp:AccessDataSource>
+        <asp:AccessDataSource id="AccessDataSource6" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT * FROM winners" InsertCommand="INSERT INTO winners(uname, crisboos) Values (@uname, @crisboos)" UpdateCommand="UPDATE winners SET @uname=''">
+            <InsertParameters>
+                <asp:Parameter Name="uname" />
+                <asp:Parameter Name="crisboos" />
+                
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uname" />
+            </UpdateParameters>
+        </asp:AccessDataSource>
 
         <asp:DataList ID="DataList1" runat="server" BackColor="#FFCCFF" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="AccessDataSource2" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 15px; top: 367px; position: absolute; height: 187px; width: 410px; right: 447px;">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />

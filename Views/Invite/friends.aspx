@@ -59,7 +59,18 @@
 
 protected void Page_Load(object sender, EventArgs e)
 {
-    checkusername();
+    if (Session["reached"] == null)
+    {
+
+        if (Convert.ToString(Session["reached"]) == "no")
+        {
+            checkusername();
+        }
+    }
+    else
+    {
+        Response.Redirect("~/Home/Index1");
+    }
 }
 </script>
 <html>
