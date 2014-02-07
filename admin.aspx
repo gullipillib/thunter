@@ -27,7 +27,7 @@
     {
         
         Panel2.Enabled = false;
-        Response.Redirect("https://Treasure Hunter.apphb.com");
+        Response.Redirect("https://treasurehunter.apphb.com");
     }
 
 
@@ -76,7 +76,7 @@
         }
         AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + "Treasure Hunter" + "'";
         AccessDataSource1.Update();
-        Response.Redirect("~/../../create.aspx");
+        Response.Redirect("~/create.aspx");
     }
 
     protected void Button8_Click(object sender, EventArgs e)
@@ -88,7 +88,7 @@
         tborderno = Convert.ToString(Convert.ToInt16(tborderno) + 1);
         AccessDataSource1.InsertCommand = "INSERT INTO toolbox(tbcompleted,tbnew,tbprice,tbselltype,tbactive,tbapproved,tbapprover1,tbapprover2,tbapprover3,tbbid,tbbidder,tbdetails,tbname,tbowner,tbinvoice,tbreported,tbreportcomments,tba1status,tba2status,tba3status,tbsell,tbreportaddress,tbbiddate,tbaward,tborder) Values ('no','yes','5','buy','yes','yes','treasurehunter','treasurehunter','treasurehunter','no',' ',' ',' ','" + "treasurehunter" + "','thtbbuy','no',' ','yes','yes','yes','no',' ',' ',' ', '" + tborderno + "')";
         AccessDataSource1.Insert();
-        Response.Redirect("~/Toolbox/tools");
+        Response.Redirect("~/tools.aspx");
     }
 
     protected void Button9_Click(object sender, EventArgs e)

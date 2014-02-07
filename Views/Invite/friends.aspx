@@ -99,9 +99,9 @@ protected void Page_Load(object sender, EventArgs e)
     }
 </script>
    
-    <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
+    <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"  InsertCommand="INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('', 'no', 'no', '0', 'no', '0', '')"> </asp:AccessDataSource>
 
-<a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:42%; top:27%; width:13%; height: 5%; text-decoration:none; color: #FFFFFF; background-color: #0000FF;; webkit-border-radius:20px; moz-border-radius:20px; border-radius:20px; text-align: center; right: 396px;">Invite Friends</a><p>
+<a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:42%; top:27%; width:13%; height: 5%; text-decoration:none; color: #FFFFFF; background-color: #0000FF; border-radius:20px; text-align: center; right: 396px;">Invite Friends</a><p>
 
     <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 30%; top: 22%; position: absolute; right: 463px; width: 17%; height: 4%;" Target="_self">Go on a Treasurehunt</asp:hyperlink>
         
