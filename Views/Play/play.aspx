@@ -2395,8 +2395,8 @@ public string one5 = "";
 
         <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 168px; top: 32px; position: absolute; width: 40px; right: 660px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">10</asp:TextBox>
-        <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 488px; top: 34px; position: absolute; width: 107px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
-        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 728px; top: 33px; position: absolute; width: 56px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
+        <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
+        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 753px; top: 33px; position: absolute; width: 54px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
  <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" style="z-index: 1; left: 563px; top: 334px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
 
     <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
@@ -2435,7 +2435,7 @@ public string one5 = "";
     <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 7px; top: 219px; position: absolute; width: 91px; cursor:none;" type="text" readonly="true" />
        <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 11px; top: 125px; position: absolute; bottom: 308px;" id="friendimage" />
     <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 374px;" class="twoto3d" id="fplayer" />
-<label style="position: absolute; top: 320px; left: 7px; height: 24px; color: #FFFFFF; font-family: Script; font-size: x-large;">Talk to Players</label>
+<label style="position: absolute; top: 320px; left: 7px; height: 18px; color: #FFFFFF; font-family: Script; font-size: medium; width: 79px;">Talk to Players</label>
 <input id="Button2" style="border: medium outset #FF00FF; background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 281px; top: 492px; position: absolute; width: 56px; border-radius:15px; " type="button" value="Send"  onclick="send2server();" /> 
   <div style="position: absolute; z-index: 210; width: 349px; height: 134px; top: 347px; right: 518px; bottom: 85px; left: 5px; overflow: hidden; cursor: crosshair;">
     <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 316px; height: 99px;" readonly="readonly"></textarea>

@@ -247,7 +247,7 @@ protected void Button3_Click(object sender, EventArgs e)
 </head>
 <body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px; background-color:blueviolet" >
   
- <form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 200px; left: 589px; width: 105px; height: 41px;" method="post" target="_top">
+ <form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 200px; left: 589px; width: 105px; height: 41px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -321,7 +321,7 @@ protected void Button3_Click(object sender, EventArgs e)
                 Treasure Spot</label>
                 <label style="z-index: 300; left: 294px; top: 25px; position: absolute; height: 20px; width: 53px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
                 PayPal</label>
-                <label style="z-index: 300; left: 465px; top: 5px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                <label style="z-index: 300; left: 446px; top: 8px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
                 Bid</label>&nbsp;
                 <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
                 </div>
@@ -331,7 +331,7 @@ protected void Button3_Click(object sender, EventArgs e)
                 Game Tools</label>
                 <label style="z-index: 300; left: 294px; top: 25px; position: absolute; height: 20px; width: 53px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
                 PayPal</label>
-                <label style="z-index: 300; left: 465px; top: 5px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
+                <label style="z-index: 300; left: 446px; top: 7px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
                 Bid</label>&nbsp;
                 <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
                 </div>
@@ -345,7 +345,7 @@ protected void Button3_Click(object sender, EventArgs e)
                 Free</label>&nbsp;
                 <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
                 </div>
-            <button onclick="payer_promotion();" style="z-index: 1; left: 556px; top: 474px; position: absolute; width: 95px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Payer Promotion</button>
+            <button onclick="payer_promotion();" style="z-index: 300; left: 556px; top: 474px; position: absolute; width: 95px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Payer Promotion</button>
             </div>
 
         
@@ -364,10 +364,10 @@ protected void Button3_Click(object sender, EventArgs e)
     <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 598px; top: 2px; position: absolute; right: 140px; border-radius:15px; background-color: #FF9900; " Target="_self" Enabled="False" ForeColor="White">Go on a Treasurehunt</asp:hyperlink>
         
         
-<asp:Label ID="Label8" runat="server" style="z-index: 1; left: 539px; top: 373px; position: absolute" Text=""></asp:Label>
+<asp:Label ID="Label8" runat="server" style="z-index: 1; left: 517px; top: 373px; position: absolute" Text=""></asp:Label>
 <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 94px; top: 391px; position: absolute; width: 195px"></asp:Label>
 <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 97px; top: 475px; position: absolute; width: 181px;"></asp:Label>
-<asp:Label ID="Label14" runat="server" style="z-index: 1; left: 534px; top: 457px; position: absolute; width: 63px;"></asp:Label>
+<asp:Label ID="Label14" runat="server" style="z-index: 1; left: 512px; top: 461px; position: absolute; width: 63px;"></asp:Label>
                
 <asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 501px; top: 131px; position: absolute; width: 225px; height: 20px; text-decoration:none; background-color:transparent" BorderStyle="None"></asp:TextBox> 
 <asp:TextBox ID="TextBox3" runat="server" Style="z-index: 1; left: -84px; top: -970px; position: absolute; width: 162px; height: 15px; text-decoration:none" ForeColor="White" BackColor="Transparent" BorderStyle="None"></asp:TextBox>
@@ -389,7 +389,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>--%>
 
-            <form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 341px; left: 604px; height: 51px; width: 130px;" method="post" target="_top">
+            <form id="Form2" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 344px; left: 584px; height: 51px; width: 117px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -409,7 +409,7 @@ protected void Button3_Click(object sender, EventArgs e)
 
 
 
-<form id="Form3" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 447px; left: 606px; width: 109px; height: 43px;" method="post" target="_top">
+<form id="Form3" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 428px; left: 586px; width: 109px; height: 43px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -427,7 +427,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"/>
 </form>
 
-    <form id="Form5" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 287px; left: 618px; width: 116px; height: 35px;" method="post" target="_top">
+    <form id="Form5" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 262px; left: 587px; width: 116px; height: 35px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>

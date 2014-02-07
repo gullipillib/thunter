@@ -309,11 +309,11 @@ to {left:10px;}
     <form id="form1" runat="server">
     <div>
     
-        <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="35pt" ForeColor="#FFFFCC" style="border: thick ridge #CC66FF; z-index: 1; left: 320px; top: 4px; position: absolute; bottom: 514px; width: 357px; margin-bottom: 0px; border-radius:20px;" Text="Treasure Hunter"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="35pt" ForeColor="#FFFFCC" style=" z-index: 1; left: 320px; top: 4px; position: absolute; bottom: 514px; width: 357px; margin-bottom: 0px;" Text="Treasure Hunter" BorderStyle="None"></asp:Label>
     
     </div>
-    <div id="fb-root">
-        <asp:Label ID="Label3" runat="server" Font-Bold="True" style="border: thick ridge #CC66FF; z-index: 1; left: 390px; top: 69px; position: absolute; width: 167px; border-radius:20px;" Text="3D Game - Multi Player" ForeColor="White"></asp:Label>
+    <div id="fb-root" style="width: 71px">
+        <asp:Label ID="Label3" runat="server" Font-Bold="True" style=" z-index: 1; left: 390px; top: 69px; position: absolute; width: 167px; border-radius:20px;" Text="3D Game - Multi Player" ForeColor="White" BorderStyle="None"></asp:Label>
         </div>
 
 
@@ -356,8 +356,8 @@ to {left:10px;}
     <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:394px; top:136px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 334px;" > Buy a Treasure Spot </a> 
     <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:549px; top:138px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 187px;" > Buy a ToolBox Item </a>                  
 
-        <asp:Label ID="Label1" runat="server" style="border: thick ridge #CC66FF; z-index: 1; left: 45px; top: 200px; position: absolute; border-radius:20px; width: 815px; height: 110px; bottom: 244px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many gold coins as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt." BackColor="#FFCCFF"></asp:Label>
-        <asp:Label ID="Label4" runat="server" Font-Bold="True" style="border: thick ridge #CC66FF; z-index: 1; left: 290px; top: 103px; position: absolute" Text="Interactive Gaming with Fun Filled Places and Adventure" ForeColor="White"></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="border: thick ridge #CC66FF; z-index: 1; left: 45px; top: 200px; position: absolute; border-radius:20px; width: 825px; height: 102px; bottom: 252px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many gold coins as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt." BackColor="#FFCCFF"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Font-Bold="True" style=" z-index: 1; left: 290px; top: 103px; position: absolute" Text="Interactive Gaming with Fun Filled Places and Adventure" ForeColor="White" BorderStyle="None"></asp:Label>
         
    
         <img alt="" class="twoto3d" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="border: thick ridge #CC66FF; z-index: 1; left: 8px; top: 7px; border-radius:70px; position: absolute" /></p>
