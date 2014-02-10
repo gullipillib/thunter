@@ -519,7 +519,7 @@ public string one5 = "";
 <script src="https://treasurehunter.apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>    
 <script src="https://treasurehunter.apphb.com/SignalR/hubs"></script>
     `<script>
-         var chat = $.connection.sysmessages;
+         var chat = $.connection.chatmessages;
          var pname = '<%=Hiddenfield1%>';
 
         $(function () {
@@ -2353,34 +2353,34 @@ public string one5 = "";
         <label style="position: absolute; top: 25px; left: 235px; height: 19px; color: #FFCC00; height: 20px; position: absolute; font-size: small;">Gold Coins</label>
 
         <label style="position: absolute; top: 3px; left: 202px; height: 19px; color: #FFCC00; font-size: small;">Treasure($)</label>
-        <label style="position: absolute; top: 90px; left: 7px; height: 19px; color: #FFCC00; width: 88px; font-size: x-small;">Achievements</label>
+        <label style="position: absolute; top: 90px; left: 7px; height: 19px; color: #FFCC00; width: 74px; font-size: x-small;">Achievements</label>
         <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden; width: 362px; height: 300px; position: absolute; top: 216px; left: 5px; right: 505px; bottom: 116px; display: inline;">
             <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 159px; bottom: 140px;"/>
-            <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <img id="ctrl2" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <img id="ctrl3" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <img id="ctrl4" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <img id="ctrl5" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <%--<img id="player1" src="" style="width: 30px; height: 30px; position: absolute; top: 278px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
+        <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
+        <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px; " />
+        <img id="ctrl2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl2mainwidth%>'; height: '<%=ctrl2mainheight%>'; position: absolute; top: '<%=ctrl2maintop%>'; left: '<%=ctrl2mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+        <img id="ctrl3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width:'<%=ctrl3mainwidth%>'; height: '<%=ctrl3mainheight%>'; position: absolute; top: '<%=ctrl3maintop%>'; left: '<%=ctrl3mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+        <img id="ctrl4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl4mainwidth%>'; height:'<%=ctrl4mainheight%>'; position: absolute; top: '<%=ctrl4maintop%>'; left: '<%=ctrl4mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+        <img id="ctrl5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl5mainwidth%>'; height: '<%=ctrl5mainheight%>'; position: absolute; top: '<%=ctrl5maintop%>'; left: '<%=ctrl5mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+        <%--<img id="player1" src="" style="width: 30px; height: 30px; position: absolute; top: 278px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player2" src="" style="width: 30px; height: 30px; position: absolute; top: 296px; left: 260px; z-index: 21; right: 562px; margin-left: 0px; margin-top: 0px;">
         <img id="player3" src="" style="width: 30px; height: 30px; position: absolute; top: 78px; left: 229px; z-index: 21; right: 460px; margin-left: 0px; margin-top: 0px;">
         <img id="player4" src="" style="width: 30px; height: 30px; position: absolute; top: 302px; left: 245px; z-index: 21; right: 577px; margin-left: 0px; margin-top: 0px;">
         <img id="player5" src="" style="width: 30px; height: 30px; position: absolute; top: 251px; left: 390px; z-index: 21; right: 299px; margin-left: 0px; margin-top: 0px;">
-            --%>
-            <img id="Img1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <img id="Img2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-            <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1mainres%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"/>
-        <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 300px; height: 200px; top: 41px; left: 22px; z-index: 1; visibility: hidden; right: 34px; bottom: 54px; position: absolute;" />
+        --%>
+        <img id="Img1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; top: '<%=ctrl1maintop%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+        <img id="Img2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl2mainwidth%>'; height: '<%=ctrl2mainheight%>'; top: '<%=ctrl2maintop%>'; left: '<%=ctrl2mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+        <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl3mainwidth%>'; height: '<%=ctrl3mainheight%>'; top: '<%=ctrl3maintop%>'; left: '<%=ctrl3mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+        <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl4mainwidth%>'; height: '<%=ctrl4mainheight%>'; top: '<%=ctrl4maintop%>'; left: '<%=ctrl4mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+        <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl5mainwidth%>'; height: '<%=ctrl5mainheight%>'; top: '<%=ctrl5maintop%>'; left: '<%=ctrl5mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;"  />
+    <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 300px; height: 200px; top: 41px; left: 22px; z-index: 1; visibility: hidden; right: 34px; bottom: 54px; position: absolute;" />
     
         </div>
         <input id="friendname" style="visibility: visible; text-decoration: none; height: 18px; background-color: transparent; color: #FFCC00; z-index: 1; left: 3px; top: 140px; position: absolute; width: 91px; cursor: none; font-size: x-small;" type="text" readonly="true" />
         <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 33px; height: 28px; visibility: visible; z-index: 1; left: 11px; top: 107px; position: absolute; bottom: 431px;" id="friendimage" />
         <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 1px; top: 216px; position: absolute; background-color: transparent; width: 365px; height: 297px;" class="twoto3d" id="fplayer" />
         <label style="position: absolute; top: 149px; left: 113px; height: 19px; color: #FFFFFF; font-size: x-small;">Talk to Players</label>
-        <input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 298px; top: 87px; position: absolute; font-size: x-small;" type="button" value="Send" onclick="send2server();" />
+        <input id="Button2" style="background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 298px; top: 90px; position: absolute; font-size: x-small;" type="button" value="Send" onclick="send2server();" />
         <div style="position: absolute; z-index: 210; width: 175px; height: 42px; top: 134px; right: 539px; bottom: 390px; left: 183px; overflow: hidden; cursor: crosshair;">
             <textarea id="Text2" class="TextArea1" style="border-style: none; border-color: #000000; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 193px; height: 35px; font-size: small;" readonly="readonly"></textarea>
         </div>
@@ -2390,8 +2390,8 @@ public string one5 = "";
 
          </iframe>
             &nbsp;<asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 9px; top: 196px; position: absolute; width: 180px" ForeColor="White" ReadOnly="true" Font-Size="X-Small"></asp:TextBox>
-        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 97px; position: absolute; width: 83px; right: 595px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Time Remaining</asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 285px; top: 92px; position: absolute; width: 33px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Medium">250</asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 9px; top: 65px; position: absolute; width: 83px; right: 776px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Time Remaining</asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 111px; top: 60px; position: absolute; width: 33px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Medium">250</asp:TextBox>
         <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 62px; position: absolute; width: 44px; right: 634px; bottom: 489px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Collect</asp:TextBox>
         <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 239px; top: 66px; position: absolute; width: 47px; height: 9px; right: 582px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small"></asp:TextBox>
         <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 190px; top: 75px; position: absolute; width: 78px; right: 600px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="X-Small">Conquer Players</asp:TextBox>
