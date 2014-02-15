@@ -318,7 +318,7 @@
   <meta property="business:contact_data:country_name"   content="Facebook" /> 
   <meta property="place:location:latitude"              content="Facebook" /> 
   <meta property="place:location:longitude"             content="Facebook" /> 
-
+	<meta property="fb:admins" content="123405257731200" />
     
     <meta name="viewport" content="width=device-width" />
     
