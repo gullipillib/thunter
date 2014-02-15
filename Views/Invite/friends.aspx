@@ -14,47 +14,7 @@
     string receiptno = "";
     string Hiddenfield1;
      
-    protected void checkusername()
-    {
-        
-        Hiddenfield1 = Model.Name;
-        Hiddenfield1 = Hiddenfield1.Replace(" ", "");
-        if (Hiddenfield1 != null)
-        {
 
-            //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
-
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            DataTable dt = new DataTable();
-            dt = dv.ToTable();
-            //DataTable dtr = dt;
-            //DataRow[] uniname = dtr.Select("uname");
-            //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
-            //Label3.Text = dt.Rows[0][0].ToString();
-            if (dt.Rows.Count == 0)
-            {
-                //Insert User into appuser,loggeduser,ordercounter,winners;
-                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
-            }
-
-        }
-        else
-        {
-            
-            Response.Redirect("~/buy.aspx");
-        }
-    }
 
 
 protected void Page_Load(object sender, EventArgs e)
@@ -64,12 +24,15 @@ protected void Page_Load(object sender, EventArgs e)
 
         if (Convert.ToString(Session["reached"]) == "no")
         {
-            checkusername();
+            Response.Redirect("~/Home/Index1");
         }
     }
-    else
+    else if (Session["reached"] != null)
     {
-        Response.Redirect("~/Home/Index1");
+        if (Convert.ToString(Session["reached"]) == "no")
+        {
+            Response.Redirect("~/Home/Index1");
+        }   
     }
 }
 </script>
@@ -79,9 +42,7 @@ protected void Page_Load(object sender, EventArgs e)
     <title>friends</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div id="fb-root">
-        </div>
+    
 
 
 <script src="https://connect.facebook.net/en_US/all.js">
@@ -106,18 +67,23 @@ protected void Page_Load(object sender, EventArgs e)
         FB.ui({
             method: 'apprequests',
             message: 'You are Invited to Play Treasure Hunter 3D MultiPlayer Game with me'
-        });
+        });                                                                                                                                                                                                                           
     }
 </script>
    
-    <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"  InsertCommand="INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('', 'no', 'no', '0', 'no', '0', '')"> </asp:AccessDataSource>
+    <form id="form1" runat="server">
+        <div id="fb-root">
+        </div>  
+        <div style="border: 20px ridge #999966; position: absolute; z-index: 300; top: 118px; left: 238px; height: 325px; width: 441px; background-color: #FFCC66;"> 
+<a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:32%; top:75%; width:27%; height: 7%; text-decoration:none; color: #FFFFFF; background-color: #0000FF; border-radius:20px; text-align: center; right: 159px; z-index: 310;">Invite Friends</a>
 
-<a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:42%; top:27%; width:13%; height: 5%; text-decoration:none; color: #FFFFFF; background-color: #0000FF; border-radius:20px; text-align: center; right: 396px;">Invite Friends</a><p>
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/gamesettings.aspx" style="z-index: 310; left: 68%; top: 13%; position: absolute; height: 6%; width: 21%;" Target="_self">My Game</asp:hyperlink>
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 30%; top: 22%; position: absolute; right: 463px; width: 17%; height: 4%;" Target="_self">Go on a Treasurehunt</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 310; left: 2%; top: 13%; position: absolute; right: 276px; width: 32%; height: 8%;" Target="_self">Go on a Treasurehunt</asp:hyperlink>
         
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 53%; top: 22%; position: absolute; height: 4%;" Target="_self" Width="12%">My Game</asp:hyperlink>   
-
+            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Andy" Font-Size="15pt" ForeColor="White" style="z-index: 310; left: 117px; top: 10px; position: absolute" Text="Invite Some of Your Friends "></asp:Label>
+        
+        </div>
         
         </form>
    

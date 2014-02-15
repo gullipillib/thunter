@@ -97,44 +97,11 @@
 
     protected void checkusername()
     {
-        
+
         Hiddenfield1 = Model.Name;
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
-        if (Hiddenfield1 != null)
-        {
-
-            //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
-
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            DataTable dt = new DataTable();
-            dt = dv.ToTable();
-            //DataTable dtr = dt;
-            //DataRow[] uniname = dtr.Select("uname");
-            //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
-            //Label3.Text = dt.Rows[0][0].ToString();
-            if (dt.Rows.Count == 0)
-            {
-                //Insert User into appuser,loggeduser,ordercounter,winners;
-                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'yes', '0', '0', '0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
-            }
-            Session["reached"] = "yes";
-        }
-        else
-        {
-
-            Response.Redirect("~/Tspot/buy");
-        }
+        Session["reached"] = "yes";
+        
     }
 public string one1 = "";
 public string one2 = "";
@@ -145,8 +112,8 @@ public string one5 = "";
     protected void gettreasurespot()
     {
 
-        AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource8.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
+        DataView dv = (DataView)AccessDataSource8.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
 	if (dt.Rows.Count != 0)
@@ -154,33 +121,28 @@ public string one5 = "";
 		
             Random one = new Random();
             int t1 = one.Next(0, dt.Rows.Count);
-		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-		tsitemsfulldetails = Json.Decode(tsitems);
-		one1 = tsitemsfulldetails.tsUrl;
+		tsitems = dt.Rows[t1].Field<string>("tsurl"); //usethis to get field value
+		one1 = tsitems;
 
 		one = new Random();
-            	t1 = one.Next(0, dt.Rows.Count);
-		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-		tsitemsfulldetails = Json.Decode(tsitems);
-		one2 = tsitemsfulldetails.tsUrl;
+            	t1 = one.Next(1, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsurl"); //usethis to get field value
+                one2 = tsitems;
 		
 		one = new Random();
-            	t1 = one.Next(0, dt.Rows.Count);
-		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-		tsitemsfulldetails = Json.Decode(tsitems);
-		one3 = tsitemsfulldetails.tsUrl;
+            	t1 = one.Next(2, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsurl"); //usethis to get field value
+                one3 = tsitems;
 
 		one = new Random();
-            	t1 = one.Next(0, dt.Rows.Count);
-		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-		tsitemsfulldetails = Json.Decode(tsitems);
-		one4 = tsitemsfulldetails.tsUrl;
+            	t1 = one.Next(3, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsurl"); //usethis to get field value
+                one4 = tsitems;
 		
 		one = new Random();
-            	t1 = one.Next(0, dt.Rows.Count);
-		tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
-		tsitemsfulldetails = Json.Decode(tsitems);
-		one5 = tsitemsfulldetails.tsUrl;
+            	t1 = one.Next(4, dt.Rows.Count);
+                tsitems = dt.Rows[t1].Field<string>("tsurl"); //usethis to get field value
+                one5 = tsitems;
 		
         }   
 	     
@@ -240,8 +202,8 @@ public string one5 = "";
         Label1.Text = tsitemsfulldetails.tsName;
         string mytemp = tsitemsfulldetails.tsctrl1name;
 
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
+        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -256,8 +218,8 @@ public string one5 = "";
        
 
 
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
+        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb2fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -268,8 +230,8 @@ public string one5 = "";
 
        
 
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
+        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb3fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -281,8 +243,8 @@ public string one5 = "";
         
 
 
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
+        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb4fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -293,8 +255,8 @@ public string one5 = "";
         
 
 
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
+        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb5fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -311,8 +273,8 @@ public string one5 = "";
     {
 
         {
-            AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            AccessDataSource8.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
+            DataView dv = (DataView)AccessDataSource8.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
 
@@ -382,8 +344,8 @@ public string one5 = "";
 
     protected void gettreasureprize()
     {
-        AccessDataSource1.SelectCommand = "SELECT treasurevalue FROM treasureprize";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource10.SelectCommand = "SELECT treasurevalue FROM treasureprize";
+        DataView dv = (DataView)AccessDataSource10.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         treasure.Text = dt.Rows[0].Field<string>("treasurevalue");
@@ -406,7 +368,22 @@ public string one5 = "";
 
         if (Page.IsPostBack == false)
         {
-            
+
+            if (Session["reached"] == null)
+            {
+
+                if (Convert.ToString(Session["reached"]) == "no")
+                {
+                    Response.Redirect("~/Home/Index1");
+                }
+            }
+            else if (Session["reached"] != null)
+            {
+                if (Convert.ToString(Session["reached"]) == "no")
+                {
+                    Response.Redirect("~/Home/Index1");
+                }
+            }
             checkusername();
             AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
             AccessDataSource1.Update();
@@ -947,6 +924,35 @@ public string one5 = "";
 
 
             }
+                var myaddctrl = window.setTimeout(function () { randomspots() }, 2000);
+                function randomspots()
+                {
+                    var mytemp = Math.floor(Math.random() * (0 - 1) + 1);
+                    if (mytemp == 0)
+                    {
+                        Image10.src = "https://treasurehunter.apphb.com/Images/crossmark.png";
+                    }
+                    var mytemp = Math.floor(Math.random() * (0 - 1) + 1);
+                    if (mytemp == 0) {
+                        Image9.src = "https://treasurehunter.apphb.com/Images/crossmark.png";
+                    }
+                    var mytemp = Math.floor(Math.random() * (0 - 1) + 1);
+                    if (mytemp == 0) {
+                        Image8.src = "https://treasurehunter.apphb.com/Images/crossmark.png";
+                    }
+                    var mytemp = Math.floor(Math.random() * (0 - 1) + 1);
+                    if (mytemp == 1) {
+                        Image6.src = "https://treasurehunter.apphb.com/Images/tick.png";
+                    }
+                    var mytemp = Math.floor(Math.random() * (0 - 1) + 1);
+                    if (mytemp == 1) {
+                        Image7.src = "https://treasurehunter.apphb.com/Images/tick.png";
+                    }
+                    var mytemp = Math.floor(Math.random() * (0 - 1) + 1);
+                    if (mytemp == 1) {
+                        Image8.src = "https://treasurehunter.apphb.com/Images/tick.png";
+                    }
+                }
 
             var myaddctrl = window.setInterval(function () { hitme() }, 5000);
             function hitme() {
@@ -2139,6 +2145,7 @@ public string one5 = "";
             document.addEventListener("keydown", check, false);
             document.addEventListener("mousedown", explodeprop, false);
             document.addEventListener("mousemove", moveprop, false);
+            
             var currentlposition = "moveleft";
             var currenttposition = "moveleft";
             var positionresult = "moveleft";
@@ -2345,7 +2352,7 @@ public string one5 = "";
 
         });
 
-    </script>
+        </script>
 
     <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -2372,9 +2379,13 @@ public string one5 = "";
    
         <form id="form1" runat="server" >
 
-        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"  InsertCommand="INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('', 'no', 'no', '0', 'no', '0', '')"></asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM loggedusers WHERE (luname = '<%=Hiddenfield1%>')" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'"></asp:AccessDataSource>
+            <asp:AccessDataSource ID="AccessDataSource8" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM tspots"></asp:AccessDataSource>
+            <asp:AccessDataSource ID="AccessDataSource9" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM toolbox"></asp:AccessDataSource>
+            <asp:AccessDataSource ID="AccessDataSource10" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT treasurevalue FROM treasureprize"></asp:AccessDataSource>
 
-        <div class="fb-like" data-href="https://www.facebook.com/TreasureHunterCommunity" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
+            
+            <div class="fb-like" data-href="https://www.facebook.com/TreasureHuntergame" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
         
 
 
@@ -2394,7 +2405,7 @@ public string one5 = "";
 
 
         <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 168px; top: 32px; position: absolute; width: 40px; right: 660px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
-        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">10</asp:TextBox>
+        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">50</asp:TextBox>
         <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 753px; top: 33px; position: absolute; width: 54px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
  <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" style="z-index: 1; left: 563px; top: 334px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
@@ -2435,7 +2446,7 @@ public string one5 = "";
     <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 7px; top: 219px; position: absolute; width: 91px; cursor:none;" type="text" readonly="true" />
        <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 11px; top: 125px; position: absolute; bottom: 308px;" id="friendimage" />
     <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 374px;" class="twoto3d" id="fplayer" />
-<label style="position: absolute; top: 320px; left: 7px; height: 18px; color: #FFFFFF; font-family: Script; font-size: 13px; width: 78px;">Talk to Players</label>
+<label style="position: absolute; top: 320px; left: 7px; height: 18px; color: #FFFFFF; font-family: Script; font-size: 13px; width: 100px;">Talk to Players</label>
 <input id="Button2" style="border: medium outset #FF00FF; background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 281px; top: 492px; position: absolute; width: 56px; border-radius:15px; " type="button" value="Send"  onclick="send2server();" /> 
   <div style="position: absolute; z-index: 210; width: 349px; height: 134px; top: 347px; right: 518px; bottom: 85px; left: 5px; overflow: hidden; cursor: crosshair;">
     <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 316px; height: 99px;" readonly="readonly"></textarea>
@@ -2443,18 +2454,18 @@ public string one5 = "";
       <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 12px; top: 493px; width: 242px; background-color: #FFFFCC; color: #000000;" onkeydown="checkEnter(event);"/> 
 <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none; position: absolute; top: 147px; left: 862px; height: 40px; width: 93px; margin-top: 0px;" ></iframe>
 <div id="aimg" style="position: absolute; left: 118px; top: 101px; width: 236px; height: 200px;">
-    <img alt="" src="../../Images/achievements.gif" style="width: 232px; height: 199px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 1px; background-color: Transparent;" id="Img6" />
-    <asp:Image ID="Image1" runat="server" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" ImageUrl='<%=one1%>' />
-    <asp:Image ID="Image2" runat="server" style="z-index: 300; left: 114px; top: 60px; position: absolute; width: 32px; height: 30px;" ImageUrl='<%=one2%>' />
-    <asp:Image ID="Image3" runat="server" style="z-index: 300; left: 159px; top: 30px; position: absolute; width: 34px; height: 32px;" ImageUrl='<%=one3%>' />
-    <asp:Image ID="Image4" runat="server" style="z-index: 300; left: 35px; top: 149px; position: absolute; width: 39px; height: 35px;" ImageUrl='<%=one4%>' />
-    <asp:Image ID="Image5" runat="server" style="z-index: 300; left: 203px; top: 10px; position: absolute; width: 26px; height: 33px;" ImageUrl='<%=one5%>' />
+    <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 232px; height: 199px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 1px; background-color: Transparent;" id="Img6" />
+    <img id="Image1" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" src='<%=one1%>' />
+    <img id="Image2" style="z-index: 300; left: 112px; top: 60px; position: absolute; width: 32px; height: 30px;" src='<%=one2%>' />
+    <img id="Image3" style="z-index: 300; left: 159px; top: 30px; position: absolute; width: 34px; height: 32px;" src='<%=one3%>' />
+    <img id="Image4" style="z-index: 300; left: 35px; top: 149px; position: absolute; width: 39px; height: 35px;" src='<%=one4%>' />
+    <img id="Image5" style="z-index: 300; left: 203px; top: 10px; position: absolute; width: 26px; height: 33px;" src='<%=one5%>' />
 
-    <asp:Image ID="Image6" runat="server" style="z-index: 301; left: 130px; top: 111px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image7" runat="server" style="z-index: 301; left: 156px; top: 65px; position: absolute; width: 16px; height: 17px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image8" runat="server" style="z-index: 301; left: 135px; top: 33px; position: absolute; width: 20px; height: 21px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image9" runat="server" style="z-index: 301; left: 83px; top: 162px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
-    <asp:Image ID="Image10" runat="server" style="z-index: 301; left: 181px; top: 4px; position: absolute; width: 18px; height: 18px;" ImageUrl="~/Images/tick.png" />
+    <img id="Image6" style="z-index: 301; left: 80px; top: 152px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
+    <img id="Image7" style="z-index: 301; left: 124px; top: 103px; position: absolute; width: 16px; height: 17px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
+    <img id="Image8" style="z-index: 301; left: 151px; top: 62px; position: absolute; width: 20px; height: 21px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
+    <img id="Image9" style="z-index: 301; left: 200px; top: 37px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
+    <img id="Image10" style="z-index: 301; left: 181px; top: 4px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
 
 </div>
     

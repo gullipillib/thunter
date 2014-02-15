@@ -137,6 +137,7 @@
                 
                 //AccessDataSource6.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
                 AccessDataSource6.Insert();
+                Session["reached"] = "yes";
             }
 
         }
@@ -174,16 +175,16 @@
 
         }
 
-        AccessDataSource1.SelectCommand = "SELECT * FROM settings";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource7.SelectCommand = "SELECT * FROM settings";
+        dv = (DataView)AccessDataSource7.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         uniname = dt.DefaultView;
         invites = dt.Rows[0].Field<string>("invites"); //usethis to get field value
         reset = dt.Rows[0].Field<string>("loginreset"); //usethis to get field value
         tspots = dt.Rows[0].Field<string>("tspots"); //usethis to get field value
-        AccessDataSource1.SelectCommand = "SELECT tscompleted FROM tspots where tscompleted = 'no'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource8.SelectCommand = "SELECT tscompleted FROM tspots where tscompleted = 'no'";
+        dv = (DataView)AccessDataSource8.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         uniname = dt.DefaultView;
@@ -196,8 +197,8 @@
             Response.Redirect("~/create.aspx");
         }
 
-        AccessDataSource1.SelectCommand = "SELECT tsprice, tsname, tsbidder, tsbid, tsaward FROM tspots where tsbid ='yes' and tsaward = 'yes' and tsbidder ='" + Hiddenfield1 + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource8.SelectCommand = "SELECT tsprice, tsname, tsbidder, tsbid, tsaward FROM tspots where tsbid ='yes' and tsaward = 'yes' and tsbidder ='" + Hiddenfield1 + "'";
+        dv = (DataView)AccessDataSource8.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         uniname = dt.DefaultView;
@@ -215,8 +216,8 @@
             }
         }
 
-        AccessDataSource1.SelectCommand = "SELECT tbprice, tbname, tbbidder, tbbid, tbaward FROM toolbox where tbbid ='yes' and tbaward = 'yes' and tbbidder ='" + Hiddenfield1 + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource9.SelectCommand = "SELECT tbprice, tbname, tbbidder, tbbid, tbaward FROM toolbox where tbbid ='yes' and tbaward = 'yes' and tbbidder ='" + Hiddenfield1 + "'";
+        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         uniname = dt.DefaultView;
@@ -233,8 +234,8 @@
             }
         }
 
-        AccessDataSource1.SelectCommand = "SELECT tbcompleted FROM toolbox where tbcompleted = 'no'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        AccessDataSource9.SelectCommand = "SELECT tbcompleted FROM toolbox where tbcompleted = 'no'";
+        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         uniname = dt.DefaultView;
@@ -249,17 +250,17 @@
 
         if (logintimes == invites)
         {
-            AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1 + "'";
-            AccessDataSource1.Update();
+            AccessDataSource4.SelectCommand = "SELECT * FROM loggedusers";
+            AccessDataSource4.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1 + "'";
+            AccessDataSource4.Update();
             Response.Redirect("~/Invite/friends");
 
         }
         if (logintimes == reset)
         {
-            AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '3', luloggedin='no' where luname='" + Hiddenfield1 + "'";
-            AccessDataSource1.Update();
+            AccessDataSource4.SelectCommand = "SELECT * FROM loggedusers";
+            AccessDataSource4.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '3', luloggedin='no' where luname='" + Hiddenfield1 + "'";
+            AccessDataSource4.Update();
             Response.Redirect("~/buy.aspx");
 
         }
@@ -274,9 +275,9 @@
             Response.Redirect("~/buy.aspx");
         }
 
-        AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1 + "'";
-        AccessDataSource1.Update();
+        AccessDataSource4.SelectCommand = "SELECT * FROM loggedusers";
+        AccessDataSource4.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1 + "'";
+        AccessDataSource4.Update();
 
     }
     
@@ -305,7 +306,19 @@
 </script>
 
 <html>
-<head runat="server">
+<head runat="server" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# treasure_huntermp: http://ogp.me/ns/fb/treasure_huntermp#">
+  <meta property="fb:app_id"                            content="123405257731200" /> 
+  <meta property="og:type"                              content="treasure_huntermp:game" /> 
+  <meta property="og:url"                               content="https://treasurehunter.apphb.com" /> 
+  <meta property="og:title"                             content="TreasureHunt Game" /> 
+  <meta property="og:image"                             content="https://treasurehunter.apphb.com/Images/lamdscape.jpg" /> 
+   <meta property="business:contact_data:street_address" content="Facebook" /> 
+  <meta property="business:contact_data:locality"       content="Facebook" /> 
+  <meta property="business:contact_data:postal_code"    content="Facebook" /> 
+  <meta property="business:contact_data:country_name"   content="Facebook" /> 
+  <meta property="place:location:latitude"              content="Facebook" /> 
+  <meta property="place:location:longitude"             content="Facebook" /> 
+
     
     <meta name="viewport" content="width=device-width" />
     
@@ -395,8 +408,8 @@ to {left:10px;}
         <img alt="" class="twoto3d" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="border: thick ridge #CC66FF; z-index: 1; left: 8px; top: 7px; border-radius:70px; position: absolute" /></p>
                   
     
-        <img alt="" src="https://treasurehunter.apphb.com/Images/3dglass.gif" style="z-index: 1; left: 474px; top: 166px; position: absolute; height: 27px; width: 56px" /></p>
-                  
+        <img alt="" src="https://treasurehunter.apphb.com/Images/3dglass.gif" style="z-index: 1; left: 474px; top: 166px; position: absolute; height: 27px; width: 56px" />
+         <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 1; left: 700px; top: 47px; position: absolute; height: 62px; width: 166px" />         
         <asp:Label ID="Label5" runat="server" Font-Size="8pt" style="z-index: 1; left: 401px; top: 587px; position: absolute" Text="Treasure Hunter - 2013"></asp:Label>
        
         
@@ -455,7 +468,12 @@ to {left:10px;}
                 <asp:Parameter Name="uname" />
             </UpdateParameters>
         </asp:AccessDataSource>
-
+        <asp:AccessDataSource ID="AccessDataSource7" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM settings">
+        </asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource8" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM tspots">
+        </asp:AccessDataSource>
+        <asp:AccessDataSource ID="AccessDataSource9" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM toolbox">
+        </asp:AccessDataSource>
         <asp:DataList ID="DataList1" runat="server" BackColor="#FFCCFF" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="AccessDataSource2" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 15px; top: 367px; position: absolute; height: 187px; width: 410px; right: 447px;">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
