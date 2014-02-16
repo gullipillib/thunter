@@ -220,7 +220,7 @@ protected void Button2_Click(object sender, EventArgs e)
 protected void Button3_Click(object sender, EventArgs e)
 {
     AccessDataSource1.SelectCommand = "SELECT * FROM tspots where tsowner ='" + Hiddenfield1 + "' order by tsorder DESC";
-    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + "1" + "' where luname='" + Hiddenfield1 + "'";
+    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + "1" + ", lubuylater='yes'" + "' where luname='" + Hiddenfield1 + "'";
     AccessDataSource1.Update();
 }
 </script>

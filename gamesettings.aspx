@@ -55,88 +55,128 @@
             Response.Redirect("~/buy.aspx");
         }
     }
-
+    string updater = "0";
 protected void Page_Load(object sender, EventArgs e)
 {
-    checkusername();
-    AccessDataSource8.SelectCommand = "SELECT amount FROM appuserdetails where uname='" + Hiddenfield1 + "'";
-    AccessDataSource9.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+    if (Page.IsPostBack == false)
+    {
+        checkusername();
+        AccessDataSource8.SelectCommand = "SELECT amount FROM appuserdetails where uname='" + Hiddenfield1 + "'";
+        AccessDataSource9.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+    
+    }
+    if (Page.IsPostBack == true)
+    {
+        if (updater == "1")
+        {
+            Session["tspotname"] = GridView3.Rows[GridView3.SelectedIndex].Cells[0].Text;
+            Session["tspotprice"] = GridView3.Rows[GridView3.SelectedIndex].Cells[2].Text;
+            Response.Redirect("~/buy.aspx");  
+        }
+        if (updater == "2")
+        {
+            Session["toolboxname"] = GridView5.Rows[GridView5.SelectedIndex].Cells[0].Text;
+            Session["tbprice"] = GridView5.Rows[GridView5.SelectedIndex].Cells[2].Text;
+            Response.Redirect("~/buy.aspx"); 
+        }
+        if (updater == "3")
+        {
+            AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
+            AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'yes' where tsowner = '" + Hiddenfield1 + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+            AccessDataSource1.Update(); 
+        }
+        if (updater == "4")
+        {
+            AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
+            AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'no' where tsowner = '" + Hiddenfield1 + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+            AccessDataSource1.Update();
+        }
+        if (updater == "5")
+        {
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
+            AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'yes' where tbowner='" + Hiddenfield1 + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+            AccessDataSource1.Update();
+        }
+        if (updater == "6")
+        {
+            AccessDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
+            AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'no' where tbowner='" + Hiddenfield1 + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+            AccessDataSource1.Update();
+        }
+        if (updater == "7")
+        {
+            if (GridView1.Rows[GridView1.SelectedIndex].Cells[4].Text == Hiddenfield1)
+            {
+
+                if (DropDownList1.SelectedValue == "Bid")
+                {
+                    AccessDataSource1.UpdateCommand = "update tspots set tsbid = 'yes', tsbidamount = '" + TextBox3.Text + "'" + "where tsname = '" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+                    AccessDataSource1.Update();
+                }
+                if (DropDownList1.SelectedValue == "Sell")
+                {
+                    AccessDataSource1.UpdateCommand = "update tspots set tssell = 'yes', tssellamount = '" + TextBox3.Text + "'" + "where tsname = '" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+                    AccessDataSource1.Update();
+                }
+            }
+        }
+        if (updater == "8")
+        {
+            if (GridView2.Rows[GridView2.SelectedIndex].Cells[4].Text == Hiddenfield1)
+            {
+                if (DropDownList2.SelectedValue == "Bid")
+                {
+                    AccessDataSource2.UpdateCommand = "update toolbox set tbbid = 'yes', tbbidamount = '" + TextBox4.Text + "'" + "where tbname = '" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+                    AccessDataSource2.Update();
+                }
+                if (DropDownList2.SelectedValue == "Sell")
+                {
+                    AccessDataSource2.UpdateCommand = "update toolbox set tbsell = 'yes', tbsellamount = '" + TextBox4.Text + "'" + "where tbname = '" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+                    AccessDataSource2.Update();
+                }
+            }
+        }
+    }
 }
 
 protected void Button1_Click(object sender, EventArgs e)
 {
-    Session["tspotname"] = GridView3.Rows[GridView3.SelectedIndex].Cells[0].Text;
-    Session["tspotprice"] = GridView3.Rows[GridView3.SelectedIndex].Cells[2].Text;
-    Response.Redirect("~/buy.aspx");
+    updater = "1";
 }
 
 protected void Button3_Click(object sender, EventArgs e)
 {
-    Session["toolboxname"] = GridView5.Rows[GridView5.SelectedIndex].Cells[0].Text;
-    Session["tbprice"] = GridView5.Rows[GridView5.SelectedIndex].Cells[2].Text;
-    Response.Redirect("~/buy.aspx");
+    updater = "2";
 }
 
 protected void Button9_Click(object sender, EventArgs e)
 {
-    AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
-    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'yes' where tsowner = '" + Hiddenfield1 + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'" ;
-    AccessDataSource1.Update();
+    updater = "3";
 }
 
 protected void Button10_Click(object sender, EventArgs e)
 {
-    AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
-    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'no' where tsowner = '" + Hiddenfield1 + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
-    AccessDataSource1.Update();
+    updater = "4";
 }
 
 protected void Button11_Click(object sender, EventArgs e)
 {
-    AccessDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
-    AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'yes' where tbowner='" + Hiddenfield1 + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-    AccessDataSource1.Update();
+    updater = "5";
 }
 
 protected void Button12_Click(object sender, EventArgs e)
 {
-    AccessDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
-    AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'no' where tbowner='" + Hiddenfield1 + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-    AccessDataSource1.Update();
+    updater = "6";
 }
 
 protected void Button6_Click(object sender, EventArgs e)
 {
-    if (GridView1.Rows[GridView1.SelectedIndex].Cells[4].Text == Hiddenfield1)
-    {
-        if (DropDownList1.SelectedValue == "Bid")
-        {
-            AccessDataSource1.UpdateCommand = "update tspots set tsbid = 'yes', tsbidamount = '" + TextBox3.Text + "'" + "where tsname = '" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
-            AccessDataSource1.Update();
-        }
-        if (DropDownList1.SelectedValue == "Sell")
-        {
-            AccessDataSource1.UpdateCommand = "update tspots set tssell = 'yes', tssellamount = '" + TextBox3.Text + "'" + "where tsname = '" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
-            AccessDataSource1.Update();
-        }
-    }
+    updater = "7";
 }
 
 protected void Button5_Click(object sender, EventArgs e)
 {
-    if (GridView2.Rows[GridView2.SelectedIndex].Cells[4].Text == Hiddenfield1)
-    {
-        if (DropDownList2.SelectedValue == "Bid")
-        {
-            AccessDataSource2.UpdateCommand = "update toolbox set tbbid = 'yes', tbbidamount = '" + TextBox4.Text + "'" + "where tbname = '" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-            AccessDataSource2.Update();
-        }
-        if (DropDownList2.SelectedValue == "Sell")
-        {
-            AccessDataSource2.UpdateCommand = "update toolbox set tbsell = 'yes', tbsellamount = '" + TextBox4.Text + "'" + "where tbname = '" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-            AccessDataSource2.Update();
-        }
-    }
+    updater = "8";
 }
 
 

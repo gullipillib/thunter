@@ -186,7 +186,7 @@
 
             if (TextBox1.Text != null && TextBox2.Text != null)
             {
-                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsname = '" + TextBox1.Text + "', tsitems = '" + tempstring + "', tsnew = 'no', tscompleted = 'yes'  where tsowner='" + Label26.Text + "' and tsorder='" + tsorderno + "'";
+                AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsname = '" + TextBox1.Text + "', tsurl = '" + TextBox2.Text + "', tsitems = '" + tempstring + "', tsnew = 'no', tscompleted = 'yes'  where tsowner='" + Label26.Text + "' and tsorder='" + tsorderno + "'";
                     AccessDataSource1.Update();
                 
                 Button5.Enabled = true;

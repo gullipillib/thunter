@@ -41,7 +41,7 @@ protected void Page_Load(object sender, EventArgs e)
     <meta name="viewport" content="width=device-width" />
     <title>friends</title>
 </head>
-<body>
+<body style="background-color:#FFCCFF" >
     
 
 
@@ -77,9 +77,9 @@ protected void Page_Load(object sender, EventArgs e)
         <div style="border: 20px ridge #999966; position: absolute; z-index: 300; top: 118px; left: 238px; height: 325px; width: 441px; background-color: #FFCC66;"> 
 <a href='#' onclick="FacebookInviteFriends();" style="position:absolute;left:32%; top:75%; width:27%; height: 7%; text-decoration:none; color: #FFFFFF; background-color: #0000FF; border-radius:20px; text-align: center; right: 159px; z-index: 310;">Invite Friends</a>
 
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/gamesettings.aspx" style="z-index: 310; left: 68%; top: 13%; position: absolute; height: 6%; width: 21%;" Target="_self">My Game</asp:hyperlink>
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/gamesettings.aspx" style="z-index: 310; left: 68%; top: 13%; position: absolute; height: 6%; width: 21%; cursor: pointer;" Target="_self" Font-Size="13pt">My Game</asp:hyperlink>
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 310; left: 2%; top: 13%; position: absolute; right: 276px; width: 32%; height: 8%;" Target="_self">Go on a Treasurehunt</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 310; left: 2%; top: 13%; position: absolute; right: 276px; width: 32%; height: 8%; cursor: pointer;" Target="_self" Font-Size="13pt">Go on a Treasurehunt</asp:hyperlink>
         
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Andy" Font-Size="15pt" ForeColor="White" style="z-index: 310; left: 117px; top: 10px; position: absolute" Text="Invite Some of Your Friends "></asp:Label>
         

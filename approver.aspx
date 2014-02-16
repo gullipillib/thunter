@@ -271,17 +271,35 @@
         treasure.Text = dt.Rows[0].Field<string>("treasurevalue"); 
     }
 
-   
-    
+
+    string updater = "0";
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Page.IsPostBack == false)
+        {
+
+            AccessDataSource1.SelectCommand = "select lubuylater from loggedusers where luname = '" + Hiddenfield1 + "'";
+            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataTable dt = new DataTable();
+            dt = dv.ToTable();
+            DataView uniname = dt.DefaultView;
+            if (dt.Rows.Count != 0)
+            {
+                logintimes = dt.Rows[0].Field<string>("lubuylater"); //usethis to get field value
+            }
+
+            if (logintimes == "yes")
+            {
+                Response.Redirect("https://treasurehunter.apphb.com");
+            }
+                    
         AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
         AccessDataSource1.Update();
         
         checkusername();
          AccessDataSource1.SelectCommand = "select lutspots from loggedusers where luname = '" + Hiddenfield1 + "'";
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            DataTable dt = new DataTable();
+             dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
             dt = dv.ToTable();
             if (dt.Rows.Count == 0)
             {
@@ -292,8 +310,7 @@
         gettreasurespot();
         gettreasureprize();
         
-        if (Page.IsPostBack == false)
-        {
+        
             AccessDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
             dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
             dt = new DataTable();
@@ -318,77 +335,78 @@
 
             }
         }
-        
-        
+
+        if (Page.IsPostBack == true)
+        {
+            if (updater == "1")
+            {
+                AccessDataSource1.SelectCommand = "SELECT tsname, tsapproved, tsactive, tsapprover1, tsapprover2, tsapprover3, tsapprovercomments FROM tspots where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                DataTable dt = new DataTable();
+                dt = dv.ToTable();
+                string tsapprover1 = dt.Rows[0].Field<string>("tsapprover1"); //usethis to get field value
+                string tsapprover2 = dt.Rows[0].Field<string>("tsapprover2"); //usethis to get field value
+                string tsapprover3 = dt.Rows[0].Field<string>("tsapprover3"); //usethis to get field value
+                string tsapprovercomments = dt.Rows[0].Field<string>("tsapprovercomments"); //usethis to get field value
+                if (tsapprover1 == null && tsapprover2 == null && tsapprover3 == null)
+                {
+                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapprover1='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                    AccessDataSource1.Update();
+                }
+                else if (tsapprover1 != null && tsapprover2 == null && tsapprover3 == null)
+                {
+                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapprover2='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                    AccessDataSource1.Update();
+                }
+                else if (tsapprover1 != null && tsapprover2 != null && tsapprover3 == null)
+                {
+                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapproved='yes', tsactive='yes',  tsapprover3='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                    AccessDataSource1.Update();
+
+                }
+                AccessDataSource1.SelectCommand = "SELECT amount FROM appuserdetails where uname = '" + Hiddenfield1 + "'";
+                dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                dt = new DataTable();
+                dt = dv.ToTable();
+                string amount = dt.Rows[0].Field<string>("amount"); //usethis to get field value
+                AccessDataSource1.UpdateCommand = "UPDATE appuserdetails SET amount='" + Convert.ToString(Convert.ToDouble(amount) + Convert.ToDouble("0.25")) + "' where uname = '" + Hiddenfield1 + "'";
+                AccessDataSource1.Update();
+                HyperLink5.Enabled = true;
+
+            }
+
+            if (updater == "2")
+            {
+                AccessDataSource1.SelectCommand = "SELECT tsname, tsapproved, tsactive, tsapprover1, tsapprover2, tsapprover3, tsapprovercomments FROM tspots where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                DataTable dt = new DataTable();
+                dt = dv.ToTable();
+                string tsapprovercomments = dt.Rows[0].Field<string>("tsapprovercomments"); //usethis to get field value
+
+                AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                AccessDataSource1.Update();
+                AccessDataSource1.SelectCommand = "SELECT amount FROM appuserdetails where uname = '" + Hiddenfield1 + "'";
+                dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                dt = new DataTable();
+                dt = dv.ToTable();
+                string amount = dt.Rows[0].Field<string>("amount"); //usethis to get field value
+                AccessDataSource1.UpdateCommand = "UPDATE appuserdetails SET amount='" + Convert.ToString(Convert.ToDouble(amount) + Convert.ToDouble("0.25")) + "' where uname = '" + Hiddenfield1 + "'";
+                AccessDataSource1.Update();
+
+                HyperLink5.Enabled = true;
+            }
+        }
+           
     }
-    protected void TextBox2_TextChanged(object sender, EventArgs e)
-    {
-        AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='no', lucrisboos='" + points.Text + "' where luname='" + Hiddenfield1 + "'";
-        AccessDataSource1.Update();
-    }
-    protected void TextBox1_TextChanged(object sender, EventArgs e)
-    {
-        AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='no', lucrisboos='" + points.Text + "' where luname='" + Hiddenfield1 + "'";
-        AccessDataSource1.Update();
-        gettreasurespot();
-    }
+    
     protected void Button1_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.SelectCommand = "SELECT tsname, tsapproved, tsactive, tsapprover1, tsapprover2, tsapprover3, tsapprovercomments FROM tspots where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        DataTable dt = new DataTable();
-        dt = dv.ToTable();
-        string tsapprover1 = dt.Rows[0].Field<string>("tsapprover1"); //usethis to get field value
-        string tsapprover2 = dt.Rows[0].Field<string>("tsapprover2"); //usethis to get field value
-        string tsapprover3 = dt.Rows[0].Field<string>("tsapprover3"); //usethis to get field value
-        string tsapprovercomments = dt.Rows[0].Field<string>("tsapprovercomments"); //usethis to get field value
-        if (tsapprover1 == null && tsapprover2 == null && tsapprover3 == null)
-        {
-            AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapprover1='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-            AccessDataSource1.Update();
-        }
-        else if (tsapprover1 != null && tsapprover2 == null && tsapprover3 == null)
-        {
-            AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapprover2='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-            AccessDataSource1.Update();
-        }
-        else if (tsapprover1 != null && tsapprover2 != null && tsapprover3 == null)
-        {
-            AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapproved='yes', tsactive='yes',  tsapprover3='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-            AccessDataSource1.Update();
-            
-        }
-        AccessDataSource1.SelectCommand = "SELECT amount FROM appuserdetails where uname = '" + Hiddenfield1 + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        dt = new DataTable();
-        dt = dv.ToTable();
-        string amount = dt.Rows[0].Field<string>("amount"); //usethis to get field value
-        AccessDataSource1.UpdateCommand = "UPDATE appuserdetails SET amount='" + Convert.ToString(Convert.ToDouble(amount) + Convert.ToDouble("0.25")) + "' where uname = '" + Hiddenfield1 + "'";
-            AccessDataSource1.Update();
-            HyperLink5.Enabled = true;
+        updater = "1";
     }
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.SelectCommand = "SELECT tsname, tsapproved, tsactive, tsapprover1, tsapprover2, tsapprover3, tsapprovercomments FROM tspots where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-        DataTable dt = new DataTable();
-        dt = dv.ToTable();
-        string tsapprovercomments = dt.Rows[0].Field<string>("tsapprovercomments"); //usethis to get field value
-       
-            AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-            AccessDataSource1.Update();
-            AccessDataSource1.SelectCommand = "SELECT amount FROM appuserdetails where uname = '" + Hiddenfield1 + "'";
-            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
-            dt = new DataTable();
-            dt = dv.ToTable();
-            string amount = dt.Rows[0].Field<string>("amount"); //usethis to get field value
-            AccessDataSource1.UpdateCommand = "UPDATE appuserdetails SET amount='" + Convert.ToString(Convert.ToDouble(amount) + Convert.ToDouble("0.25")) + "' where uname = '" + Hiddenfield1 + "'";
-            AccessDataSource1.Update();
-        
-        HyperLink5.Enabled = true;
+        updater = "2";
     }
 </script>
 
@@ -400,7 +418,7 @@
 </head>
 
 
-<body   style="height: 507px; background-color:#000000; width: 967px; overflow:hidden;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)" >
+<body   style="height: 507px; background-color:black; width: 967px; overflow:hidden;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)" >
     <script type="text/javascript">
         
         var enemyhits = 0;
@@ -843,7 +861,9 @@
 
     <form id="form1"  runat="server" >
         <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
-        <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 4px; top: 345px; position: absolute; width: 332px; height: 114px" TextMode="MultiLine" CausesValidation="True"></asp:TextBox>
+        <div style="z-index:300; border: 15px ridge #FF00FF; position: absolute; overflow: hidden; top: 351px; left: 13px; width: 303px; height: 85px;">
+        <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 0px; top: 0px; position: absolute; width: 295px; height: 79px" TextMode="MultiLine" CausesValidation="True" BackColor="Silver" ForeColor="White"></asp:TextBox>
+        </div>
         <asp:Label ID="Label3" runat="server" ForeColor="White" style="z-index: 1; left: 13px; top: 319px; position: absolute" Text="Comments"></asp:Label>
    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" style="z-index: 1; left: 347px; top: 0px; position: absolute; width: 293px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>     
    <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="14pt" ForeColor="#9999FF" style="z-index: 1; left: 341px; top: 84px; position: absolute; width: 505px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
@@ -853,9 +873,9 @@
         <asp:CheckBox ID="CheckBox2" runat="server" ForeColor="White" style="z-index: 1; left: 141px; top: 198px; position: absolute; width: 198px;" Text="Objectionable or Provocative" />
         <asp:CheckBox ID="CheckBox3" runat="server" ForeColor="White" style="z-index: 1; left: 142px; top: 231px; position: absolute" Text="Unrealistic" />
 
-<asp:Button ID="Button1" runat="server" style="z-index: 1; left: 274px; top: 478px; position: absolute" Text="Approve" OnClick="Button1_Click" UseSubmitBehavior="False" />
+        <asp:Button ID="Button1" runat="server" Style="border-radius: 20px; z-index: 1; left: 274px; top: 478px; position: absolute" Text="Approve" OnClick="Button1_Click" UseSubmitBehavior="False" />
 
-<asp:Button ID="Button2" runat="server" style="z-index: 1; left: 5px; top: 478px; position: absolute; height: 26px;" Text="Disapprove" OnClick="Button2_Click" UseSubmitBehavior="False" />
+<asp:Button ID="Button2" runat="server" style="border-radius: 20px; z-index: 1; left: 5px; top: 478px; position: absolute; height: 26px;" Text="Disapprove" OnClick="Button2_Click" UseSubmitBehavior="False" />
 
 <asp:HyperLink ID="HyperLink5" runat="server" Enabled="False" ForeColor="White" NavigateUrl="~/Play/play" style="z-index: 1; left: 773px; top: 56px; position: absolute">Back to Game</asp:HyperLink>
  <asp:HyperLink ID="HyperLink1" runat="server" Enabled="False" ForeColor="White" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 527px; top: 60px; position: absolute">Terms and Conditions</asp:HyperLink>  
@@ -866,8 +886,8 @@
         <asp:TextBox ID="points" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 488px; top: 34px; position: absolute; width: 107px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1"></asp:TextBox>
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 747px; top: 33px; position: absolute; width: 73px" ForeColor="#FFCC00" meta:resourcekey="treasureResource1"></asp:TextBox>
         <asp:panel id="panel1" runat="server">
-        <asp:TextBox ID="TextBox1" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 801px; top: 20px; position: absolute; width: 73px" ForeColor="Black" BorderColor="Black" OnTextChanged="TextBox1_TextChanged" ></asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 537px; top: 6px; position: absolute; width: 73px" ForeColor="Black" BorderColor="Black" OnTextChanged="TextBox2_TextChanged" ></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 801px; top: 20px; position: absolute; width: 73px" ForeColor="Black" BorderColor="Black" ></asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" AutoPostBack="True" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" style="z-index: 1; left: 537px; top: 6px; position: absolute; width: 73px" ForeColor="Black" BorderColor="Black" ></asp:TextBox>
         </asp:panel>
     </form>
         <label style="position: absolute; top: 48px; left: 15px; right: 846px; height: 19px; color: #FFCC00;">Achievements</label>
