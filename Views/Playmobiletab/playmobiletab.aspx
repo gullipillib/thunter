@@ -642,7 +642,7 @@ public string one5 = "";
                     }
                 }
 
-                var myaddctrl1 = window.setInterval(function () { getTspot() }, 300000);
+                var myaddctrl1 = window.setInterval(function () { getTspot() }, 270000);
                 function getTspot() {
 
 
@@ -773,8 +773,8 @@ public string one5 = "";
 
                 if (randno1 == 1 || randno2 == 1 || randno3 == 1) {
                     ctrl1.style.visibility = "visible";
-                    ctrl1.style.width = "100px";
-                    ctrl1.style.height = "100px";
+                    ctrl1.style.width = '<%=ctrl1mainwidth%>';
+                    ctrl1.style.height = '<%=ctrl1mainwidth%>';
                     ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
@@ -783,8 +783,8 @@ public string one5 = "";
                 }
                 if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
                     ctrl2.style.visibility = "visible";
-                    ctrl2.style.width = "100px";
-                    ctrl2.style.height = "100px";
+                    ctrl2.style.width = '<%=ctrl2mainwidth%>';
+                    ctrl2.style.height = '<%=ctrl2mainwidth%>';
                     ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
@@ -793,8 +793,8 @@ public string one5 = "";
                 }
                 if (randno1 == 3 || randno2 == 3 || randno3 == 3) {
                     ctrl3.style.visibility = "visible";
-                    ctrl3.style.width = "100px";
-                    ctrl3.style.height = "100px";
+                    ctrl3.style.width = '<%=ctrl3mainwidth%>';
+                    ctrl3.style.height = '<%=ctrl3mainwidth%>';
                     ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
@@ -803,8 +803,8 @@ public string one5 = "";
                 }
                 if (randno1 == 4 || randno2 == 4 || randno3 == 4) {
                     ctrl4.style.visibility = "visible";
-                    ctrl4.style.width = "100px";
-                    ctrl4.style.height = "100px";
+                    ctrl4.style.width = '<%=ctrl4mainwidth%>';
+                    ctrl4.style.height = '<%=ctrl4mainwidth%>';
                     ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
@@ -813,8 +813,8 @@ public string one5 = "";
                 }
                 if (randno1 == 5 || randno2 == 5 || randno3 == 5) {
                     ctrl5.style.visibility = "visible";
-                    ctrl5.style.width = "100px";
-                    ctrl5.style.height = "100px";
+                    ctrl5.style.width = '<%=ctrl5mainwidth%>';
+                    ctrl5.style.height = '<%=ctrl5mainwidth%>';
                     ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
@@ -823,8 +823,8 @@ public string one5 = "";
                 }
                 if (randno1 == 6 || randno2 == 6 || randno3 == 6) {
                     Img1.style.visibility = "visible";
-                    Img1.style.width = "80px";
-                    Img1.style.height = "80px";
+                    Img1.style.width = '<%=ctrl1mainwidth%>';
+                    Img1.style.height = '<%=ctrl1mainwidth%>';
                     if ('<%=ctrl1mainname%>' == "goldcoins" || '<%=ctrl1mainname%>' == "health") {
                         Img1.style.width = "30px";
                         Img1.style.height = "30px";
@@ -836,8 +836,8 @@ public string one5 = "";
                 }
                 if (randno1 == 7 || randno2 == 7 || randno3 == 7) {
                     Img2.style.visibility = "visible";
-                    Img2.style.width = "80px";
-                    Img2.style.height = "80px";
+                    Img2.style.width = '<%=ctrl1mainwidth%>';
+                    Img2.style.height = '<%=ctrl1mainwidth%>';
                     if ('<%=ctrl2mainname%>' == "goldcoins" || '<%=ctrl2mainname%>' == "health") {
                         Img2.style.width = "30px";
                         Img2.style.height = "30px";
@@ -849,8 +849,8 @@ public string one5 = "";
                 }
                 if (randno1 == 8 || randno2 == 8 || randno3 == 8) {
                     Img3.style.visibility = "visible";
-                    Img3.style.width = "80px";
-                    Img3.style.height = "80px";
+                    Img3.style.width = '<%=ctrl1mainwidth%>';
+                    Img3.style.height = '<%=ctrl1mainwidth%>';
                     if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
                         Img3.style.width = "30px";
                         Img3.style.height = "30px";
@@ -862,8 +862,8 @@ public string one5 = "";
                 }
                 if (randno1 == 9 || randno2 == 9 || randno3 == 9) {
                     Img4.style.visibility = "visible";
-                    Img4.style.width = "80px";
-                    Img4.style.height = "80px";
+                    Img4.style.width = '<%=ctrl1mainwidth%>';
+                    Img4.style.height = '<%=ctrl1mainwidth%>';
                     if ('<%=ctrl4mainname%>' == "goldcoins" || '<%=ctrl4mainname%>' == "health") {
                         Img4.style.width = "30px";
                         Img4.style.height = "30px";
@@ -875,8 +875,8 @@ public string one5 = "";
                 }
                 if (randno1 == 10 || randno2 == 10 || randno3 == 10) {
                     Img5.style.visibility = "visible";
-                    Img5.style.width = "80px";
-                    Img5.style.height = "80px";
+                    Img5.style.width = '<%=ctrl1mainwidth%>';
+                    Img5.style.height = '<%=ctrl1mainwidth%>';
                     if ('<%=ctrl5mainname%>' == "goldcoins" || '<%=ctrl5mainname%>' == "health") {
                         Img5.style.width = "30px";
                         Img5.style.height = "30px";
@@ -2009,73 +2009,73 @@ public string one5 = "";
                 }
 
                 var myaddctrl = window.setInterval(function () { moveCtrl() }, 900);
-                function moveCtrl() {
-                    if (parseInt(ctrl1.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl1.style.left.replace("px", ""), 10) < 879) {
-                        ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-                    if (parseInt(ctrl2.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl2.style.left.replace("px", ""), 10) < 879) {
-                        ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-                    if (parseInt(ctrl3.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl3.style.left.replace("px", ""), 10) < 879) {
-                        ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-                    if (parseInt(ctrl4.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl4.style.left.replace("px", ""), 10) < 879) {
-                        ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-                    if (parseInt(ctrl5.style.left.replace("px", ""), 10) > 365 && parseInt(ctrl5.style.left.replace("px", ""), 10) < 879) {
-                        ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-                    if (parseInt(Img1.style.left.replace("px", ""), 10) > 365 && parseInt(Img1.style.left.replace("px", ""), 10) < 879) {
-                        Img1.style.left = parseInt(Img1.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-                    if (parseInt(Img2.style.left.replace("px", ""), 10) > 365 && parseInt(Img2.style.left.replace("px", ""), 10) < 879) {
-                        Img2.style.left = parseInt(Img2.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-                    if (parseInt(Img3.style.left.replace("px", ""), 10) > 365 && parseInt(Img3.style.left.replace("px", ""), 10) < 879) {
-                        Img3.style.left = parseInt(Img3.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-                    if (parseInt(Img4.style.left.replace("px", ""), 10) > 365 && parseInt(Img4.style.left.replace("px", ""), 10) < 879) {
-                        Img4.style.left = parseInt(Img4.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-                    if (parseInt(Img5.style.left.replace("px", ""), 10) > 365 && parseInt(Img5.style.left.replace("px", ""), 10) < 879) {
-                        Img5.style.left = parseInt(Img5.style.left.replace("px", ""), 10) + 45 + "px";
-                    }
-
-
-
-                    if (parseInt(ctrl1.style.top.replace("px", ""), 10) > temp && parseInt(ctrl1.style.top.replace("px", ""), 10) < 275) {
-                        ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-                    if (parseInt(ctrl2.style.top.replace("px", ""), 10) > temp && parseInt(ctrl2.style.top.replace("px", ""), 10) < 275) {
-                        ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-                    if (parseInt(ctrl3.style.top.replace("px", ""), 10) > temp && parseInt(ctrl3.style.top.replace("px", ""), 10) < 275) {
-                        ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-                    if (parseInt(ctrl4.style.top.replace("px", ""), 10) > temp && parseInt(ctrl4.style.top.replace("px", ""), 10) < 275) {
-                        ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-                    if (parseInt(ctrl5.style.top.replace("px", ""), 10) > temp && parseInt(ctrl5.style.top.replace("px", ""), 10) < 275) {
-                        ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-                    if (parseInt(Img1.style.top.replace("px", ""), 10) > temp && parseInt(Img1.style.top.replace("px", ""), 10) < 275) {
-                        Img1.style.top = parseInt(Img1.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-                    if (parseInt(Img2.style.top.replace("px", ""), 10) > temp && parseInt(Img2.style.top.replace("px", ""), 10) < 275) {
-                        Img2.style.top = parseInt(Img2.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-                    if (parseInt(Img3.style.top.replace("px", ""), 10) > temp && parseInt(Img3.style.top.replace("px", ""), 10) < 275) {
-                        Img3.style.top = parseInt(Img3.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-                    if (parseInt(Img4.style.top.replace("px", ""), 10) > temp && parseInt(Img4.style.top.replace("px", ""), 10) < 275) {
-                        Img4.style.top = parseInt(Img4.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-                    if (parseInt(Img5.style.top.replace("px", ""), 10) > temp && parseInt(Img5.style.top.replace("px", ""), 10) < 275) {
-                        Img5.style.top = parseInt(Img5.style.top.replace("px", ""), 10) - 45 + "px";
-                    }
-
-                    //divplayer.focus();
+            function moveCtrl() {
+                if (parseInt(ctrl1.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl1.style.left.replace("px", ""), 10) < 879) {
+                    ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", ""), 10) + 145 + "px";
                 }
+                if (parseInt(ctrl2.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl2.style.left.replace("px", ""), 10) < 879) {
+                    ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", ""), 10) + 145 + "px";
+                }
+                if (parseInt(ctrl3.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl3.style.left.replace("px", ""), 10) < 879) {
+                    ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", ""), 10) + 145 + "px";
+                }
+                if (parseInt(ctrl4.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl4.style.left.replace("px", ""), 10) < 879) {
+                    ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", ""), 10) + 145 + "px";
+                }
+                if (parseInt(ctrl5.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl5.style.left.replace("px", ""), 10) < 879) {
+                    ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", ""), 10) + 145 + "px";
+                }
+                if (parseInt(Img1.style.left.replace("px", ""), 10) > 1 && parseInt(Img1.style.left.replace("px", ""), 10) < 879) {
+                    Img1.style.left = parseInt(Img1.style.left.replace("px", ""), 10) + 145 + "px";
+                }
+                if (parseInt(Img2.style.left.replace("px", ""), 10) > 1 && parseInt(Img2.style.left.replace("px", ""), 10) < 879) {
+                    Img2.style.left = parseInt(Img2.style.left.replace("px", ""), 10) + 145 + "px";
+                }
+                if (parseInt(Img3.style.left.replace("px", ""), 10) > 1 && parseInt(Img3.style.left.replace("px", ""), 10) < 879) {
+                    Img3.style.left = parseInt(Img3.style.left.replace("px", ""), 10) + 145 + "px";
+                }
+                if (parseInt(Img4.style.left.replace("px", ""), 10) > 1 && parseInt(Img4.style.left.replace("px", ""), 10) < 879) {
+                    Img4.style.left = parseInt(Img4.style.left.replace("px", ""), 10) + 145 + "px";
+                }
+                if (parseInt(Img5.style.left.replace("px", ""), 10) > 1 && parseInt(Img5.style.left.replace("px", ""), 10) < 879) {
+                    Img5.style.left = parseInt(Img5.style.left.replace("px", ""), 10) + 145 + "px";
+                }
+
+
+
+                if (parseInt(ctrl1.style.top.replace("px", ""), 10) > temp && parseInt(ctrl1.style.top.replace("px", ""), 10) < 275) {
+                    ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+                if (parseInt(ctrl2.style.top.replace("px", ""), 10) > temp && parseInt(ctrl2.style.top.replace("px", ""), 10) < 275) {
+                    ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+                if (parseInt(ctrl3.style.top.replace("px", ""), 10) > temp && parseInt(ctrl3.style.top.replace("px", ""), 10) < 275) {
+                    ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+                if (parseInt(ctrl4.style.top.replace("px", ""), 10) > temp && parseInt(ctrl4.style.top.replace("px", ""), 10) < 275) {
+                    ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+                if (parseInt(ctrl5.style.top.replace("px", ""), 10) > temp && parseInt(ctrl5.style.top.replace("px", ""), 10) < 275) {
+                    ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+                if (parseInt(Img1.style.top.replace("px", ""), 10) > temp && parseInt(Img1.style.top.replace("px", ""), 10) < 275) {
+                    Img1.style.top = parseInt(Img1.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+                if (parseInt(Img2.style.top.replace("px", ""), 10) > temp && parseInt(Img2.style.top.replace("px", ""), 10) < 275) {
+                    Img2.style.top = parseInt(Img2.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+                if (parseInt(Img3.style.top.replace("px", ""), 10) > temp && parseInt(Img3.style.top.replace("px", ""), 10) < 275) {
+                    Img3.style.top = parseInt(Img3.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+                if (parseInt(Img4.style.top.replace("px", ""), 10) > temp && parseInt(Img4.style.top.replace("px", ""), 10) < 275) {
+                    Img4.style.top = parseInt(Img4.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+                if (parseInt(Img5.style.top.replace("px", ""), 10) > temp && parseInt(Img5.style.top.replace("px", ""), 10) < 275) {
+                    Img5.style.top = parseInt(Img5.style.top.replace("px", ""), 10) + 85 + "px";
+                }
+
+                //divplayer.focus();
+            }
 
 
                 document.addEventListener("keydown", check, false);
