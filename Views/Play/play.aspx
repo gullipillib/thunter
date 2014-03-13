@@ -810,7 +810,7 @@ public string one5 = "";
                     ctrl1.style.visibility = "visible";
                     ctrl1.style.width = '<%=ctrl1mainwidth%>';
                     ctrl1.style.height = '<%=ctrl1mainwidth%>';
-                    ctrl1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl1.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     ctrl1.style.top = mytemp;
@@ -820,7 +820,7 @@ public string one5 = "";
                     ctrl2.style.visibility = "visible";
                     ctrl2.style.width = '<%=ctrl2mainwidth%>';
                     ctrl2.style.height = '<%=ctrl2mainwidth%>';
-                    ctrl2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl2.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     ctrl2.style.top = mytemp;
@@ -830,7 +830,7 @@ public string one5 = "";
                     ctrl3.style.visibility = "visible";
                     ctrl3.style.width = '<%=ctrl3mainwidth%>';
                     ctrl3.style.height = '<%=ctrl3mainwidth%>';
-                    ctrl3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl3.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     ctrl3.style.top = mytemp;
@@ -840,7 +840,7 @@ public string one5 = "";
                     ctrl4.style.visibility = "visible";
                     ctrl4.style.width = '<%=ctrl4mainwidth%>';
                     ctrl4.style.height = '<%=ctrl4mainwidth%>';
-                    ctrl4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl4.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     ctrl4.style.top = mytemp;
@@ -850,7 +850,7 @@ public string one5 = "";
                     ctrl5.style.visibility = "visible";
                     ctrl5.style.width = '<%=ctrl5mainwidth%>';
                     ctrl5.style.height = '<%=ctrl5mainwidth%>';
-                    ctrl5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    ctrl5.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     ctrl5.style.top = mytemp;
@@ -864,7 +864,7 @@ public string one5 = "";
                         Img1.style.width = "30px";
                         Img1.style.height = "30px";
                     }
-                    Img1.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img1.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     Img1.style.top = mytemp;
@@ -877,7 +877,7 @@ public string one5 = "";
                         Img2.style.width = "30px";
                         Img2.style.height = "30px";
                     }
-                    Img2.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img2.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     Img2.style.top = mytemp;
@@ -890,7 +890,7 @@ public string one5 = "";
                         Img3.style.width = "30px";
                         Img3.style.height = "30px";
                     }
-                    Img3.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img3.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     Img3.style.top = mytemp;
@@ -903,7 +903,7 @@ public string one5 = "";
                         Img4.style.width = "30px";
                         Img4.style.height = "30px";
                     }
-                    Img4.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img4.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     Img4.style.top = mytemp;
@@ -916,7 +916,7 @@ public string one5 = "";
                         Img5.style.width = "30px";
                         Img5.style.height = "30px";
                     }
-                    Img5.style.left = Math.floor(Math.random() * 845 - 365 + 1) + 365 + "px";
+                    Img5.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
                     mytemp = mytemp + temp + "px";
                     Img5.style.top = mytemp;
@@ -2074,71 +2074,37 @@ public string one5 = "";
 
             var myaddctrl = window.setInterval(function () { moveCtrl() }, 900);
             function moveCtrl() {
-                if (parseInt(ctrl1.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl1.style.left.replace("px", ""), 10) < 879) {
-                    ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl1.style.left.replace("px", "")) > 365 && parseInt(ctrl1.style.left.replace("px", "")) < 850) {
+                    ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", "")) + 45 + "px";
                 }
-                if (parseInt(ctrl2.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl2.style.left.replace("px", ""), 10) < 879) {
-                    ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl1.style.top.replace("px", "")) > 130 + parseInt(myctrl1.tsctrl1res).toString().replace("px", "") && parseInt(ctrl1.style.top.replace("px", "")) < 515) {
+                    ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", "")) - 45 + "px";
                 }
-                if (parseInt(ctrl3.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl3.style.left.replace("px", ""), 10) < 879) {
-                    ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl2.style.left.replace("px", "")) > 365 && parseInt(ctrl2.style.left.replace("px", "")) < 850) {
+                    ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", "")) + 5 + "px";
                 }
-                if (parseInt(ctrl4.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl4.style.left.replace("px", ""), 10) < 879) {
-                    ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl2.style.top.replace("px", "")) > 130 + parseInt(myctrl2.tsctrl2res).toString().replace("px", "") && parseInt(ctrl2.style.top.replace("px", "")) < 515) {
+                    ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", "")) + 45 + "px";
                 }
-                if (parseInt(ctrl5.style.left.replace("px", ""), 10) > 1 && parseInt(ctrl5.style.left.replace("px", ""), 10) < 879) {
-                    ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl3.style.left.replace("px", "")) > 365 && parseInt(ctrl3.style.left.replace("px", "")) < 850) {
+                    ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", "")) + 45 + "px";
                 }
-                if (parseInt(Img1.style.left.replace("px", ""), 10) > 1 && parseInt(Img1.style.left.replace("px", ""), 10) < 879) {
-                    Img1.style.left = parseInt(Img1.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl3.style.top.replace("px", "")) > 130 + parseInt(myctrl3.tsctrl3res).toString().replace("px", "") && parseInt(ctrl3.style.top.replace("px", "")) < 515) {
+                    ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", "")) + 45 + "px";
                 }
-                if (parseInt(Img2.style.left.replace("px", ""), 10) > 1 && parseInt(Img2.style.left.replace("px", ""), 10) < 879) {
-                    Img2.style.left = parseInt(Img2.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl4.style.left.replace("px", "")) > 365 && parseInt(ctrl4.style.left.replace("px", "")) < 850) {
+                    ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", "")) + 45 + "px";
                 }
-                if (parseInt(Img3.style.left.replace("px", ""), 10) > 1 && parseInt(Img3.style.left.replace("px", ""), 10) < 879) {
-                    Img3.style.left = parseInt(Img3.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl4.style.top.replace("px", "")) > 130 + parseInt(myctrl4.tsctrl4res).toString().replace("px", "") && parseInt(ctrl4.style.top.replace("px", "")) < 515) {
+                    ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", "")) + 45 + "px";
                 }
-                if (parseInt(Img4.style.left.replace("px", ""), 10) > 1 && parseInt(Img4.style.left.replace("px", ""), 10) < 879) {
-                    Img4.style.left = parseInt(Img4.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl5.style.left.replace("px", "")) > 365 && parseInt(ctrl5.style.left.replace("px", "")) < 850) {
+                    ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", "")) + 45 + "px";
                 }
-                if (parseInt(Img5.style.left.replace("px", ""), 10) > 1 && parseInt(Img5.style.left.replace("px", ""), 10) < 879) {
-                    Img5.style.left = parseInt(Img5.style.left.replace("px", ""), 10) + 145 + "px";
+                if (parseInt(ctrl5.style.top.replace("px", "")) > 130 + parseInt(myctrl5.tsctrl5res).toString().replace("px", "") && parseInt(ctrl5.style.top.replace("px", "")) < 515) {
+                    ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", "")) + 45 + "px";
                 }
-
-
-
-                if (parseInt(ctrl1.style.top.replace("px", ""), 10) > temp && parseInt(ctrl1.style.top.replace("px", ""), 10) < 275) {
-                    ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-                if (parseInt(ctrl2.style.top.replace("px", ""), 10) > temp && parseInt(ctrl2.style.top.replace("px", ""), 10) < 275) {
-                    ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-                if (parseInt(ctrl3.style.top.replace("px", ""), 10) > temp && parseInt(ctrl3.style.top.replace("px", ""), 10) < 275) {
-                    ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-                if (parseInt(ctrl4.style.top.replace("px", ""), 10) > temp && parseInt(ctrl4.style.top.replace("px", ""), 10) < 275) {
-                    ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-                if (parseInt(ctrl5.style.top.replace("px", ""), 10) > temp && parseInt(ctrl5.style.top.replace("px", ""), 10) < 275) {
-                    ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-                if (parseInt(Img1.style.top.replace("px", ""), 10) > temp && parseInt(Img1.style.top.replace("px", ""), 10) < 275) {
-                    Img1.style.top = parseInt(Img1.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-                if (parseInt(Img2.style.top.replace("px", ""), 10) > temp && parseInt(Img2.style.top.replace("px", ""), 10) < 275) {
-                    Img2.style.top = parseInt(Img2.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-                if (parseInt(Img3.style.top.replace("px", ""), 10) > temp && parseInt(Img3.style.top.replace("px", ""), 10) < 275) {
-                    Img3.style.top = parseInt(Img3.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-                if (parseInt(Img4.style.top.replace("px", ""), 10) > temp && parseInt(Img4.style.top.replace("px", ""), 10) < 275) {
-                    Img4.style.top = parseInt(Img4.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-                if (parseInt(Img5.style.top.replace("px", ""), 10) > temp && parseInt(Img5.style.top.replace("px", ""), 10) < 275) {
-                    Img5.style.top = parseInt(Img5.style.top.replace("px", ""), 10) + 85 + "px";
-                }
-
-                //divplayer.focus();
+                divplayer.focus();
             }
 
 
@@ -2461,11 +2427,11 @@ public string one5 = "";
     <img id="Image4" style="z-index: 300; left: 35px; top: 149px; position: absolute; width: 39px; height: 35px;" src='<%=one4%>' />
     <img id="Image5" style="z-index: 300; left: 203px; top: 10px; position: absolute; width: 26px; height: 33px;" src='<%=one5%>' />
 
-    <img id="Image6" style="z-index: 301; left: 80px; top: 152px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
+    <img id="Image6" style="z-index: 301; left: 81px; top: 158px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
     <img id="Image7" style="z-index: 301; left: 124px; top: 103px; position: absolute; width: 16px; height: 17px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
-    <img id="Image8" style="z-index: 301; left: 151px; top: 62px; position: absolute; width: 20px; height: 21px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
-    <img id="Image9" style="z-index: 301; left: 200px; top: 37px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
-    <img id="Image10" style="z-index: 301; left: 181px; top: 4px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
+    <img id="Image8" style="z-index: 301; left: 152px; top: 67px; position: absolute; width: 20px; height: 21px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
+    <img id="Image9" style="z-index: 301; left: 201px; top: 44px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
+    <img id="Image10" style="z-index: 301; left: 178px; top: 3px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
 
 </div>
     
