@@ -470,6 +470,7 @@ protected void Button3_Click(object sender, EventArgs e)
             // The dialog only opens if you've implemented the
             // Credits Callback payments_get_items.
             function buy() {
+showbuy();
                 var obj = {
                     method: 'pay',
                     action: 'purchaseitem',
@@ -506,6 +507,7 @@ FB.ui(obj, js_callback);
             // This JavaScript callback handles FB.ui's return data and differs
             // from the Credits Callbacks.
             var js_callback = function (data) {
+
                 if (data['order_id']) {
                     // Facebook only returns an order_id if you've implemented
                     // the Credits Callback payments_status_update and settled
@@ -544,6 +546,28 @@ FB.ui(obj, js_callback);
                 //}
 
             }
+
+	function  showbuy(){
+	
+		FB.api(
+  'me/objects/treasure_huntermp:buy',
+  'post',
+  {
+    app_id: 123405257731200,
+    type: "treasure_huntermp:buy",
+    url: "http://samples.ogp.me/621429807928740",
+    title: "Bought a Treasure Spot or Game Item - Congratulations",
+    image: "https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png",
+    description: "Buy a Treasure Spot"
+  },
+  function(response) {
+    // handle the response
+  }
+);	
+
+	}
+
+
         </script>
 
 
