@@ -396,7 +396,12 @@ function  showbuy(){
     buy: "http://samples.ogp.me/621429807928740"
   },
   function(response) {
-    // handle the response
+    if (!response || response.error) {
+      alert('Error occured');
+      
+   } else {
+      alert('Publish was successful! Action ID: ' + response.id);
+   }
   }
 );
 
