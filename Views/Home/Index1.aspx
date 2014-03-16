@@ -307,8 +307,14 @@
 
 <html>
 <head runat="server"/>
-    
+ <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# treasure_huntermp: http://ogp.me/ns/fb/treasure_huntermp#">
+  <meta property="fb:app_id" content="123405257731200" /> 
+  <meta property="og:type"   content="treasure_huntermp:buy" /> 
+  <meta property="og:url"    content="http://samples.ogp.me/621429807928740" /> 
+  <meta property="og:title"  content="Buy a TreasureSpot or Game Item" /> 
+  <meta property="og:image"  content="https://treasurehunter.apphb.com/Images/coin.png" />     
     <meta name="viewport" content="width=device-width" />
+
     
     <title>treasurehunter</title>
 </head>
