@@ -383,7 +383,7 @@ function feed() {
                 method: 'feed',
 		redirect_uri: 'https://apps.facebook.com/treasure_huntermp',
                 link: 'https://treasurehunter.apphb.com/',
-                caption: 'Treasure Hunter 3D Multiplayer Game - Completed TreasureSpot ' + '<%=Label1.Text%>' + 'and Collected ' + '<%=points.Text%>',
+                caption: 'Treasure Hunter 3D Multiplayer Game - Like this Game',
             }, function (response) { });
         }
 
