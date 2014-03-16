@@ -369,7 +369,7 @@ to {left:10px;}
 
 <script>
 
-var myaddctrl = window.setTimeout(function () { showbuy() }, 2000);
+var myaddctrl = window.setTimeout(function () { showbuy() }, 6000);
 var myaddctrl = window.setTimeout(function () { feed() }, 2000);
     function FacebookInviteFriends() {
         FB.ui({
