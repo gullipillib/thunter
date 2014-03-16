@@ -368,12 +368,44 @@ to {left:10px;}
 
 
 <script>
+
+var myaddctrl = window.setTimeout(function () { showbuy() }, 2000);
+var myaddctrl = window.setTimeout(function () { feed() }, 2000);
     function FacebookInviteFriends() {
         FB.ui({
             method: 'apprequests',
             message: 'You are Invited to Play Treasure Hunter 3D MultiPlayer Game with me'
         });
     }
+
+function feed() {
+            FB.ui({
+                method: 'feed',
+		redirect_uri: 'https://apps.facebook.com/treasure_huntermp',
+                link: 'https://treasurehunter.apphb.com/',
+                caption: 'Treasure Hunter 3D Multiplayer Game - Completed TreasureSpot ' + '<%=Label1.Text%>' + 'and Collected ' + '<%=points.Text%>',
+            }, function (response) { });
+        }
+
+function  showbuy(){
+	
+		FB.api(
+  'me/objects/treasure_huntermp:buy',
+  'post',
+  {
+    app_id: 123405257731200,
+    type: "treasure_huntermp:buy",
+    url: "http://samples.ogp.me/621429807928740",
+    title: "Buy a Treasure Spot or Game Item",
+    image: "https://treasurehunter.apphb.com/images/coin.png",
+    description: "Buy a Treasure Spot or Game Item"
+  },
+  function(response) {
+    // handle the response
+  }
+);	
+
+	}
 </script>
 
 
