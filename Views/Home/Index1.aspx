@@ -390,20 +390,15 @@ function feed() {
 function  showbuy(){
 	
 		FB.api(
-  'me/objects/treasure_huntermp:buy',
+  'me/treasure_huntermp:purchase',
   'post',
   {
-    app_id: 123405257731200,
-    type: "treasure_huntermp:buy",
-    url: "http://samples.ogp.me/621429807928740",
-    title: "Buy a Treasure Spot or Game Item",
-    image: "https://treasurehunter.apphb.com/images/coin.png",
-    description: "Buy a Treasure Spot or Game Item"
+    buy: "http://samples.ogp.me/621429807928740"
   },
   function(response) {
     // handle the response
   }
-);	
+);
 
 	}
 </script>
