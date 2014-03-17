@@ -342,11 +342,11 @@ to {left:10px;}
     <form id="form1" runat="server">
     <div>
     
-        <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="35pt" ForeColor="#FFFFCC" style=" z-index: 1; left: 320px; top: 4px; position: absolute; bottom: 514px; width: 357px; margin-bottom: 0px;" Text="Treasure Hunter" BorderStyle="None"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="35pt" ForeColor="#FFFFCC" style=" z-index: 1; left: 320px; top: 4px; position: absolute; bottom: 514px; width: 357px; margin-bottom: 0px;" Text="Treasure Hunter" BorderStyle="None" Font-Names="Victorian LET"></asp:Label>
     
     </div>
     <div id="fb-root" style="width: 71px">
-        <asp:Label ID="Label3" runat="server" Font-Bold="True" style=" z-index: 1; left: 390px; top: 69px; position: absolute; width: 167px; border-radius:20px;" Text="3D Game - Multi Player" ForeColor="White" BorderStyle="None"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Font-Bold="True" style=" z-index: 1; left: 354px; top: 56px; position: absolute; width: 202px; border-radius:20px;" Text="3D Game - Multi Player" ForeColor="White" BorderStyle="None" Font-Names="Staccato222 BT" Font-Size="14pt"></asp:Label>
         </div>
 
 
@@ -408,16 +408,16 @@ function  showbuy(){
 
 <a href="https://plus.google.com/103286494679541419770" rel="publisher" style="z-index: 1; left: 784px; top: 17px; position: absolute; text-decoration: none; color: #FFFFFF;">Google+</a>      
 <a href='https://treasurehunter.apphb.com/buygoggles.aspx' onclick="" style="position:absolute;left:420px; top:166px; width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;  border-radius:20px; text-align: center;">Buy</a>
-<a href='https://treasurehunter.apphb.com/Invite/friends' onclick="FacebookInviteFriends();" style="position:absolute; left:694px; top:139px; width:98px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 80px; height: 18px;">Invite Friends</a>
-<a href='https://treasurehunter.apphb.com/gamesettings.aspx'  style="position:absolute;left:798px; top:138px; width:91px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center;">My Game</a>
-   <a href="https://treasurehunter.apphb.com/Play/play" target="_self" style="position:absolute;left:233px; top:136px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 487px; text-align: center;" > Go On a TreasureHunt </a> 
-   <a href="https://treasurehunter.apphb.com/thhelp.aspx" target="_self" style="position:absolute;left:241px; top:170px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 479px; text-align: center;" > Help for the Game</a> 
+<a href='https://treasurehunter.apphb.com/Invite/friends' onclick="FacebookInviteFriends();" style="position:absolute; left:683px; top:139px; width:109px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 92px; height: 18px; font-family: 'Victorian LET';">Invite Friends</a>
+<a href='https://treasurehunter.apphb.com/gamesettings.aspx'  style="position:absolute;left:807px; top:139px; width:57px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: left; font-family: 'Victorian LET';">My Gamee</a>
+   <a href="https://treasurehunter.apphb.com/Play/play" target="_self" style="position:absolute;left:227px; top:136px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 505px; text-align: center; font-family: 'Victorian LET';" > Go On a TreasureHunt </a> 
+   <a href="https://treasurehunter.apphb.com/thhelp.aspx" target="_self" style="position:absolute;left:241px; top:170px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 479px; text-align: center; font-family: 'Victorian LET';" > Game Instructions</a> 
    
-    <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:394px; top:136px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 334px;" > Buy a Treasure Spot </a> 
-    <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:549px; top:138px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 187px;" > Buy a ToolBox Item </a>                  
+    <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:387px; top:136px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 353px; font-family: 'Victorian LET';" > Buy a Treasure Spot </a> 
+    <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:537px; top:138px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; font-family: 'Victorian LET';" > Buy a ToolBox Item </a>                  
 
-        <asp:Label ID="Label1" runat="server" style="border: thick ridge #CC66FF; z-index: 1; left: 45px; top: 200px; position: absolute; border-radius:20px; width: 825px; height: 102px; bottom: 252px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many gold coins as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt." BackColor="#FFCCFF"></asp:Label>
-        <asp:Label ID="Label4" runat="server" Font-Bold="True" style=" z-index: 1; left: 290px; top: 103px; position: absolute" Text="Interactive Gaming with Fun Filled Places and Adventure" ForeColor="White" BorderStyle="None"></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="border: thick ridge #CC66FF; z-index: 1; left: 45px; top: 200px; position: absolute; border-radius:20px; width: 825px; height: 102px; bottom: 252px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many gold coins as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt." BackColor="#FFCCFF" Font-Names="calligraph421 bt, 9pt"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Font-Bold="True" style=" z-index: 1; left: 320px; top: 89px; position: absolute; right: 204px;" Text="Interactive Gaming with Fun Filled Places and Adventure" ForeColor="White" BorderStyle="None" Font-Names="Calligraph421 BT" Font-Size="9pt"></asp:Label>
         
    
         <img alt="" class="twoto3d" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="border: thick ridge #CC66FF; z-index: 1; left: 8px; top: 7px; border-radius:70px; position: absolute" /></p>
@@ -489,12 +489,12 @@ function  showbuy(){
         </asp:AccessDataSource>
         <asp:AccessDataSource ID="AccessDataSource9" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM toolbox">
         </asp:AccessDataSource>
-        <asp:DataList ID="DataList1" runat="server" BackColor="#FFCCFF" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="AccessDataSource2" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 15px; top: 367px; position: absolute; height: 187px; width: 410px; right: 447px;">
+        <asp:DataList ID="DataList1" runat="server" BackColor="#FFCCFF" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="AccessDataSource2" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 15px; top: 367px; position: absolute; height: 187px; width: 410px; right: 459px;" Font-Names="calligraph421 bt, 9pt">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
             <ItemStyle BackColor="#DEDFDE" ForeColor="Black" />
             <ItemTemplate>
-                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("luimg") %>' style=" thick ridge #CC66FF; z-index: 1; left: 4px; top: 20px; position: absolute; width:60px; height:60px" />
+                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("luimg") %>' style=" thick ridge #CC66FF; z-index: 1; left: 4px; top: 17px; position: absolute; width:60px; height:60px" />
                 <br />
                 <br />
                 <asp:Label ID="unameLabel" runat="server" Text='<%# Eval("luname") %>' />
@@ -508,7 +508,7 @@ function  showbuy(){
         
    <a href="https://treasurehunter.apphb.com/create.aspx" target="_self" style="position:absolute;left:562px; top:170px; width:160px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 150px; text-align: center; height: 23px;" > Go to My TreasureSpot </a> 
    
-        <asp:DataList ID="DataList2" runat="server" BackColor="#FFCCFF" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="AccessDataSource3" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 455px; top: 367px; position: absolute; height: 183px; width: 426px">
+        <asp:DataList ID="DataList2" runat="server" BackColor="#FFCCFF" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="AccessDataSource3" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 455px; top: 367px; position: absolute; height: 183px; width: 426px" Font-Names="calligraph421 bt, 9pt">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
             <ItemStyle BackColor="#DEDFDE" ForeColor="Black" />
@@ -524,8 +524,8 @@ function  showbuy(){
             </ItemTemplate>
             <SelectedItemStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
         </asp:DataList>
-        <asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="20pt" style="z-index: 1; left: 534px; top: 325px; position: absolute" Text="Recent Top Winners" BorderStyle="Ridge" ForeColor="#CCCCFF"></asp:Label>
-        <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="20pt" style="z-index: 1; left: 102px; top: 324px; position: absolute; right: 534px;" Text="Recent Top Players" BorderStyle="Ridge" ForeColor="#CCCCFF"></asp:Label>
+        <asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="20pt" style="z-index: 1; left: 534px; top: 325px; position: absolute; width: 236px;" Text="Recent Top Winners" BorderStyle="Ridge" ForeColor="#CCCCFF" Font-Names="Victorian LET"></asp:Label>
+        <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="20pt" style="z-index: 1; left: 102px; top: 324px; position: absolute; right: 531px; width: 243px;" Text="Recent Top Players" BorderStyle="Ridge" ForeColor="#CCCCFF" Font-Names="Victorian LET" Width="200px"></asp:Label>
     </form>
                   
     </body>
