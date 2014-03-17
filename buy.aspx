@@ -555,9 +555,9 @@ FB.ui(obj, js_callback);
   {
     app_id: 123405257731200,
     type: "treasure_huntermp:buy",
-    url: "http://samples.ogp.me/621429807928740",
+    url: "https://treasurehunter.apphb.com/purchase.html",
     title: "Bought a Treasure Spot or Game Item - Congratulations",
-    image: "https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png",
+    image: "https://treasurehunter.apphb.com/images/coin.png",
     description: "Buy a Treasure Spot"
   },
   function(response) {

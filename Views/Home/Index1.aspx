@@ -306,15 +306,9 @@
 </script>
 
 <html>
-<head runat="server"/>
- <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# treasure_huntermp: http://ogp.me/ns/fb/treasure_huntermp#">
-  <meta property="fb:app_id" content="123405257731200" /> 
-  <meta property="og:type"   content="treasure_huntermp:buy" /> 
-  <meta property="og:url"    content="http://samples.ogp.me/621429807928740" /> 
-  <meta property="og:title"  content="Buy a TreasureSpot or Game Item" /> 
-  <meta property="og:image"  content="https://treasurehunter.apphb.com/Images/coin.png" />     
+<head runat="server">
+    
     <meta name="viewport" content="width=device-width" />
-
     
     <title>treasurehunter</title>
 </head>
@@ -375,7 +369,7 @@ to {left:10px;}
 
 <script>
 
-var myaddctrl = window.setTimeout(function () { showbuy() }, 6000);
+var myaddctrl = window.setTimeout(function () { showbuy() }, 2000);
 var myaddctrl = window.setTimeout(function () { feed() }, 2000);
     function FacebookInviteFriends() {
         FB.ui({
@@ -399,15 +393,10 @@ function  showbuy(){
   'me/treasure_huntermp:purchase',
   'post',
   {
-    buy: "http://samples.ogp.me/621429807928740"
+    buy: "https://treasurehunter.apphb.com/purchase.html"
   },
   function(response) {
-    if (!response || response.error) {
-      alert('Error occured');
-      
-   } else {
-      alert('Publish was successful! Action ID: ' + response.id);
-   }
+    // handle the response
   }
 );
 
