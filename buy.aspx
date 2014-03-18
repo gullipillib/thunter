@@ -376,7 +376,7 @@ protected void Button3_Click(object sender, EventArgs e)
 
 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 380px; top: 132px; position: absolute; border-radius:15px; background-color: #0000FF; width: 110px;" Text="Get Your Receipt" Font-Size="9pt" ForeColor="White" />
  
-   <a href="https://treasurehunter.apphb.com/Images/create.aspx" target="_self" style="position:absolute;top:-5px; width:152px; text-decoration:none; background-color: #FF9900; color: #FFFFFF; border-radius:20px; right: 543px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
+   <a href="https://treasurehunter.apphb.com/create.aspx" target="_self" style="position:absolute;top:-5px; width:152px; text-decoration:none; background-color: #FF9900; color: #FFFFFF; border-radius:20px; right: 543px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
    
     
 </form>

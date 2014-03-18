@@ -186,196 +186,274 @@ protected void Button5_Click(object sender, EventArgs e)
     <meta name="viewport" content="width=device-width" />
     <title>gamesettings</title>
 </head>
-<body>
+<body style="background-color: #FF00FF">
     <form id="form1" runat="server">
     <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 16px; top: 5px; position: absolute; height: 1098px; width: 894px">
         
         
-        <asp:Label ID="Label7" runat="server" Font-Bold="True" style="z-index: 1; left: 8px; top: 7px; position: absolute" Text="Money Earned"></asp:Label>
-        <asp:Label ID="Label8" runat="server" Font-Bold="True" style="z-index: 1; left: 204px; top: 8px; position: absolute; height: 22px; width: 77px" Text="Gold Coins"></asp:Label>
+        <asp:Label ID="Label7" runat="server" Font-Bold="True" style="z-index: 1; left: 8px; top: 7px; position: absolute" Text="Money Earned" Font-Names="Victorian LET" ForeColor="#3333FF"></asp:Label>
+        <asp:Label ID="Label8" runat="server" Font-Bold="True" style="z-index: 1; left: 204px; top: 8px; position: absolute; height: 22px; width: 87px" Text="Gold Coins" Font-Names="Victorian LET" ForeColor="#3333FF"></asp:Label>
         
     <asp:AccessDataSource id="AccessDataSource11" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
     
     <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
         <asp:ListBox ID="ListBox1" runat="server" DataSourceID="AccessDataSource8" DataTextField="amount" DataValueField="amount" Enabled="False" style="z-index: 1; left: 122px; top: 7px; position: absolute; height: 23px; width: 72px;"></asp:ListBox>
-        <asp:ListBox ID="ListBox2" runat="server" DataSourceID="AccessDataSource9" DataTextField="lucrisboos" DataValueField="lucrisboos" Enabled="False" style="z-index: 1; left: 289px; top: 7px; position: absolute; height: 25px; width: 75px;"></asp:ListBox>
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 224px; top: 38px; position: absolute; " Text="Buy" UseSubmitBehavior="False" />
+        <asp:ListBox ID="ListBox2" runat="server" DataSourceID="AccessDataSource9" DataTextField="lucrisboos" DataValueField="lucrisboos" Enabled="False" style="z-index: 1; left: 295px; top: 7px; position: absolute; height: 25px; width: 75px;"></asp:ListBox>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 224px; top: 38px; position: absolute; border-radius: 15px;" Text="Buy" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
         
-        <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 696px; top: 35px; position: absolute" Text="Bid" UseSubmitBehavior="False" />
-        <asp:Button ID="Button3" runat="server" style="z-index: 1; left: 186px; top: 309px; position: absolute" Text="Buy" OnClick="Button3_Click" UseSubmitBehavior="False" />
-       <asp:Button ID="Button4" runat="server" style="z-index: 1; left: 608px; top: 305px; position: absolute" Text="Bid" UseSubmitBehavior="False" />
-        <asp:Button ID="Button5" runat="server" style="z-index: 1; left: 168px; top: 855px; position: absolute" Text="Sell" OnClick="Button5_Click" UseSubmitBehavior="False" />
-        <asp:Button ID="Button6" runat="server" style="z-index: 1; left: 176px; top: 576px; position: absolute" Text="Sell" OnClick="Button6_Click" UseSubmitBehavior="False" /> 
+        <asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 696px; top: 35px; position: absolute; border-radius: 15px;" Text="Bid" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
+        <asp:Button ID="Button3" runat="server" Style="z-index: 1; left: 219px; top: 310px; position: absolute; border-radius: 15px;" Text="Buy" OnClick="Button3_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
+       <asp:Button ID="Button4" runat="server" Style="z-index: 1; left: 627px; top: 316px; position: absolute; border-radius: 15px;" Text="Bid" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
+        <asp:Button ID="Button5" runat="server" Style="z-index: 1; left: 168px; top: 855px; position: absolute; border-radius: 15px;" Text="Sell" OnClick="Button5_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
+        <asp:Button ID="Button6" runat="server" Style="z-index: 1; left: 176px; top: 576px; position: absolute; border-radius: 15px;" Text="Sell" OnClick="Button6_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" /> 
         <asp:AccessDataSource ID="AccessDataSource2" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner = ''" UpdateCommand="update tspots set tsprice = ''"></asp:AccessDataSource>
-        <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 681px; top: 306px; position: absolute" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True"></asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 681px; top: 320px; position: absolute" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True" BackColor="#3399FF" BorderStyle="Ridge" ForeColor="White"></asp:TextBox>
         <asp:AccessDataSource ID="AccessDataSource3" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbcoowner = ''"></asp:AccessDataSource>
-        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" style="z-index: 1; left: 744px; top: 11px; position: absolute; right: 12px;" Target="_self">Buy a ToolBox Item</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" Style="z-index: 1; left: 744px; top: 11px; position: absolute; right: 8px; border-radius: 15px;" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Buy a ToolBox Item</asp:HyperLink>
         <asp:AccessDataSource ID="AccessDataSource4" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsname, tsowner, tsprice FROM tspots  WHERE  (tssell = 'yes')"></asp:AccessDataSource>
         <asp:AccessDataSource ID="AccessDataSource5" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate, tsbidder FROM  tspots WHERE (tssell = 'yes')"></asp:AccessDataSource>
-        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="false" NavigateUrl="~/buy.aspx" style="z-index: 1; left: 601px; top: 10px; position: absolute" Target="_self">Buy a Treasure Spot</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="false" NavigateUrl="~/approver.aspx" style="z-index: 1; left: 383px; top: 11px; position: absolute" Target="_self">Treasure Spot Approving($0.25)</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="~/approver1.aspx" style="z-index: 1; left: 273px; top: 41px; position: absolute" Target="_self">Game Items Approving($0.10)</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" Style="z-index: 1; left: 601px; top: 10px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Buy a Treasure Spot</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="~/approver.aspx" Style="z-index: 1; left: 375px; top: 11px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Treasure Spot Approving($0.25)</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="~/approver1.aspx" style="z-index: 1; left: 286px; top: 41px; position: absolute; width: 208px;" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Game Items Approving ($0.10)</asp:HyperLink>
         <asp:AccessDataSource ID="AccessDataSource6" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbsell FROM toolbox WHERE (tbsell = 'yes')"></asp:AccessDataSource>
         <asp:AccessDataSource ID="AccessDataSource7" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate, tbbidder FROM toolbox WHERE (tbsell = 'yes')"></asp:AccessDataSource>
         <asp:AccessDataSource ID="AccessDataSource8" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT amount FROM appuserdetails where uname='Tresurehunter'"></asp:AccessDataSource>
         <asp:AccessDataSource ID="AccessDataSource9" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT lucrisboos FROM loggedusers where luname='Tresurehunter'"></asp:AccessDataSource>
         <asp:AccessDataSource ID="AccessDataSource10" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate FROM toolbox  WHERE  (tbsell = 'yes' and tbselltype='bid')"></asp:AccessDataSource>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource2" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 24px; top: 608px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
-            <AlternatingRowStyle BackColor="White" />
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="AccessDataSource2" GridLines="None" PageSize="5" style="z-index: 1; left: 24px; top: 608px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1">
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                <asp:BoundField DataField="tsprice" HeaderText="tsprice" SortExpression="tsprice" />
-                <asp:BoundField DataField="tsapproved" HeaderText="tsapproved" SortExpression="tsapproved" />
-                <asp:BoundField DataField="tsactive" HeaderText="tsactive" SortExpression="tsactive" />
-                <asp:BoundField DataField="tsname" HeaderText="tsname" SortExpression="tsname" />
-                <asp:BoundField DataField="tsowner" HeaderText="tsowner" SortExpression="tsowner" />
-                <asp:BoundField DataField="tsreported" HeaderText="tsreported" SortExpression="tsreported" />
-                <asp:BoundField DataField="tscompleted" HeaderText="tscompleted" SortExpression="tscompleted" />
-                <asp:BoundField DataField="tssell" HeaderText="tssell" SortExpression="tssell" />
-                <asp:BoundField DataField="tsbid" HeaderText="tsbid" SortExpression="tsbid" />
-                <asp:BoundField DataField="tsbidder" HeaderText="tsbidder" SortExpression="tsbidder" />
-                <asp:BoundField DataField="tsaward" HeaderText="tsaward" SortExpression="tsaward" />
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
+                <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
+                </asp:CommandField>
+                <asp:BoundField DataField="tsprice" HeaderText="Price" SortExpression="tsprice" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsapproved" HeaderText="Approved" SortExpression="tsapproved" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsactive" HeaderText="Active" SortExpression="tsactive" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsname" HeaderText="Name" SortExpression="tsname" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsowner" HeaderText="Owner" SortExpression="tsowner" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsreported" HeaderText="Reported" SortExpression="tsreported" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tscompleted" HeaderText="Completed" SortExpression="tscompleted" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tssell" HeaderText="Sell" SortExpression="tssell" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsbid" HeaderText="Bid" SortExpression="tsbid" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsbidder" HeaderText="Bidder" SortExpression="tsbidder" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsaward" HeaderText="Award" SortExpression="tsaward" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
             </Columns>
-            <EditRowStyle BackColor="#2461BF" />
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EFF3FB" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
+            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
+            <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
+            <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
+            <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#594B9C" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#33276A" />
         </asp:GridView>
-        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource3" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 19px; top: 885px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
-            <AlternatingRowStyle BackColor="White" />
+        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="AccessDataSource3" GridLines="None" PageSize="5" style="z-index: 1; left: 19px; top: 885px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1">
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                <asp:BoundField DataField="tbprice" HeaderText="tbprice" SortExpression="tbprice" />
-                <asp:BoundField DataField="tbapproved" HeaderText="tbapproved" SortExpression="tbapproved" />
-                <asp:BoundField DataField="tbactive" HeaderText="tbactive" SortExpression="tbactive" />
-                <asp:BoundField DataField="tbname" HeaderText="tbname" SortExpression="tbname" />
-                <asp:BoundField DataField="tbowner" HeaderText="tbowner" SortExpression="tbowner" />
-                <asp:BoundField DataField="tbreported" HeaderText="tbreported" SortExpression="tbreported" />
-                <asp:BoundField DataField="tbcompleted" HeaderText="tbcompleted" SortExpression="tbcompleted" />
-                <asp:BoundField DataField="tbsell" HeaderText="tbsell" SortExpression="tbsell" />
-                <asp:BoundField DataField="tbbid" HeaderText="tbbid" SortExpression="tbbid" />
-                <asp:BoundField DataField="tbbidder" HeaderText="tbbidder" SortExpression="tbbidder" />
-                <asp:BoundField DataField="tbaward" HeaderText="tbaward" SortExpression="tbaward" />
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
+                <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
+                </asp:CommandField>
+                <asp:BoundField DataField="tbprice" HeaderText="Price" SortExpression="tbprice" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbapproved" HeaderText="Approved" SortExpression="tbapproved" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbactive" HeaderText="Active" SortExpression="tbactive" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbname" HeaderText="Name" SortExpression="tbname" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbowner" HeaderText="Owner" SortExpression="tbowner" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbreported" HeaderText="Reported" SortExpression="tbreported" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbcompleted" HeaderText="Completed" SortExpression="tbcompleted" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbsell" HeaderText="Sell" SortExpression="tbsell" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbbid" HeaderText="Bid" SortExpression="tbbid" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbbidder" HeaderText="Bidder" SortExpression="tbbidder" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbaward" HeaderText="Award" SortExpression="tbaward" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
             </Columns>
-            <EditRowStyle BackColor="#2461BF" />
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EFF3FB" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
+            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
+            <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
+            <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
+            <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#594B9C" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#33276A" />
         </asp:GridView>
-        <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource4" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 18px; top: 69px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots">
-            <AlternatingRowStyle BackColor="White" />
+        <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="AccessDataSource4" PageSize="5" style="z-index: 1; left: 18px; top: 69px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2">
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                <asp:BoundField DataField="tsname" HeaderText="tsname" SortExpression="tsname" />
-                <asp:BoundField DataField="tsowner" HeaderText="tsowner" SortExpression="tsowner" />
-                <asp:BoundField DataField="tsprice" HeaderText="tsprice" SortExpression="tsprice" />
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
+                <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
+                </asp:CommandField>
+                <asp:BoundField DataField="tsname" HeaderText="Name" SortExpression="tsname" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsowner" HeaderText="Owner" SortExpression="tsowner" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsprice" HeaderText="Price" SortExpression="tsprice" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
             </Columns>
-            <EditRowStyle BackColor="#2461BF" />
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EFF3FB" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+            <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+            <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#FFF1D4" />
+            <SortedAscendingHeaderStyle BackColor="#B95C30" />
+            <SortedDescendingCellStyle BackColor="#F1E5CE" />
+            <SortedDescendingHeaderStyle BackColor="#93451F" />
         </asp:GridView>
-        <asp:GridView ID="GridView4" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource5" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 434px; top: 66px; position: absolute; height: 181px; width: 384px" ToolTip="Treasure Spots">
-            <AlternatingRowStyle BackColor="White" />
+        <asp:GridView ID="GridView4" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="AccessDataSource5" PageSize="5" style="z-index: 1; left: 420px; top: 66px; position: absolute; height: 211px; width: 530px" ToolTip="Treasure Spots" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2">
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                <asp:BoundField DataField="tsname" HeaderText="tsname" SortExpression="tsname" />
-                <asp:BoundField DataField="tsowner" HeaderText="tsowner" SortExpression="tsowner" />
-                <asp:BoundField DataField="tsprice" HeaderText="tsprice" SortExpression="tsprice" />
-                <asp:BoundField DataField="tsbiddate" HeaderText="tsbiddate" SortExpression="tsbiddate" />
-                <asp:BoundField DataField="tsbidder" HeaderText="tsbidder" SortExpression="tsbidder" />
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
+                <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
+                </asp:CommandField>
+                <asp:BoundField DataField="tsname" HeaderText="Name" SortExpression="tsname" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsowner" HeaderText="Owner" SortExpression="tsowner" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsprice" HeaderText="Price" SortExpression="tsprice" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsbiddate" HeaderText="Bid Date" SortExpression="tsbiddate" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tsbidder" HeaderText="Bidder" SortExpression="tsbidder" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
             </Columns>
-            <EditRowStyle BackColor="#2461BF" />
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EFF3FB" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+            <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+            <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#FFF1D4" />
+            <SortedAscendingHeaderStyle BackColor="#B95C30" />
+            <SortedDescendingCellStyle BackColor="#F1E5CE" />
+            <SortedDescendingHeaderStyle BackColor="#93451F" />
         </asp:GridView>
-        <asp:GridView ID="GridView5" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource6" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 18px; top: 341px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots">
-            <AlternatingRowStyle BackColor="White" />
+        <asp:GridView ID="GridView5" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="2" DataSourceID="AccessDataSource6" ForeColor="Black" GridLines="None" PageSize="5" style="z-index: 1; left: 18px; top: 341px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px">
+            <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                <asp:BoundField DataField="tbname" HeaderText="tbname" SortExpression="tbname" />
-                <asp:BoundField DataField="tbowner" HeaderText="tbowner" SortExpression="tbowner" />
-                <asp:BoundField DataField="tbprice" HeaderText="tbprice" SortExpression="tbprice" />
-                <asp:BoundField DataField="tbsell" HeaderText="tbsell" SortExpression="tbsell" />
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
+                <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
+                </asp:CommandField>
+                <asp:BoundField DataField="tbname" HeaderText="Name" SortExpression="tbname" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbowner" HeaderText="Owner" SortExpression="tbowner" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbprice" HeaderText="Price" SortExpression="tbprice" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbsell" HeaderText="Sell" SortExpression="tbsell" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
             </Columns>
-            <EditRowStyle BackColor="#2461BF" />
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EFF3FB" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            <FooterStyle BackColor="Tan" />
+            <HeaderStyle BackColor="Tan" Font-Bold="True" />
+            <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+            <SortedAscendingCellStyle BackColor="#FAFAE7" />
+            <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+            <SortedDescendingCellStyle BackColor="#E1DB9C" />
+            <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
-        <asp:GridView ID="GridView6" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource7" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 437px; top: 335px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots">
-            <AlternatingRowStyle BackColor="White" />
+        <asp:GridView ID="GridView6" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="2" DataSourceID="AccessDataSource7" ForeColor="Black" GridLines="None" PageSize="5" style="z-index: 1; left: 437px; top: 349px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px">
+            <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                <asp:BoundField DataField="tbname" HeaderText="tbname" SortExpression="tbname" />
-                <asp:BoundField DataField="tbowner" HeaderText="tbowner" SortExpression="tbowner" />
-                <asp:BoundField DataField="tbprice" HeaderText="tbprice" SortExpression="tbprice" />
-                <asp:BoundField DataField="tbbiddate" HeaderText="tbbiddate" SortExpression="tbbiddate" />
-                <asp:BoundField DataField="tbbidder" HeaderText="tbbidder" SortExpression="tbbidder" />
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
+                <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
+                </asp:CommandField>
+                <asp:BoundField DataField="tbname" HeaderText="Name" SortExpression="tbname" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbowner" HeaderText="Owner" SortExpression="tbowner" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbprice" HeaderText="Price" SortExpression="tbprice" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbbiddate" HeaderText="Bid Date" SortExpression="tbbiddate" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
+                <asp:BoundField DataField="tbbidder" HeaderText="Bidder" SortExpression="tbbidder" >
+                <ItemStyle Font-Names="Victorian LET" />
+                </asp:BoundField>
             </Columns>
-            <EditRowStyle BackColor="#2461BF" />
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EFF3FB" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            <FooterStyle BackColor="Tan" />
+            <HeaderStyle BackColor="Tan" Font-Bold="True" />
+            <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+            <SortedAscendingCellStyle BackColor="#FAFAE7" />
+            <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+            <SortedDescendingCellStyle BackColor="#E1DB9C" />
+            <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
-        <asp:Label ID="Label2" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 441px; top: 313px; position: absolute; bottom: 403px; height: 19px; right: 312px;" Text="ToolBox items for Bid"></asp:Label>
-        <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 233px; top: 578px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True"></asp:TextBox>
-        <asp:Label ID="Label5" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 540px; top: 41px; position: absolute; height: 18px;" Text="Treasure Spots for Bid"></asp:Label>
-        <asp:Label ID="Label3" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 26px; top: 860px; position: absolute" Text="My ToolBox Items"></asp:Label>
-        <asp:Label ID="Label1" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 29px; top: 584px; position: absolute; height: 18px;" Text="My Treasure Spots"></asp:Label>
-        <asp:Label ID="Label4" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 21px; top: 40px; position: absolute; bottom: 1040px; right: 695px;" Text="Treasure Spots for Sale"></asp:Label>
-        <asp:Label ID="Label6" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 20px; top: 315px; position: absolute; bottom: 401px; height: 19px;" Text="ToolBox items for Sale"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 742px; top: 40px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True"></asp:TextBox>
-        <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 231px; position: absolute; top: 854px;" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True"></asp:TextBox>
-        <asp:DropDownList ID="DropDownList1" runat="server" style="z-index: 1; left: 387px; top: 578px; position: absolute" CausesValidation="True">
+        <asp:Label ID="Label2" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 441px; top: 322px; position: absolute; bottom: 757px; height: 19px; right: 287px;" Text="ToolBox items for Bid" Font-Names="Victorian LET"></asp:Label>
+        <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 233px; top: 578px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True" BackColor="#6600FF" BorderStyle="Ridge" ForeColor="White"></asp:TextBox>
+        <asp:Label ID="Label5" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 522px; top: 40px; position: absolute; height: 18px;" Text="Treasure Spots for Bid" Font-Names="Victorian LET" BackColor="#99FF99"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 26px; top: 860px; position: absolute" Text="My ToolBox Items" Font-Names="Victorian LET"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 29px; top: 584px; position: absolute; height: 18px;" Text="My Treasure Spots" Font-Names="Victorian LET"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 21px; top: 40px; position: absolute; bottom: 1040px; right: 695px;" Text="Treasure Spots for Sale" Font-Names="Victorian LET"></asp:Label>
+        <asp:Label ID="Label6" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 20px; top: 315px; position: absolute; bottom: 401px; height: 19px;" Text="ToolBox items for Sale" Font-Names="Victorian LET"></asp:Label>
+        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 742px; top: 40px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True" BackColor="#99CCFF" BorderStyle="Ridge" ForeColor="White"></asp:TextBox>
+        <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 231px; position: absolute; top: 854px;" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True" BackColor="#3333FF" BorderStyle="Ridge" ForeColor="White"></asp:TextBox>
+        <asp:DropDownList ID="DropDownList1" runat="server" style="z-index: 1; left: 387px; top: 578px; position: absolute" CausesValidation="True" BackColor="#CC0066" ForeColor="White">
             <asp:ListItem>Bid</asp:ListItem>
             <asp:ListItem>Fixed Price</asp:ListItem>
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList2" runat="server" style="z-index: 1; left: 402px; top: 855px; position: absolute" CausesValidation="True">
+        <asp:DropDownList ID="DropDownList2" runat="server" style="z-index: 1; left: 402px; top: 855px; position: absolute" CausesValidation="True" BackColor="#CC0066" ForeColor="White">
             <asp:ListItem>Bid</asp:ListItem>
             <asp:ListItem>Fixed Price</asp:ListItem>
         </asp:DropDownList>
-        <asp:Button ID="Button9" runat="server" style="z-index: 1; left: 530px; top: 576px; position: absolute" Text="Approve Bid" OnClick="Button9_Click" UseSubmitBehavior="False" />
-        <asp:Button ID="Button10" runat="server" style="z-index: 1; left: 651px; top: 577px; position: absolute" Text="Revoke" OnClick="Button10_Click" UseSubmitBehavior="False" />
-        <asp:Button ID="Button11" runat="server" style="z-index: 1; left: 530px; top: 853px; position: absolute" Text="Approve Bid" OnClick="Button11_Click" UseSubmitBehavior="False" />
-        <asp:Button ID="Button12" runat="server" style="z-index: 1; left: 651px; top: 855px; position: absolute" Text="Revoke" OnClick="Button12_Click" UseSubmitBehavior="False" />
+        <asp:Button ID="Button9" runat="server" Style="z-index: 1; left: 530px; top: 576px; position: absolute; border-radius: 15px;" Text="Approve Bid" OnClick="Button9_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
+        <asp:Button ID="Button10" runat="server" Style="z-index: 1; left: 651px; top: 577px; position: absolute; border-radius: 15px;" Text="Revoke" OnClick="Button10_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
+        <asp:Button ID="Button11" runat="server" Style="z-index: 1; left: 530px; top: 853px; position: absolute; border-radius: 15px;" Text="Approve Bid" OnClick="Button11_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
+        <asp:Button ID="Button12" runat="server" Style="z-index: 1; left: 651px; top: 855px; position: absolute; border-radius: 15px;" Text="Revoke" OnClick="Button12_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
       </asp:Panel>  
     </form>
 </body>

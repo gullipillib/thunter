@@ -315,7 +315,7 @@
             dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
             dt = new DataTable();
             dt = dv.ToTable();
-            DataView uniname = dt.DefaultView;
+            uniname = dt.DefaultView;
             if (dt.Rows.Count != 0)
             {
                 logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
