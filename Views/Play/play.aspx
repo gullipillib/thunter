@@ -643,6 +643,15 @@ public string one5 = "";
                 document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                 document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
 
+                var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
+                function filllabel() {
+                    document.getElementById('TextBox7').setAttribute("value", "Collect " +  rancoins + " Gold Coins or Conqueor other " + ranhits  + " Players in the Next 2 Mins");
+                    var myaddctrl = window.setTimeout(function () { hidelabel() }, 4000);
+                    }
+                function hidelabel() {
+                    document.getElementById('TextBox7').style.visibility = "hidden";
+               
+                }
 
                 var myaddctrl1 = window.setInterval(function () { tcounter() }, 1000);
                 function tcounter() {
@@ -2372,7 +2381,8 @@ public string one5 = "";
 
         <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 168px; top: 32px; position: absolute; width: 40px; right: 660px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">50</asp:TextBox>
-        <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
+            <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 4px; top: 243px; position: absolute; width: 966px; right: 9px; height: 70px; vertical-align:middle; " ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Tahoma" Font-Size="13pt"></asp:TextBox>
+            <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 753px; top: 33px; position: absolute; width: 54px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
  <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" style="z-index: 1; left: 563px; top: 334px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
 
@@ -2413,6 +2423,7 @@ public string one5 = "";
        <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 11px; top: 125px; position: absolute; bottom: 308px;" id="friendimage" />
     <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 374px;" class="twoto3d" id="fplayer" />
 <label style="position: absolute; top: 320px; left: 7px; height: 18px; color: #FFFFFF; font-family: Script; font-size: 13px; width: 100px;">Talk to Players</label>
+
 <input id="Button2" style="border: medium outset #FF00FF; background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 281px; top: 492px; position: absolute; width: 56px; border-radius:15px; " type="button" value="Send"  onclick="send2server();" /> 
   <div style="position: absolute; z-index: 210; width: 349px; height: 134px; top: 347px; right: 518px; bottom: 85px; left: 5px; overflow: hidden; cursor: crosshair;">
     <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 316px; height: 99px;" readonly="readonly"></textarea>
