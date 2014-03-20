@@ -2360,7 +2360,7 @@ public string one5 = "";
             <asp:AccessDataSource ID="AccessDataSource10" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT treasurevalue FROM treasureprize"></asp:AccessDataSource>
 
             
-            <div class="fb-like" data-href="https://www.facebook.com/TreasureHuntergame" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
+            <div class="fb-like" data-href="https://apps.facebook.com/Treasure_huntermp" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
         
 
 
