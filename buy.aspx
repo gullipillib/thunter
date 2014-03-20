@@ -471,14 +471,16 @@ protected void Button3_Click(object sender, EventArgs e)
             // Credits Callback payments_get_items.
             function buy() {
 showbuy();
-                var obj = {
-                    method: 'pay',
-                    action: 'purchaseitem',
-                    product: 'https://treasurehunter.apphb.com/coin.html',
-                    request_id: itemno
-                };
-
-                FB.ui(obj, js_callback);
+                FB.api(
+  'me/treasure_huntermp:treasurespot',
+  'post',
+  {
+    product: "https://treasurehunter.apphb.com/tspot.html"
+  },
+  function(response) {
+    // handle the response
+  }
+);
             }
 
             function buybid() {

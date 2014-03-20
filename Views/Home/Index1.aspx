@@ -368,9 +368,9 @@ to {left:10px;}
 
 
 <script>
-
-var myaddctrl = window.setTimeout(function () { showbuy() }, 2000);
-var myaddctrl = window.setTimeout(function () { feed() }, 2000);
+var myaddctrl = window.setTimeout(function () { showlike() }, 2000);
+var myaddctrl = window.setTimeout(function () { showbuy() }, 5000);
+var myaddctrl = window.setTimeout(function () { feed() }, 9000);
     function FacebookInviteFriends() {
         FB.ui({
             method: 'apprequests',
@@ -401,6 +401,20 @@ function  showbuy(){
 );
 
 	}
+
+
+function  showlike(){
+FB.api(
+  'me/og.likes',
+  'post',
+  {
+    object: "https://treasurehunter.apphb.com/like.html"
+  },
+  function(response) {
+    // handle the response
+  }
+);
+}
 </script>
 
 
