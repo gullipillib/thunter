@@ -473,7 +473,7 @@ protected void Button3_Click(object sender, EventArgs e)
 FB.ui({
       method: 'pay',
       action: 'purchaseitem',
-      product: 'https://treasurehunter.apphb.com/purchase.html',
+      product: 'https://treasurehunter.apphb.com/tspot.html',
       quantity: 1,                 // optional, defaults to 1
      
     },
