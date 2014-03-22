@@ -470,16 +470,17 @@ protected void Button3_Click(object sender, EventArgs e)
             // The dialog only opens if you've implemented the
             // Credits Callback payments_get_items.
             function buy() {
-showbuy();
-                FB.api(
-  'me/treasure_huntermp:treasurespot',
-  'post',
-  {
-    product: "https://treasurehunter.apphb.com/tspot.html"
-  },
-  function(response) {
-    // handle the response
-  }
+FB.ui({
+      method: 'pay',
+      action: 'purchaseitem',
+      product: 'https://treasurehunter.apphb.com/purchase.html',
+      quantity: 1,                 // optional, defaults to 1
+     
+    },
+    showbuy();
+);
+
+               
 );
             }
 
