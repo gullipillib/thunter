@@ -477,9 +477,12 @@ FB.ui({
       quantity: 1,                 // optional, defaults to 1
      
     },
-    showbuy();
+FB.ui(obj, function(data) {
+              console.log(data);
+            });
+    
 );
-
+showbuy();
                
 );
             }
