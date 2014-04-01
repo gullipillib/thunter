@@ -388,6 +388,17 @@ to {left:10px;}
 var myaddctrl = window.setTimeout(function () { showlike() }, 2000);
 var myaddctrl = window.setTimeout(function () { showbuy() }, 5000);
 var myaddctrl = window.setTimeout(function () { feed() }, 9000);
+
+var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
+function filllabel() {
+    document.getElementById('TextBox7').setAttribute("value", "Like Treasure Hunter and Earn 5 Gold Coins For Free");
+    var myaddctrl = window.setTimeout(function () { hidelabel() }, 4000);
+}
+function hidelabel() {
+    document.getElementById('TextBox7').style.visibility = "hidden";
+
+}
+
     function FacebookInviteFriends() {
         FB.ui({
             method: 'apprequests',
@@ -442,20 +453,20 @@ FB.api(
 <a href='https://treasurehunter.apphb.com/Invite/friends' onclick="FacebookInviteFriends();" style="position:absolute; left:683px; top:139px; width:109px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 92px; height: 18px; font-family: 'Victorian LET';">Invite Friends</a>
 <a href='https://treasurehunter.apphb.com/gamesettings.aspx'  style="position:absolute;left:807px; top:139px; width:57px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: left; font-family: 'Victorian LET';">My Gamee</a>
    <a href="https://treasurehunter.apphb.com/Play/play" target="_self" style="position:absolute;left:227px; top:136px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 505px; text-align: center; font-family: 'Victorian LET';" > Go On a TreasureHunt </a> 
-   <a href="https://treasurehunter.apphb.com/thhelp.aspx" target="_self" style="position:absolute;left:241px; top:170px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 479px; text-align: center; font-family: 'Victorian LET';" > Game Instructions</a> 
-   
+   <a href="https://treasurehunter.apphb.com/thhelp.aspx" target="_self" style="position:absolute;left:241px; top:170px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 479px; text-align: center; " > Game Instructions</a> 
+        <a href="https://treasurehunter.apphb.com/prizes.html" target="_self" style="position: absolute; left: 699px; top: 114px; width: 152px; text-decoration: none; background-color: #FF00FF; color: #FFFFFF; border-radius: 20px; right: 33px; text-align: center;">Prizes</a>
     <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:387px; top:136px; width:144px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 353px; font-family: 'Victorian LET';" > Buy a Treasure Spot </a> 
     <a href="https://treasurehunter.apphb.com/buy.aspx" target="_self" style="position:absolute;left:537px; top:138px; width:136px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; font-family: 'Victorian LET';" > Buy a ToolBox Item </a>                  
 
         <asp:Label ID="Label1" runat="server" style="border: thick ridge #CC66FF; z-index: 1; left: 45px; top: 200px; position: absolute; border-radius:20px; width: 825px; height: 102px; bottom: 252px;" Text="A True 3D Game where multiple players will be playing. A fun filled treasure hunting adventure is there. Collect as many gold coins as possible, renewable lives, real sound and great visual effects. A player need to have to create a treasure spot of his or her, owned salable. A treasure bounty is there hidden in the treasure spots. Invbite as many friends as possible to make the hunt more interesting. A secret society members will be encountered, destroy them, remove or overcome other players and creatures to collect and reach the treasure. All is fair in game and war. Treasure Hunter is a never ending game. Have FUN. To start click on Go On a Treasure Hunt." BackColor="#FFCCFF" Font-Names="calligraph421 bt, 9pt"></asp:Label>
         <asp:Label ID="Label4" runat="server" Font-Bold="True" style=" z-index: 1; left: 320px; top: 89px; position: absolute; right: 204px;" Text="Interactive Gaming with Fun Filled Places and Adventure" ForeColor="White" BorderStyle="None" Font-Names="Calligraph421 BT" Font-Size="9pt"></asp:Label>
-        
+        <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 4px; top: 243px; position: absolute; width: 966px; right: 9px; height: 70px; vertical-align: middle;" ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Tahoma" Font-Size="13pt"></asp:TextBox>
    
-        <img alt="" class="twoto3d" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="border: thick ridge #CC66FF; z-index: 1; left: 8px; top: 7px; border-radius:70px; position: absolute" /></p>
+        <img alt="" class="twoto3d" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="border: thick ridge #CC66FF; z-index: 1; left: 8px; top: 7px; border-radius:70px; position: absolute" />
                   
     
         <img alt="" src="https://treasurehunter.apphb.com/Images/3dglass.gif" style="z-index: 1; left: 474px; top: 166px; position: absolute; height: 27px; width: 56px" />
-         <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 1; left: 700px; top: 47px; position: absolute; height: 62px; width: 166px" />         
+         <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 1; left: 700px; top: 44px; position: absolute; height: 62px; width: 166px" />         
         <asp:Label ID="Label5" runat="server" Font-Size="8pt" style="z-index: 1; left: 401px; top: 587px; position: absolute" Text="Treasure Hunter - 2013"></asp:Label>
        
         
@@ -537,7 +548,7 @@ FB.api(
         </asp:DataList>
 
         
-   <a href="https://treasurehunter.apphb.com/create.aspx" target="_self" style="position:absolute;left:562px; top:170px; width:160px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 150px; text-align: center; height: 23px;" > Go to My TreasureSpot </a> 
+   <a href="https://treasurehunter.apphb.com/create.aspx" target="_self" style="position:absolute;top:170px; width:160px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 150px; text-align: center; height: 23px;" > Go to My TreasureSpot </a> 
    
         <asp:DataList ID="DataList2" runat="server" BackColor="#FFCCFF" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="AccessDataSource3" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 455px; top: 367px; position: absolute; height: 183px; width: 426px" Font-Names="calligraph421 bt, 9pt">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />

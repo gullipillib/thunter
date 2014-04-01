@@ -19,7 +19,7 @@
         <meta name="viewport" content="width=device-width" />
        
 </head>
-<body>
+<body style="background-color: #CC00FF">
     <form id="form1" runat="server">
     
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
