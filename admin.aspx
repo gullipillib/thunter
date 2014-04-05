@@ -33,36 +33,36 @@
 
     protected void Button3_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.UpdateCommand = "UPDATE settings SET logintimes = '" + TextBox2.Text + "'";
+        SqlDataSource1.UpdateCommand = "UPDATE settings SET logintimes = '" + TextBox2.Text + "'";
     }
 
     protected void Button4_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.UpdateCommand = "UPDATE settings SET tspots = '" + TextBox3.Text + "'";
+        SqlDataSource1.UpdateCommand = "UPDATE settings SET tspots = '" + TextBox3.Text + "'";
     }
 
     protected void Button5_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.UpdateCommand = "UPDATE settings SET invites = '" + TextBox4.Text + "'";
+        SqlDataSource1.UpdateCommand = "UPDATE settings SET invites = '" + TextBox4.Text + "'";
     }
 
     protected void Button6_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.UpdateCommand = "UPDATE settings SET loginreset = '" + TextBox5.Text + "'";
+        SqlDataSource1.UpdateCommand = "UPDATE settings SET loginreset = '" + TextBox5.Text + "'";
     }
 
     protected void Button7_Click(object sender, EventArgs e)
     {
         string lutspots = "";
-        AccessDataSource1.SelectCommand = "SELECT * FROM tspots where tsowner ='treasurehunter' order by tsorder DESC";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT * FROM tspots where tsowner ='treasurehunter' order by tsorder DESC";
+        DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
 
         string tsorderno = dv[0]["tsorder"].ToString();
         tsorderno = Convert.ToString(Convert.ToInt16(tsorderno) + 1);
-        AccessDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails,tsorder) Values ('yes','yes','5','buy','yes','yes','treasurehunter','treasurehunter','treasurehunter','no',' ',' ',' ','" + "treasurehunter" + "','thppbuy','paypal','no','yes','yes','yes',' ','no',' ',' ',' ',' ',' ',' ',' ','" + tsorderno + "')";
-        AccessDataSource1.Insert();
-        AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails,tsorder) Values ('yes','yes','5','buy','yes','yes','treasurehunter','treasurehunter','treasurehunter','no',' ',' ',' ','" + "treasurehunter" + "','thppbuy','paypal','no','yes','yes','yes',' ','no',' ',' ',' ',' ',' ',' ',' ','" + tsorderno + "')";
+        SqlDataSource1.Insert();
+        SqlDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
+        dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         DataView uniname = dt.DefaultView;
@@ -74,49 +74,49 @@
         {
             lutspots = "0";
         }
-        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + "Treasure Hunter" + "'";
-        AccessDataSource1.Update();
+        SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + "Treasure Hunter" + "'";
+        SqlDataSource1.Update();
         Response.Redirect("~/create.aspx");
     }
 
     protected void Button8_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.SelectCommand = "SELECT * FROM toolbox  where tbowner ='treasurehunter' order by tborder DESC";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT * FROM toolbox  where tbowner ='treasurehunter' order by tborder DESC";
+        DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
 
         string tborderno = dv[0]["tborder"].ToString();
         tborderno = Convert.ToString(Convert.ToInt16(tborderno) + 1);
-        AccessDataSource1.InsertCommand = "INSERT INTO toolbox(tbcompleted,tbnew,tbprice,tbselltype,tbactive,tbapproved,tbapprover1,tbapprover2,tbapprover3,tbbid,tbbidder,tbdetails,tbname,tbowner,tbinvoice,tbreported,tbreportcomments,tba1status,tba2status,tba3status,tbsell,tbreportaddress,tbbiddate,tbaward,tborder) Values ('no','yes','5','buy','yes','yes','treasurehunter','treasurehunter','treasurehunter','no',' ',' ',' ','" + "treasurehunter" + "','thtbbuy','no',' ','yes','yes','yes','no',' ',' ',' ', '" + tborderno + "')";
-        AccessDataSource1.Insert();
+        SqlDataSource1.InsertCommand = "INSERT INTO toolbox(tbcompleted,tbnew,tbprice,tbselltype,tbactive,tbapproved,tbapprover1,tbapprover2,tbapprover3,tbbid,tbbidder,tbdetails,tbname,tbowner,tbinvoice,tbreported,tbreportcomments,tba1status,tba2status,tba3status,tbsell,tbreportaddress,tbbiddate,tbaward,tborder) Values ('no','yes','5','buy','yes','yes','treasurehunter','treasurehunter','treasurehunter','no',' ',' ',' ','" + "treasurehunter" + "','thtbbuy','no',' ','yes','yes','yes','no',' ',' ',' ', '" + tborderno + "')";
+        SqlDataSource1.Insert();
         Response.Redirect("~/tools.aspx");
     }
 
     protected void Button9_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
-        AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'yes' where tsowner='" + "Treasure Hunter" + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
-        AccessDataSource1.Update();
+        SqlDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
+        SqlDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'yes' where tsowner='" + "Treasure Hunter" + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+        SqlDataSource1.Update();
     }
 
     protected void Button10_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
-        AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'no' where tsowner='" + "Treasure Hunter" + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
-        AccessDataSource1.Update();
+        SqlDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
+        SqlDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'no' where tsowner='" + "Treasure Hunter" + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+        SqlDataSource1.Update();
     }
 
     protected void Button11_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
-        AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'yes' where tbowner='" + "Treasure Hunter" + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-        AccessDataSource1.Update();
+        SqlDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
+        SqlDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'yes' where tbowner='" + "Treasure Hunter" + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+        SqlDataSource1.Update();
     }
 
     protected void Button12_Click(object sender, EventArgs e)
     {
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
-        AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'no' where tbowner='" + "Treasure Hunter" + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-        AccessDataSource1.Update();
+        SqlDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
+        SqlDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'no' where tbowner='" + "Treasure Hunter" + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+        SqlDataSource1.Update();
     }
 </script>
 
@@ -177,9 +177,7 @@
         
         
         
-            <asp:AccessDataSource ID="AccessDataSource2" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tsowner = 'Treasure Hunter'"></asp:AccessDataSource>
-            <asp:AccessDataSource ID="AccessDataSource3" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE (tbowner = 'Treasure Hunter')"></asp:AccessDataSource>
-            <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource2" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 24px; top: 428px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
+             <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 24px; top: 428px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
@@ -228,7 +226,7 @@
                 <asp:ListItem>Fixed Price</asp:ListItem>
             </asp:DropDownList>
             <asp:Button ID="Button13" runat="server" OnClick="Button11_Click" style="z-index: 1; left: 530px; top: 673px; position: absolute" Text="Approve Bid" />
-            <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="AccessDataSource3" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 19px; top: 715px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
+            <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" PageSize="5" style="z-index: 1; left: 19px; top: 715px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="tbprice" HeaderText="tbprice" SortExpression="tbprice" />
@@ -258,8 +256,12 @@
         
         
         </asp:Panel>
-        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT * FROM settings" InsertCommand="INSERT INTO settings(logintimes, tspots, invites, loginreset) VALUES ('', '', '','')" UpdateCommand="UPDATE settings SET logintimes = ''"> </asp:AccessDataSource>
 
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM settings" InsertCommand="INSERT INTO settings(logintimes, tspots, invites, loginreset) VALUES ('', '', '','')" UpdateCommand="UPDATE settings SET logintimes = ''"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tsowner = 'Treasure Hunter'"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE (tbowner = 'Treasure Hunter')"></asp:SqlDataSource>
+
+        
     </form>
 </body>
 </html>

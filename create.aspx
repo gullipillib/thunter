@@ -74,9 +74,9 @@
         {
 
             //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
+            SqlDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
 
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
             //DataTable dtr = dt;
@@ -86,17 +86,17 @@
             if (dt.Rows.Count == 0)
             {
                 //Insert User into appuser,loggeduser,ordercounter,winners;
-                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + HiddenField4 + "', '{left : 0, top:0}', '" + HiddenField5 + "', '" + HiddenField5 + "', '100', 'yes', '0', '0', '0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
+                SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
+                SqlDataSource1.Insert();
+                SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                SqlDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + HiddenField4 + "', '{left : 0, top:0}', '" + HiddenField5 + "', '" + HiddenField5 + "', '100', 'yes', '0', '0', '0')";
+                SqlDataSource1.Insert();
+                SqlDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+                SqlDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
+                SqlDataSource1.Insert();
+                SqlDataSource1.SelectCommand = "SELECT * FROM winners";
+                SqlDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
+                SqlDataSource1.Insert();
             }
 
         }
@@ -109,8 +109,8 @@
 
     protected void checknewcomplete()
     {
-        AccessDataSource1.SelectCommand = "SELECT Top 1 * FROM tspots WHERE (tsowner = '" + Hiddenfield1 + "' and tsnew = 'yes' or tscompleted = 'no')";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT Top 1 * FROM tspots WHERE (tsowner = '" + Hiddenfield1 + "' and tsnew = 'yes' or tscompleted = 'no')";
+        DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         //DataTable dtr = dt;
@@ -178,16 +178,16 @@
             
             tempstring = json;
         
-            AccessDataSource1.SelectCommand = "SELECT Top 1 * FROM tspots WHERE tsowner = '" + Hiddenfield1 + "' and tsnew = 'yes' or tscompleted = 'no' order by tsorder ASC";
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            SqlDataSource1.SelectCommand = "SELECT Top 1 * FROM tspots WHERE tsowner = '" + Hiddenfield1 + "' and tsnew = 'yes' or tscompleted = 'no' order by tsorder ASC";
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             string coownername = dv[0][30].ToString();
             string tsownername = dv[0][13].ToString();
             string tsorderno = dv[0][32].ToString();
 
             if (TextBox1.Text != null && TextBox2.Text != null)
             {
-                AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsname = '" + TextBox1.Text + "', tsurl = '" + TextBox2.Text + "', tsitems = '" + tempstring + "', tsnew = 'no', tscompleted = 'yes'  where tsowner='" + Label26.Text + "' and tsorder='" + tsorderno + "'";
-                    AccessDataSource1.Update();
+                SqlDataSource1.UpdateCommand = "UPDATE tspots SET tsname = '" + TextBox1.Text + "', tsurl = '" + TextBox2.Text + "', tsitems = '" + tempstring + "', tsnew = 'no', tscompleted = 'yes'  where tsowner='" + Label26.Text + "' and tsorder='" + tsorderno + "'";
+                    SqlDataSource1.Update();
                 
                 Button5.Enabled = true;
                 Button4.Enabled = false;
@@ -998,9 +998,9 @@
     {
         if (TextBox1.Text.Length < 50)
         {
-            AccessDataSource1.SelectCommand = "SELECT * FROM tspots WHERE (tsname = '" + TextBox1.Text + "')";
+            SqlDataSource1.SelectCommand = "SELECT * FROM tspots WHERE (tsname = '" + TextBox1.Text + "')";
 
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
 
@@ -1040,8 +1040,8 @@
 
 
 <body style="height: 585px; background-color:transparent">
-    <a href="Play/play" target="_self" style="position: absolute; left: 540px; top: 53px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 221px; text-align: center; height: 22px;">Complete Later </a>
-    <a href="Play/play" target="_self" style="position: absolute; left: 542px; top: 85px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 219px; text-align: center; height: 22px;">Approver Comments </a>
+    <a href="Play/play" target="_self" style="position: absolute; left: 540px; top: 53px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; border-radius: 20px; right: 221px; text-align: center; height: 22px;">Complete Later </a>
+    <a href="Play/play" target="_self" style="position: absolute; left: 542px; top: 85px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; border-radius: 20px; right: 219px; text-align: center; height: 22px;">Approver Comments </a>
     
     <div id="divplayer" style="z-index: 0; background-color: transparent; overflow: hidden; position:absolute; top: 38px; left: 6px; width: 476px; height: 394px;">
     <img alt="Images" src='<%=TextBox2.Text%>' style="z-index:21; position:absolute; left: 0px; top: 0px; background-color: transparent; width: 476px; height: 394px;" class="twoto3d"  id="Iframe1" />
@@ -1057,23 +1057,22 @@
  
    
     <form id="form1" runat="server">
-        
 
-        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" UpdateCommand="UPDATE tspots SET tscompleted = '[no]'"></asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" UpdateCommand="UPDATE tspots SET tscompleted = '[no]'"></asp:SqlDataSource>
         <asp:CheckBox ID="CheckBox3" runat="server" Checked="True" Enabled="False" ForeColor="Red" style="z-index: 1; left: 356px; top: 3px; position: absolute" Text="I Agree to the terms and conditions of treasurehunter" />
         <asp:Label ID="Label1" runat="server" Style="z-index: 1; left: 525px; top: 121px; position: absolute; width: 41px; height: 20px;" Text="Name" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label7" runat="server" Style="z-index: 1; left: 15px; top: 474px; position: absolute; width: 68px; height: 20px;" Text="Video Url" Font-Bold="True" ForeColor="Blue"></asp:Label>
-        <asp:AccessDataSource ID="AccessDataSource2" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'land')"></asp:AccessDataSource>
-
-        <asp:AccessDataSource ID="AccessDataSource3" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT tbname, tbtoolscategory,  tbcategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'water')"></asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'land')"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbtoolscategory,  tbcategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'water')"></asp:SqlDataSource>
             
            
-    <a href="creatorhelp.aspx" target="_self" style="position: absolute; left: 504px; top: 487px; width: 86px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; webkit-border-radius: 20px; moz-border-radius: 20px; border-radius: 20px; right: 324px; text-align: center; height: 22px;">Help </a>
+    <a href="creatorhelp.aspx" target="_self" style="position: absolute; left: 504px; top: 487px; width: 86px; text-decoration: none; background-color: #0000FF; color: #FFFFFF;  border-radius: 20px; right: 324px; text-align: center; height: 22px;">Help </a>
             
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 567px; top: 26px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
         <asp:Button ID="Button11" runat="server" Style="z-index: 1; left: 297px; top: 5px; position: absolute; cursor:pointer;" Text="Select" OnClick="Button11_Click" UseSubmitBehavior="False" BackColor="#99CCFF" ForeColor="Maroon" />
-        <asp:AccessDataSource ID="AccessDataSource4" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'air or space')"></asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'air or space')"></asp:SqlDataSource>
+
         <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 13px; top: 16px; position: absolute; height:14px; width: 67px; right: 834px;" Text="Game Category" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 644px; top: 244px; position: absolute; height:14px; width: 59px; right: 211px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label15" runat="server" style="z-index: 1; left: 646px; top: 264px; position: absolute; height:11px; width: 56px; right: 212px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
@@ -1088,8 +1087,9 @@
         <asp:Label ID="Label24" runat="server" style="z-index: 1; left:  174px; top: 610px; position: absolute; height:14px; width: 32px; right: 708px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Transparent"></asp:Label>
         <asp:Label ID="Label25" runat="server" style="z-index: 1; left:  262px; top: 607px; position: absolute; height:14px; width: 32px; right: 620px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Transparent"></asp:Label>
         <asp:Label ID="Label26" runat="server" style="z-index: 1; left:  346px; top: 437px; position: absolute; height:14px; width: 214px; right: 354px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
-        <asp:AccessDataSource ID="AccessDataSource5" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'others or players')  or  (tbtoolscategory = 'player')"></asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'others or players')  or  (tbtoolscategory = 'player')"></asp:SqlDataSource>
 
+        
         <asp:Image ID="Image6" runat="server" Height="20px" style="z-index: 1; left: 702px; top: 228px; position: absolute; height:10px; width:10px" Width="20px" />
         <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 668px; top: 209px; position: absolute; height:14px; width: 85px" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="12pt" ForeColor="Blue" Style="z-index: 1; top: 421px; position: absolute; left: 606px" Text="others or players"></asp:Label>
@@ -1109,7 +1109,7 @@
         </asp:DropDownList>
         
          <asp:Panel ID="Panel4" runat="server" style="z-index: 1; left: 766px; top: 221px; position: absolute; height: 162px; width: 134px; overflow:scroll" ScrollBars="Vertical">
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="AccessDataSource3" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 133px; width: 53px" Enabled="False" ClientIDMode="Static" ViewStateMode="Enabled" OnSelectedIndexChanged="GridView2_SelectedIndexChanged1">
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="SqlDataSource3" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 133px; width: 53px" Enabled="False" ClientIDMode="Static" ViewStateMode="Enabled" OnSelectedIndexChanged="GridView2_SelectedIndexChanged1">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
@@ -1140,7 +1140,7 @@
         </asp:GridView>
         </asp:Panel>
         <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: 601px; top: 447px; position: absolute; height: 162px; width: 134px; overflow:scroll" ScrollBars="Vertical">
-        <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="AccessDataSource5" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; top: 0px; position: absolute; height: 137px; width: 42px; left: 0px" ClientIDMode="Static" ViewStateMode="Enabled" CellPadding="0" Enabled="False" OnSelectedIndexChanged="GridView4_SelectedIndexChanged1">
+        <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="SqlDataSource5" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; top: 0px; position: absolute; height: 137px; width: 42px; left: 0px" ClientIDMode="Static" ViewStateMode="Enabled" CellPadding="0" Enabled="False" OnSelectedIndexChanged="GridView4_SelectedIndexChanged1">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
@@ -1172,7 +1172,7 @@
             </asp:Panel>
 
         <asp:Panel ID="Panel5" runat="server" style="z-index: 1; left: 747px; top: 415px; position: absolute; height: 162px; width: 134px;overflow:scroll" ScrollBars="Vertical">
-        <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="AccessDataSource4" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 133px; width: 65px; bottom: 404px;" Enabled="False" ClientIDMode="Static" OnSelectedIndexChanged="GridView3_SelectedIndexChanged1">
+        <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="SqlDataSource4" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 133px; width: 65px; bottom: 404px;" Enabled="False" ClientIDMode="Static" OnSelectedIndexChanged="GridView3_SelectedIndexChanged1">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
@@ -1203,7 +1203,7 @@
         </asp:GridView>
             </asp:Panel>
         <asp:Panel ID="Panel3" runat="server" style="z-index: 1; left: 712px; top: 36px; position: absolute; height: 162px; width: 134px; overflow:scroll" ScrollBars="Vertical">
-         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="AccessDataSource2" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 154px; width: 139px" Visible="False" ClientIDMode="Static" ViewStateMode="Enabled" Enabled="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1">
+         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="SqlDataSource2" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 154px; width: 139px" Visible="False" ClientIDMode="Static" ViewStateMode="Enabled" Enabled="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>

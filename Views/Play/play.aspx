@@ -112,8 +112,8 @@ public string one5 = "";
     protected void gettreasurespot()
     {
 
-        AccessDataSource8.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
-        DataView dv = (DataView)AccessDataSource8.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource8.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
+        DataView dv = (DataView)SqlDataSource8.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
 	if (dt.Rows.Count != 0)
@@ -202,8 +202,8 @@ public string one5 = "";
         Label1.Text = tsitemsfulldetails.tsName;
         string mytemp = tsitemsfulldetails.tsctrl1name;
 
-        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
-        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
+        dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -218,8 +218,8 @@ public string one5 = "";
        
 
 
-        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
-        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
+        dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb2fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -230,8 +230,8 @@ public string one5 = "";
 
        
 
-        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
-        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
+        dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb3fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -243,8 +243,8 @@ public string one5 = "";
         
 
 
-        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
-        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
+        dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb4fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -255,8 +255,8 @@ public string one5 = "";
         
 
 
-        AccessDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
-        dv = (DataView)AccessDataSource9.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
+        dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb5fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -273,8 +273,8 @@ public string one5 = "";
     {
 
         {
-            AccessDataSource8.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
-            DataView dv = (DataView)AccessDataSource8.Select(DataSourceSelectArguments.Empty);
+            SqlDataSource8.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
+            DataView dv = (DataView)SqlDataSource8.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
 
@@ -344,13 +344,13 @@ public string one5 = "";
 
     protected void gettreasureprize()
     {
-        AccessDataSource10.SelectCommand = "SELECT treasurevalue FROM treasureprize";
-        DataView dv = (DataView)AccessDataSource10.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource10.SelectCommand = "SELECT treasurevalue FROM treasureprize";
+        DataView dv = (DataView)SqlDataSource10.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         treasure.Text = dt.Rows[0].Field<string>("treasurevalue");
-        AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+        dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         if (dt.Rows.Count != 0)
@@ -385,8 +385,8 @@ public string one5 = "";
                 }
             }
             checkusername();
-            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
-            AccessDataSource1.Update();
+            SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+            SqlDataSource1.Update();
             gettreasurespot();
             addfriends();
             gettreasureprize();
@@ -398,8 +398,8 @@ public string one5 = "";
 
         if (Page.IsPostBack == false)
         {
-            AccessDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            SqlDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
             DataView uniname = dt.DefaultView;
@@ -411,9 +411,9 @@ public string one5 = "";
             if (logintimes != "0" && btspots != "0")
             {
                 //Timer1.Enabled = true;
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
-                AccessDataSource1.Update();
+                SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+                SqlDataSource1.Update();
             }
 
             if (logintimes != "0" && btspots == "0")
@@ -428,10 +428,10 @@ public string one5 = "";
     //public  int runnow(string c)
     //{
     //    goldcoins = c;
-    //    AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-    //    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
+    //    SqlDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+    //    SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
 
-    //    AccessDataSource1.Update();
+    //    SqlDataSource1.Update();
     //    gettreasurespot();
     //    return 1;
     //}
@@ -455,10 +455,10 @@ public string one5 = "";
 
     //        goldcoins = Session["mycoins"].ToString();
              
-    //            AccessDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-    //            AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
+    //            SqlDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+    //            SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
 
-    //            AccessDataSource1.Update();
+    //            SqlDataSource1.Update();
     //            gettreasurespot();
 
             
@@ -2353,7 +2353,27 @@ window.onload = function(){
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123405257731200";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-  
+ 
+    <script>!function (d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) {
+js = d.createElement
+
+(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+}
+}
+
+(document, "script", "twitter-wjs");</script>
+
+    <script>!function (d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!
+
+d.getElementById(id)) {
+    js = d.createElement(s); js.id = id; js.src = p
+
+    + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+}
+}(document, "script", "twitter-wjs");</script>
+     
     <script type="text/javascript" >
         FB.init({ appId: "123405257731200", status: true, cookie: true });
 
@@ -2370,12 +2390,11 @@ window.onload = function(){
   </script>        
    
         <form id="form1" runat="server" >
-
-        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM loggedusers WHERE (luname = '<%=Hiddenfield1%>')" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'"></asp:AccessDataSource>
-            <asp:AccessDataSource ID="AccessDataSource8" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM tspots"></asp:AccessDataSource>
-            <asp:AccessDataSource ID="AccessDataSource9" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT * FROM toolbox"></asp:AccessDataSource>
-            <asp:AccessDataSource ID="AccessDataSource10" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT treasurevalue FROM treasureprize"></asp:AccessDataSource>
-
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers WHERE (luname = '<%=Hiddenfield1%>')" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM tspots"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM toolbox"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT treasurevalue FROM treasureprize"></asp:SqlDataSource>
+            
             
             <div class="fb-like" data-href="https://apps.facebook.com/Treasure_huntermp" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
         
@@ -2398,14 +2417,17 @@ window.onload = function(){
 
         <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 168px; top: 32px; position: absolute; width: 40px; right: 660px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">50</asp:TextBox>
-            <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 4px; top: 243px; position: absolute; width: 966px; right: 9px; height: 70px; vertical-align:middle; " ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Tahoma" Font-Size="13pt"></asp:TextBox>
+            <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 4px; top: 243px; position: absolute; width: 966px; right: -90px; height: 70px; vertical-align:middle; " ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Tahoma" Font-Size="13pt"></asp:TextBox>
             <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 753px; top: 33px; position: absolute; width: 54px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
  <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" style="z-index: 1; left: 563px; top: 334px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
 
     <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
     </audio>
-    
+
+            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration:none; position: absolute; top: 6px; left: 713px">Tweet</a>
+            <a class="twitter-timeline" href="https://twitter.com/Treasur15030047" data-widget-id="451107320987004928" style="text-decoration:none; position: absolute; left: 713px; top: 56px">Tweets by 
+            @Treasur15030047</a>
     <label style="position: absolute; top: 30px; left: 15px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large; font-weight: lighter;">Achievements</label>
 
     <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Lives</label>
@@ -2462,11 +2484,14 @@ window.onload = function(){
     <img id="Image10" style="z-index: 301; left: 178px; top: 3px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
 
 </div>
-    
+  <div id="tooltip" style="position:absolute; top: 218px; left: 494px; width: 107px; height: 104px; visibility: hidden;">
+     <input  type="text" id="playername" style="position:absolute; text-decoration:none; background-color:transparent; top: 11px; left: 20px; width: 60px; height: 47px;"/>
+      <img id="playerpic" style="position:absolute; background-color:transparent; top: 75px; left: 7px; height: 18px; width: 90px; font-size: 8px;" src='<%=Session["friend1pic"]%>'/>
+  </div>  
     <label style="position: absolute; top: 76px; left: 151px; height: 19px; color: #FFCC00; height: 21px; position: absolute; font-size: large; width: 122px; font-family: 'John Handy LET';">Treasure Map</label>
     <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 488px; top: 105px; position: absolute; width: 253px" ForeColor="White"  ReadOnly="true"></asp:TextBox>    
 <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 773px; top: 9px; position: absolute; width: 143px; " ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="Medium">Time Remaining</asp:TextBox>
-<asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 929px; top: 14px; position: absolute; width: 34px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">250</asp:TextBox>
+<asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 929px; top: 14px; position: absolute; width: 34px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">120</asp:TextBox>
 <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 305px; position: absolute; width: 62px; " ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="Medium">Collect</asp:TextBox>
 <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 223px; top: 306px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
 <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 325px; position: absolute; width: 112px; right: 638px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="Medium">Conquer Players</asp:TextBox>

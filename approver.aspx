@@ -36,9 +36,9 @@
         {
 
             //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
+            SqlDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
 
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
             //DataTable dtr = dt;
@@ -48,17 +48,17 @@
             if (dt.Rows.Count == 0)
             {
                 //Insert User into appuser,loggeduser,ordercounter,winners;
-                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + HiddenField4 + "', '{left : 0, top:0}', '" + HiddenField5 + "', '" + HiddenField5 + "', '100', 'yes', '0', '0', '0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
+                SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
+                SqlDataSource1.Insert();
+                SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                SqlDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + HiddenField4 + "', '{left : 0, top:0}', '" + HiddenField5 + "', '" + HiddenField5 + "', '100', 'yes', '0', '0', '0')";
+                SqlDataSource1.Insert();
+                SqlDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+                SqlDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
+                SqlDataSource1.Insert();
+                SqlDataSource1.SelectCommand = "SELECT * FROM winners";
+                SqlDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
+                SqlDataSource1.Insert();
             }
             
         }
@@ -116,8 +116,8 @@
     
     protected void gettreasurespot()
     {
-        AccessDataSource1.SelectCommand = "SELECT * FROM tspots where tsapproved = 'no' and tsactive = 'no'";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT * FROM tspots where tsapproved = 'no' and tsactive = 'no'";
+        DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         if (dt.Rows.Count != 0)
@@ -157,8 +157,8 @@
         Label1.Text = tsitemsfulldetails.tsName;
         
 
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl1name + "'";
+        dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -174,8 +174,8 @@
         //tb1fulldetails = tb1full.Replace('\\', '"');
         
         
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
+        dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb2fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -188,8 +188,8 @@
         //tb2fulldetails = tb1full.Replace(" ", "");
             
         
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
+        dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb3fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -202,8 +202,8 @@
         //tb3fulldetails = tb1full.Replace(" ", "");
         
 
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
+        dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb4fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -215,8 +215,8 @@
         //tb4fulldetails = tb1full.Replace(" ", "");
        
 
-        AccessDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
-        dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
+        dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
         tb5fulldetails = dt.Rows[0].Field<string>("tbdetails");
@@ -239,8 +239,8 @@
        {
            
         {
-            AccessDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            SqlDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes' and tsrplayers = '0' and  tsrplayers = '0'";
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
            
@@ -264,8 +264,8 @@
     
     protected void gettreasureprize()
     {
-        AccessDataSource1.SelectCommand = "SELECT treasurevalue FROM treasureprize";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT treasurevalue FROM treasureprize";
+        DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         treasure.Text = dt.Rows[0].Field<string>("treasurevalue"); 
@@ -278,8 +278,8 @@
         if (Page.IsPostBack == false)
         {
 
-            AccessDataSource1.SelectCommand = "select lubuylater from loggedusers where luname = '" + Hiddenfield1 + "'";
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            SqlDataSource1.SelectCommand = "select lubuylater from loggedusers where luname = '" + Hiddenfield1 + "'";
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
             DataView uniname = dt.DefaultView;
@@ -293,12 +293,12 @@
                 Response.Redirect("https://treasurehunter.apphb.com");
             }
                     
-        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
-        AccessDataSource1.Update();
+        SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+        SqlDataSource1.Update();
         
         checkusername();
-         AccessDataSource1.SelectCommand = "select lutspots from loggedusers where luname = '" + Hiddenfield1 + "'";
-             dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+         SqlDataSource1.SelectCommand = "select lutspots from loggedusers where luname = '" + Hiddenfield1 + "'";
+             dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             dt = new DataTable();
             dt = dv.ToTable();
             if (dt.Rows.Count == 0)
@@ -311,8 +311,8 @@
         gettreasureprize();
         
         
-            AccessDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
-            dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            SqlDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
+            dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             dt = new DataTable();
             dt = dv.ToTable();
             uniname = dt.DefaultView;
@@ -324,9 +324,9 @@
             if (logintimes != "0" && btspots != "0")
             {
                 //Timer1.Enabled = true;
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1 + "'";
-                AccessDataSource1.Update();
+                SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='no' where luname='" + Hiddenfield1 + "'";
+                SqlDataSource1.Update();
             }
 
             if (logintimes != "0" && btspots == "0")
@@ -340,8 +340,8 @@
         {
             if (updater == "1")
             {
-                AccessDataSource1.SelectCommand = "SELECT tsname, tsapproved, tsactive, tsapprover1, tsapprover2, tsapprover3, tsapprovercomments FROM tspots where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                SqlDataSource1.SelectCommand = "SELECT tsname, tsapproved, tsactive, tsapprover1, tsapprover2, tsapprover3, tsapprovercomments FROM tspots where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
                 DataTable dt = new DataTable();
                 dt = dv.ToTable();
                 string tsapprover1 = dt.Rows[0].Field<string>("tsapprover1"); //usethis to get field value
@@ -350,48 +350,48 @@
                 string tsapprovercomments = dt.Rows[0].Field<string>("tsapprovercomments"); //usethis to get field value
                 if (tsapprover1 == null && tsapprover2 == null && tsapprover3 == null)
                 {
-                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapprover1='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-                    AccessDataSource1.Update();
+                    SqlDataSource1.UpdateCommand = "UPDATE tspots SET tsapprover1='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                    SqlDataSource1.Update();
                 }
                 else if (tsapprover1 != null && tsapprover2 == null && tsapprover3 == null)
                 {
-                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapprover2='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-                    AccessDataSource1.Update();
+                    SqlDataSource1.UpdateCommand = "UPDATE tspots SET tsapprover2='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                    SqlDataSource1.Update();
                 }
                 else if (tsapprover1 != null && tsapprover2 != null && tsapprover3 == null)
                 {
-                    AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapproved='yes', tsactive='yes',  tsapprover3='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-                    AccessDataSource1.Update();
+                    SqlDataSource1.UpdateCommand = "UPDATE tspots SET tsapproved='yes', tsactive='yes',  tsapprover3='" + Hiddenfield1 + "',  tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                    SqlDataSource1.Update();
 
                 }
-                AccessDataSource1.SelectCommand = "SELECT amount FROM appuserdetails where uname = '" + Hiddenfield1 + "'";
-                dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                SqlDataSource1.SelectCommand = "SELECT amount FROM appuserdetails where uname = '" + Hiddenfield1 + "'";
+                dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
                 dt = new DataTable();
                 dt = dv.ToTable();
                 string amount = dt.Rows[0].Field<string>("amount"); //usethis to get field value
-                AccessDataSource1.UpdateCommand = "UPDATE appuserdetails SET amount='" + Convert.ToString(Convert.ToDouble(amount) + Convert.ToDouble("0.25")) + "' where uname = '" + Hiddenfield1 + "'";
-                AccessDataSource1.Update();
+                SqlDataSource1.UpdateCommand = "UPDATE appuserdetails SET amount='" + Convert.ToString(Convert.ToDouble(amount) + Convert.ToDouble("0.25")) + "' where uname = '" + Hiddenfield1 + "'";
+                SqlDataSource1.Update();
                 HyperLink5.Enabled = true;
 
             }
 
             if (updater == "2")
             {
-                AccessDataSource1.SelectCommand = "SELECT tsname, tsapproved, tsactive, tsapprover1, tsapprover2, tsapprover3, tsapprovercomments FROM tspots where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-                DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                SqlDataSource1.SelectCommand = "SELECT tsname, tsapproved, tsactive, tsapprover1, tsapprover2, tsapprover3, tsapprovercomments FROM tspots where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
                 DataTable dt = new DataTable();
                 dt = dv.ToTable();
                 string tsapprovercomments = dt.Rows[0].Field<string>("tsapprovercomments"); //usethis to get field value
 
-                AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
-                AccessDataSource1.Update();
-                AccessDataSource1.SelectCommand = "SELECT amount FROM appuserdetails where uname = '" + Hiddenfield1 + "'";
-                dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+                SqlDataSource1.UpdateCommand = "UPDATE tspots SET tsapprovercomments='" + tsapprovercomments + "  " + TextBox3.Text + "' where tsapproved = 'no' and tsactive = 'no' and tsname='" + Label1.Text + "'";
+                SqlDataSource1.Update();
+                SqlDataSource1.SelectCommand = "SELECT amount FROM appuserdetails where uname = '" + Hiddenfield1 + "'";
+                dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
                 dt = new DataTable();
                 dt = dv.ToTable();
                 string amount = dt.Rows[0].Field<string>("amount"); //usethis to get field value
-                AccessDataSource1.UpdateCommand = "UPDATE appuserdetails SET amount='" + Convert.ToString(Convert.ToDouble(amount) + Convert.ToDouble("0.25")) + "' where uname = '" + Hiddenfield1 + "'";
-                AccessDataSource1.Update();
+                SqlDataSource1.UpdateCommand = "UPDATE appuserdetails SET amount='" + Convert.ToString(Convert.ToDouble(amount) + Convert.ToDouble("0.25")) + "' where uname = '" + Hiddenfield1 + "'";
+                SqlDataSource1.Update();
 
                 HyperLink5.Enabled = true;
             }
@@ -860,7 +860,8 @@
 
 
     <form id="form1"  runat="server" >
-        <asp:AccessDataSource ID="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:SqlDataSource>
+        
         <div style="z-index:300; border: 15px ridge #FF00FF; position: absolute; overflow: hidden; top: 351px; left: 13px; width: 303px; height: 85px;">
         <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 0px; top: 0px; position: absolute; width: 295px; height: 79px" TextMode="MultiLine" CausesValidation="True" BackColor="Silver" ForeColor="White"></asp:TextBox>
         </div>

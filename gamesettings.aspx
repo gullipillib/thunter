@@ -17,15 +17,15 @@
         HiddenField4 = Convert.ToString(Session["loggeduserid"]);
         HiddenField5 = Convert.ToString(Session["loggeduserurl"]);
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
-        AccessDataSource2.SelectCommand = "SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner like '%" + Hiddenfield1  + "%'";
-        AccessDataSource3.SelectCommand = "SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbcoowner like '%" + Hiddenfield1 + "%'";
+        SqlDataSource2.SelectCommand = "SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner like '%" + Hiddenfield1  + "%'";
+        SqlDataSource3.SelectCommand = "SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbcoowner like '%" + Hiddenfield1 + "%'";
         if (Hiddenfield1 != null)
         {
             
             //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-            AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
+            SqlDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
     
-            DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
             //DataTable dtr = dt;
@@ -35,17 +35,17 @@
             if (dt.Rows.Count == 0)
             {
                 //Insert User into appuser,loggeduser,ordercounter,winners;
-                AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + HiddenField4 + "', '{left : 0, top:0}', '" + HiddenField5 + "', '" + HiddenField5 + "', '100', 'yes', '0', '0', '0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
-                AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-                AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-                AccessDataSource1.Insert();
+                SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
+                SqlDataSource1.Insert();
+                SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+                SqlDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + HiddenField4 + "', '{left : 0, top:0}', '" + HiddenField5 + "', '" + HiddenField5 + "', '100', 'yes', '0', '0', '0')";
+                SqlDataSource1.Insert();
+                SqlDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+                SqlDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
+                SqlDataSource1.Insert();
+                SqlDataSource1.SelectCommand = "SELECT * FROM winners";
+                SqlDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
+                SqlDataSource1.Insert();
             }
 
         }
@@ -61,8 +61,8 @@ protected void Page_Load(object sender, EventArgs e)
     if (Page.IsPostBack == false)
     {
         checkusername();
-        AccessDataSource8.SelectCommand = "SELECT amount FROM appuserdetails where uname='" + Hiddenfield1 + "'";
-        AccessDataSource9.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+        SqlDataSource8.SelectCommand = "SELECT amount FROM appuserdetails where uname='" + Hiddenfield1 + "'";
+        SqlDataSource9.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
     
     }
     if (Page.IsPostBack == true)
@@ -81,27 +81,27 @@ protected void Page_Load(object sender, EventArgs e)
         }
         if (updater == "3")
         {
-            AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
-            AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'yes' where tsowner = '" + Hiddenfield1 + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
-            AccessDataSource1.Update(); 
+            SqlDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
+            SqlDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'yes' where tsowner = '" + Hiddenfield1 + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+            SqlDataSource1.Update(); 
         }
         if (updater == "4")
         {
-            AccessDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
-            AccessDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'no' where tsowner = '" + Hiddenfield1 + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
-            AccessDataSource1.Update();
+            SqlDataSource1.SelectCommand = "SELECT tsname, tsbidder, tsaward, tsowner FROM tspots";
+            SqlDataSource1.UpdateCommand = "UPDATE tspots SET tsaward = 'no' where tsowner = '" + Hiddenfield1 + "' and tsname='" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+            SqlDataSource1.Update();
         }
         if (updater == "5")
         {
-            AccessDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
-            AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'yes' where tbowner='" + Hiddenfield1 + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-            AccessDataSource1.Update();
+            SqlDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
+            SqlDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'yes' where tbowner='" + Hiddenfield1 + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+            SqlDataSource1.Update();
         }
         if (updater == "6")
         {
-            AccessDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
-            AccessDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'no' where tbowner='" + Hiddenfield1 + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-            AccessDataSource1.Update();
+            SqlDataSource1.SelectCommand = "SELECT tbname, tbbidder, tbaward, tbowner FROM toolbox";
+            SqlDataSource1.UpdateCommand = "UPDATE toolbox SET tbaward = 'no' where tbowner='" + Hiddenfield1 + "' and tbname='" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+            SqlDataSource1.Update();
         }
         if (updater == "7")
         {
@@ -110,13 +110,13 @@ protected void Page_Load(object sender, EventArgs e)
 
                 if (DropDownList1.SelectedValue == "Bid")
                 {
-                    AccessDataSource1.UpdateCommand = "update tspots set tsbid = 'yes', tsbidamount = '" + TextBox3.Text + "'" + "where tsname = '" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
-                    AccessDataSource1.Update();
+                    SqlDataSource1.UpdateCommand = "update tspots set tsbid = 'yes', tsbidamount = '" + TextBox3.Text + "'" + "where tsname = '" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+                    SqlDataSource1.Update();
                 }
                 if (DropDownList1.SelectedValue == "Sell")
                 {
-                    AccessDataSource1.UpdateCommand = "update tspots set tssell = 'yes', tssellamount = '" + TextBox3.Text + "'" + "where tsname = '" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
-                    AccessDataSource1.Update();
+                    SqlDataSource1.UpdateCommand = "update tspots set tssell = 'yes', tssellamount = '" + TextBox3.Text + "'" + "where tsname = '" + GridView1.Rows[GridView1.SelectedIndex].Cells[3].Text + "'";
+                    SqlDataSource1.Update();
                 }
             }
         }
@@ -126,13 +126,13 @@ protected void Page_Load(object sender, EventArgs e)
             {
                 if (DropDownList2.SelectedValue == "Bid")
                 {
-                    AccessDataSource2.UpdateCommand = "update toolbox set tbbid = 'yes', tbbidamount = '" + TextBox4.Text + "'" + "where tbname = '" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-                    AccessDataSource2.Update();
+                    SqlDataSource2.UpdateCommand = "update toolbox set tbbid = 'yes', tbbidamount = '" + TextBox4.Text + "'" + "where tbname = '" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+                    SqlDataSource2.Update();
                 }
                 if (DropDownList2.SelectedValue == "Sell")
                 {
-                    AccessDataSource2.UpdateCommand = "update toolbox set tbsell = 'yes', tbsellamount = '" + TextBox4.Text + "'" + "where tbname = '" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
-                    AccessDataSource2.Update();
+                    SqlDataSource2.UpdateCommand = "update toolbox set tbsell = 'yes', tbsellamount = '" + TextBox4.Text + "'" + "where tbname = '" + GridView2.Rows[GridView2.SelectedIndex].Cells[3].Text + "'";
+                    SqlDataSource2.Update();
                 }
             }
         }
@@ -193,12 +193,11 @@ protected void Button5_Click(object sender, EventArgs e)
         
         <asp:Label ID="Label7" runat="server" Font-Bold="True" style="z-index: 1; left: 8px; top: 7px; position: absolute" Text="Money Earned" Font-Names="Victorian LET" ForeColor="#3333FF"></asp:Label>
         <asp:Label ID="Label8" runat="server" Font-Bold="True" style="z-index: 1; left: 204px; top: 8px; position: absolute; height: 22px; width: 87px" Text="Gold Coins" Font-Names="Victorian LET" ForeColor="#3333FF"></asp:Label>
-        
-    <asp:AccessDataSource id="AccessDataSource11" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:SqlDataSource>    
     
-    <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
-        <asp:ListBox ID="ListBox1" runat="server" DataSourceID="AccessDataSource8" DataTextField="amount" DataValueField="amount" Enabled="False" style="z-index: 1; left: 122px; top: 7px; position: absolute; height: 23px; width: 72px;"></asp:ListBox>
-        <asp:ListBox ID="ListBox2" runat="server" DataSourceID="AccessDataSource9" DataTextField="lucrisboos" DataValueField="lucrisboos" Enabled="False" style="z-index: 1; left: 295px; top: 7px; position: absolute; height: 25px; width: 75px;"></asp:ListBox>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:SqlDataSource>
+        <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataSource8" DataTextField="amount" DataValueField="amount" Enabled="False" style="z-index: 1; left: 122px; top: 7px; position: absolute; height: 23px; width: 72px;"></asp:ListBox>
+        <asp:ListBox ID="ListBox2" runat="server" DataSourceID="SqlDataSource9" DataTextField="lucrisboos" DataValueField="lucrisboos" Enabled="False" style="z-index: 1; left: 295px; top: 7px; position: absolute; height: 25px; width: 75px;"></asp:ListBox>
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 224px; top: 38px; position: absolute; border-radius: 15px;" Text="Buy" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
         
         <asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 696px; top: 35px; position: absolute; border-radius: 15px;" Text="Bid" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
@@ -206,21 +205,21 @@ protected void Button5_Click(object sender, EventArgs e)
        <asp:Button ID="Button4" runat="server" Style="z-index: 1; left: 627px; top: 316px; position: absolute; border-radius: 15px;" Text="Bid" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
         <asp:Button ID="Button5" runat="server" Style="z-index: 1; left: 168px; top: 855px; position: absolute; border-radius: 15px;" Text="Sell" OnClick="Button5_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
         <asp:Button ID="Button6" runat="server" Style="z-index: 1; left: 176px; top: 576px; position: absolute; border-radius: 15px;" Text="Sell" OnClick="Button6_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" /> 
-        <asp:AccessDataSource ID="AccessDataSource2" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner = ''" UpdateCommand="update tspots set tsprice = ''"></asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tsprice, tsapproved, tsactive, tsname, tsowner, tsreported, tscompleted, tssell, tsbid, tsbidder, tsaward FROM tspots WHERE tscoowner = ''" UpdateCommand="update tspots set tsprice = ''"></asp:SqlDataSource>
         <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 681px; top: 320px; position: absolute" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True" BackColor="#3399FF" BorderStyle="Ridge" ForeColor="White"></asp:TextBox>
-        <asp:AccessDataSource ID="AccessDataSource3" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbcoowner = ''"></asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbprice, tbapproved, tbactive, tbname, tbowner, tbreported, tbcompleted, tbsell, tbbid, tbbidder, tbaward FROM toolbox WHERE tbcoowner = ''"></asp:SqlDataSource>
         <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" Style="z-index: 1; left: 744px; top: 11px; position: absolute; right: 8px; border-radius: 15px;" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Buy a ToolBox Item</asp:HyperLink>
-        <asp:AccessDataSource ID="AccessDataSource4" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsname, tsowner, tsprice FROM tspots  WHERE  (tssell = 'yes')"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource5" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate, tsbidder FROM  tspots WHERE (tssell = 'yes')"></asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tsname, tsowner, tsprice FROM tspots  WHERE  (tssell = 'yes')"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate, tsbidder FROM  tspots WHERE (tssell = 'yes')"></asp:SqlDataSource>
         <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" Style="z-index: 1; left: 601px; top: 10px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Buy a Treasure Spot</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="~/approver.aspx" Style="z-index: 1; left: 375px; top: 11px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Treasure Spot Approving($0.25)</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="~/approver1.aspx" style="z-index: 1; left: 286px; top: 41px; position: absolute; width: 208px;" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Game Items Approving ($0.10)</asp:HyperLink>
-        <asp:AccessDataSource ID="AccessDataSource6" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbsell FROM toolbox WHERE (tbsell = 'yes')"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource7" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate, tbbidder FROM toolbox WHERE (tbsell = 'yes')"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource8" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT amount FROM appuserdetails where uname='Tresurehunter'"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource9" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT lucrisboos FROM loggedusers where luname='Tresurehunter'"></asp:AccessDataSource>
-        <asp:AccessDataSource ID="AccessDataSource10" runat="server" DataFile="~/App_Data/th.mdb" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate FROM toolbox  WHERE  (tbsell = 'yes' and tbselltype='bid')"></asp:AccessDataSource>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="AccessDataSource2" GridLines="None" PageSize="5" style="z-index: 1; left: 24px; top: 608px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1">
+        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbowner, tbprice, tbsell FROM toolbox WHERE (tbsell = 'yes')"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate, tbbidder FROM toolbox WHERE (tbsell = 'yes')"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT amount FROM appuserdetails where uname='Tresurehunter'"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT lucrisboos FROM loggedusers where luname='Tresurehunter'"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate FROM toolbox  WHERE  (tbsell = 'yes' and tbselltype='bid')"></asp:SqlDataSource>
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource2" GridLines="None" PageSize="5" style="z-index: 1; left: 24px; top: 608px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1">
             <Columns>
                 <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
                 <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
@@ -269,7 +268,7 @@ protected void Button5_Click(object sender, EventArgs e)
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#33276A" />
         </asp:GridView>
-        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="AccessDataSource3" GridLines="None" PageSize="5" style="z-index: 1; left: 19px; top: 885px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1">
+        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource3" GridLines="None" PageSize="5" style="z-index: 1; left: 19px; top: 885px; position: absolute; height: 204px; width: 668px" ToolTip="Treasure Spots" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1">
             <Columns>
                 <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
                 <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
@@ -318,7 +317,7 @@ protected void Button5_Click(object sender, EventArgs e)
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#33276A" />
         </asp:GridView>
-        <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="AccessDataSource4" PageSize="5" style="z-index: 1; left: 18px; top: 69px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2">
+        <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource4" PageSize="5" style="z-index: 1; left: 18px; top: 69px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2">
             <Columns>
                 <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
                 <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
@@ -343,7 +342,7 @@ protected void Button5_Click(object sender, EventArgs e)
             <SortedDescendingCellStyle BackColor="#F1E5CE" />
             <SortedDescendingHeaderStyle BackColor="#93451F" />
         </asp:GridView>
-        <asp:GridView ID="GridView4" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="AccessDataSource5" PageSize="5" style="z-index: 1; left: 420px; top: 66px; position: absolute; height: 211px; width: 530px" ToolTip="Treasure Spots" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2">
+        <asp:GridView ID="GridView4" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource5" PageSize="5" style="z-index: 1; left: 420px; top: 66px; position: absolute; height: 211px; width: 530px" ToolTip="Treasure Spots" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2">
             <Columns>
                 <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
                 <ControlStyle BackColor="#FF9900" Font-Names="Victorian LET" ForeColor="White" />
@@ -374,7 +373,7 @@ protected void Button5_Click(object sender, EventArgs e)
             <SortedDescendingCellStyle BackColor="#F1E5CE" />
             <SortedDescendingHeaderStyle BackColor="#93451F" />
         </asp:GridView>
-        <asp:GridView ID="GridView5" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="2" DataSourceID="AccessDataSource6" ForeColor="Black" GridLines="None" PageSize="5" style="z-index: 1; left: 18px; top: 341px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px">
+        <asp:GridView ID="GridView5" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="2" DataSourceID="SqlDataSource6" ForeColor="Black" GridLines="None" PageSize="5" style="z-index: 1; left: 18px; top: 341px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
                 <asp:CommandField ButtonType="Button" ShowSelectButton="True" >
@@ -402,7 +401,7 @@ protected void Button5_Click(object sender, EventArgs e)
             <SortedDescendingCellStyle BackColor="#E1DB9C" />
             <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
-        <asp:GridView ID="GridView6" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="2" DataSourceID="AccessDataSource7" ForeColor="Black" GridLines="None" PageSize="5" style="z-index: 1; left: 437px; top: 349px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px">
+        <asp:GridView ID="GridView6" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="2" DataSourceID="SqlDataSource7" ForeColor="Black" GridLines="None" PageSize="5" style="z-index: 1; left: 437px; top: 349px; position: absolute; height: 158px; width: 387px" ToolTip="Treasure Spots" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
                 <asp:CommandField ButtonType="Button" ShowSelectButton="True" >

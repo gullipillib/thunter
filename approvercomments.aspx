@@ -4,7 +4,7 @@
 <%@ Import Namespace="System.Configuration" %>
 <!DOCTYPE html>
 <script runat="server">
-    string Hiddenfield1 = Convert.ToString(Session["loggeduser"]);
+    
 
 </script>
 <html>
@@ -14,12 +14,12 @@
 </head>
 <body>
     <form runat="server">
-        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT tsapprovercomments FROM tspots WHERE (tsowner = '<%=Hiddenfield1%>')"> </asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tsapprovercomments FROM tspots WHERE (tsowner = '<%=Hiddenfield1%>')"></asp:SqlDataSource>
         
     <div>
     
     </div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="AccessDataSource1" GridLines="None" Height="460px" ShowHeader="False" style="z-index: 1; left: 27px; top: 65px; position: absolute; height: 460px; width: 821px" Width="821px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" GridLines="None" Height="460px" ShowHeader="False" style="z-index: 1; left: 27px; top: 65px; position: absolute; height: 460px; width: 821px" Width="821px">
             <Columns>
                 <asp:BoundField DataField="tsapprovercomments" HeaderText="tsapprovercomments" SortExpression="tsapprovercomments" />
             </Columns>
