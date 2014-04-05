@@ -28,10 +28,6 @@
         catch { }
        	string status = "no method"; try { status = Request.Form["status"]; }
         catch { }
-        string hubverify_token = "no hub.verify_token"; try { hubverify_token = Request.Form["hub_verify_token"]; }
-        catch { }
-        string hubmode = "no hub.mode"; try { hubmode = Request.Form["hub.mode"]; }
-        catch { }
         string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.Form["hub.challenge"]; }
         catch { }
 	
@@ -42,8 +38,8 @@
                     content["order_id"] = order_id;
                     content["status"] = status;
                     content["quantity"] = quantity;
-                    content["hub.verify_token"] = "cxdjpwMptEGJFEUdVqbcI7lzCeCHmwRQZCYhcwZD";
-                    content["hub.mode"] = hubmode;
+                    content["hub.verify_token"] = "test10004000qw";
+                    content["hub.mode"] = "subscribe";
                     content["hub.challenge"] = hubchallenge;
 			
 
