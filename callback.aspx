@@ -42,9 +42,9 @@
                     content["order_id"] = order_id;
                     content["status"] = status;
                     content["quantity"] = quantity;
-                    content["hub.verify_token"] = hubverify_token;
-                    content["hub.mode"] = hubmode;
-                    content["hub.challenge"] = hubchallenge;
+                    content["hub_verify_token"] = "cxdjpwMptEGJFEUdVqbcI7lzCeCHmwRQZCYhcwZD";
+                    content["hub_mode"] = hubmode;
+                    content["hub_challenge"] = hubchallenge;
 			
 
                     var res = new Dictionary<string, object>();
