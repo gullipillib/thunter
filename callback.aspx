@@ -28,11 +28,11 @@
         catch { }
        	string status = "no method"; try { status = Request.Form["status"]; }
         catch { }
-        string hubverify_token = "no hub.verify_token"; try { hubverify_token = Request.Form["hub.verify_token"]; }
+        string hubverify_token = "no hub.verify_token"; try { hubverify_token = Request.Form["hub_verify_token"]; }
         catch { }
-        string hubmode = "no hub.mode"; try { hubmode = Request.Form["hub.mode"]; }
+        string hubmode = "no hub.mode"; try { hubmode = Request.Form["hub_mode"]; }
         catch { }
-        string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.Form["hub.challenge"]; }
+        string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.Form["hub_challenge"]; }
         catch { }
 	
 	// Return the response
