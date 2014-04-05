@@ -37,9 +37,9 @@ protected void checkusername()
     {
 
         //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-        AccessDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
+        SqlDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
 
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         //DataTable dtr = dt;
@@ -49,17 +49,17 @@ protected void checkusername()
         if (dt.Rows.Count == 0)
         {
             //Insert User into appuser,loggeduser,ordercounter,winners;
-            AccessDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
-            AccessDataSource1.Insert();
-            AccessDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-            AccessDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + HiddenField4 + "', '{left : 0, top:0}', '" + HiddenField5 + "', '" + HiddenField5 + "', '100', 'yes', '0', '0', '0')";
-            AccessDataSource1.Insert();
-            AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-            AccessDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-            AccessDataSource1.Insert();
-            AccessDataSource1.SelectCommand = "SELECT * FROM winners";
-            AccessDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-            AccessDataSource1.Insert();
+            SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
+            SqlDataSource1.Insert();
+            SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
+            SqlDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + HiddenField4 + "', '{left : 0, top:0}', '" + HiddenField5 + "', '" + HiddenField5 + "', '100', 'yes', '0', '0', '0')";
+            SqlDataSource1.Insert();
+            SqlDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+            SqlDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
+            SqlDataSource1.Insert();
+            SqlDataSource1.SelectCommand = "SELECT * FROM winners";
+            SqlDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
+            SqlDataSource1.Insert();
         }
 
     }
@@ -93,8 +93,8 @@ protected void Page_Load(object sender, EventArgs e)
     Label13.Text = Convert.ToString(Session["tspotname"]);
     Label14.Text = Convert.ToString(Session["tspotprice"]);
     
-    AccessDataSource1.SelectCommand = "SELECT lulogintimes, luloggedin, lutspots FROM loggedusers";
-    DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+    SqlDataSource1.SelectCommand = "SELECT lulogintimes, luloggedin, lutspots FROM loggedusers";
+    DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
     DataTable dt = new DataTable();
     dt = dv.ToTable();
     DataView uniname = dt.DefaultView;
@@ -115,8 +115,8 @@ protected void Page_Load(object sender, EventArgs e)
         }
     }
        
-    AccessDataSource1.SelectCommand = "SELECT ccounter, uname  FROM ordercounter where uname ='" + Hiddenfield1 + "'";
-    dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+    SqlDataSource1.SelectCommand = "SELECT ccounter, uname  FROM ordercounter where uname ='" + Hiddenfield1 + "'";
+    dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
     dt = new DataTable();
     dt = dv.ToTable();
     uniname = dt.DefaultView;
@@ -196,21 +196,21 @@ protected void Button2_Click(object sender, EventArgs e)
 {
     if (HiddenField3 == "completed" & HiddenField2 == "https://treasurehunter.apphb.com/coin.html") 
     {
-        AccessDataSource1.SelectCommand = "SELECT * FROM tspots";
-        AccessDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails) Values ('no','yes','5','buy','no','no',' ',' ',' ','no',' ',' ',' ','" + Hiddenfield1 + "','thbuy','" + HiddenField2 + "','no',' ',' ',' ',' ','no',' ',' ',' ',' ',' ',' ',' ')";
-        AccessDataSource1.Insert();
-        AccessDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-        AccessDataSource1.UpdateCommand = "UPDATE ordercounter SET ccounter = '" + Convert.ToString(Convert.ToInt16(orderno.Text) + 1) + "' where uname='" + Hiddenfield1 + "'";
-        AccessDataSource1.Update();
+        SqlDataSource1.SelectCommand = "SELECT * FROM tspots";
+        SqlDataSource1.InsertCommand = "INSERT INTO tspots(tscompleted,tsnew,tsprice,tsselltype,tsactive,tsapproved,tsapprover1,tsapprover2,tsapprover3,tsbid,tsbidder,tsitems,tsname,tsowner,tsproductid,tsproducturl,tsreported,tsreportcomments,tsa1status,tsa2status,tsa3status,tssell,tsreportaddress,tsbiddate,tsaward,tsrplayers,tsdplayers,tsrplayersdetails,tsdplayersdetails) Values ('no','yes','5','buy','no','no',' ',' ',' ','no',' ',' ',' ','" + Hiddenfield1 + "','thbuy','" + HiddenField2 + "','no',' ',' ',' ',' ','no',' ',' ',' ',' ',' ',' ',' ')";
+        SqlDataSource1.Insert();
+        SqlDataSource1.SelectCommand = "SELECT * FROM ordercounter";
+        SqlDataSource1.UpdateCommand = "UPDATE ordercounter SET ccounter = '" + Convert.ToString(Convert.ToInt16(orderno.Text) + 1) + "' where uname='" + Hiddenfield1 + "'";
+        SqlDataSource1.Update();
         orderno.Text = Convert.ToString(Convert.ToInt16(orderno.Text) + 1);
-        AccessDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
-        DataView dv = (DataView)AccessDataSource1.Select(DataSourceSelectArguments.Empty);
+        SqlDataSource1.SelectCommand = "SELECT lutspots,luname FROM loggedusers";
+        DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         DataView uniname = dt.DefaultView;
         string lutspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
-        AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET luspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + Hiddenfield1 + "'";
-        AccessDataSource1.Update();
+        SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + Hiddenfield1 + "'";
+        SqlDataSource1.Update();
         Response.Redirect("~/create.aspx");
     }
 }
@@ -219,9 +219,9 @@ protected void Button2_Click(object sender, EventArgs e)
 
 protected void Button3_Click(object sender, EventArgs e)
 {
-    AccessDataSource1.SelectCommand = "SELECT * FROM tspots where tsowner ='" + Hiddenfield1 + "' order by tsorder DESC";
-    AccessDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + "1" + ", lubuylater='yes'" + "' where luname='" + Hiddenfield1 + "'";
-    AccessDataSource1.Update();
+    SqlDataSource1.SelectCommand = "SELECT * FROM tspots where tsowner ='" + Hiddenfield1 + "' order by tsorder DESC";
+    SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET lutspots = '" + "1" + ", lubuylater='yes'" + "' where luname='" + Hiddenfield1 + "'";
+    SqlDataSource1.Update();
 }
 </script>
 <html>
@@ -245,6 +245,24 @@ protected void Button3_Click(object sender, EventArgs e)
         }
     </style>
 </head>
+    <script type="text/javascript">
+        adroll_adv_id = "ULS24Y37NRAJDFZWJ4UKE7";
+        adroll_pix_id = "3FTYTXZLMBBWPDIH7TF7TB";
+        (function () {
+            var oldonload = window.onload;
+            window.onload = function () {
+                __adroll_loaded = true;
+                var scr = document.createElement("script");
+                var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+                scr.setAttribute('async', 'true');
+                scr.type = "text/javascript";
+                scr.src = host + "/j/roundtrip.js";
+                ((document.getElementsByTagName('head') || [null])[0] ||
+                 document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+                if (oldonload) { oldonload() }
+            };
+        }());
+</script>
 <body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px; background-color:blueviolet" >
   
  <form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 187px; left: 589px; width: 105px; height: 41px; z-index: 300;" method="post" target="_top">
@@ -273,9 +291,9 @@ protected void Button3_Click(object sender, EventArgs e)
        
         <h1 style="width: 231px; position: absolute; top: -9px; left: 355px; font-weight: bold; font-size: 30px; color: #FFCCFF; right: 294px;">Treasure Hunter</h1>
 
-        
 
-        <asp:AccessDataSource id="AccessDataSource1" DataFile="~/App_Data/th.mdb" runat="server"  SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"  InsertCommand="INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('', 'no', 'no', '0', 'no', '0', '')"> </asp:AccessDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" InsertCommand="INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('', 'no', 'no', '0', 'no', '0', '')"></asp:SqlDataSource>
+        
 
 
         <div id="mainwindow" style="background-color: #FFCCCC; border: 40px ridge #FFFFCC; height: 637px; z-index: 1; left: 23px; top: 38px; position: absolute; width: 706px;">
@@ -293,7 +311,7 @@ protected void Button3_Click(object sender, EventArgs e)
                 <label style="z-index: 300; left: 464px; top: 6px; position: absolute; height: 21px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal; right: 184px;">
                 $2</label>
                 <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
-                <button onclick="buy();" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 64px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</button>    
+                <button onclick="buybid();" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 64px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</button>    
             </div>
 
             <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 99px; left: 16px; width: 670px; height: 68px; background-color: #FF99FF;">
@@ -470,20 +488,16 @@ protected void Button3_Click(object sender, EventArgs e)
             // The dialog only opens if you've implemented the
             // Credits Callback payments_get_items.
             function buy() {
-FB.ui({
-      method: 'pay',
-      action: 'purchaseitem',
-      product: 'https://treasurehunter.apphb.com/tspot.html',
-      quantity: 1,                 // optional, defaults to 1
-     
-    },
-FB.ui(obj, function(data) {
-              console.log(data);
-            });
-    
-);
 showbuy();
-               
+                FB.api(
+  'me/treasure_huntermp:treasurespot',
+  'post',
+  {
+    product: "https://treasurehunter.apphb.com/tspot.html"
+  },
+  function(response) {
+    // handle the response
+  }
 );
             }
 
