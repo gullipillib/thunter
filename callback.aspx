@@ -28,9 +28,12 @@
         catch { }
        	string status = "no method"; try { status = Request.Form["status"]; }
         catch { }
-        string signedrequest = "no signedrequest"; try { signedrequest = Request.Form["signed_request"]; }
+        string hubverify_token = "no hub.verify_token"; try { hubverify_token = Request.Form["hub.verify_token"]; }
         catch { }
-    
+        string hubmode = "no hub.mode"; try { hubmode = Request.Form["hub.mode"]; }
+        catch { }
+        string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.Form["hub.challenge"]; }
+        catch { }
 	
 	// Return the response
         System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();
@@ -39,7 +42,9 @@
                     content["order_id"] = order_id;
                     content["status"] = status;
                     content["quantity"] = quantity;
-                    content["signed_request"] = "CAABwPIaM7IABAINCpFQqIJNnpzpQHU7v4MoqjG6IC8BT1O4vhSIusDLpAD7DU53aTY4QX6WLg4vGx4XK6u4cA3hus6cmbg9JMuEkU5z7CE60kXppRmBZAcIZBAUgaCudSYZB7L45h8XkzhuU3APMsdDAVcxdjpwMptEGJFEUdVqbcI7lzCeCHmwRQZCYhcwZD";
+                    content["hub.verify_token"] = "hubverify_token";
+                    content["hub.mode"] = hubmode;
+                    content["hub.challenge"] = hubchallenge;
 			
 
                     var res = new Dictionary<string, object>();
