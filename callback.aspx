@@ -30,9 +30,9 @@
         catch { }
         string hubverify_token = "no hub.verify_token"; try { hubverify_token = Request.Form["hub_verify_token"]; }
         catch { }
-        string hubmode = "no hub.mode"; try { hubmode = Request.Form["hub_mode"]; }
+        string hubmode = "no hub.mode"; try { hubmode = Request.Form["hub.mode"]; }
         catch { }
-        string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.Form["hub_challenge"]; }
+        string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.Form["hub.challenge"]; }
         catch { }
 	
 	// Return the response
@@ -42,9 +42,9 @@
                     content["order_id"] = order_id;
                     content["status"] = status;
                     content["quantity"] = quantity;
-                    content["hub_verify_token"] = "cxdjpwMptEGJFEUdVqbcI7lzCeCHmwRQZCYhcwZD";
-                    content["hub_mode"] = hubmode;
-                    content["hub_challenge"] = hubchallenge;
+                    content["hub.verify_token"] = "cxdjpwMptEGJFEUdVqbcI7lzCeCHmwRQZCYhcwZD";
+                    content["hub.mode"] = hubmode;
+                    content["hub.challenge"] = hubchallenge;
 			
 
                     var res = new Dictionary<string, object>();
