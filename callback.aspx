@@ -63,7 +63,8 @@
     }
 </script>
 <html>
-<head runat="server">
+<head runat="server" >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width" />
     <title></title>
 </head>
