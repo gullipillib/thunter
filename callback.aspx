@@ -42,7 +42,7 @@
                     content["order_id"] = order_id;
                     content["status"] = status;
                     content["quantity"] = quantity;
-                    content["hub.verify_token"] = "hubverify_token";
+                    content["hub.verify_token"] = hubverify_token;
                     content["hub.mode"] = hubmode;
                     content["hub.challenge"] = hubchallenge;
 			
