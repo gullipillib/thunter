@@ -2426,8 +2426,7 @@ d.getElementById(id)) {
     </audio>
 
             <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration:none; position: absolute; top: 6px; left: 713px">Tweet</a>
-            <a class="twitter-timeline" href="https://twitter.com/Treasur15030047" data-widget-id="451107320987004928" style="text-decoration:none; position: absolute; left: 713px; top: 56px">Tweets by 
-            @Treasur15030047</a>
+            
     <label style="position: absolute; top: 30px; left: 15px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large; font-weight: lighter;">Achievements</label>
 
     <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Lives</label>
