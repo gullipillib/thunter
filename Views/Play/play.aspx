@@ -2425,7 +2425,7 @@ d.getElementById(id)) {
     <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
     </audio>
 
-            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration:none; position: absolute; top: 6px; left: 713px">Tweet</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration:none; position: absolute; top: 6px; left: 6px">Tweet</a>
             
     <label style="position: absolute; top: 30px; left: 15px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large; font-weight: lighter;">Achievements</label>
 
