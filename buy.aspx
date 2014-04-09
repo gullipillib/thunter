@@ -502,15 +502,19 @@ showbuy();
             }
 
             function buybid() {
-FB.Canvas.Pay(
-  product: "https://treasurehunter.apphb.com/coin.html",
-  quantity: 1,
-  callback: delegate(FBResult response) {
-    Debug.Log(response.Text);
-  }
-);
+
                 
-            }
+var obj = {
+            method: 'pay',
+            action: 'purchaseitem',
+            product: 'https://treasurehunter.apphb.com/coin.html'
+          };
+
+          FB.ui(obj, function(data) {
+              console.log(data);
+            });
+
+           }
 function payer_promotion() {
             var obj = {
   method: 'fbpromotion',
