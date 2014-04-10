@@ -4,7 +4,7 @@
 protected void Page_Load(object sender, EventArgs e)    {                       
 string documentContents;
 System.Io.Stream receiveStream = Request.InputStream;
-System.Io.StreamReader readStream = new System.Io.StreamReader(receiveStream,Encoding.UTF8)
+System.Io.StreamReader readStream = new System.Io.StreamReader(receiveStream,Encoding.UTF8);
 documentContents = readStream.ReadToEnd();
 var DecodedSignedRequest = FacebookSignedRequest.Parse(FacebookContext.Current.AppSecret, documentContents);
 tsitemsfulldetails = Json.Decode(DecodedSignedRequest);
