@@ -3,6 +3,7 @@
 <script runat="server">            
 protected void Page_Load(object sender, EventArgs e)    {                       
 string documentContents;
+dynamic tsitemsfulldetails;
 System.IO.Stream receiveStream = Request.InputStream;
 System.IO.StreamReader readStream = new System.IO.StreamReader(receiveStream,Encoding.UTF8);
 documentContents = readStream.ReadToEnd();
