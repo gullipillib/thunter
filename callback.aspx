@@ -7,14 +7,9 @@ dynamic tsitemsfulldetails;
 System.IO.Stream receiveStream = Request.InputStream;
 System.IO.StreamReader readStream = new System.IO.StreamReader(receiveStream,Encoding.UTF8);
 documentContents = readStream.ReadToEnd();
-var decodedJson = documentContents.Replace("=", string.Empty).Replace('-', '+').Replace('_', '/');
-    var base64JsonArray = Convert.FromBase64String(decodedJson.PadRight(decodedJson.Length + (4 - decodedJson.Length % 4) % 4, '='));
-System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
-    var json = encoding.GetString(base64JsonArray);
-    var o = Newtonsoft.Json.Linq.JObject.Parse(json);
 
 
-tsitemsfulldetails = Json.Decode(o.ToString());
+tsitemsfulldetails = Json.Decode(documentContents);
 string order_id = tsitemsfulldetails.order_id;
 string status = tsitemsfulldetails.status;
 string quantity = tsitemsfulldetails.quantity;
