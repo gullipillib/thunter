@@ -3,8 +3,8 @@
 <script runat="server">            
 protected void Page_Load(object sender, EventArgs e)    {                       
 
-string hubmode = "no hub.mode"; try { hubmode = Request.Form["hub.mode"]; } catch { }
-string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.Form["hub.challenge"]; } catch { }
+string hubmode = "no hub.mode"; try { hubmode = Request.QueryString["hub.mode"]; } catch { }
+string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.QueryString["hub.challenge"]; } catch { }
 
 
 
