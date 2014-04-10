@@ -8,6 +8,7 @@ System.IO.StreamReader readStream = new System.IO.StreamReader(receiveStream,Enc
 documentContents = readStream.ReadToEnd();
 var decodedJson = documentContents.Replace("=", string.Empty).Replace('-', '+').Replace('_', '/');
     var base64JsonArray = Convert.FromBase64String(decodedJson.PadRight(decodedJson.Length + (4 - decodedJson.Length % 4) % 4, '='));
+System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
     var json = encoding.GetString(base64JsonArray);
     var o = JObject.Parse(json);
 
