@@ -6,7 +6,12 @@ string documentContents;
 System.IO.Stream receiveStream = Request.InputStream;
 System.IO.StreamReader readStream = new System.IO.StreamReader(receiveStream,Encoding.UTF8);
 documentContents = readStream.ReadToEnd();
-var DecodedSignedRequest = FacebookSignedRequest.Parse(FacebookContext.Current.AppSecret, documentContents);
+var decodedJson = documentContents.Replace("=", string.Empty).Replace('-', '+').Replace('_', '/');
+    var base64JsonArray = Convert.FromBase64String(decodedJson.PadRight(decodedJson.Length + (4 - decodedJson.Length % 4) % 4, '='));
+    var json = encoding.GetString(base64JsonArray);
+    var o = JObject.Parse(json);
+
+
 tsitemsfulldetails = Json.Decode(DecodedSignedRequest);
 string hubmode = tsitemsfulldetails.hub.mode;
 string hubchallenge = tsitemsfulldetails.hub.challenge;
