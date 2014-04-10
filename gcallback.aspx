@@ -14,7 +14,7 @@ System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
     var o = Newtonsoft.Json.Linq.JObject.Parse(json);
 
 
-tsitemsfulldetails = Json.Decode(o);
+tsitemsfulldetails = Json.Decode(o.ToString());
 string hubmode = tsitemsfulldetails.hub.mode;
 string hubchallenge = tsitemsfulldetails.hub.challenge;
 
