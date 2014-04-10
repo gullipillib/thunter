@@ -1,1 +1,22 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"  %><!DOCTYPE html><script runat="server">            protected void Page_Load(object sender, EventArgs e)    {                        // 1. Make sure facebook is authenticated        //-------------------------------------------        //CanvasAuthorizer auth = new CanvasAuthorizer { Permissions = new[] { "user_about_me" } };        //if (auth.Authorize()) { sigreq = Request.Params["signed_request"]; }        // 2. Grab the relevant CREDITS info from page POST form        //------------------------------------------------------        string quantity = "no info"; try { quantity = Request.Form["quantity"]; }        catch { }        string paymentid = "no payment_id"; try { paymentid = Request.Form["payment_id"]; }        catch { }       	string status = "no method"; try { status = Request.Form["status"]; }        catch { }        string requestid = "no request_id"; try { request_id = Request.Form["request_id"]; }        catch { }		// Return the response        System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();                                        var content = new Dictionary<string, object>();                    content["order_id"] = order_id;                    content["status"] = status;                    content["quantity"] = quantity;                    content["request_id"] = requestid;                    content["payment_id"] = "paymentid";                    content["quantity"] = quantity;			                    var res = new Dictionary<string, object>();                    res["content"] = content;                    var ob = jss.Serialize(res);                    ob = ob.Replace("#$", @"\/");                    Response.ContentType = "application/json";                    Response.Write(ob);                                        Response.End();                           }</script><html><head runat="server" >    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <meta name="viewport" content="width=device-width" />    <title></title></head><body style="height: 170px">    <div>                      </div></body></html>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage"  %>
+<!DOCTYPE html>
+<script runat="server">            
+protected void Page_Load(object sender, EventArgs e)    {                       
+string documentContents;
+System.Io.Stream receiveStream = Request.InputStream;
+System.Io.StreamReader readStream = new System.Io.StreamReader(receiveStream,Encoding.UTF8)
+documentContents = readStream.ReadToEnd();
+var DecodedSignedRequest = FacebookSignedRequest.Parse(FacebookContext.Current.AppSecret, documentContents);
+tsitemsfulldetails = Json.Decode(DecodedSignedRequest);
+string order_id = tsitemsfulldetails.order_id;
+string status = tsitemsfulldetails.status;
+string quantity = tsitemsfulldetails.quantity;
+string requestid = tsitemsfulldetails.request_id;
+string paymentid = tsitemsfulldetails.payment_id;
+string currency = tsitemsfulldetails.currency;
+string amount = tsitemsfulldetails.amount;
+
+
+
+
+        System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();                                       var content = new Dictionary<string, object>();                    content["order_id"] = order_id;                    content["status"] = status;                    content["quantity"] = quantity;                    content["request_id"] = requestid;                    content["payment_id"] = "paymentid";                    content["currency"] = currency; content["amount"] = amount;	var res = new Dictionary<string, object>();                    res["content"] = content;                    var ob = jss.Serialize(res);                    ob = ob.Replace("#$", @"\/");                   Response.ContentType = "application/json";                   Response.Write(ob);                                        Response.End();                           }</script><html><head runat="server" >    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <meta name="viewport" content="width=device-width" />    <title></title></head><body style="height: 170px">    <div>                      </div></body></html>
