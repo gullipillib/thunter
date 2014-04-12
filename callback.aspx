@@ -2,23 +2,26 @@
 <!DOCTYPE html>
 <script runat="server">            
 protected void Page_Load(object sender, EventArgs e)    {                       
-string documentContents;
-dynamic tsitemsfulldetails;
-System.IO.Stream receiveStream = Request.InputStream;
-System.IO.StreamReader readStream = new System.IO.StreamReader(receiveStream,Encoding.UTF8);
-documentContents = readStream.ReadToEnd();
 
 
-tsitemsfulldetails = Json.Decode(documentContents);
-string order_id = tsitemsfulldetails.order_id;
-string status = tsitemsfulldetails.status;
-string quantity = tsitemsfulldetails.quantity;
-string requestid = tsitemsfulldetails.request_id;
-string paymentid = tsitemsfulldetails.payment_id;
-string currency = tsitemsfulldetails.currency;
-string amount = tsitemsfulldetails.amount;
+// 1. Make sure facebook is authenticated
+        //-------------------------------------------
+        //CanvasAuthorizer auth = new CanvasAuthorizer { Permissions = new[] { "user_about_me" } };
+        //if (auth.Authorize()) { sigreq = Request.Params["signed_request"]; }
 
-
+        // 2. Grab the relevant CREDITS info from page POST form
+        //------------------------------------------------------
+        string quantity = "no info"; try { quantity = Request.Form["quantity"]; }
+        catch { }
+        string order_id = "no order id"; try { order_id = Request.Form["payment_id"]; }
+        catch { }
+       	string status = "no method"; try { status = Request.Form["status"]; }
+        catch { }
+        string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.Form["hub.challenge"]; }
+        catch { }
+	
+	// Return the response
+ 
 
 
         System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();                                       var content = new Dictionary<string, object>();                    content["order_id"] = order_id;                    content["status"] = status;                    content["quantity"] = quantity;                    content["request_id"] = requestid;                    content["payment_id"] = "paymentid";                    content["currency"] = currency; content["amount"] = amount;	var res = new Dictionary<string, object>();                    res["content"] = content;                    var ob = jss.Serialize(res);                    ob = ob.Replace("#$", @"\/");                   Response.ContentType = "application/json";                   Response.Write(ob);                                        Response.End();                           }</script><html><head runat="server" >    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <meta name="viewport" content="width=device-width" />    <title></title></head><body style="height: 170px">    <div>                      </div></body></html>
