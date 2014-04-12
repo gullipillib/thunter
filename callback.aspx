@@ -11,17 +11,29 @@ protected void Page_Load(object sender, EventArgs e)    {
 
         // 2. Grab the relevant CREDITS info from page POST form
         //------------------------------------------------------
-        string quantity = "no info"; try { quantity = Request.Form["quantity"]; }
+
+string requestid = "no request_id"; try { requestid = Request.Form["request_id"]; }
         catch { }
-        string order_id = "no order id"; try { order_id = Request.Form["payment_id"]; }
+
+string quantity = "no info"; try { quantity = Request.Form["quantity"]; }
         catch { }
-       	string status = "no method"; try { status = Request.Form["status"]; }
+        
+string paymentid = "no order id"; try { paymentid = Request.Form["payment_id"]; }
         catch { }
-        string hubchallenge = "no hub.challenge"; try { hubchallenge = Request.Form["hub.challenge"]; }
+       	
+string status = "no status"; try { status = Request.Form["status"]; }
+        catch { }
+        
+string amount = "no amount"; try { amount = Request.Form["amount"]; }
         catch { }
 	
-	// Return the response
+	string currency = "no currency"; try { currency = Request.Form["currency"]; }
+        catch { }
+	
+	
+
+// Return the response
  
 
 
-        System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();                                       var content = new Dictionary<string, object>();                    content["order_id"] = order_id;                    content["status"] = status;                    content["quantity"] = quantity;                    content["request_id"] = requestid;                    content["payment_id"] = "paymentid";                    content["currency"] = currency; content["amount"] = amount;	var res = new Dictionary<string, object>();                    res["content"] = content;                    var ob = jss.Serialize(res);                    ob = ob.Replace("#$", @"\/");                   Response.ContentType = "application/json";                   Response.Write(ob);                                        Response.End();                           }</script><html><head runat="server" >    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <meta name="viewport" content="width=device-width" />    <title></title></head><body style="height: 170px">    <div>                      </div></body></html>
+        System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();                                       var content = new Dictionary<string, object>();                                       content["status"] = status;                    content["quantity"] = quantity;                    content["request_id"] = requestid;                    content["payment_id"] = "paymentid";                    content["currency"] = currency; content["amount"] = amount;	var res = new Dictionary<string, object>();                    res["content"] = content;                    var ob = jss.Serialize(res);                    ob = ob.Replace("#$", @"\/");                   Response.ContentType = "application/json";                   Response.Write(ob);                                        Response.End();                           }</script><html><head runat="server" >    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    <meta name="viewport" content="width=device-width" />    <title></title></head><body style="height: 170px">    <div>                      </div></body></html>
