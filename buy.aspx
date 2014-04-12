@@ -511,7 +511,7 @@ var obj = {
           };
 
           FB.ui(obj, function(data) {
-              console.log(data);
+              alert(data);
             });
 
            }
