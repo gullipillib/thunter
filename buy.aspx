@@ -507,7 +507,8 @@ showbuy();
 var obj = {
             method: 'pay',
             action: 'purchaseitem',
-            product: 'https://treasurehunter.apphb.com/coin.html'
+            product: 'https://treasurehunter.apphb.com/coin.html,
+		dev_purchase_params: {'oscif': true}
           };
 
           FB.ui(obj, function(data) {
