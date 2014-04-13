@@ -265,7 +265,121 @@ protected void Button3_Click(object sender, EventArgs e)
 </script>
 <body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px; background-color:blueviolet" >
   
- <form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 187px; left: 589px; width: 105px; height: 41px; z-index: 300;" method="post" target="_top">
+ 
+<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js">
+            var itemno = '<%=orderno.Text%>';
+            FB.init({ appId: "123405257731200", status: true, cookie: true });
+
+            // The dialog only opens if you've implemented the
+            // Credits Callback payments_get_items.
+            function buy() {
+showbuy();
+                FB.api(
+  'me/treasure_huntermp:treasurespot',
+  'post',
+  {
+    product: "https://treasurehunter.apphb.com/tspot.html"
+  },
+  function(response) {
+    // handle the response
+  }
+);
+            }
+
+            function buybid() {
+
+                
+var obj = {
+            method: 'pay',
+            action: 'purchaseitem',
+            product: 'https://treasurehunter.apphb.com/coin.html,
+		dev_purchase_params: {'oscif': true}
+          };
+
+          FB.ui(obj, function(data) {
+              console.log(data);
+            });
+
+           }
+function payer_promotion() {
+            var obj = {
+  method: 'fbpromotion',
+  display: 'popup',
+  quantity: 1,
+  product: 'https://treasurehunter.apphb.com/coin.html'
+};
+
+FB.ui(obj, js_callback);
+            }
+
+            //https://www.facebook.com/dialog/pay?app_id=YOUR_APP_ID&redirect_uri=YOUR_REDIRECT_URI&action=buy_item&order_info=SOME_DEV_JSON_ORDER_INFO&dev_purchase_params={"oscif":true}    
+            // This JavaScript callback handles FB.ui's return data and differs
+            // from the Credits Callbacks.
+            var js_callback = function (data) {
+
+                if (data['order_id']) {
+                    // Facebook only returns an order_id if you've implemented
+                    // the Credits Callback payments_status_update and settled
+                    // the user's placed order.
+
+                    // Notify the user that the purchased item has been delivered
+                    // without a complete reload of the game.
+                    write_callback_data(
+                              "<br><b>Transaction Completed!</b> </br></br>"
+                              + "Data returned from Facebook: </br>"
+                              + "Order ID: " + data['order_id'] + "</br>"
+                              + "Status: " + data['status']);
+                } else if (data['error_code']) {
+                    // Appropriately alert the user.
+                    write_callback_data(
+                              "<br><b>Transaction Failed!</b> </br></br>"
+                              + "Error message returned from Facebook:</br>"
+                              + data['error_code'] + " - "
+                              + data['error_message']);
+                }
+
+                else {
+                    // Appropriately alert the user.
+                    write_callback_data("<br><b>Transaction failed!</b>");
+                }
+            }
+
+            function write_callback_data(str) {
+                //if (itemno == "ts1") {
+                //    document.getElementById('fb-ui-return-data').innerText = str;
+
+                //}
+
+                //if (itemno == "ts2") {
+                //    document.getElementById('fb-ui-return-data2').innerText = str;
+                //}
+
+            }
+
+	function  showbuy(){
+	
+		FB.api(
+  'me/objects/treasure_huntermp:buy',
+  'post',
+  {
+    app_id: 123405257731200,
+    type: "treasure_huntermp:buy",
+    url: "https://treasurehunter.apphb.com/purchase.html",
+    title: "Bought a Treasure Spot or Game Item - Congratulations",
+    image: "https://treasurehunter.apphb.com/images/coin.png",
+    description: "Buy a Treasure Spot"
+  },
+  function(response) {
+    // handle the response
+  }
+);	
+
+	}
+
+
+        </script>
+
+<form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 187px; left: 589px; width: 105px; height: 41px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -481,118 +595,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>--%>
         
-        <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js">
-            var itemno = '<%=orderno.Text%>';
-            FB.init({ appId: "123405257731200", status: true, cookie: true });
-
-            // The dialog only opens if you've implemented the
-            // Credits Callback payments_get_items.
-            function buy() {
-showbuy();
-                FB.api(
-  'me/treasure_huntermp:treasurespot',
-  'post',
-  {
-    product: "https://treasurehunter.apphb.com/tspot.html"
-  },
-  function(response) {
-    // handle the response
-  }
-);
-            }
-
-            function buybid() {
-
-                
-var obj = {
-            method: 'pay',
-            action: 'purchaseitem',
-            product: 'https://treasurehunter.apphb.com/coin.html,
-		dev_purchase_params: {'oscif': true}
-          };
-
-          FB.ui(obj, function(data) {
-              console.log(data);
-            });
-
-           }
-function payer_promotion() {
-            var obj = {
-  method: 'fbpromotion',
-  display: 'popup',
-  quantity: 1,
-  product: 'https://treasurehunter.apphb.com/coin.html'
-};
-
-FB.ui(obj, js_callback);
-            }
-
-            //https://www.facebook.com/dialog/pay?app_id=YOUR_APP_ID&redirect_uri=YOUR_REDIRECT_URI&action=buy_item&order_info=SOME_DEV_JSON_ORDER_INFO&dev_purchase_params={"oscif":true}    
-            // This JavaScript callback handles FB.ui's return data and differs
-            // from the Credits Callbacks.
-            var js_callback = function (data) {
-
-                if (data['order_id']) {
-                    // Facebook only returns an order_id if you've implemented
-                    // the Credits Callback payments_status_update and settled
-                    // the user's placed order.
-
-                    // Notify the user that the purchased item has been delivered
-                    // without a complete reload of the game.
-                    write_callback_data(
-                              "<br><b>Transaction Completed!</b> </br></br>"
-                              + "Data returned from Facebook: </br>"
-                              + "Order ID: " + data['order_id'] + "</br>"
-                              + "Status: " + data['status']);
-                } else if (data['error_code']) {
-                    // Appropriately alert the user.
-                    write_callback_data(
-                              "<br><b>Transaction Failed!</b> </br></br>"
-                              + "Error message returned from Facebook:</br>"
-                              + data['error_code'] + " - "
-                              + data['error_message']);
-                }
-
-                else {
-                    // Appropriately alert the user.
-                    write_callback_data("<br><b>Transaction failed!</b>");
-                }
-            }
-
-            function write_callback_data(str) {
-                //if (itemno == "ts1") {
-                //    document.getElementById('fb-ui-return-data').innerText = str;
-
-                //}
-
-                //if (itemno == "ts2") {
-                //    document.getElementById('fb-ui-return-data2').innerText = str;
-                //}
-
-            }
-
-	function  showbuy(){
-	
-		FB.api(
-  'me/objects/treasure_huntermp:buy',
-  'post',
-  {
-    app_id: 123405257731200,
-    type: "treasure_huntermp:buy",
-    url: "https://treasurehunter.apphb.com/purchase.html",
-    title: "Bought a Treasure Spot or Game Item - Congratulations",
-    image: "https://treasurehunter.apphb.com/images/coin.png",
-    description: "Buy a Treasure Spot"
-  },
-  function(response) {
-    // handle the response
-  }
-);	
-
-	}
-
-
-        </script>
+        
 
 
    
