@@ -512,7 +512,7 @@ var obj = {
           };
 
           FB.ui(obj, function(data) {
-              alert(data);
+              console.log(data);
             });
 
            }
