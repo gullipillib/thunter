@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml">
+<head>   
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+window.onload =  function() {
+        FB.init({
+          appId      : '123405257731200',
+          status     : true,
+          cookie     : true,
+          xfbml      : true
+        });
+
+
+function() {                
+var obj = {
+            method: 'pay',
+            action: 'purchaseitem',
+            product: 'https://treasurehunter.apphb.com/coin.html,
+		dev_purchase_params: {'oscif': true}
+          };
+
+          FB.ui(obj, function(data) {
+              console.log(data);
+            });
+
+           }
+
+</script> 
+<div class="returndata" id="output"></div>
+
+
+    <div id="fb-root"></div>
+
+</body></html>

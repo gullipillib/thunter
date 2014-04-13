@@ -409,19 +409,7 @@ FB.ui(obj, js_callback);
                 <label style="z-index: 300; left: 464px; top: 6px; position: absolute; height: 21px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal; right: 184px;">
                 $2</label>
                 <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
-                <button onClick="function buybid() {                
-var obj = {
-            method: 'pay',
-            action: 'purchaseitem',
-            product: 'https://treasurehunter.apphb.com/coin.html,
-		dev_purchase_params: {'oscif': true}
-          };
-
-          FB.ui(obj, function(data) {
-              console.log(data);
-            });
-
-           }" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 64px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</button>    
+                  
             </div>
 
             <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 99px; left: 16px; width: 670px; height: 68px; background-color: #FF99FF;">
@@ -478,7 +466,9 @@ var obj = {
 
         
 
-<asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/trialpay.aspx" style="z-index: 1; left: 606px; top: 638px; position: absolute; bottom: 72px; border-radius:15px; background-color: #FF9900;  width: 122px; cursor:pointer; text-decoration:none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="~/Images/trialpay.jpg"></asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/trialpay.aspx" style="z-index: 1; left: 606px; top: 638px; position: absolute; bottom: 72px; border-radius:15px; background-color: #FF9900;  width: 122px; cursor:pointer; text-decoration:none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="~/Images/trialpay.jpg"></asp:hyperlink> 
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/fbbuy.html" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 64px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</asp:hyperlink> 
+  
 
         
 <asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:751px; top:-3px; border-radius:15px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" ToolTip="Use this to Play further on, Create one Treasure Spot but you cannot Sell or Bid or Approve to Earn Real Cash" />
