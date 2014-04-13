@@ -261,8 +261,22 @@ protected void Button3_Click(object sender, EventArgs e)
                  document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
                 if (oldonload) { oldonload() }
             };
-        }());
-</script>
+        }()); function buybid() {
+
+                
+var obj = {
+            method: 'pay',
+            action: 'purchaseitem',
+            product: 'https://treasurehunter.apphb.com/coin.html,
+		dev_purchase_params: {'oscif': true}
+          };
+
+          FB.ui(obj, function(data) {
+              console.log(data);
+            });
+
+           }
+ </script>
 <body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px; background-color:blueviolet" >
   
  
@@ -286,22 +300,7 @@ showbuy();
 );
             }
 
-            function buybid() {
-
-                
-var obj = {
-            method: 'pay',
-            action: 'purchaseitem',
-            product: 'https://treasurehunter.apphb.com/coin.html,
-		dev_purchase_params: {'oscif': true}
-          };
-
-          FB.ui(obj, function(data) {
-              console.log(data);
-            });
-
-           }
-function payer_promotion() {
+            function payer_promotion() {
             var obj = {
   method: 'fbpromotion',
   display: 'popup',
