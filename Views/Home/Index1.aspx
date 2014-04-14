@@ -309,8 +309,8 @@
 <head runat="server">
     
     <meta name="viewport" content="width=device-width" />
-    
-    <title>treasurehunter</title>
+    <meta name="keywords" content="Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game ">
+    <title>treasurehunter fr</title>
 </head>
 <script type="text/javascript">
 adroll_adv_id = "ULS24Y37NRAJDFZWJ4UKE7";
