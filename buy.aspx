@@ -408,9 +408,7 @@ FB.ui(obj, js_callback);
                 Facebook Payment System</label>
                 <label style="z-index: 300; left: 464px; top: 6px; position: absolute; height: 21px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal; right: 184px;">
                 $2</label>
-                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
-                  
-            </div>
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" /><asp:hyperlink ID="Hyperlink14" runat="server"  Font-Underline="False" NavigateUrl="~/fbbuy.html" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 64px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</asp:hyperlink>           </div>
 
             <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 99px; left: 16px; width: 670px; height: 68px; background-color: #FF99FF;">
                 <label style="z-index: 300; left: 13px; top: 18px; position: absolute; height: 35px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
@@ -467,7 +465,7 @@ FB.ui(obj, js_callback);
         
 
 <asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/trialpay.aspx" style="z-index: 1; left: 606px; top: 638px; position: absolute; bottom: 72px; border-radius:15px; background-color: #FF9900;  width: 122px; cursor:pointer; text-decoration:none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="~/Images/trialpay.jpg"></asp:hyperlink> 
-<asp:hyperlink ID="Hyperlink14" runat="server"  Font-Underline="False" NavigateUrl="~/fbbuy.html" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 64px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</asp:hyperlink> 
+
   
 
         
