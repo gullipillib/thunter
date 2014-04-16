@@ -1,0 +1,52 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Treasurehunter Payment App</title>
+  </head>
+  <body>
+
+    <h2>FaceBook Payments - TreasureHunter</h2>
+	<h3>Buy a New TreasureSpot for $2 and gt access to your TreasureSpot Creator. Using that obe can create his/her spot, upload a 2 min video, insert game items in your spot, add sound and effects. You can sell your TreasureSpot at a later date in Direct Selling or Bid System. Purchasing a Treasure Spot Enables eligibility for Prizes and other Benefits.</h3>
+    <button id="pay">TreasureSpot Promotions</button>
+    <div class="returndata" id="output"></div>
+<button onclick="payer_promotion();">Free TreasureSpots</button>
+
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+      // On load, the user hasn't clicked on the payer_promotion unit
+      var has_clicked = false;
+      var dialog_window;
+
+      function payer_promotion() {
+        if (!has_clicked) {
+          // If first click, open payer_promotion dialog
+          var obj = {
+            method: 'fbpromotion',
+            display: 'popup',
+            quantity: 1,
+            product: 'https://treasurehunter.apphb.com/coin.html'
+          };
+
+          FB.ui(obj, function(){
+            // call back to your server to see if user's balance changed
+          });
+
+          // Mark unit as clicked by user
+          has_clicked = true;
+        } else {
+          // For subsequent clicks, alert user
+          alert("Payer Promotion already clicked!");
+        }
+      }
+      // Load the SDK Asynchronously
+      (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+      }(document));
+    </script>
+  </body>
+</html>
