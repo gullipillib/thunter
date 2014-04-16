@@ -458,7 +458,7 @@ FB.ui(obj, js_callback);
                 <label style="z-index: 300; left: 464px; top: 27px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
                 Free</label>&nbsp;
                 <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
-                </div> <asp:hyperlink ID="Hyperlink15" runat="server" Font-Underline="False" NavigateUrl="~/fbpromo.html" style="z-index: 300; left: 556px; top: 474px; position: absolute; width: 124px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Free Promotions</asp:hyperlink>                       </div>
+                </div> <asp:hyperlink ID="Hyperlink15" runat="server" Font-Underline="False" NavigateUrl="https://www.facebook.com/dialog/fbpromotion/?app_id=123405257731200&quantity=1&product=https://treasurehunter.apphb.com/coin.html" style="z-index: 300; left: 556px; top: 474px; position: absolute; width: 124px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Free Promotions</asp:hyperlink>                       </div>
 
         
 
