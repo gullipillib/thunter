@@ -309,8 +309,9 @@
 <head runat="server">
     
     <meta name="viewport" content="width=device-width" />
+<meta name="description" content="Free Online Game TreasureHunter Facebook">
     <meta name="keywords" content="free online games, Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game "/>
-    <title>treasurehunter fr</title>
+    <title>Treasurehunter Free Online Game</title>
 </head>
 <script type="text/javascript">
 adroll_adv_id = "ULS24Y37NRAJDFZWJ4UKE7";
