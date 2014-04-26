@@ -358,10 +358,7 @@ to {left:10px;}
  </style>
 
     <form id="form1" runat="server">
-<div style="position:fixed;top:0px;left:0px;z-index:1000;">
-<img alt='[x]' src='http://www.advertisegame.com/images/x-button.png' onclick='var el=this.parentNode; el.parentNode.removeChild(el);' style='right: 0px;position: absolute;top: 0px;z-index: 99;' />
-<iframe src="http://www.advertisegame.com/show.php?pl=11696" width="728" height="90" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
-</div>
+
     <div>
     
         <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="35pt" ForeColor="#FFFFCC" style=" z-index: 1; left: 320px; top: 4px; position: absolute; bottom: 514px; width: 357px; margin-bottom: 0px;" Text="Treasure Hunter" BorderStyle="None" Font-Names="Victorian LET"></asp:Label>
