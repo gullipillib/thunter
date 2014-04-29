@@ -357,11 +357,8 @@ to {left:10px;}
 }
 
 .body {
-  background:url('https://treasurehunter,apphb.com/images/bg.png') #A98436 no-repeat 50% 50%;
-  background-attachment: fixed;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  background-size: contain;
+  background:url('~/images/bg.png');
+  background-color:#cccccc;
 }
 
  </style>
