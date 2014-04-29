@@ -355,6 +355,15 @@ to {left:10px;}
 from {left:8px;}
 to {left:10px;}
 }
+
+body {
+  background:url('https://treasurehunter,apphb.com/images/bg.png') #A98436 no-repeat 50% 50%;
+  background-attachment: fixed;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-size: contain;
+}
+
  </style>
 
     <form id="form1" runat="server">
