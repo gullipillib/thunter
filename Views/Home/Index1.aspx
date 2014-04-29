@@ -547,7 +547,7 @@ FB.api(
                 <asp:DataList ID="DataList1" runat="server" BackColor="#FFCCFF" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="SqlDataSource2" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 15px; top: 367px; position: absolute; height: 187px; width: 410px; right: 436px;" Font-Names="calligraph421 bt, 9pt">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
-            <ItemStyle BackColor="#DEDFDE" ForeColor="Black" />
+            <ItemStyle BackColor="Transparent" ForeColor="White" />
             <ItemTemplate>
                 <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("luimg") %>' style=" thick ridge #CC66FF; z-index: 1; left: 4px; top: 17px; position: absolute; width:60px; height:60px" />
                 <br />
@@ -566,7 +566,7 @@ FB.api(
         <asp:DataList ID="DataList2" runat="server" BackColor="#FFCCFF" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="SqlDataSource3" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 455px; top: 367px; position: absolute; height: 183px; width: 426px" Font-Names="calligraph421 bt, 9pt">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
-            <ItemStyle BackColor="#DEDFDE" ForeColor="Black" />
+            <ItemStyle BackColor="Transparent" ForeColor="White" />
             <ItemTemplate>
                 Name
                 <asp:Label ID="unameLabel" runat="server" Text='<%# Eval("uname") %>' />
