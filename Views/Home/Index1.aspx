@@ -331,7 +331,7 @@ window.onload = function(){
 }());
 </script>
 
-<body style="height: 587px; overflow: hidden; background="~/images/bg.png">
+<body style="height: 587px; overflow: hidden; background-image:url("~/images/bg.png")>
 <style type="text/css">
     .twoto3d {
             
