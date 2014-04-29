@@ -331,7 +331,7 @@ window.onload = function(){
 }());
 </script>
 
-<body style="height: 587px; overflow: hidden; background-image:url("~/images/bg.png")>
+<body style="height: 587px; overflow: hidden;" class="body">
 <style type="text/css">
     .twoto3d {
             
@@ -356,7 +356,7 @@ from {left:8px;}
 to {left:10px;}
 }
 
-body {
+.body {
   background:url('https://treasurehunter,apphb.com/images/bg.png') #A98436 no-repeat 50% 50%;
   background-attachment: fixed;
   -webkit-background-size: contain;
