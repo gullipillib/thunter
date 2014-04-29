@@ -357,8 +357,8 @@ to {left:10px;}
 }
 
 .body {
-  background:url('~/images/bg.png');
-  background-color:#cccccc;
+  background:url('~/images/bg.jpg');
+  background-color:#339966;
 }
 
  </style>
