@@ -476,7 +476,7 @@ FB.api(
     
         <img alt="" src="https://treasurehunter.apphb.com/Images/3dglass.gif" style="z-index: 1; left: 474px; top: 166px; position: absolute; height: 27px; width: 56px" />
          <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 1; left: 700px; top: 44px; position: absolute; height: 62px; width: 166px" />         
-        <asp:Label ID="Label5" runat="server" Font-Size="8pt" style="z-index: 1; left: 401px; top: 587px; position: absolute" Text="Treasure Hunter - 2013"></asp:Label>
+        <asp:Label ID="Label5" runat="server" Font-Size="8pt" ForeColor="White" style="z-index: 1; left: 401px; top: 587px; position: absolute" Text="Treasure Hunter - 2014"></asp:Label>
        
         
    <a href="https://treasurehunter.apphb.com/tools.aspx" target="_self" style="position:absolute;left:733px; top:170px; width:152px; text-decoration:none; background-color: #0000FF; color: #FFFFFF; border-radius:20px; text-align: center; height: 22px;" > Go to My ToolsBox </a> 
@@ -547,7 +547,7 @@ FB.api(
                 <asp:DataList ID="DataList1" runat="server" BackColor="Transparent" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="SqlDataSource2" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 15px; top: 367px; position: absolute; height: 187px; width: 410px; right: 436px;" Font-Names="calligraph421 bt, 9pt">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
-            <ItemStyle BackColor="Transparent" ForeColor="Blue" />
+            <ItemStyle BackColor="Transparent" ForeColor="White" />
             <ItemTemplate>
                 <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("luimg") %>' style=" thick ridge #CC66FF; z-index: 1; left: 4px; top: 17px; position: absolute; width:60px; height:60px" />
                 <br />
@@ -566,7 +566,7 @@ FB.api(
         <asp:DataList ID="DataList2" runat="server" BackColor="Transparent" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="SqlDataSource3" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" style="border: thick ridge #CC66FF; z-index: 1; left: 455px; top: 367px; position: absolute; height: 183px; width: 426px" Font-Names="calligraph421 bt, 9pt">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
-            <ItemStyle BackColor="Transparent" ForeColor="Blue" />
+            <ItemStyle BackColor="Transparent" ForeColor="White" />
             <ItemTemplate>
                 Name
                 <asp:Label ID="unameLabel" runat="server" Text='<%# Eval("uname") %>' />
