@@ -475,23 +475,6 @@ public string one5 = "";
     <title></title>
 </head>
 
-<script type="text/javascript">
-adroll_adv_id = "ULS24Y37NRAJDFZWJ4UKE7";
-adroll_pix_id = "3FTYTXZLMBBWPDIH7TF7TB";
-(function () {
-var oldonload = window.onload;
-window.onload = function(){
-   __adroll_loaded=true;
-   var scr = document.createElement("script");
-   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
-   scr.setAttribute('async', 'true');
-   scr.type = "text/javascript";
-   scr.src = host + "/j/roundtrip.js";
-   ((document.getElementsByTagName('head') || [null])[0] ||
-    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
-   if(oldonload){oldonload()}};
-}());
-</script>
 
 <body   onbeforeunload="getcoins" style="height: 507px; background-color: #000000; width: 967px; overflow: hidden; margin-top: 15px;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
 
@@ -703,7 +686,7 @@ window.onload = function(){
                     }
                 }
 
-                var myaddctrl1 = window.setInterval(function () { getTspot() }, 270000);
+                var myaddctrl1 = window.setInterval(function () { getTspot() }, 140000);
                 function getTspot() {
 
 
@@ -2352,7 +2335,23 @@ window.onload = function(){
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123405257731200";
     fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+
+function  showbuy(){
+		
+FB.api(
+  'me/treasure_huntermp:treasurespot',
+  'post',
+  {
+    product: "https://treasurehunter.apphb.com/treasurespot.html"
+  },
+  function(response) {
+    // handle the response
+  }
+);
+	}
+
+</script>
  
     <script>!function (d, s, id) {
 var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) {
@@ -2395,8 +2394,10 @@ d.getElementById(id)) {
             <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM toolbox"></asp:SqlDataSource>
             <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT treasurevalue FROM treasureprize"></asp:SqlDataSource>
             
+
+<div class="fb-like-box" data-href="https://www.facebook.com/Treasurehuntergame" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
             
-            <div class="fb-like" data-href="https://apps.facebook.com/Treasure_huntermp" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
+            
         
 
 
@@ -2415,7 +2416,7 @@ d.getElementById(id)) {
 
 
 
-        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 168px; top: 32px; position: absolute; width: 40px; right: 660px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
+        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 17px; top: 2px; position: absolute; width: 40px; right: 660px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">50</asp:TextBox>
             <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 4px; top: 243px; position: absolute; width: 966px; right: -90px; height: 70px; vertical-align:middle; " ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Tahoma" Font-Size="13pt"></asp:TextBox>
             <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
@@ -2427,7 +2428,7 @@ d.getElementById(id)) {
 
             <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration:none; position: absolute; top: 6px; left: 6px">Tweet</a>
             
-    <label style="position: absolute; top: 30px; left: 15px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large; font-weight: lighter;">Achievements</label>
+    <label style="position: absolute; top: 1px; left: 1px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large; font-weight: lighter;">Achievements</label>
 
     <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Lives</label>
 
