@@ -1,0 +1,27 @@
+﻿
+@using Microsoft.AspNet.Mvc.Facebook.Models
+@using treasurehunter.Models
+@model MyAppUser
+@{
+    //ViewBag.Title = "Treasure Hunter";
+    
+}
+
+
+
+@if (Request.Browser.IsMobileDevice)
+{
+    
+} else {
+    Session["reached"] = "no";
+    Response.Redirect("~/Home/Index1");
+}
+
+@{
+    Session["reached"] = "no";
+    Response.Redirect("~/Home/Index1");
+    
+   
+}
+       
+   

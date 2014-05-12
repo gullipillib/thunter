@@ -261,11 +261,109 @@ protected void Button3_Click(object sender, EventArgs e)
                  document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
                 if (oldonload) { oldonload() }
             };
-        }());
-</script>
+        }());  </script>
 <body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px; background-color:blueviolet" >
   
- <form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 187px; left: 589px; width: 105px; height: 41px; z-index: 300;" method="post" target="_top">
+ 
+<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js">
+            var itemno = '<%=orderno.Text%>';
+            FB.init({ appId: "123405257731200", status: true, cookie: true });
+
+            // The dialog only opens if you've implemented the
+            // Credits Callback payments_get_items.
+            function buy() {
+showbuy();
+                FB.api(
+  'me/treasure_huntermp:treasurespot',
+  'post',
+  {
+    product: "https://treasurehunter.apphb.com/tspot.html"
+  },
+  function(response) {
+    // handle the response
+  }
+);
+            }
+
+            function payer_promotion() {
+            var obj = {
+  method: 'fbpromotion',
+  display: 'popup',
+  quantity: 1,
+  product: 'https://treasurehunter.apphb.com/coin.html'
+};
+
+FB.ui(obj, js_callback);
+            }
+
+            //https://www.facebook.com/dialog/pay?app_id=YOUR_APP_ID&redirect_uri=YOUR_REDIRECT_URI&action=buy_item&order_info=SOME_DEV_JSON_ORDER_INFO&dev_purchase_params={"oscif":true}    
+            // This JavaScript callback handles FB.ui's return data and differs
+            // from the Credits Callbacks.
+            var js_callback = function (data) {
+
+                if (data['order_id']) {
+                    // Facebook only returns an order_id if you've implemented
+                    // the Credits Callback payments_status_update and settled
+                    // the user's placed order.
+
+                    // Notify the user that the purchased item has been delivered
+                    // without a complete reload of the game.
+                    write_callback_data(
+                              "<br><b>Transaction Completed!</b> </br></br>"
+                              + "Data returned from Facebook: </br>"
+                              + "Order ID: " + data['order_id'] + "</br>"
+                              + "Status: " + data['status']);
+                } else if (data['error_code']) {
+                    // Appropriately alert the user.
+                    write_callback_data(
+                              "<br><b>Transaction Failed!</b> </br></br>"
+                              + "Error message returned from Facebook:</br>"
+                              + data['error_code'] + " - "
+                              + data['error_message']);
+                }
+
+                else {
+                    // Appropriately alert the user.
+                    write_callback_data("<br><b>Transaction failed!</b>");
+                }
+            }
+
+            function write_callback_data(str) {
+                //if (itemno == "ts1") {
+                //    document.getElementById('fb-ui-return-data').innerText = str;
+
+                //}
+
+                //if (itemno == "ts2") {
+                //    document.getElementById('fb-ui-return-data2').innerText = str;
+                //}
+
+            }
+
+	function  showbuy(){
+	
+		FB.api(
+  'me/objects/treasure_huntermp:buy',
+  'post',
+  {
+    app_id: 123405257731200,
+    type: "treasure_huntermp:buy",
+    url: "https://treasurehunter.apphb.com/purchase.html",
+    title: "Bought a Treasure Spot or Game Item - Congratulations",
+    image: "https://treasurehunter.apphb.com/images/coin.png",
+    description: "Buy a Treasure Spot"
+  },
+  function(response) {
+    // handle the response
+  }
+);	
+
+	}
+
+
+        </script>
+
+<form id="Form4" action="https://www.paypal.com/cgi-bin/webscr"  style="position:absolute; top: 187px; left: 589px; width: 105px; height: 41px; z-index: 300;" method="post" target="_top">
 <input type="hidden" name="cmd" value="_xclick"/>
 <input type="hidden" name="business" value="servicestwts@yahoo.com"/>
 <input type="hidden" name="lc" value="IN"/>
@@ -310,9 +408,7 @@ protected void Button3_Click(object sender, EventArgs e)
                 Facebook Payment System</label>
                 <label style="z-index: 300; left: 464px; top: 6px; position: absolute; height: 21px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal; right: 184px;">
                 $2</label>
-                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
-                <button onclick="buybid();" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 64px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</button>    
-            </div>
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" /><asp:hyperlink ID="Hyperlink14" runat="server"  Font-Underline="False" NavigateUrl="~/fbbuy.html" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 110px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</asp:hyperlink>           </div>
 
             <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 99px; left: 16px; width: 670px; height: 68px; background-color: #FF99FF;">
                 <label style="z-index: 300; left: 13px; top: 18px; position: absolute; height: 35px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
@@ -362,24 +458,24 @@ protected void Button3_Click(object sender, EventArgs e)
                 <label style="z-index: 300; left: 464px; top: 27px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
                 Free</label>&nbsp;
                 <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
-                </div>
-            <button onclick="payer_promotion();" style="z-index: 300; left: 556px; top: 474px; position: absolute; width: 95px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Payer Promotion</button>
-            </div>
+                </div> <asp:hyperlink ID="Hyperlink15" runat="server" Font-Underline="False" NavigateUrl="https://www.facebook.com/dialog/fbpromotion/?app_id=123405257731200&quantity=1&product=https://treasurehunter.apphb.com/coin.html" style="z-index: 300; left: 556px; top: 474px; position: absolute; width: 124px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Free Promotions</asp:hyperlink>                       </div>
 
         
 
-<asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/trialpay.aspx" style="z-index: 1; left: 606px; top: 638px; position: absolute; bottom: 72px; border-radius:15px; background-color: #FF9900;  width: 122px; cursor:pointer; text-decoration:none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="~/Images/trialpay.jpg"></asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/trialpay.aspx" style="z-index: 1; left: 606px; top: 638px; position: absolute; bottom: 72px; border-radius:15px; background-color: #FF9900;  width: 122px; cursor:pointer; text-decoration:none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="~/Images/trialpay.jpg"></asp:hyperlink> 
+
+  
 
         
 <asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:751px; top:-3px; border-radius:15px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" ToolTip="Use this to Play further on, Create one Treasure Spot but you cannot Sell or Bid or Approve to Earn Real Cash" />
             
 <asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 101px; top: -4px; position: absolute; bottom: 746px; border-radius:15px; background-color: #FF9900;  width: 66px;" Target="_self" ForeColor="White" BackColor="#FF9900">My Game</asp:hyperlink>   
-<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Home/Index1" style="z-index: 1; border-radius:15px; background-color: #FF9900;  left: 18px; top: -6px; position: absolute; height: 23px; width: 43px;" Target="_self" ForeColor="White">Home</asp:hyperlink>
+<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; border-radius:15px; background-color: #FF9900;  left: 18px; top: -6px; position: absolute; height: 23px; width: 43px;" Target="_self" ForeColor="White">Winners</asp:hyperlink>
 
 
         
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; left: 598px; top: 2px; position: absolute; right: 140px; border-radius:15px; background-color: #FF9900; " Target="_self" Enabled="False" ForeColor="White">Go on a Treasurehunt</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Home/Index1" style="z-index: 1; left: 598px; top: 2px; position: absolute; right: 140px; border-radius:15px; background-color: #FF9900; " Target="_self" Enabled="False" ForeColor="White">Go on a Treasurehunt</asp:hyperlink>
         
         
 <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 517px; top: 373px; position: absolute" Text=""></asp:Label>
@@ -481,114 +577,7 @@ protected void Button3_Click(object sender, EventArgs e)
 <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 </form>--%>
         
-        <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js">
-            var itemno = '<%=orderno.Text%>';
-            FB.init({ appId: "123405257731200", status: true, cookie: true });
-
-            // The dialog only opens if you've implemented the
-            // Credits Callback payments_get_items.
-            function buy() {
-showbuy();
-                FB.api(
-  'me/treasure_huntermp:treasurespot',
-  'post',
-  {
-    product: "https://treasurehunter.apphb.com/tspot.html"
-  },
-  function(response) {
-    // handle the response
-  }
-);
-            }
-
-            function buybid() {
-
-                var obj = {
-                    method: 'pay',
-                    action: 'purchaseitem',
-                    product: 'https://treasurehunter.apphb.com/coin.html',
-                    request_id: itemno
-                };
-
-                FB.ui(obj, js_callback);
-            }
-function payer_promotion() {
-            var obj = {
-  method: 'fbpromotion',
-  display: 'popup',
-  quantity: 1,
-  product: 'https://treasurehunter.apphb.com/coin.html'
-};
-
-FB.ui(obj, js_callback);
-            }
-
-            //https://www.facebook.com/dialog/pay?app_id=YOUR_APP_ID&redirect_uri=YOUR_REDIRECT_URI&action=buy_item&order_info=SOME_DEV_JSON_ORDER_INFO&dev_purchase_params={"oscif":true}    
-            // This JavaScript callback handles FB.ui's return data and differs
-            // from the Credits Callbacks.
-            var js_callback = function (data) {
-
-                if (data['order_id']) {
-                    // Facebook only returns an order_id if you've implemented
-                    // the Credits Callback payments_status_update and settled
-                    // the user's placed order.
-
-                    // Notify the user that the purchased item has been delivered
-                    // without a complete reload of the game.
-                    write_callback_data(
-                              "<br><b>Transaction Completed!</b> </br></br>"
-                              + "Data returned from Facebook: </br>"
-                              + "Order ID: " + data['order_id'] + "</br>"
-                              + "Status: " + data['status']);
-                } else if (data['error_code']) {
-                    // Appropriately alert the user.
-                    write_callback_data(
-                              "<br><b>Transaction Failed!</b> </br></br>"
-                              + "Error message returned from Facebook:</br>"
-                              + data['error_code'] + " - "
-                              + data['error_message']);
-                }
-
-                else {
-                    // Appropriately alert the user.
-                    write_callback_data("<br><b>Transaction failed!</b>");
-                }
-            }
-
-            function write_callback_data(str) {
-                //if (itemno == "ts1") {
-                //    document.getElementById('fb-ui-return-data').innerText = str;
-
-                //}
-
-                //if (itemno == "ts2") {
-                //    document.getElementById('fb-ui-return-data2').innerText = str;
-                //}
-
-            }
-
-	function  showbuy(){
-	
-		FB.api(
-  'me/objects/treasure_huntermp:buy',
-  'post',
-  {
-    app_id: 123405257731200,
-    type: "treasure_huntermp:buy",
-    url: "https://treasurehunter.apphb.com/purchase.html",
-    title: "Bought a Treasure Spot or Game Item - Congratulations",
-    image: "https://treasurehunter.apphb.com/images/coin.png",
-    description: "Buy a Treasure Spot"
-  },
-  function(response) {
-    // handle the response
-  }
-);	
-
-	}
-
-
-        </script>
+        
 
 
    

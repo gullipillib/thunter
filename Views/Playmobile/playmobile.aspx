@@ -454,16 +454,20 @@ public string one5 = "";
 
     <script>!function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) {
-        js = d.createElement
+        js = d.createElement
+
         (s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
     }
-}
+}
+
 (document, "script", "twitter-wjs");</script>
 
     <script>!function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!
+    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!
+
     d.getElementById(id)) {
-        js = d.createElement(s); js.id = id; js.src = p
+        js = d.createElement(s); js.id = id; js.src = p
+
         + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
     }
 }(document, "script", "twitter-wjs");</script>
@@ -4081,7 +4085,7 @@ public string one5 = "";
         <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
         </audio>
          <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration: none; position: absolute; top: 195px; left: 114px; right: 649px;">Tweet</a>
-         <a class="twitter-timeline" href="https://twitter.com/Treasur15030047" data-widget-id="451107320987004928" style="text-decoration: none; position: absolute; left: 77px; top: 47px; font-size: 10px;">Tweets by             @Treasur15030047</a>
+         
         <label style="position: absolute; top: 26px; left: 7px; height: 19px; color: #FFCC00; font-size: small; width: 83px;">Achievements</label>
 
         <label style="position: absolute; top: 25px; left: 161px; height: 19px; right: 702px; color: #FFCC00; font-size: small; width: 34px; bottom: 522px;">Lives</label>

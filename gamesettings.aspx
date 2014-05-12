@@ -188,6 +188,7 @@ protected void Button5_Click(object sender, EventArgs e)
 </head>
 <body style="background-color: #FF00FF">
     <form id="form1" runat="server">
+        <img alt="" src="https://treasurehunter.apphb.com/Images/bg.jpg" style="z-index: 0; left: -15px; top: -21px; position: absolute; width:1024px; height:800px" />
     <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 16px; top: 5px; position: absolute; height: 1098px; width: 894px">
         
         
@@ -196,8 +197,8 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:SqlDataSource>    
     
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:SqlDataSource>
-        <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataSource8" DataTextField="amount" DataValueField="amount" Enabled="False" style="z-index: 1; left: 122px; top: 7px; position: absolute; height: 23px; width: 72px;"></asp:ListBox>
-        <asp:ListBox ID="ListBox2" runat="server" DataSourceID="SqlDataSource9" DataTextField="lucrisboos" DataValueField="lucrisboos" Enabled="False" style="z-index: 1; left: 295px; top: 7px; position: absolute; height: 25px; width: 75px;"></asp:ListBox>
+        <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataSource8" DataTextField="amount" DataValueField="amount" Enabled="False" style="z-index: 1; left: 122px; top: 7px; position: absolute; height: 23px; width: 72px;" BackColor="Transparent"></asp:ListBox>
+        <asp:ListBox ID="ListBox2" runat="server" DataSourceID="SqlDataSource9" DataTextField="lucrisboos" DataValueField="lucrisboos" Enabled="False" style="z-index: 1; left: 295px; top: 7px; position: absolute; height: 25px; width: 75px;" BackColor="Transparent"></asp:ListBox>
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 224px; top: 38px; position: absolute; border-radius: 15px;" Text="Buy" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
         
         <asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 696px; top: 35px; position: absolute; border-radius: 15px;" Text="Bid" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
@@ -212,7 +213,7 @@ protected void Button5_Click(object sender, EventArgs e)
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tsname, tsowner, tsprice FROM tspots  WHERE  (tssell = 'yes')"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate, tsbidder FROM  tspots WHERE (tssell = 'yes')"></asp:SqlDataSource>
         <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" Style="z-index: 1; left: 601px; top: 10px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Buy a Treasure Spot</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="~/approver.aspx" Style="z-index: 1; left: 375px; top: 11px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Treasure Spot Approving($0.25)</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="~/approver.aspx" Style="z-index: 1; left: 375px; top: 11px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="Transparent">Treasure Spot Approving($0.25)</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="~/approver1.aspx" style="z-index: 1; left: 286px; top: 41px; position: absolute; width: 208px;" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Game Items Approving ($0.10)</asp:HyperLink>
         <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbowner, tbprice, tbsell FROM toolbox WHERE (tbsell = 'yes')"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate, tbbidder FROM toolbox WHERE (tbsell = 'yes')"></asp:SqlDataSource>

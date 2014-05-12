@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"  Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html>
+<html>
+<head runat="server" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# treasure_huntermp: http://ogp.me/ns/fb/treasure_huntermp#">
+    <meta property="fb:app_id" content="123405257731200" />
+    <meta property="og:type" content="treasure_huntermp:game" />
+    <meta property="og:url" content="https://treasurehunter.apphb.com" />
+    <meta property="og:title" content="TreasureHunt Game" />
+    <meta property="og:image" content="https://treasurehunter.apphb.com/Images/lamdscape.jpg" />
+    <meta property="business:contact_data:street_address" content="Facebook" />
+    <meta property="business:contact_data:locality" content="Facebook" />
+    <meta property="business:contact_data:postal_code" content="Facebook" />
+    <meta property="business:contact_data:country_name" content="Facebook" />
+    <meta property="place:location:latitude" content="Facebook" />
+    <meta property="place:location:longitude" content="Facebook" />
+    <meta property="fb:admins" content="123405257731200">
+    <meta charset="utf-8" />
+        <title>treasurehunter 3D</title>
+        <meta name="viewport" content="width=device-width" />
+       
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            
+        </asp:ContentPlaceHolder>
+    
+    </form>
+     
+</body>
+</html>
