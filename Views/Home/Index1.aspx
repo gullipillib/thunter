@@ -369,7 +369,6 @@ public string one5 = "";
         if (Page.IsPostBack == false)
         {
 
-<<<<<<< HEAD
             if (Session["reached"] == null)
             {
 
@@ -400,18 +399,16 @@ public string one5 = "";
         if (Page.IsPostBack == false)
         {
             SqlDataSource1.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
-=======
             //Insert User into appuser,loggeduser,ordercounter,treasureprize;
             SqlDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
 
->>>>>>> 6ace8276edb67373beea8a9a1a4673dd5ca3ba6a
-            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+          DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
             dt = dv.ToTable();
             DataView uniname = dt.DefaultView;
             if (dt.Rows.Count != 0)
             {
-<<<<<<< HEAD
+
                 logintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
                 btspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
             }
@@ -421,8 +418,7 @@ public string one5 = "";
                 SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
                 SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
                 SqlDataSource1.Update();
-=======
-                //Insert User into appuser,loggeduser,ordercounter,winners;
+               //Insert User into appuser,loggeduser,ordercounter,winners;
                 SqlDataSource1.SelectCommand = "SELECT * FROM appuserdetails";
                 SqlDataSource1.InsertParameters["uname"].DefaultValue = Hiddenfield1;
                 SqlDataSource1.InsertParameters["uloggedin"].DefaultValue = "no";
@@ -505,7 +501,7 @@ public string one5 = "";
 
     //public void updatecoins(object sender, System.Timers.ElapsedEventArgs e)
     //{
-=======
+
     protected void verifysettings()
     {
         SqlDataSource4.SelectCommand = "SELECT luname, lulogintimes, luloggedin, lutspots FROM loggedusers";
@@ -521,7 +517,7 @@ public string one5 = "";
             SqlDataSource4.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
             SqlDataSource4.Update();
             Response.Redirect("~/Play/play");
->>>>>>> 6ace8276edb67373beea8a9a1a4673dd5ca3ba6a
+
 
     //    if (Session["mycoins"] != null)
 
@@ -536,8 +532,7 @@ public string one5 = "";
 
             
     //}
-=======
-        SqlDataSource7.SelectCommand = "SELECT * FROM settings";
+       SqlDataSource7.SelectCommand = "SELECT * FROM settings";
         dv = (DataView)SqlDataSource7.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
@@ -568,7 +563,6 @@ public string one5 = "";
         {
             string tsname = dt.Rows[0].Field<string>("tsname"); //usethis to get field value
             string tsprice = dt.Rows[0].Field<string>("tsprice"); //usethis to get field value
->>>>>>> 6ace8276edb67373beea8a9a1a4673dd5ca3ba6a
 
 
    
@@ -582,6 +576,32 @@ public string one5 = "";
     <meta name="keywords" content="free online games, Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game "/>
     <title>The Treasurehunter, A Free Online Game, Have Fun</title>
 </head>
+
+<!-- Google Code for Remarketing Tag -->
+<!--------------------------------------------------
+Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+--------------------------------------------------->
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: 'REPLACE_WITH_VALUE',
+ecomm_pagetype: 'REPLACE_WITH_VALUE',
+ecomm_totalvalue: 'REPLACE_WITH_VALUE',
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 967011017;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967011017/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
 
 
 <body   onbeforeunload="getcoins" style="height: 507px; background-color: #000000; width: 967px; overflow: hidden; margin-top: 15px;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
