@@ -417,7 +417,7 @@ FB.ui(obj, js_callback);
                 <label style="z-index: 300; left: 464px; top: 6px; position: absolute; height: 21px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal; right: 184px;">
                 $2</label>
                 <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" /><asp:hyperlink ID="Hyperlink14" runat="server"  Font-Underline="False" NavigateUrl="~/fbbuy.html" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 110px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF; vertical-align:middle; text-align:center;">Buy</asp:hyperlink>           </div>
-                <img alt="" src="https://treasurehunter.apphb.com/Images/bg.jpg" style="z-index: -1; left: -75px; top: -103px; position: absolute; width:100%; height:100%" />
+                
             <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 99px; left: 16px; width: 670px; height: 68px; background-color: #FF99FF;">
                 <label style="z-index: 300; left: 13px; top: 18px; position: absolute; height: 35px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
                 Treasure Spot</label>

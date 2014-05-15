@@ -212,7 +212,7 @@ var google_remarketing_only = true;
 </noscript> 
 <body style="background-color: #FF00FF">
     <form id="form1" runat="server">
-        <img alt="" src="https://treasurehunter.apphb.com/Images/bg.jpg" style="z-index: 0; left: 0px; top: 0px; position: absolute; width:100%; height:100%" />
+        
     <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 16px; top: 5px; position: absolute; height: 1098px; width: 894px">
         
         
