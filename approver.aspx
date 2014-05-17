@@ -421,9 +421,9 @@ Remarketing tags may not be associated with personally identifiable information 
 --------------------------------------------------->
 <script type="text/javascript">
 var google_tag_params = {
-ecomm_prodid: 'REPLACE_WITH_VALUE',
-ecomm_pagetype: 'REPLACE_WITH_VALUE',
-ecomm_totalvalue: 'REPLACE_WITH_VALUE',
+ecomm_prodid: '101_th',
+ecomm_pagetype: 'product',
+ecomm_totalvalue: '2.00',
 };
 </script>
 <script type="text/javascript">
