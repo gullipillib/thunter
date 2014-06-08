@@ -100,9 +100,84 @@
 
         Hiddenfield1 = Model.Name;
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
-        Session["reached"] = "yes";
-        
+        Session["loggeduser"] = Model.Name;
+        Session["loggeduserid"] = Model.Id;
+        Session["loggeduserurl"] = Model.ProfilePicture.Data.Url;
+
+        if (Hiddenfield1 != null)
+        {
+
+            //Insert User into appuser,loggeduser,ordercounter,treasureprize;
+            SqlDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
+
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+            DataTable dt = new DataTable();
+            dt = dv.ToTable();
+            //DataTable dtr = dt;
+            //DataRow[] uniname = dt.Select("uname");
+            //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
+            //Label3.Text = dt.Rows[0][0].ToString();
+            if (dt.Rows.Count == 0)
+            {
+                //Insert User into appuser,loggeduser,ordercounter,winners;
+                SqlDataSource1.SelectCommand = "SELECT * FROM appuserdetails";
+                SqlDataSource1.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                SqlDataSource1.InsertParameters["uloggedin"].DefaultValue = "no";
+                SqlDataSource1.InsertParameters["winner"].DefaultValue = "no";
+                SqlDataSource1.InsertParameters["wintimes"].DefaultValue = "0";
+                SqlDataSource1.InsertParameters["paid"].DefaultValue = "no";
+                SqlDataSource1.InsertParameters["amount"].DefaultValue = "0";
+                SqlDataSource1.InsertParameters["currenttspot"].DefaultValue = "";
+
+
+                //SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
+                SqlDataSource1.Insert();
+
+                SqlDataSource4.SelectCommand = "SELECT * FROM loggedusers";
+                SqlDataSource4.InsertParameters["luname"].DefaultValue = Hiddenfield1;
+                SqlDataSource4.InsertParameters["luid"].DefaultValue = Model.Id;
+                SqlDataSource4.InsertParameters["luposition"].DefaultValue = "{left : 0, top:0}";
+                SqlDataSource4.InsertParameters["luimg"].DefaultValue = Model.ProfilePicture.Data.Url;
+                SqlDataSource4.InsertParameters["luspriteimg"].DefaultValue = Model.ProfilePicture.Data.Url;
+                SqlDataSource4.InsertParameters["lucrisboos"].DefaultValue = "0";
+                SqlDataSource4.InsertParameters["luloggedin"].DefaultValue = "no";
+                SqlDataSource4.InsertParameters["lutspots"].DefaultValue = "0";
+                SqlDataSource4.InsertParameters["lulogintimes"].DefaultValue = "0";
+                SqlDataSource4.InsertParameters["luinvites"].DefaultValue = "0";
+
+
+                //SqlDataSource4.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'no', '0', '0', '0')";
+                SqlDataSource4.Insert();
+
+                SqlDataSource5.SelectCommand = "SELECT * FROM ordercounter";
+
+                SqlDataSource5.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                SqlDataSource5.InsertParameters["ccounter"].DefaultValue = "0";
+
+                //SqlDataSource5.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
+                SqlDataSource5.Insert();
+
+                SqlDataSource6.SelectCommand = "SELECT * FROM winners";
+                SqlDataSource6.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                SqlDataSource6.InsertParameters["crisboos"].DefaultValue = "0";
+
+                //SqlDataSource6.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
+                SqlDataSource6.Insert();
+                Hiddenfield1 = Model.Name;
+                Hiddenfield1 = Hiddenfield1.Replace(" ", "");
+                Session["reached"] = "yes";
+                
+            }
+
+        }
+        else
+        {
+
+            Response.Redirect("~/buy.aspx");
+        }
     }
+    
+    
 public string one1 = "";
 public string one2 = "";
 public string one3 = "";
@@ -491,7 +566,6 @@ public string one5 = "";
 window._fbq = window._fbq || [];
 window._fbq.push(['track', 'PixelInitialized', {}]);
 </script>
-<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=713630278701106&amp;ev=NoScript" /></noscript>
 <!-- Google Code for Remarketing Tag -->
 <!--------------------------------------------------
 Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
@@ -512,11 +586,9 @@ var google_remarketing_only = true;
 </script>
 <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
 </script>
-<noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967011017/?value=0&amp;guid=ON&amp;script=0"/>
-</div>
-</noscript>
+
+
+
 
 
 <body   onbeforeunload="getcoins" style="height: 507px; background-color: #000000; width: 967px; overflow: hidden; margin-top: 15px;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
@@ -582,7 +654,12 @@ var google_remarketing_only = true;
         
     </style>
 
-    
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://localhost:44301/googleads.g.doubleclick.net/pagead/viewthroughconversion/967011017/?value=0&amp;guid=ON&amp;script=0"/>
+</div>    
+ <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=713630278701106&amp;ev=NoScript" />
+
+<script src="https
 
 <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
 <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
@@ -2440,9 +2517,46 @@ function FacebookInviteFriends() {
         <form id="form1" runat="server" >
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers WHERE (luname = '<%=Hiddenfield1%>')" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'"></asp:SqlDataSource>
             <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM tspots"></asp:SqlDataSource>
+            <asp:Label ID="Label4" runat="server" Font-Size="9pt" ForeColor="White" style="z-index: 1; left: 855px; top: 299px; position: absolute" Text="Rate this TreasureSpot"></asp:Label>
             <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM toolbox"></asp:SqlDataSource>
             <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT treasurevalue FROM treasureprize"></asp:SqlDataSource>
-            
+            <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'">
+<InsertParameters>
+                <asp:Parameter Name="luname" />
+                <asp:Parameter Name="luid" />
+                <asp:Parameter Name="luposition" />
+                <asp:Parameter Name="luimg" />
+                <asp:Parameter Name="luspriteimg" />
+                <asp:Parameter Name="lucrisboos" />
+                <asp:Parameter Name="luloggedin" />
+                <asp:Parameter Name="lutspots" />
+                <asp:Parameter Name="lulogintimes" />
+                <asp:Parameter Name="luinvites" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uloggedin" />
+            </UpdateParameters>
+</asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM ordercounter" InsertCommand="INSERT INTO ordercounter(uname, ccounter) Values (@uname, @ccounter)" UpdateCommand="UPDATE ordercounter SET @uname=''">
+            <InsertParameters>
+                <asp:Parameter Name="uname" />
+                <asp:Parameter Name="ccounter" />
+                
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uname" />
+            </UpdateParameters>
+</asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM winners" InsertCommand="INSERT INTO winners(uname, crisboos) Values (@uname, @crisboos)" UpdateCommand="UPDATE winners SET @uname=''">
+            <InsertParameters>
+                <asp:Parameter Name="uname" />
+                <asp:Parameter Name="crisboos" />
+                
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uname" />
+            </UpdateParameters>
+</asp:SqlDataSource>
 
 <div class="fb-like-box" data-href="https://www.facebook.com/Treasurehuntergame" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
             
@@ -2454,7 +2568,7 @@ function FacebookInviteFriends() {
         <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
 
           <img alt=""  src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 100; left: 803px; top: 27px; position: absolute; height: 62px; width: 166px" />
-          <a href="https://treasurehunter.apphb.com/prizes.html" target="_self" style="position: absolute; left: 870px; top: 270px; width: 92px; text-decoration: none; background-color: #FF00FF; color: #FFFFFF; border-radius: 20px; right: 289px; text-align: center;z-index: 1; ">Rewards</a>
+          <a href="https://treasurehunter.apphb.com/prizes.html" target="_self" style="position: absolute; left: 870px; top: 251px; width: 92px; text-decoration: none; background-color: #FF00FF; color: #FFFFFF; border-radius: 20px; right: 264px; text-align: center;z-index: 1; ">Rewards</a>
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 196px; top: 0px; position: absolute; width: 319px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
         <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="10pt" ForeColor="#9999FF" Style="z-index: 1; left: 375px; top: 79px; position: absolute; width: 347px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
@@ -2547,7 +2661,10 @@ function FacebookInviteFriends() {
 <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 325px; position: absolute; width: 112px; right: 638px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="Medium">Conquer Players</asp:TextBox>
 <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 252px; top: 325px; position: absolute; width: 36px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
 <img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 300px; left: 323px; z-index: 21; visibility: visible; right: 530px; bottom: 247px; " >
-<img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 322px; left: 310px; z-index: 21; visibility: visible; right: 543px; bottom: 225px; " >        
+<img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 322px; left: 310px; z-index: 21; visibility: visible; right: 543px; bottom: 225px; " >
+            <asp:RadioButton ID="RadioButton1" runat="server" style="z-index: 1; left: 856px; top: 323px; position: absolute; height: 24px; width: 29px; right: 94px;" Text="1" Font-Size="9pt" ForeColor="White"  />
+<asp:RadioButton ID="RadioButton2" runat="server" style="z-index: 1; left: 899px; top: 322px; position: absolute; height: 24px; width: 28px; right: 52px;" ForeColor="White" Text="5" Font-Size="9pt" />
+<asp:RadioButton ID="RadioButton3" runat="server" style="z-index: 1; left: 941px; top: 323px; position: absolute; height: 24px; width: 36px" Text="10" Font-Size="9pt" ForeColor="White"  />
 </form> 
 
 </body>
