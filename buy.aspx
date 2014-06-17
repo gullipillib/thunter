@@ -245,31 +245,37 @@ protected void Button3_Click(object sender, EventArgs e)
         }
     </style>
 </head>
-  <!-- Google Code for Remarketing Tag -->
-<!--------------------------------------------------
-Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
---------------------------------------------------->
-<script type="text/javascript">
-var google_tag_params = {
-ecomm_prodid: '101_th',
-ecomm_pagetype: 'product',
-ecomm_totalvalue: '2.00',
-};
+  <!-- Facebook Conversion Code for buycheckouts -->
+
+<script>(function () {
+
+    var _fbq = window._fbq || (window._fbq = []);
+
+    if (!_fbq.loaded) {
+
+        var fbds = document.createElement('script');
+
+        fbds.async = true;
+
+        fbds.src = '//connect.facebook.net/en_US/fbds.js';
+
+        var s = document.getElementsByTagName('script')[0];
+
+        s.parentNode.insertBefore(fbds, s);
+
+        _fbq.loaded = true;
+
+    }
+
+})();
+
+    window._fbq = window._fbq || [];
+
+    window._fbq.push(['track', '6012706441093', { 'value': '0.01', 'currency': 'INR' }]);
+
 </script>
-<script type="text/javascript">
-/* <![CDATA[ */
-var google_conversion_id = 967011017;
-var google_custom_params = window.google_tag_params;
-var google_remarketing_only = true;
-/* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
-<noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967011017/?value=0&amp;guid=ON&amp;script=0"/>
-</div>
-</noscript>
+
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6012706441093&amp;cd[value]=0.01&amp;cd[currency]=INR&amp;noscript=1" /></noscript>
 <body style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 761px; width: 880px; background-color:blueviolet" >
   
  
@@ -395,14 +401,14 @@ FB.ui(obj, js_callback);
         
         <asp:Label ID="Label6" runat="server" style="z-index: 1;  left: 64px; top: 19px; position: absolute; width: 236px; height: 14px;" Text="Buy at mygame premade treasurespots" Font-Size="10pt" ForeColor="White"></asp:Label>
        
-        <h1 style="width: 231px; position: absolute; top: -9px; left: 355px; font-weight: bold; font-size: 30px; color: #FFCCFF; right: 294px; z-index: 4;">Treasure Hunter</h1>
+        <h1 style="width: 231px; position: absolute; top: -9px; left: 355px; font-weight: bold; font-size: 30px; color: #FFCCFF; right: 294px;">Treasure Hunter</h1>
 
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" InsertCommand="INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('', 'no', 'no', '0', 'no', '0', '')"></asp:SqlDataSource>
         
 
 
-        <div id="mainwindow" style="background-color: #FFCCCC; border: 40px ridge #FFFFCC; height: 637px; z-index: 301; left: 23px; top: 38px; position: absolute; width: 706px;">
+        <div id="mainwindow" style="background-color: #FFCCCC; border: 40px ridge #FFFFCC; height: 637px; z-index: 1; left: 23px; top: 38px; position: absolute; width: 706px;">
             <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 546px; left: 13px; width: 670px; height: 68px; background-color: #FF99FF;">
                 <label style="z-index: 300; left: 15px; top: 17px; position: absolute; height: 35px; width: 241px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bolder; font-style: normal; letter-spacing: 2pt;">
                 Earn Free Currency</label>
@@ -416,8 +422,8 @@ FB.ui(obj, js_callback);
                 Facebook Payment System</label>
                 <label style="z-index: 300; left: 464px; top: 6px; position: absolute; height: 21px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal; right: 184px;">
                 $2</label>
-                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" /><asp:hyperlink ID="Hyperlink14" runat="server"  Font-Underline="False" NavigateUrl="~/fbbuy.html" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 110px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF; vertical-align:middle; text-align:center;">Buy</asp:hyperlink>           </div>
-                
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" /><asp:hyperlink ID="Hyperlink14" runat="server"  Font-Underline="False" NavigateUrl="~/fbbuy.html" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 110px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Buy</asp:hyperlink>           </div>
+
             <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 99px; left: 16px; width: 670px; height: 68px; background-color: #FF99FF;">
                 <label style="z-index: 300; left: 13px; top: 18px; position: absolute; height: 35px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
                 Treasure Spot</label>
@@ -466,7 +472,7 @@ FB.ui(obj, js_callback);
                 <label style="z-index: 300; left: 464px; top: 27px; position: absolute; height: 14px; width: 31px; font-size: 10px; font-family: Arial; color: #3366CC; font-weight: bolder; font-style: normal;">
                 Free</label>&nbsp;
                 <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" />
-                </div> <asp:hyperlink ID="Hyperlink15" runat="server" Font-Underline="False" NavigateUrl="https://www.facebook.com/dialog/fbpromotion/?app_id=123405257731200&quantity=1&product=https://treasurehunter.apphb.com/coin.html" style="z-index: 300; left: 556px; top: 474px; position: absolute; width: 124px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF; vertical-align:middle; text-align:center;">Free Promotions</asp:hyperlink>                       </div>
+                </div> <asp:hyperlink ID="Hyperlink15" runat="server" Font-Underline="False" NavigateUrl="https://www.facebook.com/dialog/fbpromotion/?app_id=123405257731200&quantity=1&product=https://treasurehunter.apphb.com/coin.html" style="z-index: 300; left: 556px; top: 474px; position: absolute; width: 124px; height: 22px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF;">Free Promotions</asp:hyperlink>                       </div>
 
         
 
@@ -478,7 +484,7 @@ FB.ui(obj, js_callback);
 <asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:751px; top:-3px; border-radius:15px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" ToolTip="Use this to Play further on, Create one Treasure Spot but you cannot Sell or Bid or Approve to Earn Real Cash" />
             
 <asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 101px; top: -4px; position: absolute; bottom: 746px; border-radius:15px; background-color: #FF9900;  width: 66px;" Target="_self" ForeColor="White" BackColor="#FF9900">My Game</asp:hyperlink>   
-<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; border-radius:15px; background-color: #FF9900;  left: 18px; top: -6px; position: absolute; height: 23px; width: 54px;" Target="_self" ForeColor="White">Winners</asp:hyperlink>
+<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; border-radius:15px; background-color: #FF9900;  left: 18px; top: -6px; position: absolute; height: 23px; width: 43px;" Target="_self" ForeColor="White">Winners</asp:hyperlink>
 
 
         
@@ -494,11 +500,11 @@ FB.ui(obj, js_callback);
 <asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 501px; top: 131px; position: absolute; width: 225px; height: 20px; text-decoration:none; background-color:transparent" BorderStyle="None"></asp:TextBox> 
 <asp:TextBox ID="TextBox3" runat="server" Style="z-index: 1; left: -84px; top: -970px; position: absolute; width: 162px; height: 15px; text-decoration:none" ForeColor="White" BackColor="Transparent" BorderStyle="None"></asp:TextBox>
         
-<asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 10; left: 687px; top: 102px; position: absolute; width: 53px;" BackColor="Transparent" BorderStyle="None"></asp:TextBox>
+<asp:TextBox ID="orderno" runat="server" ClientIDMode="Static" Style="z-index: 1; left: 687px; top: 102px; position: absolute; width: 53px;" BackColor="Transparent" BorderStyle="None"></asp:TextBox>
 
-<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 10; left: 380px; top: 132px; position: absolute; border-radius:15px; background-color: #0000FF; width: 110px;" Text="Get Your Receipt" Font-Size="9pt" ForeColor="White" />
+<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 380px; top: 132px; position: absolute; border-radius:15px; background-color: #0000FF; width: 110px;" Text="Get Your Receipt" Font-Size="9pt" ForeColor="White" />
  
-   <a href="https://treasurehunter.apphb.com/create.aspx" target="_self" style="position:absolute;top:-5px; width:152px; text-decoration:none; background-color: #FF9900; color: #FFFFFF; border-radius:20px; right: 543px; text-align: center; height: 22px; z-index: 3;" > Go to My TreasureSpot </a> 
+   <a href="https://treasurehunter.apphb.com/create.aspx" target="_self" style="position:absolute;top:-5px; width:152px; text-decoration:none; background-color: #FF9900; color: #FFFFFF; border-radius:20px; right: 543px; text-align: center; height: 22px;" > Go to My TreasureSpot </a> 
    
     
 </form>
