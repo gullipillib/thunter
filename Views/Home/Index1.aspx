@@ -659,7 +659,7 @@ var google_remarketing_only = true;
 </div>    
  <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=713630278701106&amp;ev=NoScript" />
 
-<script src="https
+
 
 <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
 <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
