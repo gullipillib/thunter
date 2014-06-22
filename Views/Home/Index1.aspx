@@ -572,9 +572,9 @@ Remarketing tags may not be associated with personally identifiable information 
 --------------------------------------------------->
 <script type="text/javascript">
 var google_tag_params = {
-ecomm_prodid: 'REPLACE_WITH_VALUE',
-ecomm_pagetype: 'REPLACE_WITH_VALUE',
-ecomm_totalvalue: 'REPLACE_WITH_VALUE',
+ecomm_prodid: '101_th',
+ecomm_pagetype: 'Arts & Entertainment',
+ecomm_totalvalue: '2',
 };
 </script>
 <script type="text/javascript">
@@ -2522,8 +2522,8 @@ function FacebookInviteFriends() {
    
         <form id="form1" runat="server" >
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers WHERE (luname = '<%=Hiddenfield1%>')" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'"></asp:SqlDataSource>
+            <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="8pt" ForeColor="White" style="z-index: 1; left: 853px; top: 333px; cursor:pointer;  position: absolute; width: 118px" Text="Rate this TreasureSpot" />
             <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM tspots"></asp:SqlDataSource>
-            <asp:Label ID="Label4" runat="server" Font-Size="9pt" ForeColor="White" style="z-index: 1; left: 855px; top: 299px; position: absolute" Text="Rate this TreasureSpot"></asp:Label>
             <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM toolbox"></asp:SqlDataSource>
             <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT treasurevalue FROM treasureprize"></asp:SqlDataSource>
             <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'">
@@ -2668,9 +2668,6 @@ function FacebookInviteFriends() {
 <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 252px; top: 325px; position: absolute; width: 36px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
 <img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 300px; left: 323px; z-index: 21; visibility: visible; right: 530px; bottom: 247px; " >
 <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 322px; left: 310px; z-index: 21; visibility: visible; right: 543px; bottom: 225px; " >
-            <asp:RadioButton ID="RadioButton1" runat="server" style="z-index: 1; left: 856px; top: 323px; position: absolute; height: 24px; width: 29px; right: 94px;" Text="1" Font-Size="9pt" ForeColor="White"  />
-<asp:RadioButton ID="RadioButton2" runat="server" style="z-index: 1; left: 899px; top: 322px; position: absolute; height: 24px; width: 28px; right: 52px;" ForeColor="White" Text="5" Font-Size="9pt" />
-<asp:RadioButton ID="RadioButton3" runat="server" style="z-index: 1; left: 941px; top: 323px; position: absolute; height: 24px; width: 36px" Text="10" Font-Size="9pt" ForeColor="White"  />
 </form> 
 
 </body>
