@@ -551,16 +551,16 @@ public string one5 = "";
 
     protected void Button3_Click(object sender, EventArgs e)
     {
-        SqlDataSource8.SelectCommand = "SELECT tsrating FROM tspots where tsname = '" + tsname + "'";
+        SqlDataSource8.SelectCommand = "SELECT tsratings FROM tspots where tsname = '" + tsname + "'";
         DataView dv = (DataView)SqlDataSource8.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         DataView uniname = dt.DefaultView;
         if (dt.Rows.Count != 0)
         {
-            tsratings = dt.Rows[0].Field<string>("tsrating"); //usethis to get field value
+            tsratings = dt.Rows[0].Field<string>("tsratings"); //usethis to get field value
         }
-        SqlDataSource8.UpdateCommand = "UPDATE tspots SET tsrating='" + Convert.ToString(Convert.ToInt32(tsratings) + 1) + "'" + " where tsname='" + tsname + "'";
+        SqlDataSource8.UpdateCommand = "UPDATE tspots SET tsratings='" + Convert.ToString(Convert.ToInt32(tsratings) + 1) + "'" + " where tsname='" + tsname + "'";
    
         
     }
