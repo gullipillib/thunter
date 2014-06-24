@@ -185,34 +185,10 @@ protected void Button5_Click(object sender, EventArgs e)
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>gamesettings</title>
-</head><!-- Google Code for Remarketing Tag -->
-<!--------------------------------------------------
-Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
---------------------------------------------------->
-<script type="text/javascript">
-var google_tag_params = {
-ecomm_prodid: '101_th',
-ecomm_pagetype: 'product',
-ecomm_totalvalue: '2.00',
-};
-</script>
-<script type="text/javascript">
-/* <![CDATA[ */
-var google_conversion_id = 967011017;
-var google_custom_params = window.google_tag_params;
-var google_remarketing_only = true;
-/* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
-<noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967011017/?value=0&amp;guid=ON&amp;script=0"/>
-</div>
-</noscript> 
+</head>
 <body style="background-color: #FF00FF">
     <form id="form1" runat="server">
-        
+        <img alt="" src="https://treasurehunter.apphb.com/Images/bg.jpg" style="z-index: 0; left: -15px; top: -21px; position: absolute; width:1024px; height:800px" />
     <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 16px; top: 5px; position: absolute; height: 1098px; width: 894px">
         
         
@@ -225,7 +201,7 @@ var google_remarketing_only = true;
         <asp:ListBox ID="ListBox2" runat="server" DataSourceID="SqlDataSource9" DataTextField="lucrisboos" DataValueField="lucrisboos" Enabled="False" style="z-index: 1; left: 295px; top: 7px; position: absolute; height: 25px; width: 75px;" BackColor="Transparent"></asp:ListBox>
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Style="z-index: 1; left: 224px; top: 38px; position: absolute; border-radius: 15px;" Text="Buy" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
         
-        <asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 696px; top: 35px; position: absolute; border-radius: 15px;" Text="Bid" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
+        <asp:Button ID="Button2" runat="server" Style="z-index: 1; left: 683px; top: 35px; position: absolute; border-radius: 15px;" Text="Bid" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
         <asp:Button ID="Button3" runat="server" Style="z-index: 1; left: 219px; top: 310px; position: absolute; border-radius: 15px;" Text="Buy" OnClick="Button3_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
        <asp:Button ID="Button4" runat="server" Style="z-index: 1; left: 627px; top: 316px; position: absolute; border-radius: 15px;" Text="Bid" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
         <asp:Button ID="Button5" runat="server" Style="z-index: 1; left: 168px; top: 855px; position: absolute; border-radius: 15px;" Text="Sell" OnClick="Button5_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
@@ -236,9 +212,9 @@ var google_remarketing_only = true;
         <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" Style="z-index: 1; left: 744px; top: 11px; position: absolute; right: 8px; border-radius: 15px;" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Buy a ToolBox Item</asp:HyperLink>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tsname, tsowner, tsprice FROM tspots  WHERE  (tssell = 'yes')"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tsname, tsowner, tsprice, tsbiddate, tsbidder FROM  tspots WHERE (tssell = 'yes')"></asp:SqlDataSource>
-        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" Style="z-index: 1; left: 601px; top: 10px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Buy a Treasure Spot</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="~/approver.aspx" Style="z-index: 1; left: 375px; top: 11px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="Transparent">Treasure Spot Approving($0.25)</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="~/approver1.aspx" style="z-index: 1; left: 286px; top: 41px; position: absolute; width: 208px;" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Game Items Approving ($0.10)</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="~/buy.aspx" Style="z-index: 1; left: 605px; top: 10px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Academy Engraved LET" BackColor="#99FF99">Buy a Treasure Spot</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="~/approver.aspx" Style="z-index: 1; left: 375px; top: 11px; position: absolute; border-radius: 15px" Target="_self" Font-Names="Arial" BackColor="Transparent">Treasure Spot Approving($0.25)</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="~/approver1.aspx" style="z-index: 1; left: 286px; top: 41px; position: absolute; width: 223px;" Target="_self" Font-Names="Arial" BackColor="#99FF99">Game Items Approving ($0.10)</asp:HyperLink>
         <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbowner, tbprice, tbsell FROM toolbox WHERE (tbsell = 'yes')"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbowner, tbprice, tbbiddate, tbbidder FROM toolbox WHERE (tbsell = 'yes')"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT amount FROM appuserdetails where uname='Tresurehunter'"></asp:SqlDataSource>
@@ -459,12 +435,12 @@ var google_remarketing_only = true;
         </asp:GridView>
         <asp:Label ID="Label2" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 441px; top: 322px; position: absolute; bottom: 757px; height: 19px; right: 287px;" Text="ToolBox items for Bid" Font-Names="Victorian LET"></asp:Label>
         <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 233px; top: 578px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True" BackColor="#6600FF" BorderStyle="Ridge" ForeColor="White"></asp:TextBox>
-        <asp:Label ID="Label5" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 522px; top: 40px; position: absolute; height: 18px;" Text="Treasure Spots for Bid" Font-Names="Victorian LET" BackColor="#99FF99"></asp:Label>
+        <asp:Label ID="Label5" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 522px; top: 40px; position: absolute; height: 18px;" Text="Treasure Spots for Bid" Font-Names="Times New Roman" BackColor="#99FF99"></asp:Label>
         <asp:Label ID="Label3" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 26px; top: 860px; position: absolute" Text="My ToolBox Items" Font-Names="Victorian LET"></asp:Label>
         <asp:Label ID="Label1" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 29px; top: 584px; position: absolute; height: 18px;" Text="My Treasure Spots" Font-Names="Victorian LET"></asp:Label>
-        <asp:Label ID="Label4" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 21px; top: 40px; position: absolute; bottom: 1040px; right: 695px;" Text="Treasure Spots for Sale" Font-Names="Victorian LET"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 21px; top: 40px; position: absolute; bottom: 1040px; right: 695px;" Text="Treasure Spots for Sale" Font-Names="Times New Roman"></asp:Label>
         <asp:Label ID="Label6" runat="server" Font-Bold="True" ForeColor="Blue" style="z-index: 1; left: 20px; top: 315px; position: absolute; bottom: 401px; height: 19px;" Text="ToolBox items for Sale" Font-Names="Victorian LET"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 742px; top: 40px; position: absolute" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True" BackColor="#99CCFF" BorderStyle="Ridge" ForeColor="White"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 721px; top: 40px; position: absolute; width: 65px;" ToolTip="Enter Price Above $5 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True" BackColor="#99CCFF" BorderStyle="Ridge" ForeColor="White"></asp:TextBox>
         <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 231px; position: absolute; top: 854px;" ToolTip="Enter Price Above $3 (Note: 50% of the awarded bid amount goes to treasurehunter)" CausesValidation="True" BackColor="#3333FF" BorderStyle="Ridge" ForeColor="White"></asp:TextBox>
         <asp:DropDownList ID="DropDownList1" runat="server" style="z-index: 1; left: 387px; top: 578px; position: absolute" CausesValidation="True" BackColor="#CC0066" ForeColor="White">
             <asp:ListItem>Bid</asp:ListItem>
@@ -480,5 +456,6 @@ var google_remarketing_only = true;
         <asp:Button ID="Button12" runat="server" Style="z-index: 1; left: 651px; top: 855px; position: absolute; border-radius: 15px;" Text="Revoke" OnClick="Button12_Click" UseSubmitBehavior="False" BackColor="#FF9900" ForeColor="White" />
       </asp:Panel>  
     </form>
+<a href="https://treasurehunter.apphb.com/Home/Index" target="_self" style="position:absolute;left:822px; top:47px; width:146px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 233px; text-align: center; font-family: 'Victorian LET';z-index: 1; height: 18px;" > Go On a TreasureHunt </a>
 </body>
 </html>

@@ -92,6 +92,7 @@
     string invites = "";
     string reset = "";
     string btspots = "";
+    string upaid = "no";
      public string goldcoins = "100";
     string Hiddenfield1;
 
@@ -99,8 +100,11 @@
     {
 
 
-        Hiddenfield1 = Convert.ToString(Session["loggeduser"]); 
+        Hiddenfield1 = Model.Name;
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
+        Session["loggeduser"] = Model.Name;
+        Session["loggeduserid"] = Model.Id;
+        Session["loggeduserurl"] = Model.ProfilePicture.Data.Url;
         if (Hiddenfield1 != null)
         {
             
@@ -354,6 +358,52 @@ public string one5 = "";
 
     }
 
+    protected void addfriends()
+    {
+
+        if (tsrplayers == "0")
+        {
+
+        }
+        if (tsrplayers != "0")
+        {
+
+        }
+
+
+        Random one = new Random();
+        if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
+        {
+            if (Model.Friends.Data.Count > 5)
+            {
+                int r1 = one.Next(1, Model.Friends.Data.Count);
+                Session["friend1"] = Model.Friends.Data.ElementAt(r1).Name;
+                Session["friend1pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r2 = one.Next(2, Model.Friends.Data.Count);
+                Session["friend2"] = Model.Friends.Data.ElementAt(r2).Name;
+                Session["friend2pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r3 = one.Next(3, Model.Friends.Data.Count);
+                Session["friend3"] = Model.Friends.Data.ElementAt(r3).Name;
+                Session["friend3pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r4 = one.Next(4, Model.Friends.Data.Count);
+                Session["friend4"] = Model.Friends.Data.ElementAt(r4).Name;
+                Session["friend4pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+                int r5 = one.Next(5, Model.Friends.Data.Count);
+                Session["friend5"] = Model.Friends.Data.ElementAt(r5).Name;
+                Session["friend5pic"] = Model.Friends.Data.ElementAt(r1).Picture.Data.Url;
+            }
+
+        }
+        else
+        {
+            Session["friend1"] = "sussie carr";
+            Session["friend2"] = "robert thomson";
+            Session["friend3"] = "annie san";
+            Session["friend4"] = "sui chang";
+            Session["friend5"] = "marie jane";
+        }
+
+    }
     
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -367,6 +417,7 @@ public string one5 = "";
             SqlDataSource1.Update();
             gettreasurespot();
             gettreasureprize();
+            addfriends();
             //timer.Enabled = true;
             //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
             
@@ -451,7 +502,18 @@ public string one5 = "";
     
 </head>
 <body   onbeforeunload="getcoins" style="height: 507px; background-color: #000000; width: 967px; overflow: hidden;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
-
+   <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TGKH9G"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-TGKH9G');</script>
+<!-- End Google Tag Manager -->
     <script>!function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) {
         js = d.createElement
@@ -2309,102 +2371,139 @@ public string one5 = "";
             });
 
     </script>
-    <script type="text/javascript">
-        var enemyhits = sessionStorage.getItem("achievements");
-        var mygoldcoins = sessionStorage.getItem("points");
+          <script type="text/javascript">
+              var enemyhits = sessionStorage.getItem("achievements");
+              var mygoldcoins = sessionStorage.getItem("points");
 
-
-        var lifes = 0;
-        var myctrl1 = JSON.parse('<%=tbitems1%>');
+              mygoldcoins = 0;
+              var lifes = 0;
+              var myctrl1 = JSON.parse('<%=tbitems1%>');
             var myctrl2 = JSON.parse('<%=tbitems2%>');
-        var myctrl3 = JSON.parse('<%=tbitems3%>');
-        var myctrl4 = JSON.parse('<%=tbitems4%>');
-        var myctrl5 = JSON.parse('<%=tbitems5%>');
-        var mytsdetails = JSON.parse('<%=tsitems1%>');
+              var myctrl3 = JSON.parse('<%=tbitems3%>');
+              var myctrl4 = JSON.parse('<%=tbitems4%>');
+              var myctrl5 = JSON.parse('<%=tbitems5%>');
+              var mytsdetails = JSON.parse('<%=tsitems1%>');
 
 
 
-        document.addEventListener('DOMContentLoaded', function () {
-            //alert(ctrl1.height);
-            //alert(ctrl1.width);
-            //alert(ctrl2.height);
-            //alert(ctrl2.width);
-            //alert(ctrl3.height);
-            //alert(ctrl3.width);
-            //alert(ctrl4.height);
-            //alert(ctrl5.width);
-            //alert(Img1.height);
-            //alert(Img1.width);
-            //alert(Img2.height);
-            //alert(Img2.width);
-            //alert(Img3.height);
-            //alert(Img3.width);
-            //alert(Img4.height);
-            //alert(Img4.width);
-            //alert(Img5.height);
-            //alert(Img5.width);
+              document.addEventListener('DOMContentLoaded', function () {
+                  //alert(ctrl1.height);
+                  //alert(ctrl1.width);
+                  //alert(ctrl2.height);
+                  //alert(ctrl2.width);
+                  //alert(ctrl3.height);
+                  //alert(ctrl3.width);
+                  //alert(ctrl4.height);
+                  //alert(ctrl5.width);
+                  //alert(Img1.height);
+                  //alert(Img1.width);
+                  //alert(Img2.height);
+                  //alert(Img2.width);
+                  //alert(Img3.height);
+                  //alert(Img3.width);
+                  //alert(Img4.height);
+                  //alert(Img4.width);
+                  //alert(Img5.height);
+                  //alert(Img5.width);
 
-            var noofhits = 0;
-            var noofcoins = 0;
-            var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
-            var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
-            document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
-            document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+                  var noofhits = 0;
+                  var noofcoins = 0;
+                  var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
+                  var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
+                  document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                  document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
 
+                  var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
+                  function filllabel() {
+                      document.getElementById('TextBox7').setAttribute("value", "Collect " + rancoins + " Gold Coins or Conqueor other " + ranhits + " Players in the Next 2 Mins");
+                      var myaddctrl = window.setTimeout(function () { hidelabel() }, 4000);
+                  }
+                  function hidelabel() {
+                      document.getElementById('TextBox7').style.visibility = "hidden";
 
-            var myaddctrl1 = window.setInterval(function () { tcounter() }, 1000);
-            function tcounter() {
-                var mycounter = document.getElementById('TextBox2').getAttribute("value");
-                mycounter = parseInt(mycounter, 10) - 1;
-                if (mycounter < 0) {
-                    mycounter = 0;
-                }
-                document.getElementById('TextBox2').setAttribute("value", mycounter);
+                  }
 
-                var showshower = 0;
+                  var myaddctrl1 = window.setInterval(function () { tcounter() }, 1000);
+                  function tcounter() {
+                      var mycounter = document.getElementById('TextBox2').getAttribute("value");
+                      mycounter = parseInt(mycounter, 10) - 1;
+                      if (mycounter < 0) {
+                          mycounter = 0;
+                      }
+                      document.getElementById('TextBox2').setAttribute("value", mycounter);
 
-                if (noofhits == ranhits) {
-                    noofhits = -100;
-                    showshower = 1;
-                }
-                if (noofcoins == rancoins) {
-                    noofcoins = -150;
-                    showshower = 1;
-                }
-                if (showshower == 1) {
-
-                    document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
-                    Img9.style.visibility = "visibile";
-                    feed();
-                    document.getElementById('TextBox2').setAttribute("value", "0");
+                      var showshower = 0;
 
 
-                    document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
-                    document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+                      if (noofcoins == rancoins) {
+                          won = 1;
+                          noofcoins = -150;
+                          showshower = 1;
+                      }
+                      if (showshower == 1) {
+                          if (won == 1) {
+                              document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
+                              Img9.style.visibility = "visibile";
 
-                }
-            }
+                              feed();
+                              document.getElementById('TextBox2').setAttribute("value", "0");
 
-            var myaddctrl1 = window.setInterval(function () { getTspot() }, 270000);
-            function getTspot() {
+                          }
+
+                          document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                          document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+
+                      }
+                  }
+
+                  var myaddctrl1 = window.setInterval(function () { getTspot() }, 120000);
+                  function getTspot() {
 
 
 
-                document.getElementById('divplayer').getElementsByTagName('ctrl1').src = '<%=ctrl1mainurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('ctrl2').src = '<%=ctrl1mainurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('ctrl3').src = '<%=ctrl1mainurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('ctrl4').src = '<%=ctrl1mainurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('ctrl5').src = '<%=ctrl1mainurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('Img1').src = '<%=ctrl1mainurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('Img2').src = '<%=ctrl2mainurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('Img3').src = '<%=ctrl3mainurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('Img4').src = '<%=ctrl4mainurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('Img5').src = '<%=ctrl5mainurl%>';
-                    document.getElementById('fplayer').src = '<%=iframeurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('explosion').src = '<%=collisionurl%>';
-                    document.getElementById('divplayer').getElementsByTagName('crosshair').src = '<%=propurl%>';
+                      //document.getElementById('divplayer').getElementsByTagName('ctrl1').src = '<%=ctrl1mainurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('ctrl2').src = '<%=ctrl1mainurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('ctrl3').src = '<%=ctrl1mainurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('ctrl4').src = '<%=ctrl1mainurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('ctrl5').src = '<%=ctrl1mainurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('Img1').src = '<%=ctrl1mainurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('Img2').src = '<%=ctrl2mainurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('Img3').src = '<%=ctrl3mainurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('Img4').src = '<%=ctrl4mainurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('Img5').src = '<%=ctrl5mainurl%>';
+                    //document.getElementById('fplayer').src = '<%=iframeurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('explosion').src = '<%=collisionurl%>';
+                    //document.getElementById('divplayer').getElementsByTagName('crosshair').src = '<%=propurl%>';
+                    var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
+                    if (mydivs == 9) {
+                        document.getElementById('showspot').style.visibility = "visible";
+                    }
+                    else if (mydivs == 8) {
+                        document.getElementById('showpromo').style.visibility = "visible";
+                    }
+                    else if (mydivs == 7) {
+                        document.getElementById('showtools').style.visibility = "visible";
+                    }
+                    else if (mydivs == 6) {
+                        document.getElementById('showprof').style.visibility = "visible";
+                    }
+                    else if (mydivs == 5) {
+                        document.getElementById('showtweet').style.visibility = "visible";
+                    }
+                    else if (mydivs == 4) {
+                        document.getElementById('showfriendso').style.visibility = "visible";
+                    }
+                    else if (mydivs == 3) {
+                        window.location.href = "https://treasurehunter.apphb.com/prizes.html";
+                    }
+                    else if (mydivs == 2) {
+                        window.location.href = "https://treasurehunter.apphb.com/gamesettings.aspx";
+                    }
+                    else if (mydivs == 1) {
+                        document.getElementById('showspot').style.visibility = "visible";
+                    }
 
-                    document.getElementById('Button1').click();
+                    actionconqueor();
 
                 }
 
@@ -2416,17 +2515,18 @@ public string one5 = "";
                 function getTcoins() {
 
 
-
-
-                    if (enemyhits != null) {
-                        //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
-                        //myframe.src = "~/Play/jsresult/" + enemyhits;
-                        // window.location.href("jsresult/" + enemyhits);
-                        document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value"));
-
-                    }
-
+                    actioncollectcoins();
+                    var pvalue = '<%=upaid%>';
+                //if (enemyhits != null) {
+                //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
+                //myframe.src = "~/Play/jsresult/" + enemyhits;
+                // window.location.href("jsresult/" + enemyhits);
+                if (pvalue == "yes") {
+                    document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value"));
                 }
+                //}
+
+            }
 
 
 
@@ -2702,7 +2802,7 @@ public string one5 = "";
                     }
 
                     attacked.style.visibility = "visible";
-                    document.getElementById('attacked').setAttribute("value", "You are Targetted Now");
+                    document.getElementById('attacked').setAttribute("value", "You are Targetted Now " + positionresult);
 
                     explosion.style.left = crosshair.style.left;
                     explosion.style.top = crosshair.style.top;
@@ -2796,7 +2896,43 @@ public string one5 = "";
                         }
 
                         if (lifes == 0) {
-                            lives.setAttribute("value", '10');
+                            //lives.setAttribute("value", '10');
+                            actionelifes();
+                            document.getElementById('TextBox7').style.visibility = "visible";
+                            document.getElementById('TextBox7').setAttribute("value", "So Sad You Lost All Your Lifes. The Gold Coins You Collected Now are Also Lost!! ");
+                            var myaddctrl = window.setTimeout(function () { hidelabel() }, 4000);
+                        }
+                        function hidelabel() {
+                            document.getElementById('TextBox7').style.visibility = "hidden";
+
+                            var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
+                            if (mydivs == 9) {
+                                document.getElementById('showspot').style.visibility = "visible";
+                            }
+                            else if (mydivs == 8) {
+                                document.getElementById('showpromo').style.visibility = "visible";
+                            }
+                            else if (mydivs == 7) {
+                                document.getElementById('showtools').style.visibility = "visible";
+                            }
+                            else if (mydivs == 6) {
+                                document.getElementById('showprof').style.visibility = "visible";
+                            }
+                            else if (mydivs == 5) {
+                                document.getElementById('showtweet').style.visibility = "visible";
+                            }
+                            else if (mydivs == 4) {
+                                document.getElementById('showfriendso').style.visibility = "visible";
+                            }
+                            else if (mydivs == 3) {
+                                window.location.href = "https://treasurehunter.apphb.com/prizes.html";
+                            }
+                            else if (mydivs == 2) {
+                                window.location.href = "https://treasurehunter.apphb.com/gamesettings.aspx";
+                            }
+                            else if (mydivs == 1) {
+                                document.getElementById('showspot').style.visibility = "visible";
+                            }
                         }
 
                     }
@@ -3755,6 +3891,7 @@ public string one5 = "";
                         Img5.style.visibility = "hidden";
                     }
 
+
                 }
             }
         }
@@ -3780,49 +3917,158 @@ public string one5 = "";
 
                 var myaddctrl = window.setInterval(function () { moveCtrl() }, 900);
                 function moveCtrl() {
-                    if (parseInt(ctrl1.style.left.replace("px", "")) > 365 && parseInt(ctrl1.style.left.replace("px", "")) < 850) {
-                        ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", "")) + 45 + "px";
+
+                    var playername = "";
+                    var playerleft = "";
+                    var playertop = "";
+
+                    var playerposition = $.connection.playerpositionmessages;
+                    $(function () {
+                        playerposition.client.hello = function (messages, values, values1) {
+                            playername = messages;
+                            playerleft = values;
+                            playertop = values1;
+                        };
+                    });
+
+                    $.connection.hub.start().done(function () {
+                        //chat.server.Hello(pname + ":", $('#Text1').val());
+                        playerposition.server.Hello(pname, crosshair.style.left, crosshair.style.top).done(function () {
+                        });
+                        playerposition.server.Hello(pname, crosshair.style.left, crosshair.style.top).done(function () {
+                        });
+                    });
+
+
+                    if (playername != Session["friend1"]) {
+                        if (parseInt(ctrl1.style.left.replace("px", "")) > 1 && parseInt(ctrl1.style.left.replace("px", "")) < 480) {
+                            ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", "")) + 45 + "px";
+                        }
+
+                        if (parseInt(ctrl1.style.top.replace("px", "")) > 1 + parseInt(myctrl1.tsctrl1res).toString().replace("px", "") && parseInt(ctrl1.style.top.replace("px", "")) < 374) {
+                            ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", "")) - 45 + "px";
+                        }
                     }
-                    if (parseInt(ctrl1.style.top.replace("px", "")) > 130 + parseInt(myctrl1.tsctrl1res).toString().replace("px", "") && parseInt(ctrl1.style.top.replace("px", "")) < 515) {
-                        ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", "")) - 45 + "px";
+                    else if (playername == Session["friend1"]) {
+                        ctrl1.style.left = playerleft;
+                        ctrl1.style.top = playertop;
                     }
-                    if (parseInt(ctrl2.style.left.replace("px", "")) > 365 && parseInt(ctrl2.style.left.replace("px", "")) < 850) {
-                        ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", "")) + 5 + "px";
+
+                    else if (playername != Session["friend2"]) {
+                        if (parseInt(ctrl2.style.left.replace("px", "")) > 1 && parseInt(ctrl2.style.left.replace("px", "")) < 480) {
+                            ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", "")) + 5 + "px";
+                        }
+                        if (parseInt(ctrl2.style.top.replace("px", "")) > 1 + parseInt(myctrl2.tsctrl2res).toString().replace("px", "") && parseInt(ctrl2.style.top.replace("px", "")) < 374) {
+                            ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", "")) + 45 + "px";
+                        }
                     }
-                    if (parseInt(ctrl2.style.top.replace("px", "")) > 130 + parseInt(myctrl2.tsctrl2res).toString().replace("px", "") && parseInt(ctrl2.style.top.replace("px", "")) < 515) {
-                        ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", "")) + 45 + "px";
+                    else if (playername == Session["friend2"]) {
+                        ctrl2.style.left = playerleft;
+                        ctrl2.style.top = playertop;
                     }
-                    if (parseInt(ctrl3.style.left.replace("px", "")) > 365 && parseInt(ctrl3.style.left.replace("px", "")) < 850) {
-                        ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", "")) + 45 + "px";
+                    else if (playername != Session["friend3"]) {
+                        if (parseInt(ctrl3.style.left.replace("px", "")) > 1 && parseInt(ctrl3.style.left.replace("px", "")) < 480) {
+                            ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", "")) + 45 + "px";
+                        }
+                        if (parseInt(ctrl3.style.top.replace("px", "")) > 1 + parseInt(myctrl3.tsctrl3res).toString().replace("px", "") && parseInt(ctrl3.style.top.replace("px", "")) < 374) {
+                            ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", "")) + 45 + "px";
+                        }
                     }
-                    if (parseInt(ctrl3.style.top.replace("px", "")) > 130 + parseInt(myctrl3.tsctrl3res).toString().replace("px", "") && parseInt(ctrl3.style.top.replace("px", "")) < 515) {
-                        ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", "")) + 45 + "px";
+                    else if (playername == Session["friend3"]) {
+                        ctrl3.style.left = playerleft;
+                        ctrl3.style.top = playertop;
                     }
-                    if (parseInt(ctrl4.style.left.replace("px", "")) > 365 && parseInt(ctrl4.style.left.replace("px", "")) < 850) {
-                        ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", "")) + 45 + "px";
+                    else if (playername != Session["friend4"]) {
+                        if (parseInt(ctrl4.style.left.replace("px", "")) > 365 && parseInt(ctrl4.style.left.replace("px", "")) < 480) {
+                            ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", "")) + 45 + "px";
+                        }
+                        if (parseInt(ctrl4.style.top.replace("px", "")) > 1 + parseInt(myctrl4.tsctrl4res).toString().replace("px", "") && parseInt(ctrl4.style.top.replace("px", "")) < 374) {
+                            ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", "")) + 45 + "px";
+                        }
                     }
-                    if (parseInt(ctrl4.style.top.replace("px", "")) > 130 + parseInt(myctrl4.tsctrl4res).toString().replace("px", "") && parseInt(ctrl4.style.top.replace("px", "")) < 515) {
-                        ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", "")) + 45 + "px";
+                    else if (playername == Session["friend4"]) {
+                        ctrl4.style.left = playerleft;
+                        ctrl4.style.top = playertop;
                     }
-                    if (parseInt(ctrl5.style.left.replace("px", "")) > 365 && parseInt(ctrl5.style.left.replace("px", "")) < 850) {
-                        ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", "")) + 45 + "px";
+                    else if (playername != Session["friend5"]) {
+                        if (parseInt(ctrl5.style.left.replace("px", "")) > 1 && parseInt(ctrl5.style.left.replace("px", "")) < 480) {
+                            ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", "")) + 45 + "px";
+                        }
+                        if (parseInt(ctrl5.style.top.replace("px", "")) > 1 + parseInt(myctrl5.tsctrl5res).toString().replace("px", "") && parseInt(ctrl5.style.top.replace("px", "")) < 374) {
+                            ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", "")) + 45 + "px";
+                        }
                     }
-                    if (parseInt(ctrl5.style.top.replace("px", "")) > 130 + parseInt(myctrl5.tsctrl5res).toString().replace("px", "") && parseInt(ctrl5.style.top.replace("px", "")) < 515) {
-                        ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", "")) + 45 + "px";
+                    else if (playername == Session["friend5"]) {
+                        ctrl5.style.left = playerleft;
+                        ctrl5.style.top = playertop;
                     }
                     divplayer.focus();
                 }
 
 
-                document.addEventListener("keydown", check, false);
-                document.addEventListener("mousedown", explodeprop, false);
-                document.addEventListener("mousemove", moveprop, false);
+                fplayer.addEventListener("keydown", check, false);
+                fplayer.addEventListener("mousedown", explodeprop, false);
+                fplayer.addEventListener("mousemove", moveprop, false);
+
+                ctrl1.addEventListener("mouseover", showfone, false);
+                ctrl2.addEventListener("mouseover", showftwo, false);
+                ctrl3.addEventListener("mouseover", showfthree, false);
+                ctrl4.addEventListener("mouseover", showffour, false);
+                ctrl5.addEventListener("mouseover", showffive, false);
+
+                ctrl1.addEventListener("mouseout", hidefone, false);
+                ctrl2.addEventListener("mouseout", hideftwo, false);
+                ctrl3.addEventListener("mouseout", hidefthree, false);
+                ctrl4.addEventListener("mouseout", hideffour, false);
+                ctrl5.addEventListener("mouseout", hideffive, false);
+
+                function showfone() {
+                    document.getElementById('ctrl1').setAttribute("src", '<%=Session["friend1pic"]%>');
+            }
+
+                function showftwo() {
+                    document.getElementById('ctrl2').setAttribute("src", '<%=Session["friend2pic"]%>');
+            }
+
+                function showfthree() {
+                    document.getElementById('ctrl3').setAttribute("src", '<%=Session["friend3pic"]%>');
+            }
+
+                function showffour() {
+                    document.getElementById('ctrl4').setAttribute("src", '<%=Session["friend4pic"]%>');
+            }
+
+                function showffive() {
+                    document.getElementById('ctrl5').setAttribute("src", '<%=Session["friend5pic"]%>');
+            }
+                function hidefone() {
+                    document.getElementById('ctrl1').setAttribute("src", '<%=ctrl1mainurl%>');
+                }
+
+                function hideftwo() {
+                    document.getElementById('ctrl2').setAttribute("src", '<%=<%=ctrl2mainurl%>%>');
+                }
+
+                function hidefthree() {
+                    document.getElementById('ctrl3').setAttribute("src", '<%=<%=ctrl3mainurl%>%>');
+                }
+
+                function hideffour() {
+                    document.getElementById('ctrl4').setAttribute("src", '<%=<%=ctrl4mainurl%>%>');
+                }
+
+                function hideffive() {
+                    document.getElementById('ctrl5').setAttribute("src", '<%=<%=ctrl5mainurl%>%>');
+                }
 
                 var currentlposition = "moveleft";
                 var currenttposition = "moveleft";
                 var positionresult = "moveleft";
+                var won = 0;
 
                 function moveprop(e) {
+
+
 
                     document.body.style.cursor = "pointer";
                     crosshair.style.visibility = "visible";
@@ -3836,35 +4082,29 @@ public string one5 = "";
 
                     }
 
-                    else if (Math.round(e.clientX) > 365) {
-                        crosshair.style.left = Math.round(e.clientX) - 365 + "px";
+                    else if (Math.round(e.clientX) > 1) {
+                        crosshair.style.left = Math.round(e.clientX) - 1 + "px";
 
                     }
 
-                    else if (Math.round(e.clientX) < 365) {
-                        crosshair.style.left = 1 + "px";
+                    else if (Math.round(e.clientX) < 480) {
+                        crosshair.style.left = 480 + "px";
 
                     }
 
-                    else if (Math.round(e.clientX) > 879) {
-                        crosshair.style.left = 879 + "px";
+
+
+                    else if (Math.round(e.clientY) > 1) {
+                        crosshair.style.top = Math.round(e.clientY) - 1 + "px";
 
                     }
 
-                    else if (Math.round(e.clientY) > 130) {
-                        crosshair.style.top = Math.round(e.clientY) - 130 + "px";
+                    else if (Math.round(e.clientY) < 374) {
+                        crosshair.style.top = 374 + "px";
 
                     }
 
-                    else if (Math.round(e.clientY) < 130) {
-                        crosshair.style.top = 130 + "px";
 
-                    }
-
-                    else if (Math.round(e.clientY) > 275) {
-                        crosshair.style.top = 275 + "px";
-
-                    }
 
                     if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientX)) {
                         positionresult = "moveright";
@@ -4024,7 +4264,7 @@ public string one5 = "";
 
             });
 
-    </script>
+        </script>
     
 <script>        (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -4047,15 +4287,291 @@ public string one5 = "";
                 caption: 'Treasure Hunter 3D Multiplayer Game - Completed TreasureSpot ' + '<%=Label1.Text%>' + 'and Collected ' + '<%=points.Text%>',
             }, function (response) { });
         }
-  </script>        
+  </script> 
+        <script>
+            function buy() {
+                var obj = {
+                    method: 'pay',
+                    action: 'purchaseitem',
+                    product: 'https://treasurehunter.apphb.com/coin.html',
+                    request_id: 'tspot'
+                };
+
+                FB.ui(obj, function (data) {
+                    actiontrspot();
+                });
+            }
+
+            document.getElementById('pay0').onclick = function () { buy() };
+
+            function buyt() {
+                var obj = {
+                    method: 'pay',
+                    action: 'purchaseitem',
+                    product: 'https://treasurehunter.apphb.com/tool.html',
+                    request_id: 'tool'
+                };
+
+                FB.ui(obj, function (data) {
+                    actiontbox();
+                });
+            }
+
+            document.getElementById('pay3').onclick = function () { buyt() };
+
+            function buyl() {
+                var obj = {
+                    method: 'pay',
+                    action: 'purchaseitem',
+                    product: 'https://treasurehunter.apphb.com/life.html',
+                    request_id: 'life'
+                };
+
+                FB.ui(obj, function (data) {
+                    actionelifes();
+                });
+            }
+
+            document.getElementById('pay').onclick = function () { buyl() };
+
+            function buyp() {
+                var obj = {
+                    method: 'pay',
+                    action: 'purchaseitem',
+                    product: 'https://treasurehunter.apphb.com/professional.html',
+                    request_id: 'prof'
+                };
+
+                FB.ui(obj, function (data) {
+                    actionphelp();
+                });
+            }
+
+            document.getElementById('pay2').onclick = function () { buyp() };
+
+
+            function actioncollectcoins() {
+                FB.api(
+                      'me/treasure_huntermp:collect_coins',
+                      'post',
+                      {
+                          goldcoins: "650947641648558"
+                      },
+                      function (response) {
+                          // handle the response
+                      }
+                    );
+            }
+            function actionconqueor() {
+                FB.api(
+                      'me/treasure_huntermp:conquer',
+                      'post',
+                      {
+                          achievements: "754479501268870"
+                      },
+                      function (response) {
+                          // handle the response
+                      }
+                    );
+            }
+            function actionelifes() {
+                FB.api(
+                      'me/treasure_huntermp:unlimited_lifes',
+                      'post',
+                      {
+                          lifes: "703581699708226"
+                      },
+                      function (response) {
+                          // handle the response
+                      }
+                    );
+            }
+            function actionifriend() {
+                FB.api(
+  'me/treasure_huntermp:invite',
+  'post',
+  {
+      friendsinvite: "885368018157995"
+  },
+  function (response) {
+      // handle the response
+  }
+);
+            }
+            function actioningame() {
+                FB.api(
+                     'me/treasure_huntermp:in_game_now',
+                     'post',
+                     {
+                         online: "656704607757078"
+                     },
+                     function (response) {
+                         // handle the response
+                     }
+                   );
+            }
+            function actionphelp() {
+                FB.api(
+                      'me/treasure_huntermp:professiona_help',
+                      'post',
+                      {
+                          product: "718706568186043"
+                      },
+                      function (response) {
+                          // handle the response
+                      }
+                        );
+            }
+            function actionrewards() {
+                FB.api(
+                  'me/treasure_huntermp:reward',
+                  'post',
+                  {
+                      prizes: "728217013908150"
+                  },
+                  function (response) {
+                      // handle the response
+                  }
+                );
+            }
+            function actiontbox() {
+                FB.api(
+                          'me/treasure_huntermp:toolbox',
+                          'post',
+                          {
+                              product: "924646287561106"
+                          },
+                          function (response) {
+                              // handle the response
+                          }
+                        );
+            }
+            function actionthgame() {
+                FB.api(
+                      'me/treasure_huntermp:treasurehunter',
+                      'post',
+                      {
+                          game: "513946295401730"
+                      },
+                      function (response) {
+                          // handle the response
+                      }
+                    );
+            }
+            function actiontrspot() {
+                FB.api(
+                      'me/treasure_huntermp:treasurespot',
+                      'post',
+                      {
+                          product: "758817104141842"
+                      },
+                      function (response) {
+                          // handle the response
+                      }
+                    );
+            }
+
+     </script>
+    <script>
+        function FacebookInviteFriends() {
+            FB.ui({
+                method: 'apprequests',
+                message: 'You are Invited to Play Treasure Hunter 3D MultiPlayer Game with me'
+            });
+        }
+</script>
+    <script type="text/javascript">
+        function hidediv() {
+            document.getElementById('showspot').style.visibility = "hidden";
+            document.getElementById('showpromo').style.visibility = "hidden";
+            document.getElementById('showlife').style.visibility = "hidden";
+            document.getElementById('showprof').style.visibility = "hidden";
+            document.getElementById('showtweet').style.visibility = "hidden";
+            document.getElementById('showtools').style.visibility = "hidden";
+            document.getElementById('showfriends').style.visibility = "hidden";
+
+
+            document.getElementById('Button1').click();
+
+
+        }
+    </script>
+    <script type="text/javascript">
+        // On load, the user hasn't clicked on the payer_promotion unit
+        var has_clicked = false;
+        var dialog_window;
+
+        function payer_promotion() {
+            if (!has_clicked) {
+                // If first click, open payer_promotion dialog
+                var obj = {
+                    method: 'fbpromotion',
+                    display: 'popup',
+                    quantity: 1,
+                    product: 'https://treasurehunter.apphb.com/coin.html'
+                };
+
+                FB.ui(obj, function () {
+                    // call back to your server to see if user's balance changed
+                });
+
+                // Mark unit as clicked by user
+                has_clicked = true;
+            } else {
+                // For subsequent clicks, alert user
+                alert("Payer Promotion already clicked!");
+            }
+        }
+        </script>        
      <form id="form1" runat="server">
+<div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;     visibility:hidden; position: absolute; background-color: #669999;" id="showprof">
+            <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px;" /><asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 94px; top: 24px; position: absolute; width: 329px;" Text="Professional Help to Complete Your TreasureSpot or Game Tools"></asp:Label>
+            <asp:Label ID="Label5" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="A Professional will complete your TreasureSpot or Game Tools on behalf of you" ForeColor="White"></asp:Label>
+        <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align:center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
+        <button id="pay" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF;">Buy Now</button>
+        <button id="Button4" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 300px;">Back to Game</button>
+</div>
+        <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;     visibility:hidden; position: absolute; background-color: #9900FF" id="showspot">
+            <img alt="" src="Images/coin.png" style="z-index: 1001; left: 43px; top: 27px; position: absolute" /><asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Treasure Spot"></asp:Label>
+            <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="You Have Played Now in a TreasureSpot. Create your own TreasureSpot to Earn More Rewards. " ForeColor="White"></asp:Label>
+        <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align:center; width: 72px; margin-top: 0px;" Text="Price   $2" ForeColor="White" Font-Bold="True"></asp:Label>
+        <button id="pay0" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF;">Buy Now</button>
+        <button id="Button5" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 300px;" onclick="hidediv();">Back to Game</button>
+        </div>
+        <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;     visibility:hidden; position: absolute; background-color: #666633" id="showpromo">
+            <img alt="" src="Images/lwinner.jpg" style="z-index: 1101; left: 5px; top: 17px; position: absolute; height: 59px; width: 87px;" /><asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 102px; top: 28px; position: absolute; width: 327px;" Text="Wow you just won a TreasureSpot at a Concessional Price"></asp:Label>
+            <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 42px; top: 122px; position: absolute; vertical-align: middle; text-align:center; width: 382px; margin-top: 0px; bottom: 140px;" Text="You were the randomly selected winner of a TreasureSpot" ForeColor="White"></asp:Label>
+        <button onclick="payer_promotion();" style="z-index: 1; left: 143px; top: 192px; position: absolute; background-color: #0000CC; color: #FFFF00; width: 180px;">Concessional TreasureSpots</button>
+         <button id="Button6" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 233px; left: 179px;">Back to Game</button>
+        </div>
+        <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;     visibility:hidden; position: absolute; background-color: #FF6666" id="showlife">
+            <img alt="" src="Images/health.gif" style="z-index: 1101; left: 12px; top: 14px; position: absolute; height: 40px;" /><asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 76px; top: 32px; position: absolute; width: 349px;" Text="Additional Lifes During Your Game Play"></asp:Label>
+            <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Get 20 More Lifes During Game Playing" ForeColor="White"></asp:Label>
+        <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align:center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
+        <button id="pay2" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF;">Buy Now</button>
+        <button id="Button7" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 300px;" onclick="actionthgame();">Back to Game</button>
+        </div>
+        <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;    visibility:hidden; position: absolute; background-color: #FF5050" id="showtweet">
+            <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px; right: 355px;" /><asp:Label ID="Label15" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 163px; top: 36px; position: absolute" Text="Tweet on Twitter"></asp:Label>
+            <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting tweet on Twitter and Expres Yourself" ForeColor="White"></asp:Label>
+              <button id="Button8" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 253px; left: 300px;" onclick="actionrewards();">Back to Game</button>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration:none; position: absolute; top: 260px; left: 185px; width: 44px;">Tweet</a>    
+        </div>
+        <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;   visibility:hidden; position: absolute; background-color: #3333FF" id="showtools">
+            <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px;" /><asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Game Tools Item"></asp:Label>
+            <asp:Label ID="Label18" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Add your own choice of Game Items to your TreasureSpot." ForeColor="White"></asp:Label>
+        <asp:Label ID="Label19" runat="server" style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align:center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
+        <button id="pay3" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF;">Buy Now</button>
+        <button id="Button9" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 300px;">Back to Game</button>
+        </div>
+        <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;  visibility:hidden; position: absolute; background-color: #FF5050" id="showfriends">
+            <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px; right: 355px;" /><asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 163px; top: 36px; position: absolute" Text="Invite Friends"></asp:Label>
+            <asp:Label ID="Label21" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting invite your Friends and Like the Game" ForeColor="White"></asp:Label>
+              <button id="Button10" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 253px; left: 300px;" onclick="ifriends();">Back to Game</button>
+            <a href="#" onclick="FacebookInviteFriends();" style="position: absolute; left: 37%; top: 87%; width: 27%; height: 7%; text-decoration: none; color: #FFFFFF; background-color: #FF9900; border-radius: 20px; text-align: center; right: 159px; z-index: 310;">Invite Friends</a>
+            <div class="fb-like" data-href="https://www.facebook.com/TreasureHuntergame" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 159px; right: 275px; bottom: 117px; left: 35px"></div>
+        </div>          
          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:SqlDataSource>
-
-        
-
-
-
-
 
         <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
 

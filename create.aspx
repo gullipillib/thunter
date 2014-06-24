@@ -1037,33 +1037,9 @@
     <title>Create Treasure Spot</title>
     
 </head>
- <!-- Google Code for Remarketing Tag -->
-<!--------------------------------------------------
-Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
---------------------------------------------------->
-<script type="text/javascript">
-    var google_tag_params = {
-        ecomm_prodid: '101_th',
-ecomm_pagetype: 'product',
-ecomm_totalvalue: '2.00',
-    };
-</script>
-<script type="text/javascript">
-    /* <![CDATA[ */
-    var google_conversion_id = 967011017;
-    var google_custom_params = window.google_tag_params;
-    var google_remarketing_only = true;
-    /* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
-<noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967011017/?value=0&amp;guid=ON&amp;script=0"/>
-</div>
-</noscript>
 
-<body style="height: 585px; background-color:black">
+
+<body style="height: 585px; background-color:transparent">
     <a href="Play/play" target="_self" style="position: absolute; left: 540px; top: 53px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; border-radius: 20px; right: 221px; text-align: center; height: 22px;">Complete Later </a>
     <a href="Play/play" target="_self" style="position: absolute; left: 542px; top: 85px; width: 152px; text-decoration: none; background-color: #0000FF; color: #FFFFFF; border-radius: 20px; right: 219px; text-align: center; height: 22px;">Approver Comments </a>
     
@@ -1077,7 +1053,7 @@ ecomm_totalvalue: '2.00',
         
     </div>  
    
-    <iframe id="iframe2" style="position:absolute; top: 639px; left: 10px; width: 895px; height: 353px;" src="~/googlepickerlatest2.html"></iframe>
+    <iframe id="iframe2" style="position:absolute; top: 639px; left: 10px; width: 895px; height: 353px;" src="googlepickerlatest2.html"></iframe>
  
    
     <form id="form1" runat="server">
@@ -1090,7 +1066,7 @@ ecomm_totalvalue: '2.00',
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbtoolscategory,  tbcategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'water')"></asp:SqlDataSource>
             
            
-    <a href="creatorhelp.aspx" target="_self" style="position: absolute; left: 496px; top: 487px; width: 86px; text-decoration: none; background-color: #0000FF; color: #FFFFFF;  border-radius: 20px; right: 315px; text-align: center; height: 22px;">Help </a>
+    <a href="creatorhelp.aspx" target="_self" style="position: absolute; left: 504px; top: 487px; width: 86px; text-decoration: none; background-color: #0000FF; color: #FFFFFF;  border-radius: 20px; right: 324px; text-align: center; height: 22px;">Help </a>
             
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 567px; top: 26px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
@@ -1123,7 +1099,7 @@ ecomm_totalvalue: '2.00',
         <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 485px; top: 58px; position: absolute; height:18px; width: 20px" Text="&lt;-" Font-Size="11pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         
 
-        <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="12pt" ForeColor="Blue" Style="z-index: 1; top: 213px; position: absolute; left: 768px; height: 19px;" Text="water"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="12pt" ForeColor="Blue" Style="z-index: 1; top: 200px; position: absolute; left: 768px" Text="water"></asp:Label>
 
 
         <asp:DropDownList ID="DropDownList1" runat="server" Style="z-index: 1; height:40px; width:60px; left: 98px; top: 9px; position: absolute; height: 23px; width: 190px; right: 626px;" ToolTip="Press Select to confirm" CausesValidation="True" BackColor="#99CCFF" ForeColor="Maroon">
@@ -1132,8 +1108,8 @@ ecomm_totalvalue: '2.00',
             <asp:ListItem>air or space</asp:ListItem>
         </asp:DropDownList>
         
-         <asp:Panel ID="Panel4" runat="server" style="z-index: 1; left: 766px; top: 234px; position: absolute; height: 162px; width: 134px; overflow:scroll" ScrollBars="Vertical" BorderColor="#33CC33" BorderStyle="Ridge" BorderWidth="10px">
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 133px; width: 53px" Enabled="False" ClientIDMode="Static" ViewStateMode="Enabled" OnSelectedIndexChanged="GridView2_SelectedIndexChanged1">
+         <asp:Panel ID="Panel4" runat="server" style="z-index: 1; left: 766px; top: 221px; position: absolute; height: 162px; width: 134px; overflow:scroll" ScrollBars="Vertical">
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="SqlDataSource3" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 133px; width: 53px" Enabled="False" ClientIDMode="Static" ViewStateMode="Enabled" OnSelectedIndexChanged="GridView2_SelectedIndexChanged1">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
@@ -1163,7 +1139,7 @@ ecomm_totalvalue: '2.00',
             <SelectedRowStyle BackColor="#FFFFCC" />
         </asp:GridView>
         </asp:Panel>
-        <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: 587px; top: 447px; position: absolute; height: 162px; width: 134px; overflow:scroll" ScrollBars="Vertical" BorderColor="#33CC33" BorderStyle="Ridge" BorderWidth="10px">
+        <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: 601px; top: 447px; position: absolute; height: 162px; width: 134px; overflow:scroll" ScrollBars="Vertical">
         <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="SqlDataSource5" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; top: 0px; position: absolute; height: 137px; width: 42px; left: 0px" ClientIDMode="Static" ViewStateMode="Enabled" CellPadding="0" Enabled="False" OnSelectedIndexChanged="GridView4_SelectedIndexChanged1">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
@@ -1195,8 +1171,8 @@ ecomm_totalvalue: '2.00',
         </asp:GridView>
             </asp:Panel>
 
-        <asp:Panel ID="Panel5" runat="server" style="z-index: 1; left: 747px; top: 432px; position: absolute; height: 162px; width: 134px;overflow:scroll" ScrollBars="Vertical" BorderColor="#33CC33" BorderStyle="Ridge" BorderWidth="10px">
-        <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="SqlDataSource4" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 1px; position: absolute; height: 133px; width: 65px; bottom: -7px;" Enabled="False" ClientIDMode="Static" OnSelectedIndexChanged="GridView3_SelectedIndexChanged1">
+        <asp:Panel ID="Panel5" runat="server" style="z-index: 1; left: 747px; top: 415px; position: absolute; height: 162px; width: 134px;overflow:scroll" ScrollBars="Vertical">
+        <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="SqlDataSource4" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 133px; width: 65px; bottom: 404px;" Enabled="False" ClientIDMode="Static" OnSelectedIndexChanged="GridView3_SelectedIndexChanged1">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
@@ -1226,8 +1202,8 @@ ecomm_totalvalue: '2.00',
             <SelectedRowStyle BackColor="#FFFFCC" />
         </asp:GridView>
             </asp:Panel>
-        <asp:Panel ID="Panel3" runat="server" style="z-index: 1; left: 712px; top: 36px; position: absolute; height: 162px; width: 134px; overflow:scroll" ScrollBars="Vertical" BorderColor="#33CC33" BorderStyle="Ridge" BorderWidth="10px">
-         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 154px; width: 139px" Visible="False" ClientIDMode="Static" ViewStateMode="Enabled" Enabled="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1">
+        <asp:Panel ID="Panel3" runat="server" style="z-index: 1; left: 712px; top: 36px; position: absolute; height: 162px; width: 134px; overflow:scroll" ScrollBars="Vertical">
+         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" DataSourceID="SqlDataSource2" GridLines="None" PageSize="200000" ShowHeader="False" Style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 154px; width: 139px" Visible="False" ClientIDMode="Static" ViewStateMode="Enabled" Enabled="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1">
             <Columns>
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
@@ -1264,7 +1240,7 @@ ecomm_totalvalue: '2.00',
         <asp:Button ID="Button5" runat="server" BackColor="Blue" ForeColor="White" Style="z-index: 1; left: 777px; top: 6px; position: absolute; height: 26px; bottom: 561px; cursor:pointer;" Text="Back to Game" ToolTip="Only after all the fields are completed, finalization takes place" Enabled="False" UseSubmitBehavior="False" />
         <asp:Button ID="Button6" runat="server" Style="z-index: 1; left: 667px; top: 355px; position: absolute; bottom: 188px; width: 71px; height:40px;" Text="Add" OnClick="Button6_Click" ClientIDMode="Static" CausesValidation="False" Enabled="False" Height="40px" Width="70px" UseSubmitBehavior="False" />
         </asp:Panel>
-            <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Size="12pt" ForeColor="Blue" Style="z-index: 1; top: 412px; position: absolute; left: 753px; bottom: 137px; height:17px; width: 95px;" Text="air or space" ViewStateMode="Enabled"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Size="12pt" ForeColor="Blue" Style="z-index: 1; top: 391px; position: absolute; left: 769px; bottom: 183px;" Text="air or space" ViewStateMode="Enabled"></asp:Label>
 
 
         <asp:Panel ID="Panel1" runat="server" Style="z-index: 1; left: 18px; top: 510px; position: absolute; height: 73px; width: 466px" BorderStyle="Solid" Enabled="False" ClientIDMode="Static" ViewStateMode="Enabled">

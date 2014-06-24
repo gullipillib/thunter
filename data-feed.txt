@@ -1,2 +1,0 @@
-id 	title 	description 	price 	condition	link	google_product_category	image_link	availability	product_type
-101_th 	Treasure Spot 	Create your own one Treasurespot 	 2 	new	https://treasurehunter.apphb.com/index.html	Arts & Entertainment	https://treasurehunter.apphb.com/images/coin.png	available for order	treasurespot 
