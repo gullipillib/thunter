@@ -193,7 +193,7 @@ public string one5 = "";
     protected void gettreasurespot()
     {
 
-        SqlDataSource8.SelectCommand = "SELECT tsname, tsratings, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
+        SqlDataSource8.SelectCommand = "SELECT tsname,  tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
         DataView dv = (DataView)SqlDataSource8.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
@@ -203,7 +203,7 @@ public string one5 = "";
             
             Random one = new Random();
             int t1 = one.Next(0, dt.Rows.Count);
-            TextBox9.Text = dt.Rows[t1].Field<string>("tsratings"); //usethis to get field value
+            TextBox9.Text = "10"; //usethis to get field value
 		tsitems = dt.Rows[t1].Field<string>("tsurl"); //usethis to get field value
 		one1 = tsitems;
 
@@ -551,14 +551,14 @@ public string one5 = "";
 
     protected void Button3_Click(object sender, EventArgs e)
     {
-        SqlDataSource8.SelectCommand = "SELECT tsratings FROM tspots where tsname = '" + tsname + "'";
+        SqlDataSource8.SelectCommand = "SELECT * FROM tspots where tsname = '" + tsname + "'";
         DataView dv = (DataView)SqlDataSource8.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         DataView uniname = dt.DefaultView;
         if (dt.Rows.Count != 0)
         {
-            tsratings = dt.Rows[0].Field<string>("tsratings"); //usethis to get field value
+            tsratings = "10"; //usethis to get field value
         }
         SqlDataSource8.UpdateCommand = "UPDATE tspots SET tsratings='" + Convert.ToString(Convert.ToInt32(tsratings) + 1) + "'" + " where tsname='" + tsname + "'";
    
