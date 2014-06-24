@@ -2329,19 +2329,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
 
                 function hideftwo() {
-                    document.getElementById('ctrl2').setAttribute("src", '<%=<%=ctrl2mainurl%>%>');
+                    document.getElementById('ctrl2').setAttribute("src", '<%=ctrl2mainurl%>');
                 }
 
                 function hidefthree() {
-                    document.getElementById('ctrl3').setAttribute("src", '<%=<%=ctrl3mainurl%>%>');
+                    document.getElementById('ctrl3').setAttribute("src", '<%=ctrl3mainurl%>');
                 }
 
                 function hideffour() {
-                    document.getElementById('ctrl4').setAttribute("src", '<%=<%=ctrl4mainurl%>%>');
+                    document.getElementById('ctrl4').setAttribute("src", '<%=ctrl4mainurl%>');
                 }
 
                 function hideffive() {
-                    document.getElementById('ctrl5').setAttribute("src", '<%=<%=ctrl5mainurl%>%>');
+                    document.getElementById('ctrl5').setAttribute("src", '<%=ctrl5mainurl%>');
                 }
 
                 var currentlposition = "moveleft";
