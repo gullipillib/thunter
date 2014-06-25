@@ -2201,97 +2201,98 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 var myaddctrl = window.setInterval(function () { moveCtrl() }, 900);
                 function moveCtrl() {
 
-                    var playername = "";
-                    var playerleft = "";
-                    var playertop = "";
+                var playername = "";
+                var playerleft = "";
+                var playertop = "";
 
-                    var playerposition = $.connection.playerpositionmessages;
-                    $(function () {
-                        playerposition.client.hello = function (messages, values, values1) {
-                            playername = messages;
-                            playerleft = values;
-                            playertop = values1;
-                        };
+                var playerposition = $.connection.playerpositionmessages;
+                $(function () {
+                    playerposition.client.hello = function (messages, values, values1) {
+                        playername = messages;
+                        playerleft = values;
+                        playertop = values1;
+                    };
+                });
+
+                $.connection.hub.start().done(function () {
+                    //chat.server.Hello(pname + ":", $('#Text1').val());
+                    playerposition.server.Hello(pname, crosshair.style.left, crosshair.style.top).done(function () {
                     });
-
-                    $.connection.hub.start().done(function () {
-                        //chat.server.Hello(pname + ":", $('#Text1').val());
-                        playerposition.server.Hello(pname, crosshair.style.left, crosshair.style.top).done(function () {
-                        });
-                        playerposition.server.Hello(pname, crosshair.style.left, crosshair.style.top).done(function () {
-                        });
+                    playerposition.server.Hello(pname, crosshair.style.left, crosshair.style.top).done(function () {
                     });
+                });
 
 
-                    if (playername != Session["friend1"]) {
-                        if (parseInt(ctrl1.style.left.replace("px", "")) > 1 && parseInt(ctrl1.style.left.replace("px", "")) < 480) {
+                if (playername != Session["friend1"])
+                    {
+                        if (parseInt(ctrl1.style.left.replace("px", "")) > 365 && parseInt(ctrl1.style.left.replace("px", "")) < 850) {
                             ctrl1.style.left = parseInt(ctrl1.style.left.replace("px", "")) + 45 + "px";
                         }
-
-                        if (parseInt(ctrl1.style.top.replace("px", "")) > 1 + parseInt(myctrl1.tsctrl1res).toString().replace("px", "") && parseInt(ctrl1.style.top.replace("px", "")) < 374) {
+               
+                        if (parseInt(ctrl1.style.top.replace("px", "")) > 130 + parseInt(myctrl1.tsctrl1res).toString().replace("px", "") && parseInt(ctrl1.style.top.replace("px", "")) < 515) {
                             ctrl1.style.top = parseInt(ctrl1.style.top.replace("px", "")) - 45 + "px";
                         }
-                    }
-                    else if (playername == Session["friend1"]) {
-                        ctrl1.style.left = playerleft;
-                        ctrl1.style.top = playertop;
-                    }
-
-                    else if (playername != Session["friend2"]) {
-                        if (parseInt(ctrl2.style.left.replace("px", "")) > 1 && parseInt(ctrl2.style.left.replace("px", "")) < 480) {
-                            ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", "")) + 5 + "px";
-                        }
-                        if (parseInt(ctrl2.style.top.replace("px", "")) > 1 + parseInt(myctrl2.tsctrl2res).toString().replace("px", "") && parseInt(ctrl2.style.top.replace("px", "")) < 374) {
-                            ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", "")) + 45 + "px";
-                        }
-                    }
-                    else if (playername == Session["friend2"]) {
-                        ctrl2.style.left = playerleft;
-                        ctrl2.style.top = playertop;
-                    }
-                    else if (playername != Session["friend3"]) {
-                        if (parseInt(ctrl3.style.left.replace("px", "")) > 1 && parseInt(ctrl3.style.left.replace("px", "")) < 480) {
-                            ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", "")) + 45 + "px";
-                        }
-                        if (parseInt(ctrl3.style.top.replace("px", "")) > 1 + parseInt(myctrl3.tsctrl3res).toString().replace("px", "") && parseInt(ctrl3.style.top.replace("px", "")) < 374) {
-                            ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", "")) + 45 + "px";
-                        }
-                    }
-                    else if (playername == Session["friend3"]) {
-                        ctrl3.style.left = playerleft;
-                        ctrl3.style.top = playertop;
-                    }
-                    else if (playername != Session["friend4"]) {
-                        if (parseInt(ctrl4.style.left.replace("px", "")) > 365 && parseInt(ctrl4.style.left.replace("px", "")) < 480) {
-                            ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", "")) + 45 + "px";
-                        }
-                        if (parseInt(ctrl4.style.top.replace("px", "")) > 1 + parseInt(myctrl4.tsctrl4res).toString().replace("px", "") && parseInt(ctrl4.style.top.replace("px", "")) < 374) {
-                            ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", "")) + 45 + "px";
-                        }
-                    }
-                    else if (playername == Session["friend4"]) {
-                        ctrl4.style.left = playerleft;
-                        ctrl4.style.top = playertop;
-                    }
-                    else if (playername != Session["friend5"]) {
-                        if (parseInt(ctrl5.style.left.replace("px", "")) > 1 && parseInt(ctrl5.style.left.replace("px", "")) < 480) {
-                            ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", "")) + 45 + "px";
-                        }
-                        if (parseInt(ctrl5.style.top.replace("px", "")) > 1 + parseInt(myctrl5.tsctrl5res).toString().replace("px", "") && parseInt(ctrl5.style.top.replace("px", "")) < 374) {
-                            ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", "")) + 45 + "px";
-                        }
-                    }
-                    else if (playername == Session["friend5"]) {
-                        ctrl5.style.left = playerleft;
-                        ctrl5.style.top = playertop;
-                    }
-                    divplayer.focus();
+                }
+                else if (playername == Session["friend1"]) {
+                    ctrl1.style.left = playerleft;
+                    ctrl1.style.top = playertop;
                 }
 
+                else if (playername != Session["friend2"]) {
+                    if (parseInt(ctrl2.style.left.replace("px", "")) > 365 && parseInt(ctrl2.style.left.replace("px", "")) < 850) {
+                        ctrl2.style.left = parseInt(ctrl2.style.left.replace("px", "")) + 5 + "px";
+                    }
+                    if (parseInt(ctrl2.style.top.replace("px", "")) > 130 + parseInt(myctrl2.tsctrl2res).toString().replace("px", "") && parseInt(ctrl2.style.top.replace("px", "")) < 515) {
+                        ctrl2.style.top = parseInt(ctrl2.style.top.replace("px", "")) + 45 + "px";
+                    }
+                }
+                else if (playername == Session["friend2"]) {
+                    ctrl2.style.left = playerleft;
+                    ctrl2.style.top = playertop;
+                }
+                else if (playername != Session["friend3"]) {
+                    if (parseInt(ctrl3.style.left.replace("px", "")) > 365 && parseInt(ctrl3.style.left.replace("px", "")) < 850) {
+                        ctrl3.style.left = parseInt(ctrl3.style.left.replace("px", "")) + 45 + "px";
+                    }
+                    if (parseInt(ctrl3.style.top.replace("px", "")) > 130 + parseInt(myctrl3.tsctrl3res).toString().replace("px", "") && parseInt(ctrl3.style.top.replace("px", "")) < 515) {
+                        ctrl3.style.top = parseInt(ctrl3.style.top.replace("px", "")) + 45 + "px";
+                    }
+                }
+                else if (playername == Session["friend3"]) {
+                    ctrl3.style.left = playerleft;
+                    ctrl3.style.top = playertop;
+                }
+                else if (playername != Session["friend4"]) {
+                    if (parseInt(ctrl4.style.left.replace("px", "")) > 365 && parseInt(ctrl4.style.left.replace("px", "")) < 850) {
+                        ctrl4.style.left = parseInt(ctrl4.style.left.replace("px", "")) + 45 + "px";
+                    }
+                    if (parseInt(ctrl4.style.top.replace("px", "")) > 130 + parseInt(myctrl4.tsctrl4res).toString().replace("px", "") && parseInt(ctrl4.style.top.replace("px", "")) < 515) {
+                        ctrl4.style.top = parseInt(ctrl4.style.top.replace("px", "")) + 45 + "px";
+                    }
+                }
+                else if (playername == Session["friend4"]) {
+                    ctrl4.style.left = playerleft;
+                    ctrl4.style.top = playertop;
+                }
+                else if (playername != Session["friend5"]) {
+                    if (parseInt(ctrl5.style.left.replace("px", "")) > 365 && parseInt(ctrl5.style.left.replace("px", "")) < 850) {
+                        ctrl5.style.left = parseInt(ctrl5.style.left.replace("px", "")) + 45 + "px";
+                    }
+                    if (parseInt(ctrl5.style.top.replace("px", "")) > 130 + parseInt(myctrl5.tsctrl5res).toString().replace("px", "") && parseInt(ctrl5.style.top.replace("px", "")) < 515) {
+                        ctrl5.style.top = parseInt(ctrl5.style.top.replace("px", "")) + 45 + "px";
+                    }
+                }
+                else if (playername == Session["friend5"]) {
+                    ctrl5.style.left = playerleft;
+                    ctrl5.style.top = playertop;
+                }
+                divplayer.focus();
+            }
 
-                fplayer.addEventListener("keydown", check, false);
-                fplayer.addEventListener("mousedown", explodeprop, false);
-                fplayer.addEventListener("mousemove", moveprop, false);
+
+                document.addEventListener("keydown", check, false);
+                document.addEventListener("mousedown", explodeprop, false);
+                document.addEventListener("mousemove", moveprop, false);
 
                 ctrl1.addEventListener("mouseover", showfone, false);
                 ctrl2.addEventListener("mouseover", showftwo, false);
@@ -2351,97 +2352,102 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 function moveprop(e) {
 
+                document.body.style.cursor = "pointer";
+                crosshair.style.visibility = "visible";
+
+                crosshair.style.left = Math.round(e.clientX) + "px";
+                crosshair.style.top = Math.round(e.clientY) + "px";
 
 
-                    document.body.style.cursor = "pointer";
-                    crosshair.style.visibility = "visible";
+                if (Math.round(e.clientY) < temp, 10) {
+                    explosion.style.top = temp + "px";
 
+                }
+
+                else if (Math.round(e.clientX) > 365) {
                     crosshair.style.left = Math.round(e.clientX) + "px";
+
+                }
+
+                else if (Math.round(e.clientX) < 365) {
+                    crosshair.style.left = 365 + "px";
+
+                }
+
+                else if (Math.round(e.clientX) > 879) {
+                    crosshair.style.left = 879 + "px";
+
+                }
+
+                else if (Math.round(e.clientY) > 130) {
                     crosshair.style.top = Math.round(e.clientY) + "px";
 
-
-                    if (Math.round(e.clientY) < temp, 10) {
-                        explosion.style.top = temp + "px";
-
-                    }
-
-                    else if (Math.round(e.clientX) > 1) {
-                        crosshair.style.left = Math.round(e.clientX) - 1 + "px";
-
-                    }
-
-                    else if (Math.round(e.clientX) < 480) {
-                        crosshair.style.left = 480 + "px";
-
-                    }
-
-
-
-                    else if (Math.round(e.clientY) > 1) {
-                        crosshair.style.top = Math.round(e.clientY) - 1 + "px";
-
-                    }
-
-                    else if (Math.round(e.clientY) < 374) {
-                        crosshair.style.top = 374 + "px";
-
-                    }
-
-
-
-                    if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientX)) {
-                        positionresult = "moveright";
-                    }
-                    else if (parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientX)) {
-                        positionresult = "moveleft";
-                    }
-                    else if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientY)) {
-                        positionresult = "moveup";
-                    }
-                    else if (parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientY)) {
-                        positionresult = "movedown";
-                    }
-                    else if (parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientY) && parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientX)) {
-                        positionresult = "jump";
-                    }
-                    else if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientY) && parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientX)) {
-                        positionresult = "crawl";
-                    }
-
-
-
-                    if (myctrl1.tbPropType == "movable") {
-
-                        document.body.style.cursor = "none";
-                        explosion.style.visibility = "hidden";
-
-                        crosshair.style.height = "30px";
-                        crosshair.style.width = "30px";
-                        explosion.style.height = "30px";
-                        explosion.style.width = "30px";
-
-
-                        //if (Math.round(e.clientY) > temp, 10) {
-                        //    crosshair.style.top = temp + "px";
-                        //}
-                    }
-                    if (myctrl1.tbPropType == "fixed") {
-
-                        document.body.style.cursor = "none";
-                        crosshair.style.top = "275px";
-                        crosshair.style.height = "90px";
-                        crosshair.style.width = "90px";
-                        explosion.style.height = "40px";
-                        explosion.style.width = "40px";
-                        explosion.style.visibility = "visible";
-                        explosion.style.left = Math.round(e.clientX) - 365 + "px";
-                        explosion.style.top = Math.round(e.clientY) - temp + "px";
-                        crosshair.style.left = explosion.style.left;
-
-                    }
-                    currentlposition = Math.round(e.clientX) + "px";
-                    currenttposition = Math.round(e.clientX) + "px";
                 }
+
+                else if (Math.round(e.clientY) < 130) {
+                    crosshair.style.top = 130 + "px";
+
+                }
+
+                else if (Math.round(e.clientY) > 504) {
+                    crosshair.style.top = 504 + "px";
+
+                }
+
+                if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientX)) {
+                    positionresult = "moveright";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientX)) {
+                    positionresult = "moveleft";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientY)) {
+                    positionresult = "moveup";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientY)) {
+                    positionresult = "movedown";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientY) && parseInt(currentlposition.replace("px", ""), 10) < Math.round(e.clientX)) {
+                    positionresult = "jump";
+                }
+                else if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientY) && parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientX)) {
+                    positionresult = "crawl";
+                }
+
+
+
+                if (myctrl1.tbPropType == "movable") {
+
+                    document.body.style.cursor = "none";
+                    explosion.style.visibility = "hidden";
+
+                    crosshair.style.height = "30px";
+                    crosshair.style.width = "30px";
+                    explosion.style.height = "30px";
+                    explosion.style.width = "30px";
+
+
+                    //if (Math.round(e.clientY) > temp, 10) {
+                    //    crosshair.style.top = temp + "px";
+                    //}
+                }
+                if (myctrl1.tbPropType == "fixed") {
+
+                    document.body.style.cursor = "none";
+                    crosshair.style.top = "275px";
+                    crosshair.style.height = "90px";
+                    crosshair.style.width = "90px";
+                    explosion.style.height = "40px";
+                    explosion.style.width = "40px";
+                    explosion.style.visibility = "visible";
+                    explosion.style.left = Math.round(e.clientX) - 365 + "px";
+                    explosion.style.top = Math.round(e.clientY) - temp + "px";
+                    crosshair.style.left = explosion.style.left;
+
+                }
+                currentlposition = Math.round(e.clientX) + "px";
+                currenttposition = Math.round(e.clientX) + "px";
+            }
+
 
                 function explodeprop(e) {
                     detectcollision();
