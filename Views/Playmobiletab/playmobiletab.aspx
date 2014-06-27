@@ -2252,6 +2252,14 @@ function moveprop(e) {
 
                 }
 
+                else if (Math.round(e.clientX) > 365 && Math.round(e.clientY) > 130 && Math.round(e.clientX) < 879 && Math.round(e.clientY) < 504) {
+                    document.body.style.cursor = "none";
+                }
+
+                else if (Math.round(e.clientX) < 365 && Math.round(e.clientY) < 130 && Math.round(e.clientX) > 879 && Math.round(e.clientY) > 504) {
+                    document.body.style.cursor = "default";
+                }
+
                 else if (Math.round(e.clientY) > 130) {
                     crosshair.style.top = Math.round(e.clientY) + "px";
 
@@ -4584,49 +4592,48 @@ function moveprop(e) {
             <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px;" /><asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 94px; top: 24px; position: absolute; width: 329px;" Text="Professional Help to Complete Your TreasureSpot or Game Tools"></asp:Label>
             <asp:Label ID="Label5" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="A Professional will complete your TreasureSpot or Game Tools on behalf of you" ForeColor="White"></asp:Label>
         <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align:center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-        <button id="pay" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF;">Buy Now</button>
-        <button id="Button4" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 300px;">Back to Game</button>
+        <button id="pay" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 230px; left: 60px;">Buy Now</button>
+        <button id="Button4" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 156px; height: 38px; background-color: #FF00FF; color: #FFFFFF; top: 222px; left: 240px;">Back to Game</button>
 </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;     visibility:hidden; position: absolute; background-color: #9900FF" id="showspot">
             <img alt="" src="Images/coin.png" style="z-index: 1001; left: 43px; top: 27px; position: absolute" /><asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Treasure Spot"></asp:Label>
             <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="You Have Played Now in a TreasureSpot. Create your own TreasureSpot to Earn More Rewards. " ForeColor="White"></asp:Label>
         <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align:center; width: 72px; margin-top: 0px;" Text="Price   $2" ForeColor="White" Font-Bold="True"></asp:Label>
-        <button id="pay0" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF;">Buy Now</button>
-        <button id="Button5" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 300px;" onclick="hidediv();">Back to Game</button>
+        <button id="pay0" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 230px; left: 60px;">Buy Now</button>
+        <button id="Button5" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 130px; height: 38px; background-color: #FF00FF; color: #FFFFFF; top: 222px; left: 266px;" onclick="hidediv();">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;     visibility:hidden; position: absolute; background-color: #666633" id="showpromo">
             <img alt="" src="Images/lwinner.jpg" style="z-index: 1101; left: 5px; top: 17px; position: absolute; height: 59px; width: 87px;" /><asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 102px; top: 28px; position: absolute; width: 327px;" Text="Wow you just won a TreasureSpot at a Concessional Price"></asp:Label>
             <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 42px; top: 122px; position: absolute; vertical-align: middle; text-align:center; width: 382px; margin-top: 0px; bottom: 140px;" Text="You were the randomly selected winner of a TreasureSpot" ForeColor="White"></asp:Label>
         <button onclick="payer_promotion();" style="z-index: 1; left: 143px; top: 192px; position: absolute; background-color: #0000CC; color: #FFFF00; width: 180px;">Concessional TreasureSpots</button>
-         <button id="Button6" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 233px; left: 179px;">Back to Game</button>
+         <button id="Button6" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 118px; height: 38px; background-color: #FF00FF; color: #FFFFFF; top: 233px; left: 179px;">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;     visibility:hidden; position: absolute; background-color: #FF6666" id="showlife">
             <img alt="" src="Images/health.gif" style="z-index: 1101; left: 12px; top: 14px; position: absolute; height: 40px;" /><asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 76px; top: 32px; position: absolute; width: 349px;" Text="Additional Lifes During Your Game Play"></asp:Label>
             <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Get 20 More Lifes During Game Playing" ForeColor="White"></asp:Label>
         <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align:center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-        <button id="pay2" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF;">Buy Now</button>
-        <button id="Button7" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 300px;" onclick="actionthgame();">Back to Game</button>
+        <button id="pay2" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 230px; left: 60px;">Buy Now</button>
+        <button id="Button7" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 125px; height: 36px; background-color: #FF00FF; color: #FFFFFF; top: 224px; left: 271px;" onclick="actionthgame();">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;    visibility:hidden; position: absolute; background-color: #FF5050" id="showtweet">
             <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px; right: 355px;" /><asp:Label ID="Label15" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 163px; top: 36px; position: absolute" Text="Tweet on Twitter"></asp:Label>
             <asp:Label ID="Label16" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting tweet on Twitter and Expres Yourself" ForeColor="White"></asp:Label>
-              <button id="Button8" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 253px; left: 300px;" onclick="actionrewards();">Back to Game</button>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration:none; position: absolute; top: 260px; left: 185px; width: 44px;">Tweet</a>    
+              <button id="Button8" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 114px; height: 32px; background-color: #FF00FF; color: #FFFFFF; top: 247px; left: 282px;" onclick="actionrewards();">Back to Game</button>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration:none; position: absolute; top: 256px; left: 147px; width: 82px; height: 23px;">Tweet</a>    
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;   visibility:hidden; position: absolute; background-color: #3333FF" id="showtools">
             <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px;" /><asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Game Tools Item"></asp:Label>
             <asp:Label ID="Label18" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Add your own choice of Game Items to your TreasureSpot." ForeColor="White"></asp:Label>
         <asp:Label ID="Label19" runat="server" style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align:center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-        <button id="pay3" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF;">Buy Now</button>
-        <button id="Button9" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 300px;">Back to Game</button>
+        <button id="pay3" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 230px; left: 60px;">Buy Now</button>
+        <button id="Button9" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 130px; height: 41px; background-color: #FF00FF; color: #FFFFFF; top: 219px; left: 266px;">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 385px; top: 168px;  visibility:hidden; position: absolute; background-color: #FF5050" id="showfriends">
             <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px; right: 355px;" /><asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 163px; top: 36px; position: absolute" Text="Invite Friends"></asp:Label>
             <asp:Label ID="Label21" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting invite your Friends and Like the Game" ForeColor="White"></asp:Label>
-              <button id="Button10" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 96px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 253px; left: 300px;" onclick="ifriends();">Back to Game</button>
+              <button id="Button10" style="border-radius:10px; text-align:center; vertical-align:middle; border: medium outset #FFFF00; position:absolute; width: 115px; height: 35px; background-color: #FF00FF; color: #FFFFFF; top: 244px; left: 300px;" onclick="ifriends();">Back to Game</button>
             <a href="#" onclick="FacebookInviteFriends();" style="position: absolute; left: 37%; top: 87%; width: 27%; height: 7%; text-decoration: none; color: #FFFFFF; background-color: #FF9900; border-radius: 20px; text-align: center; right: 159px; z-index: 310;">Invite Friends</a>
-            <div class="fb-like" data-href="https://www.facebook.com/TreasureHuntergame" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 159px; right: 275px; bottom: 117px; left: 35px"></div>
-        </div>          
+            </div>          
          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:SqlDataSource>
 
         <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
@@ -4641,7 +4648,7 @@ function moveprop(e) {
 
 
         <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 131px; top: 54px; position: absolute; width: 45px; right: 692px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled" Font-Size="Small"></asp:TextBox>
-        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 440px; top: 52px; position: absolute; width: 18px; height: 18px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Size="Small">10</asp:TextBox>
+        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 440px; top: 52px; position: absolute; width: 18px; height: 18px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Size="Small">15</asp:TextBox>
         <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 792px; top: 52px; position: absolute; width: 53px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="Small"></asp:TextBox>
         <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 764px; top: 17px; position: absolute; width: 45px; height: 14px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled" Font-Size="Medium"></asp:TextBox>
         <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" Style="z-index: 1; left: 545px; top: 297px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>

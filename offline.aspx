@@ -2344,6 +2344,14 @@ function moveprop(e) {
 
                 }
 
+                else if (Math.round(e.clientX) > 365 && Math.round(e.clientY) > 130 && Math.round(e.clientX) < 879 && Math.round(e.clientY) < 504) {
+                    document.body.style.cursor = "none";
+                }
+
+                else if (Math.round(e.clientX) < 365 && Math.round(e.clientY) < 130 && Math.round(e.clientX) > 879 && Math.round(e.clientY) > 504) {
+                    document.body.style.cursor = "default";
+                }
+
                 else if (Math.round(e.clientY) > 130) {
                     crosshair.style.top = Math.round(e.clientY) + "px";
 
@@ -2825,7 +2833,7 @@ function moveprop(e) {
             <div class="fb-like" data-href="https://www.facebook.com/TreasureHuntergame" data-width="100" data-layout="button" data-action="like" data-show-faces="true" data-share="true" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 159px; right: 275px; bottom: 117px; left: 35px"></div>
         </div>  
         
-         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" ProviderName="System.Data.OleDb"></asp:SqlDataSource>
+         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionStringth %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')" ProviderName="<%$ ConnectionStrings:ConnectionStringth.ProviderName %>"></asp:SqlDataSource>
 
         <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
 
