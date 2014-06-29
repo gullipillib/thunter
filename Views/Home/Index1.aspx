@@ -735,6 +735,15 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
         }
 
         
+        #portrait
+        {
+            z-index: 1;
+            left: 7px;
+            top: 530px;
+            position: absolute;
+        }
+
+        
     </style>
 
 <div style="display:inline;">
