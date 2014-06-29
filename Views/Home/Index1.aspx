@@ -574,6 +574,7 @@ public string one5 = "";
     <meta name="keywords" content="free online games, Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game "/>
     <title>The Treasurehunter, A Free Online Game, Have Fun</title>
 </head>
+<script type="text/javascript" src="http://media.admob.com/api/v1/google_mobile_app_ads.js"></script>
 
 <!-- Google Code for Remarketing Tag -->
 <!--------------------------------------------------
@@ -651,6 +652,29 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
 })(window, document, 'script', 'dataLayer', 'GTM-TGKH9G');</script>
 <!-- End Google Tag Manager -->
 
+
+ <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+        border: none;
+      }
+
+      a { display: block }
+
+      #landscape{ display: none; }
+
+      /* Portrait */
+      @media screen and (orientation:portrait) {
+        #portrait { display: block; }
+	#landscape { display: none; }
+      }
+      /* Landscape */
+      @media screen and (orientation:landscape) {
+        #portrait { display: none; }
+	#landscape { display: block; }
+      }
+    </style>
 
     <style type="text/css">
         .twoto3d {
@@ -2988,6 +3012,10 @@ d.getElementById(id)) {
         </script>      
    
 <form id="form1" runat="server" >
+<a href="%%CLICK_URL_UNESC%%[%ClickThroughURL%]">
+      <img id="portrait" src="[%PortraitImageFile%]" width="[%PortraitImageWidth%]" height="[%PortraitImageHeight%]"/>
+      <img id="landscape" src="[%LandscapeImageFile%]" width="[%LandscapeImageWidth%]" height="[%LandscapeImageHeight%]"/>
+    </a>
  <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px;  visibility:hidden; position: absolute; background-color: #669999;" id="showprof">
             <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px;" /><asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" style="z-index: 1001; left: 94px; top: 24px; position: absolute; width: 329px;" Text="Professional Help to Complete Your TreasureSpot or Game Tools"></asp:Label>
             <asp:Label ID="Label5" runat="server" style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align:center; width: 394px; margin-top: 0px; bottom: 176px;" Text="A Professional will complete your TreasureSpot or Game Tools on behalf of you" ForeColor="White"></asp:Label>
