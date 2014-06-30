@@ -658,28 +658,7 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
 <!-- End Google Tag Manager -->
 
 
- <style>
-      * {
-        padding: 0px;
-        margin: 0px;
-        border: none;
-      }
 
-      a { display: block }
-
-      #landscape{ display: none; }
-
-      /* Portrait */
-      @media screen and (orientation:portrait) {
-        #portrait { display: block; }
-	#landscape { display: none; }
-      }
-      /* Landscape */
-      @media screen and (orientation:landscape) {
-        #portrait { display: none; }
-	#landscape { display: block; }
-      }
-    </style>
 
     <style type="text/css">
         .twoto3d {
@@ -3023,7 +3002,16 @@ d.getElementById(id)) {
                 alert("Payer Promotion already clicked!");
             }
         }
-        </script>      
+        </script> 
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- topad -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:234px;height:60px"
+     data-ad-client="ca-pub-4310099988313025"
+     data-ad-slot="3816354197"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>     
    
 <form id="form1" runat="server" >
 
