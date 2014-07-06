@@ -192,17 +192,25 @@ public string one5 = "";
 
     protected void gettreasurespot()
     {
-
-        SqlDataSource8.SelectCommand = "SELECT tsname,  tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
-        DataView dv = (DataView)SqlDataSource8.Select(DataSourceSelectArguments.Empty);
+        Random one = new Random();
+        int t1 = one.Next(0, 1);
+        if (t1 == 0)
+        {
+            SqlDataSource8.SelectCommand = "SELECT tsname,  tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes' order by tsorder asc";
+        }
+        else if (t1 == 1)
+        {
+            SqlDataSource8.SelectCommand = "SELECT tsname,  tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes' order by tsorder desc";
+        }
+            DataView dv = (DataView)SqlDataSource8.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
 	if (dt.Rows.Count != 0)
         {
 
             
-            Random one = new Random();
-            int t1 = one.Next(0, dt.Rows.Count);
+            one = new Random();
+            t1 = one.Next(0, dt.Rows.Count);
             TextBox9.Text = "10"; //usethis to get field value
 		tsitems = dt.Rows[t1].Field<string>("tsurl"); //usethis to get field value
 		one1 = tsitems;
@@ -588,8 +596,9 @@ Remarketing tags may not be associated with personally identifiable information 
 <script type="text/javascript">
 var google_tag_params = {
 ecomm_prodid: '101_th',
-ecomm_pagetype: 'Arts & Entertainment',
-ecomm_totalvalue: '2',
+ecomm_pagetype: 'cart',
+ecomm_pname: ['Free Online Game','TreasureHunter-TreasureSpot'],
+ecomm_totalvalue: '2.00',
 };
 </script>
 <script type="text/javascript">
