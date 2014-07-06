@@ -76,7 +76,7 @@
     string tbitems3;
     string tbitems4;
     string tbitems5;
-	int t1;
+	System.Random t1;
 int one;
 
     public class Playersdetails
