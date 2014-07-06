@@ -77,6 +77,7 @@
     string tbitems4;
     string tbitems5;
 	int t1;
+int one;
 
     public class Playersdetails
     {
