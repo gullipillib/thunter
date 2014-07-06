@@ -241,7 +241,7 @@ public string one5 = "";
 	if (dt.Rows.Count != 0)
         {
 
-            Random one = new Random();
+            one = new Random();
             int t1 = one.Next(0, dt.Rows.Count);
             tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
             tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
@@ -371,7 +371,7 @@ public string one5 = "";
 
             if (dt.Rows.Count != 0)
             {
-                Random one = new Random();
+                one = new Random();
                 int t1 = one.Next(1, dt.Rows.Count);
                 tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
                 tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
