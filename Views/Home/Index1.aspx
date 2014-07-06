@@ -836,6 +836,11 @@ Remarketing tags may not be associated with personally identifiable information 
                     noofcoins = -150;
                     showshower = 1;
                 }
+                if (noofhits == ranhits) {
+                    won = 1;
+                    noofhits = -150;
+                    showshower = 1;
+                }
                 if (showshower == 1) {
                     if (won == 1) {
                         document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
