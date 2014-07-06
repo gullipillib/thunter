@@ -76,7 +76,7 @@
     string tbitems3;
     string tbitems4;
     string tbitems5;
-
+	int t1;
 
     public class Playersdetails
     {
@@ -193,7 +193,7 @@ public string one5 = "";
     protected void gettreasurespot()
     {
         Random one = new Random();
-        int t1 = one.Next(0, 1);
+        t1 = one.Next(0, 1);
         if (t1 == 0)
         {
             SqlDataSource8.SelectCommand = "SELECT tsname,  tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes' order by tsorder asc";
@@ -242,7 +242,7 @@ public string one5 = "";
         {
 
             one = new Random();
-            int t1 = one.Next(0, dt.Rows.Count);
+            t1 = one.Next(0, dt.Rows.Count);
             tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
             tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
             tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
@@ -372,7 +372,7 @@ public string one5 = "";
             if (dt.Rows.Count != 0)
             {
                 one = new Random();
-                int t1 = one.Next(1, dt.Rows.Count);
+                t1 = one.Next(1, dt.Rows.Count);
                 tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
                 tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
                 tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
