@@ -193,7 +193,7 @@ public string one5 = "";
 
     protected void gettreasurespot()
     {
-        Random one = new Random();
+	one = new Random();
         t1 = one.Next(0, 1);
         if (t1 == 0)
         {
@@ -399,8 +399,7 @@ public string one5 = "";
             
         }
 
-       
-        Random one = new Random();
+       one = new Random();
         if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
             if (Model.Friends.Data.Count > 5)
