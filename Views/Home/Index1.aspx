@@ -105,11 +105,11 @@
         Session["loggeduserid"] = Model.Id;
         Session["loggeduserurl"] = Model.ProfilePicture.Data.Url;
 
-        if (Hiddenfield1 != null)
+        if (Session["loggeduser"].ToString() != null)
         {
 
             //Insert User into appuser,loggeduser,ordercounter,treasureprize;
-            SqlDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
+            SqlDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Session["loggeduser"].ToString() + "')";
 
             DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
@@ -122,7 +122,7 @@
             {
                 //Insert User into appuser,loggeduser,ordercounter,winners;
                 SqlDataSource1.SelectCommand = "SELECT * FROM appuserdetails";
-                SqlDataSource1.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                SqlDataSource1.InsertParameters["uname"].DefaultValue = Session["loggeduser"].ToString();
                 SqlDataSource1.InsertParameters["uloggedin"].DefaultValue = "no";
                 SqlDataSource1.InsertParameters["winner"].DefaultValue = "no";
                 SqlDataSource1.InsertParameters["wintimes"].DefaultValue = "0";
@@ -134,7 +134,7 @@
                 SqlDataSource1.Insert();
 
                 SqlDataSource4.SelectCommand = "SELECT * FROM loggedusers";
-                SqlDataSource4.InsertParameters["luname"].DefaultValue = Hiddenfield1;
+                SqlDataSource4.InsertParameters["luname"].DefaultValue = Session["loggeduser"].ToString();
                 SqlDataSource4.InsertParameters["luid"].DefaultValue = Model.Id;
                 SqlDataSource4.InsertParameters["luposition"].DefaultValue = "{left : 0, top:0}";
                 SqlDataSource4.InsertParameters["luimg"].DefaultValue = Model.ProfilePicture.Data.Url;
@@ -150,19 +150,19 @@
 
                 SqlDataSource5.SelectCommand = "SELECT * FROM ordercounter";
 
-                SqlDataSource5.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                SqlDataSource5.InsertParameters["uname"].DefaultValue = Session["loggeduser"].ToString();
                 SqlDataSource5.InsertParameters["ccounter"].DefaultValue = "0";
 
                 //SqlDataSource5.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
                 SqlDataSource5.Insert();
 
                 SqlDataSource6.SelectCommand = "SELECT * FROM winners";
-                SqlDataSource6.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                SqlDataSource6.InsertParameters["uname"].DefaultValue = Session["loggeduser"].ToString();
                 SqlDataSource6.InsertParameters["crisboos"].DefaultValue = "0";
 
                 //SqlDataSource6.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
                 SqlDataSource6.Insert();
-                Hiddenfield1 = Model.Name;
+                Session["loggeduser"] = Model.Name;
                 Hiddenfield1 = Hiddenfield1.Replace(" ", "");
                 Session["reached"] = "yes";
 
@@ -417,7 +417,7 @@
         DataTable dt = new DataTable();
         dt = dv.ToTable();
         treasure.Text = dt.Rows[0].Field<string>("treasurevalue");
-        SqlDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+        SqlDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Session["loggeduser"].ToString() + "'";
         dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
@@ -450,7 +450,7 @@
                 }
             }
             checkusername();
-            SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+            SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Session["loggeduser"].ToString() + "'";
             SqlDataSource1.Update();
             gettreasurespot();
             addfriends();
@@ -476,7 +476,7 @@
             {
                 //Timer1.Enabled = true;
                 SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Hiddenfield1 + "'";
+                SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET lulogintimes = '" + Convert.ToString(Convert.ToInt16(logintimes) + 1) + "', luloggedin='yes' where luname='" + Session["loggeduser"].ToString() + "'";
                 SqlDataSource1.Update();
             }
 
@@ -738,7 +738,7 @@ Remarketing tags may not be associated with personally identifiable information 
     <script src="https://treasurehunter.apphb.com/SignalR/hubs"></script>
     `<script>
          var chat = $.connection.chatmessages;
-         var pname = '<%=Hiddenfield1%>';
+         var pname = '<%=Session["loggeduser"].ToString()%>';
 
         $(function () {
 
@@ -3033,7 +3033,7 @@ function (response) {
             <a href="#" onclick="FacebookInviteFriends();" style="position: absolute; left: 8%; top: 86%; width: 27%; height: 7%; text-decoration: none; color: #FFFFFF; background-color: #FF9900; border-radius: 20px; text-align: center; right: 286px; z-index: 310;">Invite Friends</a>
         </div>
 
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers WHERE (luname = '<%=Hiddenfield1%>')" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers WHERE (luname = '<%=Session["loggeduser"].ToString()%>')" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'"></asp:SqlDataSource>
         <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="6pt" ForeColor="White" Style="z-index: 1; left: 844px; top: 319px; cursor: pointer; position: absolute; width: 131px; height: 28px;" Text="Rate Good to this TreasureSpot" OnClick="Button3_Click" CausesValidation="False" UseSubmitBehavior="False" />
         <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM tspots"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM toolbox"></asp:SqlDataSource>
