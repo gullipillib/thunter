@@ -149,8 +149,16 @@ public string one4 = "";
 public string one5 = "";
     protected void gettreasurespot()
     {
-        
-        SqlDataSource1.SelectCommand = "SELECT tsname, tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive FROM tspots where tsapproved = 'yes' and tsactive = 'yes'";
+        Random one = new Random();
+        int t1 = one.Next(0, 1);
+        if (t1 == 0)
+        {
+            SqlDataSource1.SelectCommand = "SELECT tsname,  tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes' order by tsorder asc";
+        }
+        else if (t1 == 1)
+        {
+            SqlDataSource1.SelectCommand = "SELECT tsname,  tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes' order by tsorder desc";
+        }
         DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
         dt = dv.ToTable();
@@ -158,8 +166,8 @@ public string one5 = "";
         if (dt.Rows.Count != 0)
         {
 
-            Random one = new Random();
-            int t1 = one.Next(0, dt.Rows.Count);
+            one = new Random();
+            t1 = one.Next(0, dt.Rows.Count);
             tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
             tsitemsfulldetails = Json.Decode(tsitems);
             one1 = tsitemsfulldetails.tsUrl;
