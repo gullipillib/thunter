@@ -3157,12 +3157,12 @@ function (response) {
 
     <form id="form1" runat="server">
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #669999;" id="showwinner">
-            <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 418px; height: 200px; top: 5px; left: 10px; z-index: 1001; visibility: visible; right: 6px; bottom: 91px; position: absolute;" />
-            <button id="Button11" style="visibility:visible; z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 110px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 305px;">Back to Game</button>
+            <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 418px; height: 200px; top: 5px; left: 10px; z-index: 1001; right: 6px; bottom: 91px; position: absolute;" />
+            <button id="Button11" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 110px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 305px;">Back to Game</button>
             <asp:Label ID="Label22" runat="server" Style="z-index: 1001; left: 18px; top: 260px; position: absolute; vertical-align: middle; text-align: center; width: 200px; margin-top: 0px;" Text="" ForeColor="White" Font-Bold="True"></asp:Label>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 379px; top: 147px; visibility: hidden; position: absolute; background-color: #FFFF66; overflow: hidden;" id="showlevels">
-        <button id="Button12" style="visibility:visible; z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 110px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 243px; left: 303px;">Back to Game</button>
+        <button id="Button12" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 110px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 243px; left: 303px;">Back to Game</button>
               <asp:TextBox ID="TextBox18" runat="server" BackColor="Transparent" BorderStyle="Solid" ClientIDMode="Static" Style="z-index: 1001; left: 0px; top: 0px; position: absolute; width: 531px;  height: 230px;" ForeColor="#660066" meta:resourcekey="pointsResource1" ReadOnly="true" Font-Size="10pt" TextMode="MultiLine">Level           Conqueor    Own TreasureSpots (min)
 1-30                   3                       0
 31-75                  5                       1
