@@ -77,7 +77,14 @@
     string tbitems5;
     System.Random one;
     int t1;
-
+    string levels="";
+    string lifepack = "";
+    string wait = "";
+    string tempgoldcoins = "";
+    string tspotsowned = "";
+    string tspotscollected = "";
+    string pgoldcoins = "";
+    
     public class Playersdetails
     {
         public string tsrPlayerName { get; set; }
@@ -232,7 +239,10 @@
             one5 = tsitems;
 
         }
-
+        else
+        {
+            gettreasurespot();
+        }
         if (dt.Rows.Count != 0)
         {
 
@@ -245,7 +255,10 @@
             tsrplayersdetails = dt.Rows[t1].Field<string>("tsrplayersdetails"); //usethis to get field value
             tsdplayersdetails = dt.Rows[t1].Field<string>("tsdplayersdetails"); //usethis to get field value
         }
-
+        else
+        {
+            gettreasurespot();
+        }
         tsitemsfulldetails = Json.Decode(tsitems);
         tsitems1 = tsitems;
 
@@ -288,56 +301,86 @@
         dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
-        tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
-        tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
-        tbitems1 = tb1fulldetails;
-        ctrl1mainurl = tb1itemsfulldetails.tbMain;
+        if (dt.Rows.Count != 0)
+        {
+            tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
+            tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
+            tbitems1 = tb1fulldetails;
+            ctrl1mainurl = tb1itemsfulldetails.tbMain;
 
-        propurl = tb1itemsfulldetails.tbProp;
-        collisionurl = tb1itemsfulldetails.tbCollionResult;
-        ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
-
+            propurl = tb1itemsfulldetails.tbProp;
+            collisionurl = tb1itemsfulldetails.tbCollionResult;
+            ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
+        }
+        else
+        {
+            gettreasurespot();
+        }
         SqlDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl2name + "'";
         dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
-        tb2fulldetails = dt.Rows[0].Field<string>("tbdetails");
-        tb2itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb2fulldetails);
-        tbitems2 = tb2fulldetails;
-        //tb2itemsfulldetails = Json.Decode(tb2itemsfulldetails);
-        ctrl2mainurl = tb2itemsfulldetails.tbMain;
-
+        if (dt.Rows.Count != 0)
+        {
+            tb2fulldetails = dt.Rows[0].Field<string>("tbdetails");
+            tb2itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb2fulldetails);
+            tbitems2 = tb2fulldetails;
+            //tb2itemsfulldetails = Json.Decode(tb2itemsfulldetails);
+            ctrl2mainurl = tb2itemsfulldetails.tbMain;
+        }
+        else
+        {
+            gettreasurespot();
+        }
         SqlDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl3name + "'";
         dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
-        tb3fulldetails = dt.Rows[0].Field<string>("tbdetails");
+        if (dt.Rows.Count != 0)
+        {
+            tb3fulldetails = dt.Rows[0].Field<string>("tbdetails");
 
-        tb3itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb3fulldetails);
-        tbitems3 = tb3fulldetails;
-        ctrl3mainurl = tb3itemsfulldetails.tbMain;
-
+            tb3itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb3fulldetails);
+            tbitems3 = tb3fulldetails;
+            ctrl3mainurl = tb3itemsfulldetails.tbMain;
+        }
+        else
+        {
+            gettreasurespot();
+        }
         SqlDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl4name + "'";
         dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
-        tb4fulldetails = dt.Rows[0].Field<string>("tbdetails");
-        tb4itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb4fulldetails);
+        if (dt.Rows.Count != 0)
+        {
+            tb4fulldetails = dt.Rows[0].Field<string>("tbdetails");
+            tb4itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb4fulldetails);
 
-        ctrl4mainurl = tb4itemsfulldetails.tbMain;
-        tbitems4 = tb4fulldetails;
-
+            ctrl4mainurl = tb4itemsfulldetails.tbMain;
+            tbitems4 = tb4fulldetails;
+        }
+        else
+        {
+            gettreasurespot();
+        }
         SqlDataSource9.SelectCommand = "SELECT tbname, tbdetails FROM toolbox where tbname = '" + tsitemsfulldetails.tsctrl5name + "'";
         dv = (DataView)SqlDataSource9.Select(DataSourceSelectArguments.Empty);
         dt = new DataTable();
         dt = dv.ToTable();
-        tb5fulldetails = dt.Rows[0].Field<string>("tbdetails");
+        if (dt.Rows.Count != 0)
+        {
+            tb5fulldetails = dt.Rows[0].Field<string>("tbdetails");
 
-        tb5itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb5fulldetails);
+            tb5itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb5fulldetails);
 
-        ctrl5mainurl = tb5itemsfulldetails.tbMain;
-        tbitems5 = tb5fulldetails;
-
+            ctrl5mainurl = tb5itemsfulldetails.tbMain;
+            tbitems5 = tb5fulldetails;
+        }
+        else
+        {
+            gettreasurespot();
+        }
     }
     protected void addloggedusers()
     {
@@ -410,6 +453,44 @@
 
     }
 
+    protected void getuserdetails()
+    {
+        SqlDataSource1.SelectCommand = "SELECT * FROM appuserdetails where uname='" + Hiddenfield1 + "'";
+        DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+        DataTable dt = new DataTable();
+        dt = dv.ToTable();
+        if (dt.Rows.Count != 0)
+        {
+            wait = dt.Rows[0].Field<string>("wait");
+            levels = dt.Rows[0].Field<string>("level");
+            TextBox12.Text = levels;
+            tspotscollected =  dt.Rows[0].Field<string>("tspotscollected");
+            TextBox13.Text = tspotscollected;
+            tempgoldcoins = dt.Rows[0].Field<string>("tempgoldcoins");
+            if (upaid == "no" || upaid == null || wait == "yes" )
+            {
+                TextBox17.Text = tempgoldcoins;
+            }
+                
+            lifepack = dt.Rows[0].Field<string>("lifepack");
+        }
+        SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers where luname='" + Hiddenfield1 + "'";
+        dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+        dt = new DataTable();
+        dt = dv.ToTable();
+        if (dt.Rows.Count != 0)
+        {
+            tspotsowned = dt.Rows[0].Field<string>("lutspots");
+            
+            
+            pgoldcoins = dt.Rows[0].Field<string>("lucrisboos");
+            if (upaid == "yes" && wait == "no" || upaid == "yes" && wait == null)
+            {
+                TextBox17.Text = pgoldcoins;
+            }
+        } 
+    }
+                                           
     protected void gettreasureprize()
     {
         SqlDataSource10.SelectCommand = "SELECT treasurevalue FROM treasureprize";
@@ -455,6 +536,7 @@
             gettreasurespot();
             addfriends();
             gettreasureprize();
+            getuserdetails();
             //timer.Enabled = true;
             //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
 
@@ -850,22 +932,107 @@ Remarketing tags may not be associated with personally identifiable information 
 
                 var showshower = 0;
 
+
+
                 if (noofcoins == rancoins) {
                     won = 1;
                     noofcoins = -150;
                     showshower = 1;
+
+
+
+                    
                 }
-                if (noofhits == ranhits) {
+                else if (noofhits == ranhits) {
                     won = 1;
                     noofhits = -150;
+                    noofcoins = -150;
                     showshower = 1;
                 }
                 if (showshower == 1) {
                     if (won == 1) {
                         document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
+                        document.getElementById('TextBox16').setAttribute("value", document.getElementById('TextBox16').getAttribute("value") + 1)
+
                         showwinner.style.visibility = "visibile";
 
                         document.getElementById('TextBox2').setAttribute("value", "0");
+
+                        var levels1 = document.getElementById('TextBox12').getAttribute("value");
+
+                        if (levels1 < 30)
+                        {
+                            levels1 = levels1 + 1;
+                            document.getElementById('TextBox12').setAttribute("value", levels1);
+                            document.getElementById('TextBox16').setAttribute("value", "0");
+                            document.getElementById("TextBox17").setAttribute("value",document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                        }
+                        else if (levels1 >= 30 && levels1 < 75)
+                        {
+                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                            if (document.getElementById('TextBox13').getAttribute("value") > 1)
+                            {
+                                levels1 = levels1 + 1;
+                                document.getElementById('TextBox12').setAttribute("value", levels1);
+                                document.getElementById('TextBox16').setAttribute("value", "0");
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                            }
+                        }
+                        else if (levels1 >= 75 && levels1 < 130)
+                        {
+                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                            if (document.getElementById('TextBox13').getAttribute("value") > 10)
+                            {
+                                levels1 = levels1 + 1;
+                                document.getElementById('TextBox12').setAttribute("value", levels1);
+                                document.getElementById('TextBox16').setAttribute("value", "0");
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                            }
+                        }
+                        else if (levels1 >= 130 && levels1 < 200)
+                        {
+                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                            if (document.getElementById('TextBox13').getAttribute("value") > 50)
+                            {
+                                levels1 = levels1 + 1;
+                                document.getElementById('TextBox12').setAttribute("value", levels1);
+                                document.getElementById('TextBox16').setAttribute("value", "0");
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                            }
+                        }
+                        else if (levels1 >= 200 && levels1 < 400)
+                        {
+                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                            if (document.getElementById('TextBox13').getAttribute("value") > 70)
+                            {
+                                levels1 = levels1 + 1;
+                                document.getElementById('TextBox12').setAttribute("value", levels1);
+                                document.getElementById('TextBox16').setAttribute("value", "0");
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                            }
+                        }
+                        else if (levels1 >= 400 && levels1 < 1000)
+                        {
+                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                            if (document.getElementById('TextBox13').getAttribute("value") > 100)
+                            {
+                                levels1 = levels1 + 1;
+                                document.getElementById('TextBox12').setAttribute("value", levels1);
+                                document.getElementById('TextBox16').setAttribute("value", "0");
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                            }
+                        }
+                        else if (levell1 == 1000)
+                        {
+                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                            document.getElementById('TextBox12').setAttribute("value", "1");
+                        }
+
+
+                        if (levels1 < 30 && wait != "yes" && upaid != "yes" && document.getElementById('TextBox14').getAttribute("value") == 3 && '<%=tspotsowned%>' == 0 || levels1 > 75 && wait != "yes" && upaid != "yes" || levels1 > 200 && wait != "yes" && upaid != "yes" || levels1 > 400 && wait != "yes" && upaid != "yes") {
+                            levels1 = levels1 + 1;
+                            document.getElementById('TextBox12').setAttribute("value", levels1);
+                        }
 
                     }
 
@@ -938,7 +1105,7 @@ Remarketing tags may not be associated with personally identifiable information 
                     //myframe.src = "~/Play/jsresult/" + enemyhits;
                     // window.location.href("jsresult/" + enemyhits);
                     if (pvalue == "yes") {
-                        document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value"));
+                        document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
                     }
                     //}
 
@@ -1373,6 +1540,7 @@ Remarketing tags may not be associated with personally identifiable information 
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 }
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                             }
                             document.getElementById('ehits').setAttribute("value", enemyhits);
                             sessionStorage.setItem("points", mygoldcoins);
@@ -1450,6 +1618,7 @@ Remarketing tags may not be associated with personally identifiable information 
                                 }
                                 noofhits = noofhits + 1;
                                 document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                             }
                         }
                         if (ctrl2.style.visibility == "visible") {
@@ -1465,6 +1634,7 @@ Remarketing tags may not be associated with personally identifiable information 
                                         mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                     }
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                                 }
                                 document.getElementById('ehits').setAttribute("value", enemyhits);
                                 sessionStorage.setItem("points", mygoldcoins);
@@ -1551,6 +1721,7 @@ Remarketing tags may not be associated with personally identifiable information 
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 }
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                             }
                             document.getElementById('ehits').setAttribute("value", enemyhits);
                             sessionStorage.setItem("points", mygoldcoins);
@@ -1569,6 +1740,7 @@ Remarketing tags may not be associated with personally identifiable information 
                                 if (myctrl3.tbResult == "takeonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                                 }
                             }
                             if ('<%=ctrl3mainname%>' == "health") {
@@ -2724,61 +2896,68 @@ Remarketing tags may not be associated with personally identifiable information 
 
     <script>
         function buy() {
-            var obj = {
-                method: 'pay',
-                action: 'purchaseitem',
-                product: 'https://treasurehunter.apphb.com/coin.html',
-                request_id: 'tspot'
-            };
+            //var obj = {
+            //    method: 'pay',
+            //    action: 'purchaseitem',
+            //    product: 'https://treasurehunter.apphb.com/coin.html',
+            //    request_id: 'tspot'
+            //};
 
-            FB.ui(obj, function (data) {
-                actiontrspot();
-            });
+            //FB.ui(obj, function (data) {
+            //    actiontrspot();
+            //});
+            actiontrspot();
+            window.location.href = "https://treasurehunter.apphb.com/fbbuy.html";
         }
 
         document.getElementById('pay0').onclick = function () { buy() };
 
         function buyt() {
-            var obj = {
-                method: 'pay',
-                action: 'purchaseitem',
-                product: 'https://treasurehunter.apphb.com/tool.html',
-                request_id: 'tool'
-            };
+            //var obj = {
+            //    method: 'pay',
+            //    action: 'purchaseitem',
+            //    product: 'https://treasurehunter.apphb.com/tool.html',
+            //    request_id: 'tool'
+            //};
 
-            FB.ui(obj, function (data) {
-                actiontbox();
-            });
+            //FB.ui(obj, function (data) {
+            //    actiontbox();
+            //});
+            window.location.href = "https://treasurehunter.apphb.com/fbbuy.html";
         }
 
         document.getElementById('pay3').onclick = function () { buyt() };
 
         function buyl() {
-            var obj = {
-                method: 'pay',
-                action: 'purchaseitem',
-                product: 'https://treasurehunter.apphb.com/life.html',
-                request_id: 'life'
-            };
+            //var obj = {
+            //    method: 'pay',
+            //    action: 'purchaseitem',
+            //    product: 'https://treasurehunter.apphb.com/life.html',
+            //    request_id: 'life'
+            //};
 
-            FB.ui(obj, function (data) {
-                actionelifes();
-            });
+            //FB.ui(obj, function (data) {
+            //    actionelifes();
+            //});
+            actionelifes();
+            window.location.href = "https://treasurehunter.apphb.com/fbbuy.html";
         }
 
         document.getElementById('pay').onclick = function () { buyl() };
 
         function buyp() {
-            var obj = {
-                method: 'pay',
-                action: 'purchaseitem',
-                product: 'https://treasurehunter.apphb.com/professional.html',
-                request_id: 'prof'
-            };
+            //var obj = {
+            //    method: 'pay',
+            //    action: 'purchaseitem',
+            //    product: 'https://treasurehunter.apphb.com/professional.html',
+            //    request_id: 'prof'
+            //};
 
-            FB.ui(obj, function (data) {
-                actionphelp();
-            });
+            //FB.ui(obj, function (data) {
+            //    actionphelp();
+            //});
+            actionphelp();
+            window.location.href = "https://treasurehunter.apphb.com/fbbuy.html";
         }
 
         document.getElementById('pay2').onclick = function () { buyp() };
@@ -2906,10 +3085,11 @@ function (response) {
     </script>
     <script>
         function FacebookInviteFriends() {
-            FB.ui({
-                method: 'apprequests',
-                message: 'You are Invited to Play Treasure Hunter 3D MultiPlayer Game with me'
-            });
+            //FB.ui({
+            //    method: 'apprequests',
+            //    message: 'You are Invited to Play Treasure Hunter 3D MultiPlayer Game with me'
+            //});
+            window.location.href = "https://treasurehunter.apphb.com/Invite/friends";
         }
     </script>
     <script type="text/javascript">
@@ -2921,7 +3101,7 @@ function (response) {
             document.getElementById('showtweet').style.visibility = "hidden";
             document.getElementById('showtools').style.visibility = "hidden";
             document.getElementById('showfriends').style.visibility = "hidden";
-
+            document.getElementById('showwinner').style.visibility = "hidden";
             document.getElementById('Button1').click();
 
         }
@@ -2932,25 +3112,26 @@ function (response) {
         var dialog_window;
 
         function payer_promotion() {
-            if (!has_clicked) {
-                // If first click, open payer_promotion dialog
-                var obj = {
-                    method: 'fbpromotion',
-                    display: 'popup',
-                    quantity: 1,
-                    product: 'https://treasurehunter.apphb.com/coin.html'
-                };
+            //if (!has_clicked) {
+            //    // If first click, open payer_promotion dialog
+            //    var obj = {
+            //        method: 'fbpromotion',
+            //        display: 'popup',
+            //        quantity: 1,
+            //        product: 'https://treasurehunter.apphb.com/coin.html'
+            //    };
 
-                FB.ui(obj, function () {
-                    // call back to your server to see if user's balance changed
-                });
+            //    FB.ui(obj, function () {
+            //        // call back to your server to see if user's balance changed
+            //    });
 
-                // Mark unit as clicked by user
-                has_clicked = true;
-            } else {
-                // For subsequent clicks, alert user
-                alert("Payer Promotion already clicked!");
-            }
+            //    // Mark unit as clicked by user
+            //    has_clicked = true;
+            //} else {
+            //    // For subsequent clicks, alert user
+            //    alert("Payer Promotion already clicked!");
+            //}
+            window.location.href = "https://treasurehunter.apphb.com/fbpromo.html";
         }
     </script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -2976,63 +3157,75 @@ function (response) {
 
     <form id="form1" runat="server">
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #669999;" id="showwinner">
-            <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 300px; height: 200px; top: 41px; left: 22px; z-index: 1; visibility: hidden; right: 34px; bottom: 54px; position: absolute;" />
-            <button id="Button11" style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 233px;">Back to Game</button>
+            <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 418px; height: 200px; top: 5px; left: 10px; z-index: 1001; visibility: visible; right: 6px; bottom: 91px; position: absolute;" />
+            <button id="Button11" style="visibility:visible; z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 110px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 305px;">Back to Game</button>
+            <asp:Label ID="Label22" runat="server" Style="z-index: 1001; left: 18px; top: 260px; position: absolute; vertical-align: middle; text-align: center; width: 200px; margin-top: 0px;" Text="" ForeColor="White" Font-Bold="True"></asp:Label>
+        </div>
+        <div style="width: 438px; height: 300px; z-index: 1000; left: 379px; top: 147px; visibility: hidden; position: absolute; background-color: #FFFF66; overflow: hidden;" id="showlevels">
+        <button id="Button12" style="visibility:visible; z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 110px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 243px; left: 303px;">Back to Game</button>
+              <asp:TextBox ID="TextBox18" runat="server" BackColor="Transparent" BorderStyle="Solid" ClientIDMode="Static" Style="z-index: 1001; left: 0px; top: 0px; position: absolute; width: 531px;  height: 230px;" ForeColor="#660066" meta:resourcekey="pointsResource1" ReadOnly="true" Font-Size="10pt" TextMode="MultiLine">Level           Conqueor    Own TreasureSpots (min)
+1-30                   3                       0
+31-75                  5                       1
+76-130                 5                       10
+131-200                6                       50
+200-400                7                       70
+400-1000               8                       100</asp:TextBox>
+
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #669999;" id="showprof">
             <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px;" />
             <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 94px; top: 24px; position: absolute; width: 329px;" Text="Professional Help to Complete Your TreasureSpot or Game Tools"></asp:Label>
-            <asp:Label ID="Label5" runat="server" Style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="A Professional will complete your TreasureSpot or Game Tools on behalf of you" ForeColor="White"></asp:Label>
-            <asp:Label ID="Label6" runat="server" Style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-            <button id="pay" onclick="buyp();"  style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 70px;">Buy Now</button>
-            <button id="Button4" style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 233px;">Back to Game</button>
+            <asp:Label ID="Label5" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="A Professional will complete your TreasureSpot or Game Tools on behalf of you" ForeColor="White"></asp:Label>
+            <asp:Label ID="Label6" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
+            <button id="pay" onclick="buyp();"  style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 70px;">Buy Now</button>
+            <button id="Button4" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 233px;">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #9900FF" id="showspot">
             <img alt="" src="Images/coin.png" style="z-index: 1001; left: 43px; top: 27px; position: absolute" />
             <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Treasure Spot"></asp:Label>
-            <asp:Label ID="Label8" runat="server" Style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="You Have Played Now in a TreasureSpot. Create your own TreasureSpot to Earn More Rewards. " ForeColor="White"></asp:Label>
-            <asp:Label ID="Label9" runat="server" Style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $2" ForeColor="White" Font-Bold="True"></asp:Label>
-            <button id="pay0" onclick="buy();"  style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 40px;">Buy Now</button>
-            <button id="Button5" style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 160px; height: 34px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 249px;" onclick="hidediv();">Back to Game</button>
+            <asp:Label ID="Label8" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="You Have Played Now in a TreasureSpot. Create your own TreasureSpot to Earn More Rewards. " ForeColor="White"></asp:Label>
+            <asp:Label ID="Label9" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $2" ForeColor="White" Font-Bold="True"></asp:Label>
+            <button id="pay0" onclick="buy();"  style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 40px;">Buy Now</button>
+            <button id="Button5" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 160px; height: 34px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 249px;" onclick="hidediv();">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #666633" id="showpromo">
             <img alt="" src="Images/lwinner.jpg" style="z-index: 1101; left: 5px; top: 17px; position: absolute; height: 59px; width: 87px;" />
             <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 102px; top: 28px; position: absolute; width: 327px;" Text="Wow you just won a TreasureSpot at a Concessional Price"></asp:Label>
-            <asp:Label ID="Label11" runat="server" Style="z-index: 1; left: 42px; top: 122px; position: absolute; vertical-align: middle; text-align: center; width: 382px; margin-top: 0px; bottom: 140px;" Text="You were the randomly selected winner of a TreasureSpot" ForeColor="White"></asp:Label>
-            <button onclick="payer_promotion();" style="z-index: 1; left: 143px; top: 192px; position: absolute; background-color: #0000CC; color: #FFFF00; width: 180px;">Concessional TreasureSpots</button>
-            <button id="Button6" style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 233px; left: 179px;">Back to Game</button>
+            <asp:Label ID="Label11" runat="server" Style="z-index: 1001; left: 42px; top: 122px; position: absolute; vertical-align: middle; text-align: center; width: 382px; margin-top: 0px; bottom: 140px;" Text="You were the randomly selected winner of a TreasureSpot" ForeColor="White"></asp:Label>
+            <button onclick="payer_promotion();" style="z-index: 1001; left: 143px; top: 192px; position: absolute; background-color: #0000CC; color: #FFFF00; width: 180px;">Concessional TreasureSpots</button>
+            <button id="Button6" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 233px; left: 179px;">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #FF6666" id="showlife">
             <img alt="" src="Images/health.gif" style="z-index: 1101; left: 12px; top: 14px; position: absolute; height: 40px;" />
             <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 76px; top: 32px; position: absolute; width: 349px;" Text="Additional Lifes During Your Game Play"></asp:Label>
-            <asp:Label ID="Label13" runat="server" Style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Get 20 More Lifes During Game Playing" ForeColor="White"></asp:Label>
-            <asp:Label ID="Label14" runat="server" Style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-            <button id="pay2" onclick="payer_promotion();"  style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 90px;">Buy Now</button>
-            <button id="Button7" style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 162px; height: 39px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 234px;" onclick="actionthgame();">Back to Game</button>
+            <asp:Label ID="Label13" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Get 20 More Lifes During Game Playing" ForeColor="White"></asp:Label>
+            <asp:Label ID="Label14" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
+            <button id="pay2" onclick="payer_promotion();"  style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 90px;">Buy Now</button>
+            <button id="Button7" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 162px; height: 39px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 234px;" onclick="actionthgame();">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #FF5050" id="showtweet">
             <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px; right: 355px;" />
             <asp:Label ID="Label15" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 163px; top: 36px; position: absolute" Text="Tweet on Twitter"></asp:Label>
-            <asp:Label ID="Label16" runat="server" Style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting tweet on Twitter and Expres Yourself" ForeColor="White"></asp:Label>
-            <button id="Button8" style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 156px; height: 39px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 258px;" onclick="actionrewards();">Back to Game</button>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration: none; position: absolute; top: 256px; left: 56px; width: 114px; height: 31px;">Tweet</a>
+            <asp:Label ID="Label16" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting tweet on Twitter and Expres Yourself" ForeColor="White"></asp:Label>
+            <button id="Button8" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 156px; height: 39px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 258px;" onclick="actionrewards();">Back to Game</button>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="z-index: 1001; text-decoration: none; position: absolute; top: 256px; left: 56px; width: 114px; height: 31px;">Tweet</a>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #3333FF" id="showtools">
             <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px;" />
             <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Game Tools Item"></asp:Label>
-            <asp:Label ID="Label18" runat="server" Style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Add your own choice of Game Items to your TreasureSpot." ForeColor="White"></asp:Label>
-            <asp:Label ID="Label19" runat="server" Style="z-index: 1; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-            <button id="pay3" onclick="buyt();"  style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 250px; left: 70px;">Buy Now</button>
-            <button id="Button9" style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 121px; height: 56px; background-color: #FF00FF; color: #FFFFFF; top: 218px; left: 275px;">Back to Game</button>
+            <asp:Label ID="Label18" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Add your own choice of Game Items to your TreasureSpot." ForeColor="White"></asp:Label>
+            <asp:Label ID="Label19" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
+            <button id="pay3" onclick="buyt();"  style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 250px; left: 70px;">Buy Now</button>
+            <button id="Button9" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 121px; height: 56px; background-color: #FF00FF; color: #FFFFFF; top: 218px; left: 275px;">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #FF5050" id="showfriends">
             <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px; right: 355px;" />
             <asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 163px; top: 36px; position: absolute" Text="Invite Friends"></asp:Label>
-            <asp:Label ID="Label21" runat="server" Style="z-index: 1; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting invite your Friends and Like the Game" ForeColor="White"></asp:Label>
-            <button id="Button10" style="border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 145px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 242px; left: 251px;" onclick="ifriends();">Back to Game</button>
-            <a href="#" onclick="FacebookInviteFriends();" style="position: absolute; left: 8%; top: 86%; width: 27%; height: 7%; text-decoration: none; color: #FFFFFF; background-color: #FF9900; border-radius: 20px; text-align: center; right: 286px; z-index: 310;">Invite Friends</a>
+            <asp:Label ID="Label21" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting invite your Friends and Like the Game" ForeColor="White"></asp:Label>
+            <button id="Button10" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 145px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 242px; left: 251px;" onclick="ifriends();">Back to Game</button>
+            <a href="#" onclick="FacebookInviteFriends();" style="position: absolute; left: 8%; top: 86%; width: 27%; height: 7%; text-decoration: none; color: #FFFFFF; background-color: #FF9900; border-radius: 20px; text-align: center; right: 286px; z-index: 1001;">Invite Friends</a>
         </div>
-        <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="6pt" ForeColor="White" Style="z-index: 1; left: 844px; top: 319px; cursor: pointer; position: absolute; width: 131px; height: 28px;" Text="Rate Good to this TreasureSpot" OnClick="Button3_Click" CausesValidation="False" UseSubmitBehavior="False" />
+        <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="6pt" ForeColor="White" Style="z-index: 1; left: 844px; top: 339px; cursor: pointer; position: absolute; width: 131px; height: 28px;" Text="Rate Good to this TreasureSpot" OnClick="Button3_Click" CausesValidation="False" UseSubmitBehavior="False" />
         
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM loggedusers " InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM tspots"></asp:SqlDataSource>
@@ -3079,22 +3272,22 @@ function (response) {
         <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
 
         <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 100; left: 803px; top: 27px; position: absolute; height: 62px; width: 166px" />
-        <a href="https://treasurehunter.apphb.com/prizes.html" target="_self" style="position: absolute; left: 870px; top: 251px; width: 92px; text-decoration: none; background-color: #FF00FF; color: #FFFFFF; border-radius: 20px; right: 264px; text-align: center; z-index: 1;">Rewards</a>
+        <a href="https://treasurehunter.apphb.com/prizes.html" target="_self" style="position: absolute; left: 872px; top: 313px; width: 92px; text-decoration: none; background-color: #FF00FF; color: #FFFFFF; border-radius: 20px; right: 237px; text-align: center; z-index: 1;">Rewards</a>
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 196px; top: 0px; position: absolute; width: 319px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
         <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="10pt" ForeColor="#9999FF" Style="z-index: 1; left: 375px; top: 79px; position: absolute; width: 347px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
         <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 56px; position: absolute; height: 18px; width: 141px; left: 11px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 107px; position: absolute; width: 141px; left: 824px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Invite/friends" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; left: 384px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 57px; position: absolute; width: 84px; left: 260px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink5" runat="server" Font-Underline="False" NavigateUrl="~/Play/play" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 878px; top: 203px; position: absolute; height: 23px; width: 57px;" Target="_self" ForeColor="White">Winners</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 57px; position: absolute; width: 141px; left: 364px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Invite/friends" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; left: 274px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 54px; position: absolute; width: 84px; left: 170px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink5" runat="server" Font-Underline="False" NavigateUrl="~/Play/play" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 877px; top: 280px; position: absolute; height: 23px; width: 68px;" Target="_self" ForeColor="White">Winners</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink6" runat="server" Font-Underline="False" NavigateUrl="http://www.amazon.com/gp/product/B00I2DV2UO" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 787px; top: 14px; position: absolute; height: 90px; width: 191px; cursor: pointer;" Target="_self" ForeColor="Transparent"></asp:HyperLink>
 
-        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 127px; top: 2px; position: absolute; width: 40px; right: 1080px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled"></asp:TextBox>
+        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 127px; top: 2px; position: absolute; width: 40px; right: 1080px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled">0</asp:TextBox>
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">15</asp:TextBox>
         <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 4px; top: 243px; position: absolute; width: 966px; right: -90px; height: 70px; vertical-align: middle;" ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Tahoma" Font-Size="13pt"></asp:TextBox>
-        <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
-        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 877px; top: 392px; position: absolute; width: 54px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
+        <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">0</asp:TextBox>
+        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 877px; top: 404px; position: absolute; width: 54px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
         <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" Style="z-index: 1; left: 563px; top: 334px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
 
         <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
@@ -3108,10 +3301,10 @@ function (response) {
 
         <label style="position: absolute; top: 32px; left: 406px; height: 19px; color: #FFCC00; height: 20px; position: absolute; font-family: 'Jokerman LET'; font-size: large;">Gold Coins</label>
 
-        <label style="position: absolute; top: 366px; left: 862px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Treasure( $)</label>
+        <label style="position: absolute; top: 377px; left: 862px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Treasure( $)</label>
         <label style="position: absolute; top: 101px; left: 7px; height: 19px; color: #FFCC00; width: 97px; font-family: 'Victorian LET'; font-size: large;">Achievements</label>
         <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden; width: 480px; height: 375px; position: absolute; top: 132px; left: 365px; right: 855px; bottom: 502px; display: inline;">
-            <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 119px; z-index: 202; right: 159px; bottom: 140px;" />
+            <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: ''195px''; left: 119px; z-index: 202; right: 321px; bottom: 140px;" />
             <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
             <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
             <img id="ctrl2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl2mainwidth%>'; height: '<%=ctrl2mainheight%>'; position: absolute; top: '<%=ctrl2maintop%>'; left: '<%=ctrl2mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
@@ -3141,7 +3334,7 @@ function (response) {
             <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 316px; height: 99px;" readonly="readonly"></textarea>
         </div>
         <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 12px; top: 493px; width: 242px; background-color: #FFFFCC; color: #000000;" onkeydown="checkEnter(event);" />
-        <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none; position: absolute; top: 147px; left: 862px; height: 40px; width: 93px; margin-top: 0px;"></iframe>
+        <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none; position: absolute; top: 523px; left: 42px; height: 40px; width: 93px; margin-top: 0px;"></iframe>
         <div id="aimg" style="position: absolute; left: 118px; top: 101px; width: 236px; height: 200px;">
             <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 232px; height: 199px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 1px; background-color: Transparent;" id="Img6" />
             <img id="Image1" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" src='<%=one1%>' />
@@ -3168,8 +3361,17 @@ function (response) {
         <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 223px; top: 306px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
         <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 325px; position: absolute; width: 112px; right: 638px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="Medium">Conquer Players</asp:TextBox>
         <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 252px; top: 325px; position: absolute; width: 36px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
-        <asp:TextBox ID="TextBox8" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 855px; top: 430px; position: absolute; width: 43px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="10pt">Rating</asp:TextBox>
+        <asp:TextBox ID="TextBox8" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 855px; top: 430px; position: absolute; width: 43px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="10pt">Rating</asp:TextBox>
         <asp:TextBox ID="TextBox9" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 915px; top: 430px; position: absolute; width: 53px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="10pt"></asp:TextBox>
+        <asp:TextBox ID="TextBox10" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 849px; top: 108px; position: absolute; width: 119px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="8pt">Treasure Spots Owned</asp:TextBox>
+        <asp:TextBox ID="TextBox11" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 852px; top: 156px; position: absolute; width: 42px; height: 16px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="13pt">Level</asp:TextBox>
+        <asp:TextBox ID="TextBox12" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 917px; top: 156px; position: absolute; width: 51px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">1</asp:TextBox>
+        <asp:TextBox ID="TextBox13" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 895px; top: 131px; position: absolute; width: 58px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="8pt">0</asp:TextBox> 
+        <asp:TextBox ID="TextBox14" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 848px; top: 178px; position: absolute; width: 129px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="8pt">Treasure Spots Collected</asp:TextBox>
+        <asp:TextBox ID="TextBox15" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 871px; top: 222px; position: absolute; width: 81px; height: 16px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="8pt">Coins Collected</asp:TextBox>
+        <asp:TextBox ID="TextBox16" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 908px; top: 201px; position: absolute; width: 24px; height: 16px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="8pt">0</asp:TextBox>
+        <asp:TextBox ID="TextBox17" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 857px; top: 241px; position: absolute; width: 99px; text-align:center; vertical-align:middle; height: 23px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="8pt" ToolTip="If in Red Color not Eligible for Prizes and Collected coins in every TreasureSpot will be lost. Buy a TreasureSpot"></asp:TextBox>
+
         <img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 300px; left: 323px; z-index: 21; visibility: visible; right: 530px; bottom: 247px;">
         <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 322px; left: 310px; z-index: 21; visibility: visible; right: 543px; bottom: 225px;">
     </form>

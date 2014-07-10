@@ -54,21 +54,39 @@
 
     }
 
-
+    string paidname = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         
         if (Page.IsPostBack == false)
         {
             checkusername();
+            SqlDataSource2.SelectCommand = "SELECT * FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
+            DataView dv = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
+            DataTable dt = new DataTable();
+            paidname = dt.Rows[0].Field<string>("paid"); //usethis to get field value
             if (Request.QueryString["coins"] != null)
             {
-                string goldcoins = Request.QueryString["coins"].ToString();
-                SqlDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
-                SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
 
-                SqlDataSource1.Update();
-                Response.Redirect("~/blank.aspx");
+                if (paidname == "yes")
+                {
+
+                    string goldcoins = Request.QueryString["coins"].ToString();
+                    SqlDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
+                    SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
+
+                    SqlDataSource1.Update();
+                    Response.Redirect("~/blank.aspx");
+                }
+                else if (paidname != "yes")
+                {
+                    string goldcoins = Request.QueryString["coins"].ToString();
+                    SqlDataSource2.SelectCommand = "SELECT * FROM appuserdetails where uname='" + Hiddenfield1 + "'";
+                    SqlDataSource2.UpdateCommand = "UPDATE appuserdetails SET tempgoldcoins='" + goldcoins + "' where uname='" + Hiddenfield1 + "'";
+
+                    SqlDataSource2.Update();
+                    Response.Redirect("https://treasurehunter.apphb.com/blank.aspx");
+                }
             }
         }
     }
@@ -83,7 +101,7 @@
 <body>
     <form id="form1" runat="server">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers WHERE (luname = '<%=Hiddenfield1%>')" UpdateCommand="UPDATE loggedusers SET luloggedin='yes', lucrisboos='0'"></asp:SqlDataSource>
-
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM appuserdetails WHERE (luname = '<%=Hiddenfield1%>')" UpdateCommand="UPDATE appuserdetails SET tempgoldcoins=''" ></asp:SqlDataSource>
         
     </form>
     
