@@ -72,17 +72,24 @@
                 {
 
                     string goldcoins = Request.QueryString["coins"].ToString();
+                    string levels = Request.QueryString["levels"].ToString();
+                    string tscollected = Request.QueryString["tscollected"].ToString();
                     SqlDataSource1.SelectCommand = "SELECT lucrisboos FROM loggedusers where luname='" + Hiddenfield1 + "'";
                     SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes', lucrisboos='" + goldcoins + "' where luname='" + Hiddenfield1 + "'";
 
                     SqlDataSource1.Update();
+                    SqlDataSource2.SelectCommand = "SELECT * FROM appuserdetails where uname='" + Hiddenfield1 + "'";
+                    SqlDataSource2.UpdateCommand = "UPDATE appuserdetails SET levels='" + levels + "'," + "tspotscollected='" + tscollected + "'" + " where uname='" + Hiddenfield1 + "'";
+
                     Response.Redirect("~/blank.aspx");
                 }
                 else if (paidname != "yes")
                 {
                     string goldcoins = Request.QueryString["coins"].ToString();
+                    string levels = Request.QueryString["levels"].ToString();
+                    string tscollected = Request.QueryString["tscollected"].ToString();
                     SqlDataSource2.SelectCommand = "SELECT * FROM appuserdetails where uname='" + Hiddenfield1 + "'";
-                    SqlDataSource2.UpdateCommand = "UPDATE appuserdetails SET tempgoldcoins='" + goldcoins + "' where uname='" + Hiddenfield1 + "'";
+                    SqlDataSource2.UpdateCommand = "UPDATE appuserdetails SET tempgoldcoins='" + goldcoins + "'," + "levels='" + levels + "'," + "tspotscollected='" + tscollected + "'" + " where uname='" + Hiddenfield1 + "'";
 
                     SqlDataSource2.Update();
                     Response.Redirect("https://treasurehunter.apphb.com/blank.aspx");
