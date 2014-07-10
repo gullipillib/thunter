@@ -488,6 +488,10 @@
             {
                 TextBox17.Text = pgoldcoins;
             }
+        }
+        if (lifepack == "yes")
+        {
+            lives.Text = Convert.ToString(Convert.ToUInt16(lives.Text,10) + 10);
         } 
     }
                                            
@@ -3177,7 +3181,7 @@ function (response) {
             <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 94px; top: 24px; position: absolute; width: 329px;" Text="Professional Help to Complete Your TreasureSpot or Game Tools"></asp:Label>
             <asp:Label ID="Label5" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="A Professional will complete your TreasureSpot or Game Tools on behalf of you" ForeColor="White"></asp:Label>
             <asp:Label ID="Label6" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-            <button id="pay" onclick="buyp();"  style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 70px;">Buy Now</button>
+            <asp:HyperLink ID="Hyperlink8" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 170px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy Professional Help</asp:HyperLink>
             <button id="Button4" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 233px;">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #9900FF" id="showspot">
@@ -3185,22 +3189,22 @@ function (response) {
             <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Treasure Spot"></asp:Label>
             <asp:Label ID="Label8" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="You Have Played Now in a TreasureSpot. Create your own TreasureSpot to Earn More Rewards. " ForeColor="White"></asp:Label>
             <asp:Label ID="Label9" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $2" ForeColor="White" Font-Bold="True"></asp:Label>
-            <button id="pay0" onclick="buy();"  style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 40px;">Buy Now</button>
+            <asp:HyperLink ID="Hyperlink7" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 170px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
             <button id="Button5" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 160px; height: 34px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 249px;" onclick="hidediv();">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #666633" id="showpromo">
             <img alt="" src="Images/lwinner.jpg" style="z-index: 1101; left: 5px; top: 17px; position: absolute; height: 59px; width: 87px;" />
             <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 102px; top: 28px; position: absolute; width: 327px;" Text="Wow you just won a TreasureSpot at a Concessional Price"></asp:Label>
             <asp:Label ID="Label11" runat="server" Style="z-index: 1001; left: 42px; top: 122px; position: absolute; vertical-align: middle; text-align: center; width: 382px; margin-top: 0px; bottom: 140px;" Text="You were the randomly selected winner of a TreasureSpot" ForeColor="White"></asp:Label>
-            <button onclick="payer_promotion();" style="z-index: 1001; left: 143px; top: 192px; position: absolute; background-color: #0000CC; color: #FFFF00; width: 180px;">Concessional TreasureSpots</button>
-            <button id="Button6" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 233px; left: 179px;">Back to Game</button>
+            <asp:HyperLink ID="Hyperlink9" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbpromo.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 170px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Claim My Treasurespot</asp:HyperLink>
+            <button id="Button6" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 233px; left: 239px;">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #FF6666" id="showlife">
             <img alt="" src="Images/health.gif" style="z-index: 1101; left: 12px; top: 14px; position: absolute; height: 40px;" />
             <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 76px; top: 32px; position: absolute; width: 349px;" Text="Additional Lifes During Your Game Play"></asp:Label>
-            <asp:Label ID="Label13" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Get 20 More Lifes During Game Playing" ForeColor="White"></asp:Label>
+            <asp:Label ID="Label13" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Get 20 More Lifes During Game Playing. Buy to Clear the Level." ForeColor="White"></asp:Label>
             <asp:Label ID="Label14" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-            <button id="pay2" onclick="payer_promotion();"  style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 90px;">Buy Now</button>
+            <asp:HyperLink ID="Hyperlink10" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 170px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy Additional Lifes</asp:HyperLink>
             <button id="Button7" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 162px; height: 39px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 234px;" onclick="actionthgame();">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #FF5050" id="showtweet">
@@ -3215,8 +3219,8 @@ function (response) {
             <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Game Tools Item"></asp:Label>
             <asp:Label ID="Label18" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Add your own choice of Game Items to your TreasureSpot." ForeColor="White"></asp:Label>
             <asp:Label ID="Label19" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-            <button id="pay3" onclick="buyt();"  style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 79px; height: 26px; background-color: #FF00FF; color: #FFFFFF; top: 250px; left: 70px;">Buy Now</button>
-            <button id="Button9" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 121px; height: 56px; background-color: #FF00FF; color: #FFFFFF; top: 218px; left: 275px;">Back to Game</button>
+            <asp:HyperLink ID="Hyperlink11" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 232px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy Game Items for TreasureSpot</asp:HyperLink>
+            <button id="Button9" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 121px; height: 56px; background-color: #FF00FF; color: #FFFFFF; top: 218px; left: 285px;">Back to Game</button>
         </div>
         <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #FF5050" id="showfriends">
             <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px; right: 355px;" />
