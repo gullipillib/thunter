@@ -716,7 +716,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
     window._fbq = window._fbq || [];
 
-    window._fbq.push(['track', '6012706441093', { 'value': '0.00', 'currency': 'INR' }]);
+    window._fbq.push(['track', '6012706441093', { 'value': '2.00', 'currency': 'INR' }]);
 </script>
 
 <noscript>
