@@ -148,8 +148,8 @@ public string one4 = "";
 public string one5 = "";
     protected void gettreasurespot()
     {
-        Random one = new Random();
-        int t1 = one.Next(0, 1);
+        one = new Random();
+        t1 = one.Next(0, 1);
         if (t1 == 0)
         {
             SqlDataSource1.SelectCommand = "SELECT tsname,  tsitems, tsrplayers, tsdplayers, tsrplayersdetails, tsdplayersdetails, tsapproved, tsactive, tsurl FROM tspots where tsapproved = 'yes' and tsactive = 'yes' order by tsorder asc";
@@ -200,8 +200,8 @@ public string one5 = "";
         if (dt.Rows.Count != 0)
         {
            //dt.Rows.Count
-            Random one = new Random();
-            int t1 = one.Next(0, dt.Rows.Count);
+            one = new Random();
+            t1 = one.Next(0, dt.Rows.Count);
             tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
             tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
             tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
@@ -330,8 +330,8 @@ public string one5 = "";
 
             if (dt.Rows.Count != 0)
             {
-                Random one = new Random();
-                int t1 = one.Next(1, dt.Rows.Count);
+                one = new Random();
+                t1 = one.Next(1, dt.Rows.Count);
                 tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
                 tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
                 tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
@@ -365,7 +365,8 @@ public string one5 = "";
         
 
     }
-
+Random one = new Random();
+int t1;
     protected void addfriends()
     {
 
@@ -379,7 +380,7 @@ public string one5 = "";
         }
 
 
-        Random one = new Random();
+        one = new Random();
         if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
             if (Model.Friends.Data.Count > 5)
