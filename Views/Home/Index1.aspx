@@ -924,7 +924,7 @@ Remarketing tags may not be associated with personally identifiable information 
                 document.getElementById('TextBox7').style.visibility = "hidden";
 
             }
-
+            var showshower = 0;
             var myaddctrl1 = window.setInterval(function () { tcounter() }, 1000);
             function tcounter() {
                 var mycounter = document.getElementById('TextBox2').getAttribute("value");
@@ -934,7 +934,7 @@ Remarketing tags may not be associated with personally identifiable information 
                 }
                 document.getElementById('TextBox2').setAttribute("value", mycounter);
 
-                var showshower = 0;
+               
 
 
 
