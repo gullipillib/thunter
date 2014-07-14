@@ -907,7 +907,7 @@ Remarketing tags may not be associated with personally identifiable information 
             //alert(Img4.width);
             //alert(Img5.height);
             //alert(Img5.width);
-
+		var updateonce = 0;
             var noofhits = 0;
             var noofcoins = 0;
             var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
@@ -938,7 +938,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
 
 
-                if (document.getElementById('TextBox4').getAttribute("value") == "0") {
+                if (parseInt(document.getElementById('TextBox4').getAttribute("value"), 10) <= 0) {
                     won = 1;
                     noofcoins = -150;
                     showshower = 1;
@@ -947,7 +947,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
                     
                 }
-                else if (document.getElementById('TextBox6').getAttribute("value") == "0") {
+                else if (parseInt(document.getElementById('TextBox6').getAttribute("value"), 10) <= 0) {
                     won = 1;
                     noofhits = -150;
                     noofcoins = -150;
@@ -1042,7 +1042,11 @@ Remarketing tags may not be associated with personally identifiable information 
 
                     document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                     document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
-
+			if (updateonce == 0)
+			{
+			document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
+		updateonce = 1;
+			}	
                 }
             }
 
@@ -1108,9 +1112,9 @@ Remarketing tags may not be associated with personally identifiable information 
                     //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
                     //myframe.src = "~/Play/jsresult/" + enemyhits;
                     // window.location.href("jsresult/" + enemyhits);
-                    if (pvalue == "yes") {
+                    //if (pvalue == "yes") {
                         document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
-                    }
+                    //}
                     //}
 
                 }
