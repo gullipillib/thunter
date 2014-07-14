@@ -958,7 +958,7 @@ Remarketing tags may not be associated with personally identifiable information 
                         document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
                         document.getElementById('TextBox16').setAttribute("value", document.getElementById('TextBox16').getAttribute("value") + 1)
 
-                        showwinner.style.visibility = "visibile";
+                        document.getElementById('showwinner').style.visibility = "visibile";
 
                         document.getElementById('TextBox2').setAttribute("value", "0");
 
@@ -3432,7 +3432,7 @@ function (response) {
         <asp:HyperLink ID="Hyperlink5" runat="server" Font-Underline="False" NavigateUrl="~/Play/play" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 877px; top: 280px; position: absolute; height: 23px; width: 68px;" Target="_self" ForeColor="White">Winners</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink6" runat="server" Font-Underline="False" NavigateUrl="http://www.amazon.com/gp/product/B00I2DV2UO" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 787px; top: 14px; position: absolute; height: 90px; width: 191px; cursor: pointer;" Target="_self" ForeColor="Transparent"></asp:HyperLink>
 
-        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 127px; top: 2px; position: absolute; width: 40px; right: 1080px;" ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled">0</asp:TextBox>
+        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 12%; top: 1%; position: absolute; width: 6%; " ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled" Font-Size="100%">0</asp:TextBox>
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">15</asp:TextBox>
         <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 4px; top: 243px; position: absolute; width: 966px; right: -90px; height: 70px; vertical-align: middle;" ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Tahoma" Font-Size="13pt"></asp:TextBox>
         <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">0</asp:TextBox>
@@ -3444,7 +3444,7 @@ function (response) {
 
         <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration: none; position: absolute; top: 28px; left: 6px">Tweet</a>
 
-        <label style="position: absolute; top: 1px; left: 1px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large; font-weight: lighter;">Achievements</label>
+        <label style="position: absolute; top: 1%; left: 1%; height: 4%; color: #FFCC00; font-family: 'Jokerman LET'; font-size: 100%; font-weight: lighter;">Achievements</label>
 
         <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Lives</label>
 
