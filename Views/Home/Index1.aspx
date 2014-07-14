@@ -716,7 +716,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
     window._fbq = window._fbq || [];
 
-    window._fbq.push(['track', '6012706441093', { 'value': '2.00', 'currency': 'INR' }]);
+    window._fbq.push(['track', '6012706441093', { 'value': '0.00', 'currency': 'INR' }]);
 </script>
 
 <noscript>
@@ -938,7 +938,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
 
 
-                if (noofcoins == rancoins) {
+                if (document.getElementById('TextBox4').getAttribute("value") == "0") {
                     won = 1;
                     noofcoins = -150;
                     showshower = 1;
@@ -947,7 +947,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
                     
                 }
-                else if (noofhits == ranhits) {
+                else if (document.getElementById('TextBox6').getAttribute("value") == "0") {
                     won = 1;
                     noofhits = -150;
                     noofcoins = -150;
@@ -1544,7 +1544,7 @@ Remarketing tags may not be associated with personally identifiable information 
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 }
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
-                                document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
                             }
                             document.getElementById('ehits').setAttribute("value", enemyhits);
                             sessionStorage.setItem("points", mygoldcoins);
@@ -1560,12 +1560,15 @@ Remarketing tags may not be associated with personally identifiable information 
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
                                     noofcoins = noofcoins + 1;
-                                    document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
                                 }
                                 if (myctrl1.tbResult == "takeonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                                 }
                             }
                             if ('<%=ctrl1mainname%>' == "health") {
@@ -1581,10 +1584,16 @@ Remarketing tags may not be associated with personally identifiable information 
                                 if (myctrl1.tbResult == "giveonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                                 }
                                 if (myctrl1.tbResult == "takeonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                                 }
                                 if (myctrl1.tbResult == "giveonelife") {
                                     lifes = String(parseInt(lifes, 10) + 1);
@@ -1622,7 +1631,7 @@ Remarketing tags may not be associated with personally identifiable information 
                                 }
                                 noofhits = noofhits + 1;
                                 document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
-                                document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                                //document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                             }
                         }
                         if (ctrl2.style.visibility == "visible") {
@@ -1653,10 +1662,16 @@ Remarketing tags may not be associated with personally identifiable information 
                                 if (myctrl2.tbResult == "giveonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                                 }
                                 if (myctrl2.tbResult == "takeonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                                 }
                             }
                             if ('<%=ctrl2mainname%>' == "health") {
@@ -1672,10 +1687,16 @@ Remarketing tags may not be associated with personally identifiable information 
                             if (myctrl2.tbResult == "giveonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             if (myctrl2.tbResult == "takeonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             if (myctrl2.tbResult == "giveonelife") {
                                 lifes = String(parseInt(lifes, 10) + 1);
@@ -1725,7 +1746,8 @@ Remarketing tags may not be associated with personally identifiable information 
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 }
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
-                                document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             document.getElementById('ehits').setAttribute("value", enemyhits);
                             sessionStorage.setItem("points", mygoldcoins);
@@ -1740,11 +1762,15 @@ Remarketing tags may not be associated with personally identifiable information 
                                 if (myctrl3.tbResult == "giveonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                                 }
                                 if (myctrl3.tbResult == "takeonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
-                                    document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
                                 }
                             }
                             if ('<%=ctrl3mainname%>' == "health") {
@@ -1760,10 +1786,16 @@ Remarketing tags may not be associated with personally identifiable information 
                             if (myctrl3.tbResult == "giveonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             if (myctrl3.tbResult == "takeonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             if (myctrl3.tbResult == "giveonelife") {
                                 lifes = String(parseInt(lifes, 10) + 1);
@@ -1813,6 +1845,8 @@ Remarketing tags may not be associated with personally identifiable information 
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 }
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
 
                             }
                             document.getElementById('ehits').setAttribute("value", enemyhits);
@@ -1828,10 +1862,16 @@ Remarketing tags may not be associated with personally identifiable information 
                             if (myctrl4.tbResult == "giveonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             if (myctrl4.tbResult == "takeonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                         }
                         if ('<%=ctrl4mainname%>' == "health") {
@@ -1847,10 +1887,16 @@ Remarketing tags may not be associated with personally identifiable information 
                             if (myctrl4.tbResult == "giveonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             if (myctrl4.tbResult == "takeonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             if (myctrl4.tbResult == "giveonelife") {
                                 lifes = String(parseInt(lifes, 10) + 1);
@@ -1900,6 +1946,8 @@ Remarketing tags may not be associated with personally identifiable information 
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 }
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             document.getElementById('ehits').setAttribute("value", enemyhits);
                             sessionStorage.setItem("points", mygoldcoins);
@@ -1914,10 +1962,16 @@ Remarketing tags may not be associated with personally identifiable information 
                             if (myctrl5.tbResult == "giveonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             if (myctrl5.tbResult == "takeonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                         }
                         if ('<%=ctrl5mainname%>' == "health") {
@@ -1933,10 +1987,16 @@ Remarketing tags may not be associated with personally identifiable information 
                         if (myctrl5.tbResult == "giveonecrisboo") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if (myctrl5.tbResult == "takeonecrisboo") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if (myctrl5.tbResult == "giveonelife") {
                             lifes = String(parseInt(lifes, 10) + 1);
@@ -1986,6 +2046,8 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
 
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
@@ -1995,6 +2057,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl1mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl1mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2020,6 +2085,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2028,6 +2096,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl2mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl2mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2053,6 +2124,8 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2062,7 +2135,9 @@ Remarketing tags may not be associated with personally identifiable information 
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
                             noofcoins = noofcoins + 1;
-                            document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                            
 
                         }
                         if ('<%=ctrl3mainname%>' == "health") {
@@ -2088,6 +2163,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2096,6 +2174,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl4mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl4mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2120,6 +2201,8 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2129,7 +2212,9 @@ Remarketing tags may not be associated with personally identifiable information 
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
                             noofcoins = noofcoins + 1;
-                            document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                            
 
                         }
                         if ('<%=ctrl5mainname%>' == "health") {
@@ -2159,6 +2244,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2172,6 +2260,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl1mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl1mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2194,6 +2285,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2207,6 +2301,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl2mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl2mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2226,6 +2323,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2239,6 +2339,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl3mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl3mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2258,6 +2361,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
 
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
@@ -2272,6 +2378,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl4mainname%>' == "goldcoins") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                             }
                             if ('<%=ctrl4mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2291,6 +2400,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2304,6 +2416,9 @@ Remarketing tags may not be associated with personally identifiable information 
                             if ('<%=ctrl5mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl5mainname%>' == "health") {
                                 mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2323,6 +2438,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 }
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
 
                             }
                             document.getElementById('ehits').setAttribute("value", enemyhits);
@@ -2332,6 +2450,9 @@ Remarketing tags may not be associated with personally identifiable information 
                             if ('<%=ctrl1mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl1mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2357,6 +2478,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2365,6 +2489,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl2mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl2mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2390,6 +2517,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2398,6 +2528,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl3mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         if ('<%=ctrl3mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2422,6 +2555,9 @@ Remarketing tags may not be associated with personally identifiable information 
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             }
                             document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
@@ -2430,6 +2566,9 @@ Remarketing tags may not be associated with personally identifiable information 
                         if ('<%=ctrl4mainname%>' == "goldcoins") {
                         mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                         document.getElementById('points').setAttribute("value", mygoldcoins);
+                        noofcoins = noofcoins + 1;
+                        document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                     }
                     if ('<%=ctrl4mainname%>' == "health") {
                         mygoldcoins = String(parseInt(lifes, 10) + 1);
@@ -2455,6 +2594,9 @@ Remarketing tags may not be associated with personally identifiable information 
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                         }
                         document.getElementById('points').setAttribute("value", mygoldcoins);
+                        noofcoins = noofcoins + 1;
+                        document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                     }
                     document.getElementById('ehits').setAttribute("value", enemyhits);
                     sessionStorage.setItem("points", mygoldcoins);
@@ -2463,6 +2605,9 @@ Remarketing tags may not be associated with personally identifiable information 
                     if ('<%=ctrl5mainname%>' == "goldcoins") {
                         mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                         document.getElementById('points').setAttribute("value", mygoldcoins);
+                        noofcoins = noofcoins + 1;
+                        document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                     }
                     if ('<%=ctrl5mainname%>' == "health") {
                         mygoldcoins = String(parseInt(lifes, 10) + 1);
