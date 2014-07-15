@@ -637,6 +637,17 @@
     <meta name="keywords" content="free online games, Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game " />
     <title>The Treasurehunter, A Free Online Game, Have Fun</title>
 </head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[])push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52168843-1', 'auto');
+	ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
 <!-- Google Code for thwebpage Conversion Page -->
 <script type="text/javascript">
     /* <![CDATA[ */
