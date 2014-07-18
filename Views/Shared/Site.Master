@@ -3,7 +3,7 @@
 <html>
 <head runat="server" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# treasure_huntermp: http://ogp.me/ns/fb/treasure_huntermp#">
     <meta property="fb:app_id" content="123405257731200" />
-    <meta property="og:type" content="treasure_huntermp:game" />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="https://treasurehunter.apphb.com" />
     <meta property="og:title" content="TreasureHunt Game" />
     <meta property="og:image" content="https://treasurehunter.apphb.com/Images/lamdscape.jpg" />
