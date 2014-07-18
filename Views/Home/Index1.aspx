@@ -636,6 +636,18 @@
     <meta name="description" content="Free Online Game TreasureHunter Facebook">
     <meta name="keywords" content="free online games, Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game " />
     <title>The Treasurehunter, A Free Online Game, Have Fun</title>
+<meta property="og:title"
+content="Treasurehunter 3D Multi Player Game" />
+<meta property="og:title"
+content="Treasurehunter" />
+<meta property="og:url"
+content="https://treasurehunter.apphb.com/Home/index1" />
+<meta property="og:description" content="Play with other Players in 3D. Fun filled Treasure HUnting in Different Places of world. Collect Gold COins. 1000 Levels to achieve." />
+<meta property="fb:app_id" content="123405257731200" />
+<meta property="og:locale" content="en_US" />  
+<meta property="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
+<meta property="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
+<meta property="og:type" content="website" />
 </head>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -3435,7 +3447,7 @@ function (response) {
 
         <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
 
-        <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 100; left: 803px; top: 27px; position: absolute; height: 62px; width: 166px" />
+        <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 100; left: 803px; top: 20px; position: absolute; height: 62px; width: 166px" />
         <a href="https://treasurehunter.apphb.com/prizes.html" target="_self" style="position: absolute; left: 872px; top: 313px; width: 92px; text-decoration: none; background-color: #FF00FF; color: #FFFFFF; border-radius: 20px; right: 237px; text-align: center; z-index: 1;">Rewards</a>
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 196px; top: 0px; position: absolute; width: 319px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
         <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="10pt" ForeColor="#9999FF" Style="z-index: 1; left: 375px; top: 79px; position: absolute; width: 347px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
@@ -3445,7 +3457,8 @@ function (response) {
         <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Invite/friends" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; left: 274px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 54px; position: absolute; width: 84px; left: 170px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink5" runat="server" Font-Underline="False" NavigateUrl="~/Play/play" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 877px; top: 280px; position: absolute; height: 23px; width: 68px;" Target="_self" ForeColor="White">Winners</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink6" runat="server" Font-Underline="False" NavigateUrl="http://www.amazon.com/gp/product/B00I2DV2UO" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 787px; top: 14px; position: absolute; height: 90px; width: 191px; cursor: pointer;" Target="_self" ForeColor="Transparent"></asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink6" runat="server" Font-Underline="False" NavigateUrl="http://www.amazon.com/gp/product/B00I2DV2UO" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 787px; top: 14px; position: absolute; height: 78px; width: 191px; cursor: pointer;" Target="_self" ForeColor="Transparent"></asp:HyperLink>
+        <a id="A1" href="https://treasurehunter.apphb.com/app-release.apk" style="border:2px solid #FF00FF; border-radius:25px; font-family: Pericles; font-size: 75%; font-weight: bold; font-style: italic; color: #FFFFFF; background-color: #FF00FF; cursor: pointer; position: absolute; text-align: center; top: 94%; left: 15%; width: 32%; height: 4%; vertical-align: middle; z-index: 50; text-decoration: none; visibility:visible;"> Download Now and Play on Mobiles and Devices</a>
 
         <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 12%; top: 1%; position: absolute; width: 6%; " ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled" Font-Size="100%">0</asp:TextBox>
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">15</asp:TextBox>

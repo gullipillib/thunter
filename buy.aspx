@@ -66,7 +66,7 @@ protected void checkusername()
     else
     {
 
-        Response.Redirect("~/Home/Index1");
+        Response.Redirect("https://treasurehunter.apphb.com/Home/Index1");
     }
     
 }
@@ -211,7 +211,7 @@ protected void Button2_Click(object sender, EventArgs e)
         string lutspots = dt.Rows[0].Field<string>("lutspots"); //usethis to get field value
         SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luspots = '" + Convert.ToString(Convert.ToInt16(lutspots) + 1) + "' where luname='" + Hiddenfield1 + "'";
         SqlDataSource1.Update();
-        Response.Redirect("~/create.aspx");
+        Response.Redirect("https://treasurehunter.apphb.com/create.aspx");
     }
 }
 
@@ -471,7 +471,7 @@ FB.ui(obj, js_callback);
                 Facebook Payment System</label>
                 <label style="z-index: 300; left: 464px; top: 6px; position: absolute; height: 21px; width: 22px; font-size: 16px; font-family: Arial; color: #FFFFFF; font-weight: bolder; font-style: normal; right: 184px;">
                 $2</label>
-                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" /><asp:hyperlink ID="Hyperlink14" runat="server"  Font-Underline="False" NavigateUrl="~/fbbuy.html" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 110px; height: 26px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF; text-align:center; vertical-align:middle;">Buy</asp:hyperlink>           </div>
+                <img alt="" src="Images/achievements.gif" style="z-index: 300; left: 236px; top: 11px; position: absolute; height: 48px; width: 47px" /><asp:hyperlink ID="Hyperlink14" runat="server"  Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" style="z-index: 300; left: 517px; top: 2px; position: absolute; width: 110px; height: 26px; border-radius:15px; background-color: #0000FF; font-size: 12px; color: #FFFFFF; text-align:center; vertical-align:middle;">Buy</asp:hyperlink>           </div>
 
             <div style="position: absolute; z-index: 300; border: medium inset #FF99FF; top: 99px; left: 16px; width: 670px; height: 68px; background-color: #FF99FF;">
                 <label style="z-index: 300; left: 13px; top: 18px; position: absolute; height: 35px; width: 168px; font-size: 20px; font-family: 'Victorian LET'; color: #FFFFFF; font-weight: bold; font-style: normal; letter-spacing: 2pt; right: 489px;">
@@ -525,20 +525,20 @@ FB.ui(obj, js_callback);
 
         
 
-<asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="~/trialpay.aspx" style="z-index: 1; left: 606px; top: 638px; position: absolute; bottom: 72px; border-radius:15px; background-color: #FF9900;  width: 122px; cursor:pointer; text-decoration:none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="~/Images/trialpay.jpg"></asp:hyperlink> 
+<asp:hyperlink ID="Hyperlink3" runat="server"  Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/trialpay.aspx" style="z-index: 1; left: 606px; top: 638px; position: absolute; bottom: 72px; border-radius:15px; background-color: #FF9900;  width: 122px; cursor:pointer; text-decoration:none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="https://treasurehunter.apphb.com/Images/trialpay.jpg"></asp:hyperlink> 
 
   
 
         
 <asp:Button ID="Button3" runat="server" Text="Buy Later" style="width: 100px; position: absolute; left:751px; top:-3px; border-radius:15px;"  UseSubmitBehavior="False" CausesValidation="False" BackColor="Red" ForeColor="White" OnClick="Button3_Click" ToolTip="Use this to Play further on, Create one Treasure Spot but you cannot Sell or Bid or Approve to Earn Real Cash" Visible="False" />
             
-<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="~/gamesettings.aspx" style="z-index: 1; left: 101px; top: -4px; position: absolute; bottom: 746px; border-radius:15px; background-color: #FF9900;  width: 66px;" Target="_self" ForeColor="White" BackColor="#FF9900">My Game</asp:hyperlink>   
-<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="~/Play/play" style="z-index: 1; border-radius:15px; background-color: #FF9900;  left: 18px; top: -6px; position: absolute; height: 23px; width: 64px;" Target="_self" ForeColor="White">Winners</asp:hyperlink>
+<asp:hyperlink ID="Hyperlink4" runat="server"  Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" style="z-index: 1; left: 101px; top: -4px; position: absolute; bottom: 746px; border-radius:15px; background-color: #FF9900;  width: 66px;" Target="_self" ForeColor="White" BackColor="#FF9900">My Game</asp:hyperlink>   
+<asp:hyperlink ID="Hyperlink2" runat="server"  Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Play/play" style="z-index: 1; border-radius:15px; background-color: #FF9900;  left: 18px; top: -6px; position: absolute; height: 23px; width: 64px;" Target="_self" ForeColor="White">Winners</asp:hyperlink>
 
 
         
 
-    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="~/Home/Index1" style="z-index: 1; left: 598px; top: 2px; position: absolute; right: 140px; border-radius:15px; background-color: #FF9900; " Target="_self" Enabled="False" ForeColor="White">Go on a Treasurehunt</asp:hyperlink>
+    <asp:hyperlink ID="Hyperlink1" runat="server"  Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Home/Index1" style="z-index: 1; left: 598px; top: 2px; position: absolute; right: 140px; border-radius:15px; background-color: #FF9900; " Target="_self" Enabled="False" ForeColor="White">Go on a Treasurehunt</asp:hyperlink>
         
         
 <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 517px; top: 373px; position: absolute" Text=""></asp:Label>
