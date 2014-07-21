@@ -984,12 +984,34 @@ Remarketing tags may not be associated with personally identifiable information 
                     noofcoins = -150;
                     showshower = 1;
                 }
+                
+            }
+
+            var myaddctrl1 = window.setInterval(function () { getTspot() }, 120000);
+            function getTspot() {
+
+                document.getElementById('divplayer').getElementsByTagName('ctrl1').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('ctrl2').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('ctrl3').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('ctrl4').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('ctrl5').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img1').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img2').src = '<%=ctrl2mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img3').src = '<%=ctrl3mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img4').src = '<%=ctrl4mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img5').src = '<%=ctrl5mainurl%>';
+                document.getElementById('fplayer').src = '<%=iframeurl%>';
+                document.getElementById('divplayer').getElementsByTagName('explosion').src = '<%=collisionurl%>';
+                document.getElementById('divplayer').getElementsByTagName('crosshair').src = '<%=propurl%>';
+                var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
+
                 if (showshower == 1) {
+                    document.getElementById('showwinner').style.visibility = "visibile";
                     if (won == 1) {
                         document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
                         document.getElementById('TextBox16').setAttribute("value", document.getElementById('TextBox16').getAttribute("value") + 1)
 
-                        document.getElementById('showwinner').style.visibility = "visibile";
+                        
 
                         document.getElementById('TextBox2').setAttribute("value", "0");
 
@@ -1073,31 +1095,16 @@ Remarketing tags may not be associated with personally identifiable information 
 
                     document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                     document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
-			if (updateonce == 0)
-			{
-			document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
-		updateonce = 1;
-			}	
+                    if (updateonce == 0)
+                    {
+                        document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
+                        updateonce = 1;
+                    }	
                 }
-            }
 
-            var myaddctrl1 = window.setInterval(function () { getTspot() }, 120000);
-            function getTspot() {
+                else if(showshower != 1)
+                {
 
-                document.getElementById('divplayer').getElementsByTagName('ctrl1').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('ctrl2').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('ctrl3').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('ctrl4').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('ctrl5').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img1').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img2').src = '<%=ctrl2mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img3').src = '<%=ctrl3mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img4').src = '<%=ctrl4mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img5').src = '<%=ctrl5mainurl%>';
-                document.getElementById('fplayer').src = '<%=iframeurl%>';
-                document.getElementById('divplayer').getElementsByTagName('explosion').src = '<%=collisionurl%>';
-                document.getElementById('divplayer').getElementsByTagName('crosshair').src = '<%=propurl%>';
-                var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
                 if (mydivs == 9) {
                     document.getElementById('showspot').style.visibility = "visible";
                 }
@@ -1125,8 +1132,10 @@ Remarketing tags may not be associated with personally identifiable information 
                 else if (mydivs == 1) {
                     document.getElementById('showspot').style.visibility = "visible";
                 }
+            }
 
                 actionconqueor();
+            
 
             }
 
