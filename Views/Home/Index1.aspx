@@ -310,9 +310,10 @@
                 tbitems1 = tb1fulldetails;
                 ctrl1mainurl = tb1itemsfulldetails.tbMain;
             }
-            catch 
+            catch (Exception e) 
             {
-                Response.Redirect("https://treasurehunter.apphb.com/Home/Index1");
+                throw (e);
+                
             }
             
                 
