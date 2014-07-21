@@ -309,17 +309,16 @@
                 tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
                 tbitems1 = tb1fulldetails;
                 ctrl1mainurl = tb1itemsfulldetails.tbMain;
+            
+                propurl = tb1itemsfulldetails.tbProp;
+                collisionurl = tb1itemsfulldetails.tbCollionResult;
+                ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
             }
             catch (Exception e) 
             {
                 throw (e);
                 
             }
-            
-                
-            propurl = tb1itemsfulldetails.tbProp;
-            collisionurl = tb1itemsfulldetails.tbCollionResult;
-            ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
         }
         else
         {
