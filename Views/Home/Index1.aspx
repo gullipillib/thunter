@@ -303,11 +303,19 @@
         dt = dv.ToTable();
         if (dt.Rows.Count != 0)
         {
-            tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
-            tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
-            tbitems1 = tb1fulldetails;
-            ctrl1mainurl = tb1itemsfulldetails.tbMain;
-
+            try
+            {
+                tb1fulldetails = dt.Rows[0].Field<string>("tbdetails");
+                tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
+                tbitems1 = tb1fulldetails;
+                ctrl1mainurl = tb1itemsfulldetails.tbMain;
+            }
+            catch 
+            {
+                Response.Redirect("https://treasurehunter.apphb.com/Home/Index1");
+            }
+            
+                
             propurl = tb1itemsfulldetails.tbProp;
             collisionurl = tb1itemsfulldetails.tbCollionResult;
             ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
@@ -649,21 +657,6 @@ content="https://treasurehunter.apphb.com/Home/index1" />
 <meta property="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
 <meta property="og:type" content="website" />
 </head>
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://vijaygg-pc/piwik/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 1]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="http://vijaygg-pc/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[])push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
