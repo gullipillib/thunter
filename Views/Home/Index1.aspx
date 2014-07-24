@@ -102,7 +102,8 @@
     string upaid = "";
     public string goldcoins = "100";
     string Hiddenfield1;
-
+    public string lulogintimes = "";
+    public int times = 0;
     protected void checkusername()
     {
 
@@ -163,7 +164,7 @@
                     SqlDataSource4.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'no', '0', '0', '0')";
                     SqlDataSource4.Insert();
                 }
-                SqlDataSource5.SelectCommand = "SELECT * FROM ordercounter where uname='" + Hiddenfield1+ "')";
+                SqlDataSource5.SelectCommand = "SELECT * FROM ordercounter where uname='" + Hiddenfield1+ "'";
                 dv = (DataView)SqlDataSource5.Select(DataSourceSelectArguments.Empty);
                 dt = new DataTable();
                 dt = dv.ToTable();
@@ -179,7 +180,7 @@
                     SqlDataSource5.Insert();
                 }
 
-                SqlDataSource6.SelectCommand = "SELECT * FROM winners where uname='" + Hiddenfield1 + "')";
+                SqlDataSource6.SelectCommand = "SELECT * FROM winners where uname='" + Hiddenfield1 + "'";
                 //SqlDataSource6.InsertParameters["uname"].DefaultValue = Hiddenfield1;
                 //SqlDataSource6.InsertParameters["crisboos"].DefaultValue = "0";
                 dv = (DataView)SqlDataSource5.Select(DataSourceSelectArguments.Empty);
@@ -234,8 +235,7 @@
         }
         
     }
-   public string lulogintimes = "";
-   public int times = 0;
+  
     public string one1 = "";
     public string one2 = "";
     public string one3 = "";
