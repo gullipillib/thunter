@@ -98,19 +98,21 @@ int t1;
     string upaid = "no";
      public string goldcoins = "100";
     string Hiddenfield1;
-
+    public string lulogintimes = "";
+    public int times = 0;
+    
     protected void checkusername()
     {
-
 
         Hiddenfield1 = Model.Name;
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
         Session["loggeduser"] = Model.Name;
         Session["loggeduserid"] = Model.Id;
         Session["loggeduserurl"] = Model.ProfilePicture.Data.Url;
+
         if (Hiddenfield1 != null)
         {
-            
+
             //Insert User into appuser,loggeduser,ordercounter,treasureprize;
             SqlDataSource1.SelectCommand = "SELECT uname FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
 
@@ -118,31 +120,117 @@ int t1;
             DataTable dt = new DataTable();
             dt = dv.ToTable();
             //DataTable dtr = dt;
-            //DataRow[] uniname = dtr.Select("uname");
+            //DataRow[] uniname = dt.Select("uname");
             //username = dt.Rows[0].Field<string>("uname"); usethis to get field value
             //Label3.Text = dt.Rows[0][0].ToString();
             if (dt.Rows.Count == 0)
             {
                 //Insert User into appuser,loggeduser,ordercounter,winners;
+                //SqlDataSource1.SelectCommand = "SELECT * FROM appuserdetails";
+                //SqlDataSource1.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                //SqlDataSource1.InsertParameters["uloggedin"].DefaultValue = "no";
+                //SqlDataSource1.InsertParameters["winner"].DefaultValue = "no";
+                //SqlDataSource1.InsertParameters["wintimes"].DefaultValue = "0";
+                //SqlDataSource1.InsertParameters["paid"].DefaultValue = "no";
+                //SqlDataSource1.InsertParameters["amount"].DefaultValue = "0";
+                //SqlDataSource1.InsertParameters["currenttspot"].DefaultValue = "";
+
                 SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
                 SqlDataSource1.Insert();
-                SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers";
-                SqlDataSource1.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + "10020010100" + "', '{left : 0, top:0}', '" + "" + "', '" + "" + "', '100', 'yes', '0', '0', '0')";
-                SqlDataSource1.Insert();
-                SqlDataSource1.SelectCommand = "SELECT * FROM ordercounter";
-                SqlDataSource1.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
-                SqlDataSource1.Insert();
-                SqlDataSource1.SelectCommand = "SELECT * FROM winners";
-                SqlDataSource1.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
-                SqlDataSource1.Insert();
-            }
 
+                SqlDataSource4.SelectCommand = "SELECT * FROM loggedusers";
+                //SqlDataSource4.InsertParameters["luname"].DefaultValue = Hiddenfield1;
+                //SqlDataSource4.InsertParameters["luid"].DefaultValue = Model.Id;
+                //SqlDataSource4.InsertParameters["luposition"].DefaultValue = "{left : 0, top:0}";
+                //SqlDataSource4.InsertParameters["luimg"].DefaultValue = Model.ProfilePicture.Data.Url;
+                //SqlDataSource4.InsertParameters["luspriteimg"].DefaultValue = Model.ProfilePicture.Data.Url;
+                //SqlDataSource4.InsertParameters["lucrisboos"].DefaultValue = "0";
+                //SqlDataSource4.InsertParameters["luloggedin"].DefaultValue = "no";
+                //SqlDataSource4.InsertParameters["lutspots"].DefaultValue = "0";
+                //SqlDataSource4.InsertParameters["lulogintimes"].DefaultValue = "0";
+                //SqlDataSource4.InsertParameters["luinvites"].DefaultValue = "0";
+
+                SqlDataSource4.SelectCommand = "SELECT * FROM loggedusers WHERE (luname = '" + Hiddenfield1 + "')";
+
+                dv = (DataView)SqlDataSource4.Select(DataSourceSelectArguments.Empty);
+                dt = new DataTable();
+                dt = dv.ToTable();
+
+                if (dt.Rows.Count == 0)
+                {
+                    SqlDataSource4.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'no', '0', '0', '0')";
+                    SqlDataSource4.Insert();
+                }
+                SqlDataSource5.SelectCommand = "SELECT * FROM ordercounter where uname='" + Hiddenfield1 + "')";
+                dv = (DataView)SqlDataSource5.Select(DataSourceSelectArguments.Empty);
+                dt = new DataTable();
+                dt = dv.ToTable();
+
+                if (dt.Rows.Count == 0)
+                {
+
+
+                    //SqlDataSource5.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                    //SqlDataSource5.InsertParameters["ccounter"].DefaultValue = "0";
+
+                    SqlDataSource5.InsertCommand = "INSERT INTO ordercounter(uname, ccounter) Values ('" + Hiddenfield1 + "','0')";
+                    SqlDataSource5.Insert();
+                }
+
+                SqlDataSource6.SelectCommand = "SELECT * FROM winners where uname='" + Hiddenfield1 + "')";
+                //SqlDataSource6.InsertParameters["uname"].DefaultValue = Hiddenfield1;
+                //SqlDataSource6.InsertParameters["crisboos"].DefaultValue = "0";
+                dv = (DataView)SqlDataSource5.Select(DataSourceSelectArguments.Empty);
+                dt = new DataTable();
+                dt = dv.ToTable();
+
+                if (dt.Rows.Count == 0)
+                {
+                    SqlDataSource6.InsertCommand = "INSERT INTO winners(uname, crisboos) Values ('" + Hiddenfield1 + "','0')";
+                    SqlDataSource6.Insert();
+                }
+                Session["loggeduser"] = Model.Name;
+                Hiddenfield1 = Hiddenfield1.Replace(" ", "");
+                Session["reached"] = "yes";
+
+                SqlDataSource6.SelectCommand = "select paid from appuserdetails where uname = '" + Model.Name + "'";
+                dv = (DataView)SqlDataSource6.Select(DataSourceSelectArguments.Empty);
+                dt = new DataTable();
+                dt = dv.ToTable();
+                if (dt.Rows.Count != 0)
+                {
+                    upaid = dt.Rows[0].Field<string>("paid"); //usethis to get field value
+                }
+                else
+                {
+                    upaid = "no";
+                }
+            }
+            SqlDataSource4.SelectCommand = "SELECT lulogintimes FROM loggedusers WHERE (luname = '" + Hiddenfield1 + "')";
+
+            dv = (DataView)SqlDataSource4.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
+
+            if (dt.Rows.Count != 0)
+            {
+                lulogintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
+                times = Convert.ToInt16(lulogintimes) + 1;
+                if (times >= 1000)
+                {
+                    times = 11;
+                }
+                lulogintimes = Convert.ToString(times);
+                SqlDataSource4.UpdateCommand = "UPDATE loggedusers SET lulogintimes='" + lulogintimes + "' where luname='" + Hiddenfield1 + "'";
+                SqlDataSource4.Update();
+            }
         }
         else
         {
 
-            Response.Redirect("~/Tspot/buy");
+            Response.Redirect("https://treasurehunter.apphb.com/buy.aspx");
         }
+
     }
 public string one1 = "";
 public string one2 = "";
@@ -2906,7 +2994,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>  
         
          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1%>')"></asp:SqlDataSource>
-
+         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM loggedusers" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'" ProviderName="System.Data.SqlClient">
+            <InsertParameters>
+                <asp:Parameter Name="luname" />
+                <asp:Parameter Name="luid" />
+                <asp:Parameter Name="luposition" />
+                <asp:Parameter Name="luimg" />
+                <asp:Parameter Name="luspriteimg" />
+                <asp:Parameter Name="lucrisboos" />
+                <asp:Parameter Name="luloggedin" />
+                <asp:Parameter Name="lutspots" />
+                <asp:Parameter Name="lulogintimes" />
+                <asp:Parameter Name="luinvites" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uloggedin" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM ordercounter" InsertCommand="INSERT INTO ordercounter(uname, ccounter) Values (@uname, @ccounter)" UpdateCommand="UPDATE ordercounter SET @uname=''">
+            <InsertParameters>
+                <asp:Parameter Name="uname" />
+                <asp:Parameter Name="ccounter" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uname" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM winners" InsertCommand="INSERT INTO winners(uname, crisboos) Values (@uname, @crisboos)" UpdateCommand="UPDATE winners SET @uname=''">
+            <InsertParameters>
+                <asp:Parameter Name="uname" />
+                <asp:Parameter Name="crisboos" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uname" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
         <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
 
 
