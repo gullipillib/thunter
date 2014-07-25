@@ -81,7 +81,7 @@
                     SqlDataSource2.SelectCommand = "SELECT * FROM appuserdetails where uname='" + Hiddenfield1 + "'";
                     SqlDataSource2.UpdateCommand = "UPDATE appuserdetails SET levels='" + levels + "'," + "tspotscollected='" + tscollected + "'" + " where uname='" + Hiddenfield1 + "'";
 
-                    Response.Redirect("~/blank.aspx");
+                    Response.Redirect("https://treasurehunter.apphb.com/blank.aspx");
                 }
                 else if (paidname != "yes")
                 {
@@ -107,8 +107,8 @@
 
 <body>
     <form id="form1" runat="server">
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers WHERE (luname = '<%=Hiddenfield1%>')" UpdateCommand="UPDATE loggedusers SET luloggedin='yes', lucrisboos='0'"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM appuserdetails WHERE (luname = '<%=Hiddenfield1%>')" UpdateCommand="UPDATE appuserdetails SET tempgoldcoins=''" ></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers" UpdateCommand="UPDATE loggedusers SET luloggedin='yes', lucrisboos='0'"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM appuserdetails" UpdateCommand="UPDATE appuserdetails SET tempgoldcoins=''" ></asp:SqlDataSource>
         
     </form>
     

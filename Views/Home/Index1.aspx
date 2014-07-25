@@ -138,7 +138,7 @@
                 //SqlDataSource1.InsertParameters["amount"].DefaultValue = "0";
                 //SqlDataSource1.InsertParameters["currenttspot"].DefaultValue = "";
 
-                SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '')";
+                SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot, device) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '', 'web')";
                 SqlDataSource1.Insert();
 
                 SqlDataSource4.SelectCommand = "SELECT * FROM loggedusers";
@@ -364,7 +364,7 @@
             }
             catch (Exception e) 
             {
-                throw (e);
+                Response.Redirect("https://treasurehunter.apphb.com/Home/Index1");
                 
             }
         }
@@ -692,18 +692,18 @@
     <meta name="description" content="Free Online Game TreasureHunter Facebook">
     <meta name="keywords" content="free online games, Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game " />
     <title>The Treasurehunter, A Free Online Game, Have Fun</title>
-<meta property="og:title"
+<meta name="og:title"
 content="Treasurehunter 3D Multi Player Game" />
-<meta property="og:title"
+<meta name="og:title"
 content="Treasurehunter" />
-<meta property="og:url"
+<meta name="og:url"
 content="https://treasurehunter.apphb.com/Home/index1" />
-<meta property="og:description" content="Play with other Players in 3D. Fun filled Treasure HUnting in Different Places of world. Collect Gold COins. 1000 Levels to achieve." />
-<meta property="fb:app_id" content="123405257731200" />
-<meta property="og:locale" content="en_US" />  
-<meta property="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
-<meta property="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
-<meta property="og:type" content="website" />
+<meta name="og:description" content="Play with other Players in 3D. Fun filled Treasure HUnting in Different Places of world. Collect Gold COins. 1000 Levels to achieve." />
+<meta name="fb:app_id" content="123405257731200" />
+<meta name="og:locale" content="en_US" />  
+<meta name="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
+<meta name="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
+<meta name="og:type" content="website" />
 </head>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -996,7 +996,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
             var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
             function filllabel() {
-                document.getElementById('TextBox7').setAttribute("value", "Collect " + rancoins + " Gold Coins or Conqueor other " + ranhits + " Players in the Next 2 Mins");
+                document.getElementById('TextBox7').setAttribute("value", " Vastro Games  Collect " + rancoins + " Gold Coins or Conqueor other " + ranhits + " Players in the Next 2 Mins. Put on Your 3D Glasses or Mild Dark Color Sunglasses For 3D  ");
                 var myaddctrl = window.setTimeout(function () { hidelabel() }, 4000);
             }
             function hidelabel() {
@@ -1015,7 +1015,42 @@ Remarketing tags may not be associated with personally identifiable information 
 
                
 
+                if (parseInt(document.getElementById('lives').getAttribute("value"), 10) <= 0) {
+                    document.getElementById('lives').setAttribute("value", "0");
+                    var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
+                
+                    if(showshower != 1)
+                    {
 
+                        if (mydivs == 9) {
+                            document.getElementById('showspot').style.visibility = "visible";
+                        }
+                        else if (mydivs == 8) {
+                            document.getElementById('showpromo').style.visibility = "visible";
+                        }
+                        else if (mydivs == 7) {
+                            document.getElementById('showtools').style.visibility = "visible";
+                        }
+                        else if (mydivs == 6) {
+                            document.getElementById('showprof').style.visibility = "visible";
+                        }
+                        else if (mydivs == 5) {
+                            document.getElementById('showtweet').style.visibility = "visible";
+                        }
+                        else if (mydivs == 4) {
+                            document.getElementById('showfriendso').style.visibility = "visible";
+                        }
+                        else if (mydivs == 3) {
+                            window.location.href = "https://treasurehunter.apphb.com/prizes.html";
+                        }
+                        else if (mydivs == 2) {
+                            window.location.href = "https://treasurehunter.apphb.com/gamesettings.aspx";
+                        }
+                        else if (mydivs == 1) {
+                            document.getElementById('showspot').style.visibility = "visible";
+                        }
+                    }
+                }
 
                 if (parseInt(document.getElementById('TextBox4').getAttribute("value"), 10) <= 0) {
                     won = 1;
@@ -1032,27 +1067,6 @@ Remarketing tags may not be associated with personally identifiable information 
                     noofcoins = -150;
                     showshower = 1;
                 }
-                
-            }
-
-            var myaddctrl1 = window.setInterval(function () { getTspot() }, 120000);
-            function getTspot() {
-
-                document.getElementById('divplayer').getElementsByTagName('ctrl1').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('ctrl2').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('ctrl3').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('ctrl4').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('ctrl5').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img1').src = '<%=ctrl1mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img2').src = '<%=ctrl2mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img3').src = '<%=ctrl3mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img4').src = '<%=ctrl4mainurl%>';
-                document.getElementById('divplayer').getElementsByTagName('Img5').src = '<%=ctrl5mainurl%>';
-                document.getElementById('fplayer').src = '<%=iframeurl%>';
-                document.getElementById('divplayer').getElementsByTagName('explosion').src = '<%=collisionurl%>';
-                document.getElementById('divplayer').getElementsByTagName('crosshair').src = '<%=propurl%>';
-                var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
-
                 if (showshower == 1) {
                     document.getElementById('showwinner').style.visibility = "visibile";
                     if (won == 1) {
@@ -1147,43 +1161,78 @@ Remarketing tags may not be associated with personally identifiable information 
                     {
                         document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
                         updateonce = 1;
-                    }	
+                    }
+                    actionconqueor();
+                    actioncollectcoins();
+                    var pvalue = '<%=upaid%>';
+                    //if (enemyhits != null) {
+                    //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
+                    //myframe.src = "~/Play/jsresult/" + enemyhits;
+                    // window.location.href("jsresult/" + enemyhits);
+                    //if (pvalue == "yes") {
+                    document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
+                    //}
+                    //}
+                    document.getElementById('Button1').click();
                 }
 
-                else if(showshower != 1)
-                {
+                
 
-                if (mydivs == 9) {
-                    document.getElementById('showspot').style.visibility = "visible";
-                }
-                else if (mydivs == 8) {
-                    document.getElementById('showpromo').style.visibility = "visible";
-                }
-                else if (mydivs == 7) {
-                    document.getElementById('showtools').style.visibility = "visible";
-                }
-                else if (mydivs == 6) {
-                    document.getElementById('showprof').style.visibility = "visible";
-                }
-                else if (mydivs == 5) {
-                    document.getElementById('showtweet').style.visibility = "visible";
-                }
-                else if (mydivs == 4) {
-                    document.getElementById('showfriendso').style.visibility = "visible";
-                }
-                else if (mydivs == 3) {
-                    window.location.href = "https://treasurehunter.apphb.com/prizes.html";
-                }
-                else if (mydivs == 2) {
-                    window.location.href = "https://treasurehunter.apphb.com/gamesettings.aspx";
-                }
-                else if (mydivs == 1) {
-                    document.getElementById('showspot').style.visibility = "visible";
-                }
+                
+                
             }
 
-                actionconqueor();
-            
+            var myaddctrl1 = window.setInterval(function () { getTspot() }, 120000);
+            function getTspot() {
+
+                document.getElementById('divplayer').getElementsByTagName('ctrl1').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('ctrl2').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('ctrl3').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('ctrl4').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('ctrl5').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img1').src = '<%=ctrl1mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img2').src = '<%=ctrl2mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img3').src = '<%=ctrl3mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img4').src = '<%=ctrl4mainurl%>';
+                document.getElementById('divplayer').getElementsByTagName('Img5').src = '<%=ctrl5mainurl%>';
+                document.getElementById('fplayer').src = '<%=iframeurl%>';
+                document.getElementById('divplayer').getElementsByTagName('explosion').src = '<%=collisionurl%>';
+                document.getElementById('divplayer').getElementsByTagName('crosshair').src = '<%=propurl%>';
+                var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
+                
+                if(showshower != 1)
+                {
+
+                    if (mydivs == 9) {
+                        document.getElementById('showspot').style.visibility = "visible";
+                    }
+                    else if (mydivs == 8) {
+                        document.getElementById('showpromo').style.visibility = "visible";
+                    }
+                    else if (mydivs == 7) {
+                        document.getElementById('showtools').style.visibility = "visible";
+                    }
+                    else if (mydivs == 6) {
+                        document.getElementById('showprof').style.visibility = "visible";
+                    }
+                    else if (mydivs == 5) {
+                        document.getElementById('showtweet').style.visibility = "visible";
+                    }
+                    else if (mydivs == 4) {
+                        document.getElementById('showfriendso').style.visibility = "visible";
+                    }
+                    else if (mydivs == 3) {
+                        window.location.href = "https://treasurehunter.apphb.com/prizes.html";
+                    }
+                    else if (mydivs == 2) {
+                        window.location.href = "https://treasurehunter.apphb.com/gamesettings.aspx";
+                    }
+                    else if (mydivs == 1) {
+                        document.getElementById('showspot').style.visibility = "visible";
+                    }
+                }
+                
+                
 
             }
 
@@ -1191,21 +1240,12 @@ Remarketing tags may not be associated with personally identifiable information 
 
             }
 
-            var myaddctrl1 = window.setInterval(function () { getTcoins() }, 60000);
-            function getTcoins() {
+            //var myaddctrl1 = window.setInterval(function () { getTcoins() }, 60000);
+            //function getTcoins() {
 
-                actioncollectcoins();
-                var pvalue = '<%=upaid%>';
-                    //if (enemyhits != null) {
-                    //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
-                    //myframe.src = "~/Play/jsresult/" + enemyhits;
-                    // window.location.href("jsresult/" + enemyhits);
-                    //if (pvalue == "yes") {
-                        document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
-                    //}
-                    //}
+                
 
-                }
+                //}
 
             var myaddctrl1 = window.setInterval(function () { randomCtrlhide() }, 10000);
             function randomCtrlhide() {
@@ -2883,28 +2923,28 @@ Remarketing tags may not be associated with personally identifiable information 
 
             function moveprop(e) {
 
-                document.body.style.cursor = "pointer";
+                document.body.style.cursor = "default";
                 crosshair.style.visibility = "visible";
 
                 crosshair.style.left = Math.round(e.clientX) + "px";
                 crosshair.style.top = Math.round(e.clientY) + "px";
 
-                if (Math.round(e.clientY) < temp, 10) {
-                    explosion.style.top = temp + "px";
+                //if (Math.round(e.clientY) < temp, 10) {
+                //    //crosshair.style.top = temp + "px";
+                //    document.body.style.cursor = "none";
+                //}
 
-                }
+                //else if (Math.round(e.clientX) > 365) {
+                //    //crosshair.style.left = Math.round(e.clientX) + "px";
+                //    document.body.style.cursor = "none";
+                //}
 
-                else if (Math.round(e.clientX) > 365) {
-                    crosshair.style.left = Math.round(e.clientX) + "px";
+                //else if (Math.round(e.clientX) < 365) {
+                //    crosshair.style.left = 365 + "px";
 
-                }
+                //}
 
-                else if (Math.round(e.clientX) < 365) {
-                    crosshair.style.left = 365 + "px";
-
-                }
-
-                else if (Math.round(e.clientX) > 365 && Math.round(e.clientY) > 130 && Math.round(e.clientX) < 879 && Math.round(e.clientY) < 504) {
+                if (Math.round(e.clientX) > 365 && Math.round(e.clientY) > 130 && Math.round(e.clientX) < 879 && Math.round(e.clientY) < 504) {
                     document.body.style.cursor = "none";
                 }
 
@@ -2912,25 +2952,25 @@ Remarketing tags may not be associated with personally identifiable information 
                     document.body.style.cursor = "default";
                 }
 
-                else if (Math.round(e.clientX) > 879) {
-                    crosshair.style.left = 879 + "px";
+                //else if (Math.round(e.clientX) > 879) {
+                //    //crosshair.style.left = 879 + "px";
+                //    document.body.style.cursor = "default";
+                //}
 
-                }
+                //else if (Math.round(e.clientY) > 130) {
+                //    crosshair.style.top = Math.round(e.clientY) + "px";
+                //    document.body.style.cursor = "none";
+                //}
 
-                else if (Math.round(e.clientY) > 130) {
-                    crosshair.style.top = Math.round(e.clientY) + "px";
+                //else if (Math.round(e.clientY) < 130) {
+                //    crosshair.style.top = 130 + "px";
 
-                }
+                //}
 
-                else if (Math.round(e.clientY) < 130) {
-                    crosshair.style.top = 130 + "px";
+                //else if (Math.round(e.clientY) > 504) {
+                //    crosshair.style.top = 504 + "px";
 
-                }
-
-                else if (Math.round(e.clientY) > 504) {
-                    crosshair.style.top = 504 + "px";
-
-                }
+                //}
 
                 if (parseInt(currentlposition.replace("px", ""), 10) > Math.round(e.clientX)) {
                     positionresult = "moveright";
@@ -3523,7 +3563,7 @@ function (response) {
         <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 54px; position: absolute; width: 84px; left: 170px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink5" runat="server" Font-Underline="False" NavigateUrl="~/Play/play" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 877px; top: 280px; position: absolute; height: 23px; width: 68px;" Target="_self" ForeColor="White">Winners</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink6" runat="server" Font-Underline="False" NavigateUrl="http://www.amazon.com/gp/product/B00I2DV2UO" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 787px; top: 14px; position: absolute; height: 78px; width: 191px; cursor: pointer;" Target="_self" ForeColor="Transparent"></asp:HyperLink>
-        <a id="A1" href="https://treasurehunter.apphb.com/app-release.apk" style="border:2px solid #FF00FF; border-radius:25px; font-family: Pericles; font-size: 75%; font-weight: bold; font-style: italic; color: #FFFFFF; background-color: #FF00FF; cursor: pointer; position: absolute; text-align: center; top: 94%; left: 15%; width: 32%; height: 4%; vertical-align: middle; z-index: 50; text-decoration: none; visibility:visible;"> Download Now and Play on Mobiles and Devices</a>
+        <a id="A1" href="https://treasurehunter.apphb.com/app-release.apk" style="border:2px solid #FF00FF; border-radius:25px; font-family: Pericles; font-size: 75%; font-weight: bold; font-style: italic; color: #FFFFFF; background-color: #FF00FF; cursor: pointer; position: absolute; text-align: center; top: 94%; left: 15%; width: 45%; height: 4%; vertical-align: middle; z-index: 50; text-decoration: none; visibility:visible;"> Download Now and Play on Mobiles and Devices</a>
 
         <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 12%; top: 1%; position: absolute; width: 6%; " ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled" Font-Size="100%">0</asp:TextBox>
         <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">15</asp:TextBox>
@@ -3577,8 +3617,8 @@ function (response) {
         </div>
         <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 12px; top: 493px; width: 242px; background-color: #FFFFCC; color: #000000;" onkeydown="checkEnter(event);" />
         <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none; position: absolute; top: 523px; left: 42px; height: 40px; width: 93px; margin-top: 0px;"></iframe>
-        <div id="aimg" style="position: absolute; left: 118px; top: 101px; width: 236px; height: 200px;">
-            <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 232px; height: 199px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 1px; background-color: Transparent;" id="Img6" />
+        <div id="aimg" style="position: absolute; left: 15%; top: 15%; width: 23%; height: 35%;">
+            <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 220px; height: 199px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: -1px; background-color: Transparent;" id="Img6" />
             <img id="Image1" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" src='<%=one1%>' />
             <img id="Image2" style="z-index: 300; left: 112px; top: 60px; position: absolute; width: 32px; height: 30px;" src='<%=one2%>' />
             <img id="Image3" style="z-index: 300; left: 159px; top: 30px; position: absolute; width: 34px; height: 32px;" src='<%=one3%>' />
@@ -3596,7 +3636,7 @@ function (response) {
             <img id="playerpic" style="position: absolute; background-color: transparent; top: 75px; left: 7px; height: 18px; width: 90px; font-size: 8px;" src='<%=Session["friend1pic"]%>' />
         </div>
         <label style="position: absolute; top: 76px; left: 151px; height: 19px; color: #FFCC00; height: 21px; position: absolute; font-size: large; width: 122px; font-family: 'John Handy LET';">Treasure Map</label>
-        <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 488px; top: 105px; position: absolute; width: 253px" ForeColor="White" ReadOnly="true"></asp:TextBox>
+        <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 42%; top: 20%; position: absolute; width: 37%; height: 4%" ForeColor="White" ReadOnly="true"></asp:TextBox>
         <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 856px; top: 466px; position: absolute; width: 113px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="10pt">Time Remaining</asp:TextBox>
         <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 891px; top: 491px; position: absolute; width: 34px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">120</asp:TextBox>
         <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 305px; position: absolute; width: 62px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="Medium">Collect</asp:TextBox>
