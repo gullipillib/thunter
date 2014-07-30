@@ -49,7 +49,7 @@
         else
         {
 
-            Response.Redirect("~/Homw/index1");
+            Response.Redirect("https://treasurehunter.apphb.com/Home/Index1");
         }
 
     }

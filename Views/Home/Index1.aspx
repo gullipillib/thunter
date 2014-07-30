@@ -966,6 +966,8 @@ Remarketing tags may not be associated with personally identifiable information 
         var myctrl4 = JSON.parse('<%=tbitems4%>');
         var myctrl5 = JSON.parse('<%=tbitems5%>');
         var mytsdetails = JSON.parse('<%=tsitems1%>');
+        var winvalue = 0;
+        var llvalue = 0;
 
         document.addEventListener('DOMContentLoaded', function () {
             //alert(ctrl1.height);
@@ -1015,12 +1017,11 @@ Remarketing tags may not be associated with personally identifiable information 
 
                
 
-                if (parseInt(document.getElementById('lives').getAttribute("value"), 10) <= 0) {
+                if (parseInt(document.getElementById('lives').getAttribute("value"), 10) <= 0 && llvalue == 0) {
                     document.getElementById('lives').setAttribute("value", "0");
                     var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
                 
-                    if(showshower != 1)
-                    {
+                    
 
                         if (mydivs == 9) {
                             document.getElementById('showspot').style.visibility = "visible";
@@ -1049,10 +1050,10 @@ Remarketing tags may not be associated with personally identifiable information 
                         else if (mydivs == 1) {
                             document.getElementById('showspot').style.visibility = "visible";
                         }
-                    }
+                        llvalue = 1;
                 }
 
-                if (parseInt(document.getElementById('TextBox4').getAttribute("value"), 10) <= 0) {
+                if (parseInt(document.getElementById('TextBox4').getAttribute("value"), 10) <= 0 && winvalue == 0) {
                     won = 1;
                     noofcoins = -150;
                     showshower = 1;
@@ -1061,7 +1062,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
                     
                 }
-                else if (parseInt(document.getElementById('TextBox6').getAttribute("value"), 10) <= 0) {
+                else if (parseInt(document.getElementById('TextBox6').getAttribute("value"), 10) <= 0 && winvalue == 0) {
                     won = 1;
                     noofhits = -150;
                     noofcoins = -150;
@@ -1152,7 +1153,7 @@ Remarketing tags may not be associated with personally identifiable information 
                             levels1 = levels1 + 1;
                             document.getElementById('TextBox12').setAttribute("value", levels1);
                         }
-
+                        winvalue = 1;
                     }
 
                     document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
@@ -1170,7 +1171,7 @@ Remarketing tags may not be associated with personally identifiable information 
                     //myframe.src = "~/Play/jsresult/" + enemyhits;
                     // window.location.href("jsresult/" + enemyhits);
                     //if (pvalue == "yes") {
-                    document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
+                    document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox17").getAttribute("value"));
                     //}
                     //}
                     document.getElementById('Button1').click();
