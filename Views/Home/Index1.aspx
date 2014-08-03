@@ -518,7 +518,7 @@
         if (dt.Rows.Count != 0)
         {
             wait = dt.Rows[0].Field<string>("wait");
-            levels = dt.Rows[0].Field<string>("level");
+            levels = dt.Rows[0].Field<string>("levels");
             TextBox12.Text = levels;
             tspotscollected =  dt.Rows[0].Field<string>("tspotscollected");
             TextBox13.Text = tspotscollected;
