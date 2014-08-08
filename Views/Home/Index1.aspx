@@ -1080,77 +1080,77 @@ Remarketing tags may not be associated with personally identifiable information 
 
                         var levels1 = document.getElementById('TextBox12').getAttribute("value");
 
-                        if (levels1 < 30)
+                        if (parseInt(levels1,10) < 30)
                         {
-                            levels1 = levels1 + 1;
+                            levels1 = parseInt(levels1,10) + 1;
                             document.getElementById('TextBox12').setAttribute("value", levels1);
                             document.getElementById('TextBox16').setAttribute("value", "0");
                             document.getElementById("TextBox17").setAttribute("value",document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
                         }
-                        else if (levels1 >= 30 && levels1 < 75)
+                        else if (parseInt(levels1,10) >= 30 && parseInt(levels1,10) < 75)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
                             if (document.getElementById('TextBox13').getAttribute("value") > 1)
                             {
-                                levels1 = levels1 + 1;
+                                levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
                                 document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
                             }
                         }
-                        else if (levels1 >= 75 && levels1 < 130)
+                        else if (parseInt(levels1,10) >= 75 && parseInt(levels1,10) < 130)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
                             if (document.getElementById('TextBox13').getAttribute("value") > 10)
                             {
-                                levels1 = levels1 + 1;
+                                levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
                                 document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
                             }
                         }
-                        else if (levels1 >= 130 && levels1 < 200)
+                        else if (parseInt(levels1,10) >= 130 && parseInt(levels1,10) < 200)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
                             if (document.getElementById('TextBox13').getAttribute("value") > 50)
                             {
-                                levels1 = levels1 + 1;
+                                levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
                                 document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
                             }
                         }
-                        else if (levels1 >= 200 && levels1 < 400)
+                        else if (parseInt(levels1,10) >= 200 && parseInt(levels1,10) < 400)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
                             if (document.getElementById('TextBox13').getAttribute("value") > 70)
                             {
-                                levels1 = levels1 + 1;
+                                levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
                                 document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
                             }
                         }
-                        else if (levels1 >= 400 && levels1 < 1000)
+                        else if (parseInt(levels1,10) >= 400 && parseInt(levels1,10) < 1000)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
                             if (document.getElementById('TextBox13').getAttribute("value") > 100)
                             {
-                                levels1 = levels1 + 1;
+                                levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
                                 document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
                             }
                         }
-                        else if (levell1 == 1000)
+                        else if (parseInt(levell1,10) == 1000)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
                             document.getElementById('TextBox12').setAttribute("value", "1");
                         }
 
 
-                        if (levels1 < 30 && wait != "yes" && upaid != "yes" && document.getElementById('TextBox14').getAttribute("value") == 3 && '<%=tspotsowned%>' == 0 || levels1 > 75 && wait != "yes" && upaid != "yes" || levels1 > 200 && wait != "yes" && upaid != "yes" || levels1 > 400 && wait != "yes" && upaid != "yes") {
-                            levels1 = levels1 + 1;
+                        if (parseInt(levels1,10) < 30 && wait != "yes" && upaid != "yes" && document.getElementById('TextBox14').getAttribute("value") == 3 && '<%=tspotsowned%>' == 0 || levels1 > 75 && wait != "yes" && upaid != "yes" || levels1 > 200 && wait != "yes" && upaid != "yes" || levels1 > 400 && wait != "yes" && upaid != "yes") {
+                            levels1 = parseInt(levels1,10) + 1;
                             document.getElementById('TextBox12').setAttribute("value", levels1);
                         }
                         winvalue = 1;
@@ -2862,9 +2862,9 @@ Remarketing tags may not be associated with personally identifiable information 
                 divplayer.focus();
             }
 
-            document.addEventListener("keydown", check, false);
-            document.addEventListener("mousedown", explodeprop, false);
-            document.addEventListener("mousemove", moveprop, false);
+            divplayer.addEventListener("keydown", check, false);
+            divplayer.addEventListener("mousedown", explodeprop, false);
+            divplayer.addEventListener("mousemove", moveprop, false);
 
             ctrl1.addEventListener("mouseover", showfone, false);
             ctrl2.addEventListener("mouseover", showftwo, false);
@@ -2924,7 +2924,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
             function moveprop(e) {
 
-                document.body.style.cursor = "default";
+                //document.body.style.cursor = "none";
                 crosshair.style.visibility = "visible";
 
                 crosshair.style.left = Math.round(e.clientX) + "px";
