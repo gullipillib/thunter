@@ -1072,7 +1072,7 @@ Remarketing tags may not be associated with personally identifiable information 
                     document.getElementById('showwinner').style.visibility = "visible";
                     if (won == 1) {
                         document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
-                        document.getElementById('TextBox16').setAttribute("value", document.getElementById('TextBox16').getAttribute("value") + 1)
+                        document.getElementById('TextBox16').setAttribute("value", parseInt(document.getElementById('TextBox16').getAttribute("value"),10) + 1)
 
                         
 
