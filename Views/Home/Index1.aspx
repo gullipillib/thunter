@@ -991,6 +991,8 @@ Remarketing tags may not be associated with personally identifiable information 
 		var updateonce = 0;
             var noofhits = 0;
             var noofcoins = 0;
+var winnerupdate = 0;
+var loserupdate = 0;
             var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
             var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
             document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
@@ -1021,7 +1023,8 @@ Remarketing tags may not be associated with personally identifiable information 
                     document.getElementById('lives').setAttribute("value", "0");
                     var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
                 
-                    
+                    if (loserupdate == 0)
+			{
 
                         if (mydivs == 9) {
                             document.getElementById('showspot').style.visibility = "visible";
@@ -1051,6 +1054,8 @@ Remarketing tags may not be associated with personally identifiable information 
                             document.getElementById('showspot').style.visibility = "visible";
                         }
                         llvalue = 1;
+			loserupdate = 1;
+			}
                 }
 
                 if (parseInt(document.getElementById('TextBox4').getAttribute("value"), 10) <= 0 && winvalue == 0) {
@@ -1068,6 +1073,8 @@ Remarketing tags may not be associated with personally identifiable information 
                     noofcoins = -150;
                     showshower = 1;
                 }
+if (winnerupdate == 0)
+{
                 if (showshower == 1) {
                     document.getElementById('showwinner').style.visibility = "visible";
                     if (won == 1) {
@@ -1085,62 +1092,62 @@ Remarketing tags may not be associated with personally identifiable information 
                             levels1 = parseInt(levels1,10) + 1;
                             document.getElementById('TextBox12').setAttribute("value", levels1);
                             document.getElementById('TextBox16').setAttribute("value", "0");
-                            document.getElementById("TextBox17").setAttribute("value",document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                            document.getElementById("TextBox17").setAttribute("value",parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
                         }
                         else if (parseInt(levels1,10) >= 30 && parseInt(levels1,10) < 75)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 1)
+                            if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 1)
                             {
                                 levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
-                            }
+                                document.getElementById("TextBox17").setAttribute("value",parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                        }
                         }
                         else if (parseInt(levels1,10) >= 75 && parseInt(levels1,10) < 130)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 10)
+                            if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 10)
                             {
                                 levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
-                            }
+                                document.getElementById("TextBox17").setAttribute("value",parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                        }
                         }
                         else if (parseInt(levels1,10) >= 130 && parseInt(levels1,10) < 200)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 50)
+                            if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 50)
                             {
                                 levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
-                            }
+                                document.getElementById("TextBox17").setAttribute("value",parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                        }
                         }
                         else if (parseInt(levels1,10) >= 200 && parseInt(levels1,10) < 400)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 70)
+                            if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 70)
                             {
                                 levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
-                            }
+                                document.getElementById("TextBox17").setAttribute("value",parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                        }
                         }
                         else if (parseInt(levels1,10) >= 400 && parseInt(levels1,10) < 1000)
                         {
                             document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 100)
+                            if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 100)
                             {
                                 levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
-                            }
+                                document.getElementById("TextBox17").setAttribute("value",parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                        }
                         }
                         else if (parseInt(levell1,10) == 1000)
                         {
@@ -1174,7 +1181,10 @@ Remarketing tags may not be associated with personally identifiable information 
                     document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox17").getAttribute("value"));
                     //}
                     //}
-                    document.getElementById('Button1').click();
+                    //document.getElementById('Button1').click();
+			winnerupdate = 1;
+			}
+
                 }
 
                 
