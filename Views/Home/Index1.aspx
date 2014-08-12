@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<treasurehunter.Models.MyAppUser>" Culture="auto" meta:resourcekey="PageResource1" UICulture="auto" EnableSessionState="True" Debug="true" %>
 
 <%@ Import Namespace="System.Data" %>
-<%@ Import Namespace="System.Data.OleDb" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
+
 
 <!DOCTYPE html>
 <script runat="server">
@@ -77,14 +77,14 @@
     string tbitems5;
     System.Random one;
     int t1;
-    string levels="";
+    string levels = "";
     string lifepack = "";
     string wait = "";
     string tempgoldcoins = "";
     string tspotsowned = "";
     string tspotscollected = "";
     string pgoldcoins = "";
-    
+
     public class Playersdetails
     {
         public string tsrPlayerName { get; set; }
@@ -164,7 +164,7 @@
                     SqlDataSource4.InsertCommand = "INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) VALUES ('" + Hiddenfield1 + "', '" + Model.Id + "', '{left : 0, top:0}', '" + Model.ProfilePicture.Data.Url + "', '" + Model.ProfilePicture.Data.Url + "', '100', 'no', '0', '0', '0')";
                     SqlDataSource4.Insert();
                 }
-                SqlDataSource5.SelectCommand = "SELECT * FROM ordercounter where uname='" + Hiddenfield1+ "'";
+                SqlDataSource5.SelectCommand = "SELECT * FROM ordercounter where uname='" + Hiddenfield1 + "'";
                 dv = (DataView)SqlDataSource5.Select(DataSourceSelectArguments.Empty);
                 dt = new DataTable();
                 dt = dv.ToTable();
@@ -209,33 +209,33 @@
                     upaid = "no";
                 }
             }
-         SqlDataSource4.SelectCommand = "SELECT lulogintimes FROM loggedusers WHERE (luname = '" + Hiddenfield1 + "')";
+            SqlDataSource4.SelectCommand = "SELECT lulogintimes FROM loggedusers WHERE (luname = '" + Hiddenfield1 + "')";
 
-                dv = (DataView)SqlDataSource4.Select(DataSourceSelectArguments.Empty);
-                dt = new DataTable();
-                dt = dv.ToTable();
+            dv = (DataView)SqlDataSource4.Select(DataSourceSelectArguments.Empty);
+            dt = new DataTable();
+            dt = dv.ToTable();
 
-                if (dt.Rows.Count != 0)
+            if (dt.Rows.Count != 0)
+            {
+                lulogintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
+                times = Convert.ToInt16(lulogintimes) + 1;
+                if (times >= 1000)
                 {
-                    lulogintimes = dt.Rows[0].Field<string>("lulogintimes"); //usethis to get field value
-                    times = Convert.ToInt16(lulogintimes) + 1;
-                    if (times >= 1000)
-                    {
-                        times = 11;
-                    }
-                    lulogintimes = Convert.ToString(times);
-                    SqlDataSource4.UpdateCommand = "UPDATE loggedusers SET lulogintimes='" + lulogintimes + "' where luname='" + Hiddenfield1 + "'";
-                    SqlDataSource4.Update();   
+                    times = 11;
                 }
+                lulogintimes = Convert.ToString(times);
+                SqlDataSource4.UpdateCommand = "UPDATE loggedusers SET lulogintimes='" + lulogintimes + "' where luname='" + Hiddenfield1 + "'";
+                SqlDataSource4.Update();
+            }
         }
         else
         {
 
             Response.Redirect("https://treasurehunter.apphb.com/buy.aspx");
         }
-        
+
     }
-  
+
     public string one1 = "";
     public string one2 = "";
     public string one3 = "";
@@ -307,7 +307,7 @@
         {
             gettreasurespot();
         }
-        tsitemsfulldetails = Json.Decode(tsitems);
+        tsitemsfulldetails = System.Web.Helpers.Json.Decode(tsitems);
         tsitems1 = tsitems;
 
         iframeurl = tsitemsfulldetails.tsUrl;
@@ -357,15 +357,15 @@
                 tb1itemsfulldetails = Newtonsoft.Json.JsonConvert.DeserializeObject(tb1fulldetails);
                 tbitems1 = tb1fulldetails;
                 ctrl1mainurl = tb1itemsfulldetails.tbMain;
-            
+
                 propurl = tb1itemsfulldetails.tbProp;
                 collisionurl = tb1itemsfulldetails.tbCollionResult;
                 ctrl1mainsound = tb1itemsfulldetails.tbMainSound;
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
-                Response.Redirect("https://treasurehunter.apphb.com/Home/Index1");
-                
+                Response.Redirect("https://treasurehunter.apphb.com/Index1.aspx");
+
             }
         }
         else
@@ -511,6 +511,11 @@
 
     protected void getuserdetails()
     {
+        Session["friend1"] = "sussie carr";
+        Session["friend2"] = "robert thomson";
+        Session["friend3"] = "annie san";
+        Session["friend4"] = "sui chang";
+        Session["friend5"] = "marie jane";
         SqlDataSource1.SelectCommand = "SELECT * FROM appuserdetails where uname='" + Hiddenfield1 + "'";
         DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         DataTable dt = new DataTable();
@@ -520,14 +525,14 @@
             wait = dt.Rows[0].Field<string>("wait");
             levels = dt.Rows[0].Field<string>("levels");
             TextBox12.Text = levels;
-            tspotscollected =  dt.Rows[0].Field<string>("tspotscollected");
+            tspotscollected = dt.Rows[0].Field<string>("tspotscollected");
             TextBox13.Text = tspotscollected;
             tempgoldcoins = dt.Rows[0].Field<string>("tempgoldcoins");
-            if (upaid == "no" || upaid == null || wait == "yes" )
+            if (upaid == "no" || upaid == null || wait == "yes")
             {
                 TextBox17.Text = tempgoldcoins;
             }
-                
+
             lifepack = dt.Rows[0].Field<string>("lifepack");
         }
         SqlDataSource1.SelectCommand = "SELECT * FROM loggedusers where luname='" + Hiddenfield1 + "'";
@@ -537,8 +542,8 @@
         if (dt.Rows.Count != 0)
         {
             tspotsowned = dt.Rows[0].Field<string>("lutspots");
-            
-            
+
+
             pgoldcoins = dt.Rows[0].Field<string>("lucrisboos");
             if (upaid == "yes" && wait == "no" || upaid == "yes" && wait == null)
             {
@@ -547,10 +552,10 @@
         }
         if (lifepack == "yes")
         {
-            lives.Text = Convert.ToString(Convert.ToUInt16(lives.Text,10) + 10);
-        } 
+            lives.Text = Convert.ToString(Convert.ToUInt16(lives.Text, 10) + 10);
+        }
     }
-                                           
+
     protected void gettreasureprize()
     {
         SqlDataSource10.SelectCommand = "SELECT treasurevalue FROM treasureprize";
@@ -580,21 +585,21 @@
 
                 if (Convert.ToString(Session["reached"]) == "no")
                 {
-                    Response.Redirect("~/Home/Index1");
+                    Response.Redirect("https://treasurehunter.apphb.com/Index1.aspx");
                 }
             }
             else if (Session["reached"] != null)
             {
                 if (Convert.ToString(Session["reached"]) == "no")
                 {
-                    Response.Redirect("~/Home/Index1");
+                    Response.Redirect("https://treasurehunter.apphb.com/Index1.aspx");
                 }
             }
             checkusername();
             SqlDataSource1.UpdateCommand = "UPDATE loggedusers SET luloggedin='yes' where luname='" + Hiddenfield1 + "'";
             SqlDataSource1.Update();
             gettreasurespot();
-            addfriends();
+            //addfriends();
             gettreasureprize();
             getuserdetails();
             //timer.Enabled = true;
@@ -624,7 +629,7 @@
 
             if (logintimes != "0" && btspots == "0")
             {
-                Response.Redirect("~/Tspot/buy");
+                Response.Redirect("https://treasurehunter.apphb.com/buy.aspx");
 
             }
         }
@@ -692,28 +697,28 @@
     <meta name="description" content="Free Online Game TreasureHunter Facebook">
     <meta name="keywords" content="free online games, Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game " />
     <title>The Treasurehunter, A Free Online Game, Have Fun</title>
-<meta name="og:title"
-content="Treasurehunter 3D Multi Player Game" />
-<meta name="og:title"
-content="Treasurehunter" />
-<meta name="og:url"
-content="https://treasurehunter.apphb.com/Home/index1" />
-<meta name="og:description" content="Play with other Players in 3D. Fun filled Treasure HUnting in Different Places of world. Collect Gold COins. 1000 Levels to achieve." />
-<meta name="fb:app_id" content="123405257731200" />
-<meta name="og:locale" content="en_US" />  
-<meta name="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
-<meta name="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
-<meta name="og:type" content="website" />
+    <meta name="og:title"
+        content="Treasurehunter 3D Multi Player Game" />
+    <meta name="og:title"
+        content="Treasurehunter" />
+    <meta name="og:url"
+        content="https://treasurehunter.apphb.com/Index1.aspx" />
+    <meta name="og:description" content="Play with other Players in 3D. Fun filled Treasure HUnting in Different Places of world. Collect Gold COins. 1000 Levels to achieve." />
+    <meta name="fb:app_id" content="123405257731200" />
+    <meta name="og:locale" content="en_US" />
+    <meta name="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
+    <meta name="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
+    <meta name="og:type" content="website" />
 </head>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[])push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[])push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-52168843-1', 'auto');
-	ga('require', 'displayfeatures');
-  ga('send', 'pageview');
+    ga('create', 'UA-52168843-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
 
 </script>
 <!-- Google Code for thwebpage Conversion Page -->
@@ -730,9 +735,9 @@ content="https://treasurehunter.apphb.com/Home/index1" />
 <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
 </script>
 <noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/967011017/?label=mCq6COfJzQkQydWNzQM&amp;guid=ON&amp;script=0"/>
-</div>
+    <div style="display: inline;">
+        <img height="1" width="1" style="border-style: none;" alt="" src="//www.googleadservices.com/pagead/conversion/967011017/?label=mCq6COfJzQkQydWNzQM&amp;guid=ON&amp;script=0" />
+    </div>
 </noscript>
 
 <script type="text/javascript">
@@ -799,9 +804,10 @@ Remarketing tags may not be associated with personally identifiable information 
 </script>
 
 <noscript>
-    <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?ev=6012706441093&amp;cd[value]=0.00&amp;cd[currency]=INR&amp;noscript=1" /></noscript>
+    <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?ev=6012706441093&amp;cd[value]=0.00&amp;cd[currency]=INR&amp;noscript=1" />
+</noscript>
 
-<body onbeforeunload="getcoins" style="height: 507px; background-color: #000000; width: 967px; overflow: hidden; margin-top: 15px;" onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)">
+<body onbeforeunload="getcoins" style="height: 550px; background-color: #000000; width: 83%; overflow: hidden;">
 
     <!-- Google Tag Manager -->
     <noscript>
@@ -966,8 +972,6 @@ Remarketing tags may not be associated with personally identifiable information 
         var myctrl4 = JSON.parse('<%=tbitems4%>');
         var myctrl5 = JSON.parse('<%=tbitems5%>');
         var mytsdetails = JSON.parse('<%=tsitems1%>');
-        var winvalue = 0;
-        var llvalue = 0;
 
         document.addEventListener('DOMContentLoaded', function () {
             //alert(ctrl1.height);
@@ -988,11 +992,20 @@ Remarketing tags may not be associated with personally identifiable information 
             //alert(Img4.width);
             //alert(Img5.height);
             //alert(Img5.width);
-		var updateonce = 0;
+            var updateonce = 0;
+            var showendresult = 0;
+            var showfailure = 0;
+
             var noofhits = 0;
             var noofcoins = 0;
             var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
             var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
+
+            document.getElementById('TextBox13').setAttribute("value", '<%=tspotsowned%>');
+            document.getElementById('TextBox12').setAttribute("value", '<%=levels%>');
+            document.getElementById('TextBox16').setAttribute("value", '<%=tspotscollected%>');
+            document.getElementById('TextBox17').setAttribute("value", '<%=tempgoldcoins%>');
+
             document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
             document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
 
@@ -1017,43 +1030,64 @@ Remarketing tags may not be associated with personally identifiable information 
 
                
 
-                if (parseInt(document.getElementById('lives').getAttribute("value"), 10) <= 0 && llvalue == 0) {
+                if (parseInt(document.getElementById('lives').getAttribute("value"), 10) <= 0) {
                     document.getElementById('lives').setAttribute("value", "0");
                     var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
                 
                     
+                    if (showfailure == 0)
+                    {
 
                         if (mydivs == 9) {
                             document.getElementById('showspot').style.visibility = "visible";
+                            showfailure == 1;
+                            showendresult == 1;
                         }
                         else if (mydivs == 8) {
                             document.getElementById('showpromo').style.visibility = "visible";
+                            showfailure == 1;
+                            showendresult == 1;
                         }
                         else if (mydivs == 7) {
                             document.getElementById('showtools').style.visibility = "visible";
+                            showfailure == 1;
+                            showendresult == 1;
                         }
                         else if (mydivs == 6) {
                             document.getElementById('showprof').style.visibility = "visible";
+                            showfailure == 1;
+                            showendresult == 1;
                         }
                         else if (mydivs == 5) {
                             document.getElementById('showtweet').style.visibility = "visible";
+                            showfailure == 1;
+                            showendresult == 1;
                         }
                         else if (mydivs == 4) {
                             document.getElementById('showfriendso').style.visibility = "visible";
+                            showfailure == 1;
+                            showendresult == 1;
                         }
                         else if (mydivs == 3) {
                             window.location.href = "https://treasurehunter.apphb.com/prizes.html";
+                            showfailure == 1;
+                            showendresult == 1;
                         }
                         else if (mydivs == 2) {
                             window.location.href = "https://treasurehunter.apphb.com/gamesettings.aspx";
+                            showfailure == 1;
+                            showendresult == 1;
                         }
                         else if (mydivs == 1) {
                             document.getElementById('showspot').style.visibility = "visible";
+                            showfailure == 1;
+                            showendresult == 1;
                         }
-                        llvalue = 1;
+                    }
+                    
                 }
 
-                if (parseInt(document.getElementById('TextBox4').getAttribute("value"), 10) <= 0 && winvalue == 0) {
+                if (parseInt(document.getElementById('TextBox4').getAttribute("value"), 10) <= 0) {
                     won = 1;
                     noofcoins = -150;
                     showshower = 1;
@@ -1062,98 +1096,101 @@ Remarketing tags may not be associated with personally identifiable information 
 
                     
                 }
-                else if (parseInt(document.getElementById('TextBox6').getAttribute("value"), 10) <= 0 && winvalue == 0) {
+                else if (parseInt(document.getElementById('TextBox6').getAttribute("value"), 10) <= 0) {
                     won = 1;
                     noofhits = -150;
                     noofcoins = -150;
                     showshower = 1;
                 }
-                if (showshower == 1) {
-                    document.getElementById('showwinner').style.visibility = "visible";
-                    if (won == 1) {
-                        document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
-                        document.getElementById('TextBox16').setAttribute("value", parseInt(document.getElementById('TextBox16').getAttribute("value"),10) + 1)
-
+                if (showendresult == 0)
+                {
+                    if (showshower == 1) {
+                    
+                        if (won == 1) {
+                            document.getElementById('attacked').setAttribute("value", "You Have Completed this Treasure Spot Keep Playing");
+                            document.getElementById('TextBox16').setAttribute("value", parseInt(document.getElementById('TextBox16').getAttribute("value"),10) + 1)
+                            document.getElementById('showwinner').style.visibility = "visible";
                         
 
-                        document.getElementById('TextBox2').setAttribute("value", "0");
+                            document.getElementById('TextBox2').setAttribute("value", "0");
 
-                        var levels1 = document.getElementById('TextBox12').getAttribute("value");
+                            var levels1 = document.getElementById('TextBox12').getAttribute("value");
 
-                        if (parseInt(levels1,10) < 30)
-                        {
-                            levels1 = parseInt(levels1,10) + 1;
-                            document.getElementById('TextBox12').setAttribute("value", levels1);
-                            document.getElementById('TextBox16').setAttribute("value", "0");
-                            document.getElementById("TextBox17").setAttribute("value",document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
-                        }
-                        else if (parseInt(levels1,10) >= 30 && parseInt(levels1,10) < 75)
-                        {
-                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 1)
+                            if (parseInt(levels1,10) < 30)
                             {
                                 levels1 = parseInt(levels1,10) + 1;
                                 document.getElementById('TextBox12').setAttribute("value", levels1);
                                 document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                                document.getElementById("TextBox17").setAttribute("value", parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
                             }
-                        }
-                        else if (parseInt(levels1,10) >= 75 && parseInt(levels1,10) < 130)
-                        {
-                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 10)
+                            else if (parseInt(levels1,10) >= 30 && parseInt(levels1,10) < 75)
                             {
-                                levels1 = parseInt(levels1,10) + 1;
-                                document.getElementById('TextBox12').setAttribute("value", levels1);
-                                document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                                if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 1)
+                                {
+                                    levels1 = parseInt(levels1,10) + 1;
+                                    document.getElementById('TextBox12').setAttribute("value", levels1);
+                                    document.getElementById('TextBox16').setAttribute("value", "0");
+                                    document.getElementById("TextBox17").setAttribute("value", parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                                }
                             }
-                        }
-                        else if (parseInt(levels1,10) >= 130 && parseInt(levels1,10) < 200)
-                        {
-                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 50)
+                            else if (parseInt(levels1,10) >= 75 && parseInt(levels1,10) < 130)
                             {
-                                levels1 = parseInt(levels1,10) + 1;
-                                document.getElementById('TextBox12').setAttribute("value", levels1);
-                                document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                                if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 10)
+                                {
+                                    levels1 = parseInt(levels1,10) + 1;
+                                    document.getElementById('TextBox12').setAttribute("value", levels1);
+                                    document.getElementById('TextBox16').setAttribute("value", "0");
+                                    document.getElementById("TextBox17").setAttribute("value", parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                                }
                             }
-                        }
-                        else if (parseInt(levels1,10) >= 200 && parseInt(levels1,10) < 400)
-                        {
-                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 70)
+                            else if (parseInt(levels1,10) >= 130 && parseInt(levels1,10) < 200)
                             {
-                                levels1 = parseInt(levels1,10) + 1;
-                                document.getElementById('TextBox12').setAttribute("value", levels1);
-                                document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                                if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 50)
+                                {
+                                    levels1 = parseInt(levels1,10) + 1;
+                                    document.getElementById('TextBox12').setAttribute("value", levels1);
+                                    document.getElementById('TextBox16').setAttribute("value", "0");
+                                    document.getElementById("TextBox17").setAttribute("value", parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                                }
                             }
-                        }
-                        else if (parseInt(levels1,10) >= 400 && parseInt(levels1,10) < 1000)
-                        {
-                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            if (document.getElementById('TextBox13').getAttribute("value") > 100)
+                            else if (parseInt(levels1,10) >= 200 && parseInt(levels1,10) < 400)
                             {
-                                levels1 = parseInt(levels1,10) + 1;
-                                document.getElementById('TextBox12').setAttribute("value", levels1);
-                                document.getElementById('TextBox16').setAttribute("value", "0");
-                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value") + document.getElementById('points').getAttribute("value"));
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                                if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 70)
+                                {
+                                    levels1 = parseInt(levels1,10) + 1;
+                                    document.getElementById('TextBox12').setAttribute("value", levels1);
+                                    document.getElementById('TextBox16').setAttribute("value", "0");
+                                    document.getElementById("TextBox17").setAttribute("value", parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                                }
                             }
-                        }
-                        else if (parseInt(levell1,10) == 1000)
-                        {
-                            document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
-                            document.getElementById('TextBox12').setAttribute("value", "1");
-                        }
+                            else if (parseInt(levels1,10) >= 400 && parseInt(levels1,10) < 1000)
+                            {
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                                if (parseInt(document.getElementById('TextBox13').getAttribute("value"),10) > 100)
+                                {
+                                    levels1 = parseInt(levels1,10) + 1;
+                                    document.getElementById('TextBox12').setAttribute("value", levels1);
+                                    document.getElementById('TextBox16').setAttribute("value", "0");
+                                    document.getElementById("TextBox17").setAttribute("value", parseInt(document.getElementById('TextBox17').getAttribute("value"),10) + parseInt(document.getElementById('points').getAttribute("value"),10));
+                                }
+                            }
+                            else if (parseInt(levell1,10) == 1000)
+                            {
+                                document.getElementById("TextBox17").setAttribute("value", document.getElementById('TextBox17').getAttribute("value"));
+                                document.getElementById('TextBox12').setAttribute("value", "1");
+                            }
 
 
-                        if (parseInt(levels1,10) < 30 && wait != "yes" && upaid != "yes" && document.getElementById('TextBox14').getAttribute("value") == 3 && '<%=tspotsowned%>' == 0 || levels1 > 75 && wait != "yes" && upaid != "yes" || levels1 > 200 && wait != "yes" && upaid != "yes" || levels1 > 400 && wait != "yes" && upaid != "yes") {
-                            levels1 = parseInt(levels1,10) + 1;
-                            document.getElementById('TextBox12').setAttribute("value", levels1);
+                            if (parseInt(levels1,10) < 30 && wait != "yes" && upaid != "yes" && parseInt(document.getElementById('TextBox14').getAttribute("value"),10) == 3 && parseInt('<%=tspotsowned%>',10) == 0 || parseInt(levels1,10) > 75 && wait != "yes" && upaid != "yes" || parseInt(levels1,10) > 200 && wait != "yes" && upaid != "yes" || parseInt(levels1,10) > 400 && wait != "yes" && upaid != "yes") {
+                                levels1 = parseInt(levels1,10) + 1;
+                                document.getElementById('TextBox12').setAttribute("value", levels1);
+                            }
                         }
-                        winvalue = 1;
+
                     }
 
                     document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
@@ -1168,10 +1205,10 @@ Remarketing tags may not be associated with personally identifiable information 
                     var pvalue = '<%=upaid%>';
                     //if (enemyhits != null) {
                     //myframe.children.namedItem("Label4").setAttribute("value", enemyhits);
-                    //myframe.src = "~/Play/jsresult/" + enemyhits;
+                    //myframe.src = "https://treasurehunter.apphb.com/Play/jsresult/" + enemyhits;
                     // window.location.href("jsresult/" + enemyhits);
                     //if (pvalue == "yes") {
-                    document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox17").getAttribute("value"));
+                    document.getElementById("myframe").setAttribute("src", "https://treasurehunter.apphb.com/updatecoins.aspx?coins=" + document.getElementById("points").getAttribute("value") + "&levels=" + document.getElementById("TextBox12").getAttribute("value") + "&tscollected=" + document.getElementById("TextBox12").getAttribute("value"));
                     //}
                     //}
                     document.getElementById('Button1').click();
@@ -1201,37 +1238,42 @@ Remarketing tags may not be associated with personally identifiable information 
                 document.getElementById('divplayer').getElementsByTagName('crosshair').src = '<%=propurl%>';
                 var mydivs = Math.floor(Math.random() * (9 - 1) + 1);
                 
-                if(showshower != 1)
-                {
 
-                    if (mydivs == 9) {
-                        document.getElementById('showspot').style.visibility = "visible";
+
+                
+                    if(showshower != 1)
+                    {
+
+                        if (mydivs == 9) {
+                            document.getElementById('showspot').style.visibility = "visible";
+                            showshower == 1;
+                        }
+                        else if (mydivs == 8) {
+                            document.getElementById('showpromo').style.visibility = "visible";
+                        }
+                        else if (mydivs == 7) {
+                            document.getElementById('showtools').style.visibility = "visible";
+                        }
+                        else if (mydivs == 6) {
+                            document.getElementById('showprof').style.visibility = "visible";
+                        }
+                        else if (mydivs == 5) {
+                            document.getElementById('showtweet').style.visibility = "visible";
+                        }
+                        else if (mydivs == 4) {
+                            document.getElementById('showfriendso').style.visibility = "visible";
+                        }
+                        else if (mydivs == 3) {
+                            window.location.href = "https://treasurehunter.apphb.com/prizes.html";
+                        }
+                        else if (mydivs == 2) {
+                            window.location.href = "https://treasurehunter.apphb.com/gamesettings.aspx";
+                        }
+                        else if (mydivs == 1) {
+                            document.getElementById('showspot').style.visibility = "visible";
+                        }
                     }
-                    else if (mydivs == 8) {
-                        document.getElementById('showpromo').style.visibility = "visible";
-                    }
-                    else if (mydivs == 7) {
-                        document.getElementById('showtools').style.visibility = "visible";
-                    }
-                    else if (mydivs == 6) {
-                        document.getElementById('showprof').style.visibility = "visible";
-                    }
-                    else if (mydivs == 5) {
-                        document.getElementById('showtweet').style.visibility = "visible";
-                    }
-                    else if (mydivs == 4) {
-                        document.getElementById('showfriendso').style.visibility = "visible";
-                    }
-                    else if (mydivs == 3) {
-                        window.location.href = "https://treasurehunter.apphb.com/prizes.html";
-                    }
-                    else if (mydivs == 2) {
-                        window.location.href = "https://treasurehunter.apphb.com/gamesettings.aspx";
-                    }
-                    else if (mydivs == 1) {
-                        document.getElementById('showspot').style.visibility = "visible";
-                    }
-                }
+                
                 
                 
 
@@ -1246,7 +1288,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
                 
 
-                //}
+            //}
 
             var myaddctrl1 = window.setInterval(function () { randomCtrlhide() }, 10000);
             function randomCtrlhide() {
@@ -1289,59 +1331,59 @@ Remarketing tags may not be associated with personally identifiable information 
 
             }
             var temp = '<%=ctrl1mainres%>';
-                var temp = parseInt(temp.replace("px", ""), 10);
-                var temp = 275 - temp;
-                var visible1 = "no";
-                var visible2 = "no";
-                var visible3 = "no";
-                var visible4 = "no";
-                var visible5 = "no";
+            var temp = parseInt(temp.replace("px", ""), 10);
+            var temp = 275 - temp;
+            var visible1 = "no";
+            var visible2 = "no";
+            var visible3 = "no";
+            var visible4 = "no";
+            var visible5 = "no";
 
-                var myaddctrl1 = window.setInterval(function () { randomCtrl1() }, 3000);
-                function randomCtrl1() {
+            var myaddctrl1 = window.setInterval(function () { randomCtrl1() }, 3000);
+            function randomCtrl1() {
 
-                    Img9.style.visibility = "hidden";
+                Img9.style.visibility = "hidden";
 
-                    ctrl1.style.width = "60px";
+                ctrl1.style.width = "60px";
 
-                    ctrl2.style.width = "60px";
+                ctrl2.style.width = "60px";
 
-                    ctrl3.style.width = "60px";
+                ctrl3.style.width = "60px";
 
-                    ctrl4.style.width = "60px";
+                ctrl4.style.width = "60px";
 
-                    ctrl5.style.width = "60px";
-                    Img1.style.width = "60px";
-                    Img1.style.height = "60px";
-                    Img2.style.width = "60px";
-                    Img2.style.height = "60px";
-                    Img3.style.width = "60px";
-                    Img3.style.height = "60px";
-                    Img4.style.width = "60px";
-                    Img4.style.height = "60px";
-                    Img5.style.width = "60px";
-                    Img5.style.height = "60px";
-                    Label3.style.visibility = "hidden";
+                ctrl5.style.width = "60px";
+                Img1.style.width = "60px";
+                Img1.style.height = "60px";
+                Img2.style.width = "60px";
+                Img2.style.height = "60px";
+                Img3.style.width = "60px";
+                Img3.style.height = "60px";
+                Img4.style.width = "60px";
+                Img4.style.height = "60px";
+                Img5.style.width = "60px";
+                Img5.style.height = "60px";
+                Label3.style.visibility = "hidden";
 
-                    //temp = temp.replace("px", "");
-                    //temp = parseInt(temp, 10);
-                    var randno1 = Math.floor(Math.random() * 5 - 1 + 1) + 1;
-                    var randno2 = Math.floor(Math.random() * 6 - 10 + 1) + 6;
-                    var randno3 = Math.floor(Math.random() * 10 - 1 + 1) + 1;
+                //temp = temp.replace("px", "");
+                //temp = parseInt(temp, 10);
+                var randno1 = Math.floor(Math.random() * 5 - 1 + 1) + 1;
+                var randno2 = Math.floor(Math.random() * 6 - 10 + 1) + 6;
+                var randno3 = Math.floor(Math.random() * 10 - 1 + 1) + 1;
 
-                    if (randno1 == 1 || randno2 == 1 || randno3 == 1) {
-                        ctrl1.style.visibility = "visible";
-                        ctrl1.style.width = '<%=ctrl1mainwidth%>';
-                    ctrl1.style.height = '<%=ctrl1mainwidth%>';
-                    ctrl1.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
-                    var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
-                    mytemp = mytemp + temp + "px";
-                    ctrl1.style.top = mytemp;
-                    visible1 = "yes";
-                }
-                if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
-                    ctrl2.style.visibility = "visible";
-                    ctrl2.style.width = '<%=ctrl2mainwidth%>';
+                if (randno1 == 1 || randno2 == 1 || randno3 == 1) {
+                    ctrl1.style.visibility = "visible";
+                    ctrl1.style.width = '<%=ctrl1mainwidth%>';
+                        ctrl1.style.height = '<%=ctrl1mainwidth%>';
+                        ctrl1.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
+                        var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
+                        mytemp = mytemp + temp + "px";
+                        ctrl1.style.top = mytemp;
+                        visible1 = "yes";
+                    }
+                    if (randno1 == 2 || randno2 == 2 || randno3 == 2) {
+                        ctrl2.style.visibility = "visible";
+                        ctrl2.style.width = '<%=ctrl2mainwidth%>';
                     ctrl2.style.height = '<%=ctrl2mainwidth%>';
                     ctrl2.style.left = Math.floor(Math.random() * 480 - 1 + 1) + 1 + "px";
                     var mytemp = Math.floor(Math.random() * (temp - 1) + 1);
@@ -1685,49 +1727,26 @@ Remarketing tags may not be associated with personally identifiable information 
                             friendimage.style.visibility = "visible";
                             friendname.style.visibility = "visible";
                             friendimage.src = '<%=Convert.ToString(Session["friend1pic"])%>';
-                                friendname.value = '<%=Session["friend1"]%>';
-                                sound1.src = myctrl1.tbCollionSound;
-                                ctrl1.style.visibility = "hidden";
-                                if ('<%=ctrl1mainname%>' == "goldcoins") {
-                                if (myctrl1.tbResult == "giveonecrisboo") {
-                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                    document.getElementById('points').setAttribute("value", mygoldcoins);
-                                    noofcoins = noofcoins + 1;
-                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+                            friendname.value = '<%=Session["friend1"]%>';
+                            sound1.src = myctrl1.tbCollionSound;
+                            ctrl1.style.visibility = "hidden";
+                            if ('<%=ctrl1mainname%>' == "goldcoins") {
+                                    if (myctrl1.tbResult == "giveonecrisboo") {
+                                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                        document.getElementById('points').setAttribute("value", mygoldcoins);
+                                        noofcoins = noofcoins + 1;
+                                        document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
-                                }
-                                if (myctrl1.tbResult == "takeonecrisboo") {
-                                    mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
-                                    document.getElementById('points').setAttribute("value", mygoldcoins);
-                                    noofcoins = noofcoins + 1;
-                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                                }
-                            }
-                            if ('<%=ctrl1mainname%>' == "health") {
-                                    if (myctrl1.tbResult == "giveonelife") {
-                                        lifes = String(parseInt(lifes, 10) + 1);
-                                        document.getElementById('lives').setAttribute("value", lifes);
                                     }
-                                    if (myctrl1.tbResult == "takeonelife") {
-                                        lifes = String(parseInt(lifes, 10) - 1);
-                                        document.getElementById('lives').setAttribute("value", lifes);
+                                    if (myctrl1.tbResult == "takeonecrisboo") {
+                                        mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                        document.getElementById('points').setAttribute("value", mygoldcoins);
+                                        noofcoins = noofcoins + 1;
+                                        document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                                     }
                                 }
-                                if (myctrl1.tbResult == "giveonecrisboo") {
-                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                    document.getElementById('points').setAttribute("value", mygoldcoins);
-                                    noofcoins = noofcoins + 1;
-                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                                }
-                                if (myctrl1.tbResult == "takeonecrisboo") {
-                                    mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
-                                    document.getElementById('points').setAttribute("value", mygoldcoins);
-                                    noofcoins = noofcoins + 1;
-                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                                }
+                                if ('<%=ctrl1mainname%>' == "health") {
                                 if (myctrl1.tbResult == "giveonelife") {
                                     lifes = String(parseInt(lifes, 10) + 1);
                                     document.getElementById('lives').setAttribute("value", lifes);
@@ -1736,62 +1755,85 @@ Remarketing tags may not be associated with personally identifiable information 
                                     lifes = String(parseInt(lifes, 10) - 1);
                                     document.getElementById('lives').setAttribute("value", lifes);
                                 }
-                                if (myctrl1.tbResult == "donothing") {
-                                    crosshair.style.left = currentlposition;
-                                    crosshair.style.top = currenttposition;
-                                }
-                                if (myctrl1.tbResult == "cry") {
-                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
-                                }
-                                if (myctrl1.tbResult == "laugh") {
-                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                                }
-                                if (myctrl1.tbResult == "stunned") {
-                                    crosshair.style.left = "0px";
-                                    crosshair.style.top = "130px";
-                                }
-                                if (myctrl1.tbResult == "stunned") {
-                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                                }
-                                if (myctrl1.tbResult == "applaud") {
-                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
-                                }
-                                if (myctrl1.tbResult == "dizzy") {
-                                    crosshair.style.left = "0px";
-                                    crosshair.style.top = "130px";
-                                    crosshair.style.left = "130px";
-                                    crosshair.style.top = "250px";
-                                }
-                                noofhits = noofhits + 1;
-                                document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
-                                //document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
                             }
-                        }
-                        if (ctrl2.style.visibility == "visible") {
-                            if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl2.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl2.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl2.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl2.style.bottom.replace("px", ""), 10)) {
-                                enemyhits = enemyhits + 1;
+                            if (myctrl1.tbResult == "giveonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
-                                if (enemyhits == 10) {
-                                    enemyhits = 0;
-                                    if (mygoldcoins == null || mygoldcoins == 0) {
-                                        mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                                    }
-                                    if (mygoldcoins != null || mygoldcoins != 0) {
-                                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                    }
-                                    document.getElementById('points').setAttribute("value", mygoldcoins);
-                                    document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                            }
+                            if (myctrl1.tbResult == "takeonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                            }
+                            if (myctrl1.tbResult == "giveonelife") {
+                                lifes = String(parseInt(lifes, 10) + 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if (myctrl1.tbResult == "takeonelife") {
+                                lifes = String(parseInt(lifes, 10) - 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if (myctrl1.tbResult == "donothing") {
+                                crosshair.style.left = currentlposition;
+                                crosshair.style.top = currenttposition;
+                            }
+                            if (myctrl1.tbResult == "cry") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                            }
+                            if (myctrl1.tbResult == "laugh") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl1.tbResult == "stunned") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                            }
+                            if (myctrl1.tbResult == "stunned") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl1.tbResult == "applaud") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                            }
+                            if (myctrl1.tbResult == "dizzy") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                                crosshair.style.left = "130px";
+                                crosshair.style.top = "250px";
+                            }
+                            noofhits = noofhits + 1;
+                            document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+                            //document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                        }
+                    }
+                    if (ctrl2.style.visibility == "visible") {
+                        if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl2.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl2.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl2.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl2.style.bottom.replace("px", ""), 10)) {
+                            enemyhits = enemyhits + 1;
+
+                            if (enemyhits == 10) {
+                                enemyhits = 0;
+                                if (mygoldcoins == null || mygoldcoins == 0) {
+                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
                                 }
-                                document.getElementById('ehits').setAttribute("value", enemyhits);
-                                sessionStorage.setItem("points", mygoldcoins);
-                                sessionStorage.setItem("achievements", enemyhits);
-                                friendimage.style.visibility = "visible";
-                                friendname.style.visibility = "visible";
-                                friendimage.src = '<%=Convert.ToString(Session["friend2pic"])%>';
-                            friendname.value = '<%=Session["friend2"]%>';
-                            sound1.src = myctrl2.tbCollionSound;
-                            ctrl2.style.visibility = "hidden";
-                            if ('<%=ctrl2mainname%>' == "goldcoins") {
+                                if (mygoldcoins != null || mygoldcoins != 0) {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                }
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
+                            }
+                            document.getElementById('ehits').setAttribute("value", enemyhits);
+                            sessionStorage.setItem("points", mygoldcoins);
+                            sessionStorage.setItem("achievements", enemyhits);
+                            friendimage.style.visibility = "visible";
+                            friendname.style.visibility = "visible";
+                            friendimage.src = '<%=Convert.ToString(Session["friend2pic"])%>';
+                                friendname.value = '<%=Session["friend2"]%>';
+                                sound1.src = myctrl2.tbCollionSound;
+                                ctrl2.style.visibility = "hidden";
+                                if ('<%=ctrl2mainname%>' == "goldcoins") {
                                 if (myctrl2.tbResult == "giveonecrisboo") {
                                     mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                     document.getElementById('points').setAttribute("value", mygoldcoins);
@@ -1808,6 +1850,29 @@ Remarketing tags may not be associated with personally identifiable information 
                                 }
                             }
                             if ('<%=ctrl2mainname%>' == "health") {
+                                    if (myctrl2.tbResult == "giveonelife") {
+                                        lifes = String(parseInt(lifes, 10) + 1);
+                                        document.getElementById('lives').setAttribute("value", lifes);
+                                    }
+                                    if (myctrl2.tbResult == "takeonelife") {
+                                        lifes = String(parseInt(lifes, 10) - 1);
+                                        document.getElementById('lives').setAttribute("value", lifes);
+                                    }
+                                }
+                                if (myctrl2.tbResult == "giveonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                                }
+                                if (myctrl2.tbResult == "takeonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                                }
                                 if (myctrl2.tbResult == "giveonelife") {
                                     lifes = String(parseInt(lifes, 10) + 1);
                                     document.getElementById('lives').setAttribute("value", lifes);
@@ -1816,78 +1881,55 @@ Remarketing tags may not be associated with personally identifiable information 
                                     lifes = String(parseInt(lifes, 10) - 1);
                                     document.getElementById('lives').setAttribute("value", lifes);
                                 }
-                            }
-                            if (myctrl2.tbResult == "giveonecrisboo") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                                noofcoins = noofcoins + 1;
-                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                            }
-                            if (myctrl2.tbResult == "takeonecrisboo") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                                noofcoins = noofcoins + 1;
-                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                            }
-                            if (myctrl2.tbResult == "giveonelife") {
-                                lifes = String(parseInt(lifes, 10) + 1);
-                                document.getElementById('lives').setAttribute("value", lifes);
-                            }
-                            if (myctrl2.tbResult == "takeonelife") {
-                                lifes = String(parseInt(lifes, 10) - 1);
-                                document.getElementById('lives').setAttribute("value", lifes);
-                            }
-                            if (myctrl2.tbResult == "donothing") {
-                                crosshair.style.left = currentlposition;
-                                crosshair.style.top = currenttposition;
-                            }
-                            if (myctrl2.tbResult == "cry") {
-                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
-                            }
-                            if (myctrl2.tbResult == "laugh") {
-                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                            }
-                            if (myctrl2.tbResult == "stunned") {
-                                crosshair.style.left = "0px";
-                                crosshair.style.top = "130px";
-                            }
-                            if (myctrl2.tbResult == "stunned") {
-                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                            }
-                            if (myctrl2.tbResult == "applaud") {
-                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
-                            }
-                            if (myctrl2.tbResult == "dizzy") {
-                                crosshair.style.left = "0px";
-                                crosshair.style.top = "130px";
-                                crosshair.style.left = "130px";
-                                crosshair.style.top = "250px";
+                                if (myctrl2.tbResult == "donothing") {
+                                    crosshair.style.left = currentlposition;
+                                    crosshair.style.top = currenttposition;
+                                }
+                                if (myctrl2.tbResult == "cry") {
+                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                                }
+                                if (myctrl2.tbResult == "laugh") {
+                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                                }
+                                if (myctrl2.tbResult == "stunned") {
+                                    crosshair.style.left = "0px";
+                                    crosshair.style.top = "130px";
+                                }
+                                if (myctrl2.tbResult == "stunned") {
+                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                                }
+                                if (myctrl2.tbResult == "applaud") {
+                                    sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                                }
+                                if (myctrl2.tbResult == "dizzy") {
+                                    crosshair.style.left = "0px";
+                                    crosshair.style.top = "130px";
+                                    crosshair.style.left = "130px";
+                                    crosshair.style.top = "250px";
+                                }
                             }
                         }
-                    }
-                    if (ctrl3.style.visibility == "visible") {
-                        if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl3.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl3.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl3.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl3.style.bottom.replace("px", ""), 10)) {
-                            enemyhits = enemyhits + 1;
-                            if (enemyhits == 10) {
-                                enemyhits = 0;
-                                if (mygoldcoins == null || mygoldcoins == 0) {
-                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                                }
-                                if (mygoldcoins != null || mygoldcoins != 0) {
-                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                }
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+                        if (ctrl3.style.visibility == "visible") {
+                            if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(ctrl3.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(ctrl3.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(ctrl3.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(ctrl3.style.bottom.replace("px", ""), 10)) {
+                                enemyhits = enemyhits + 1;
+                                if (enemyhits == 10) {
+                                    enemyhits = 0;
+                                    if (mygoldcoins == null || mygoldcoins == 0) {
+                                        mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                    }
+                                    if (mygoldcoins != null || mygoldcoins != 0) {
+                                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                    }
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
-                            }
-                            document.getElementById('ehits').setAttribute("value", enemyhits);
-                            sessionStorage.setItem("points", mygoldcoins);
-                            sessionStorage.setItem("achievements", enemyhits);
-                            friendimage.style.visibility = "visible";
-                            friendname.style.visibility = "visible";
-                            friendimage.src = '<%=Convert.ToString(Session["friend3pic"])%>';
+                                }
+                                document.getElementById('ehits').setAttribute("value", enemyhits);
+                                sessionStorage.setItem("points", mygoldcoins);
+                                sessionStorage.setItem("achievements", enemyhits);
+                                friendimage.style.visibility = "visible";
+                                friendname.style.visibility = "visible";
+                                friendimage.src = '<%=Convert.ToString(Session["friend3pic"])%>';
                             friendname.value = '<%=Session["friend3"]%>';
                             sound1.src = myctrl3.tbCollionSound;
                             ctrl3.style.visibility = "hidden";
@@ -1992,22 +2034,22 @@ Remarketing tags may not be associated with personally identifiable information 
                             sound1.src = myctrl4.tbCollionSound;
                             ctrl4.style.visibility = "hidden";
                             if ('<%=ctrl4mainname%>' == "goldcoins") {
-                            if (myctrl4.tbResult == "giveonecrisboo") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                                noofcoins = noofcoins + 1;
-                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+                                if (myctrl4.tbResult == "giveonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
-                            }
-                            if (myctrl4.tbResult == "takeonecrisboo") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                                noofcoins = noofcoins + 1;
-                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+                                }
+                                if (myctrl4.tbResult == "takeonecrisboo") {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                    document.getElementById('points').setAttribute("value", mygoldcoins);
+                                    noofcoins = noofcoins + 1;
+                                    document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
+                                }
                             }
-                        }
-                        if ('<%=ctrl4mainname%>' == "health") {
+                            if ('<%=ctrl4mainname%>' == "health") {
                                 if (myctrl4.tbResult == "giveonelife") {
                                     lifes = String(parseInt(lifes, 10) + 1);
                                     document.getElementById('lives').setAttribute("value", lifes);
@@ -2088,10 +2130,10 @@ Remarketing tags may not be associated with personally identifiable information 
                             friendimage.style.visibility = "visible";
                             friendname.style.visibility = "visible";
                             friendimage.src = '<%=Convert.ToString(Session["friend5pic"])%>';
-                        friendname.value = '<%=Session["friend5"]%>';
-                        sound1.src = myctrl5.tbCollionSound;
-                        ctrl5.style.visibility = "hidden";
-                        if ('<%=ctrl5mainname%>' == "goldcoins") {
+                            friendname.value = '<%=Session["friend5"]%>';
+                            sound1.src = myctrl5.tbCollionSound;
+                            ctrl5.style.visibility = "hidden";
+                            if ('<%=ctrl5mainname%>' == "goldcoins") {
                             if (myctrl5.tbResult == "giveonecrisboo") {
                                 mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
@@ -2108,6 +2150,29 @@ Remarketing tags may not be associated with personally identifiable information 
                             }
                         }
                         if ('<%=ctrl5mainname%>' == "health") {
+                                if (myctrl5.tbResult == "giveonelife") {
+                                    lifes = String(parseInt(lifes, 10) + 1);
+                                    document.getElementById('lives').setAttribute("value", lifes);
+                                }
+                                if (myctrl5.tbResult == "takeonelife") {
+                                    lifes = String(parseInt(lifes, 10) - 1);
+                                    document.getElementById('lives').setAttribute("value", lifes);
+                                }
+                            }
+                            if (myctrl5.tbResult == "giveonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                            }
+                            if (myctrl5.tbResult == "takeonecrisboo") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                            }
                             if (myctrl5.tbResult == "giveonelife") {
                                 lifes = String(parseInt(lifes, 10) + 1);
                                 document.getElementById('lives').setAttribute("value", lifes);
@@ -2116,78 +2181,55 @@ Remarketing tags may not be associated with personally identifiable information 
                                 lifes = String(parseInt(lifes, 10) - 1);
                                 document.getElementById('lives').setAttribute("value", lifes);
                             }
-                        }
-                        if (myctrl5.tbResult == "giveonecrisboo") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                            noofcoins = noofcoins + 1;
-                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                        }
-                        if (myctrl5.tbResult == "takeonecrisboo") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) - 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                            noofcoins = noofcoins + 1;
-                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                        }
-                        if (myctrl5.tbResult == "giveonelife") {
-                            lifes = String(parseInt(lifes, 10) + 1);
-                            document.getElementById('lives').setAttribute("value", lifes);
-                        }
-                        if (myctrl5.tbResult == "takeonelife") {
-                            lifes = String(parseInt(lifes, 10) - 1);
-                            document.getElementById('lives').setAttribute("value", lifes);
-                        }
-                        if (myctrl5.tbResult == "donothing") {
-                            crosshair.style.left = currentlposition;
-                            crosshair.style.top = currenttposition;
-                        }
-                        if (myctrl5.tbResult == "cry") {
-                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
-                        }
-                        if (myctrl5.tbResult == "laugh") {
-                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                        }
-                        if (myctrl5.tbResult == "stunned") {
-                            crosshair.style.left = "0px";
-                            crosshair.style.top = "130px";
-                        }
-                        if (myctrl5.tbResult == "stunned") {
-                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
-                        }
-                        if (myctrl5.tbResult == "applaud") {
-                            sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
-                        }
-                        if (myctrl5.tbResult == "dizzy") {
-                            crosshair.style.left = "0px";
-                            crosshair.style.top = "130px";
-                            crosshair.style.left = "130px";
-                            crosshair.style.top = "250px";
+                            if (myctrl5.tbResult == "donothing") {
+                                crosshair.style.left = currentlposition;
+                                crosshair.style.top = currenttposition;
+                            }
+                            if (myctrl5.tbResult == "cry") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/355.mp3";
+                            }
+                            if (myctrl5.tbResult == "laugh") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl5.tbResult == "stunned") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                            }
+                            if (myctrl5.tbResult == "stunned") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1175.mp3";
+                            }
+                            if (myctrl5.tbResult == "applaud") {
+                                sound1.src = "http://s1download-universal-soundbank.com/mp3/sounds/1478.mp3";
+                            }
+                            if (myctrl5.tbResult == "dizzy") {
+                                crosshair.style.left = "0px";
+                                crosshair.style.top = "130px";
+                                crosshair.style.left = "130px";
+                                crosshair.style.top = "250px";
+                            }
                         }
                     }
-                }
-                if (Img1.style.visibility == "visible") {
-                    if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(Img1.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(Img1.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(Img1.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(Img1.style.bottom.replace("px", ""), 10)) {
-                        enemyhits = enemyhits + 1;
-                        if (enemyhits == 10) {
-                            enemyhits = 0;
-                            if (mygoldcoins == null || mygoldcoins == 0) {
-                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                            }
-                            if (mygoldcoins != null || mygoldcoins != 0) {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            }
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+                    if (Img1.style.visibility == "visible") {
+                        if (parseInt(crosshair.style.left.replace("px", ""), 10) >= parseInt(Img1.style.left.replace("px", ""), 10) && parseInt(crosshair.style.right.replace("px", ""), 10) <= parseInt(Img1.style.right.replace("px", ""), 10) || parseInt(crosshair.style.top.replace("px", ""), 10) >= parseInt(Img1.style.top.replace("px", ""), 10) && parseInt(crosshair.style.bottom.replace("px", ""), 10) <= parseInt(Img1.style.bottom.replace("px", ""), 10)) {
+                            enemyhits = enemyhits + 1;
+                            if (enemyhits == 10) {
+                                enemyhits = 0;
+                                if (mygoldcoins == null || mygoldcoins == 0) {
+                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                }
+                                if (mygoldcoins != null || mygoldcoins != 0) {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                }
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
 
-                        }
-                        document.getElementById('ehits').setAttribute("value", enemyhits);
-                        sessionStorage.setItem("points", mygoldcoins);
-                        sessionStorage.setItem("achievements", enemyhits);
-                        sound1.src = myctrl1.tbCollionSound;
-                        if ('<%=ctrl1mainname%>' == "goldcoins") {
+                            }
+                            document.getElementById('ehits').setAttribute("value", enemyhits);
+                            sessionStorage.setItem("points", mygoldcoins);
+                            sessionStorage.setItem("achievements", enemyhits);
+                            sound1.src = myctrl1.tbCollionSound;
+                            if ('<%=ctrl1mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
                             noofcoins = noofcoins + 1;
@@ -2509,13 +2551,13 @@ Remarketing tags may not be associated with personally identifiable information 
                         sound1.src = myctrl4.tbCollionSound;
                         ctrl4.style.visibility = "hidden";
                         if ('<%=ctrl4mainname%>' == "goldcoins") {
-                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                document.getElementById('points').setAttribute("value", mygoldcoins);
-                                noofcoins = noofcoins + 1;
-                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
-                            }
-                            if ('<%=ctrl4mainname%>' == "health") {
+                        }
+                        if ('<%=ctrl4mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
@@ -2543,64 +2585,24 @@ Remarketing tags may not be associated with personally identifiable information 
                         friendimage.style.visibility = "visible";
                         friendname.style.visibility = "visible";
                         friendimage.src = '<%=Convert.ToString(Session["friend5pic"])%>';
-                            friendname.value = '<%=Session["friend5"]%>';
-                            sound1.src = myctrl5.tbCollionSound;
-                            ctrl5.style.visibility = "hidden";
-                            if ('<%=ctrl5mainname%>' == "goldcoins") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                            noofcoins = noofcoins + 1;
-                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                        }
-                        if ('<%=ctrl5mainname%>' == "health") {
-                                mygoldcoins = String(parseInt(lifes, 10) + 1);
-                                document.getElementById('lives').setAttribute("value", lifes);
-                            }
-                        }
-                    }
-                    if (Img1.style.visibility == "visible") {
-                        if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img1.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img1.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img1.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img1.style.bottom.replace("px", ""), 10)) {
-                            enemyhits = enemyhits + 1;
-                            if (enemyhits == 10) {
-                                enemyhits = 0;
-                                if (mygoldcoins == null || mygoldcoins == 0) {
-                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                                }
-                                if (mygoldcoins != null || mygoldcoins != 0) {
-                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                                }
+                        friendname.value = '<%=Session["friend5"]%>';
+                        sound1.src = myctrl5.tbCollionSound;
+                        ctrl5.style.visibility = "hidden";
+                        if ('<%=ctrl5mainname%>' == "goldcoins") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                                 document.getElementById('points').setAttribute("value", mygoldcoins);
                                 noofcoins = noofcoins + 1;
                                 document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
-
                             }
-                            document.getElementById('ehits').setAttribute("value", enemyhits);
-                            sessionStorage.setItem("points", mygoldcoins);
-                            sessionStorage.setItem("achievements", enemyhits);
-                            sound1.src = myctrl1.tbCollionSound;
-                            if ('<%=ctrl1mainname%>' == "goldcoins") {
-                            mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                            document.getElementById('points').setAttribute("value", mygoldcoins);
-                            noofcoins = noofcoins + 1;
-                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                        }
-                        if ('<%=ctrl1mainname%>' == "health") {
+                            if ('<%=ctrl5mainname%>' == "health") {
                             mygoldcoins = String(parseInt(lifes, 10) + 1);
                             document.getElementById('lives').setAttribute("value", lifes);
                         }
-                        if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
-
-                            Img1.style.visibility = "hidden";
-
-                        }
-
                     }
                 }
-                if (Img2.style.visibility == "visible") {
-                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img2.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img2.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img2.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img2.style.bottom.replace("px", ""), 10)) {
+                if (Img1.style.visibility == "visible") {
+                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img1.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img1.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img1.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img1.style.bottom.replace("px", ""), 10)) {
                         enemyhits = enemyhits + 1;
                         if (enemyhits == 10) {
                             enemyhits = 0;
@@ -2614,12 +2616,52 @@ Remarketing tags may not be associated with personally identifiable information 
                             noofcoins = noofcoins + 1;
                             document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
 
+
                         }
                         document.getElementById('ehits').setAttribute("value", enemyhits);
                         sessionStorage.setItem("points", mygoldcoins);
                         sessionStorage.setItem("achievements", enemyhits);
-                        sound1.src = myctrl2.tbCollionSound;
-                        if ('<%=ctrl2mainname%>' == "goldcoins") {
+                        sound1.src = myctrl1.tbCollionSound;
+                        if ('<%=ctrl1mainname%>' == "goldcoins") {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                            }
+                            if ('<%=ctrl1mainname%>' == "health") {
+                                mygoldcoins = String(parseInt(lifes, 10) + 1);
+                                document.getElementById('lives').setAttribute("value", lifes);
+                            }
+                            if ('<%=ctrl3mainname%>' == "goldcoins" || '<%=ctrl3mainname%>' == "health") {
+
+                                Img1.style.visibility = "hidden";
+
+                            }
+
+                        }
+                    }
+                    if (Img2.style.visibility == "visible") {
+                        if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img2.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img2.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img2.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img2.style.bottom.replace("px", ""), 10)) {
+                            enemyhits = enemyhits + 1;
+                            if (enemyhits == 10) {
+                                enemyhits = 0;
+                                if (mygoldcoins == null || mygoldcoins == 0) {
+                                    mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                                }
+                                if (mygoldcoins != null || mygoldcoins != 0) {
+                                    mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                                }
+                                document.getElementById('points').setAttribute("value", mygoldcoins);
+                                noofcoins = noofcoins + 1;
+                                document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                            }
+                            document.getElementById('ehits').setAttribute("value", enemyhits);
+                            sessionStorage.setItem("points", mygoldcoins);
+                            sessionStorage.setItem("achievements", enemyhits);
+                            sound1.src = myctrl2.tbCollionSound;
+                            if ('<%=ctrl2mainname%>' == "goldcoins") {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                             document.getElementById('points').setAttribute("value", mygoldcoins);
                             noofcoins = noofcoins + 1;
@@ -2697,45 +2739,45 @@ Remarketing tags may not be associated with personally identifiable information 
                         sessionStorage.setItem("achievements", enemyhits);
                         sound1.src = myctrl4.tbCollionSound;
                         if ('<%=ctrl4mainname%>' == "goldcoins") {
-                        mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
-                        noofcoins = noofcoins + 1;
-                        document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
-
-                    }
-                    if ('<%=ctrl4mainname%>' == "health") {
-                        mygoldcoins = String(parseInt(lifes, 10) + 1);
-                        document.getElementById('lives').setAttribute("value", lifes);
-                    }
-
-                    if ('<%=ctrl4mainname%>' == "goldcoins" || '<%=ctrl4mainname%>' == "health") {
-                        Img4.style.visibility = "hidden";
-                    }
-
-                }
-            }
-
-            if (Img5.style.visibility == "visible") {
-                if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img5.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img5.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img5.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img5.style.bottom.replace("px", ""), 10)) {
-                    enemyhits = enemyhits + 1;
-                    if (enemyhits == 10) {
-                        enemyhits = 0;
-                        if (mygoldcoins == null || mygoldcoins == 0) {
-                            mygoldcoins = String(parseInt(enemyhits, 10) + 1);
-                        }
-                        if (mygoldcoins != null || mygoldcoins != 0) {
                             mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
                         }
-                        document.getElementById('points').setAttribute("value", mygoldcoins);
-                        noofcoins = noofcoins + 1;
-                        document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+                        if ('<%=ctrl4mainname%>' == "health") {
+                            mygoldcoins = String(parseInt(lifes, 10) + 1);
+                            document.getElementById('lives').setAttribute("value", lifes);
+                        }
+
+                        if ('<%=ctrl4mainname%>' == "goldcoins" || '<%=ctrl4mainname%>' == "health") {
+                            Img4.style.visibility = "hidden";
+                        }
 
                     }
-                    document.getElementById('ehits').setAttribute("value", enemyhits);
-                    sessionStorage.setItem("points", mygoldcoins);
-                    sessionStorage.setItem("achievements", enemyhits);
-                    sound1.src = myctrl5.tbCollionSound;
-                    if ('<%=ctrl5mainname%>' == "goldcoins") {
+                }
+
+                if (Img5.style.visibility == "visible") {
+                    if (parseInt(explosion.style.left.replace("px", ""), 10) >= parseInt(Img5.style.left.replace("px", ""), 10) && parseInt(explosion.style.right.replace("px", ""), 10) <= parseInt(Img5.style.right.replace("px", ""), 10) || parseInt(explosion.style.top.replace("px", ""), 10) >= parseInt(Img5.style.top.replace("px", ""), 10) && parseInt(explosion.style.bottom.replace("px", ""), 10) <= parseInt(Img5.style.bottom.replace("px", ""), 10)) {
+                        enemyhits = enemyhits + 1;
+                        if (enemyhits == 10) {
+                            enemyhits = 0;
+                            if (mygoldcoins == null || mygoldcoins == 0) {
+                                mygoldcoins = String(parseInt(enemyhits, 10) + 1);
+                            }
+                            if (mygoldcoins != null || mygoldcoins != 0) {
+                                mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
+                            }
+                            document.getElementById('points').setAttribute("value", mygoldcoins);
+                            noofcoins = noofcoins + 1;
+                            document.getElementById('TextBox4').setAttribute("value", rancoins - document.getElementById('points').getAttribute("value"));
+
+                        }
+                        document.getElementById('ehits').setAttribute("value", enemyhits);
+                        sessionStorage.setItem("points", mygoldcoins);
+                        sessionStorage.setItem("achievements", enemyhits);
+                        sound1.src = myctrl5.tbCollionSound;
+                        if ('<%=ctrl5mainname%>' == "goldcoins") {
                         mygoldcoins = String(parseInt(mygoldcoins, 10) + 1);
                         document.getElementById('points').setAttribute("value", mygoldcoins);
                         noofcoins = noofcoins + 1;
@@ -2795,6 +2837,7 @@ Remarketing tags may not be associated with personally identifiable information 
                     });
                     playerposition.server.Hello(pname, crosshair.style.left, crosshair.style.top).done(function () {
                     });
+                    
                 });
 
                 if (playername != Session["friend1"]) {
@@ -2880,42 +2923,42 @@ Remarketing tags may not be associated with personally identifiable information 
 
             function showfone() {
                 document.getElementById('ctrl1').setAttribute("src", '<%=Session["friend1pic"]%>');
-                }
+            }
 
             function showftwo() {
                 document.getElementById('ctrl2').setAttribute("src", '<%=Session["friend2pic"]%>');
-                }
+            }
 
             function showfthree() {
                 document.getElementById('ctrl3').setAttribute("src", '<%=Session["friend3pic"]%>');
-                }
+            }
 
             function showffour() {
                 document.getElementById('ctrl4').setAttribute("src", '<%=Session["friend4pic"]%>');
-                }
+            }
 
             function showffive() {
                 document.getElementById('ctrl5').setAttribute("src", '<%=Session["friend5pic"]%>');
-                }
+            }
             function hidefone() {
                 document.getElementById('ctrl1').setAttribute("src", '<%=ctrl1mainurl%>');
-                }
+            }
 
             function hideftwo() {
                 document.getElementById('ctrl2').setAttribute("src", '<%=ctrl2mainurl%>');
-                }
+            }
 
             function hidefthree() {
                 document.getElementById('ctrl3').setAttribute("src", '<%=ctrl3mainurl%>');
-                }
+            }
 
             function hideffour() {
                 document.getElementById('ctrl4').setAttribute("src", '<%=ctrl4mainurl%>');
-                }
+            }
 
             function hideffive() {
                 document.getElementById('ctrl5').setAttribute("src", '<%=ctrl5mainurl%>');
-                }
+            }
 
             var currentlposition = "moveleft";
             var currenttposition = "moveleft";
@@ -2945,11 +2988,11 @@ Remarketing tags may not be associated with personally identifiable information 
 
                 //}
 
-                if (Math.round(e.clientX) > 365 && Math.round(e.clientY) > 130 && Math.round(e.clientX) < 879 && Math.round(e.clientY) < 504) {
+                if (Math.round(e.clientX) > 0 && Math.round(e.clientY) > 0 && Math.round(e.clientX) < 480 && Math.round(e.clientY) < 375) {
                     document.body.style.cursor = "none";
                 }
 
-                else if (Math.round(e.clientX) < 365 && Math.round(e.clientY) < 130 && Math.round(e.clientX) > 879 && Math.round(e.clientY) > 504) {
+                else if (Math.round(e.clientX) < 0 && Math.round(e.clientY) < 0 && Math.round(e.clientX) > 480 && Math.round(e.clientY) > 375) {
                     document.body.style.cursor = "default";
                 }
 
@@ -3009,14 +3052,14 @@ Remarketing tags may not be associated with personally identifiable information 
                 if (myctrl1.tbPropType == "fixed") {
 
                     document.body.style.cursor = "none";
-                    crosshair.style.top = "275px";
+                    crosshair.style.top = "350px";
                     crosshair.style.height = "90px";
                     crosshair.style.width = "90px";
                     explosion.style.height = "40px";
                     explosion.style.width = "40px";
                     explosion.style.visibility = "visible";
-                    explosion.style.left = Math.round(e.clientX) - 365 + "px";
-                    explosion.style.top = Math.round(e.clientY) - temp + "px";
+                    explosion.style.left = Math.round(e.clientX) - 480  + "px";
+                    explosion.style.top = Math.round(e.clientY)  - temp + "px";
                     crosshair.style.left = explosion.style.left;
 
                 }
@@ -3060,60 +3103,60 @@ Remarketing tags may not be associated with personally identifiable information 
 
                     if (parseInt(crosshair.style.top.replace("px", ""), 10) > parseInt('<%=ctrl1mainres%>')) {
 
-                            if (myctrl1.tbPropType == "movable") {
-                                explosion.style.visibility = "hidden";
-                                crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) - 10 + "px";
-                                crosshair.style.height = "40px";
-                                crosshair.style.width = "40px";
-                                explosion.style.height = "40px";
-                                explosion.style.width = "40px";
-                            }
-                            if (myctrl1.tbPropType == "fixed") {
-                                crosshair.style.top = "275px";
-                                crosshair.style.height = "90px";
-                                crosshair.style.width = "90px";
-                                explosion.style.height = "40px";
-                                explosion.style.width = "40px";
-                                explosion.style.visibility = "visible";
-                                explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) - 10 + "px";
-                            }
+                        if (myctrl1.tbPropType == "movable") {
+                            explosion.style.visibility = "hidden";
+                            crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) - 10 + "px";
+                            crosshair.style.height = "40px";
+                            crosshair.style.width = "40px";
+                            explosion.style.height = "40px";
+                            explosion.style.width = "40px";
                         }
-
-                    }
-
-                    if (code == 40) {
-
-                        if (parseInt(crosshair.style.top.replace("px", ""), 10) < 275) {
-
-                            if (myctrl1.tbPropType == "movable") {
-                                explosion.style.visibility = "hidden";
-                                crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) + 10 + "px";
-                                crosshair.style.height = "40px";
-                                crosshair.style.width = "40px";
-                                explosion.style.height = "40px";
-                                explosion.style.width = "40px";
-                            }
-                            if (myctrl1.tbPropType == "fixed") {
-                                crosshair.style.top = "275px";
-                                crosshair.style.height = "90px";
-                                crosshair.style.width = "90px";
-                                explosion.style.height = "40px";
-                                explosion.style.width = "40px";
-                                explosion.style.visibility = "visible";
-                                explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) + 10 + "px";
-
-                            }
+                        if (myctrl1.tbPropType == "fixed") {
+                            crosshair.style.top = "275px";
+                            crosshair.style.height = "90px";
+                            crosshair.style.width = "90px";
+                            explosion.style.height = "40px";
+                            explosion.style.width = "40px";
+                            explosion.style.visibility = "visible";
+                            explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) - 10 + "px";
                         }
-
-                    }
-
-                    if (code == 83) {
-                        detectcollision();
-                        explode();
-
                     }
 
                 }
+
+                if (code == 40) {
+
+                    if (parseInt(crosshair.style.top.replace("px", ""), 10) < 275) {
+
+                        if (myctrl1.tbPropType == "movable") {
+                            explosion.style.visibility = "hidden";
+                            crosshair.style.top = parseInt(crosshair.style.top.replace("px", ""), 10) + 10 + "px";
+                            crosshair.style.height = "40px";
+                            crosshair.style.width = "40px";
+                            explosion.style.height = "40px";
+                            explosion.style.width = "40px";
+                        }
+                        if (myctrl1.tbPropType == "fixed") {
+                            crosshair.style.top = "275px";
+                            crosshair.style.height = "90px";
+                            crosshair.style.width = "90px";
+                            explosion.style.height = "40px";
+                            explosion.style.width = "40px";
+                            explosion.style.visibility = "visible";
+                            explosion.style.top = parseInt(explosion.style.top.replace("px", ""), 10) + 10 + "px";
+
+                        }
+                    }
+
+                }
+
+                if (code == 83) {
+                    detectcollision();
+                    explode();
+
+                }
+
+            }
 
         });
     </script>
@@ -3438,14 +3481,14 @@ function (response) {
     </script>
 
     <form id="form1" runat="server">
-        <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #669999;" id="showwinner">
-            <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 418px; height: 200px; top: 5px; left: 10px; z-index: 1001; right: 6px; bottom: 91px; position: absolute;" />
-            <button id="Button11" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 110px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 305px;">Back to Game</button>
-            <asp:Label ID="Label22" runat="server" Style="z-index: 1001; left: 18px; top: 260px; position: absolute; vertical-align: middle; text-align: center; width: 200px; margin-top: 0px;" Text="" ForeColor="White" Font-Bold="True"></asp:Label>
+        <div style="width: 50%; height: 64%; z-index: 1000; left: 38%; top: 24%; visibility: hidden; position: absolute; background-color: #669999;" id="showwinner">
+            <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 96%; height: 43%; top: 2%; left: 1%; z-index: 1001; position: absolute;" />
+            <button id="Button11" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 23%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 80%; left: 69%; font-size: 100%;">Back to Game</button>
+            <asp:Label ID="Label22" runat="server" Style="z-index: 1001; left: 3%; top: 70%; position: absolute; vertical-align: middle; text-align: center; width: 62%; height: 7%" ForeColor="White" Font-Bold="True" Font-Size="100%"></asp:Label>
         </div>
-        <div style="width: 438px; height: 300px; z-index: 1000; left: 379px; top: 147px; visibility: hidden; position: absolute; background-color: #FFFF66; overflow: hidden;" id="showlevels">
-        <button id="Button12" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 110px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 243px; left: 303px;">Back to Game</button>
-              <asp:TextBox ID="TextBox18" runat="server" BackColor="Transparent" BorderStyle="Solid" ClientIDMode="Static" Style="z-index: 1001; left: 0px; top: 0px; position: absolute; width: 531px;  height: 230px;" ForeColor="#660066" meta:resourcekey="pointsResource1" ReadOnly="true" Font-Size="10pt" TextMode="MultiLine">Level           Conqueor    Own TreasureSpots (min)
+        <div style="width: 49%; height: 66%; z-index: 1000; left: 38%; top: 23%; visibility: hidden; position: absolute; background-color: #FFFF66; overflow: hidden;" id="showlevels">
+            <button id="Button12" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 22%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 89%; left: 69%;">Back to Game</button>
+            <asp:TextBox ID="TextBox18" runat="server" BackColor="Transparent" BorderStyle="Solid" ClientIDMode="Static" Style="z-index: 1001; left: 2%; top: 3%; position: absolute; width: 101%; height: 43%;" ForeColor="#660066" meta:resourcekey="pointsResource1" ReadOnly="true" Font-Size="80%" TextMode="MultiLine">Level           Conqueor    Own TreasureSpots (min)
 1-30                   3                       0
 31-75                  5                       1
 76-130                 5                       10
@@ -3454,66 +3497,87 @@ function (response) {
 400-1000               8                       100</asp:TextBox>
 
         </div>
-        <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #669999;" id="showprof">
-            <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px;" />
-            <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 94px; top: 24px; position: absolute; width: 329px;" Text="Professional Help to Complete Your TreasureSpot or Game Tools"></asp:Label>
-            <asp:Label ID="Label5" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="A Professional will complete your TreasureSpot or Game Tools on behalf of you" ForeColor="White"></asp:Label>
-            <asp:Label ID="Label6" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-            <asp:HyperLink ID="Hyperlink8" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 170px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy Professional Help</asp:HyperLink>
-            <button id="Button4" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 233px;">Back to Game</button>
+        <div style="width: 49%; height: 67%; z-index: 1000; left: 38%; top: 22%; visibility: hidden; position: absolute; background-color: #669999;" id="showprof">
+            <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 80%; top: 32%; position: absolute; height: 9%; width: 8%;" />
+            <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 3%; top: 5%; position: absolute; width: 96%; height: 15%;" Text="Professional Help to Complete Your TreasureSpot or Game Tools"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Style="z-index: 1001; left: 15%; top: 15%; position: absolute; vertical-align: middle; text-align: center; width: 77%; height: 12%;" Text="A Professional will complete your TreasureSpot or Game Tools on behalf of you" ForeColor="White" Font-Size="100%"></asp:Label>
+            <asp:Label ID="Label6" runat="server" Style="z-index: 1001; left: 4%; top: 40%; position: absolute; vertical-align: middle; text-align: center; width: 15%; height: 6%;" Text="Price   $1" ForeColor="White" Font-Bold="True" Font-Size="100%"></asp:Label>
+            <asp:HyperLink ID="Hyperlink8" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 40%; position: absolute; height: 6%; width: 34%; left: 23%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="100%">Buy Professional Help</asp:HyperLink>
+            <button id="Button4" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 24%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 80%; left: 60%; font-size: 100%;">Back to Game</button>
         </div>
-        <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #9900FF" id="showspot">
-            <img alt="" src="Images/coin.png" style="z-index: 1001; left: 43px; top: 27px; position: absolute" />
-            <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Treasure Spot"></asp:Label>
-            <asp:Label ID="Label8" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="You Have Played Now in a TreasureSpot. Create your own TreasureSpot to Earn More Rewards. " ForeColor="White"></asp:Label>
-            <asp:Label ID="Label9" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $2" ForeColor="White" Font-Bold="True"></asp:Label>
-            <asp:HyperLink ID="Hyperlink7" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 170px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
-            <button id="Button5" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 160px; height: 34px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 249px;" onclick="hidediv();">Back to Game</button>
+        <div style="width: 49%; height: 66%; z-index: 1000; left: 38%; top: 24%; visibility: hidden; position: absolute; background-color: #9900FF" id="showspot">
+            <img alt="" src="Images/coin.png" style="z-index: 1001; left: 5%; top: 5%; position: absolute; width: 9%; height: 12%;" />
+            <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 19%; top: 8%; width: 47%; height: 7%; position: absolute" Text="Buy a Treasure Spot"></asp:Label>
+            <asp:Label ID="Label8" runat="server" Style="z-index: 1001; left: 18%; top: 18%; position: absolute; vertical-align: middle; text-align: center; width: 73%; height: 15%;" Text="You Have Played Now in a TreasureSpot. Create your own TreasureSpot to Earn More Rewards. " ForeColor="White" Font-Size="100%"></asp:Label>
+            <asp:Label ID="Label9" runat="server" Style="z-index: 1001; left: 4%; top: 37%; position: absolute; vertical-align: middle; text-align: center; width: 18%; height: 10%;" Text="Price   $2" ForeColor="White" Font-Bold="True" Font-Size="100%"></asp:Label>
+            <asp:HyperLink ID="Hyperlink7" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 37%; position: absolute; height: 7%; width: 64%; left: 23%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="100%">Buy a Treasure Spot(Offer Claims Enabled)</asp:HyperLink>
+            <button id="Button5" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 23%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 88%; left: 64%; font-size: 100%;" onclick="hidediv();">Back to Game</button>
+            <asp:HyperLink ID="Hyperlink12" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/trialpay.aspx" Style="z-index: 1; left: 23%; top: 49%; position: absolute; border-radius: 2%; background-color: #FF9900; width: 26%; height: 14%; cursor: pointer; text-decoration: none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="https://treasurehunter.apphb.com/Images/trialpay.jpg"></asp:HyperLink>
+            <asp:Label ID="Label23" runat="server" Style="z-index: 1001; left: 52%; top: 50%; position: absolute; vertical-align: middle; text-align: center; width: 39%; height: 13%;" Text="(Offer Claims Enabled. Earn Free Credits to Buy)" ForeColor="White" Font-Bold="True" Font-Size="100%"></asp:Label>
+            <asp:HyperLink ID="Hyperlink13" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; left: 18%; top: 68%; position: absolute; border-radius: 2%; background-color: #FF9900; width: 36%; height: 14%; cursor: pointer; text-decoration: none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"></asp:HyperLink>
+            <asp:Label ID="Label24" runat="server" Style="z-index: 1001; left: 58%; top: 68%; position: absolute; vertical-align: middle; text-align: center; width: 39%; height: 13%;" Text="(PayPal Offer Claims Not Enabled)" ForeColor="White" Font-Bold="True" Font-Size="100%"></asp:Label>
+
         </div>
-        <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #666633" id="showpromo">
-            <img alt="" src="Images/lwinner.jpg" style="z-index: 1101; left: 5px; top: 17px; position: absolute; height: 59px; width: 87px;" />
-            <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 102px; top: 28px; position: absolute; width: 327px;" Text="Wow you just won a TreasureSpot at a Concessional Price"></asp:Label>
-            <asp:Label ID="Label11" runat="server" Style="z-index: 1001; left: 42px; top: 122px; position: absolute; vertical-align: middle; text-align: center; width: 382px; margin-top: 0px; bottom: 140px;" Text="You were the randomly selected winner of a TreasureSpot" ForeColor="White"></asp:Label>
-            <asp:HyperLink ID="Hyperlink9" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbpromo.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 170px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Claim My Treasurespot</asp:HyperLink>
-            <button id="Button6" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 163px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 233px; left: 239px;">Back to Game</button>
+        <div style="width: 50%; height: 66%; z-index: 1000; left: 38%; top: 24%; visibility: hidden; position: absolute; background-color: #666633" id="showpromo">
+            <img alt="" src="Images/lwinner.jpg" style="z-index: 1101; left: 3%; top: 6%; position: absolute; height: 15%; width: 15%;" />
+            <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 22%; top: 7%; position: absolute; width: 55%; height: 15%;" Text="Wow you just won a TreasureSpot at a Concessional Price"></asp:Label>
+            <asp:Label ID="Label11" runat="server" Style="z-index: 1001; left: 16%; top: 30%; position: absolute; vertical-align: middle; text-align: center; width: 78%; height: 15%;" Text="You were the randomly selected winner of a TreasureSpot" ForeColor="White" Font-Size="100%"></asp:Label>
+            <asp:HyperLink ID="Hyperlink9" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbpromo.html" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 69%; position: absolute; height: 8%; width: 37%; left: 4%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="100%">Claim My Treasurespot</asp:HyperLink>
+            <button id="Button6" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 22%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 68%; left: 63%; font-size: 100%;">Back to Game</button>
         </div>
-        <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #FF6666" id="showlife">
-            <img alt="" src="Images/health.gif" style="z-index: 1101; left: 12px; top: 14px; position: absolute; height: 40px;" />
+        <div style="width: 50%; height: 67%; z-index: 1000; left: 38%; top: 23%; visibility: hidden; position: absolute; background-color: #FF6666" id="showlife">
+            <img alt="" src="Images/health.gif" style="z-index: 1101; left: 2%; top: 5%; position: absolute; height: 13%; width: 12%;" />
             <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 76px; top: 32px; position: absolute; width: 349px;" Text="Additional Lifes During Your Game Play"></asp:Label>
             <asp:Label ID="Label13" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Get 20 More Lifes During Game Playing. Buy to Clear the Level." ForeColor="White"></asp:Label>
             <asp:Label ID="Label14" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-            <asp:HyperLink ID="Hyperlink10" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 170px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy Additional Lifes</asp:HyperLink>
+            <asp:HyperLink ID="Hyperlink10" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 170px; left: 21px; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy Additional Lifes</asp:HyperLink>
             <button id="Button7" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 162px; height: 39px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 234px;" onclick="actionthgame();">Back to Game</button>
         </div>
-        <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #FF5050" id="showtweet">
-            <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px; right: 355px;" />
-            <asp:Label ID="Label15" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 163px; top: 36px; position: absolute" Text="Tweet on Twitter"></asp:Label>
-            <asp:Label ID="Label16" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting tweet on Twitter and Expres Yourself" ForeColor="White"></asp:Label>
-            <button id="Button8" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 156px; height: 39px; background-color: #FF00FF; color: #FFFFFF; top: 240px; left: 258px;" onclick="actionrewards();">Back to Game</button>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="z-index: 1001; text-decoration: none; position: absolute; top: 256px; left: 56px; width: 114px; height: 31px;">Tweet</a>
+        <div style="width: 49%; height: 67%; z-index: 1000; left: 38%; top: 23%; visibility: hidden; position: absolute; background-color: #FF5050" id="showtweet">
+            <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 3%; top: 4%; position: absolute; height: 20%; width: 22%" />
+            <asp:Label ID="Label15" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 37%; top: 8%; position: absolute; width: 41%; height: 7%;" Text="Tweet on Twitter"></asp:Label>
+            <asp:Label ID="Label16" runat="server" Style="z-index: 1001; left: 35%; top: 20%; position: absolute; vertical-align: middle; text-align: center; width: 59%; height: 15%;" Text="To Make TreasureHunting more interesting tweet on Twitter and Expres Yourself" ForeColor="White" Font-Size="100%"></asp:Label>
+            <button id="Button8" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 23%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 84%; left: 68%; font-size: 100%;" onclick="actionrewards();">Back to Game</button>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="z-index: 1001; text-decoration: none; position: absolute; top: 84%; left: 5%; width: 41%; height: 10%;">Tweet</a>
         </div>
-        <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #3333FF" id="showtools">
-            <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px;" />
-            <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 128px; top: 36px; position: absolute" Text="Buy a Game Tools Item"></asp:Label>
-            <asp:Label ID="Label18" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="Add your own choice of Game Items to your TreasureSpot." ForeColor="White"></asp:Label>
-            <asp:Label ID="Label19" runat="server" Style="z-index: 1001; left: 18px; top: 162px; position: absolute; vertical-align: middle; text-align: center; width: 72px; margin-top: 0px;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
-            <asp:HyperLink ID="Hyperlink11" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 15px; background-color: #0000FF; top: 254px; position: absolute; height: 22px; width: 232px; left: 21px; text-align:center; vertical-align:middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy Game Items for TreasureSpot</asp:HyperLink>
-            <button id="Button9" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 121px; height: 56px; background-color: #FF00FF; color: #FFFFFF; top: 218px; left: 285px;">Back to Game</button>
+        <div style="width: 50%; height: 67%; z-index: 1000; left: 38%; top: 22%; visibility: hidden; position: absolute; background-color: #3333FF" id="showtools">
+            <img alt="" src="Images/goldcoin.gif" style="z-index: 1101; left: 7%; top: 6%; position: absolute; height: 15%; width: 15%;" />
+            <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 25%; top: 11%; position: absolute; height: 6%; width: 46%;" Text="Buy a Game Tools Item"></asp:Label>
+            <asp:Label ID="Label18" runat="server" Font-Size="100%" Style="z-index: 1001; left: 23%; top: 22%; position: absolute; vertical-align: middle; text-align: center; width: 62%; height: 15%;" Text="Add your own choice of Game Items to your TreasureSpot." ForeColor="White"></asp:Label>
+            <asp:Label ID="Label19" runat="server" Font-Size="100%" Style="z-index: 1001; left: 17%; top: 42%; position: absolute; vertical-align: middle; text-align: center; width: 17%; height: 8%;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
+            <asp:HyperLink ID="Hyperlink11" runat="server" Font-Size="100%" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 54%; position: absolute; height: 8%; width: 45%; left: 4%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy Game Items for TreasureSpot</asp:HyperLink>
+            <button id="Button9" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 26%; height: 10%; background-color: #FF00FF; color: #FFFFFF; top: 55%; left: 57%; font-size: 100%;">Back to Game</button>
         </div>
-        <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; visibility: hidden; position: absolute; background-color: #FF5050" id="showfriends">
-            <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 43px; top: 27px; position: absolute; height: 40px; right: 355px;" />
-            <asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Size="15pt" ForeColor="White" Style="z-index: 1001; left: 163px; top: 36px; position: absolute" Text="Invite Friends"></asp:Label>
-            <asp:Label ID="Label21" runat="server" Style="z-index: 1001; left: 30px; top: 86px; position: absolute; vertical-align: middle; text-align: center; width: 394px; margin-top: 0px; bottom: 176px;" Text="To Make TreasureHunting more interesting invite your Friends and Like the Game" ForeColor="White"></asp:Label>
-            <button id="Button10" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 145px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 242px; left: 251px;" onclick="ifriends();">Back to Game</button>
-            <a href="#" onclick="FacebookInviteFriends();" style="position: absolute; left: 8%; top: 86%; width: 27%; height: 7%; text-decoration: none; color: #FFFFFF; background-color: #FF9900; border-radius: 20px; text-align: center; right: 286px; z-index: 1001;">Invite Friends</a>
+        <div style="width: 50%; height: 67%; z-index: 1000; left: 38%; top: 23%; visibility: hidden; position: absolute; background-color: #FF5050" id="showfriends">
+            <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 7%; top: 6%; position: absolute; height: 15%; width: 15%" />
+            <asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 37%; top: 9%; height: 9%; width: 26%; position: absolute" Text="Invite Friends"></asp:Label>
+            <asp:Label ID="Label21" runat="server" Style="z-index: 1001; left: 24%; top: 18%; position: absolute; vertical-align: middle; text-align: center; width: 65%; height: 15%;" Text="To Make TreasureHunting more interesting invite your Friends and Like the Game" ForeColor="White" Font-Size="100%"></asp:Label>
+            <button id="Button10" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 24%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 66%; left: 61%; font-size: 100%;" onclick="ifriends();">Back to Game</button>
+            <a href="#" onclick="FacebookInviteFriends();" style="position: absolute; left: 8%; top: 86%; width: 29%; height: 7%; text-decoration: none; color: #FFFFFF; background-color: #FF9900; border-radius: 2%; text-align: center; z-index: 1001; font-size: 100%;">Invite Friends</a>
         </div>
-        <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="6pt" ForeColor="White" Style="z-index: 1; left: 844px; top: 339px; cursor: pointer; position: absolute; width: 131px; height: 28px;" Text="Rate Good to this TreasureSpot" OnClick="Button3_Click" CausesValidation="False" UseSubmitBehavior="False" />
-        
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM appuserdetails" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM tspots"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM toolbox"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT treasurevalue FROM treasureprize"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM loggedusers" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'" ProviderName="System.Data.SqlClient">
+        <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="60%" ForeColor="White" Style="z-index: 1; left: 88%; top: 76%; cursor: pointer; position: absolute; width: 12%; height: 5%;" Text="Rate Good to this TreasureSpot" OnClick="Button3_Click" CausesValidation="False" UseSubmitBehavior="False" />
+
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM appuserdetails" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'">
+            <InsertParameters>
+                <asp:Parameter Name="luname" />
+                <asp:Parameter Name="luid" />
+                <asp:Parameter Name="luposition" />
+                <asp:Parameter Name="luimg" />
+                <asp:Parameter Name="luspriteimg" />
+                <asp:Parameter Name="lucrisboos" />
+                <asp:Parameter Name="luloggedin" />
+                <asp:Parameter Name="lutspots" />
+                <asp:Parameter Name="lulogintimes" />
+                <asp:Parameter Name="luinvites" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uloggedin" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM [tspots]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM [toolbox]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT [treasurevalue] FROM [treasureprize]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM loggedusers" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'">
             <InsertParameters>
                 <asp:Parameter Name="luname" />
                 <asp:Parameter Name="luid" />
@@ -3549,45 +3613,27 @@ function (response) {
             </UpdateParameters>
         </asp:SqlDataSource>
 
-        <div class="fb-like-box" data-href="https://www.facebook.com/Treasurehuntergame" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false" style="z-index: 351; position: absolute; width: 128px; height: 24px; top: 3px; right: 289px; bottom: 539px; left: 562px"></div>
+        <div class="fb-like-box" data-href="https://www.facebook.com/Treasurehuntergame" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false" style="z-index: 351; position: absolute; width: 180px; height: 6%; top: 3%; left: 61%;"></div>
 
-        <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Play/play" Style="z-index: 1; left: 754px; top: 8px; position: absolute; display: none" Text="Button" CausesValidation="False" />
+        <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="https://treasurehunter.apphb.com/Play/play" Style="z-index: 1; left: 15%; top: 15%; position: absolute; display: none" Text="Button" CausesValidation="False" />
 
-        <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 100; left: 803px; top: 20px; position: absolute; height: 62px; width: 166px" />
-        <a href="https://treasurehunter.apphb.com/prizes.html" target="_self" style="position: absolute; left: 872px; top: 313px; width: 92px; text-decoration: none; background-color: #FF00FF; color: #FFFFFF; border-radius: 20px; right: 237px; text-align: center; z-index: 1;">Rewards</a>
-        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="#9999FF" Style="z-index: 1; left: 196px; top: 0px; position: absolute; width: 319px; height: 26px" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
-        <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="10pt" ForeColor="#9999FF" Style="z-index: 1; left: 375px; top: 79px; position: absolute; width: 347px; height: 26px" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
+        <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 100; left: 83%; top: 6%; position: absolute; height: 10%; width: 17%" />
+        <a href="https://treasurehunter.apphb.com/prizes.html" target="_self" style="position: absolute; left: 70%; top: 95%; width: 10%; height: 4%; text-decoration: none; background-color: #FF00FF; color: #FFFFFF; border-radius: 20%; text-align: center; z-index: 1; font-size: 100%;">Rewards</a>
+        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="#9999FF" Style="z-index: 1; left: 16%; top: 1%; position: absolute; width: 43%; height: 4%;" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="90%" ForeColor="#9999FF" Style="z-index: 1; left: 40%; top: 14%; position: absolute; width: 36%; height: 3%;" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
-        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 56px; position: absolute; height: 18px; width: 141px; left: 11px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 57px; position: absolute; width: 141px; left: 364px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink2Resource1" ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Invite/friends" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; left: 274px; top: 57px; position: absolute" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink3Resource1" ViewStateMode="Enabled">Invite Friends</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="z-index: 1; border-radius: 15px; background-color: #0000FF; top: 54px; position: absolute; width: 84px; left: 170px;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink4Resource1" ViewStateMode="Enabled">My Game</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink5" runat="server" Font-Underline="False" NavigateUrl="~/Play/play" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 877px; top: 280px; position: absolute; height: 23px; width: 68px;" Target="_self" ForeColor="White">Winners</asp:HyperLink>
-        <asp:HyperLink ID="Hyperlink6" runat="server" Font-Underline="False" NavigateUrl="http://www.amazon.com/gp/product/B00I2DV2UO" Style="z-index: 1; border-radius: 15px; background-color: #FF9900; left: 787px; top: 14px; position: absolute; height: 78px; width: 191px; cursor: pointer;" Target="_self" ForeColor="Transparent"></asp:HyperLink>
-        <a id="A1" href="https://treasurehunter.apphb.com/app-release.apk" style="border:2px solid #FF00FF; border-radius:25px; font-family: Pericles; font-size: 75%; font-weight: bold; font-style: italic; color: #FFFFFF; background-color: #FF00FF; cursor: pointer; position: absolute; text-align: center; top: 94%; left: 15%; width: 45%; height: 4%; vertical-align: middle; z-index: 50; text-decoration: none; visibility:visible;"> Download Now and Play on Mobiles and Devices</a>
+        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="text-align:center; vertical-align:middle; z-index: 1; border-radius: 15px; background-color: #0000FF; top: 6%; position: absolute; height: 4%; width: 13%; left: 2%;" Target="_self" Font-Size="100%" ForeColor="#FFCC00"  ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="text-align:center; vertical-align:middle; z-index: 1; border-radius: 15px; background-color: #0000FF; top: 11%; position: absolute; width: 13%; height: 4%; left: 27%; right: 813px;" Target="_self" Font-Size="100%" ForeColor="#FFCC00"  ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Invite/friends" Style="text-align:center; vertical-align:middle; z-index: 1; border-radius: 15px; background-color: #0000FF; left: 16%; top: 11%;  width: 9%; height: 4%;  position: absolute" Target="_self" ForeColor="#FFCC00"  ViewStateMode="Enabled" Font-Size="100%">Invite Friends</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="text-align:center; vertical-align:middle; z-index: 1; border-radius: 15px; background-color: #0000FF; top: 11%; position: absolute; width: 7%; left: 42%;" Target="_self" ForeColor="#FFCC00"  ViewStateMode="Enabled" Font-Size="100%">My Game</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink5" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Play/play" Font-Size="100%" Style="text-align:center; vertical-align:middle;  z-index: 1; border-radius: 15px; background-color: #FF9900; left: 81%; top: 95%; position: absolute; height: 4%; width: 7%;" Target="_self" ForeColor="White">Winners</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink6" runat="server" Font-Underline="False" NavigateUrl="http://www.amazon.com/gp/product/B00I2DV2UO" Style="z-index: 1; border-radius: 2%; background-color: #FF9900; left: 81%; top: 4%; position: absolute; height: 12%; width: 20%; cursor: pointer;" Target="_self" ForeColor="Transparent"></asp:HyperLink>
+        <a id="A1" href="https://treasurehunter.apphb.com/app-release.apk" style="border: 2px solid #FF00FF; border-radius: 25px; font-family: Pericles; font-size: 75%; font-weight: bold; font-style: italic; color: #FFFFFF; background-color: #FF00FF; cursor: pointer; position: absolute; text-align: center; top: 94%; left: 29%; width: 39%; height: 4%; vertical-align: middle; z-index: 1000; text-decoration: none; visibility: visible;">Download Now and Play on Mobiles and Devices</a>
 
-        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 12%; top: 1%; position: absolute; width: 6%; " ForeColor="#FFCC00" meta:resourcekey="ehitsResource1" ViewStateMode="Enabled" Font-Size="100%">0</asp:TextBox>
-        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 320px; top: 33px; position: absolute; width: 45px; right: 513px;" ForeColor="#FFCC00" meta:resourcekey="livesResource1" ViewStateMode="Enabled">15</asp:TextBox>
-        <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 4px; top: 243px; position: absolute; width: 966px; right: -90px; height: 70px; vertical-align: middle;" ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Tahoma" Font-Size="13pt"></asp:TextBox>
-        <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 518px; top: 34px; position: absolute; width: 81px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">0</asp:TextBox>
-        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 877px; top: 404px; position: absolute; width: 54px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled"></asp:TextBox>
-        <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" Style="z-index: 1; left: 563px; top: 334px; position: absolute" Text="Loading ......." ClientIDMode="Static"></asp:Label>
-
-        <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
-        </audio>
-
-        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration: none; position: absolute; top: 28px; left: 6px">Tweet</a>
-
-        <label style="position: absolute; top: 1%; left: 1%; height: 4%; color: #FFCC00; font-family: 'Jokerman LET'; font-size: 100%; font-weight: lighter;">Achievements</label>
-
-        <label style="position: absolute; top: 32px; left: 241px; height: 19px; right: 663px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Lives</label>
-
-        <label style="position: absolute; top: 32px; left: 406px; height: 19px; color: #FFCC00; height: 20px; position: absolute; font-family: 'Jokerman LET'; font-size: large;">Gold Coins</label>
-
-        <label style="position: absolute; top: 377px; left: 862px; height: 19px; color: #FFCC00; font-family: 'Jokerman LET'; font-size: large;">Treasure( $)</label>
-        <label style="position: absolute; top: 101px; left: 7px; height: 19px; color: #FFCC00; width: 97px; font-family: 'Victorian LET'; font-size: large;">Achievements</label>
-        <div id="divplayer" style="z-index: 203; background-color: transparent; overflow: hidden; width: 480px; height: 375px; position: absolute; top: 132px; left: 365px; right: 855px; bottom: 502px; display: inline;">
-            <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: ''195px''; left: 119px; z-index: 202; right: 321px; bottom: 140px;" />
+        <asp:TextBox ID="ehits" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 12%; top: 1%; position: absolute; width: 6%; height : 3%;" ForeColor="#FFCC00" ViewStateMode="Enabled" Font-Size="100%">0</asp:TextBox>
+        <asp:TextBox ID="lives" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 31%; top: 6%; position: absolute; width: 6%; height : 4%;" ForeColor="#FFCC00"  ViewStateMode="Enabled">15</asp:TextBox>
+        <div id="divplayer"  onmouseover="moveprop(event)" onmousedown="explodeprop(event)" onkeydown="check(e)" style="border-style: outset; border-width: thin; z-index: 203; background-color: transparent; width: 49%; height: 66%; position:  absolute; top: 25%; left: 37%;">
+            <img id="crosshair" src='<%=propurl%>' style="width: 40px; height: 40px; position: absolute; top: 195px; left: 119px; z-index: 202; right: 321px; bottom: 140px;" />
             <img id="explosion" src='<%=collisionurl%>' style="width: 40px; height: 40px; position: absolute; top: '<%=ctrl1mainres%>'; left: 199px; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
             <img id="ctrl1" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl1mainwidth%>'; height: '<%=ctrl1mainheight%>'; position: absolute; top: '<%=ctrl1maintop%>'; left: '<%=ctrl1mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
             <img id="ctrl2" src='<%=ctrl2mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl2mainwidth%>'; height: '<%=ctrl2mainheight%>'; position: absolute; top: '<%=ctrl2maintop%>'; left: '<%=ctrl2mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
@@ -3605,21 +3651,40 @@ function (response) {
             <img id="Img3" src='<%=ctrl3mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl3mainwidth%>'; height: '<%=ctrl3mainheight%>'; top: '<%=ctrl3maintop%>'; left: '<%=ctrl3mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
             <img id="Img4" src='<%=ctrl4mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl4mainwidth%>'; height: '<%=ctrl4mainheight%>'; top: '<%=ctrl4maintop%>'; left: '<%=ctrl4mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
             <img id="Img5" src='<%=ctrl5mainurl%>' style="border: thin solid Transparent; width: '<%=ctrl5mainwidth%>'; height: '<%=ctrl5mainheight%>'; top: '<%=ctrl5maintop%>'; left: '<%=ctrl5mainleft%>'; z-index: 21; visibility: hidden; right: 159px; bottom: 140px;" />
+         <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: -76%; top: -39%; position: absolute; background-color: transparent; width: 100%; height: 102%;" class="twoto3d" id="fplayer" />
         </div>
+        <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 1%; top: 51%; position: absolute; width: 96%; height: 15%; vertical-align: middle; border: 15px ridge #99FF99;" ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Kootenay" Font-Size="70%"></asp:TextBox>
+        <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 49%; top: 6%; position: absolute; width: 10%;  height: 4%; " ForeColor="#FFCC00"  ReadOnly="false" Font-Size="100%">0</asp:TextBox>
+        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 89%; top: 69%; position: absolute; width: 9%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled" Font-Size="90%"></asp:TextBox>
+        <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" Font-Size="100%" Style="z-index: 1; left: 56%; top: 43%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" Text="Loading ......." ClientIDMode="Static"></asp:Label>
 
-        <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1; left: 7px; top: 219px; position: absolute; width: 91px; cursor: none;" type="text" readonly="true" />
-        <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 80px; height: 80px; visibility: visible; z-index: 1; left: 11px; top: 125px; position: absolute; bottom: 308px;" id="friendimage" />
-        <img alt="" src='<%=iframeurl%>' style="z-index: 0; left: 365px; top: 130px; position: absolute; background-color: transparent; width: 480px; height: 374px;" class="twoto3d" id="fplayer" />
-        <label style="position: absolute; top: 320px; left: 7px; height: 18px; color: #FFFFFF; font-family: Script; font-size: 14px; width: 93px;">Talk to other Players</label>
+        <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
+        </audio>
 
-        <input id="Button2" style="border: medium outset #FF00FF; background-color: #6699FF; color: #FFFFFF; z-index: 1; left: 281px; top: 492px; position: absolute; width: 56px; border-radius: 15px;" type="button" value="Send" onclick="send2server();" />
-        <div style="position: absolute; z-index: 210; width: 349px; height: 134px; top: 347px; right: 518px; bottom: 85px; left: 5px; overflow: hidden; cursor: crosshair;">
-            <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 316px; height: 99px;" readonly="readonly"></textarea>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="text-decoration: none; position: absolute; top: 95%; left: 13%; width: 15%; height: 3%;">Tweet</a>
+
+        <label style="position: absolute; top: 1%; left: 1%; height: 4%; color: #FFCC00; font-family: 'Jokerman LET'; font-size: 100%; font-weight: lighter;">Achievements</label>
+
+        <label style="position: absolute; top: 33px; left: 22%; height: 4%; color: #FFCC00; font-family: 'Jokerman LET'; font-size: 100%; width: 53px;">Lives</label>
+
+        <label style="position: absolute; top: 33px; left: 39%; height: 4%; color: #FFCC00; position: absolute; font-family: 'Jokerman LET'; font-size: 100%; width: 9%;">Gold Coins</label>
+
+        <label style=" left: 91%; top: 62%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle; color: #FFCC00; font-family: 'Jokerman LET'; font-size: 70%;">Treasure( $)</label>
+        <label style="position: absolute; top: 17%; left: 1%; height: 4%; color: #FFCC00; width: 10%; font-family: 'Victorian LET'; font-size: 100%;">Players</label>
+         
+        
+        <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1;position: absolute; left: 1%; top: 36%; width: 9%; height: 13%; cursor: none;" type="text" readonly="true" />
+        <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 9%; height: 10%; visibility: visible; z-index: 1; left: 1%; top: 24%; position: absolute;" id="friendimage" />
+        <label style="position: absolute; top: 64%; left: 1%; height: 3%; color: #FFFFFF; font-family: Script; font-size: 70%; width: 12%;">Talk to other Players</label>
+
+        <input id="Button2" style="border: medium outset #FF00FF; background-color: #6699FF; color: #FFFFFF; z-index: 1; position: absolute; left: 30%; top: 90%; width: 5%; height: 4%; border-radius: 20%;" type="button" value="Send" onclick="send2server();" />
+        <div style="position: absolute; z-index: 210;position: absolute; left: 1%; top: 67%; width: 35%; height: 20%; overflow: hidden; cursor: crosshair;">
+            <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0%; top: 0%; background-color: Transparent; color: #FFCC00; width: 103%; height: 82%;" readonly="readonly"></textarea>
         </div>
-        <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 12px; top: 493px; width: 242px; background-color: #FFFFCC; color: #000000;" onkeydown="checkEnter(event);" />
-        <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none; position: absolute; top: 523px; left: 42px; height: 40px; width: 93px; margin-top: 0px;"></iframe>
-        <div id="aimg" style="position: absolute; left: 15%; top: 15%; width: 23%; height: 35%;">
-            <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 220px; height: 199px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: -1px; background-color: Transparent;" id="Img6" />
+        <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 1%; top: 90%; width: 25%; height: 4%; background-color: #FFFFCC; color: #000000; " onkeydown="checkEnter(event);" />
+        <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none;left: 4%; top: 97%; position: absolute; width: 9%; height:1%;"></iframe>
+        <div id="aimg" style="position: absolute; left: 11%; top: 18%; width: 25%; height: 34%;">
+            <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 236px; height: 188px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 10px; background-color: Transparent;" id="Img6" />
             <img id="Image1" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" src='<%=one1%>' />
             <img id="Image2" style="z-index: 300; left: 112px; top: 60px; position: absolute; width: 32px; height: 30px;" src='<%=one2%>' />
             <img id="Image3" style="z-index: 300; left: 159px; top: 30px; position: absolute; width: 34px; height: 32px;" src='<%=one3%>' />
@@ -3632,31 +3697,31 @@ function (response) {
             <img id="Image9" style="z-index: 301; left: 201px; top: 44px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
             <img id="Image10" style="z-index: 301; left: 178px; top: 3px; position: absolute; width: 18px; height: 18px;" src="https://treasurehunter.apphb.com/Images/tick.png" />
         </div>
-        <div id="tooltip" style="position: absolute; top: 218px; left: 494px; width: 107px; height: 104px; visibility: hidden;">
+        <div id="tooltip" style="position:absolute; top: 218px; left: 494px; width: 107px; height: 104px; visibility: hidden;">
             <input type="text" id="playername" style="position: absolute; text-decoration: none; background-color: transparent; top: 11px; left: 20px; width: 60px; height: 47px;" />
             <img id="playerpic" style="position: absolute; background-color: transparent; top: 75px; left: 7px; height: 18px; width: 90px; font-size: 8px;" src='<%=Session["friend1pic"]%>' />
         </div>
-        <label style="position: absolute; top: 76px; left: 151px; height: 19px; color: #FFCC00; height: 21px; position: absolute; font-size: large; width: 122px; font-family: 'John Handy LET';">Treasure Map</label>
-        <asp:TextBox ID="attacked" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 42%; top: 20%; position: absolute; width: 37%; height: 4%" ForeColor="White" ReadOnly="true"></asp:TextBox>
-        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 856px; top: 466px; position: absolute; width: 113px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="10pt">Time Remaining</asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 891px; top: 491px; position: absolute; width: 34px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">120</asp:TextBox>
-        <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 305px; position: absolute; width: 62px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="Medium">Collect</asp:TextBox>
-        <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 223px; top: 306px; position: absolute; width: 47px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
-        <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 118px; top: 325px; position: absolute; width: 112px; right: 638px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="Medium">Conquer Players</asp:TextBox>
-        <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 252px; top: 325px; position: absolute; width: 36px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false"></asp:TextBox>
-        <asp:TextBox ID="TextBox8" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 855px; top: 430px; position: absolute; width: 43px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="10pt">Rating</asp:TextBox>
-        <asp:TextBox ID="TextBox9" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 915px; top: 430px; position: absolute; width: 53px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="10pt"></asp:TextBox>
-        <asp:TextBox ID="TextBox10" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 849px; top: 108px; position: absolute; width: 119px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="8pt">Treasure Spots Owned</asp:TextBox>
-        <asp:TextBox ID="TextBox11" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 852px; top: 156px; position: absolute; width: 42px; height: 16px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="13pt">Level</asp:TextBox>
-        <asp:TextBox ID="TextBox12" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 917px; top: 156px; position: absolute; width: 51px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">1</asp:TextBox>
-        <asp:TextBox ID="TextBox13" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 895px; top: 131px; position: absolute; width: 58px" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="8pt">0</asp:TextBox> 
-        <asp:TextBox ID="TextBox14" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 848px; top: 178px; position: absolute; width: 129px; height: 15px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="8pt">Treasure Spots Collected</asp:TextBox>
-        <asp:TextBox ID="TextBox15" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 871px; top: 222px; position: absolute; width: 81px; height: 16px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="8pt">Coins Collected</asp:TextBox>
-        <asp:TextBox ID="TextBox16" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 908px; top: 201px; position: absolute; width: 24px; height: 16px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="8pt">0</asp:TextBox>
-        <asp:TextBox ID="TextBox17" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 857px; top: 241px; position: absolute; width: 99px; text-align:center; vertical-align:middle; height: 23px;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="8pt" ToolTip="If in Red Color not Eligible for Prizes and Collected coins in every TreasureSpot will be lost. Buy a TreasureSpot"></asp:TextBox>
+        <label style="z-index:1000; position: absolute; top:20%; left:12%; height:5%; color: #FFCC00; position: absolute; font-size: 100%; width: 12%; font-family: 'John Handy LET';">Treasure Map</label>
+        <asp:TextBox ID="attacked" runat="server" Font-Size="90%" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 41%; top: 21%; position: absolute; width: 37%; height: 5%" ForeColor="White" ReadOnly="true">  </asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 89%; top: 91%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="90%">Time Remaining</asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 96%; position: absolute; width: 7%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">120</asp:TextBox>
+        <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 1%; top: 55%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="70%">Collect Coins</asp:TextBox>
+        <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 14%; top: 55%; position: absolute; width: 13%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="70%"></asp:TextBox>
+        <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 1%; top: 60%; position: absolute; width: 10%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="70%">Conquer Players</asp:TextBox>
+        <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 12%; top: 59%; position: absolute; width: 12%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="70%"></asp:TextBox>
+        <asp:TextBox ID="TextBox8" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 87%; top: 87%; position: absolute; width: 6%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="70%">Rating</asp:TextBox>
+        <asp:TextBox ID="TextBox9" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 94%; top: 86%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="80%"></asp:TextBox>
+        <asp:TextBox ID="TextBox10" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 87%; top: 17%; position: absolute; width: 13%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Treasure Spots Owned</asp:TextBox>
+        <asp:TextBox ID="TextBox11" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 32%; position: absolute; width: 6%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Level</asp:TextBox>
+        <asp:TextBox ID="TextBox12" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 39%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Text="" Font-Size="80%"></asp:TextBox>
+        <asp:TextBox ID="TextBox13" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 25%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text=""></asp:TextBox>
+        <asp:TextBox ID="TextBox14" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 88%; top: 44%; position: absolute; width: 13%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Treasure Spots Collected</asp:TextBox>
+        <asp:TextBox ID="TextBox15" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 90%; top: 53%; position: absolute; width: 9%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Coins Collected</asp:TextBox>
+        <asp:TextBox ID="TextBox16" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 47%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text=""></asp:TextBox>
+        <asp:TextBox ID="TextBox17" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 89%; top: 56%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text="" ToolTip="If in Red Color not Eligible for Prizes and Collected coins in every TreasureSpot will be lost. Buy a TreasureSpot"></asp:TextBox>
 
-        <img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 300px; left: 323px; z-index: 21; visibility: visible; right: 530px; bottom: 247px;">
-        <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; width: 15px; height: 15px; position: absolute; top: 322px; left: 310px; z-index: 21; visibility: visible; right: 543px; bottom: 225px;">
+        <img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; left: 32%; top: 54%; position: absolute; width: 2%; height:3%; z-index: 21; visibility: visible;">
+        <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; left: 33%; top: 63%; position: absolute; width: 2%; height:3%; z-index: 21; visibility: visible;">
     </form>
 </body>
 </html>
