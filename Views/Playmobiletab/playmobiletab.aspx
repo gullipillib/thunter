@@ -138,7 +138,7 @@
                 //SqlDataSource1.InsertParameters["amount"].DefaultValue = "0";
                 //SqlDataSource1.InsertParameters["currenttspot"].DefaultValue = "";
 
-                SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot, device) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '', 'device')";
+                SqlDataSource1.InsertCommand = "INSERT INTO appuserdetails(uname, uloggedin, winner, wintimes, paid, amount, currenttspot, device) VALUES ('" + Hiddenfield1 + "', 'no', 'no', '0', 'no', '0', '', 'web')";
                 SqlDataSource1.Insert();
 
                 SqlDataSource4.SelectCommand = "SELECT * FROM loggedusers";
@@ -2872,9 +2872,9 @@ if (winnerupdate == 0)
                 divplayer.focus();
             }
 
-            divplayer.addEventListener("keydown", check, false);
-            divplayer.addEventListener("mousedown", explodeprop, false);
-            divplayer.addEventListener("mousemove", moveprop, false);
+            document.addEventListener("keydown", check, false);
+            document.addEventListener("mousedown", explodeprop, false);
+            document.addEventListener("mousemove", moveprop, false);
 
             ctrl1.addEventListener("mouseover", showfone, false);
             ctrl2.addEventListener("mouseover", showftwo, false);
@@ -2960,7 +2960,7 @@ if (winnerupdate == 0)
                 }
 
                 else if (Math.round(e.clientX) < 365 && Math.round(e.clientY) < 130 && Math.round(e.clientX) > 879 && Math.round(e.clientY) > 504) {
-                    document.body.style.cursor = "default";
+                    document.body.style.cursor = "none";
                 }
 
                 //else if (Math.round(e.clientX) > 879) {
