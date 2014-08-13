@@ -1618,8 +1618,9 @@ if (winnerupdate == 0)
 
                     }
 
-                    if (lifes == 0) {
+                    if (lifes == 0 && parseInt(document.getElementById('TextBox6').getAttribute("value"), 10) <= 0 || lifes == 0 && parseInt(document.getElementById('TextBox4').getAttribute("value"), 10) <= 0) {
                         //lives.setAttribute("value", '10');
+
                         actionelifes();
                         document.getElementById('TextBox7').style.visibility = "visible";
                         document.getElementById('TextBox7').setAttribute("value", "So Sad You Lost All Your Lifes. The Gold Coins You Collected Now are Also Lost!! ");
