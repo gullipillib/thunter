@@ -64,6 +64,7 @@
             SqlDataSource2.SelectCommand = "SELECT * FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
             DataView dv = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
+		dt = dv.ToTable();
             paidname = dt.Rows[0].Field<string>("paid"); //usethis to get field value
             if (Request.QueryString["coins"] != null)
             {
