@@ -399,7 +399,7 @@ var myaddctrl = window.setTimeout(function () { feed() }, 9000);
 
 var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
 function filllabel() {
-    document.getElementById('TextBox7').setAttribute("value", "Like Treasure Hunter and Earn 5 Gold Coins For Free");
+    document.getElementById('TextBox7').setAttribute("value", "Enjoy the Game with having lots of your friends in it");
     var myaddctrl = window.setTimeout(function () { hidelabel() }, 4000);
 }
 function hidelabel() {
