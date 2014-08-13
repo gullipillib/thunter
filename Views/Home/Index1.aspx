@@ -3628,7 +3628,7 @@ function (response) {
             <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0px; top: 0px; background-color: Transparent; color: #FFCC00; width: 316px; height: 99px;" readonly="readonly"></textarea>
         </div>
         <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 12px; top: 493px; width: 242px; background-color: #FFFFCC; color: #000000;" onkeydown="checkEnter(event);" />
-        <iframe id="myframe" src="https://treasurehunter.apphb.com/updatecoins.aspx" runat="server" style="border-style: none; position: absolute; top: 523px; left: 42px; height: 40px; width: 93px; margin-top: 0px;"></iframe>
+        <iframe id="myframe" src="https://treasurehunter.apphb.com/blank.aspx" runat="server" style="border-style: none; position: absolute; top: 523px; left: 42px; height: 40px; width: 93px; margin-top: 0px;"></iframe>
         <div id="aimg" style="position: absolute; left: 15%; top: 15%; width: 23%; height: 35%;">
             <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 220px; height: 199px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: -1px; background-color: Transparent;" id="Img6" />
             <img id="Image1" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" src='<%=one1%>' />
