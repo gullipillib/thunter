@@ -520,10 +520,22 @@
         {
             wait = dt.Rows[0].Field<string>("wait");
             levels = dt.Rows[0].Field<string>("levels");
+if (levels == null)
+{
+levels = "0";
+}
             TextBox12.Text = levels;
             tspotscollected =  dt.Rows[0].Field<string>("tspotscollected");
+if (tspotscollected == null)
+{
+tspotscollected = "0";
+}
             TextBox13.Text = tspotscollected;
             tempgoldcoins = dt.Rows[0].Field<string>("tempgoldcoins");
+if (tempgoldcoins == null)
+{
+tempgoldcoins = "0";
+}
             if (upaid == "no" || upaid == null || wait == "yes" )
             {
                 TextBox17.Text = tempgoldcoins;
