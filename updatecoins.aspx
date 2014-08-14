@@ -5,6 +5,8 @@
 
 <!DOCTYPE html>
 <script runat="server">
+    public static System.Timers.Timer timer = new System.Timers.Timer(20000); // This will raise the event every one minute.
+    
     string Hiddenfield1;
     string HiddenField2;
     string HiddenField3;
@@ -54,13 +56,22 @@
 
     }
 
+    public void startupdatecoins(object sender, System.Timers.ElapsedEventArgs e)
+    {
+        Response.Redirect("https://treasurehunter.apphb.com/Home/Index1");    
+    }
+    
     string paidname = "";
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         
         if (Page.IsPostBack == false)
         {
+            timer.Enabled = true;
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
             checkusername();
+            
             SqlDataSource2.SelectCommand = "SELECT * FROM appuserdetails WHERE (uname = '" + Hiddenfield1 + "')";
             DataView dv = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
             DataTable dt = new DataTable();
@@ -80,9 +91,9 @@
 
                     SqlDataSource1.Update();
                     SqlDataSource2.SelectCommand = "SELECT * FROM appuserdetails where uname='" + Hiddenfield1 + "'";
-                    SqlDataSource2.UpdateCommand = "UPDATE appuserdetails SET levels='" + levels + "'," + "tspotscollected='" + tscollected + "'" + " where uname='" + Hiddenfield1 + "'";
+                    SqlDataSource2.UpdateCommand = "UPDATE appuserdetails SET levels='" + levels + "'," + "tspotscollected='" + tscollected + "'" + "'," + "logindate='" + System.DateTime.Now.Date + "'," + "logintime='" + System.DateTime.Now.TimeOfDay + "'" + " where uname='" + Hiddenfield1 + "'";
 
-                    Response.Redirect("https://treasurehunter.apphb.com/blank.aspx");
+                    Response.Redirect("https://treasurehunter.apphb.com/Home/Index1");
                 }
                 else if (paidname != "yes")
                 {
@@ -90,10 +101,10 @@
                     string levels = Request.QueryString["levels"].ToString();
                     string tscollected = Request.QueryString["tscollected"].ToString();
                     SqlDataSource2.SelectCommand = "SELECT * FROM appuserdetails where uname='" + Hiddenfield1 + "'";
-                    SqlDataSource2.UpdateCommand = "UPDATE appuserdetails SET tempgoldcoins='" + goldcoins + "'," + "levels='" + levels + "'," + "tspotscollected='" + tscollected + "'" + " where uname='" + Hiddenfield1 + "'";
+                    SqlDataSource2.UpdateCommand = "UPDATE appuserdetails SET tempgoldcoins='" + goldcoins + "'," + "levels='" + levels + "'," + "tspotscollected='" + tscollected + "'," + "logindate='" + System.DateTime.Now.Date + "'," + "logintime='" + System.DateTime.Now.TimeOfDay + "'" + " where uname='" + Hiddenfield1 + "'";
 
                     SqlDataSource2.Update();
-                    Response.Redirect("https://treasurehunter.apphb.com/blank.aspx");
+                    Response.Redirect("https://treasurehunter.apphb.com/Home/Index1");
                 }
             }
         }
@@ -106,11 +117,15 @@
     <title></title>
 </head>
 
-<body>
+<body style="background-color:black;">
     <form id="form1" runat="server">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM loggedusers" UpdateCommand="UPDATE loggedusers SET luloggedin='yes', lucrisboos='0'"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT * FROM appuserdetails" UpdateCommand="UPDATE appuserdetails SET tempgoldcoins=''" ></asp:SqlDataSource>
-        
+    <div style="width: 438px; height: 300px; z-index: 1000; left: 359px; top: 147px; position: absolute; background-color: #669999;" id="showwinner">
+            <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 422px; height: 200px; top: 5px; left: 6px; z-index: 1011; right: 6px; bottom: 91px; position: absolute;" />
+            <button id="Button11" style="z-index: 1001; border-radius: 10px; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 110px; height: 37px; background-color: #FF00FF; color: #FFFFFF; top: 234px; left: 305px;">Back to Game</button>
+            <asp:Label ID="Label22" runat="server" Style="z-index: 1001; left: 19px; top: 217px; position: absolute; vertical-align: middle; text-align: center; width: 229px; margin-top: 0px;" Text="Congratulations You Have conquered this TreasureSpot. Keep Playing." ForeColor="White" Font-Bold="True" Font-Names="Broadway BT"></asp:Label>
+        </div>    
     </form>
     
 </body>
