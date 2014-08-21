@@ -3506,15 +3506,7 @@ function (response) {
             window.location.href = "https://treasurehunter.apphb.com/fbpromo.html";
         }
     </script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- topad -->
-    <ins class="adsbygoogle"
-        style="display: inline-block; width: 234px; height: 60px"
-        data-ad-client="ca-pub-4310099988313025"
-        data-ad-slot="3816354197"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
