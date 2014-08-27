@@ -893,6 +893,12 @@ Remarketing tags may not be associated with personally identifiable information 
     
     <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?id=713630278701106&amp;ev=NoScript" />
 
+<script type="text/javascript">
+var infolinks_pid = 2179116;
+var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>
