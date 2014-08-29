@@ -707,16 +707,16 @@ tempgoldcoins = "0";
     <title>The Treasurehunter, A Free Online Game, Have Fun</title>
     <meta name="og:title"
         content="Treasurehunter 3D Multi Player Game" />
-    <meta name="og:title"
-        content="Treasurehunter" />
+    <meta name="og:type"
+        content="website" />
     <meta name="og:url"
-        content="https://treasurehunter.apphb.com/index.aspx" />
+        content="https://treasurehunter.apphb.com/Home/Index1" />
     <meta name="og:description" content="Play with other Players in 3D. Fun filled Treasure HUnting in Different Places of world. Collect Gold COins. 1000 Levels to achieve." />
     <meta name="fb:app_id" content="123405257731200" />
     <meta name="og:locale" content="en_US" />
     <meta name="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
     <meta name="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
-    <meta name="og:type" content="website" />
+    
 </head>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
