@@ -706,7 +706,7 @@ tempgoldcoins = "0";
     <meta name="keywords" content="free online games, Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game " />
     <title>The Treasurehunter, A Free Online Game, Have Fun</title>
     <meta name="og:title"
-        content="Treasurehunter 3D Multi Player Game" />
+        content="The Treasurehunter, A Free Online Game, Have Fun" />
     <meta name="og:type"
         content="website" />
     <meta name="og:url"
