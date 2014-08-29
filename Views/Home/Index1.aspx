@@ -710,7 +710,7 @@ tempgoldcoins = "0";
     <meta name="og:type"
         content="website" />
     <meta name="og:url"
-        content="https://treasurehunter.apphb.com/Home/Index1" />
+        content="https://treasurehunter.apphb.com/index.html" />
     <meta name="og:description" content="Play with other Players in 3D. Fun filled Treasure HUnting in Different Places of world. Collect Gold COins. 1000 Levels to achieve." />
     <meta name="fb:app_id" content="123405257731200" />
     <meta name="og:locale" content="en_US" />
