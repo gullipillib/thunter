@@ -756,7 +756,6 @@ tempgoldcoins = "0";
 <noscript>
     <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?ev=6012706441093&amp;cd[value]=0.00&amp;cd[currency]=INR&amp;noscript=1" />
 </noscript>
-<script type="text/javascript" src="http://clkmon.com/adServe/banners?tid=TREASUREHUNTER_17249_0&tagid=2" ></script>
 <body onbeforeunload="getcoins" style="height: 556px; background-color: #000000; width: 83%; overflow: hidden;">
 
     <!-- Google Tag Manager -->
