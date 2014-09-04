@@ -718,53 +718,11 @@ tempgoldcoins = "0";
     <meta name="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
     
 </head>
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[])push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-52168843-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-
-</script>
 
 
 
-<script type="text/javascript">
-    window.google_analytics_uacct = "UA-52168843-2";
-</script>
-<script type="text/javascript">
-    window.google_analytics_uacct = "UA-52168843-3";
-</script>
 
-<!-- Google Code for Remarketing Tag -->
-<!--------------------------------------------------
-Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
---------------------------------------------------->
-<script type="text/javascript">
-    var google_tag_params = {
-        ecomm_prodid: '101_th',
-        ecomm_pagetype: 'cart',
-        ecomm_pname: ['Free Online Game', 'TreasureHunter-TreasureSpot'],
-        ecomm_totalvalue: '2.00',
-    };
-</script>
-<script type="text/javascript">
-    /* <![CDATA[ */
-    var google_conversion_id = 967011017;
-    var google_custom_params = window.google_tag_params;
-    var google_remarketing_only = true;
-    /* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
-<noscript>
-    <div style="display: inline;">
-        <img height="1" width="1" style="border-style: none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967011017/?value=0&amp;guid=ON&amp;script=0" />
-    </div>
-</noscript>
+
 
 <!-- Facebook Conversion Code for buycheckouts -->
 
@@ -798,6 +756,7 @@ Remarketing tags may not be associated with personally identifiable information 
 <noscript>
     <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?ev=6012706441093&amp;cd[value]=0.00&amp;cd[currency]=INR&amp;noscript=1" />
 </noscript>
+<script type="text/javascript" src="http://clkmon.com/adServe/banners?tid=TREASUREHUNTER_17249_0&tagid=2" ></script>
 
 <body onbeforeunload="getcoins" style="height: 556px; background-color: #000000; width: 83%; overflow: hidden;">
 
