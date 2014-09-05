@@ -965,7 +965,7 @@ var infolinks_wsid = 0;
 
             var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
             function filllabel() {
-                document.getElementById('TextBox7').setAttribute("value", "Sorry Folks Going for a major upgrade and overhaul. Sorry for the inconvinience.  Vastro Games  Collect " + rancoins + " Gold Coins or Conqueor other " + ranhits + " Players in the Next 2 Mins. Put on Your 3D Glasses or Mild Dark Color Sunglasses For 3D  ");
+                document.getElementById('TextBox7').setAttribute("value", "Sorry Folks Going for a major upgrade and overhaul. Sorry for the inconvinience. Google and Android not reliable. Vastro Games  Collect " + rancoins + " Gold Coins or Conqueor other " + ranhits + " Players in the Next 2 Mins. Put on Your 3D Glasses or Mild Dark Color Sunglasses For 3D  ");
                 var myaddctrl = window.setTimeout(function () { hidelabel() }, 4000);
             }
             function hidelabel() {
