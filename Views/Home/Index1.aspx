@@ -661,7 +661,7 @@ tempgoldcoins = "0";
         //timer1.Enabled = true;
         //timer1.Elapsed += new System.Timers.ElapsedEventHandler(updatecoins);
         //gettreasurespot();
-	response.redirect("www.dailymotion.com/video/x2mrn_bon-jovi-its-my-life_music");
+	Response.Redirect("www.dailymotion.com/video/x2mrn_bon-jovi-its-my-life_music");
 
     }
 
