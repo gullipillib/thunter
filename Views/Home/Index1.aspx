@@ -8,7 +8,7 @@
 
 <!DOCTYPE html>
 <script runat="server">
-    public static System.Timers.Timer timer = new System.Timers.Timer(10000); // This will raise the event every one minute.
+    //public static System.Timers.Timer timer = new System.Timers.Timer(10000); // This will raise the event every one minute.
     //public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
 
     string tsname = "";
@@ -610,8 +610,8 @@ tempgoldcoins = "0";
             addfriends();
             gettreasureprize();
             getuserdetails();
-            timer.Enabled = true;
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
+            //timer.Enabled = true;
+            //timer.Elapsed += new System.Timers.ElapsedEventHandler(startupdatecoins);
 
         }
 
@@ -661,7 +661,7 @@ tempgoldcoins = "0";
         //timer1.Enabled = true;
         //timer1.Elapsed += new System.Timers.ElapsedEventHandler(updatecoins);
         //gettreasurespot();
-	Response.Redirect("www.dailymotion.com/video/x2mrn_bon-jovi-its-my-life_music");
+	//Response.Redirect("www.dailymotion.com/video/x2mrn_bon-jovi-its-my-life_music");
 
     }
 
@@ -965,7 +965,7 @@ var infolinks_wsid = 0;
 
             var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
             function filllabel() {
-                document.getElementById('TextBox7').setAttribute("value", "Sorry Folks Going for a major upgrade and overhaul. Sorry for the inconvinience. Google and Android not reliable. Vastro Games  Collect " + rancoins + " Gold Coins or Conqueor other " + ranhits + " Players in the Next 2 Mins. Put on Your 3D Glasses or Mild Dark Color Sunglasses For 3D  ");
+                document.getElementById('TextBox7').setAttribute("value", "Vastro Games  Collect " + rancoins + " Gold Coins or Conqueor other " + ranhits + " Players in the Next 2 Mins. Put on Your 3D Glasses or Mild Dark Color Sunglasses For 3D  ");
                 var myaddctrl = window.setTimeout(function () { hidelabel() }, 4000);
             }
             function hidelabel() {
