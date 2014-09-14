@@ -3,6 +3,7 @@
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
+<%@ Import Namespace="Amazon" %>
 
 <!DOCTYPE html>
 
@@ -61,8 +62,11 @@
     string HiddenField5;
     static int controlcounter;
     
+    
+    
     protected void checkusername()
     {
+        
         Hiddenfield1 = Convert.ToString(Session["loggeduser"]);
         HiddenField4 = Convert.ToString(Session["loggeduserid"]);
         HiddenField5 = Convert.ToString(Session["loggeduserurl"]);
