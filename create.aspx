@@ -13,6 +13,7 @@
 <script runat="server">
      
     
+    
 
     public class Treasurespot
     {
@@ -61,12 +62,13 @@
     string HiddenField4;
     string HiddenField5;
     static int controlcounter;
-    
-    
+
+    Amazon.S3.Transfer.TransferUtility myamazon = new Amazon.S3.Transfer.TransferUtility("AKIAI5IS4PP5UOPOWWLA", "nT5jivR2QTCMaUjC2+XUX+c/ca11C86zMxMtdTs6");
     
     protected void checkusername()
     {
-        
+
+       
         Hiddenfield1 = Convert.ToString(Session["loggeduser"]);
         HiddenField4 = Convert.ToString(Session["loggeduserid"]);
         HiddenField5 = Convert.ToString(Session["loggeduserurl"]);
@@ -1032,6 +1034,14 @@
         }
         Label25.Text = TextBox2.Text.Replace(" ", "");
     }
+
+    protected void Button14_Click(object sender, EventArgs e)
+    {
+        myamazon.Upload(FileUpload1.FileName, "treasurehunter");
+        TextBox2.Text = FileUpload1.FileName;
+        Button14.Enabled = false;
+        
+    }
 </script>
 
 
@@ -1057,7 +1067,7 @@
         
     </div>  
    
-    <iframe id="iframe2" style="position:absolute; top: 639px; left: 10px; width: 895px; height: 353px;" src="googlepickerlatest2.html"></iframe>
+    
  
    
     <form id="form1" runat="server">
@@ -1070,7 +1080,7 @@
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbtoolscategory,  tbcategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'water')"></asp:SqlDataSource>
             
            
-    <a href="creatorhelp.aspx" target="_self" style="position: absolute; left: 504px; top: 487px; width: 86px; text-decoration: none; background-color: #0000FF; color: #FFFFFF;  border-radius: 20px; right: 324px; text-align: center; height: 22px;">Help </a>
+    <a href="creatorhelp.aspx" target="_self" style="position: absolute; left: 504px; top: 487px; width: 86px; text-decoration: none; background-color: #0000FF; color:Help </a>
             
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 567px; top: 26px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
@@ -1090,8 +1100,12 @@
         <asp:Label ID="Label23" runat="server" style="z-index: 1; left:  719px; top: 329px; position: absolute; height:14px; width: 32px; right: 163px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:Label ID="Label24" runat="server" style="z-index: 1; left:  174px; top: 610px; position: absolute; height:14px; width: 32px; right: 708px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Transparent"></asp:Label>
         <asp:Label ID="Label25" runat="server" style="z-index: 1; left:  262px; top: 607px; position: absolute; height:14px; width: 32px; right: 620px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Transparent"></asp:Label>
-        <asp:Label ID="Label26" runat="server" style="z-index: 1; left:  346px; top: 437px; position: absolute; height:14px; width: 214px; right: 354px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
+        <asp:Button ID="Button14" runat="server" BackColor="Blue" ForeColor="White" OnClick="Button14_Click" style="z-index: 1; left: 217px; top: 436px; position: absolute" Text="Upload Video" />
+        <asp:Label ID="Label26" runat="server" style="z-index: 1; left:  364px; top: 445px; position: absolute; height:14px; width: 214px; right: 623px;" Text="" Font-Size="7pt" Font-Bold="True" ForeColor="Blue"></asp:Label>
         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT tbname, tbcategory, tbtoolscategory, tbactive, tbdetails, tbimgurl FROM toolbox WHERE (tbactive = 'yes') and (tbcategory = 'others or players')  or  (tbtoolscategory = 'player')"></asp:SqlDataSource>
+
+        
+        <asp:FileUpload ID="FileUpload1" runat="server" BackColor="Blue" ForeColor="Red" style="z-index: 1; left: 12px; top: 439px; position: absolute; width: 185px" />
 
         
         <asp:Image ID="Image6" runat="server" Height="20px" style="z-index: 1; left: 702px; top: 228px; position: absolute; height:10px; width:10px" Width="20px" />
@@ -1239,7 +1253,7 @@
             </asp:Panel>
         <asp:Panel runat="server" ID="Panel7">
         <asp:TextBox ID="TextBox1" runat="server" Style="z-index: 1; left: 523px; top: 151px; position: absolute; width: 168px; height: 24px" ClientIDMode="Static" ViewStateMode="Enabled" OnTextChanged="TextBox1_TextChanged1" ToolTip="less than 50 chars only"></asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server" Style="z-index: 1; left: 95px; top: 468px; position: absolute; width: 388px; height: 24px" ClientIDMode="Static" ViewStateMode="Enabled" OnTextChanged="TextBox2_TextChanged1" ToolTip="Enter Only Youtube Video ID"></asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" Style="z-index: 1; left: 95px; top: 468px; position: absolute; width: 388px; height: 24px" ClientIDMode="Static" ViewStateMode="Enabled" OnTextChanged="TextBox2_TextChanged1" ToolTip="Enter Only Youtube Video ID" ReadOnly="True"></asp:TextBox>
         <asp:Button ID="Button4" runat="server" BackColor="Blue" ForeColor="White" Style="z-index: 1; left: 516px; top: 528px; position: absolute; height: 26px; cursor:pointer;" Text="Finalize" ToolTip="Only after all the fields are completed, finalization takes place" OnClick="Button4_Click" Enabled="False" ClientIDMode="Static" UseSubmitBehavior="False" />
         <asp:Button ID="Button5" runat="server" BackColor="Blue" ForeColor="White" Style="z-index: 1; left: 777px; top: 6px; position: absolute; height: 26px; bottom: 561px; cursor:pointer;" Text="Back to Game" ToolTip="Only after all the fields are completed, finalization takes place" Enabled="False" UseSubmitBehavior="False" />
         <asp:Button ID="Button6" runat="server" Style="z-index: 1; left: 667px; top: 355px; position: absolute; bottom: 188px; width: 71px; height:40px;" Text="Add" OnClick="Button6_Click" ClientIDMode="Static" CausesValidation="False" Enabled="False" Height="40px" Width="70px" UseSubmitBehavior="False" />

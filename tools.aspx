@@ -2,6 +2,7 @@
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
+<%@ Import Namespace="Amazon" %>
 
 <!DOCTYPE html>
 
@@ -16,7 +17,8 @@
     string HiddenField3;
     string HiddenField4;
     string HiddenField5;
-    
+    Amazon.S3.Transfer.TransferUtility myamazon = new Amazon.S3.Transfer.TransferUtility("AKIAI5IS4PP5UOPOWWLA", "nT5jivR2QTCMaUjC2+XUX+c/ca11C86zMxMtdTs6");
+
     protected void checkusername()
     {
         Hiddenfield1 = Convert.ToString(Session["loggeduser"]);
@@ -208,7 +210,27 @@
         Image3.ImageUrl = TextBox4.Text;
     }
 
-   
+
+    protected void Button6_Click(object sender, EventArgs e)
+    {
+        myamazon.Upload(FileUpload1.FileName, "treasurehunter");
+        TextBox2.Text = FileUpload1.FileName;
+        Button6.Enabled = false;
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        myamazon.Upload(FileUpload2.FileName, "treasurehunter");
+        TextBox3.Text = FileUpload2.FileName;
+        Button1.Enabled = false;
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        myamazon.Upload(FileUpload3.FileName, "treasurehunter");
+        TextBox3.Text = FileUpload3.FileName;
+        Button2.Enabled = false;
+    }
 </script>
 
 <html>
@@ -221,8 +243,6 @@
 
 <body>
    
-<iframe id="iframe1" style="position:absolute; top: 639px; left: 10px; width: 895px; height: 353px;" src="googlepickerlatest.html"></iframe>
-  
    
    <form id="form1" runat="server">
  <asp:Label ID="Label14" runat="server" style="z-index: 1; left: 709px; top: 12px; position: absolute; height: 21px; width: 172px" Text="Label"></asp:Label>
@@ -232,18 +252,25 @@
        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = '<%=Hiddenfield1.Value%>')"></asp:SqlDataSource>
        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT categoryname FROM category"></asp:SqlDataSource>
         
-        <asp:Button ID="Button5" runat="server" Enabled="False" style="z-index: 1; left: 681px; top: 55px; position: absolute; cursor:pointer" Text="Back to Game " OnClick="Button5_Click" UseSubmitBehavior="False" />
+        <asp:Button ID="Button5" runat="server" Enabled="False" style="z-index: 1; left: 681px; top: 55px; position: absolute; cursor:pointer" Text="Back to Game " OnClick="Button5_Click" UseSubmitBehavior="False" BackColor="Blue" ForeColor="White" />
        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT subcategoryname FROM subcategory"></asp:SqlDataSource>  
        
        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT othersname FROM others"></asp:SqlDataSource>
 
+       <asp:Button ID="Button6" runat="server" BackColor="Blue" ForeColor="White" style="z-index: 1; left: 910px; top: 232px; position: absolute" Text="Upload Image File" OnClick="Button6_Click" />
+       <asp:Button ID="Button1" runat="server" BackColor="Blue" ForeColor="White" style="z-index: 1; left: 880px; top: 331px; position: absolute" Text="Upload Prop Image File" OnClick="Button1_Click" />
+       <asp:Button ID="Button2" runat="server" BackColor="Blue" ForeColor="White" style="z-index: 1; left: 880px; top: 412px; position: absolute" Text="Upload Collision Image File" OnClick="Button2_Click" />
+
        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT crname FROM collisionresult"></asp:SqlDataSource>
+       
        <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT cescname FROM collisionescape"></asp:SqlDataSource>
+       <asp:FileUpload ID="FileUpload1" runat="server" BackColor="Blue" ForeColor="Red" style="z-index: 1; left: 669px; top: 233px; position: absolute" />
+       <asp:FileUpload ID="FileUpload2" runat="server" BackColor="Blue" ForeColor="Red" style="z-index: 1; left: 648px; top: 333px; position: absolute" />
+       <asp:FileUpload ID="FileUpload3" runat="server" BackColor="Blue" ForeColor="Red" style="z-index: 1; left: 648px; top: 413px; position: absolute" />
 
-
-<asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 250px; top: 235px; position: absolute; width: 385px; height: 24px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" ClientIDMode="Static" OnTextChanged="TextBox2_TextChanged" AutoPostBack="True"></asp:TextBox>
-<asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 234px; top: 337px; position: absolute; width: 383px; height: 29px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" ClientIDMode="Static" OnTextChanged="TextBox3_TextChanged" AutoPostBack="True"></asp:TextBox>
- <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 229px; top: 411px; position: absolute; width: 382px; height: 28px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" ClientIDMode="Static" OnTextChanged="TextBox4_TextChanged" AutoPostBack="True"></asp:TextBox>
+<asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 250px; top: 235px; position: absolute; width: 385px; height: 24px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" ClientIDMode="Static" OnTextChanged="TextBox2_TextChanged" AutoPostBack="True" ReadOnly="True"></asp:TextBox>
+<asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 234px; top: 337px; position: absolute; width: 383px; height: 29px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" ClientIDMode="Static" OnTextChanged="TextBox3_TextChanged" AutoPostBack="True" ReadOnly="True"></asp:TextBox>
+ <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 229px; top: 411px; position: absolute; width: 382px; height: 28px" ToolTip="only png and gif file with transparent background, 100 x 120 and 30kb size only" ClientIDMode="Static" OnTextChanged="TextBox4_TextChanged" AutoPostBack="True" ReadOnly="True"></asp:TextBox>
             
            
         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/toc.aspx" style="z-index: 1; left: 711px; top: 130px; position: absolute" Target="_blank">Terms and Conditions</asp:HyperLink>
@@ -301,7 +328,7 @@
     
        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:db9cd6799a6dac4d58947ea0ba00796278ConnectionString %>" SelectCommand="SELECT uname FROM appuserdetails WHERE (uname = 'GullipilliBhaskar')"></asp:SqlDataSource>
 
-        <asp:Label ID="Label15" runat="server" Font-Bold="True" ForeColor="Green" style="z-index: 1; left: 678px; top: 215px; position: absolute; width: 204px" Text="Go to the bottom of this page for files uploader"></asp:Label>
+        <asp:Label ID="Label15" runat="server" Font-Bold="True" ForeColor="Green" style="z-index: 1; left: 721px; top: 186px; position: absolute; width: 204px" Text="Upload Your Image Files"></asp:Label>
         </form>
     
 </body>
