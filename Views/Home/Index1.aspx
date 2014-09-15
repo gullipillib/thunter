@@ -758,7 +758,7 @@ tempgoldcoins = "0";
 <noscript>
     <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?ev=6012706441093&amp;cd[value]=0.00&amp;cd[currency]=INR&amp;noscript=1" />
 </noscript>
-<body onbeforeunload="getcoins" style="height: 556px; background-color: #000000; width: 83%; overflow: hidden;">
+<body onbeforeunload="getcoins" style="height: 556px; background-color: #000000; top:17%; width: 83%; overflow: hidden; top:10%">
 
     <!-- Google Tag Manager -->
     <noscript>
@@ -3686,6 +3686,10 @@ function (response) {
             <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0%; top: 0%; background-color: Transparent; color: #FFCC00; width: 103%; height: 82%;" readonly="readonly"></textarea>
         </div>
         <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 1%; top: 90%; width: 25%; height: 4%; background-color: #FFFFCC; color: #000000; right: 939px;" onkeydown="checkEnter(event);" />
+        <div style="position:absolute; top: -100px; left: 46px; height: 90px; width: 1088px;">
+       <button id="b1"  style="border: thin none #FFFFFF; position:absolute; top: 0%; left: 97%; width: 3%; height: 21%; vertical-align: middle; text-align: center; font-family: Tahoma; color: #FF0000; font-size: 50%; background-color: Blue;">X</button>
+    <iframe id="if1" src="adtop.html" style="position:absolute; top: 0%; left: 0%; height: 100%; width: 100%;"></iframe>
+    </div> 
         <div id="aimg" style="position: absolute; left: 11%; top: 18%; width: 25%; height: 34%;">
             <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 236px; height: 188px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 10px; background-color: Transparent;" id="Img6" />
             <img id="Image1" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" src='<%=one1%>' />
