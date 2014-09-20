@@ -3691,7 +3691,7 @@ function (response) {
         <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 1%; top: 90%; width: 25%; height: 4%; background-color: #FFFFCC; color: #000000; right: 939px;" onkeydown="checkEnter(event);" />
         <div id="addiv" style="position:absolute; top: 14%; left: 3%; height: 19%; width: 97%;">
        <button id="b1" onclick="myFunction"  style="border: thin none #FFFFFF; position:absolute; top: 6%; left: 97%; width: 3%; height: 21%; vertical-align: middle; text-align: center; font-family: Tahoma; color: #FFFFFF; font-size: 80%; background-color: Blue; cursor: pointer;">X</button>
-    <iframe id="if1" src="adtop.html" style="position:absolute; top: 5%; left: 0%; height: 87%; width: 96%;"></iframe>
+    <iframe id="if1" src="https://treasurehunter.apphb.com/adtop.html" style="position:absolute; top: 5%; left: 0%; height: 87%; width: 96%;"></iframe>
     </div> 
         <div id="aimg" style="position: absolute; left: 11%; top: 18%; width: 25%; height: 34%;">
             <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 236px; height: 188px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 10px; background-color: Transparent;" id="Img6" />
