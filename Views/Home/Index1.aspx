@@ -3442,6 +3442,9 @@ function (response) {
             document.getElementById('Button1').click();
 
         }
+        function myFunction() {
+            document.getElementById('addiv').style.visibility = "hidden";
+        }
     </script>
     <script type="text/javascript">
         // On load, the user hasn't clicked on the payer_promotion unit
@@ -3686,9 +3689,9 @@ function (response) {
             <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0%; top: 0%; background-color: Transparent; color: #FFCC00; width: 103%; height: 82%;" readonly="readonly"></textarea>
         </div>
         <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 1%; top: 90%; width: 25%; height: 4%; background-color: #FFFFCC; color: #000000; right: 939px;" onkeydown="checkEnter(event);" />
-        <div style="position:absolute; top: -100px; left: 46px; height: 90px; width: 1088px;">
-       <button id="b1"  style="border: thin none #FFFFFF; position:absolute; top: 0%; left: 97%; width: 3%; height: 21%; vertical-align: middle; text-align: center; font-family: Tahoma; color: #FF0000; font-size: 50%; background-color: Blue;">X</button>
-    <iframe id="if1" src="adtop.html" style="position:absolute; top: 0%; left: 0%; height: 100%; width: 100%;"></iframe>
+        <div id="addiv" style="position:absolute; top: 14%; left: 3%; height: 19%; width: 97%;">
+       <button id="b1" onclick="myFunction"  style="border: thin none #FFFFFF; position:absolute; top: 6%; left: 97%; width: 3%; height: 21%; vertical-align: middle; text-align: center; font-family: Tahoma; color: #FFFFFF; font-size: 80%; background-color: Blue; cursor: pointer;">X</button>
+    <iframe id="if1" src="adtop.html" style="position:absolute; top: 5%; left: 0%; height: 87%; width: 96%;"></iframe>
     </div> 
         <div id="aimg" style="position: absolute; left: 11%; top: 18%; width: 25%; height: 34%;">
             <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 236px; height: 188px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 10px; background-color: Transparent;" id="Img6" />
