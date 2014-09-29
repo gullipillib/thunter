@@ -760,20 +760,7 @@ tempgoldcoins = "0";
 </noscript>
 <body onbeforeunload="getcoins" style="height: 556px; background-color: #000000; top:17%; width: 83%; overflow: hidden; top:10%">
 
-    <!-- Google Tag Manager -->
-    <noscript>
-        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TGKH9G"
-            height="0" width="0" style="display: none; visibility: hidden"></iframe>
-    </noscript>
-    <script>(function (w, d, s, l, i) {
-    w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-        new Date().getTime(), event: 'gtm.js'
-    }); var f = d.getElementsByTagName(s)[0],
-    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-TGKH9G');</script>
-    <!-- End Google Tag Manager -->
+    
 
     <style type="text/css">
         .twoto3d
@@ -852,11 +839,7 @@ tempgoldcoins = "0";
     
     <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?id=713630278701106&amp;ev=NoScript" />
 
-<script type="text/javascript">
-var infolinks_pid = 2179116;
-var infolinks_wsid = 0;
-</script>
-<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+
 
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
@@ -3689,10 +3672,7 @@ function (response) {
             <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0%; top: 0%; background-color: Transparent; color: #FFCC00; width: 103%; height: 82%;" readonly="readonly"></textarea>
         </div>
         <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 1%; top: 90%; width: 25%; height: 4%; background-color: #FFFFCC; color: #000000; right: 939px;" onkeydown="checkEnter(event);" />
-        <div id="addiv" style="z-index:1500; position:absolute; top: 14%; left: 3%; height: 19%; width: 97%;">
-       <button id="b1" onclick="myFunction(); return false"  style="border: thin none #FFFFFF; position:absolute; top: 6%; left: 97%; width: 3%; height: 21%; vertical-align: middle; text-align: center; font-family: Tahoma; color: #FFFFFF; font-size: 80%; background-color: Blue; cursor: pointer;">X</button>
-    <iframe id="if1" src="https://treasurehunter.apphb.com/adtop.html" style="position:absolute; top: 5%; left: 0%; height: 87%; width: 96%;"></iframe>
-    </div> 
+        
         <div id="aimg" style="position: absolute; left: 11%; top: 18%; width: 25%; height: 34%;">
             <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 236px; height: 188px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 10px; background-color: Transparent;" id="Img6" />
             <img id="Image1" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" src='<%=one1%>' />
