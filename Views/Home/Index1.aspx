@@ -3471,7 +3471,11 @@ function (response) {
     </script>
 
     <form id="form1" runat="server">
-<iframe src="https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=USER_ID" frameborder="0" width="728" height="2400" scrolling="no" Style="z-index: 1001; left: 0%; top: 0%; position: absolute;" ></iframe> 
+<div id="superrewards" style="width: 71%; height: 80%; z-index: 1001; left: 1%; top: 8%; visibility: hidden; position: absolute; background-color: #669999;" id="showrewards">
+<iframe src="https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=treasurehunter" frameborder="1" scrolling="yes" Style="z-index: 1001; left: 0%; top: -1%; position: absolute; height: 2394px; width: 587px;" ></iframe> 
+<button id="Button11"  onclick="javascript:document.getElementById('superrewards').style.visibility="hidden";" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 12%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 4%; left: 86%; cursor:pointer;">Close</button>
+            
+</div>
         <div style="width: 50%; height: 64%; z-index: 1000; left: 38%; top: 24%; visibility: hidden; position: absolute; background-color: #669999;" id="showwinner">
             <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 96%; height: 43%; top: 2%; left: 1%; z-index: 1001; position: absolute;" />
             <asp:Label ID="Label22" runat="server" Style="z-index: 1001; left: 3%; top: 70%; position: absolute; vertical-align: middle; text-align: center; width: 62%; height: 7%" ForeColor="White" Font-Bold="True" Font-Size="100%" Font-Names="Haettenschweiler">Congratulations You Have Conquered this Treasure Spot. Keep Playing. </asp:Label>
