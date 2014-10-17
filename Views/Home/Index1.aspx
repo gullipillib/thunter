@@ -3473,7 +3473,7 @@ function (response) {
     <form id="form1" runat="server">
 <div id="superrewards" style="width: 71%; height: 80%; z-index: 1001; left: 1%; top: 8%; position: absolute; background-color: #669999;" id="showrewards">
 <iframe src="https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=treasurehunter" frameborder="0" scrolling="no" Style="z-index: 1001; left: 0%; top: 0%; position: absolute; height: 100%; width: 100%;" ></iframe> 
-<button id="Button11"  onclick="javascript:document.getElementById('superrewards').style.visibility="hidden";" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 12%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 4%; left: 86%; cursor:pointer;">Close</button>
+<button id="Button11"  onclick="javascript:document.getElementById('superrewards').style.visibility="hidden";return false;" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 12%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 4%; left: 86%; cursor:pointer;">Close</button>
             
 </div>
         <div style="width: 50%; height: 64%; z-index: 1000; left: 38%; top: 24%; visibility: hidden; position: absolute; background-color: #669999;" id="showwinner">
