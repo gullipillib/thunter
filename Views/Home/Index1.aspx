@@ -3471,6 +3471,7 @@ function (response) {
     </script>
 
     <form id="form1" runat="server">
+<iframe src="https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=USER_ID" frameborder="0" width="728" height="2400" scrolling="no" Style="z-index: 1001; left: 0%; top: 0%; position: absolute;" ></iframe> 
         <div style="width: 50%; height: 64%; z-index: 1000; left: 38%; top: 24%; visibility: hidden; position: absolute; background-color: #669999;" id="showwinner">
             <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 96%; height: 43%; top: 2%; left: 1%; z-index: 1001; position: absolute;" />
             <asp:Label ID="Label22" runat="server" Style="z-index: 1001; left: 3%; top: 70%; position: absolute; vertical-align: middle; text-align: center; width: 62%; height: 7%" ForeColor="White" Font-Bold="True" Font-Size="100%" Font-Names="Haettenschweiler">Congratulations You Have Conquered this Treasure Spot. Keep Playing. </asp:Label>
