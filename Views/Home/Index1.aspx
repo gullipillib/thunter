@@ -953,7 +953,7 @@ tempgoldcoins = "0";
             document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
             document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
 
-		var myaddctrl = window.setTimeout(function () { hiderewards() }, 5000);
+		var myaddctrl = window.setTimeout(function () { hiderewards() }, 25000);
             function hiderewards() {
 
 			document.getElementById('superrewards').style.visibility = "hidden";
