@@ -8,7 +8,7 @@
 
 <!DOCTYPE html>
 <script runat="server">
-    //public static System.Timers.Timer timer = new System.Timers.Timer(280000); // This will raise the event every one minute.
+    //public static System.Timers.Timer timer = new System.Timers.Timer(10000); // This will raise the event every one minute.
     //public static System.Timers.Timer timer1 = new System.Timers.Timer(40000); // This will raise the event every one minute.
 
     string tsname = "";
@@ -105,6 +105,7 @@
     string Hiddenfield1;
     public string lulogintimes = "";
     public int times = 0;
+	public string midd = Model.Id;
     protected void checkusername()
     {
 
@@ -295,8 +296,9 @@
         if (dt.Rows.Count != 0)
         {
 
-            one = new Random();
+            one = new Random(Guid.NewGuid().GetHashCode());
             t1 = one.Next(0, dt.Rows.Count);
+		
             tsname = dt.Rows[t1].Field<string>("tsname"); //usethis to get field value
             tsitems = dt.Rows[t1].Field<string>("tsitems"); //usethis to get field value
             tsrplayers = dt.Rows[t1].Field<string>("tsrplayers"); //usethis to get field value
@@ -661,6 +663,7 @@ tempgoldcoins = "0";
         //timer1.Enabled = true;
         //timer1.Elapsed += new System.Timers.ElapsedEventHandler(updatecoins);
         //gettreasurespot();
+	//Response.Redirect("www.dailymotion.com/video/x2mrn_bon-jovi-its-my-life_music");
 
     }
 
@@ -706,65 +709,23 @@ tempgoldcoins = "0";
     <meta name="keywords" content="free online games, Treasure Hunter, FaceBook Game, Addicting Games, Earn Real Money in Game, Multi Player, 3D, Real Sound, Viral Game, Fun, Invite Your Friends, Play Now, New Facebook Game " />
     <title>The Treasurehunter, A Free Online Game, Have Fun</title>
     <meta name="og:title"
-        content="Treasurehunter 3D Multi Player Game" />
-    <meta name="og:title"
-        content="Treasurehunter" />
+        content="The Treasurehunter, A Free Online Game, Have Fun" />
+    <meta name="og:type"
+        content="website" />
     <meta name="og:url"
-        content="https://treasurehunter.apphb.com/index.aspx" />
+        content="https://treasurehunter.apphb.com/ " />
     <meta name="og:description" content="Play with other Players in 3D. Fun filled Treasure HUnting in Different Places of world. Collect Gold COins. 1000 Levels to achieve." />
     <meta name="fb:app_id" content="123405257731200" />
     <meta name="og:locale" content="en_US" />
     <meta name="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
     <meta name="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
-    <meta name="og:type" content="website" />
+    
 </head>
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[])push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-52168843-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-
-</script>
 
 
 
-<script type="text/javascript">
-    window.google_analytics_uacct = "UA-52168843-2";
-</script>
-<script type="text/javascript">
-    window.google_analytics_uacct = "UA-52168843-3";
-</script>
 
-<!-- Google Code for Remarketing Tag -->
-<!--------------------------------------------------
-Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
---------------------------------------------------->
-<script type="text/javascript">
-    var google_tag_params = {
-        ecomm_prodid: '101_th',
-        ecomm_pagetype: 'cart',
-        ecomm_pname: ['Free Online Game', 'TreasureHunter-TreasureSpot'],
-        ecomm_totalvalue: '2.00',
-    };
-</script>
-<script type="text/javascript">
-    /* <![CDATA[ */
-    var google_conversion_id = 967011017;
-    var google_custom_params = window.google_tag_params;
-    var google_remarketing_only = true;
-    /* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
-<noscript>
-    <div style="display: inline;">
-        <img height="1" width="1" style="border-style: none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967011017/?value=0&amp;guid=ON&amp;script=0" />
-    </div>
-</noscript>
+
 
 <!-- Facebook Conversion Code for buycheckouts -->
 
@@ -798,23 +759,9 @@ Remarketing tags may not be associated with personally identifiable information 
 <noscript>
     <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?ev=6012706441093&amp;cd[value]=0.00&amp;cd[currency]=INR&amp;noscript=1" />
 </noscript>
+<body onbeforeunload="getcoins" style="height: 556px; background-color: #000000; top:17%; width: 83%; overflow: hidden; top:10%">
 
-<body onbeforeunload="getcoins" style="height: 556px; background-color: #000000; width: 83%; overflow: hidden;">
-
-    <!-- Google Tag Manager -->
-    <noscript>
-        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TGKH9G"
-            height="0" width="0" style="display: none; visibility: hidden"></iframe>
-    </noscript>
-    <script>(function (w, d, s, l, i) {
-    w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-        new Date().getTime(), event: 'gtm.js'
-    }); var f = d.getElementsByTagName(s)[0],
-    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-TGKH9G');</script>
-    <!-- End Google Tag Manager -->
+    
 
     <style type="text/css">
         .twoto3d
@@ -892,6 +839,8 @@ Remarketing tags may not be associated with personally identifiable information 
 
     
     <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?id=713630278701106&amp;ev=NoScript" />
+
+
 
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
@@ -990,6 +939,8 @@ Remarketing tags may not be associated with personally identifiable information 
             var noofcoins = 0;
             var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
             var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
+		
+	document.getElementById('fr1').setAttribute("src", "https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=" + '<%=midd%>');		
 
             document.getElementById('TextBox13').setAttribute("value", '<%=tspotsowned%>');
             document.getElementById('TextBox12').setAttribute("value", '<%=levels%>');
@@ -1001,7 +952,7 @@ Remarketing tags may not be associated with personally identifiable information 
 
             var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
             function filllabel() {
-                document.getElementById('TextBox7').setAttribute("value", " Vastro Games  Collect " + rancoins + " Gold Coins or Conqueor other " + ranhits + " Players in the Next 2 Mins. Put on Your 3D Glasses or Mild Dark Color Sunglasses For 3D  ");
+                document.getElementById('TextBox7').setAttribute("value", "Vastro Games  Collect " + rancoins + " Gold Coins or Conqueor other " + ranhits + " Players in the Next 2 Mins. Put on Your 3D Glasses or Mild Dark Color Sunglasses For 3D  ");
                 var myaddctrl = window.setTimeout(function () { hidelabel() }, 4000);
             }
             function hidelabel() {
@@ -3477,6 +3428,9 @@ function (response) {
             document.getElementById('Button1').click();
 
         }
+        function myFunction() {
+            document.getElementById('addiv').style.visibility = "hidden";
+        }
     </script>
     <script type="text/javascript">
         // On load, the user hasn't clicked on the payer_promotion unit
@@ -3506,15 +3460,7 @@ function (response) {
             window.location.href = "https://treasurehunter.apphb.com/fbpromo.html";
         }
     </script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- topad -->
-    <ins class="adsbygoogle"
-        style="display: inline-block; width: 234px; height: 60px"
-        data-ad-client="ca-pub-4310099988313025"
-        data-ad-slot="3816354197"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -3528,6 +3474,11 @@ function (response) {
     </script>
 
     <form id="form1" runat="server">
+<div id="superrewards" style="width: 71%; height: 80%; z-index: 1001; visibility:hidden; left: 1%; top: 8%; position: absolute; background-color: #669999;" id="showrewards">
+<iframe id="fr1" src="https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=treasurehunter" frameborder="0" scrolling="no" Style="z-index: 1001; left: 0%; top: 0%; position: absolute; height: 100%; width: 100%;" ></iframe> 
+<button id="Button11"  onclick="javascript:document.getElementById('superrewards').style.visibility="hidden";return false;" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 12%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 4%; left: 86%; cursor:pointer;">Close</button>
+            
+</div>
         <div style="width: 50%; height: 64%; z-index: 1000; left: 38%; top: 24%; visibility: hidden; position: absolute; background-color: #669999;" id="showwinner">
             <img id="Img9" src="https://treasurehunter.apphb.com/Images/goldshower.gif" style="border: thin solid Transparent; width: 96%; height: 43%; top: 2%; left: 1%; z-index: 1001; position: absolute;" />
             <asp:Label ID="Label22" runat="server" Style="z-index: 1001; left: 3%; top: 70%; position: absolute; vertical-align: middle; text-align: center; width: 62%; height: 7%" ForeColor="White" Font-Bold="True" Font-Size="100%" Font-Names="Haettenschweiler">Congratulations You Have Conquered this Treasure Spot. Keep Playing. </asp:Label>
@@ -3549,7 +3500,7 @@ function (response) {
             <asp:Label ID="Label5" runat="server" Style="z-index: 1001; left: 15%; top: 15%; position: absolute; vertical-align: middle; text-align: center; width: 77%; height: 12%;" Text="A Professional will complete your TreasureSpot or Game Tools on behalf of you" ForeColor="White" Font-Size="100%"></asp:Label>
             <asp:Label ID="Label6" runat="server" Style="z-index: 1001; left: 4%; top: 40%; position: absolute; vertical-align: middle; text-align: center; width: 15%; height: 6%;" Text="Price   $1" ForeColor="White" Font-Bold="True" Font-Size="100%"></asp:Label>
             <asp:HyperLink ID="Hyperlink8" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 40%; position: absolute; height: 6%; width: 34%; left: 23%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="100%">Buy Professional Help</asp:HyperLink>
-            <button id="Button4" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 24%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 80%; left: 60%; font-size: 100%;">Back to Game</button>
+            <button id="Button4" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 24%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 80%; left: 60%; font-size: 60%;">Back to Game</button>
         </div>
         <div style="width: 49%; height: 66%; z-index: 1000; left: 38%; top: 24%; visibility: hidden; position: absolute; background-color: #9900FF" id="showspot">
             <img alt="" src="Images/coin.png" style="z-index: 1001; left: 5%; top: 5%; position: absolute; width: 9%; height: 12%;" />
@@ -3557,7 +3508,7 @@ function (response) {
             <asp:Label ID="Label8" runat="server" Style="z-index: 1001; left: 18%; top: 18%; position: absolute; vertical-align: middle; text-align: center; width: 73%; height: 15%;" Text="You Have Played Now in a TreasureSpot. Create your own TreasureSpot to Earn More Rewards. " ForeColor="White" Font-Size="100%"></asp:Label>
             <asp:Label ID="Label9" runat="server" Style="z-index: 1001; left: 4%; top: 37%; position: absolute; vertical-align: middle; text-align: center; width: 18%; height: 10%;" Text="Price   $2" ForeColor="White" Font-Bold="True" Font-Size="100%"></asp:Label>
             <asp:HyperLink ID="Hyperlink7" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 37%; position: absolute; height: 7%; width: 64%; left: 23%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="100%">Buy a Treasure Spot(Offer Claims Enabled)</asp:HyperLink>
-            <button id="Button5" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 23%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 88%; left: 64%; font-size: 100%;" onclick="hidediv();">Back to Game</button>
+            <button id="Button5" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 23%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 88%; left: 64%; font-size: 60%;" onclick="hidediv();">Back to Game</button>
             <asp:HyperLink ID="Hyperlink12" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/trialpay.aspx" Style="z-index: 1; left: 23%; top: 49%; position: absolute; border-radius: 2%; background-color: #FF9900; width: 26%; height: 14%; cursor: pointer; text-decoration: none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="https://treasurehunter.apphb.com/Images/trialpay.jpg"></asp:HyperLink>
             <asp:Label ID="Label23" runat="server" Style="z-index: 1001; left: 52%; top: 50%; position: absolute; vertical-align: middle; text-align: center; width: 39%; height: 13%;" Text="(Offer Claims Enabled. Earn Free Credits to Buy)" ForeColor="White" Font-Bold="True" Font-Size="100%"></asp:Label>
             <asp:HyperLink ID="Hyperlink13" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="z-index: 1; left: 18%; top: 68%; position: absolute; border-radius: 2%; background-color: #FF9900; width: 36%; height: 14%; cursor: pointer; text-decoration: none;" Target="_blank" ForeColor="White" BackColor="#FF9900" ImageUrl="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"></asp:HyperLink>
@@ -3569,7 +3520,7 @@ function (response) {
             <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 22%; top: 7%; position: absolute; width: 55%; height: 15%;" Text="Wow you just won a TreasureSpot at a Concessional Price"></asp:Label>
             <asp:Label ID="Label11" runat="server" Style="z-index: 1001; left: 16%; top: 30%; position: absolute; vertical-align: middle; text-align: center; width: 78%; height: 15%;" Text="You were the randomly selected winner of a TreasureSpot" ForeColor="White" Font-Size="100%"></asp:Label>
             <asp:HyperLink ID="Hyperlink9" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbpromo.html" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 69%; position: absolute; height: 8%; width: 37%; left: 4%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="100%">Claim My Treasurespot</asp:HyperLink>
-            <button id="Button6" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 22%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 68%; left: 63%; font-size: 100%;">Back to Game</button>
+            <button id="Button6" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 22%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 68%; left: 63%; font-size: 60%;">Back to Game</button>
         </div>
         <div style="width: 50%; height: 67%; z-index: 1000; left: 38%; top: 23%; visibility: hidden; position: absolute; background-color: #FF6666" id="showlife">
             <img alt="" src="Images/health.gif" style="z-index: 1101; left: 2%; top: 5%; position: absolute; height: 13%; width: 12%;" />
@@ -3583,7 +3534,7 @@ function (response) {
             <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 3%; top: 4%; position: absolute; height: 20%; width: 22%" />
             <asp:Label ID="Label15" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 37%; top: 8%; position: absolute; width: 41%; height: 7%;" Text="Tweet on Twitter"></asp:Label>
             <asp:Label ID="Label16" runat="server" Style="z-index: 1001; left: 35%; top: 20%; position: absolute; vertical-align: middle; text-align: center; width: 59%; height: 15%;" Text="To Make TreasureHunting more interesting tweet on Twitter and Expres Yourself" ForeColor="White" Font-Size="100%"></asp:Label>
-            <button id="Button8" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 23%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 84%; left: 68%; font-size: 100%;" onclick="actionrewards();">Back to Game</button>
+            <button id="Button8" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 23%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 84%; left: 68%; font-size: 60%;" onclick="actionrewards();">Back to Game</button>
             <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" style="z-index: 1001; text-decoration: none; position: absolute; top: 84%; left: 5%; width: 41%; height: 10%;">Tweet</a>
         </div>
         <div style="width: 50%; height: 67%; z-index: 1000; left: 38%; top: 22%; visibility: hidden; position: absolute; background-color: #3333FF" id="showtools">
@@ -3592,16 +3543,16 @@ function (response) {
             <asp:Label ID="Label18" runat="server" Font-Size="100%" Style="z-index: 1001; left: 23%; top: 22%; position: absolute; vertical-align: middle; text-align: center; width: 62%; height: 15%;" Text="Add your own choice of Game Items to your TreasureSpot." ForeColor="White"></asp:Label>
             <asp:Label ID="Label19" runat="server" Font-Size="100%" Style="z-index: 1001; left: 17%; top: 42%; position: absolute; vertical-align: middle; text-align: center; width: 17%; height: 8%;" Text="Price   $1" ForeColor="White" Font-Bold="True"></asp:Label>
             <asp:HyperLink ID="Hyperlink11" runat="server" Font-Size="100%" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/fbbuy.html" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 54%; position: absolute; height: 8%; width: 45%; left: 4%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled">Buy Game Items for TreasureSpot</asp:HyperLink>
-            <button id="Button9" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 26%; height: 10%; background-color: #FF00FF; color: #FFFFFF; top: 55%; left: 57%; font-size: 100%;">Back to Game</button>
+            <button id="Button9" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 26%; height: 10%; background-color: #FF00FF; color: #FFFFFF; top: 55%; left: 57%; font-size: 60%;">Back to Game</button>
         </div>
         <div style="width: 50%; height: 67%; z-index: 1000; left: 38%; top: 23%; visibility: hidden; position: absolute; background-color: #FF5050" id="showfriends">
             <img alt="" src="Images/landscape.jpg" style="z-index: 1101; left: 7%; top: 6%; position: absolute; height: 15%; width: 15%" />
             <asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 37%; top: 9%; height: 9%; width: 26%; position: absolute" Text="Invite Friends"></asp:Label>
             <asp:Label ID="Label21" runat="server" Style="z-index: 1001; left: 24%; top: 18%; position: absolute; vertical-align: middle; text-align: center; width: 65%; height: 15%;" Text="To Make TreasureHunting more interesting invite your Friends and Like the Game" ForeColor="White" Font-Size="100%"></asp:Label>
-            <button id="Button10" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 24%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 66%; left: 61%; font-size: 100%;" onclick="ifriends();">Back to Game</button>
+            <button id="Button10" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 24%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 66%; left: 61%; font-size: 60%;" onclick="ifriends();">Back to Game</button>
             <a href="#" onclick="FacebookInviteFriends();" style="position: absolute; left: 8%; top: 86%; width: 29%; height: 7%; text-decoration: none; color: #FFFFFF; background-color: #FF9900; border-radius: 2%; text-align: center; z-index: 1001; font-size: 100%;">Invite Friends</a>
         </div>
-        <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="60%" ForeColor="White" Style="z-index: 1; left: 88%; top: 76%; cursor: pointer; position: absolute; width: 12%; height: 5%;" Text="Rate Good to this TreasureSpot" OnClick="Button3_Click" CausesValidation="False" UseSubmitBehavior="False" />
+        <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="60%" ForeColor="White" Style="z-index: 1; left: 87%; top: 76%; cursor: pointer; position: absolute; width: 12%; height: 5%;" Text="Rate Good to this TreasureSpot" OnClick="Button3_Click" CausesValidation="False" UseSubmitBehavior="False" />
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM appuserdetails" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'">
             <InsertParameters>
@@ -3668,7 +3619,7 @@ function (response) {
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="#9999FF" Style="z-index: 1; left: 16%; top: 1%; position: absolute; width: 43%; height: 4%;" Text="Label" meta:resourcekey="Label1Resource1"></asp:Label>
         <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="90%" ForeColor="#9999FF" Style="z-index: 1; left: 40%; top: 14%; position: absolute; width: 36%; height: 3%;" Text="Use Mouse or arrow keys for movement, click or 's' for functions" meta:resourcekey="Label2Resource1"></asp:Label>
 
-        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="text-align:center; vertical-align:middle; z-index: 1; border-radius: 15px; background-color: #0000FF; top: 6%; position: absolute; height: 4%; width: 13%; left: 2%;" Target="_self" Font-Size="100%" ForeColor="#FFCC00"  ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
+        <asp:HyperLink ID="Hyperlink1" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="text-align:center; vertical-align:middle; z-index: 1; border-radius: 15px; background-color: #0000FF; top: 11%; position: absolute; height: 4%; width: 13%; left: 2%;" Target="_self" Font-Size="100%" ForeColor="#FFCC00"  ViewStateMode="Enabled">Buy a Treasure Spot</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink2" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/buy.aspx" Style="text-align:center; vertical-align:middle; z-index: 1; border-radius: 15px; background-color: #0000FF; top: 11%; position: absolute; width: 13%; height: 4%; left: 27%; right: 813px;" Target="_self" Font-Size="100%" ForeColor="#FFCC00"  ViewStateMode="Enabled">Buy a ToolBox Item</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink3" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/Invite/friends" Style="text-align:center; vertical-align:middle; z-index: 1; border-radius: 15px; background-color: #0000FF; left: 16%; top: 11%;  width: 9%; height: 4%;  position: absolute" Target="_self" ForeColor="#FFCC00"  ViewStateMode="Enabled" Font-Size="100%">Invite Friends</asp:HyperLink>
         <asp:HyperLink ID="Hyperlink4" runat="server" Font-Underline="False" NavigateUrl="https://treasurehunter.apphb.com/gamesettings.aspx" Style="text-align:center; vertical-align:middle; z-index: 1; border-radius: 15px; background-color: #0000FF; top: 11%; position: absolute; width: 7%; left: 42%;" Target="_self" ForeColor="#FFCC00"  ViewStateMode="Enabled" Font-Size="100%">My Game</asp:HyperLink>
@@ -3729,6 +3680,7 @@ function (response) {
             <textarea id="Text2" class="TextArea1" style="border: 15px ridge #99FF99; position: absolute; left: 0%; top: 0%; background-color: Transparent; color: #FFCC00; width: 103%; height: 82%;" readonly="readonly"></textarea>
         </div>
         <input id="Text1" type="text" style="border: medium ridge #00CC00; position: absolute; left: 1%; top: 90%; width: 25%; height: 4%; background-color: #FFFFCC; color: #000000; right: 939px;" onkeydown="checkEnter(event);" />
+        
         <div id="aimg" style="position: absolute; left: 11%; top: 18%; width: 25%; height: 34%;">
             <img alt="" src="https://treasurehunter.apphb.com/Images/achievements.gif" style="width: 236px; height: 188px; visibility: visible; z-index: 300; left: 0px; top: 0px; position: absolute; bottom: 10px; background-color: Transparent;" id="Img6" />
             <img id="Image1" style="z-index: 300; left: 82px; top: 101px; position: absolute; width: 36px; height: 39px;" src='<%=one1%>' />
@@ -3749,23 +3701,23 @@ function (response) {
         </div>
         <label style="z-index:1000; position: absolute; top:20%; left:12%; height:5%; color: #FFCC00; position: absolute; font-size: 100%; width: 12%; font-family: 'John Handy LET';">Treasure Map</label>
         <asp:TextBox ID="attacked" runat="server" Font-Size="90%" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 41%; top: 21%; position: absolute; width: 37%; height: 5%" ForeColor="White" ReadOnly="true">  </asp:TextBox>
-        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 89%; top: 91%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="90%">Time Remaining</asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 89%; top: 92%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="90%">Time Remaining</asp:TextBox>
         <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 96%; position: absolute; width: 7%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">120</asp:TextBox>
         <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 1%; top: 55%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="70%">Collect Coins</asp:TextBox>
         <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 14%; top: 55%; position: absolute; width: 13%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="70%"></asp:TextBox>
         <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 1%; top: 60%; position: absolute; width: 10%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="70%">Conquer Players</asp:TextBox>
         <asp:TextBox ID="TextBox6" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 12%; top: 59%; position: absolute; width: 12%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="70%"></asp:TextBox>
-        <asp:TextBox ID="TextBox8" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 87%; top: 87%; position: absolute; width: 6%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="70%">Rating</asp:TextBox>
-        <asp:TextBox ID="TextBox9" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 94%; top: 86%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="80%"></asp:TextBox>
+        <asp:TextBox ID="TextBox8" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 87%; top: 89%; position: absolute; width: 6%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="70%">Rating</asp:TextBox>
+        <asp:TextBox ID="TextBox9" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 94%; top: 88%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="80%"></asp:TextBox>
         <asp:TextBox ID="TextBox10" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 87%; top: 17%; position: absolute; width: 13%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Treasure Spots Owned</asp:TextBox>
         <asp:TextBox ID="TextBox11" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 32%; position: absolute; width: 6%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Level</asp:TextBox>
-        <asp:TextBox ID="TextBox12" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 37%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Text="1" Font-Size="80%"></asp:TextBox>
+        <asp:TextBox ID="TextBox12" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 37%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Text='<%=levels%>' Font-Size="80%"></asp:TextBox>
         <asp:TextBox ID="TextBox13" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 25%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text="0"></asp:TextBox>
         <asp:TextBox ID="TextBox14" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 88%; top: 44%; position: absolute; width: 13%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Treasure Spots Collected</asp:TextBox>
         <asp:TextBox ID="TextBox15" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 90%; top: 53%; position: absolute; width: 9%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Coins Collected</asp:TextBox>
-        <asp:TextBox ID="TextBox16" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 47%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text="0"></asp:TextBox>
-        <asp:TextBox ID="TextBox17" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 89%; top: 56%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text="0" ToolTip="If in Red Color not Eligible for Prizes and Collected coins in every TreasureSpot will be lost. Buy a TreasureSpot"></asp:TextBox>
-
+        <asp:TextBox ID="TextBox16" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 47%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text='<%=tspotscollected%>'></asp:TextBox>
+        <asp:TextBox ID="TextBox17" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 89%; top: 56%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text='<%=tempgoldcoins%>' ToolTip="If in Red Color not Eligible for Prizes and Collected coins in every TreasureSpot will be lost. Buy a TreasureSpot"></asp:TextBox>
+         <div style="z-index:1; border: 15px ridge #99FF99; position: absolute; left: 83%; top: 69%; background-color: Transparent; color: #FFCC00; width: 15%; height: 12%;"> </div>
         <img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; left: 32%; top: 54%; position: absolute; width: 2%; height:3%; z-index: 21; visibility: visible;">
         <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; left: 33%; top: 63%; position: absolute; width: 2%; height:3%; z-index: 21; visibility: visible;">
     </form>

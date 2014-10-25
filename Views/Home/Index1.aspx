@@ -105,6 +105,7 @@
     string Hiddenfield1;
     public string lulogintimes = "";
     public int times = 0;
+	public string midd = Model.Id;
     protected void checkusername()
     {
 
@@ -938,6 +939,8 @@ tempgoldcoins = "0";
             var noofcoins = 0;
             var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
             var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
+		
+	document.getElementById('fr1').setAttribute("src", "https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=" + '<%=midd%>');		
 
             document.getElementById('TextBox13').setAttribute("value", '<%=tspotsowned%>');
             document.getElementById('TextBox12').setAttribute("value", '<%=levels%>');
@@ -3471,8 +3474,8 @@ function (response) {
     </script>
 
     <form id="form1" runat="server">
-<div id="superrewards" style="width: 71%; height: 80%; z-index: 1001; visibility:hidden; left: 1%; top: 8%; position: absolute; background-color: #669999;" id="showrewards">
-<iframe src="https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=treasurehunter" frameborder="0" scrolling="no" Style="z-index: 1001; left: 0%; top: 0%; position: absolute; height: 100%; width: 100%;" ></iframe> 
+<div id="superrewards" style="width: 71%; height: 80%; z-index: 1001;  left: 1%; top: 8%; position: absolute; background-color: #669999;" id="showrewards">
+<iframe id="fr1" src="https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=treasurehunter" frameborder="0" scrolling="no" Style="z-index: 1001; left: 0%; top: 0%; position: absolute; height: 100%; width: 100%;" ></iframe> 
 <button id="Button11"  onclick="javascript:document.getElementById('superrewards').style.visibility="hidden";return false;" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 12%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 4%; left: 86%; cursor:pointer;">Close</button>
             
 </div>
@@ -3713,7 +3716,7 @@ function (response) {
         <asp:TextBox ID="TextBox14" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 88%; top: 44%; position: absolute; width: 13%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Treasure Spots Collected</asp:TextBox>
         <asp:TextBox ID="TextBox15" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 90%; top: 53%; position: absolute; width: 9%; height:3%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="News Gothic" Font-Size="80%">Coins Collected</asp:TextBox>
         <asp:TextBox ID="TextBox16" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 47%; position: absolute; width: 6%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text='<%=tspotscollected%>'></asp:TextBox>
-        <asp:TextBox ID="TextBox17" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 89%; top: 56%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text="0" ToolTip="If in Red Color not Eligible for Prizes and Collected coins in every TreasureSpot will be lost. Buy a TreasureSpot"></asp:TextBox>
+        <asp:TextBox ID="TextBox17" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 89%; top: 56%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="80%" Text='<%=tempgoldcoins%>' ToolTip="If in Red Color not Eligible for Prizes and Collected coins in every TreasureSpot will be lost. Buy a TreasureSpot"></asp:TextBox>
          <div style="z-index:1; border: 15px ridge #99FF99; position: absolute; left: 83%; top: 69%; background-color: Transparent; color: #FFCC00; width: 15%; height: 12%;"> </div>
         <img id="Img7" src="https://treasurehunter.apphb.com/Images/goldcoin.gif" style="border: thin solid Transparent; left: 32%; top: 54%; position: absolute; width: 2%; height:3%; z-index: 21; visibility: visible;">
         <img id="Img8" src='<%=ctrl1mainurl%>' style="border: thin solid Transparent; left: 33%; top: 63%; position: absolute; width: 2%; height:3%; z-index: 21; visibility: visible;">
