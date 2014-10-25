@@ -105,7 +105,7 @@
     string Hiddenfield1;
     public string lulogintimes = "";
     public int times = 0;
-	public string midd = Model.Id;
+	public string midd = "";
     protected void checkusername()
     {
 
@@ -113,6 +113,7 @@
         Hiddenfield1 = Hiddenfield1.Replace(" ", "");
         Session["loggeduser"] = Model.Name;
         Session["loggeduserid"] = Model.Id;
+	midd = Model.Id;
         Session["loggeduserurl"] = Model.ProfilePicture.Data.Url;
 
         if (Hiddenfield1 != null)
