@@ -943,10 +943,7 @@ tempgoldcoins = "0";
 		
 	document.getElementById('fr1').setAttribute("src", "https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=" + '<%=midd%>');
 
-	var myaddctrl = window.setTimeout(function () { hiderewards() }, 5000);
-            function hiderewards() {
-			document.getElementById('superrewards').style("visibility", "hidden");
-		}		
+			
 
             document.getElementById('TextBox13').setAttribute("value", '<%=tspotsowned%>');
             document.getElementById('TextBox12').setAttribute("value", '<%=levels%>');
@@ -955,6 +952,11 @@ tempgoldcoins = "0";
 
             document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
             document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+
+		var myaddctrl = window.setTimeout(function () { hiderewards() }, 5000);
+            function hiderewards() {
+			document.getElementById('superrewards').style("left", "-300%");
+		}
 
             var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
             function filllabel() {
