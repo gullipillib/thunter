@@ -941,7 +941,9 @@ tempgoldcoins = "0";
             var ranhits = Math.floor(Math.random() * 40 - 20 + 1) + 20;
             var rancoins = Math.floor(Math.random() * 30 - 10 + 1) + 20;
 		
-	document.getElementById('fr1').setAttribute("src", "https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=" + '<%=midd%>');		
+	document.getElementById('fr1').setAttribute("src", "https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=" + '<%=midd%>');
+
+			
 
             document.getElementById('TextBox13').setAttribute("value", '<%=tspotsowned%>');
             document.getElementById('TextBox12').setAttribute("value", '<%=levels%>');
@@ -950,6 +952,12 @@ tempgoldcoins = "0";
 
             document.getElementById('TextBox4').setAttribute("value", rancoins - noofcoins);
             document.getElementById('TextBox6').setAttribute("value", ranhits - noofhits);
+
+		var myaddctrl = window.setTimeout(function () { hiderewards() }, 25000);
+            function hiderewards() {
+
+			document.getElementById('superrewards').style.visibility = "hidden";
+		}
 
             var myaddctrl = window.setTimeout(function () { filllabel() }, 1000);
             function filllabel() {
@@ -3475,9 +3483,9 @@ function (response) {
     </script>
 
     <form id="form1" runat="server">
-<div id="superrewards" style="width: 71%; height: 80%; z-index: 1001; visibility:hidden; left: 1%; top: 8%; position: absolute; background-color: #669999;" id="showrewards">
+<div id="superrewards" style="width: 71%; height: 80%; z-index: 1001; left: 1%; top: 8%; position: absolute; background-color: #669999;" id="showrewards">
 <iframe id="fr1" src="https://wall.superrewards.com/super/offers?h=mjqfbxpspal.222624333948&uid=treasurehunter" frameborder="0" scrolling="no" Style="z-index: 1001; left: 0%; top: 0%; position: absolute; height: 100%; width: 100%;" ></iframe> 
-<button id="Button11"  onclick="javascript:document.getElementById('superrewards').style.visibility="hidden";return false;" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 12%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 4%; left: 86%; cursor:pointer;">Close</button>
+<button id="Button11"  onclick="javascript:document.getElementById('superrewards').style.visibility="hidden";return false;" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 12%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 7%; left: 86%; cursor:pointer;">Close</button>
             
 </div>
         <div style="width: 50%; height: 64%; z-index: 1000; left: 38%; top: 24%; visibility: hidden; position: absolute; background-color: #669999;" id="showwinner">
@@ -3654,7 +3662,7 @@ function (response) {
         </div>
         <asp:TextBox ID="TextBox7" runat="server" BackColor="#FFFF99" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 700; left: 1%; top: 51%; position: absolute; width: 96%; height: 15%; vertical-align: middle; border: 15px ridge #99FF99;" ForeColor="#0000CC" meta:resourcekey="livesResource1" ViewStateMode="Enabled" Font-Bold="True" Font-Names="Kootenay" Font-Size="70%"></asp:TextBox>
         <asp:TextBox ID="points" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 49%; top: 6%; position: absolute; width: 10%;  height: 4%; " ForeColor="#FFCC00"  ReadOnly="false" Font-Size="100%">0</asp:TextBox>
-        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 89%; top: 69%; position: absolute; width: 9%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled" Font-Size="90%"></asp:TextBox>
+        <asp:TextBox ID="treasure" runat="server" AutoPostBack="False" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" ReadOnly="True" Style="z-index: 1; left: 89%; top: 67%; position: absolute; width: 9%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="treasureResource1" ViewStateMode="Enabled" Font-Size="90%"></asp:TextBox>
         <asp:Label ID="Label3" runat="server" ForeColor="#FFCC00" Font-Size="100%" Style="z-index: 1; left: 56%; top: 43%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" Text="Loading ......." ClientIDMode="Static"></asp:Label>
 
         <audio id="sound1" src='<%=ctrl1mainsound%>' autoplay="autoplay">
