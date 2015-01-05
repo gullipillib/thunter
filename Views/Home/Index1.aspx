@@ -735,7 +735,6 @@ node.parentNode.insertBefore(gads, node);
 <script type='text/javascript'>
 googletag.cmd.push(function() {
 googletag.defineSlot('/114316130/thfbtag', [468, 60], 'div-gpt-ad-1420438542191-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
 googletag.enableServices();
 });
 </script>   
