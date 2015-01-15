@@ -1295,7 +1295,7 @@ var infolinks_wsid = 0;
                             document.getElementById('showfriendso').style.visibility = "visible";
                         }
                         else if (mydivs == 3) {
-                            window.location.href = "http://astore.amazon.com/treasurehun05-20";
+                            window.location.href = " http://www.amazon.com/?tag=treasurehun05-20";
                         }
                         else if (mydivs == 2) {
                             window.location.href = "https://treasurehunter.apphb.com/mid.html";
@@ -1711,7 +1711,7 @@ var infolinks_wsid = 0;
                             document.getElementById('showfriendso').style.visibility = "visible";
                         }
                         else if (mydivs == 3) {
-                            window.location.href = "http://astore.amazon.com/treasurehun05-20";
+                            window.location.href = " http://www.amazon.com/?tag=treasurehun05-20";
                         }
                         else if (mydivs == 2) {
                             window.location.href = "https://treasurehunter.apphb.com/mid.html";
@@ -3551,7 +3551,7 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1420438542191-0');
             <img alt="" src="Images/lwinner.jpg" style="z-index: 1101; left: 3%; top: 6%; position: absolute; height: 15%; width: 15%;" />
             <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="100%" ForeColor="White" Style="z-index: 1001; left: 22%; top: 7%; position: absolute; width: 55%; height: 15%;" Text="Wow you just won a TreasureSpot at a Concessional Price"></asp:Label>
             <asp:Label ID="Label11" runat="server" Style="z-index: 1001; left: 16%; top: 30%; position: absolute; vertical-align: middle; text-align: center; width: 78%; height: 15%;" Text="You were the randomly selected winner of a TreasureSpot" ForeColor="White" Font-Size="100%"></asp:Label>
-            <asp:HyperLink ID="Hyperlink9" runat="server" Font-Underline="False" NavigateUrl="http://astore.amazon.com/treasurehun05-20" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 69%; position: absolute; height: 8%; width: 37%; left: 4%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="100%">Claim My Treasurespot</asp:HyperLink>
+            <asp:HyperLink ID="Hyperlink9" runat="server" Font-Underline="False" NavigateUrl=" http://www.amazon.com/?tag=treasurehun05-20" Style="z-index: 1001; border-radius: 2%; background-color: #0000FF; top: 69%; position: absolute; height: 8%; width: 37%; left: 4%; text-align: center; vertical-align: middle;" Target="_self" ForeColor="#FFCC00" meta:resourcekey="Hyperlink1Resource1" ViewStateMode="Enabled" Font-Size="100%">Claim My Treasurespot</asp:HyperLink>
             <button id="Button6" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 22%; height: 7%; background-color: #FF00FF; color: #FFFFFF; top: 68%; left: 63%; font-size: 100%;">Back to Game</button>
         </div>
         <div style="width: 50%; height: 67%; z-index: 1000; left: 38%; top: 23%; visibility: hidden; position: absolute; background-color: #FF6666" id="showlife">
