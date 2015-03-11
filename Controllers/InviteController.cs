@@ -12,7 +12,7 @@ namespace treasurehunter.Controllers
 {
     public class InviteController : Controller
     {
-        [FacebookAuthorize("manage_pages", "read_stream", "read_friendlists", "user_online_presence", "user_location", "user_hometown")]
+        [FacebookAuthorize("public_profile", "email", "user_photos", "manage_pages", "read_stream", "read_friendlists", "user_online_presence", "user_location", "user_hometown")]
 
         public async Task<ActionResult> friends(FacebookContext context)
         {
