@@ -12,7 +12,7 @@ namespace treasurehunter.Controllers
 {
     public class PlaymobileController : Controller
     {
-        [FacebookAuthorize("email", "user_photos", "manage_pages", "read_stream", "read_friendlists", "user_online_presence", "user_location", "user_hometown")]
+        [FacebookAuthorize("manage_pages", "read_stream", "read_friendlists", "user_online_presence", "user_location", "user_hometown")]
 
         public async Task<ActionResult> playmobile(FacebookContext context)
         {

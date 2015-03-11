@@ -1,0 +1,83 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Treasurehunter Payment App</title>
+      <style type="text/css">
+          #pay
+          {
+              z-index: 1;
+              left: 413px;
+              top: 260px;
+              position: absolute;
+          }
+      </style>
+  </head>
+  <body style="background-color: #99FF99">
+
+      <form id="form1" runat="server">
+
+    <h2 style="z-index: 1; left: 329px; top: 28px; position: absolute; height: 26px; width: 515px; color: #FF9900; font-family: 'Century Gothic';">FaceBook Payments - TreasureHunter</h2>
+	<h3 style="z-index: 1; left: 93px; top: 113px; position: absolute; height: 94px; width: 881px; color: #0000FF;">Buy a New TreasureSpot for $2 and get access to your TreasureSpot Creator. Using that one can create his/her spot, upload a 2 min video, insert game items in your spot, add sound and effects. You can sell your TreasureSpot at a later date in Direct Selling or Bid System. Purchasing a Treasure Spot enables eligibility for Prizes and other Benefits.</h3>
+    <div class="returndata" id="output">
+
+
+        
+
+          </div>
+<button onclick="payer_promotion();" style="z-index: 1; left: 438px; top: 331px; position: absolute; background-color: #0000CC; color: #FFFF00;">Free TreasureSpots</button>
+
+    <div id="fb-root">
+    <button id="pay" style="background-color: #0000CC; color: #FFFF00">TreasureSpot Promotions</button>
+      </div>
+    <script type="text/javascript">
+      // On load, the user hasn't clicked on the payer_promotion unit
+      var has_clicked = false;
+      var dialog_window;
+
+      function payer_promotion() {
+        if (!has_clicked) {
+          // If first click, open payer_promotion dialog
+          var obj = {
+            method: 'fbpromotion',
+            display: 'popup',
+            quantity: 1,
+            product: 'https://treasurehunter.apphb.com/coin.html'
+          };
+
+          FB.ui(obj, function(){
+            // call back to your server to see if user's balance changed
+          });
+
+          // Mark unit as clicked by user
+          has_clicked = true;
+        } else {
+          // For subsequent clicks, alert user
+          alert("Payer Promotion already clicked!");
+        }
+      }
+      // Load the SDK Asynchronously
+      (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+      }(document));
+    </script>
+
+
+        
+
+       
+        
+<a href="https://treasurehunter.apphb.com/Home/Index1" target="_self" style="position:absolute;left:29px; top:37px; width:157px; text-decoration:none; background-color: #0000FF; color: #FFFFFF;  border-radius:20px; right: 1015px; text-align: center; font-family: 'Victorian LET';z-index: 1; height: 21px;" > Go On a TreasureHunt </a>
+
+
+        
+
+       
+        
+      </form>
+  </body>
+</html>
