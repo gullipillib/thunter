@@ -13,7 +13,7 @@ namespace treasurehunter.Controllers
 {
     public class HomeController : Controller
     {
-        [FacebookAuthorize("public_profile", "email", "user_photos", "manage_pages", "read_stream", "read_friendlists", "user_online_presence", "user_location", "user_hometown")]
+        [FacebookAuthorize()]
         
         public async Task<ActionResult> Index1(FacebookContext context)
         {
