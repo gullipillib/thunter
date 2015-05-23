@@ -717,83 +717,9 @@ tempgoldcoins = "0";
     <meta name="og:locale" content="en_US" />
     <meta name="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
     <meta name="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
- <script type='text/javascript'>
-var googletag = googletag || {};
-googletag.cmd = googletag.cmd || [];
-(function() {
-var gads = document.createElement('script');
-gads.async = true;
-gads.type = 'text/javascript';
-var useSSL = 'https:' == document.location.protocol;
-gads.src = (useSSL ? 'https:' : 'http:') + 
-'//www.googletagservices.com/tag/js/gpt.js';
-var node = document.getElementsByTagName('script')[0];
-node.parentNode.insertBefore(gads, node);
-})();
-</script>
-
-<script type='text/javascript'>
-googletag.cmd.push(function() {
-googletag.defineSlot('/114316130/thfbtag', [468, 60], 'div-gpt-ad-1420438542191-0').addService(googletag.pubads());
-googletag.enableServices();
-});
-</script>   
 </head>
-
-
-
-
-
-
-<!-- Facebook Conversion Code for buycheckouts -->
-
-<script>(function () {
-
-    var _fbq = window._fbq || (window._fbq = []);
-
-    if (!_fbq.loaded) {
-
-        var fbds = document.createElement('script');
-
-        fbds.async = true;
-
-        fbds.src = '//connect.facebook.net/en_US/fbds.js';
-
-        var s = document.getElementsByTagName('script')[0];
-
-        s.parentNode.insertBefore(fbds, s);
-
-        _fbq.loaded = true;
-
-    }
-
-})();
-
-    window._fbq = window._fbq || [];
-
-    window._fbq.push(['track', '6012706441093', { 'value': '0.00', 'currency': 'INR' }]);
-</script>
-
-<noscript>
-    <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?ev=6012706441093&amp;cd[value]=0.00&amp;cd[currency]=INR&amp;noscript=1" />
-</noscript>
 <body onbeforeunload="getcoins" style="height: 556px; background-color: #000000; width: 83%; overflow: hidden;">
-
-    <!-- Google Tag Manager -->
-    <noscript>
-        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TGKH9G"
-            height="0" width="0" style="display: none; visibility: hidden"></iframe>
-    </noscript>
-    <script>(function (w, d, s, l, i) {
-    w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-        new Date().getTime(), event: 'gtm.js'
-    }); var f = d.getElementsByTagName(s)[0],
-    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-TGKH9G');</script>
-    <!-- End Google Tag Manager -->
-
+   
     <style type="text/css">
         .twoto3d
         {
@@ -869,19 +795,12 @@ googletag.enableServices();
     </style>
 
     
-    <img height="1" width="1" alt="" style="display: none" src="https://www.facebook.com/tr?id=713630278701106&amp;ev=NoScript" />
-
-<script type="text/javascript">
-var infolinks_pid = 2179116;
-var infolinks_wsid = 0;
-</script>
-<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
 
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>
     <script src="https://treasurehunter.apphb.com/SignalR/hubs"></script>
-    `<script>
+
          var chat = $.connection.chatmessages;
          var pname = '<%=Hiddenfield1%>';
 
@@ -1029,6 +948,7 @@ var infolinks_wsid = 0;
                             document.getElementById('showspot').style.visibility = "visible";
                             showfailure == 1;
                             showendresult == 1;
+		window.location.href = "https://thunterweb.apphb.com/index1.aspx";
                         }
                         else if (mydivs == 8) {
                             document.getElementById('showpromo').style.visibility = "visible";
@@ -1039,6 +959,7 @@ var infolinks_wsid = 0;
                             document.getElementById('showtools').style.visibility = "visible";
                             showfailure == 1;
                             showendresult == 1;
+		window.location.href = "https://thunterweb.apphb.com/index1.aspx";
                         }
                         else if (mydivs == 6) {
                             document.getElementById('showprof').style.visibility = "visible";
@@ -1049,6 +970,7 @@ var infolinks_wsid = 0;
                             document.getElementById('showtweet').style.visibility = "visible";
                             showfailure == 1;
                             showendresult == 1;
+		window.location.href = "https://thunterweb.apphb.com/index.html";
                         }
                         else if (mydivs == 4) {
                             document.getElementById('showfriendso').style.visibility = "visible";
@@ -1069,6 +991,7 @@ var infolinks_wsid = 0;
                             document.getElementById('showspot').style.visibility = "visible";
                             showfailure == 1;
                             showendresult == 1;
+		window.location.href = "https://thunterweb.apphb.com/index.html";
                         }
                     }
                     
@@ -3668,7 +3591,7 @@ function (response) {
 
         <div class="fb-like-box" data-href="https://www.facebook.com/Treasurehuntergame" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false" style="z-index: 351; position: absolute; width: 180px; height: 6%; top: 3%; left: 61%;"></div>
 
-        <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="https://treasurehunter.apphb.com/Index1.aspx" Style="z-index: 1; left: 15%; top: 15%; position: absolute; display: none" Text="Button" CausesValidation="False" />
+        <asp:Button ID="Button1" runat="server" ClientIDMode="Static" PostBackUrl="~/Home/Index1" Style="z-index: 1; left: 15%; top: 15%; position: absolute; display: none" Text="Button" CausesValidation="False" />
 
         <img alt="" src="https://treasurehunter.apphb.com/Images/amazon.png" style="z-index: 100; left: 83%; top: 6%; position: absolute; height: 10%; width: 17%" />
         <a href="https://treasurehunter.apphb.com/prizes.html" target="_self" style="position: absolute; left: 70%; top: 95%; width: 10%; height: 4%; text-decoration: none; background-color: #FF00FF; color: #FFFFFF; border-radius: 20%; text-align: center; z-index: 1; font-size: 100%;">Rewards</a>
