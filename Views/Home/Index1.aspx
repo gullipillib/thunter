@@ -717,6 +717,7 @@ tempgoldcoins = "0";
     <meta name="og:locale" content="en_US" />
     <meta name="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
     <meta name="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
+    <meta name="google-site-verification" content="ojk87JSVd5H7YvM1oNacd0LSn2vtt_vJl8OFm-TxlS4" />
 </head>
 <body onbeforeunload="getcoins" style="height: 556px; background-color: #000000; width: 83%; overflow: hidden;">
    
@@ -794,7 +795,16 @@ tempgoldcoins = "0";
         }
     </style>
 
-    
+     <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52168843-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
