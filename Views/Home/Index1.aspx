@@ -806,6 +806,17 @@ tempgoldcoins = "0";
 
 </script>
 
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- fbthad -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4310099988313025"
+     data-ad-slot="1630258998"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>
