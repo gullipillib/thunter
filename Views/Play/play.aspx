@@ -375,6 +375,12 @@ to {left:10px;}
         <asp:Label ID="Label3" runat="server" Font-Bold="True" style=" z-index: 1; left: 354px; top: 56px; position: absolute; width: 202px; border-radius:20px;" Text="3D Game - Multi Player" ForeColor="White" BorderStyle="None" Font-Names="Staccato222 BT" Font-Size="14pt"></asp:Label>
         </div>
 
+ 
+<!-- Amazon Publisher Studio -->
+<script> var amzn_ps_tracking_id = 'treahuntgame-20'; </script>
+<script async="true" type="text/javascript" src="//ps-us.amazon-adsystem.com/scripts/US/studio.js" charset="UTF-8"></script>
+
+
 <SCRIPT charset="utf-8" type="text/javascript" src="http://ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Ftreahuntgame-20%2F8005%2Fe05e5c88-1921-4016-a6ea-93e4cf8b52dd"> </SCRIPT> <NOSCRIPT><A HREF="http://ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Ftreahuntgame-20%2F8005%2Fe05e5c88-1921-4016-a6ea-93e4cf8b52dd&Operation=NoScript">Amazon.com Widgets</A></NOSCRIPT>
 
 <script src="https://connect.facebook.net/en_US/all.js">
