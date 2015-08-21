@@ -375,6 +375,30 @@ to {left:10px;}
         <asp:Label ID="Label3" runat="server" Font-Bold="True" style=" z-index: 1; left: 354px; top: 56px; position: absolute; width: 202px; border-radius:20px;" Text="3D Game - Multi Player" ForeColor="White" BorderStyle="None" Font-Names="Staccato222 BT" Font-Size="14pt"></asp:Label>
         </div>
 
+<script type='text/javascript'>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  (function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') +
+      '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+  })();
+</script>
+
+<script type='text/javascript'>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/114316130/thfbtag', [468, 60], 'div-gpt-ad-1440156419554-0').addService(googletag.pubads());
+    googletag.defineSlot('/114316130/thfbweb1', [[320, 50], [468, 60]], 'div-gpt-ad-1440156419554-1').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
  
 <!-- Amazon Publisher Studio -->
 <script> var amzn_ps_tracking_id = 'treahuntgame-20'; </script>
