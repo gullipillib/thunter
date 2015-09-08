@@ -375,37 +375,16 @@ to {left:10px;}
         <asp:Label ID="Label3" runat="server" Font-Bold="True" style=" z-index: 1; left: 354px; top: 56px; position: absolute; width: 202px; border-radius:20px;" Text="3D Game - Multi Player" ForeColor="White" BorderStyle="None" Font-Names="Staccato222 BT" Font-Size="14pt"></asp:Label>
         </div>
 
-<script type='text/javascript'>
-  var googletag = googletag || {};
-  googletag.cmd = googletag.cmd || [];
-  (function() {
-    var gads = document.createElement('script');
-    gads.async = true;
-    gads.type = 'text/javascript';
-    var useSSL = 'https:' == document.location.protocol;
-    gads.src = (useSSL ? 'https:' : 'http:') +
-      '//www.googletagservices.com/tag/js/gpt.js';
-    var node = document.getElementsByTagName('script')[0];
-    node.parentNode.insertBefore(gads, node);
-  })();
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67303081-1', 'auto');
+  ga('send', 'pageview');
+
 </script>
-
-<script type='text/javascript'>
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/114316130/thfbtag', [468, 60], 'div-gpt-ad-1440156419554-0').addService(googletag.pubads());
-    googletag.defineSlot('/114316130/thfbweb1', [[320, 50], [468, 60]], 'div-gpt-ad-1440156419554-1').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.enableServices();
-  });
-</script>
-
- 
-<!-- Amazon Publisher Studio -->
-<script> var amzn_ps_tracking_id = 'treahuntgame-20'; </script>
-<script async="true" type="text/javascript" src="//ps-us.amazon-adsystem.com/scripts/US/studio.js" charset="UTF-8"></script>
-
-
-<SCRIPT charset="utf-8" type="text/javascript" src="http://ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Ftreahuntgame-20%2F8005%2Fe05e5c88-1921-4016-a6ea-93e4cf8b52dd"> </SCRIPT> <NOSCRIPT><A HREF="http://ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Ftreahuntgame-20%2F8005%2Fe05e5c88-1921-4016-a6ea-93e4cf8b52dd&Operation=NoScript">Amazon.com Widgets</A></NOSCRIPT>
 
 <script src="https://connect.facebook.net/en_US/all.js">
     FB.init({
