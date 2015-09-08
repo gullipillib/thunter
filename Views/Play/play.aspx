@@ -386,6 +386,17 @@ to {left:10px;}
 
 </script>
 
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- treasurehunterfb_play -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1883361859723535"
+     data-ad-slot="4686718005"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <script src="https://connect.facebook.net/en_US/all.js">
     FB.init({
         appId: '123405257731200',
