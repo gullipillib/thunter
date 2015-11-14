@@ -812,9 +812,9 @@ tempgoldcoins = "0";
 </script>
 
     <script>
-=======
+
      <script>
->>>>>>> e53aff9efaae6ed909eef1d86254e5f6ffcfa6be
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -824,8 +824,18 @@ tempgoldcoins = "0";
   ga('send', 'pageview');
 
 </script>
-<<<<<<< HEAD
-=======
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- mvcth1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1883361859723535"
+     data-ad-slot="9819970006"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- fbthad -->
