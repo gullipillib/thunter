@@ -360,11 +360,11 @@ to {left:10px;}
         </div>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- mvcth1 -->
+<!-- thwebad_bottom -->
 <ins class="adsbygoogle"
      style="display:block"
-     data-ad-client="ca-pub-1883361859723535"
-     data-ad-slot="9819970006"
+     data-ad-client="ca-pub-4310099988313025"
+     data-ad-slot="8255010197"
      data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
@@ -381,16 +381,6 @@ to {left:10px;}
 
 </script>
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- treasurehunterfb_play -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1883361859723535"
-     data-ad-slot="4686718005"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 
 <script src="https://connect.facebook.net/en_US/all.js">
     FB.init({
@@ -444,7 +434,7 @@ function feed() {
 
 
 
-<a href="https://plus.google.com/103286494679541419770" rel="publisher" style="z-index: 1; left: 784px; top: 17px; position: absolute; text-decoration: none; color: #FFFFFF;">Google+</a>      
+ 
 <a href='https://treasurehunter.apphb.com/buygoggles.aspx' onclick="" style="z-index: 1; position:absolute;left:420px; top:169px;width:44px; text-decoration:none; color: #FFFFFF; background-color: #FF9900;  border-radius:20px; text-align: center;">Buy</a>
 <a href='https://treasurehunter.apphb.com/Invite/friends' onclick="FacebookInviteFriends();" style="z-index: 1; position:absolute; left:683px; top:139px; width:109px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: center; right: 92px; height: 18px; font-family: 'Victorian LET';">Invite Friends</a>
 <a href='https://treasurehunter.apphb.com/gamesettings.aspx'  style="position:absolute;left:596px; top:111px; width:72px; text-decoration:none; color: #FFFFFF; background-color: #0000FF;  border-radius:20px; text-align: left; font-family: Arial, Helvetica, sans-serif;">My Game</a>

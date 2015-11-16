@@ -717,9 +717,9 @@ tempgoldcoins = "0";
     <meta name="og:locale" content="en_US" />
     <meta name="article:author" content="https://www.facebook.com/gullipilli vijay bhaskar" />
     <meta name="article:publisher" content="https://www.facebook.com/gullipilli vijay bhaskar" />
-<<<<<<< HEAD
+
 <meta name="google-site-verification" content="ojk87JSVd5H7YvM1oNacd0LSn2vtt_vJl8OFm-TxlS4" />
-=======
+
     <meta name="google-site-verification" content="ojk87JSVd5H7YvM1oNacd0LSn2vtt_vJl8OFm-TxlS4" />
 >>>>>>> e53aff9efaae6ed909eef1d86254e5f6ffcfa6be
 </head>
@@ -799,13 +799,12 @@ tempgoldcoins = "0";
         }
     </style>
 
-<<<<<<< HEAD
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- treasurehunterfb_play -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- thuntrweb -->
 <ins class="adsbygoogle"
      style="display:block"
-     data-ad-client="ca-pub-1883361859723535"
-     data-ad-slot="4686718005"
+     data-ad-client="ca-pub-4310099988313025"
+     data-ad-slot="2520397391"
      data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
@@ -825,29 +824,17 @@ tempgoldcoins = "0";
 
 </script>
 
-
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- mvcth1 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1883361859723535"
-     data-ad-slot="9819970006"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- fbthad -->
+<!-- thwebad_bottom -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4310099988313025"
-     data-ad-slot="1630258998"
+     data-ad-slot="8255010197"
      data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
->>>>>>> e53aff9efaae6ed909eef1d86254e5f6ffcfa6be
+
 
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
