@@ -799,6 +799,10 @@ tempgoldcoins = "0";
         }
     </style>
 
+ <!-- Begin BidVertiser code -->
+<SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=684725&bid=1732934" TYPE="text/javascript"></SCRIPT>
+<!-- End BidVertiser code --> 
+
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- thuntrweb -->
 <ins class="adsbygoogle"
