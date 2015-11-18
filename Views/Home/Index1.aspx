@@ -814,36 +814,14 @@ tempgoldcoins = "0";
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-    <script>
-
-     <script>
-
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-52168843-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- thwebad_bottom -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4310099988313025"
-     data-ad-slot="8255010197"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 
 
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-1.8.2.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery-ui-1.10.3.js"></script>
     <script src="https://treasurehunter.apphb.com/Scripts/jquery.signalR-2.0.1.js"></script>
     <script src="https://treasurehunter.apphb.com/SignalR/hubs"></script>
+
+ <script type="text/javascript">
 
          var chat = $.connection.chatmessages;
          var pname = '<%=Hiddenfield1%>';
