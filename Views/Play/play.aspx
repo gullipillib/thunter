@@ -348,8 +348,8 @@ to {left:10px;}
 
  </style>
 
- <!-- Begin BidVertiser code -->
-<SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=684725&bid=1732934" TYPE="text/javascript"></SCRIPT>
+  <!-- Begin BidVertiser code -->
+<SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=684725&bid=1711922" TYPE="text/javascript"></SCRIPT>
 <!-- End BidVertiser code --> 
 
     <form id="form1" runat="server">
