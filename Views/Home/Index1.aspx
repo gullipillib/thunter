@@ -3553,7 +3553,9 @@ function (response) {
             <button id="Button10" style="z-index: 1001; border-radius: 2%; text-align: center; vertical-align: middle; border: medium outset #FFFF00; position: absolute; width: 24%; height: 8%; background-color: #FF00FF; color: #FFFFFF; top: 66%; left: 61%; font-size: 100%;" onclick="ifriends();">Back to Game</button>
             <a href="#" onclick="FacebookInviteFriends();" style="position: absolute; left: 8%; top: 86%; width: 29%; height: 7%; text-decoration: none; color: #FFFFFF; background-color: #FF9900; border-radius: 2%; text-align: center; z-index: 1001; font-size: 100%;">Invite Friends</a>
         </div>
-        <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="60%" ForeColor="White" Style="z-index: 1; left: 88%; top: 74%; cursor: pointer; position: absolute; width: 10%; height: 5%;" Text="Rate Good to this TreasureSpot" OnClick="Button3_Click" CausesValidation="False" UseSubmitBehavior="False" />
+        <asp:Button ID="Button3" runat="server" BackColor="Transparent" BorderColor="#CCCCFF" BorderStyle="Solid" Font-Size="60%" ForeColor="White" 
+			Style="z-index: 1; left: 89%; top: 66%; cursor: pointer; position: absolute; width: 10%; height: 5%;" Text="Rate Good to this TreasureSpot" OnClick="Button3_Click" CausesValidation="False" 
+			UseSubmitBehavior="False" />
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=9cd6799a-6dac-4d58-947e-a0ba00796278.sqlserver.sequelizer.com;Initial Catalog=db9cd6799a6dac4d58947ea0ba00796278;Persist Security Info=True;User ID=tddputngypufyqqp;Password=EkBRetznpcHA57dLkka8JPnfM84wFhkpLctYThhwe6CpjHUMyMN4dDrX7veeycNh" SelectCommand="SELECT * FROM appuserdetails" InsertCommand="INSERT INTO loggedusers(luname, luid, luposition, luimg, luspriteimg, lucrisboos, luloggedin, lutspots, lulogintimes, luinvites) Values (@luname, @luid, @luposition, @luimg, @luspriteimg, @lucrisboos, @luloggedin, @lutspots, @lulogintimes, @luinvites)" UpdateCommand="UPDATE appuserdetails SET @uloggedin='yes'">
             <InsertParameters>
@@ -3674,7 +3676,7 @@ function (response) {
         
         <input id="friendname" style="visibility: visible; text-decoration: none; height: 77px; background-color: transparent; color: #FFCC00; z-index: 1;position: absolute; left: 1%; top: 36%; width: 9%; height: 13%; cursor: none;" type="text" readonly="true" />
         <img alt="" src="https://treasurehunter.apphb.com/Images/landscape.jpg" style="width: 9%; height: 10%; visibility: visible; z-index: 1; left: 1%; top: 24%; position: absolute;" id="friendimage" />
-        <label style="position: absolute; top: 64%; left: 1%; height: 3%; color: #FFFFFF; font-family: Script; font-size: 70%; width: 12%;">Talk to other Players</label>
+        <label style="position: absolute; top: 64%; left: 25%; height: 3%; color: #FFFFFF; font-family: Script; font-size: 70%; width: 8%;">Talk to other Players</label>
 
         <input id="Button2" style="border: medium outset #FF00FF; background-color: #6699FF; color: #FFFFFF; z-index: 1; position: absolute; left: 30%; top: 90%; width: 5%; height: 4%; border-radius: 20%;" type="button" value="Send" onclick="send2server();" />
         <div style="z-index:1; border: 15px ridge #99FF99; position: absolute; left: 83%; top: 69%; background-color: Transparent; color: #FFCC00; width: 15%; height: 14%;"> </div>
@@ -3702,8 +3704,11 @@ function (response) {
         </div>
         <label style="z-index:1000; position: absolute; top:20%; left:12%; height:5%; color: #FFCC00; position: absolute; font-size: 100%; width: 12%; font-family: 'John Handy LET';">Treasure Map</label>
         <asp:TextBox ID="attacked" runat="server" Font-Size="90%" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 41%; top: 21%; position: absolute; width: 37%; height: 5%" ForeColor="White" ReadOnly="true">  </asp:TextBox>
-        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 90%; top: 95%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="OldDreadfulNo7 BT" Font-Size="90%">Time Remaining</asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 91%; top: 99%; position: absolute; width: 7%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">120</asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" 
+			Style="z-index: 1; left: 62%; top: 14%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" 
+			Font-Names="OldDreadfulNo7 BT" Font-Size="90%">Time Remaining</asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" 
+			Style="z-index: 1; left: 74%; top: 14%; position: absolute; width: 7%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false">120</asp:TextBox>
         <asp:TextBox ID="TextBox3" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 1%; top: 55%; position: absolute; width: 11%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="70%">Collect Coins</asp:TextBox>
         <asp:TextBox ID="TextBox4" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 14%; top: 55%; position: absolute; width: 13%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Size="70%"></asp:TextBox>
         <asp:TextBox ID="TextBox5" runat="server" BackColor="Transparent" BorderStyle="None" ClientIDMode="Static" Style="z-index: 1; left: 1%; top: 60%; position: absolute; width: 10%; height:4%; text-align:center; vertical-align:middle;" ForeColor="#FFCC00" meta:resourcekey="pointsResource1" ReadOnly="false" Font-Names="Victorian LET" Font-Size="70%">Conquer Players</asp:TextBox>
